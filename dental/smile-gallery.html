@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smile Gallery | LUMINA DENTAL</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=DM+Serif+Display&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Outfit', 'sans-serif'], serif: ['DM Serif Display', 'serif'] },
+                    colors: { brand: { 600: '#0284C7', 900: '#0C4A6E' }, sand: '#FDFBF7' }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-sand text-slate-900 font-sans">
+
+    <!-- Nav -->
+    <nav class="fixed w-full z-50 bg-white/90 backdrop-blur-md border-b border-slate-100 h-20 flex items-center px-6 justify-between">
+        <a href="index.html" class="font-serif text-2xl text-brand-900">Lumina</a>
+        <a href="visit.html" class="bg-brand-900 text-white px-6 py-2 rounded-full font-bold hover:bg-brand-600 transition">Book Now</a>
+    </nav>
+
+    <!-- Header -->
+    <header class="pt-40 pb-20 px-6 text-center max-w-4xl mx-auto">
+        <h1 class="font-serif text-5xl md:text-6xl text-brand-900 mb-6">Real Results</h1>
+        <p class="text-lg text-slate-500">Every smile tells a story. Here are just a few transformations we've been privileged to be a part of.</p>
+    </header>
+
+    <!-- Gallery Grid -->
+    <main class="max-w-7xl mx-auto px-6 pb-24 grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        
+        <!-- Item 1 -->
+        <div class="bg-white rounded-[2rem] overflow-hidden shadow-lg border border-slate-100 group">
+            <div class="relative h-64 overflow-hidden">
+                <div class="absolute inset-0 flex">
+                    <div class="w-1/2 h-full bg-slate-200 relative">
+                        <img src="https://images.unsplash.com/photo-1595956553066-fe24a8c33395?q=80&w=400&auto=format&fit=crop" class="w-full h-full object-cover grayscale opacity-80" alt="Before">
+                        <span class="absolute bottom-2 left-2 bg-black/50 text-white text-xs px-2 py-1 rounded">Before</span>
+                    </div>
+                    <div class="w-1/2 h-full bg-slate-100 relative">
+                        <img src="https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?q=80&w=400&auto=format&fit=crop" class="w-full h-full object-cover" alt="After">
+                        <span class="absolute bottom-2 right-2 bg-brand-600 text-white text-xs px-2 py-1 rounded">After</span>
+                    </div>
+                </div>
+            </div>
+            <div class="p-8">
+                <h3 class="font-serif text-2xl text-brand-900 mb-2">Porcelain Veneers</h3>
+                <p class="text-slate-500 text-sm">Full upper arch restoration for a natural, bright look.</p>
+            </div>
+        </div>
+
+        <!-- Item 2 -->
+        <div class="bg-white rounded-[2rem] overflow-hidden shadow-lg border border-slate-100 group">
+            <div class="relative h-64 overflow-hidden">
+                <div class="absolute inset-0 flex">
+                    <div class="w-1/2 h-full bg-slate-200 relative">
+                        <img src="https://images.unsplash.com/photo-1616391182219-e080b4d1043a?q=80&w=400&auto=format&fit=crop" class="w-full h-full object-cover grayscale opacity-80" alt="Before">
+                        <span class="absolute bottom-2 left-2 bg-black/50 text-white text-xs px-2 py-1 rounded">Before</span>
+                    </div>
+                    <div class="w-1/2 h-full bg-slate-100 relative">
+                        <img src="https://images.unsplash.com/photo-1606811841689-23dfddce3e95?q=80&w=400&auto=format&fit=crop" class="w-full h-full object-cover" alt="After">
+                        <span class="absolute bottom-2 right-2 bg-brand-600 text-white text-xs px-2 py-1 rounded">After</span>
+                    </div>
+                </div>
+            </div>
+            <div class="p-8">
+                <h3 class="font-serif text-2xl text-brand-900 mb-2">Invisalign Treatment</h3>
+                <p class="text-slate-500 text-sm">12 months of clear aligners to correct crowding.</p>
+            </div>
+        </div>
+
+        <!-- Item 3 -->
+        <div class="bg-white rounded-[2rem] overflow-hidden shadow-lg border border-slate-100 group">
+            <div class="relative h-64 overflow-hidden">
+                <div class="absolute inset-0 flex">
+                    <div class="w-1/2 h-full bg-slate-200 relative">
+                        <img src="https://images.unsplash.com/photo-1552346154-21d32810aba3?q=80&w=400&auto=format&fit=crop" class="w-full h-full object-cover grayscale opacity-80" alt="Before">
+                        <span class="absolute bottom-2 left-2 bg-black/50 text-white text-xs px-2 py-1 rounded">Before</span>
+                    </div>
+                    <div class="w-1/2 h-full bg-slate-100 relative">
+                        <img src="https://images.unsplash.com/photo-1598256989800-fe5f95da9787?q=80&w=400&auto=format&fit=crop" class="w-full h-full object-cover" alt="After">
+                        <span class="absolute bottom-2 right-2 bg-brand-600 text-white text-xs px-2 py-1 rounded">After</span>
+                    </div>
+                </div>
+            </div>
+            <div class="p-8">
+                <h3 class="font-serif text-2xl text-brand-900 mb-2">Teeth Whitening</h3>
+                <p class="text-slate-500 text-sm">One session of laser whitening for immediate brightness.</p>
+            </div>
+        </div>
+
+    </main>
+
+    <footer class="text-center py-12 border-t border-slate-200 text-slate-400 text-sm">
+        © 2026 Lumina Dental
+    </footer>
+
+</body>
+</html>

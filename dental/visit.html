@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Visit | LUMINA DENTAL</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=DM+Serif+Display&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Outfit', 'sans-serif'], serif: ['DM Serif Display', 'serif'] },
+                    colors: { brand: { 600: '#0284C7', 900: '#0C4A6E' }, sand: '#FDFBF7' }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-sand text-slate-900 font-sans min-h-screen flex flex-col">
+
+    <!-- Nav -->
+    <nav class="fixed w-full z-50 bg-white/90 backdrop-blur-md border-b border-slate-100 h-20 flex items-center px-6 justify-between">
+        <a href="index.html" class="font-serif text-2xl text-brand-900">Lumina</a>
+        <a href="index.html" class="text-slate-500 font-bold hover:text-black">Close X</a>
+    </nav>
+
+    <!-- Form Section -->
+    <main class="flex-grow flex items-center justify-center px-4 pt-32 pb-20">
+        <div class="bg-white p-8 md:p-12 rounded-[3rem] shadow-2xl max-w-2xl w-full border border-slate-100 relative overflow-hidden">
+            <div class="absolute top-0 right-0 w-32 h-32 bg-brand-600/10 rounded-full -mr-16 -mt-16 blur-3xl"></div>
+            
+            <div class="text-center mb-10 relative z-10">
+                <span class="text-brand-600 font-bold uppercase tracking-wider text-xs mb-2 block">New Patients Welcome</span>
+                <h1 class="font-serif text-4xl text-brand-900 mb-2">Schedule Your Visit</h1>
+                <p class="text-slate-500">We respond to all requests within 15 minutes during business hours.</p>
+            </div>
+
+            <form class="space-y-6 relative z-10">
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div>
+                        <label class="block text-sm font-bold text-slate-700 mb-2">First Name</label>
+                        <input type="text" class="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 focus:border-brand-600 focus:outline-none transition" placeholder="Rahul">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-bold text-slate-700 mb-2">Last Name</label>
+                        <input type="text" class="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 focus:border-brand-600 focus:outline-none transition" placeholder="Sharma">
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block text-sm font-bold text-slate-700 mb-2">Phone Number</label>
+                    <input type="tel" class="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 focus:border-brand-600 focus:outline-none transition" placeholder="+91">
+                </div>
+
+                <div>
+                    <label class="block text-sm font-bold text-slate-700 mb-2">Reason for Visit</label>
+                    <select class="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 focus:border-brand-600 focus:outline-none transition">
+                        <option>General Checkup & Cleaning</option>
+                        <option>Tooth Pain / Emergency</option>
+                        <option>Cosmetic Consultation (Veneers/Whitening)</option>
+                        <option>Invisalign / Braces</option>
+                        <option>Implants</option>
+                    </select>
+                </div>
+
+                <button class="w-full bg-brand-900 text-white py-4 rounded-xl font-bold text-lg hover:bg-brand-600 shadow-xl shadow-blue-200/50 hover:shadow-2xl transition-all hover:-translate-y-1">Request Appointment</button>
+            </form>
+        </div>
+    </main>
+
+</body>
+</html>
