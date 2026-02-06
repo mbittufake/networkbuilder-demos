@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en" class="bg-black text-white selection:bg-[#ccff00] selection:text-black">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IRON EMPIRE | Elite Training</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Teko:wght@300;400;500;600;700&family=Manrope:wght@400;600;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        display: ['Teko', 'sans-serif'],
+                        sans: ['Manrope', 'sans-serif'],
+                    },
+                    colors: {
+                        acid: '#CCFF00', // Neon Green
+                        charcoal: '#111111',
+                        concrete: '#222222'
+                    },
+                    animation: {
+                        'marquee': 'marquee 10s linear infinite',
+                    },
+                    keyframes: {
+                        marquee: {
+                            '0%': { transform: 'translateX(0%)' },
+                            '100%': { transform: 'translateX(-100%)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { cursor: crosshair; }
+        .text-stroke { -webkit-text-stroke: 1px rgba(255,255,255,0.3); color: transparent; }
+        .clip-slant { clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%); }
+        .btn-hover:hover { box-shadow: 4px 4px 0px #CCFF00; transform: translate(-2px, -2px); }
+    </style>
+</head>
+<body class="overflow-x-hidden font-sans">
+
+    <!-- Nav -->
+    <nav class="fixed w-full z-50 px-6 py-6 mix-blend-difference flex justify-between items-center border-b border-white/10 bg-black/50 backdrop-blur-md">
+        <a href="#" class="text-3xl font-display font-bold tracking-widest uppercase">Iron<span class="text-acid">Empire</span></a>
+        
+        <div class="hidden md:flex gap-8 text-sm font-bold uppercase tracking-wider">
+            <a href="#classes" class="hover:text-acid transition">Programs</a>
+            <a href="#trainers" class="hover:text-acid transition">Coaches</a>
+            <a href="#membership" class="hover:text-acid transition">Join Now</a>
+        </div>
+
+        <a href="#membership" class="bg-white text-black px-6 py-2 font-bold uppercase tracking-widest text-sm hover:bg-acid transition btn-hover">Start Free Trial</a>
+    </nav>
+
+    <!-- Hero -->
+    <header class="min-h-screen flex items-center justify-center relative overflow-hidden pt-20">
+        <!-- Video Background (Simulated with Image) -->
+        <div class="absolute inset-0 z-0">
+            <div class="absolute inset-0 bg-black/40 z-10"></div>
+            <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=1600&auto=format&fit=crop" class="w-full h-full object-cover opacity-60" alt="Gym">
+        </div>
+
+        <div class="relative z-20 text-center px-4">
+            <h1 class="text-[12vw] leading-[0.8] font-display font-bold uppercase mb-4 mix-blend-overlay">
+                Build Your <br> <span class="text-acid">Legacy</span>
+            </h1>
+            <p class="text-xl md:text-2xl font-sans font-light text-gray-300 max-w-xl mx-auto mb-10">
+                No gimmicks. No shortcuts. Just raw iron and results. The most advanced strength facility in the city.
+            </p>
+            <div class="flex flex-col md:flex-row gap-4 justify-center">
+                <button class="bg-acid text-black px-10 py-4 font-bold uppercase tracking-widest text-lg hover:bg-white transition clip-path-slant">Join The Cult</button>
+                <button class="border border-white text-white px-10 py-4 font-bold uppercase tracking-widest text-lg hover:bg-white hover:text-black transition">View Schedule</button>
+            </div>
+        </div>
+
+        <!-- Marquee -->
+        <div class="absolute bottom-0 w-full border-t border-white/20 bg-black py-4 overflow-hidden whitespace-nowrap">
+            <div class="inline-block animate-marquee">
+                <span class="text-4xl font-display font-bold mx-8 text-stroke">STRENGTH</span>
+                <span class="text-4xl font-display font-bold mx-8 text-white">CONDITIONING</span>
+                <span class="text-4xl font-display font-bold mx-8 text-stroke">POWERLIFTING</span>
+                <span class="text-4xl font-display font-bold mx-8 text-white">HIIT</span>
+                <span class="text-4xl font-display font-bold mx-8 text-stroke">BOXING</span>
+                <span class="text-4xl font-display font-bold mx-8 text-white">RECOVERY</span>
+                <span class="text-4xl font-display font-bold mx-8 text-stroke">STRENGTH</span>
+                <span class="text-4xl font-display font-bold mx-8 text-white">CONDITIONING</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Stats -->
+    <section class="grid grid-cols-2 md:grid-cols-4 border-b border-white/10">
+        <div class="p-12 border-r border-white/10 text-center hover:bg-concrete transition">
+            <span class="block text-5xl font-display font-bold text-acid mb-2">15k</span>
+            <span class="text-xs uppercase tracking-widest text-gray-500">Sq Ft Facility</span>
+        </div>
+        <div class="p-12 border-r border-white/10 text-center hover:bg-concrete transition">
+            <span class="block text-5xl font-display font-bold text-white mb-2">24/7</span>
+            <span class="text-xs uppercase tracking-widest text-gray-500">Access</span>
+        </div>
+        <div class="p-12 border-r border-white/10 text-center hover:bg-concrete transition">
+            <span class="block text-5xl font-display font-bold text-acid mb-2">50+</span>
+            <span class="text-xs uppercase tracking-widest text-gray-500">Trainers</span>
+        </div>
+        <div class="p-12 text-center hover:bg-concrete transition">
+            <span class="block text-5xl font-display font-bold text-white mb-2">0</span>
+            <span class="text-xs uppercase tracking-widest text-gray-500">Excuses</span>
+        </div>
+    </section>
+
+    <!-- Programs (Grid) -->
+    <section id="classes" class="py-24 px-6 max-w-[1600px] mx-auto">
+        <div class="flex justify-between items-end mb-16">
+            <h2 class="text-6xl font-display font-bold uppercase">Our <span class="text-acid">Arsenal</span></h2>
+            <a href="#" class="hidden md:block border-b border-acid text-acid pb-1 uppercase tracking-widest text-sm hover:text-white transition">View Full Schedule</a>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-6">
+            <!-- Card 1 -->
+            <div class="group relative h-[500px] bg-concrete overflow-hidden border border-white/5">
+                <img src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?q=80&w=800&auto=format&fit=crop" class="w-full h-full object-cover opacity-60 group-hover:opacity-40 group-hover:scale-110 transition duration-700" alt="Weights">
+                <div class="absolute inset-0 p-8 flex flex-col justify-end">
+                    <h3 class="text-4xl font-display font-bold uppercase mb-2 translate-y-4 group-hover:translate-y-0 transition">Hypertrophy</h3>
+                    <p class="text-gray-400 text-sm opacity-0 group-hover:opacity-100 transition duration-500 translate-y-4 group-hover:translate-y-0">
+                        Scientifically programmed bodybuilding. Build muscle, not ego.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="group relative h-[500px] bg-concrete overflow-hidden border border-white/5">
+                <img src="https://images.unsplash.com/photo-1599058945522-28d584b6f0ff?q=80&w=800&auto=format&fit=crop" class="w-full h-full object-cover opacity-60 group-hover:opacity-40 group-hover:scale-110 transition duration-700" alt="Cardio">
+                <div class="absolute inset-0 p-8 flex flex-col justify-end">
+                    <h3 class="text-4xl font-display font-bold uppercase mb-2 translate-y-4 group-hover:translate-y-0 transition text-acid">Metcon</h3>
+                    <p class="text-gray-400 text-sm opacity-0 group-hover:opacity-100 transition duration-500 translate-y-4 group-hover:translate-y-0">
+                        Metabolic conditioning. High intensity interval training to shred fat.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="group relative h-[500px] bg-concrete overflow-hidden border border-white/5">
+                <img src="https://images.unsplash.com/photo-1574680096141-1cddd32e24f7?q=80&w=800&auto=format&fit=crop" class="w-full h-full object-cover opacity-60 group-hover:opacity-40 group-hover:scale-110 transition duration-700" alt="Power">
+                <div class="absolute inset-0 p-8 flex flex-col justify-end">
+                    <h3 class="text-4xl font-display font-bold uppercase mb-2 translate-y-4 group-hover:translate-y-0 transition">Powerlifting</h3>
+                    <p class="text-gray-400 text-sm opacity-0 group-hover:opacity-100 transition duration-500 translate-y-4 group-hover:translate-y-0">
+                        Squat. Bench. Deadlift. The holy trinity of strength.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Membership -->
+    <section id="membership" class="py-24 bg-acid text-black clip-slant">
+        <div class="max-w-5xl mx-auto px-6 text-center">
+            <h2 class="text-6xl md:text-8xl font-display font-bold uppercase mb-8">Join the Empire</h2>
+            <p class="text-xl font-bold mb-12 max-w-2xl mx-auto">First session is always free. Come feel the iron before you commit.</p>
+            
+            <div class="grid md:grid-cols-2 gap-8 max-w-3xl mx-auto">
+                <div class="bg-black text-white p-8 border border-black hover:-translate-y-2 transition duration-300">
+                    <h3 class="text-2xl font-display font-bold uppercase text-acid mb-2">Standard</h3>
+                    <div class="text-5xl font-bold mb-6">₹1,999<span class="text-sm font-normal text-gray-400">/mo</span></div>
+                    <ul class="text-left space-y-4 mb-8 text-sm text-gray-400">
+                        <li class="text-white">✓ Full Gym Access</li>
+                        <li class="text-white">✓ Locker Room & Sauna</li>
+                        <li>✕ Group Classes</li>
+                    </ul>
+                    <button class="w-full bg-white text-black font-bold uppercase py-3 hover:bg-gray-200 transition">Select Plan</button>
+                </div>
+
+                <div class="bg-white text-black p-8 border border-black transform scale-105 shadow-2xl">
+                    <div class="bg-black text-white text-xs font-bold uppercase py-1 px-3 inline-block mb-4">Most Popular</div>
+                    <h3 class="text-2xl font-display font-bold uppercase mb-2">Elite</h3>
+                    <div class="text-5xl font-bold mb-6">₹3,499<span class="text-sm font-normal text-gray-500">/mo</span></div>
+                    <ul class="text-left space-y-4 mb-8 text-sm text-gray-600">
+                        <li class="font-bold">✓ Full Gym Access</li>
+                        <li class="font-bold">✓ Locker Room & Sauna</li>
+                        <li class="font-bold">✓ Unlimited Classes</li>
+                        <li class="font-bold">✓ 1 PT Session/mo</li>
+                    </ul>
+                    <button class="w-full bg-black text-white font-bold uppercase py-3 hover:bg-gray-800 transition">Select Plan</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-black py-12 text-center text-gray-600 text-xs uppercase tracking-widest">
+        © 2026 Iron Empire. Forged in Iron.
+    </footer>
+
+</body>
+</html>
