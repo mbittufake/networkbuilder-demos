@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en" class="bg-[#050505] text-[#e0e0e0] antialiased selection:bg-[#c9a96e] selection:text-black">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us | VANTAGE LEGAL</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Italiana&family=Space+Grotesk:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { serif: ['Italiana', 'serif'], sans: ['Space Grotesk', 'sans-serif'] },
+                    colors: { gold: '#c9a96e', dark: '#050505', subtle: '#333' }
+                }
+            }
+        }
+    </script>
+    <style>
+        .menu-overlay { clip-path: circle(0% at 100% 0); transition: clip-path 0.8s cubic-bezier(0.77, 0, 0.175, 1); }
+        .menu-overlay.open { clip-path: circle(150% at 100% 0); }
+    </style>
+</head>
+<body class="font-sans">
+
+    <!-- Nav -->
+    <nav class="fixed top-0 w-full z-50 px-6 py-6 mix-blend-difference text-white flex justify-between items-center bg-black/20 backdrop-blur-sm">
+        <a href="index.html" class="text-2xl font-serif tracking-widest z-50 relative group">VANTAGE</a>
+        <button onclick="document.getElementById('menu').classList.toggle('open')" class="z-50 text-sm uppercase tracking-[0.2em] hover:text-gold transition">Menu</button>
+    </nav>
+    <div id="menu" class="menu-overlay fixed inset-0 bg-gold z-40 flex items-center justify-center">
+        <div class="flex flex-col space-y-8 text-center">
+            <a href="index.html" class="text-dark text-6xl font-serif hover:italic transition-all">Index</a>
+            <a href="about.html" class="text-dark text-6xl font-serif hover:italic transition-all">The Firm</a>
+            <a href="practice.html" class="text-dark text-6xl font-serif hover:italic transition-all">Expertise</a>
+            <a href="contact.html" class="text-dark text-6xl font-serif italic transition-all">Contact</a>
+        </div>
+    </div>
+
+    <!-- Contact Form Section -->
+    <section class="min-h-screen pt-32 px-4 md:px-12 flex flex-col justify-center">
+        <div class="max-w-5xl mx-auto w-full border-l border-white/10 pl-8 md:pl-24 py-12">
+            <h2 class="text-6xl md:text-8xl font-serif mb-12">INITIATE <br> PROTOCOL.</h2>
+            
+            <form class="space-y-12">
+                <div class="group">
+                    <label class="block text-xs uppercase tracking-widest text-gray-500 mb-2 group-focus-within:text-gold transition">Identify Yourself</label>
+                    <input type="text" class="w-full bg-transparent border-b border-white/20 py-4 text-2xl font-serif focus:outline-none focus:border-gold transition-colors" placeholder="Full Name">
+                </div>
+                
+                <div class="group">
+                    <label class="block text-xs uppercase tracking-widest text-gray-500 mb-2 group-focus-within:text-gold transition">Communication Channel</label>
+                    <input type="email" class="w-full bg-transparent border-b border-white/20 py-4 text-2xl font-serif focus:outline-none focus:border-gold transition-colors" placeholder="Email Address">
+                </div>
+
+                <div class="group">
+                    <label class="block text-xs uppercase tracking-widest text-gray-500 mb-2 group-focus-within:text-gold transition">The Brief</label>
+                    <textarea rows="1" class="w-full bg-transparent border-b border-white/20 py-4 text-2xl font-serif focus:outline-none focus:border-gold transition-colors resize-none" placeholder="Nature of Inquiry"></textarea>
+                </div>
+
+                <button class="mt-16 px-12 py-6 border border-white/20 hover:bg-white hover:text-black transition-all duration-300 uppercase tracking-widest text-sm font-bold flex items-center gap-4 group">
+                    Submit Brief 
+                    <span class="group-hover:translate-x-2 transition-transform">→</span>
+                </button>
+            </form>
+
+            <div class="mt-24 grid grid-cols-2 gap-8 text-xs uppercase tracking-widest text-gray-500">
+                <div>
+                    <p class="text-white mb-2">New Delhi</p>
+                    <p>Defence Colony, Block A</p>
+                </div>
+                <div>
+                    <p class="text-white mb-2">Contact</p>
+                    <p>secure@vantage.legal</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</body>
+</html>

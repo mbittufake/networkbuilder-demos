@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en" class="bg-[#050505] text-[#e0e0e0] antialiased selection:bg-[#c9a96e] selection:text-black">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Practice Areas | VANTAGE LEGAL</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Italiana&family=Space+Grotesk:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { serif: ['Italiana', 'serif'], sans: ['Space Grotesk', 'sans-serif'] },
+                    colors: { gold: '#c9a96e', dark: '#050505', subtle: '#333' }
+                }
+            }
+        }
+    </script>
+    <style>
+        .menu-overlay { clip-path: circle(0% at 100% 0); transition: clip-path 0.8s cubic-bezier(0.77, 0, 0.175, 1); }
+        .menu-overlay.open { clip-path: circle(150% at 100% 0); }
+    </style>
+</head>
+<body class="font-sans">
+
+    <!-- Nav -->
+    <nav class="fixed top-0 w-full z-50 px-6 py-6 mix-blend-difference text-white flex justify-between items-center bg-black/20 backdrop-blur-sm">
+        <a href="index.html" class="text-2xl font-serif tracking-widest z-50 relative group">VANTAGE</a>
+        <button onclick="document.getElementById('menu').classList.toggle('open')" class="z-50 text-sm uppercase tracking-[0.2em] hover:text-gold transition">Menu</button>
+    </nav>
+    <div id="menu" class="menu-overlay fixed inset-0 bg-gold z-40 flex items-center justify-center">
+        <div class="flex flex-col space-y-8 text-center">
+            <a href="index.html" class="text-dark text-6xl font-serif hover:italic transition-all">Index</a>
+            <a href="about.html" class="text-dark text-6xl font-serif hover:italic transition-all">The Firm</a>
+            <a href="practice.html" class="text-dark text-6xl font-serif italic transition-all">Expertise</a>
+            <a href="contact.html" class="text-dark text-6xl font-serif hover:italic transition-all">Contact</a>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="pt-48 pb-24 px-6 max-w-7xl mx-auto text-center">
+        <p class="text-gold uppercase tracking-[0.3em] mb-4 text-sm">Our Focus</p>
+        <h1 class="text-6xl md:text-8xl font-serif text-white mb-8">AREAS OF <span class="italic text-gray-600">MASTERY</span></h1>
+    </header>
+
+    <!-- Services Grid -->
+    <section class="max-w-7xl mx-auto px-6 pb-24">
+        <div class="space-y-24">
+            
+            <!-- Service 1 -->
+            <div class="grid md:grid-cols-2 gap-12 border-t border-white/10 pt-12">
+                <h2 class="text-4xl font-serif text-white">01. White Collar Defense</h2>
+                <div class="space-y-6 text-gray-400 font-light">
+                    <p>In an era of aggressive enforcement, you need a shield. We represent individuals and corporations in investigations by the Enforcement Directorate (ED), CBI, SFIO, and Income Tax authorities.</p>
+                    <ul class="list-disc pl-5 space-y-2 text-gray-500">
+                        <li>Money Laundering (PMLA) Defense</li>
+                        <li>Corporate Fraud Investigations</li>
+                        <li>Anticipatory Bail & Quashing Petitions</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Service 2 -->
+            <div class="grid md:grid-cols-2 gap-12 border-t border-white/10 pt-12">
+                <h2 class="text-4xl font-serif text-white">02. Corporate Litigation</h2>
+                <div class="space-y-6 text-gray-400 font-light">
+                    <p>Business disputes can bleed a company dry. We stop the bleeding. Our team handles complex commercial litigation, shareholder disputes, and insolvency proceedings (IBC) with ruthless efficiency.</p>
+                    <ul class="list-disc pl-5 space-y-2 text-gray-500">
+                        <li>NCLT / NCLAT Representation</li>
+                        <li>Commercial Arbitration</li>
+                        <li>Intellectual Property Disputes</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Service 3 -->
+            <div class="grid md:grid-cols-2 gap-12 border-t border-white/10 pt-12">
+                <h2 class="text-4xl font-serif text-white">03. Private Client</h2>
+                <div class="space-y-6 text-gray-400 font-light">
+                    <p>For High Net Worth Individuals, privacy is paramount. We handle sensitive family matters, high-stakes divorce, and succession planning discreetly and effectively.</p>
+                    <ul class="list-disc pl-5 space-y-2 text-gray-500">
+                        <li>High-Value Divorce Settlements</li>
+                        <li>Child Custody Disputes</li>
+                        <li>Estate & Will Contests</li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-black border-t border-white/10 py-12 text-center text-gray-600 text-sm">
+        <p>&copy; 2026 Vantage Legal. New Delhi.</p>
+    </footer>
+
+</body>
+</html>
