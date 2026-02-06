@@ -37,22 +37,41 @@
         .text-stroke { -webkit-text-stroke: 1px rgba(255,255,255,0.3); color: transparent; }
         .clip-slant { clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%); }
         .btn-hover:hover { box-shadow: 4px 4px 0px #CCFF00; transform: translate(-2px, -2px); }
+        .mobile-menu { transform: translateY(-100%); transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1); }
+        .mobile-menu.open { transform: translateY(0); }
     </style>
 </head>
 <body class="overflow-x-hidden font-sans">
 
     <!-- Nav -->
-    <nav class="fixed w-full z-50 px-6 py-6 mix-blend-difference flex justify-between items-center border-b border-white/10 bg-black/50 backdrop-blur-md">
-        <a href="#" class="text-3xl font-display font-bold tracking-widest uppercase">Iron<span class="text-acid">Empire</span></a>
+    <nav class="fixed w-full z-50 px-6 py-6 mix-blend-difference flex justify-between items-center border-b border-white/10 bg-black/80 backdrop-blur-md">
+        <a href="index.html" class="text-3xl font-display font-bold tracking-widest uppercase relative z-50">Iron<span class="text-acid">Empire</span></a>
         
+        <!-- Desktop Links -->
         <div class="hidden md:flex gap-8 text-sm font-bold uppercase tracking-wider">
-            <a href="#classes" class="hover:text-acid transition">Programs</a>
-            <a href="#trainers" class="hover:text-acid transition">Coaches</a>
-            <a href="#membership" class="hover:text-acid transition">Join Now</a>
+            <a href="programs.html" class="hover:text-acid transition">Programs</a>
+            <a href="trainers.html" class="hover:text-acid transition">Coaches</a>
+            <a href="join.html" class="hover:text-acid transition">Membership</a>
         </div>
 
-        <a href="#membership" class="bg-white text-black px-6 py-2 font-bold uppercase tracking-widest text-sm hover:bg-acid transition btn-hover">Start Free Trial</a>
+        <div class="flex items-center gap-4">
+            <a href="join.html" class="hidden md:block bg-white text-black px-6 py-2 font-bold uppercase tracking-widest text-sm hover:bg-acid transition btn-hover">Start Free Trial</a>
+            
+            <!-- Mobile Menu Toggle -->
+            <button onclick="toggleMenu()" class="md:hidden z-50 text-white focus:outline-none">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+            </button>
+        </div>
     </nav>
+
+    <!-- Mobile Menu Overlay -->
+    <div id="mobileMenu" class="mobile-menu fixed inset-0 bg-black z-40 flex flex-col justify-center items-center text-center">
+        <a href="index.html" class="text-5xl font-display font-bold uppercase text-white hover:text-acid mb-6">Home</a>
+        <a href="programs.html" class="text-5xl font-display font-bold uppercase text-white hover:text-acid mb-6">Programs</a>
+        <a href="trainers.html" class="text-5xl font-display font-bold uppercase text-white hover:text-acid mb-6">Coaches</a>
+        <a href="join.html" class="text-5xl font-display font-bold uppercase text-acid hover:text-white mb-6">Join Now</a>
+        <button onclick="toggleMenu()" class="absolute top-8 right-6 text-white text-sm uppercase tracking-widest border border-white/20 px-4 py-2 rounded hover:bg-white hover:text-black transition">Close</button>
+    </div>
 
     <!-- Hero -->
     <header class="min-h-screen flex items-center justify-center relative overflow-hidden pt-20">
@@ -70,8 +89,8 @@
                 No gimmicks. No shortcuts. Just raw iron and results. The most advanced strength facility in the city.
             </p>
             <div class="flex flex-col md:flex-row gap-4 justify-center">
-                <button class="bg-acid text-black px-10 py-4 font-bold uppercase tracking-widest text-lg hover:bg-white transition clip-path-slant">Join The Cult</button>
-                <button class="border border-white text-white px-10 py-4 font-bold uppercase tracking-widest text-lg hover:bg-white hover:text-black transition">View Schedule</button>
+                <a href="join.html" class="bg-acid text-black px-10 py-4 font-bold uppercase tracking-widest text-lg hover:bg-white transition clip-path-slant">Join The Cult</a>
+                <a href="programs.html" class="border border-white text-white px-10 py-4 font-bold uppercase tracking-widest text-lg hover:bg-white hover:text-black transition">View Schedule</a>
             </div>
         </div>
 
@@ -110,16 +129,16 @@
         </div>
     </section>
 
-    <!-- Programs (Grid) -->
+    <!-- Programs Preview -->
     <section id="classes" class="py-24 px-6 max-w-[1600px] mx-auto">
         <div class="flex justify-between items-end mb-16">
             <h2 class="text-6xl font-display font-bold uppercase">Our <span class="text-acid">Arsenal</span></h2>
-            <a href="#" class="hidden md:block border-b border-acid text-acid pb-1 uppercase tracking-widest text-sm hover:text-white transition">View Full Schedule</a>
+            <a href="programs.html" class="hidden md:block border-b border-acid text-acid pb-1 uppercase tracking-widest text-sm hover:text-white transition">View Full Schedule</a>
         </div>
 
         <div class="grid md:grid-cols-3 gap-6">
             <!-- Card 1 -->
-            <div class="group relative h-[500px] bg-concrete overflow-hidden border border-white/5">
+            <a href="programs.html" class="group relative h-[500px] bg-concrete overflow-hidden border border-white/5 block">
                 <img src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?q=80&w=800&auto=format&fit=crop" class="w-full h-full object-cover opacity-60 group-hover:opacity-40 group-hover:scale-110 transition duration-700" alt="Weights">
                 <div class="absolute inset-0 p-8 flex flex-col justify-end">
                     <h3 class="text-4xl font-display font-bold uppercase mb-2 translate-y-4 group-hover:translate-y-0 transition">Hypertrophy</h3>
@@ -127,10 +146,10 @@
                         Scientifically programmed bodybuilding. Build muscle, not ego.
                     </p>
                 </div>
-            </div>
+            </a>
 
             <!-- Card 2 -->
-            <div class="group relative h-[500px] bg-concrete overflow-hidden border border-white/5">
+            <a href="programs.html" class="group relative h-[500px] bg-concrete overflow-hidden border border-white/5 block">
                 <img src="https://images.unsplash.com/photo-1599058945522-28d584b6f0ff?q=80&w=800&auto=format&fit=crop" class="w-full h-full object-cover opacity-60 group-hover:opacity-40 group-hover:scale-110 transition duration-700" alt="Cardio">
                 <div class="absolute inset-0 p-8 flex flex-col justify-end">
                     <h3 class="text-4xl font-display font-bold uppercase mb-2 translate-y-4 group-hover:translate-y-0 transition text-acid">Metcon</h3>
@@ -138,10 +157,10 @@
                         Metabolic conditioning. High intensity interval training to shred fat.
                     </p>
                 </div>
-            </div>
+            </a>
 
             <!-- Card 3 -->
-            <div class="group relative h-[500px] bg-concrete overflow-hidden border border-white/5">
+            <a href="programs.html" class="group relative h-[500px] bg-concrete overflow-hidden border border-white/5 block">
                 <img src="https://images.unsplash.com/photo-1574680096141-1cddd32e24f7?q=80&w=800&auto=format&fit=crop" class="w-full h-full object-cover opacity-60 group-hover:opacity-40 group-hover:scale-110 transition duration-700" alt="Power">
                 <div class="absolute inset-0 p-8 flex flex-col justify-end">
                     <h3 class="text-4xl font-display font-bold uppercase mb-2 translate-y-4 group-hover:translate-y-0 transition">Powerlifting</h3>
@@ -149,47 +168,20 @@
                         Squat. Bench. Deadlift. The holy trinity of strength.
                     </p>
                 </div>
-            </div>
+            </a>
         </div>
     </section>
 
-    <!-- Membership -->
-    <section id="membership" class="py-24 bg-acid text-black clip-slant">
-        <div class="max-w-5xl mx-auto px-6 text-center">
-            <h2 class="text-6xl md:text-8xl font-display font-bold uppercase mb-8">Join the Empire</h2>
-            <p class="text-xl font-bold mb-12 max-w-2xl mx-auto">First session is always free. Come feel the iron before you commit.</p>
-            
-            <div class="grid md:grid-cols-2 gap-8 max-w-3xl mx-auto">
-                <div class="bg-black text-white p-8 border border-black hover:-translate-y-2 transition duration-300">
-                    <h3 class="text-2xl font-display font-bold uppercase text-acid mb-2">Standard</h3>
-                    <div class="text-5xl font-bold mb-6">₹1,999<span class="text-sm font-normal text-gray-400">/mo</span></div>
-                    <ul class="text-left space-y-4 mb-8 text-sm text-gray-400">
-                        <li class="text-white">✓ Full Gym Access</li>
-                        <li class="text-white">✓ Locker Room & Sauna</li>
-                        <li>✕ Group Classes</li>
-                    </ul>
-                    <button class="w-full bg-white text-black font-bold uppercase py-3 hover:bg-gray-200 transition">Select Plan</button>
-                </div>
-
-                <div class="bg-white text-black p-8 border border-black transform scale-105 shadow-2xl">
-                    <div class="bg-black text-white text-xs font-bold uppercase py-1 px-3 inline-block mb-4">Most Popular</div>
-                    <h3 class="text-2xl font-display font-bold uppercase mb-2">Elite</h3>
-                    <div class="text-5xl font-bold mb-6">₹3,499<span class="text-sm font-normal text-gray-500">/mo</span></div>
-                    <ul class="text-left space-y-4 mb-8 text-sm text-gray-600">
-                        <li class="font-bold">✓ Full Gym Access</li>
-                        <li class="font-bold">✓ Locker Room & Sauna</li>
-                        <li class="font-bold">✓ Unlimited Classes</li>
-                        <li class="font-bold">✓ 1 PT Session/mo</li>
-                    </ul>
-                    <button class="w-full bg-black text-white font-bold uppercase py-3 hover:bg-gray-800 transition">Select Plan</button>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <footer class="bg-black py-12 text-center text-gray-600 text-xs uppercase tracking-widest">
+    <!-- Footer -->
+    <footer class="bg-concrete py-12 text-center text-gray-600 text-xs uppercase tracking-widest border-t border-white/5">
+        <div class="mb-4 text-white text-lg font-display font-bold">Iron Empire</div>
         © 2026 Iron Empire. Forged in Iron.
     </footer>
 
+    <script>
+        function toggleMenu() {
+            document.getElementById('mobileMenu').classList.toggle('open');
+        }
+    </script>
 </body>
 </html>

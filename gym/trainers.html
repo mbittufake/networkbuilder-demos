@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en" class="bg-black text-white selection:bg-[#ccff00] selection:text-black">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coaches | IRON EMPIRE</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Teko:wght@300;400;500;600;700&family=Manrope:wght@400;600;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { display: ['Teko', 'sans-serif'], sans: ['Manrope', 'sans-serif'] },
+                    colors: { acid: '#CCFF00', concrete: '#222222' }
+                }
+            }
+        }
+    </script>
+    <style>
+        .mobile-menu { transform: translateY(-100%); transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1); }
+        .mobile-menu.open { transform: translateY(0); }
+    </style>
+</head>
+<body class="overflow-x-hidden font-sans">
+
+    <!-- Nav -->
+    <nav class="fixed w-full z-50 px-6 py-6 mix-blend-difference flex justify-between items-center border-b border-white/10 bg-black/80 backdrop-blur-md">
+        <a href="index.html" class="text-3xl font-display font-bold tracking-widest uppercase relative z-50">Iron<span class="text-acid">Empire</span></a>
+        <div class="hidden md:flex gap-8 text-sm font-bold uppercase tracking-wider">
+            <a href="programs.html" class="hover:text-acid transition">Programs</a>
+            <a href="trainers.html" class="text-acid transition">Coaches</a>
+            <a href="join.html" class="hover:text-acid transition">Membership</a>
+        </div>
+        <div class="flex items-center gap-4">
+            <a href="join.html" class="hidden md:block bg-white text-black px-6 py-2 font-bold uppercase tracking-widest text-sm hover:bg-acid transition">Start Free Trial</a>
+            <button onclick="document.getElementById('mobileMenu').classList.toggle('open')" class="md:hidden z-50 text-white focus:outline-none">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu Overlay -->
+    <div id="mobileMenu" class="mobile-menu fixed inset-0 bg-black z-40 flex flex-col justify-center items-center text-center">
+        <a href="index.html" class="text-5xl font-display font-bold uppercase text-white hover:text-acid mb-6">Home</a>
+        <a href="programs.html" class="text-5xl font-display font-bold uppercase text-white hover:text-acid mb-6">Programs</a>
+        <a href="trainers.html" class="text-5xl font-display font-bold uppercase text-acid mb-6">Coaches</a>
+        <a href="join.html" class="text-5xl font-display font-bold uppercase text-white hover:text-acid mb-6">Join Now</a>
+        <button onclick="document.getElementById('mobileMenu').classList.toggle('open')" class="absolute top-8 right-6 text-white text-sm uppercase tracking-widest border border-white/20 px-4 py-2 rounded">Close</button>
+    </div>
+
+    <!-- Header -->
+    <header class="pt-40 pb-20 px-6 text-center max-w-4xl mx-auto">
+        <h1 class="text-6xl md:text-8xl font-display font-bold uppercase mb-6">The <span class="text-acid">Commanders</span></h1>
+        <p class="text-gray-400 text-xl font-light">Elite athletes forging elite athletes.</p>
+    </header>
+
+    <!-- Grid -->
+    <main class="max-w-[1400px] mx-auto px-6 pb-24 grid md:grid-cols-3 gap-8">
+        
+        <!-- Coach 1 -->
+        <div class="group relative h-[600px] bg-concrete border border-white/10 overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?q=80&w=800&auto=format&fit=crop" class="w-full h-full object-cover grayscale opacity-70 group-hover:opacity-100 group-hover:grayscale-0 transition duration-700" alt="Trainer 1">
+            <div class="absolute bottom-0 w-full p-8 bg-gradient-to-t from-black via-black/80 to-transparent">
+                <h3 class="text-4xl font-display font-bold uppercase text-white mb-2">Alex "Tank" Mercer</h3>
+                <p class="text-acid text-sm font-bold uppercase tracking-widest mb-4">Head of Powerlifting</p>
+                <p class="text-gray-400 text-sm leading-relaxed">Former national powerlifting champion. Holds the state record for Deadlift (320kg). Specializes in raw strength.</p>
+            </div>
+        </div>
+
+        <!-- Coach 2 -->
+        <div class="group relative h-[600px] bg-concrete border border-white/10 overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1548690312-e3b507d8c110?q=80&w=800&auto=format&fit=crop" class="w-full h-full object-cover grayscale opacity-70 group-hover:opacity-100 group-hover:grayscale-0 transition duration-700" alt="Trainer 2">
+            <div class="absolute bottom-0 w-full p-8 bg-gradient-to-t from-black via-black/80 to-transparent">
+                <h3 class="text-4xl font-display font-bold uppercase text-white mb-2">Sarah Vance</h3>
+                <p class="text-acid text-sm font-bold uppercase tracking-widest mb-4">Head of Performance</p>
+                <p class="text-gray-400 text-sm leading-relaxed">CrossFit Games competitor and ex-Olympian sprinter. Expert in metabolic conditioning and explosive power.</p>
+            </div>
+        </div>
+
+        <!-- Coach 3 -->
+        <div class="group relative h-[600px] bg-concrete border border-white/10 overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?q=80&w=800&auto=format&fit=crop" class="w-full h-full object-cover grayscale opacity-70 group-hover:opacity-100 group-hover:grayscale-0 transition duration-700" alt="Trainer 3">
+            <div class="absolute bottom-0 w-full p-8 bg-gradient-to-t from-black via-black/80 to-transparent">
+                <h3 class="text-4xl font-display font-bold uppercase text-white mb-2">Marcus Kane</h3>
+                <p class="text-acid text-sm font-bold uppercase tracking-widest mb-4">Head of Boxing</p>
+                <p class="text-gray-400 text-sm leading-relaxed">Undefeated Golden Gloves champion. Teaches the sweet science of striking and footwork.</p>
+            </div>
+        </div>
+
+    </main>
+
+    <footer class="bg-concrete py-12 text-center text-gray-600 text-xs uppercase tracking-widest border-t border-white/5">
+        © 2026 Iron Empire.
+    </footer>
+
+</body>
+</html>

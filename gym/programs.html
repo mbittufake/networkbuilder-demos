@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en" class="bg-black text-white selection:bg-[#ccff00] selection:text-black">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Programs | IRON EMPIRE</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Teko:wght@300;400;500;600;700&family=Manrope:wght@400;600;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        display: ['Teko', 'sans-serif'],
+                        sans: ['Manrope', 'sans-serif'],
+                    },
+                    colors: { acid: '#CCFF00', concrete: '#222222' }
+                }
+            }
+        }
+    </script>
+    <style>
+        .mobile-menu { transform: translateY(-100%); transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1); }
+        .mobile-menu.open { transform: translateY(0); }
+    </style>
+</head>
+<body class="overflow-x-hidden font-sans">
+
+    <!-- Nav -->
+    <nav class="fixed w-full z-50 px-6 py-6 mix-blend-difference flex justify-between items-center border-b border-white/10 bg-black/80 backdrop-blur-md">
+        <a href="index.html" class="text-3xl font-display font-bold tracking-widest uppercase relative z-50">Iron<span class="text-acid">Empire</span></a>
+        <div class="hidden md:flex gap-8 text-sm font-bold uppercase tracking-wider">
+            <a href="programs.html" class="text-acid transition">Programs</a>
+            <a href="trainers.html" class="hover:text-acid transition">Coaches</a>
+            <a href="join.html" class="hover:text-acid transition">Membership</a>
+        </div>
+        <div class="flex items-center gap-4">
+            <a href="join.html" class="hidden md:block bg-white text-black px-6 py-2 font-bold uppercase tracking-widest text-sm hover:bg-acid transition">Start Free Trial</a>
+            <button onclick="document.getElementById('mobileMenu').classList.toggle('open')" class="md:hidden z-50 text-white focus:outline-none">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu Overlay -->
+    <div id="mobileMenu" class="mobile-menu fixed inset-0 bg-black z-40 flex flex-col justify-center items-center text-center">
+        <a href="index.html" class="text-5xl font-display font-bold uppercase text-white hover:text-acid mb-6">Home</a>
+        <a href="programs.html" class="text-5xl font-display font-bold uppercase text-acid mb-6">Programs</a>
+        <a href="trainers.html" class="text-5xl font-display font-bold uppercase text-white hover:text-acid mb-6">Coaches</a>
+        <a href="join.html" class="text-5xl font-display font-bold uppercase text-white hover:text-acid mb-6">Join Now</a>
+        <button onclick="document.getElementById('mobileMenu').classList.toggle('open')" class="absolute top-8 right-6 text-white text-sm uppercase tracking-widest border border-white/20 px-4 py-2 rounded">Close</button>
+    </div>
+
+    <!-- Header -->
+    <header class="pt-40 pb-20 px-6 text-center max-w-4xl mx-auto">
+        <h1 class="text-6xl md:text-8xl font-display font-bold uppercase mb-6">Choose Your <span class="text-acid">Weapon</span></h1>
+        <p class="text-gray-400 text-xl font-light">Specialized training protocols designed for maximum output.</p>
+    </header>
+
+    <!-- Content -->
+    <main class="max-w-[1400px] mx-auto px-6 pb-24 space-y-24">
+        
+        <!-- Program 1 -->
+        <div class="grid md:grid-cols-2 gap-12 items-center border-t border-white/10 pt-12">
+            <div>
+                <span class="text-acid font-bold uppercase tracking-widest text-sm mb-2 block">01 // Strength</span>
+                <h2 class="text-5xl font-display font-bold uppercase mb-6">Hypertrophy</h2>
+                <p class="text-gray-400 mb-8 leading-relaxed">
+                    Based on the principles of progressive overload. This program focuses on compound movements (Squat, Bench, Deadlift) followed by targeted isolation work.
+                </p>
+                <ul class="space-y-4 text-sm font-bold uppercase tracking-wide text-gray-300">
+                    <li class="flex items-center gap-4"><span class="w-2 h-2 bg-acid"></span> 4 Days / Week Split</li>
+                    <li class="flex items-center gap-4"><span class="w-2 h-2 bg-acid"></span> Logbook Tracking Required</li>
+                    <li class="flex items-center gap-4"><span class="w-2 h-2 bg-acid"></span> Coach Verified Form Checks</li>
+                </ul>
+            </div>
+            <img src="https://images.unsplash.com/photo-1526506118085-60ce8714f8c5?q=80&w=800&auto=format&fit=crop" class="w-full h-[400px] object-cover grayscale hover:grayscale-0 transition duration-700 border border-white/10" alt="Weights">
+        </div>
+
+        <!-- Program 2 -->
+        <div class="grid md:grid-cols-2 gap-12 items-center border-t border-white/10 pt-12">
+            <img src="https://images.unsplash.com/photo-1599058945522-28d584b6f0ff?q=80&w=800&auto=format&fit=crop" class="order-2 md:order-1 w-full h-[400px] object-cover grayscale hover:grayscale-0 transition duration-700 border border-white/10" alt="Cardio">
+            <div class="order-1 md:order-2">
+                <span class="text-acid font-bold uppercase tracking-widest text-sm mb-2 block">02 // Endurance</span>
+                <h2 class="text-5xl font-display font-bold uppercase mb-6">Metcon X</h2>
+                <p class="text-gray-400 mb-8 leading-relaxed">
+                    Metabolic Conditioning designed to strip fat and build an engine. A brutal mix of rowing, assault bike, burpees, and kettlebells. Not for the weak.
+                </p>
+                <ul class="space-y-4 text-sm font-bold uppercase tracking-wide text-gray-300">
+                    <li class="flex items-center gap-4"><span class="w-2 h-2 bg-acid"></span> High Intensity Intervals</li>
+                    <li class="flex items-center gap-4"><span class="w-2 h-2 bg-acid"></span> Heart Rate Monitoring</li>
+                    <li class="flex items-center gap-4"><span class="w-2 h-2 bg-acid"></span> 45 Minute Sessions</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Program 3 -->
+        <div class="grid md:grid-cols-2 gap-12 items-center border-t border-white/10 pt-12">
+            <div>
+                <span class="text-acid font-bold uppercase tracking-widest text-sm mb-2 block">03 // Combat</span>
+                <h2 class="text-5xl font-display font-bold uppercase mb-6">Striking</h2>
+                <p class="text-gray-400 mb-8 leading-relaxed">
+                    Learn the art of 8 limbs. Muay Thai and Boxing fundamentals taught by competitive fighters. Technical sparring included for advanced members.
+                </p>
+                <ul class="space-y-4 text-sm font-bold uppercase tracking-wide text-gray-300">
+                    <li class="flex items-center gap-4"><span class="w-2 h-2 bg-acid"></span> Bag Work & Pads</li>
+                    <li class="flex items-center gap-4"><span class="w-2 h-2 bg-acid"></span> Footwork Drills</li>
+                    <li class="flex items-center gap-4"><span class="w-2 h-2 bg-acid"></span> Conditioning Circuits</li>
+                </ul>
+            </div>
+            <img src="https://images.unsplash.com/photo-1595078475328-1ab05d0a6a0e?q=80&w=800&auto=format&fit=crop" class="w-full h-[400px] object-cover grayscale hover:grayscale-0 transition duration-700 border border-white/10" alt="Boxing">
+        </div>
+
+    </main>
+
+    <footer class="bg-concrete py-12 text-center text-gray-600 text-xs uppercase tracking-widest border-t border-white/5">
+        © 2026 Iron Empire.
+    </footer>
+
+</body>
+</html>
