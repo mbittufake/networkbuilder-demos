@@ -28,34 +28,32 @@
     </script>
     <style>
         .preview-card:hover .preview-img { transform: scale(1.05); }
-        .preview-overlay { background: linear-gradient(to top, rgba(0,0,0,0.8), transparent); }
+        .preview-overlay { background: linear-gradient(to top, rgba(0,0,0,0.9), transparent); }
     </style>
 </head>
-<body class="min-h-screen flex flex-col">
+<body class="min-h-screen flex flex-col justify-center">
 
     <!-- Navbar -->
-    <nav class="fixed w-full z-50 px-6 py-6 mix-blend-difference">
-        <div class="max-w-[1400px] mx-auto flex justify-between items-center">
+    <nav class="absolute top-0 w-full z-50 px-6 py-8 mix-blend-difference">
+        <div class="max-w-[1200px] mx-auto flex justify-between items-center">
             <span class="text-xl font-bold tracking-tighter">Network<span class="text-gray-500">Builder</span></span>
             <a href="https://networkbuilder.in" class="text-xs uppercase tracking-widest hover:text-gray-400 transition">Main Site →</a>
         </div>
     </nav>
 
-    <!-- Header -->
-    <header class="pt-40 pb-20 px-6 text-center">
-        <div class="animate-slide-up">
+    <!-- Content -->
+    <main class="w-full max-w-[1200px] mx-auto px-4 md:px-6 py-24">
+        
+        <div class="text-center mb-16 animate-slide-up">
             <span class="border border-white/20 rounded-full px-4 py-1 text-xs uppercase tracking-widest text-gray-400 mb-6 inline-block">Design Portfolio 2026</span>
-            <h1 class="text-6xl md:text-8xl font-serif italic mb-6">Select Your Industry</h1>
-            <p class="text-gray-400 max-w-xl mx-auto text-lg">We build digital experiences that dominate local markets. Choose a category below to view the live interactive demo.</p>
+            <h1 class="text-5xl md:text-7xl font-serif italic mb-4">Select Your Industry</h1>
         </div>
-    </header>
 
-    <!-- Gallery Grid -->
-    <main class="flex-grow px-4 md:px-12 pb-32">
-        <div class="max-w-[1400px] mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- Gallery Grid (Centered 2 Cards) -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
 
             <!-- Card 1: Medical -->
-            <a href="./medical/index.html" class="preview-card group relative h-[500px] rounded-3xl overflow-hidden block border border-white/10 opacity-0 animate-slide-up" style="animation-delay: 0.1s">
+            <a href="./medical/index.html" class="preview-card group relative h-[450px] md:h-[550px] rounded-[2rem] overflow-hidden block border border-white/10 opacity-0 animate-slide-up" style="animation-delay: 0.1s">
                 <div class="absolute inset-0 bg-blue-900/20 z-10 group-hover:bg-blue-900/0 transition duration-500"></div>
                 <div class="absolute inset-0 preview-overlay z-20"></div>
                 
@@ -64,17 +62,19 @@
                 
                 <!-- Content -->
                 <div class="absolute bottom-0 left-0 p-8 z-30 w-full">
-                    <div class="flex justify-between items-end mb-2">
+                    <div class="flex justify-between items-end mb-3">
                         <span class="text-xs font-bold bg-white text-black px-3 py-1 rounded-full uppercase tracking-wider">Healthcare</span>
-                        <span class="w-10 h-10 rounded-full bg-white text-black flex items-center justify-center opacity-0 group-hover:opacity-100 transition transform translate-y-4 group-hover:translate-y-0">↗</span>
+                        <div class="w-12 h-12 rounded-full bg-white text-black flex items-center justify-center opacity-0 group-hover:opacity-100 transition transform translate-y-4 group-hover:translate-y-0 scale-75 group-hover:scale-100 duration-300">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7 17L17 7M17 7H7M17 7V17" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        </div>
                     </div>
-                    <h2 class="text-3xl font-serif">Nexus Health</h2>
-                    <p class="text-gray-400 text-sm mt-2 opacity-0 group-hover:opacity-100 transition duration-500">Clean, Modern, Trust-Focused.</p>
+                    <h2 class="text-4xl font-serif mb-1 group-hover:translate-x-1 transition duration-300">Nexus Health</h2>
+                    <p class="text-gray-400 text-sm opacity-0 group-hover:opacity-100 transition duration-500 translate-y-2 group-hover:translate-y-0">Clean, Modern, Trust-Focused UI.</p>
                 </div>
             </a>
 
             <!-- Card 2: Legal -->
-            <a href="./legal/index.html" class="preview-card group relative h-[500px] rounded-3xl overflow-hidden block border border-white/10 opacity-0 animate-slide-up" style="animation-delay: 0.2s">
+            <a href="./legal/index.html" class="preview-card group relative h-[450px] md:h-[550px] rounded-[2rem] overflow-hidden block border border-white/10 opacity-0 animate-slide-up" style="animation-delay: 0.2s">
                 <div class="absolute inset-0 bg-yellow-900/20 z-10 group-hover:bg-yellow-900/0 transition duration-500"></div>
                 <div class="absolute inset-0 preview-overlay z-20"></div>
                 
@@ -83,39 +83,22 @@
                 
                 <!-- Content -->
                 <div class="absolute bottom-0 left-0 p-8 z-30 w-full">
-                    <div class="flex justify-between items-end mb-2">
+                    <div class="flex justify-between items-end mb-3">
                         <span class="text-xs font-bold bg-white text-black px-3 py-1 rounded-full uppercase tracking-wider">Legal</span>
-                        <span class="w-10 h-10 rounded-full bg-white text-black flex items-center justify-center opacity-0 group-hover:opacity-100 transition transform translate-y-4 group-hover:translate-y-0">↗</span>
+                        <div class="w-12 h-12 rounded-full bg-white text-black flex items-center justify-center opacity-0 group-hover:opacity-100 transition transform translate-y-4 group-hover:translate-y-0 scale-75 group-hover:scale-100 duration-300">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7 17L17 7M17 7H7M17 7V17" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        </div>
                     </div>
-                    <h2 class="text-3xl font-serif">Vantage Legal</h2>
-                    <p class="text-gray-400 text-sm mt-2 opacity-0 group-hover:opacity-100 transition duration-500">Luxury, Authoritative, Dark Mode.</p>
+                    <h2 class="text-4xl font-serif mb-1 group-hover:translate-x-1 transition duration-300">Vantage Legal</h2>
+                    <p class="text-gray-400 text-sm opacity-0 group-hover:opacity-100 transition duration-500 translate-y-2 group-hover:translate-y-0">Luxury, Authoritative, Dark Mode UI.</p>
                 </div>
             </a>
-
-            <!-- Card 3: Gym (Coming Soon) -->
-            <div class="preview-card group relative h-[500px] rounded-3xl overflow-hidden block border border-white/10 opacity-0 animate-slide-up" style="animation-delay: 0.3s">
-                <div class="absolute inset-0 bg-red-900/20 z-10"></div>
-                <div class="absolute inset-0 preview-overlay z-20"></div>
-                
-                <!-- Image -->
-                <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=800&auto=format&fit=crop" class="preview-img w-full h-full object-cover grayscale opacity-50" alt="Gym">
-                
-                <!-- Content -->
-                <div class="absolute bottom-0 left-0 p-8 z-30 w-full">
-                    <div class="flex justify-between items-end mb-2">
-                        <span class="text-xs font-bold bg-white/20 text-white px-3 py-1 rounded-full uppercase tracking-wider backdrop-blur-md">Fitness</span>
-                    </div>
-                    <h2 class="text-3xl font-serif text-gray-500">Iron Empire</h2>
-                    <p class="text-gray-500 text-sm mt-2">Coming Soon</p>
-                </div>
-            </div>
 
         </div>
     </main>
 
-    <!-- Footer -->
-    <footer class="text-center pb-8 text-gray-600 text-xs uppercase tracking-widest">
-        © 2026 Network Builder. All Systems Operational.
+    <footer class="text-center pb-8 text-gray-600 text-xs uppercase tracking-widest fixed bottom-0 w-full pointer-events-none">
+        © 2026 Network Builder
     </footer>
 
 </body>
