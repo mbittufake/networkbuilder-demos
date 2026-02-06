@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Services | NEXUS HEALTH</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Plus Jakarta Sans', 'sans-serif'] },
+                    colors: { medical: { 500: '#0066FF', 900: '#0A1929' }, mint: '#00F090' }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-slate-50 font-sans text-slate-900">
+
+    <!-- Navbar -->
+    <nav class="fixed w-full z-50 bg-white/80 backdrop-blur-md border-b border-slate-200">
+        <div class="max-w-7xl mx-auto px-4 h-20 flex justify-between items-center">
+            <a href="index.html" class="flex items-center gap-2 font-bold text-xl">
+                <div class="w-8 h-8 bg-medical-500 rounded-lg flex items-center justify-center text-white">N</div>
+                <span>NEXUS<span class="text-medical-500">HEALTH</span></span>
+            </a>
+            <a href="booking.html" class="bg-medical-900 text-white px-6 py-2 rounded-full text-sm font-bold hover:bg-medical-500 transition">Book Now</a>
+        </div>
+    </nav>
+
+    <!-- Header -->
+    <header class="pt-40 pb-20 px-4 text-center">
+        <h1 class="text-5xl font-bold mb-6">World-Class Treatments</h1>
+        <p class="text-slate-500 max-w-2xl mx-auto text-lg">Using the latest AI-assisted diagnostics and minimally invasive procedures.</p>
+    </header>
+
+    <!-- Service List -->
+    <section class="max-w-7xl mx-auto px-4 pb-24 grid gap-12">
+        <!-- Item 1 -->
+        <div class="bg-white p-8 md:p-12 rounded-[2rem] shadow-sm border border-slate-100 grid md:grid-cols-2 gap-8 items-center">
+            <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?q=80&w=800&auto=format&fit=crop" class="rounded-2xl w-full h-64 object-cover" alt="Lab">
+            <div>
+                <h2 class="text-3xl font-bold mb-4">AI Diagnostic Lab</h2>
+                <p class="text-slate-500 mb-6 leading-relaxed">Our labs use machine learning to detect anomalies 40% faster than traditional methods. Get blood work results in 2 hours, not 2 days.</p>
+                <ul class="space-y-2 mb-8 text-sm font-medium text-slate-700">
+                    <li class="flex items-center gap-2"><span class="text-mint">✓</span> Full Body Analysis</li>
+                    <li class="flex items-center gap-2"><span class="text-mint">✓</span> Genetic Screening</li>
+                    <li class="flex items-center gap-2"><span class="text-mint">✓</span> Cancer Markers</li>
+                </ul>
+                <button class="text-medical-500 font-bold hover:underline">View Pricing & Packages →</button>
+            </div>
+        </div>
+
+        <!-- Item 2 -->
+        <div class="bg-white p-8 md:p-12 rounded-[2rem] shadow-sm border border-slate-100 grid md:grid-cols-2 gap-8 items-center">
+            <div class="order-2 md:order-1">
+                <h2 class="text-3xl font-bold mb-4">Robotic Surgery</h2>
+                <p class="text-slate-500 mb-6 leading-relaxed">Precision like never before. Our Da Vinci surgical systems allow for micro-incisions, meaning less pain and faster recovery time for you.</p>
+                <ul class="space-y-2 mb-8 text-sm font-medium text-slate-700">
+                    <li class="flex items-center gap-2"><span class="text-mint">✓</span> Knee Replacement</li>
+                    <li class="flex items-center gap-2"><span class="text-mint">✓</span> Cardiac Procedures</li>
+                    <li class="flex items-center gap-2"><span class="text-mint">✓</span> Hernia Repair</li>
+                </ul>
+                <button class="text-medical-500 font-bold hover:underline">Consult a Surgeon →</button>
+            </div>
+            <img src="https://images.unsplash.com/photo-1530497610245-94d3c16cda28?q=80&w=800&auto=format&fit=crop" class="rounded-2xl w-full h-64 object-cover order-1 md:order-2" alt="Surgery">
+        </div>
+    </section>
+
+    <footer class="text-center py-12 text-slate-400 text-sm border-t border-slate-200">
+        © 2026 Nexus Health Inc.
+    </footer>
+
+</body>
+</html>
