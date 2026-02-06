@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en" class="bg-[#050505] text-[#e0e0e0] antialiased selection:bg-[#c9a96e] selection:text-black">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VANTAGE LEGAL | Elite Defense</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Italiana&family=Space+Grotesk:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        serif: ['Italiana', 'serif'],
+                        sans: ['Space Grotesk', 'sans-serif'],
+                    },
+                    colors: {
+                        gold: '#c9a96e',
+                        dark: '#050505',
+                        charcoal: '#0a0a0a',
+                        subtle: '#333333'
+                    },
+                    animation: {
+                        'reveal': 'reveal 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards',
+                        'slide-up': 'slideUp 0.8s ease-out forwards',
+                    },
+                    keyframes: {
+                        reveal: {
+                            '0%': { transform: 'translateY(100%)' },
+                            '100%': { transform: 'translateY(0)' },
+                        },
+                        slideUp: {
+                            '0%': { opacity: '0', transform: 'translateY(20px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Custom Cursors & Scrollbar */
+        body { cursor: default; }
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { bg: #050505; }
+        ::-webkit-scrollbar-thumb { background: #333; border-radius: 3px; }
+        ::-webkit-scrollbar-thumb:hover { background: #c9a96e; }
+        
+        /* Typography Utilities */
+        .text-fluid-h1 { font-size: clamp(3rem, 8vw, 9rem); line-height: 0.9; }
+        .text-fluid-h2 { font-size: clamp(2rem, 5vw, 4rem); }
+        
+        /* Image Reveal Effect */
+        .reveal-img {
+            clip-path: inset(0 0 100% 0);
+            transition: clip-path 1.2s cubic-bezier(0.77, 0, 0.175, 1);
+        }
+        .reveal-img.active { clip-path: inset(0 0 0 0); }
+        
+        /* Menu Overlay */
+        .menu-overlay {
+            clip-path: circle(0% at 100% 0);
+            transition: clip-path 0.8s cubic-bezier(0.77, 0, 0.175, 1);
+        }
+        .menu-overlay.open { clip-path: circle(150% at 100% 0); }
+
+        /* Page Transitions */
+        .page-section {
+            display: none;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+        .page-section.active {
+            display: block;
+            opacity: 1;
+        }
+    </style>
+</head>
+<body class="overflow-x-hidden font-sans">
+
+    <!-- Sticky Nav -->
+    <nav class="fixed top-0 w-full z-50 px-6 py-6 mix-blend-difference text-white flex justify-between items-center">
+        <a href="#home" onclick="router('home')" class="text-2xl font-serif tracking-widest z-50 relative group">
+            VANTAGE
+            <span class="block h-[1px] w-0 bg-white transition-all group-hover:w-full"></span>
+        </a>
+        
+        <button onclick="toggleMenu()" class="z-50 text-sm uppercase tracking-[0.2em] hover:text-gold transition">
+            Menu
+        </button>
+    </nav>
+
+    <!-- Fullscreen Menu -->
+    <div id="menu" class="menu-overlay fixed inset-0 bg-gold z-40 flex items-center justify-center">
+        <div class="flex flex-col space-y-8 text-center">
+            <a href="#home" onclick="router('home'); toggleMenu()" class="text-dark text-6xl font-serif hover:italic transition-all">Index</a>
+            <a href="#about" onclick="router('about'); toggleMenu()" class="text-dark text-6xl font-serif hover:italic transition-all">The Firm</a>
+            <a href="#practice" onclick="router('practice'); toggleMenu()" class="text-dark text-6xl font-serif hover:italic transition-all">Expertise</a>
+            <a href="#contact" onclick="router('contact'); toggleMenu()" class="text-dark text-6xl font-serif hover:italic transition-all">Contact</a>
+        </div>
+    </div>
+
+    <!-- MAIN CONTENT CONTAINER -->
+    <main id="app">
+        
+        <!-- HOME PAGE -->
+        <section id="home" class="page-section active min-h-screen pt-32 px-4 md:px-12 relative">
+            <div class="max-w-[1600px] mx-auto">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+                    
+                    <!-- Hero Text -->
+                    <div class="lg:col-span-8 z-10">
+                        <p class="text-gold uppercase tracking-[0.3em] mb-4 text-sm animate-slide-up" style="animation-delay: 0.2s">Est. 2026 • New Delhi</p>
+                        <h1 class="font-serif text-fluid-h1 text-white mb-8 animate-slide-up" style="animation-delay: 0.4s">
+                            SILENCE <br> <span class="text-subtle ml-12 md:ml-24 italic">THE NOISE.</span>
+                        </h1>
+                        <div class="h-px w-24 bg-gold mb-8 animate-slide-up" style="animation-delay: 0.6s"></div>
+                        <p class="max-w-md text-gray-400 text-lg leading-relaxed animate-slide-up" style="animation-delay: 0.8s">
+                            We don't just interpret the law. We rewrite the narrative. Specializing in high-stakes corporate litigation and crisis management.
+                        </p>
+                    </div>
+
+                    <!-- Hero Image (Asymmetric) -->
+                    <div class="lg:col-span-4 lg:mt-32 relative">
+                        <div class="reveal-img active w-full h-[600px] bg-subtle overflow-hidden relative grayscale hover:grayscale-0 transition duration-700">
+                            <img src="https://images.unsplash.com/photo-1505664194779-8beaceb93744?q=80&w=1000&auto=format&fit=crop" class="object-cover w-full h-full opacity-80" alt="Architecture">
+                            <div class="absolute bottom-4 left-4 border border-white/20 backdrop-blur-sm px-4 py-2">
+                                <span class="text-xs uppercase tracking-widest">Case Study 01: Apex v. State</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Scrolling Banner -->
+                <div class="mt-32 border-y border-white/10 py-6 overflow-hidden">
+                    <div class="whitespace-nowrap flex space-x-12 opacity-40">
+                        <span class="text-4xl font-serif italic">Relentless Defense</span>
+                        <span class="text-4xl font-serif text-stroke text-transparent" style="-webkit-text-stroke: 1px #fff;">Strategic Counsel</span>
+                        <span class="text-4xl font-serif italic">Global Reach</span>
+                        <span class="text-4xl font-serif text-stroke text-transparent" style="-webkit-text-stroke: 1px #fff;">Zero Compromise</span>
+                        <span class="text-4xl font-serif italic">Relentless Defense</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ABOUT PAGE -->
+        <section id="about" class="page-section min-h-screen pt-32 px-4 md:px-12 bg-[#0a0a0a]">
+            <div class="max-w-6xl mx-auto">
+                <span class="text-gold uppercase tracking-[0.3em] text-xs">The Philosophy</span>
+                <h2 class="text-fluid-h2 font-serif mt-4 mb-16 leading-none">
+                    NOT FOR <br> <span class="pl-20 text-subtle">EVERYONE.</span>
+                </h2>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-24">
+                    <div class="space-y-8 text-gray-400 font-light text-lg">
+                        <p>Most firms aim for settlement. We aim for dominance. Vantage Legal was founded on a singular premise: that the best defense is a devastating offense.</p>
+                        <p>We accept only 12 clients per year. This exclusivity allows us to dedicate obsessive attention to detail that larger firms simply cannot afford.</p>
+                    </div>
+                    <div class="relative">
+                        <div class="absolute -top-10 -right-10 w-40 h-40 border border-gold rounded-full flex items-center justify-center animate-spin-slow">
+                            <span class="text-xs uppercase tracking-widest text-gold">Since 2026</span>
+                        </div>
+                        <img src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?q=80&w=1000&auto=format&fit=crop" class="w-full grayscale hover:grayscale-0 transition duration-500 opacity-80" alt="Meeting">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CONTACT PAGE -->
+        <section id="contact" class="page-section min-h-screen pt-32 px-4 md:px-12">
+            <div class="max-w-5xl mx-auto border-l border-white/10 pl-8 md:pl-24 py-12">
+                <h2 class="text-fluid-h2 font-serif mb-12">INITIATE <br> PROTOCOL.</h2>
+                
+                <form class="space-y-12">
+                    <div class="group">
+                        <label class="block text-xs uppercase tracking-widest text-gray-500 mb-2 group-focus-within:text-gold transition">Identify Yourself</label>
+                        <input type="text" class="w-full bg-transparent border-b border-white/20 py-4 text-2xl font-serif focus:outline-none focus:border-gold transition-colors" placeholder="Full Name">
+                    </div>
+                    
+                    <div class="group">
+                        <label class="block text-xs uppercase tracking-widest text-gray-500 mb-2 group-focus-within:text-gold transition">Communication Channel</label>
+                        <input type="email" class="w-full bg-transparent border-b border-white/20 py-4 text-2xl font-serif focus:outline-none focus:border-gold transition-colors" placeholder="Email Address">
+                    </div>
+
+                    <div class="group">
+                        <label class="block text-xs uppercase tracking-widest text-gray-500 mb-2 group-focus-within:text-gold transition">The Brief</label>
+                        <textarea rows="1" class="w-full bg-transparent border-b border-white/20 py-4 text-2xl font-serif focus:outline-none focus:border-gold transition-colors resize-none" placeholder="Nature of Inquiry"></textarea>
+                    </div>
+
+                    <button class="mt-16 px-12 py-6 border border-white/20 hover:bg-white hover:text-black transition-all duration-300 uppercase tracking-widest text-sm font-bold flex items-center gap-4 group">
+                        Submit Brief 
+                        <span class="group-hover:translate-x-2 transition-transform">→</span>
+                    </button>
+                </form>
+
+                <div class="mt-24 grid grid-cols-2 gap-8 text-xs uppercase tracking-widest text-gray-500">
+                    <div>
+                        <p class="text-white mb-2">New Delhi</p>
+                        <p>Defence Colony, Block A</p>
+                    </div>
+                    <div>
+                        <p class="text-white mb-2">Contact</p>
+                        <p>secure@vantage.legal</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <script>
+        // Simple Router
+        function router(pageId) {
+            // Hide all sections
+            document.querySelectorAll('.page-section').forEach(el => {
+                el.classList.remove('active');
+            });
+            // Show target section
+            const target = document.getElementById(pageId);
+            if(target) {
+                target.classList.add('active');
+                window.scrollTo(0,0);
+            }
+        }
+
+        // Menu Toggle
+        function toggleMenu() {
+            document.getElementById('menu').classList.toggle('open');
+        }
+
+        // Animation Trigger on Scroll
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.reveal-img').forEach(img => {
+            observer.observe(img);
+        });
+    </script>
+</body>
+</html>
