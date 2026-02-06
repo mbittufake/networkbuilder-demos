@@ -5,30 +5,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NEXUS HEALTH | Future Medicine</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <script>
         tailwind.config = {
             theme: {
                 extend: {
-                    fontFamily: {
-                        sans: ['Plus Jakarta Sans', 'sans-serif'],
-                        mono: ['JetBrains Mono', 'monospace'],
-                    },
+                    fontFamily: { sans: ['Inter', 'sans-serif'] },
                     colors: {
-                        medical: { 50: '#F0F7FF', 100: '#E0EFFF', 500: '#0066FF', 600: '#0052CC', 900: '#0A1929' },
-                        mint: '#00F090',
-                    },
-                    boxShadow: {
-                        'soft': '0 20px 40px -10px rgba(0, 102, 255, 0.1)',
-                        'glow': '0 0 20px rgba(0, 240, 144, 0.3)',
+                        surface: '#F5F5F7', // Apple-like gray
+                        accent: '#0071E3', // Apple Blue
+                        dark: '#1D1D1F'
                     },
                     animation: {
-                        'float': 'float 6s ease-in-out infinite',
+                        'fade-up': 'fadeUp 0.8s ease-out forwards',
                     },
                     keyframes: {
-                        float: {
-                            '0%, 100%': { transform: 'translateY(0)' },
-                            '50%': { transform: 'translateY(-20px)' },
+                        fadeUp: {
+                            '0%': { opacity: '0', transform: 'translateY(20px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
                         }
                     }
                 }
@@ -36,195 +30,163 @@
         }
     </script>
     <style>
-        ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-track { background: #fff; }
-        ::-webkit-scrollbar-thumb { background: #e2e8f0; border-radius: 4px; }
-        .glass-panel { background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(255,255,255,0.5); }
-        .glass-card { background: rgba(255, 255, 255, 0.6); backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.6); }
-        .blob { position: absolute; border-radius: 50%; filter: blur(60px); z-index: -1; opacity: 0.7; }
-        .mobile-menu { transform: translateX(100%); transition: transform 0.3s ease-in-out; }
-        .mobile-menu.open { transform: translateX(0); }
+        .bento-card {
+            background: white;
+            border-radius: 24px;
+            padding: 2rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.02), 0 2px 4px -1px rgba(0, 0, 0, 0.02);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .bento-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.05), 0 10px 10px -5px rgba(0, 0, 0, 0.01);
+        }
+        .nav-blur {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: saturate(180%) blur(20px);
+        }
     </style>
 </head>
-<body class="bg-[#FAFAFA] text-slate-900 antialiased font-sans selection:bg-medical-500 selection:text-white overflow-x-hidden">
+<body class="bg-surface text-dark antialiased font-sans">
 
-    <!-- Mobile Background Blobs (Vibrant) -->
-    <div class="blob bg-blue-300 w-64 h-64 top-0 right-0 animate-pulse"></div>
-    <div class="blob bg-mint/40 w-80 h-80 top-[20%] left-[-20%]"></div>
-    <div class="blob bg-purple-200 w-64 h-64 bottom-0 right-[-10%]"></div>
-
-    <!-- Navigation -->
-    <nav class="fixed w-full z-50 glass-panel">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-20">
-                <a href="index.html" class="flex items-center gap-2">
-                    <div class="w-10 h-10 bg-gradient-to-br from-medical-500 to-medical-600 rounded-xl flex items-center justify-center text-white font-bold text-xl shadow-lg shadow-blue-200">N</div>
-                    <span class="font-bold text-xl tracking-tight text-slate-900">NEXUS<span class="text-medical-500">HEALTH</span></span>
-                </a>
-
-                <!-- Desktop Menu -->
-                <div class="hidden md:flex items-center space-x-8">
-                    <a href="services.html" class="text-sm font-medium text-slate-500 hover:text-medical-500 transition">Treatments</a>
-                    <a href="doctors.html" class="text-sm font-medium text-slate-500 hover:text-medical-500 transition">Specialists</a>
-                    <a href="#" class="text-sm font-medium text-slate-500 hover:text-medical-500 transition">Technology</a>
-                </div>
-
-                <div class="hidden md:flex items-center gap-4">
-                    <a href="booking.html" class="bg-medical-900 text-white px-6 py-3 rounded-full text-sm font-semibold hover:bg-medical-500 hover:shadow-soft transition-all duration-300">Book Appointment</a>
-                </div>
-
-                <button onclick="toggleMobileMenu()" class="md:hidden p-2 text-slate-800 bg-white rounded-lg shadow-sm border border-slate-100">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
-                </button>
+    <!-- Navbar -->
+    <nav class="fixed w-full z-50 nav-blur border-b border-gray-200/50 transition-all duration-300">
+        <div class="max-w-[980px] mx-auto px-6 h-14 flex justify-between items-center">
+            <a href="index.html" class="font-semibold text-lg tracking-tight">Nexus<span class="text-accent">Health</span></a>
+            
+            <div class="hidden md:flex space-x-8 text-xs font-medium text-gray-600">
+                <a href="services.html" class="hover:text-accent transition">Treatments</a>
+                <a href="doctors.html" class="hover:text-accent transition">Specialists</a>
+                <a href="#" class="hover:text-accent transition">Research</a>
             </div>
+
+            <a href="booking.html" class="bg-dark text-white text-xs font-medium px-4 py-2 rounded-full hover:bg-accent transition duration-300">Book Visit</a>
         </div>
     </nav>
 
-    <!-- Mobile Menu Overlay -->
-    <div id="mobileMenu" class="mobile-menu fixed inset-0 z-[60] bg-white/95 backdrop-blur-xl w-full h-full flex flex-col p-6">
-        <div class="flex justify-between items-center mb-8">
-            <span class="font-bold text-2xl">Menu</span>
-            <button onclick="toggleMobileMenu()" class="p-3 bg-slate-100 rounded-full"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg></button>
-        </div>
-        <div class="flex flex-col gap-6 text-xl font-medium">
-            <a href="index.html" class="text-medical-500">Home</a>
-            <a href="services.html" class="text-slate-600">Treatments & Services</a>
-            <a href="doctors.html" class="text-slate-600">Find a Doctor</a>
-            <a href="booking.html" class="mt-8 w-full bg-medical-500 text-white py-5 rounded-2xl text-center shadow-lg shadow-blue-200">Book Appointment</a>
-        </div>
-    </div>
-
     <!-- Hero Section -->
-    <header class="pt-32 pb-16 lg:pt-48 lg:pb-32 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
-        <div class="grid lg:grid-cols-2 gap-12 items-center">
+    <header class="pt-32 pb-20 px-6 text-center max-w-[980px] mx-auto">
+        <div class="animate-fade-up">
+            <span class="text-accent font-semibold text-xs uppercase tracking-wider mb-4 block">New Standard of Care</span>
+            <h1 class="text-5xl md:text-7xl font-bold tracking-tight text-dark mb-6 leading-tight">
+                Healthcare.<br>
+                Reimagined.
+            </h1>
+            <p class="text-xl md:text-2xl text-gray-500 max-w-2xl mx-auto mb-10 font-medium leading-relaxed">
+                Seamless appointments. World-class specialists. All connected by intelligence.
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <a href="booking.html" class="bg-accent text-white px-8 py-4 rounded-full text-base font-medium hover:bg-blue-600 transition shadow-lg shadow-blue-500/30">Find a Doctor</a>
+                <a href="services.html" class="text-accent px-8 py-4 text-base font-medium hover:underline flex items-center justify-center gap-1">
+                    Learn more <span>›</span>
+                </a>
+            </div>
+        </div>
+
+        <!-- Hero Visual (iPhone Mockup style) -->
+        <div class="mt-20 relative animate-fade-up" style="animation-delay: 0.2s">
+            <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?q=80&w=2000&auto=format&fit=crop" class="rounded-[2rem] shadow-2xl w-full h-[300px] md:h-[500px] object-cover" alt="Modern Clinic">
             
-            <!-- Mobile Image First (Visual Hook) -->
-            <div class="block lg:hidden relative mb-8">
-                <div class="absolute inset-0 bg-medical-500 rounded-[2rem] transform rotate-6 opacity-10"></div>
-                <img src="https://images.unsplash.com/photo-1622253692010-333f2da6031d?q=80&w=800&auto=format&fit=crop" class="relative rounded-[2rem] shadow-2xl w-full h-[300px] object-cover" alt="Doctor">
-                
-                <!-- Floating Card -->
-                <div class="absolute -bottom-6 -right-2 bg-white p-4 rounded-2xl shadow-xl flex items-center gap-3 animate-bounce border border-slate-50" style="animation-duration: 3s;">
-                    <div class="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center text-green-600">
-                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                    </div>
-                    <div>
-                        <p class="text-[10px] text-slate-400 font-bold uppercase">Wait Time</p>
-                        <p class="text-sm font-bold text-slate-900">04:30 MIN</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="relative z-10 text-center lg:text-left">
-                <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white border border-blue-100 text-medical-600 text-xs font-bold uppercase tracking-wider mb-6 shadow-sm">
-                    <span class="w-2 h-2 rounded-full bg-mint shadow-glow animate-pulse"></span>
-                    Accepting New Patients
-                </div>
-                <h1 class="text-5xl sm:text-6xl lg:text-7xl font-bold leading-[1.1] tracking-tight text-slate-900 mb-6">
-                    Healthcare that <br>
-                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-medical-500 to-mint">actually cares.</span>
-                </h1>
-                <p class="text-lg text-slate-600 mb-8 max-w-lg mx-auto lg:mx-0 leading-relaxed font-medium">
-                    Zero wait times. AI diagnostics. World-class specialists. All managed from your phone.
-                </p>
-                <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-                    <a href="booking.html" class="px-8 py-4 bg-medical-500 text-white rounded-2xl font-bold shadow-lg shadow-blue-200 hover:shadow-xl hover:-translate-y-1 transition w-full sm:w-auto">Find a Doctor</a>
-                    <a href="services.html" class="px-8 py-4 bg-white border border-slate-200 text-slate-700 rounded-2xl font-bold hover:bg-slate-50 transition w-full sm:w-auto shadow-sm">View Services</a>
-                </div>
-                
-                <!-- Trust Stats (Mobile Friendly) -->
-                <div class="mt-12 flex justify-center lg:justify-start gap-8 border-t border-slate-200/60 pt-8">
-                    <div class="text-center lg:text-left">
-                        <div class="flex items-center justify-center lg:justify-start text-yellow-400 text-xl mb-1">★★★★★</div>
-                        <p class="text-sm font-bold text-slate-900">4.9/5 Rating</p>
-                    </div>
-                    <div class="h-10 w-px bg-slate-200"></div>
-                    <div class="text-center lg:text-left">
-                        <p class="text-xl font-bold text-medical-600">12,000+</p>
-                        <p class="text-sm font-bold text-slate-900">Recoveries</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Desktop Image (Keep existing) -->
-            <div class="relative hidden lg:block">
-                <div class="absolute -inset-4 bg-gradient-to-r from-blue-100 to-mint/20 rounded-[3rem] transform rotate-3 -z-10 blur-xl"></div>
-                <div class="grid grid-cols-2 gap-4">
-                    <img src="https://images.unsplash.com/photo-1622253692010-333f2da6031d?q=80&w=800&auto=format&fit=crop" class="rounded-3xl shadow-lg w-full h-80 object-cover transform translate-y-12 animate-float" style="animation-delay: 0s" alt="Doctor">
-                    <img src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?q=80&w=800&auto=format&fit=crop" class="rounded-3xl shadow-lg w-full h-80 object-cover animate-float" style="animation-delay: 1s" alt="Clinic Tech">
-                </div>
+            <!-- Floating Pill -->
+            <div class="absolute bottom-6 left-1/2 transform -translate-x-1/2 bg-white/90 backdrop-blur-md px-6 py-3 rounded-full shadow-xl flex items-center gap-3">
+                <div class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
+                <span class="text-xs font-semibold text-gray-800">Next Available: 10:30 AM</span>
             </div>
         </div>
     </header>
 
-    <!-- Visual Features Grid (Mobile Focused) -->
-    <section class="py-16 px-4">
-        <div class="max-w-7xl mx-auto">
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <!-- Card 1 -->
-                <div class="glass-card p-8 rounded-3xl relative overflow-hidden group">
-                    <div class="absolute top-0 right-0 w-32 h-32 bg-blue-100 rounded-full blur-3xl -mr-16 -mt-16 group-hover:bg-blue-200 transition"></div>
-                    <img src="https://cdn-icons-png.flaticon.com/512/3063/3063823.png" class="w-16 h-16 mb-6 drop-shadow-sm" alt="Heart">
-                    <h3 class="text-2xl font-bold text-slate-900 mb-2">Cardiology</h3>
-                    <p class="text-slate-500 font-medium leading-relaxed">24/7 Heart monitoring with AI detection.</p>
-                </div>
-                <!-- Card 2 -->
-                <div class="glass-card p-8 rounded-3xl relative overflow-hidden group">
-                    <div class="absolute top-0 right-0 w-32 h-32 bg-purple-100 rounded-full blur-3xl -mr-16 -mt-16 group-hover:bg-purple-200 transition"></div>
-                    <img src="https://cdn-icons-png.flaticon.com/512/3063/3063822.png" class="w-16 h-16 mb-6 drop-shadow-sm" alt="Brain">
-                    <h3 class="text-2xl font-bold text-slate-900 mb-2">Neurology</h3>
-                    <p class="text-slate-500 font-medium leading-relaxed">Advanced brain mapping & care.</p>
-                </div>
-                <!-- Card 3 -->
-                <div class="glass-card p-8 rounded-3xl relative overflow-hidden group">
-                    <div class="absolute top-0 right-0 w-32 h-32 bg-green-100 rounded-full blur-3xl -mr-16 -mt-16 group-hover:bg-green-200 transition"></div>
-                    <img src="https://cdn-icons-png.flaticon.com/512/3063/3063825.png" class="w-16 h-16 mb-6 drop-shadow-sm" alt="Child">
-                    <h3 class="text-2xl font-bold text-slate-900 mb-2">Pediatrics</h3>
-                    <p class="text-slate-500 font-medium leading-relaxed">Gentle care for your little ones.</p>
-                </div>
+    <!-- Bento Grid Section -->
+    <section class="py-20 px-6 bg-white">
+        <div class="max-w-[980px] mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Complete Care Ecosystem</h2>
+                <p class="text-gray-500 text-lg">Everything you need to live healthier.</p>
             </div>
-        </div>
-    </section>
 
-    <!-- App Showcase (Visual) -->
-    <section class="py-20 overflow-hidden">
-        <div class="max-w-7xl mx-auto px-4 bg-medical-900 rounded-[3rem] relative">
-            <div class="absolute top-0 left-0 w-full h-full bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10"></div>
-            <div class="grid md:grid-cols-2 items-center relative z-10">
-                <div class="p-10 md:p-16 text-center md:text-left">
-                    <span class="text-mint font-bold uppercase tracking-wider text-sm">Patient App</span>
-                    <h2 class="text-4xl md:text-5xl font-bold text-white mt-4 mb-6">Your Health.<br>In Your Pocket.</h2>
-                    <p class="text-blue-200 text-lg mb-8">Track prescriptions, video chat with doctors, and get instant lab results.</p>
-                    <div class="flex justify-center md:justify-start gap-4">
-                        <button class="bg-white text-medical-900 px-6 py-3 rounded-xl font-bold flex items-center gap-2 hover:bg-blue-50 transition">
-                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M17.525 3.69c-2.222 0-3.926 1.408-5.525 1.408-1.576 0-3.324-1.385-5.46-1.385-2.784 0-5.385 1.636-6.84 4.14-2.924 5.09-2.29 14.15 2.56 21.164 1.18 1.7 2.583 3.613 4.425 3.543 1.77-.07 2.45-1.15 4.59-1.15 2.126 0 2.73 1.15 4.6 1.12 1.9-.036 3.125-1.74 4.316-3.47 1.36-1.97 1.92-3.87 1.94-3.96-.04-.02-3.75-1.44-3.79-5.71-.033-3.56 2.91-5.27 3.03-5.35-1.66-2.42-4.23-2.69-5.13-2.72-.45-.02-1.1-.05-1.72-.05zm-1.84-2.93c1.15-1.4 1.93-3.34 1.72-5.28-1.66.07-3.68 1.11-4.87 2.53-1.06 1.25-1.98 3.25-1.73 5.17 1.86.15 3.75-1.01 4.88-2.42z"/></svg>
-                            App Store
-                        </button>
-                        <button class="bg-transparent border border-blue-400 text-white px-6 py-3 rounded-xl font-bold flex items-center gap-2 hover:bg-blue-900/50 transition">
-                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M3,20.5V3.5C3,2.91 3.34,2.39 3.84,2.15L13.69,12L3.84,21.85C3.34,21.6 3,21.09 3,20.5M16.81,15.12L6.05,21.34L14.54,12.85L16.81,15.12M20.16,10.81C20.5,11.08 20.75,11.5 20.75,12C20.75,12.5 20.5,12.92 20.16,13.19L17.89,14.5L15.39,12L17.89,9.5L20.16,10.81M6.05,2.66L16.81,8.88L14.54,11.15L6.05,2.66Z"/></svg>
-                            Google Play
-                        </button>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                
+                <!-- Card 1 (Large) -->
+                <div class="md:col-span-2 bento-card bg-surface overflow-hidden relative group h-[400px]">
+                    <div class="relative z-10">
+                        <span class="text-accent font-bold text-xs uppercase mb-2 block">Diagnostics</span>
+                        <h3 class="text-2xl font-bold mb-2">AI-Powered Labs</h3>
+                        <p class="text-gray-500 max-w-sm">Results in minutes, not days. Our on-site labs use machine learning to detect anomalies instantly.</p>
+                    </div>
+                    <img src="https://images.unsplash.com/photo-1579154204601-01588f351e67?q=80&w=800&auto=format&fit=crop" class="absolute bottom-0 right-0 w-2/3 md:w-1/2 rounded-tl-2xl shadow-xl transition-transform duration-500 group-hover:scale-105" alt="Microscope">
+                </div>
+
+                <!-- Card 2 (Tall) -->
+                <div class="bento-card bg-black text-white h-[400px] flex flex-col justify-between relative overflow-hidden group">
+                    <div class="z-10">
+                        <span class="text-gray-400 font-bold text-xs uppercase mb-2 block">App</span>
+                        <h3 class="text-2xl font-bold mb-2">Nexus App</h3>
+                        <p class="text-gray-400 text-sm">Your health records, prescriptions, and chats in one secure place.</p>
+                    </div>
+                    <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent z-0"></div>
+                    <img src="https://images.unsplash.com/photo-1555774698-0b77e0d5fac6?q=80&w=800&auto=format&fit=crop" class="absolute inset-0 object-cover opacity-50 -z-10 group-hover:opacity-70 transition duration-500" alt="Phone">
+                    <button class="bg-white text-black w-full py-3 rounded-xl font-bold text-sm mt-4 z-10 hover:bg-gray-200 transition">Download</button>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="bento-card h-[300px] flex flex-col justify-center items-center text-center">
+                    <div class="w-16 h-16 bg-blue-50 text-accent rounded-full flex items-center justify-center mb-6">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Cardiology</h3>
+                    <p class="text-gray-500 text-sm">Top 1% Heart Specialists</p>
+                </div>
+
+                <!-- Card 4 -->
+                <div class="bento-card h-[300px] flex flex-col justify-center items-center text-center">
+                    <div class="w-16 h-16 bg-purple-50 text-purple-600 rounded-full flex items-center justify-center mb-6">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path></svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Neurology</h3>
+                    <p class="text-gray-500 text-sm">Advanced Brain Mapping</p>
+                </div>
+
+                <!-- Card 5 -->
+                <div class="bento-card h-[300px] flex flex-col justify-center items-center text-center bg-accent text-white">
+                    <h3 class="text-4xl font-bold mb-2">4.9/5</h3>
+                    <p class="text-blue-100 text-sm mb-6">Patient Satisfaction</p>
+                    <div class="flex -space-x-2">
+                        <img class="w-8 h-8 rounded-full border-2 border-accent" src="https://randomuser.me/api/portraits/women/44.jpg" alt="">
+                        <img class="w-8 h-8 rounded-full border-2 border-accent" src="https://randomuser.me/api/portraits/men/32.jpg" alt="">
+                        <img class="w-8 h-8 rounded-full border-2 border-accent" src="https://randomuser.me/api/portraits/women/68.jpg" alt="">
+                        <div class="w-8 h-8 rounded-full border-2 border-accent bg-white text-accent flex items-center justify-center text-xs font-bold">+2k</div>
                     </div>
                 </div>
-                <!-- Fake Phone Mockup -->
-                <div class="relative mt-8 md:mt-0 md:-mb-24 flex justify-center">
-                    <img src="https://i.imgur.com/8Qj8vGv.png" class="w-64 md:w-80 drop-shadow-2xl transform hover:scale-105 transition duration-500" alt="App Screen">
-                </div>
+
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="bg-white border-t border-slate-200 pt-20 pb-10">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center sm:text-left">
-            <p class="text-slate-400 text-sm">© 2026 Nexus Health Inc.</p>
+    <footer class="bg-surface py-20 px-6 border-t border-gray-200">
+        <div class="max-w-[980px] mx-auto grid grid-cols-2 md:grid-cols-4 gap-8 text-xs text-gray-500">
+            <div>
+                <h4 class="font-semibold text-gray-900 mb-4">Services</h4>
+                <ul class="space-y-2">
+                    <li><a href="services.html" class="hover:underline">Primary Care</a></li>
+                    <li><a href="services.html" class="hover:underline">Urgent Care</a></li>
+                    <li><a href="services.html" class="hover:underline">Virtual Visits</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-semibold text-gray-900 mb-4">Company</h4>
+                <ul class="space-y-2">
+                    <li><a href="#" class="hover:underline">About Us</a></li>
+                    <li><a href="#" class="hover:underline">Careers</a></li>
+                    <li><a href="#" class="hover:underline">Press</a></li>
+                </ul>
+            </div>
+            <div class="col-span-2 md:col-span-2 text-right">
+                <span class="font-bold text-lg text-gray-900">Nexus<span class="text-accent">Health</span></span>
+                <p class="mt-2">Designed for the future.</p>
+                <p class="mt-8">© 2026 Nexus Health Inc.</p>
+            </div>
         </div>
     </footer>
 
-    <script>
-        function toggleMobileMenu() {
-            document.getElementById('mobileMenu').classList.toggle('open');
-        }
-    </script>
 </body>
 </html>
