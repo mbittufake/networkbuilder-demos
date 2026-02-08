@@ -3,103 +3,177 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Find a Doctor | NEXUS HEALTH</title>
+    <title>Doctors | City Care Clinic</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <script>
         tailwind.config = {
             theme: {
                 extend: {
-                    fontFamily: { sans: ['Plus Jakarta Sans', 'sans-serif'] },
-                    colors: { medical: { 500: '#0066FF', 900: '#0A1929' }, mint: '#00F090' }
+                    fontFamily: { sans: ['Inter', 'sans-serif'] },
+                    colors: {
+                        primary: '#2E7D9A',    // Calm Blue/Teal
+                        accent: '#5FB3A2',     // Muted Green (CTAs)
+                        surface: '#F8FAFC',    // Warm off-white
+                        text: '#1F2937',       // Dark Gray (Readability)
+                        muted: '#6B7280',      // Secondary Text
+                        border: '#E5E7EB',     // Soft Border
+                    },
+                    boxShadow: {
+                        'soft': '0 4px 20px -2px rgba(0, 0, 0, 0.05)',
+                        'card': '0 1px 3px 0 rgba(0, 0, 0, 0.05), 0 1px 2px 0 rgba(0, 0, 0, 0.03)',
+                    }
                 }
             }
         }
     </script>
 </head>
-<body class="bg-slate-50 font-sans text-slate-900">
+<body class="bg-surface text-text font-sans antialiased">
 
     <!-- Navbar -->
-    <nav class="fixed w-full z-50 bg-white/80 backdrop-blur-md border-b border-slate-200">
-        <div class="max-w-7xl mx-auto px-4 h-20 flex justify-between items-center">
-            <a href="index.html" class="flex items-center gap-2 font-bold text-xl">
-                <div class="w-8 h-8 bg-medical-500 rounded-lg flex items-center justify-center text-white">N</div>
-                <span>NEXUS<span class="text-medical-500">HEALTH</span></span>
+    <nav class="bg-white border-b border-border sticky top-0 z-50">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 h-20 flex items-center justify-between">
+            <a href="index.html" class="flex items-center gap-2">
+                <div class="w-8 h-8 bg-primary/10 text-primary rounded-lg flex items-center justify-center">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg>
+                </div>
+                <span class="text-xl font-bold tracking-tight text-primary">City Care Clinic</span>
             </a>
-            <a href="booking.html" class="bg-medical-900 text-white px-6 py-2 rounded-full text-sm font-bold hover:bg-medical-500 transition">Book Now</a>
+            
+            <div class="hidden md:flex items-center space-x-8 text-sm font-medium text-gray-600">
+                <a href="doctors.html" class="text-primary font-semibold">Doctors</a>
+                <a href="services.html" class="hover:text-primary transition">Services</a>
+                <a href="index.html#contact" class="hover:text-primary transition">Location</a>
+            </div>
+
+            <div class="flex items-center gap-4">
+                <a href="booking.html" class="bg-primary text-white text-sm font-medium px-5 py-2.5 rounded-lg hover:bg-[#25667e] transition shadow-sm">
+                    Book Appointment
+                </a>
+            </div>
         </div>
     </nav>
 
     <!-- Header -->
-    <header class="pt-40 pb-16 px-4 text-center">
-        <h1 class="text-5xl font-bold mb-6">Meet Our Specialists</h1>
-        <p class="text-slate-500 max-w-2xl mx-auto text-lg">Top 1% of doctors in their fields, recruited from leading global institutions.</p>
+    <header class="bg-white py-16 md:py-20 border-b border-border">
+        <div class="max-w-4xl mx-auto px-4 text-center">
+            <span class="inline-block py-1 px-3 rounded-full bg-blue-50 text-primary text-xs font-semibold mb-6">
+                Our Specialists
+            </span>
+            <h1 class="text-3xl md:text-4xl font-bold mb-6 text-gray-900">Expert Doctors You Can Trust</h1>
+            <p class="text-lg text-muted max-w-2xl mx-auto leading-relaxed">
+                Our team of licensed, experienced medical professionals is dedicated to providing you with the best possible care.
+            </p>
+        </div>
     </header>
 
-    <!-- Grid -->
-    <section class="max-w-7xl mx-auto px-4 pb-24 grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-        
-        <!-- Doc 1 -->
-        <div class="bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 group">
-            <div class="h-80 overflow-hidden">
-                <img src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?q=80&w=800&auto=format&fit=crop" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" alt="Dr. Sarah">
-            </div>
-            <div class="p-8">
-                <div class="flex justify-between items-start mb-2">
-                    <h3 class="text-xl font-bold">Dr. Sarah Chen</h3>
-                    <span class="bg-blue-50 text-blue-600 px-3 py-1 rounded-full text-xs font-bold uppercase">Cardiology</span>
-                </div>
-                <p class="text-slate-400 text-sm mb-6">MD, Harvard Medical School • 12 Years Exp</p>
-                <div class="flex items-center gap-2 mb-6">
-                    <div class="flex text-yellow-400 text-sm">★★★★★</div>
-                    <span class="text-slate-400 text-xs">(342 Reviews)</span>
-                </div>
-                <a href="booking.html" class="block w-full text-center py-3 border border-slate-200 rounded-xl font-bold hover:bg-medical-500 hover:text-white hover:border-transparent transition">Book Visit</a>
-            </div>
-        </div>
+    <!-- Doctors Grid -->
+    <section class="py-16 md:py-24 bg-surface">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 grid gap-8 md:grid-cols-2 lg:grid-cols-4">
 
-        <!-- Doc 2 -->
-        <div class="bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 group">
-            <div class="h-80 overflow-hidden">
-                <img src="https://images.unsplash.com/photo-1537368910025-700350fe46c7?q=80&w=800&auto=format&fit=crop" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" alt="Dr. James">
-            </div>
-            <div class="p-8">
-                <div class="flex justify-between items-start mb-2">
-                    <h3 class="text-xl font-bold">Dr. James Wilson</h3>
-                    <span class="bg-purple-50 text-purple-600 px-3 py-1 rounded-full text-xs font-bold uppercase">Neurology</span>
+            <!-- Doctor 1 -->
+            <div class="bg-white rounded-xl overflow-hidden border border-border shadow-card hover:shadow-lg transition duration-300">
+                <img src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?q=80&w=400&auto=format&fit=crop" class="w-full h-64 object-cover object-top" alt="Dr. Sharma">
+                <div class="p-6">
+                    <h3 class="text-lg font-bold text-gray-900">Dr. Anjali Sharma</h3>
+                    <p class="text-primary text-xs font-semibold uppercase tracking-wide mb-2">Cardiologist</p>
+                    <p class="text-muted text-xs mb-4">MBBS, MD • 12 Years Exp.</p>
+                    <a href="booking.html" class="block text-center w-full py-2.5 rounded-lg border border-gray-200 text-sm font-medium hover:bg-primary hover:text-white hover:border-transparent transition">Book Appointment</a>
                 </div>
-                <p class="text-slate-400 text-sm mb-6">PhD, Johns Hopkins • 15 Years Exp</p>
-                <div class="flex items-center gap-2 mb-6">
-                    <div class="flex text-yellow-400 text-sm">★★★★★</div>
-                    <span class="text-slate-400 text-xs">(128 Reviews)</span>
-                </div>
-                <a href="booking.html" class="block w-full text-center py-3 border border-slate-200 rounded-xl font-bold hover:bg-medical-500 hover:text-white hover:border-transparent transition">Book Visit</a>
             </div>
-        </div>
 
-        <!-- Doc 3 -->
-        <div class="bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 group">
-            <div class="h-80 overflow-hidden">
-                <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?q=80&w=800&auto=format&fit=crop" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" alt="Dr. Anita">
-            </div>
-            <div class="p-8">
-                <div class="flex justify-between items-start mb-2">
-                    <h3 class="text-xl font-bold">Dr. Anita Roy</h3>
-                    <span class="bg-green-50 text-green-600 px-3 py-1 rounded-full text-xs font-bold uppercase">Pediatrics</span>
+            <!-- Doctor 2 -->
+            <div class="bg-white rounded-xl overflow-hidden border border-border shadow-card hover:shadow-lg transition duration-300">
+                <img src="https://images.unsplash.com/photo-1537368910025-700350fe46c7?q=80&w=400&auto=format&fit=crop" class="w-full h-64 object-cover object-top" alt="Dr. Roy">
+                <div class="p-6">
+                    <h3 class="text-lg font-bold text-gray-900">Dr. Rajesh Roy</h3>
+                    <p class="text-primary text-xs font-semibold uppercase tracking-wide mb-2">General Physician</p>
+                    <p class="text-muted text-xs mb-4">MBBS • 15 Years Exp.</p>
+                    <a href="booking.html" class="block text-center w-full py-2.5 rounded-lg border border-gray-200 text-sm font-medium hover:bg-primary hover:text-white hover:border-transparent transition">Book Appointment</a>
                 </div>
-                <p class="text-slate-400 text-sm mb-6">MBBS, AIIMS Delhi • 8 Years Exp</p>
-                <div class="flex items-center gap-2 mb-6">
-                    <div class="flex text-yellow-400 text-sm">★★★★★</div>
-                    <span class="text-slate-400 text-xs">(550 Reviews)</span>
-                </div>
-                <a href="booking.html" class="block w-full text-center py-3 border border-slate-200 rounded-xl font-bold hover:bg-medical-500 hover:text-white hover:border-transparent transition">Book Visit</a>
             </div>
-        </div>
 
+            <!-- Doctor 3 -->
+            <div class="bg-white rounded-xl overflow-hidden border border-border shadow-card hover:shadow-lg transition duration-300">
+                <img src="https://images.unsplash.com/photo-1594824476967-48c8b964273f?q=80&w=400&auto=format&fit=crop" class="w-full h-64 object-cover object-top" alt="Dr. Das">
+                <div class="p-6">
+                    <h3 class="text-lg font-bold text-gray-900">Dr. Sneha Das</h3>
+                    <p class="text-primary text-xs font-semibold uppercase tracking-wide mb-2">Pediatrician</p>
+                    <p class="text-muted text-xs mb-4">MBBS, DCH • 8 Years Exp.</p>
+                    <a href="booking.html" class="block text-center w-full py-2.5 rounded-lg border border-gray-200 text-sm font-medium hover:bg-primary hover:text-white hover:border-transparent transition">Book Appointment</a>
+                </div>
+            </div>
+
+            <!-- Doctor 4 -->
+            <div class="bg-white rounded-xl overflow-hidden border border-border shadow-card hover:shadow-lg transition duration-300">
+                <img src="https://images.unsplash.com/photo-1622253692010-333f2da6031d?q=80&w=400&auto=format&fit=crop" class="w-full h-64 object-cover object-top" alt="Dr. Khan">
+                <div class="p-6">
+                    <h3 class="text-lg font-bold text-gray-900">Dr. Amir Khan</h3>
+                    <p class="text-primary text-xs font-semibold uppercase tracking-wide mb-2">Neurologist</p>
+                    <p class="text-muted text-xs mb-4">MBBS, DM • 10 Years Exp.</p>
+                    <a href="booking.html" class="block text-center w-full py-2.5 rounded-lg border border-gray-200 text-sm font-medium hover:bg-primary hover:text-white hover:border-transparent transition">Book Appointment</a>
+                </div>
+            </div>
+
+            <!-- Doctor 5 -->
+            <div class="bg-white rounded-xl overflow-hidden border border-border shadow-card hover:shadow-lg transition duration-300">
+                <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?q=80&w=400&auto=format&fit=crop" class="w-full h-64 object-cover object-top" alt="Dr. Patel">
+                <div class="p-6">
+                    <h3 class="text-lg font-bold text-gray-900">Dr. Vikram Patel</h3>
+                    <p class="text-primary text-xs font-semibold uppercase tracking-wide mb-2">Orthopedic</p>
+                    <p class="text-muted text-xs mb-4">MBBS, MS • 18 Years Exp.</p>
+                    <a href="booking.html" class="block text-center w-full py-2.5 rounded-lg border border-gray-200 text-sm font-medium hover:bg-primary hover:text-white hover:border-transparent transition">Book Appointment</a>
+                </div>
+            </div>
+
+            <!-- Doctor 6 -->
+            <div class="bg-white rounded-xl overflow-hidden border border-border shadow-card hover:shadow-lg transition duration-300">
+                <img src="https://images.unsplash.com/photo-1527613426441-4da17471b66d?q=80&w=400&auto=format&fit=crop" class="w-full h-64 object-cover object-top" alt="Dr. Mehta">
+                <div class="p-6">
+                    <h3 class="text-lg font-bold text-gray-900">Dr. Aisha Mehta</h3>
+                    <p class="text-primary text-xs font-semibold uppercase tracking-wide mb-2">Dermatologist</p>
+                    <p class="text-muted text-xs mb-4">MBBS, MD • 6 Years Exp.</p>
+                    <a href="booking.html" class="block text-center w-full py-2.5 rounded-lg border border-gray-200 text-sm font-medium hover:bg-primary hover:text-white hover:border-transparent transition">Book Appointment</a>
+                </div>
+            </div>
+
+        </div>
     </section>
 
-    <footer class="text-center py-12 text-slate-400 text-sm border-t border-slate-200">
-        © 2026 Nexus Health Inc.
+    <!-- Footer -->
+    <footer class="bg-gray-50 border-t border-border pt-16 pb-8">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6">
+            <div class="grid md:grid-cols-3 gap-12 mb-12">
+                <div>
+                    <div class="flex items-center gap-2 mb-6">
+                        <div class="w-6 h-6 bg-primary/10 text-primary rounded flex items-center justify-center">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg>
+                        </div>
+                        <span class="text-lg font-bold text-gray-900">City Care Clinic</span>
+                    </div>
+                    <div class="space-y-4 text-sm text-gray-600">
+                        <p class="flex items-start gap-3">
+                            <svg class="w-5 h-5 text-primary mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path></svg>
+                            <span>12 Civil Lines, Malda<br>West Bengal, 732101</span>
+                        </p>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="font-bold text-gray-900 mb-6">Patient Resources</h4>
+                    <ul class="space-y-3 text-sm text-gray-600">
+                        <li><a href="booking.html" class="hover:text-primary transition">Book Appointment</a></li>
+                        <li><a href="doctors.html" class="hover:text-primary transition">Our Doctors</a></li>
+                        <li><a href="services.html" class="hover:text-primary transition">Treatments</a></li>
+                    </ul>
+                </div>
+                <div class="h-48 bg-gray-200 rounded-lg flex items-center justify-center text-gray-500 text-sm">
+                    Map Integration
+                </div>
+            </div>
+            <div class="border-t border-gray-200 pt-8 text-center text-xs text-muted">
+                <p>&copy; 2026 City Care Clinic. All rights reserved.</p>
+            </div>
+        </div>
     </footer>
 
 </body>

@@ -3,75 +3,151 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Book Appointment | NEXUS HEALTH</title>
+    <title>Book Appointment | City Care Clinic</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <script>
         tailwind.config = {
             theme: {
                 extend: {
-                    fontFamily: { sans: ['Plus Jakarta Sans', 'sans-serif'] },
-                    colors: { medical: { 500: '#0066FF', 900: '#0A1929' }, mint: '#00F090' }
+                    fontFamily: { sans: ['Inter', 'sans-serif'] },
+                    colors: {
+                        primary: '#2E7D9A',    // Calm Blue/Teal
+                        accent: '#5FB3A2',     // Muted Green (CTAs)
+                        surface: '#F8FAFC',    // Warm off-white
+                        text: '#1F2937',       // Dark Gray (Readability)
+                        muted: '#6B7280',      // Secondary Text
+                        border: '#E5E7EB',     // Soft Border
+                    },
+                    boxShadow: {
+                        'soft': '0 4px 20px -2px rgba(0, 0, 0, 0.05)',
+                        'card': '0 1px 3px 0 rgba(0, 0, 0, 0.05), 0 1px 2px 0 rgba(0, 0, 0, 0.03)',
+                    }
                 }
             }
         }
     </script>
 </head>
-<body class="bg-slate-50 font-sans text-slate-900">
+<body class="bg-surface text-text font-sans antialiased">
 
     <!-- Navbar -->
-    <nav class="fixed w-full z-50 bg-white/80 backdrop-blur-md border-b border-slate-200">
-        <div class="max-w-7xl mx-auto px-4 h-20 flex justify-between items-center">
-            <a href="index.html" class="flex items-center gap-2 font-bold text-xl">
-                <div class="w-8 h-8 bg-medical-500 rounded-lg flex items-center justify-center text-white">N</div>
-                <span>NEXUS<span class="text-medical-500">HEALTH</span></span>
+    <nav class="bg-white border-b border-border sticky top-0 z-50">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 h-20 flex items-center justify-between">
+            <a href="index.html" class="flex items-center gap-2">
+                <div class="w-8 h-8 bg-primary/10 text-primary rounded-lg flex items-center justify-center">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg>
+                </div>
+                <span class="text-xl font-bold tracking-tight text-primary">City Care Clinic</span>
             </a>
-            <a href="index.html" class="text-sm font-bold text-slate-500 hover:text-black">Cancel</a>
+            
+            <div class="hidden md:flex items-center space-x-8 text-sm font-medium text-gray-600">
+                <a href="doctors.html" class="hover:text-primary transition">Doctors</a>
+                <a href="services.html" class="hover:text-primary transition">Services</a>
+                <a href="index.html#contact" class="hover:text-primary transition">Location</a>
+            </div>
+
+            <div class="flex items-center gap-4">
+                <a href="booking.html" class="bg-primary text-white text-sm font-medium px-5 py-2.5 rounded-lg hover:bg-[#25667e] transition shadow-sm">
+                    Book Appointment
+                </a>
+            </div>
         </div>
     </nav>
 
-    <!-- Booking Form -->
-    <div class="min-h-screen pt-32 pb-24 px-4 flex justify-center items-center">
-        <div class="max-w-2xl w-full bg-white rounded-[2rem] shadow-xl p-8 md:p-12 border border-slate-100">
-            <div class="text-center mb-10">
-                <h1 class="text-3xl font-bold mb-2">Book Your Visit</h1>
-                <p class="text-slate-500">Fill in your details below to secure a slot instantly.</p>
+    <!-- Booking Form Section -->
+    <section class="py-16 md:py-24">
+        <div class="max-w-2xl mx-auto px-4 sm:px-6">
+            
+            <div class="text-center mb-12">
+                <h1 class="text-3xl font-bold text-gray-900 mb-4">Schedule Your Visit</h1>
+                <p class="text-muted text-lg">Quick, simple booking. No payment required online.</p>
             </div>
 
-            <form class="space-y-6">
-                <div class="grid md:grid-cols-2 gap-6">
+            <div class="bg-white rounded-2xl shadow-soft border border-border p-8 md:p-10">
+                <form class="space-y-6">
+                    
+                    <!-- Service Selection -->
                     <div>
-                        <label class="block text-sm font-bold text-slate-700 mb-2">First Name</label>
-                        <input type="text" class="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 focus:border-medical-500 focus:outline-none transition" placeholder="John">
+                        <label class="block text-sm font-semibold text-gray-700 mb-2">Select Service</label>
+                        <select class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-primary/20 focus:border-primary transition bg-white">
+                            <option>General Consultation</option>
+                            <option>Pediatrics</option>
+                            <option>Cardiology</option>
+                            <option>Orthopedics</option>
+                            <option>Dermatology</option>
+                            <option>Diagnostics / Lab Test</option>
+                        </select>
                     </div>
+
+                    <!-- Doctor Selection (Optional) -->
                     <div>
-                        <label class="block text-sm font-bold text-slate-700 mb-2">Last Name</label>
-                        <input type="text" class="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 focus:border-medical-500 focus:outline-none transition" placeholder="Doe">
+                        <label class="block text-sm font-semibold text-gray-700 mb-2">Select Doctor (Optional)</label>
+                        <select class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-primary/20 focus:border-primary transition bg-white">
+                            <option>Any Available Doctor</option>
+                            <option>Dr. Anjali Sharma (Cardiology)</option>
+                            <option>Dr. Rajesh Roy (General)</option>
+                            <option>Dr. Sneha Das (Pediatrics)</option>
+                            <option>Dr. Amir Khan (Neurology)</option>
+                        </select>
                     </div>
-                </div>
 
-                <div>
-                    <label class="block text-sm font-bold text-slate-700 mb-2">Phone Number</label>
-                    <input type="tel" class="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 focus:border-medical-500 focus:outline-none transition" placeholder="+91 98765 43210">
-                </div>
+                    <!-- Date & Time Grid -->
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-sm font-semibold text-gray-700 mb-2">Preferred Date</label>
+                            <input type="date" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-primary/20 focus:border-primary transition">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-semibold text-gray-700 mb-2">Preferred Time</label>
+                            <select class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-primary/20 focus:border-primary transition bg-white">
+                                <option>Morning (9 AM - 12 PM)</option>
+                                <option>Afternoon (12 PM - 4 PM)</option>
+                                <option>Evening (4 PM - 8 PM)</option>
+                            </select>
+                        </div>
+                    </div>
 
-                <div>
-                    <label class="block text-sm font-bold text-slate-700 mb-2">Department</label>
-                    <select class="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 focus:border-medical-500 focus:outline-none transition">
-                        <option>General Checkup</option>
-                        <option>Cardiology</option>
-                        <option>Neurology</option>
-                        <option>Pediatrics</option>
-                    </select>
-                </div>
+                    <!-- Divider -->
+                    <div class="border-t border-gray-100 my-6"></div>
 
-                <div class="pt-4">
-                    <button class="w-full bg-medical-500 text-white py-4 rounded-xl font-bold text-lg hover:bg-medical-600 shadow-lg shadow-blue-200 hover:shadow-xl transition-all">Confirm Appointment</button>
-                    <p class="text-center text-xs text-slate-400 mt-4">By booking, you agree to our Terms of Service.</p>
-                </div>
-            </form>
+                    <!-- Patient Details -->
+                    <div>
+                        <label class="block text-sm font-semibold text-gray-700 mb-2">Full Name</label>
+                        <input type="text" placeholder="e.g. Rahul Sen" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-primary/20 focus:border-primary transition">
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-semibold text-gray-700 mb-2">Phone Number</label>
+                        <input type="tel" placeholder="e.g. 98765 43210" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-primary/20 focus:border-primary transition">
+                    </div>
+
+                    <!-- Submit -->
+                    <button type="button" class="w-full bg-primary text-white font-bold py-4 rounded-xl hover:bg-[#25667e] transition shadow-lg shadow-primary/20 mt-4">
+                        Confirm Appointment
+                    </button>
+                    
+                    <p class="text-center text-xs text-muted mt-4">
+                        By booking, you agree to our privacy policy. Payment is collected at the clinic.
+                    </p>
+
+                </form>
+            </div>
+
+            <!-- Help Text -->
+            <div class="text-center mt-8">
+                <p class="text-gray-600">Need help booking?</p>
+                <a href="tel:03324567890" class="text-primary font-bold hover:underline">Call us at 033-2456-7890</a>
+            </div>
+
         </div>
-    </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-50 border-t border-border pt-12 pb-8 mt-12">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 text-center text-xs text-muted">
+            <p>&copy; 2026 City Care Clinic. All rights reserved.</p>
+        </div>
+    </footer>
 
 </body>
 </html>
