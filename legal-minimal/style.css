@@ -38,7 +38,7 @@ a { text-decoration: none; color: inherit; transition: 0.3s; }
 
 /* Navbar - Sticky & Minimal */
 .navbar {
-    padding: 40px 0;
+    padding: 20px 0; /* Reduced from 40px */
     border-bottom: 1px solid var(--border);
     background: rgba(250, 249, 246, 0.95);
     backdrop-filter: blur(5px);
@@ -47,52 +47,9 @@ a { text-decoration: none; color: inherit; transition: 0.3s; }
     z-index: 100;
 }
 
-.nav-flex {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.logo {
-    font-size: 2rem;
-    font-weight: 600;
-    font-family: var(--font-serif);
-    letter-spacing: -1px;
-}
-
-.nav-links {
-    display: flex;
-    gap: 40px;
-    list-style: none;
-}
-
-.nav-links a {
-    font-size: 0.9rem;
-    font-weight: 500;
-    color: #64748b;
-    position: relative;
-}
-
-.nav-links a::after {
-    content: '';
-    position: absolute;
-    bottom: -5px;
-    left: 0;
-    width: 0;
-    height: 1px;
-    background: var(--text-ink);
-    transition: 0.3s;
-}
-
-.nav-links a:hover::after, .nav-links a.active::after {
-    width: 100%;
-}
-
-.hamburger { display: none; font-size: 1.5rem; cursor: pointer; }
-
 /* Editorial Hero - Asymmetrical Grid */
 .hero {
-    padding: 120px 0;
+    padding: 60px 0; /* Reduced from 120px */
     border-bottom: 1px solid var(--border);
 }
 

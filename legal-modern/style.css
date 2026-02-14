@@ -37,13 +37,19 @@ a { text-decoration: none; color: inherit; transition: 0.3s; }
 
 /* Navbar */
 .navbar {
-    padding: 30px 0;
+    padding: 20px 0;
     position: fixed;
     top: 0;
     width: 100%;
     z-index: 1000;
-    background: linear-gradient(to bottom, rgba(26,26,46,0.9), transparent);
-    backdrop-filter: blur(5px);
+    background: rgba(26, 26, 46, 0.95); /* Slightly darker/more opaque */
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* Add padding to body so fixed nav doesn't cover content */
+body {
+    padding-top: 80px;
 }
 
 .nav-flex {
