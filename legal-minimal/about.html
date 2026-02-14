@@ -3,97 +3,86 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Us | Compassionate Legal Help</title>
+    <title>Firm Profile | The Advocate</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,400&family=Manrope:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="top-bar">
-        <div class="container top-flex">
-            <span>📞 +91 98765 43210</span>
-            <span>✉️ contact@advocate.com</span>
-        </div>
-    </div>
-
     <nav class="navbar">
         <div class="container nav-flex">
-            <a href="index.html" class="logo">Advocate<span>.</span></a>
+            <a href="index.html" class="logo">The Advocate.</a>
             <ul class="nav-links">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="about.html" class="active">About</a></li>
-                <li><a href="services.html">Services</a></li>
-                <li><a href="contact.html" class="btn-primary">Book Appointment</a></li>
+                <li><a href="index.html">Journal</a></li>
+                <li><a href="about.html" class="active">Firm Profile</a></li>
+                <li><a href="services.html">Practice Areas</a></li>
+                <li><a href="contact.html">Consultation</a></li>
             </ul>
+            <div class="hamburger">☰</div>
+        </div>
+        <div class="mobile-menu" id="mobileMenu">
+            <a href="index.html">Journal</a>
+            <a href="about.html">Firm Profile</a>
+            <a href="services.html">Practice Areas</a>
+            <a href="contact.html">Consultation</a>
         </div>
     </nav>
 
-    <header class="page-header" style="background-color: var(--accent);">
-        <div class="container text-center">
-            <h1>We Are Here For You.</h1>
-            <p>More than just lawyers. We are your partners in resolution.</p>
-        </div>
-    </header>
-
+    <!-- Profile Content -->
     <section class="section-padding">
-        <div class="container grid-2">
-            <div class="about-text">
-                <h2>A Human Approach to Law.</h2>
-                <p>We understand that legal issues aren't just about paperwork—they are about people, emotions, and futures.</p>
-                <p>Since 2010, our firm has focused on providing clear, honest, and compassionate legal counsel. We don't confuse you with jargon. We explain your options and walk with you every step of the way.</p>
+        <div class="container hero-grid">
+            <div class="hero-text">
+                <span class="tag">Established 2010</span>
+                <h1 style="font-size: 3.5rem;">A Boutique Practice<br>for Complex Matters.</h1>
+                <p>We are a selective firm. We do not take every case. We choose clients for whom our specific blend of rigorous analysis and creative strategy will yield the greatest impact.</p>
+                <p>Our philosophy is rooted in the belief that legal counsel should be proactive, not reactive. We anticipate challenges before they arise.</p>
                 
-                <div class="values-list">
-                    <div class="value-item">
-                        <span>❤️</span>
-                        <h4>Empathy First</h4>
-                        <p>We listen before we advise.</p>
-                    </div>
-                    <div class="value-item">
-                        <span>🤝</span>
-                        <h4>Transparent Process</h4>
-                        <p>No hidden fees. No surprises.</p>
-                    </div>
+                <div style="margin-top: 40px; border-top: 1px solid var(--border); padding-top: 20px;">
+                    <h3 style="margin-bottom: 10px;">Adv. Anjali Deshmukh</h3>
+                    <p style="font-size: 0.9rem; color: #64748b;">Managing Partner & Founder</p>
                 </div>
             </div>
-            <div class="about-image">
-                <img src="https://images.unsplash.com/photo-1556761175-b413da4baf72?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Consultation">
-            </div>
+            <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" class="hero-img" style="filter: sepia(30%);">
         </div>
     </section>
 
-    <section class="team-section section-padding bg-light">
+    <!-- Philosophy -->
+    <section class="quote-section" style="background: #fff; border-top: 1px solid var(--border);">
         <div class="container">
-            <div class="text-center">
-                <h2>Meet Our Team</h2>
-                <p class="sub-head">Dedicated professionals ready to help.</p>
-            </div>
-            <div class="grid-3">
-                <div class="team-card-minimal">
-                    <div class="circle-img" style="background-image: url('https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80');"></div>
-                    <h3>Adv. Riya Sharma</h3>
-                    <p>Family Law Specialist</p>
+            <div class="grid-3" style="text-align: left;">
+                <div>
+                    <span style="font-size: 3rem; color: var(--accent); font-family: var(--font-serif);">I.</span>
+                    <h3>Clarity</h3>
+                    <p style="color: #64748b;">We distill complexity into clear, actionable advice.</p>
                 </div>
-                <div class="team-card-minimal">
-                    <div class="circle-img" style="background-image: url('https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80');"></div>
-                    <h3>Adv. Vikram Singh</h3>
-                    <p>Property Expert</p>
+                <div>
+                    <span style="font-size: 3rem; color: var(--accent); font-family: var(--font-serif);">II.</span>
+                    <h3>Integrity</h3>
+                    <p style="color: #64748b;">We are candid about outcomes. We do not overpromise.</p>
                 </div>
-                <div class="team-card-minimal">
-                    <div class="circle-img" style="background-image: url('https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80');"></div>
-                    <h3>Adv. Anjali Deshmukh</h3>
-                    <p>Senior Counsel</p>
+                <div>
+                    <span style="font-size: 3rem; color: var(--accent); font-family: var(--font-serif);">III.</span>
+                    <h3>Tenacity</h3>
+                    <p style="color: #64748b;">We are relentless in the pursuit of our clients' interests.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <footer class="footer">
-        <div class="container text-center">
-            <a href="#" class="logo-footer">Advocate.</a>
-            <p>Compassionate Counsel. Strong Representation.</p>
-            <p class="copyright">&copy; 2024 Legal Firm. All rights reserved.</p>
+    <footer style="padding: 60px 0; border-top: 1px solid var(--border);">
+        <div class="container nav-flex">
+            <span class="logo" style="font-size: 1.2rem;">The Advocate.</span>
+            <span style="color: #94a3b8; font-size: 0.9rem;">&copy; 2024 Legal Insights.</span>
         </div>
     </footer>
+
+    <script>
+        const hamburger = document.querySelector('.hamburger');
+        const mobileMenu = document.getElementById('mobileMenu');
+        hamburger.addEventListener('click', () => {
+            mobileMenu.classList.toggle('active');
+        });
+    </script>
 </body>
 </html>

@@ -3,90 +3,108 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Services | Compassionate Legal Help</title>
+    <title>Practice Areas | The Advocate</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,400&family=Manrope:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="top-bar">
-        <div class="container top-flex">
-            <span>📞 +91 98765 43210</span>
-            <span>✉️ contact@advocate.com</span>
-        </div>
-    </div>
-
     <nav class="navbar">
         <div class="container nav-flex">
-            <a href="index.html" class="logo">Advocate<span>.</span></a>
+            <a href="index.html" class="logo">The Advocate.</a>
             <ul class="nav-links">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="services.html" class="active">Services</a></li>
-                <li><a href="contact.html" class="btn-primary">Book Appointment</a></li>
+                <li><a href="index.html">Journal</a></li>
+                <li><a href="about.html">Firm Profile</a></li>
+                <li><a href="services.html" class="active">Practice Areas</a></li>
+                <li><a href="contact.html">Consultation</a></li>
             </ul>
+            <div class="hamburger">☰</div>
+        </div>
+        <div class="mobile-menu" id="mobileMenu">
+            <a href="index.html">Journal</a>
+            <a href="about.html">Firm Profile</a>
+            <a href="services.html">Practice Areas</a>
+            <a href="contact.html">Consultation</a>
         </div>
     </nav>
 
-    <header class="page-header" style="background-color: var(--accent);">
-        <div class="container text-center">
-            <h1>Our Services.</h1>
-            <p>Comprehensive legal support for individuals and families.</p>
-        </div>
-    </header>
-
+    <!-- Services Content -->
     <section class="section-padding">
         <div class="container">
-            <div class="grid-3">
-                <div class="service-box">
-                    <div class="icon-circle">👨‍👩‍👧</div>
-                    <h3>Divorce & Separation</h3>
-                    <p>Contested and Mutual Consent divorce proceedings handled with care.</p>
+            <div class="section-header">
+                <h2>Expertise</h2>
+                <span class="tag">Selected Domains</span>
+            </div>
+
+            <!-- List Layout -->
+            <div style="display: grid; gap: 60px;">
+                <div class="service-item" style="display: grid; grid-template-columns: 1fr 2fr; gap: 40px; border-bottom: 1px solid var(--border); padding-bottom: 40px;">
+                    <div>
+                        <span style="color: var(--accent); font-family: var(--font-serif); font-size: 1.2rem; font-style: italic;">01. Family Law</span>
+                    </div>
+                    <div>
+                        <h3 style="font-size: 2rem; margin-bottom: 20px;">Matrimonial Disputes & Custody</h3>
+                        <p style="color: #475569; margin-bottom: 20px;">We handle divorce, child custody, and alimony matters with discretion and sensitivity. Our goal is to minimize conflict while protecting your rights and future.</p>
+                        <ul style="list-style: none; color: #64748b; font-size: 0.9rem;">
+                            <li>• Mutual Consent Divorce</li>
+                            <li>• Contested Divorce</li>
+                            <li>• Domestic Violence Defense</li>
+                        </ul>
+                    </div>
                 </div>
-                <div class="service-box">
-                    <div class="icon-circle">👶</div>
-                    <h3>Child Custody</h3>
-                    <p>Ensuring the best outcome for your children's future and well-being.</p>
+
+                <div class="service-item" style="display: grid; grid-template-columns: 1fr 2fr; gap: 40px; border-bottom: 1px solid var(--border); padding-bottom: 40px;">
+                    <div>
+                        <span style="color: var(--accent); font-family: var(--font-serif); font-size: 1.2rem; font-style: italic;">02. Civil Litigation</span>
+                    </div>
+                    <div>
+                        <h3 style="font-size: 2rem; margin-bottom: 20px;">Property & Contract Disputes</h3>
+                        <p style="color: #475569; margin-bottom: 20px;">From real estate title disputes to breach of contract claims, we provide robust representation in civil courts. We focus on strategic negotiation backed by the readiness to litigate.</p>
+                        <ul style="list-style: none; color: #64748b; font-size: 0.9rem;">
+                            <li>• Property Title Verification</li>
+                            <li>• Landlord / Tenant Issues</li>
+                            <li>• Contract Enforcement</li>
+                        </ul>
+                    </div>
                 </div>
-                <div class="service-box">
-                    <div class="icon-circle">💰</div>
-                    <h3>Maintenance & Alimony</h3>
-                    <p>Securing fair financial support and settlements.</p>
+
+                <div class="service-item" style="display: grid; grid-template-columns: 1fr 2fr; gap: 40px; border-bottom: 1px solid var(--border); padding-bottom: 40px;">
+                    <div>
+                        <span style="color: var(--accent); font-family: var(--font-serif); font-size: 1.2rem; font-style: italic;">03. Estate Planning</span>
+                    </div>
+                    <div>
+                        <h3 style="font-size: 2rem; margin-bottom: 20px;">Wills, Trusts & Succession</h3>
+                        <p style="color: #475569; margin-bottom: 20px;">Securing your legacy requires careful planning. We draft clear, legally sound wills and trusts to ensure your assets are distributed according to your wishes.</p>
+                        <ul style="list-style: none; color: #64748b; font-size: 0.9rem;">
+                            <li>• Will Drafting & Registration</li>
+                            <li>• Probate Services</li>
+                            <li>• Succession Certificates</li>
+                        </ul>
+                    </div>
                 </div>
-                <div class="service-box">
-                    <div class="icon-circle">🏠</div>
-                    <h3>Property Disputes</h3>
-                    <p>Landlord-tenant issues, boundary disputes, and property title verification.</p>
-                </div>
-                <div class="service-box">
-                    <div class="icon-circle">📝</div>
-                    <h3>Wills & Registration</h3>
-                    <p>Drafting legally valid wills, power of attorney, and document registration.</p>
-                </div>
-                <div class="service-box">
-                    <div class="icon-circle">⚖️</div>
-                    <h3>Consumer Complaints</h3>
-                    <p>Filing complaints in Consumer Forums for defective goods or services.</p>
-                </div>
+            </div>
+
+            <div style="margin-top: 60px; text-align: center;">
+                <p style="font-family: var(--font-serif); font-size: 1.5rem; margin-bottom: 30px;">Do you have a matter that requires our attention?</p>
+                <a href="contact.html" class="btn-editorial">Book Consultation</a>
             </div>
         </div>
     </section>
 
-    <section class="cta-banner section-padding bg-primary text-white text-center">
-        <div class="container">
-            <h2>Not sure which service you need?</h2>
-            <p style="color: #fff; margin-bottom: 2rem;">Book a 15-minute free discovery call to discuss your situation.</p>
-            <a href="contact.html" class="btn-primary" style="background: #fff; color: var(--primary) !important;">Schedule Call</a>
-        </div>
-    </section>
-
-    <footer class="footer">
-        <div class="container text-center">
-            <a href="#" class="logo-footer">Advocate.</a>
-            <p>Compassionate Counsel. Strong Representation.</p>
-            <p class="copyright">&copy; 2024 Legal Firm. All rights reserved.</p>
+    <footer style="padding: 60px 0; border-top: 1px solid var(--border);">
+        <div class="container nav-flex">
+            <span class="logo" style="font-size: 1.2rem;">The Advocate.</span>
+            <span style="color: #94a3b8; font-size: 0.9rem;">&copy; 2024 Legal Insights.</span>
         </div>
     </footer>
+
+    <script>
+        const hamburger = document.querySelector('.hamburger');
+        const mobileMenu = document.getElementById('mobileMenu');
+        hamburger.addEventListener('click', () => {
+            mobileMenu.classList.toggle('active');
+        });
+    </script>
 </body>
 </html>

@@ -3,133 +3,91 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Advocate & Associates | Premium Legal Services</title>
+    <title>Midnight Counsel | Elite Legal Defense</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- Navigation -->
+    <!-- Navbar -->
     <nav class="navbar">
-        <div class="container nav-container">
-            <a href="index.html" class="logo">JUSTICE<span class="highlight">.</span></a>
+        <div class="container nav-flex">
+            <a href="index.html" class="logo">MIDNIGHT</a>
             <ul class="nav-links">
                 <li><a href="index.html" class="active">Home</a></li>
-                <li><a href="about.html">About Firm</a></li>
-                <li><a href="practice.html">Practice Areas</a></li>
-                <li><a href="contact.html" class="btn-nav">Consultation</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="practice.html">Expertise</a></li>
+                <li><a href="contact.html">Contact</a></li>
             </ul>
-            <div class="hamburger">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
+            <div class="hamburger">☰</div>
+        </div>
+        <div class="mobile-menu" id="mobileMenu">
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="practice.html">Expertise</a>
+            <a href="contact.html">Contact</a>
         </div>
     </nav>
 
-    <!-- Hero Section -->
+    <!-- Hero -->
     <header class="hero">
-        <div class="hero-overlay"></div>
         <div class="container hero-content">
-            <span class="subtitle">Defending Your Rights Since 1998</span>
-            <h1>Uncompromising<br>Legal Excellence.</h1>
-            <p>We provide strategic counsel and aggressive representation for complex legal matters. Your victory is our only metric.</p>
-            <div class="hero-btns">
-                <a href="contact.html" class="btn btn-primary">Book Consultation</a>
-                <a href="practice.html" class="btn btn-outline">Our Expertise</a>
+            <span class="hero-subtitle">Defending The Indefensible</span>
+            <h1>Victory Is The<br>Only Verdict.</h1>
+            <p style="color: #8892b0; max-width: 500px; margin-bottom: 2rem;">Strategic counsel for high-stakes litigation. When your reputation, freedom, and assets are on the line, we are the first call.</p>
+            <a href="contact.html" class="btn-gold">Secure Representation</a>
+
+            <div class="hero-stats">
+                <div class="stat">
+                    <h3>₹50Cr+</h3>
+                    <p>Assets Recovered</p>
+                </div>
+                <div class="stat">
+                    <h3>500+</h3>
+                    <p>Wins</p>
+                </div>
+                <div class="stat">
+                    <h3>24/7</h3>
+                    <p>Crisis Response</p>
+                </div>
             </div>
         </div>
     </header>
 
-    <!-- Features / Stats -->
-    <section class="stats-section">
-        <div class="container stats-grid">
-            <div class="stat-item">
-                <h3>25+</h3>
-                <p>Years Experience</p>
-            </div>
-            <div class="stat-item">
-                <h3>500+</h3>
-                <p>Cases Won</p>
-            </div>
-            <div class="stat-item">
-                <h3>98%</h3>
-                <p>Success Rate</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Practice Areas Preview -->
-    <section class="practice-preview section-padding">
+    <!-- Expertise Preview -->
+    <section class="section-padding">
         <div class="container">
-            <div class="section-header">
-                <h2>Our Expertise</h2>
-                <div class="line"></div>
-            </div>
+            <h2 class="section-title">Core Expertise</h2>
             <div class="grid-3">
-                <div class="card">
-                    <div class="icon">⚖️</div>
-                    <h3>Family Law</h3>
-                    <p>Navigating divorce, custody, and settlements with empathy and precision.</p>
-                    <a href="practice.html" class="read-more">Learn More →</a>
+                <div class="premium-card">
+                    <h3>Corporate Defense</h3>
+                    <p>Navigating complex regulatory landscapes and defending against white-collar allegations with precision.</p>
                 </div>
-                <div class="card">
-                    <div class="icon">🏢</div>
-                    <h3>Corporate Law</h3>
-                    <p>Protecting your business interests with rock-solid contracts and litigation.</p>
-                    <a href="practice.html" class="read-more">Learn More →</a>
+                <div class="premium-card">
+                    <h3>High-Net Divorce</h3>
+                    <p>Discreetly handling settlements involving significant assets, ensuring your privacy remains intact.</p>
                 </div>
-                <div class="card">
-                    <div class="icon">🛡️</div>
-                    <h3>Criminal Defense</h3>
-                    <p>Aggressive defense strategies to protect your freedom and reputation.</p>
-                    <a href="practice.html" class="read-more">Learn More →</a>
+                <div class="premium-card">
+                    <h3>Criminal Litigation</h3>
+                    <p>Aggressive courtroom strategies designed to dismantle the prosecution's case piece by piece.</p>
                 </div>
             </div>
-        </div>
-    </section>
-
-    <!-- CTA Section -->
-    <section class="cta-section">
-        <div class="container">
-            <h2>Legal issues don't wait.<br>Neither should you.</h2>
-            <a href="contact.html" class="btn btn-gold">Get Free Advice</a>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="footer">
-        <div class="container footer-grid">
-            <div class="footer-col">
-                <h3>JUSTICE.</h3>
-                <p>Pune's premier legal firm dedicated to delivering results.</p>
-            </div>
-            <div class="footer-col">
-                <h4>Quick Links</h4>
-                <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="about.html">About</a></li>
-                    <li><a href="practice.html">Services</a></li>
-                </ul>
-            </div>
-            <div class="footer-col">
-                <h4>Contact</h4>
-                <p>📞 +91 98765 43210</p>
-                <p>📍 Shivajinagar, Pune</p>
-            </div>
-        </div>
-        <div class="copyright">
-            <p>&copy; 2024 Justice Legal. Built by NetworkBuilder.</p>
+    <footer style="padding: 50px 0; border-top: 1px solid rgba(255,255,255,0.05);">
+        <div class="container text-center">
+            <p style="color: #8892b0; font-size: 0.9rem;">&copy; 2024 Midnight Counsel. All Rights Reserved.</p>
         </div>
     </footer>
 
     <script>
-        // Simple Mobile Menu
         const hamburger = document.querySelector('.hamburger');
-        const navLinks = document.querySelector('.nav-links');
+        const mobileMenu = document.getElementById('mobileMenu');
         hamburger.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
+            mobileMenu.classList.toggle('active');
         });
     </script>
 </body>
