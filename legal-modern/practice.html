@@ -1,103 +1,251 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Practice Areas | Advocate & Associates</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    <title>Practice Areas | Midnight Counsel</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        midnight: '#1a1a2e',
+                        gold: '#c5a059',
+                        surface: '#16213e'
+                    },
+                    fontFamily: {
+                        serif: ['Playfair Display', 'serif'],
+                        sans: ['Inter', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #1a1a2e;
+            color: #fff;
+        }
+
+        h1,
+        h2,
+        h3 {
+            font-family: 'Playfair Display', serif;
+        }
+    </style>
 </head>
-<body>
-    <!-- Navigation -->
-    <nav class="navbar">
-        <div class="container nav-container">
-            <a href="index.html" class="logo">JUSTICE<span class="highlight">.</span></a>
-            <ul class="nav-links">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="about.html">About Firm</a></li>
-                <li><a href="practice.html" class="active">Practice Areas</a></li>
-                <li><a href="contact.html" class="btn-nav">Consultation</a></li>
-            </ul>
+
+<body class="pt-16">
+
+    <!-- Navbar -->
+    <nav
+        class="fixed top-0 w-full z-50 bg-midnight/90 backdrop-blur-md border-b border-white/10 h-16 flex items-center">
+        <div class="container mx-auto px-6 flex justify-between items-center">
+            <a href="index.html" class="text-xl font-bold tracking-widest text-gold uppercase">Midnight</a>
+
+            <!-- Desktop Menu -->
+            <div class="hidden md:flex space-x-8">
+                <a href="index.html"
+                    class="text-sm uppercase tracking-wider text-gray-400 hover:text-gold transition">Home</a>
+                <a href="about.html"
+                    class="text-sm uppercase tracking-wider text-gray-400 hover:text-gold transition">About</a>
+                <a href="practice.html" class="text-sm uppercase tracking-wider text-gold font-semibold">Expertise</a>
+                <a href="results.html"
+                    class="text-sm uppercase tracking-wider text-gray-400 hover:text-gold transition">Results</a>
+                <a href="contact.html"
+                    class="text-sm uppercase tracking-wider text-gray-400 hover:text-gold transition">Contact</a>
+            </div>
+
+            <!-- Mobile Hamburger -->
+            <button class="md:hidden text-gold text-2xl"
+                onclick="document.getElementById('mobile-menu').classList.toggle('hidden')">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu"
+            class="hidden absolute top-16 left-0 w-full bg-midnight border-b border-gold p-6 flex flex-col space-y-4 md:hidden">
+            <a href="index.html" class="text-gray-400 uppercase tracking-wider">Home</a>
+            <a href="about.html" class="text-gray-400 uppercase tracking-wider">About</a>
+            <a href="practice.html" class="text-gold uppercase tracking-wider">Expertise</a>
+            <a href="results.html" class="text-gray-400 uppercase tracking-wider">Results</a>
+            <a href="contact.html" class="text-gray-400 uppercase tracking-wider">Contact</a>
         </div>
     </nav>
 
-    <!-- Page Header -->
-    <header class="page-header" style="background-image: url('https://images.unsplash.com/photo-1505664194779-8beaceb93744?ixlib=rb-1.2.1&auto=format&fit=crop&w=1500&q=80');">
-        <div class="container">
-            <h1>Expertise.</h1>
-            <p>Comprehensive Legal Solutions for Critical Matters.</p>
+    <!-- Header -->
+    <header class="relative h-[50vh] flex items-center justify-center overflow-hidden">
+        <div class="absolute inset-0 z-0">
+            <img src="https://images.unsplash.com/photo-1505664194779-8beaceb93744?ixlib=rb-1.2.1&auto=format&fit=crop&w=1500&q=80"
+                class="w-full h-full object-cover opacity-30">
+            <div class="absolute inset-0 bg-gradient-to-b from-midnight/50 via-midnight/50 to-midnight"></div>
+        </div>
+
+        <div class="container mx-auto px-6 relative z-10 text-center">
+            <span class="text-gold uppercase tracking-[0.2em] text-sm font-semibold mb-4 block">Comprehensive
+                Solutions</span>
+            <h1 class="text-5xl md:text-6xl font-bold mb-6">Our Expertise<span class="text-gold">.</span></h1>
+            <p class="text-gray-400 text-lg max-w-2xl mx-auto leading-relaxed">
+                We handle critical matters with discretion, dominance, and a relentless pursuit of victory.
+            </p>
         </div>
     </header>
 
-    <!-- Content -->
-    <section class="section-padding">
-        <div class="container">
-            <div class="grid-3 practice-grid">
-                <div class="card">
-                    <div class="icon">⚖️</div>
-                    <h3>Family Law</h3>
-                    <p>Divorce, Child Custody, Alimony, Marriage Registration, and Domestic Violence cases. We handle sensitive family matters with discretion.</p>
-                </div>
-                <div class="card">
-                    <div class="icon">🏢</div>
-                    <h3>Corporate Law</h3>
-                    <p>Company Formation, Mergers & Acquisitions, Contracts, Compliance, and Commercial Litigation for businesses of all sizes.</p>
-                </div>
-                <div class="card">
-                    <div class="icon">🛡️</div>
-                    <h3>Criminal Defense</h3>
-                    <p>Bail matters, Cyber Crime, fraud defense, and rigorous representation in Sessions and High Court.</p>
-                </div>
-                <div class="card">
-                    <div class="icon">🏠</div>
-                    <h3>Property Disputes</h3>
-                    <p>Real Estate litigation, Land Acquisition, Title Verification, and Lease Agreements.</p>
-                </div>
-                <div class="card">
-                    <div class="icon">📝</div>
-                    <h3>Wills & Trusts</h3>
-                    <p>Succession Planning, Probate, Estate Management, and crafting legally sound Wills.</p>
-                </div>
-                <div class="card">
-                    <div class="icon">🚦</div>
-                    <h3>Consumer Rights</h3>
-                    <p>Fighting for consumer justice against unfair trade practices and product liability.</p>
-                </div>
-            </div>
-        </div>
-    </section>
+    <!-- Practice Areas Grid -->
+    <section class="py-24 bg-midnight">
+        <div class="container mx-auto px-6">
+            <div class="grid md:grid-cols-3 gap-8">
 
-    <!-- CTA -->
-    <section class="cta-section">
-        <div class="container">
-            <h2>Need Specific Legal Advice?</h2>
-            <p>Our initial consultation helps clarify your position and strategy.</p>
-            <a href="contact.html" class="btn btn-gold">Speak to an Expert</a>
+                <!-- Family Law -->
+                <div
+                    class="group p-8 border border-white/5 bg-white/5 hover:border-gold hover:-translate-y-2 transition duration-300">
+                    <i class="fa-solid fa-user-group text-3xl text-gold mb-6"></i>
+                    <h3 class="text-2xl font-bold mb-4 group-hover:text-gold transition">Family Law</h3>
+                    <p class="text-gray-400 mb-6 leading-relaxed">Divorce, Child Custody, Alimony, Marriage
+                        Registration, and Domestic Violence cases. We handle sensitive family matters with discretion.
+                    </p>
+                </div>
+
+                <!-- Corporate Law -->
+                <div
+                    class="group p-8 border border-white/5 bg-white/5 hover:border-gold hover:-translate-y-2 transition duration-300">
+                    <i class="fa-solid fa-building text-3xl text-gold mb-6"></i>
+                    <h3 class="text-2xl font-bold mb-4 group-hover:text-gold transition">Corporate Law</h3>
+                    <p class="text-gray-400 mb-6 leading-relaxed">Company Formation, Mergers & Acquisitions, Contracts,
+                        Compliance, and Commercial Litigation for businesses of all sizes.</p>
+                </div>
+
+                <!-- Criminal Defense -->
+                <div
+                    class="group p-8 border border-white/5 bg-white/5 hover:border-gold hover:-translate-y-2 transition duration-300">
+                    <i class="fa-solid fa-gavel text-3xl text-gold mb-6"></i>
+                    <h3 class="text-2xl font-bold mb-4 group-hover:text-gold transition">Criminal Defense</h3>
+                    <p class="text-gray-400 mb-6 leading-relaxed">Bail matters, Cyber Crime, fraud defense, and rigorous
+                        representation in Sessions and High Court.</p>
+                </div>
+
+                <!-- Property Disputes -->
+                <div
+                    class="group p-8 border border-white/5 bg-white/5 hover:border-gold hover:-translate-y-2 transition duration-300">
+                    <i class="fa-solid fa-house text-3xl text-gold mb-6"></i>
+                    <h3 class="text-2xl font-bold mb-4 group-hover:text-gold transition">Property Disputes</h3>
+                    <p class="text-gray-400 mb-6 leading-relaxed">Real Estate litigation, Land Acquisition, Title
+                        Verification, and Lease Agreements.</p>
+                </div>
+
+                <!-- Wills & Trusts -->
+                <div
+                    class="group p-8 border border-white/5 bg-white/5 hover:border-gold hover:-translate-y-2 transition duration-300">
+                    <i class="fa-solid fa-file-signature text-3xl text-gold mb-6"></i>
+                    <h3 class="text-2xl font-bold mb-4 group-hover:text-gold transition">Wills & Trusts</h3>
+                    <p class="text-gray-400 mb-6 leading-relaxed">Succession Planning, Probate, Estate Management, and
+                        crafting legally sound Wills.</p>
+                </div>
+
+                <!-- Consumer Rights -->
+                <div
+                    class="group p-8 border border-white/5 bg-white/5 hover:border-gold hover:-translate-y-2 transition duration-300">
+                    <i class="fa-solid fa-scale-balanced text-3xl text-gold mb-6"></i>
+                    <h3 class="text-2xl font-bold mb-4 group-hover:text-gold transition">Consumer Rights</h3>
+                    <p class="text-gray-400 mb-6 leading-relaxed">Fighting for consumer justice against unfair trade
+                        practices and product liability.</p>
+                </div>
+
+            </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="footer">
-        <div class="container footer-grid">
-            <div class="footer-col">
-                <h3>JUSTICE.</h3>
-                <p>Pune's premier legal firm.</p>
+    <footer class="bg-black/40 pt-16 pb-8 border-t border-white/5">
+        <div class="container mx-auto px-6">
+            <div class="grid md:grid-cols-4 gap-12 mb-12">
+                <!-- Brand -->
+                <div class="space-y-4">
+                    <a href="index.html"
+                        class="text-2xl font-bold text-gold uppercase tracking-widest block">Midnight</a>
+                    <p class="text-gray-400 text-sm leading-relaxed">
+                        Victory is the only verdict. We provide aggressive, strategic representation for high-stakes
+                        legal matters.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-gold transition"><i
+                                class="fa-brands fa-linkedin text-xl"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-gold transition"><i
+                                class="fa-brands fa-twitter text-xl"></i></a>
+                    </div>
+                </div>
+
+                <!-- Quick Links -->
+                <div>
+                    <h4 class="text-white font-bold uppercase tracking-widest text-xs mb-6">Quick Links</h4>
+                    <ul class="space-y-3">
+                        <li><a href="index.html" class="text-gray-400 hover:text-gold text-sm transition">Home</a></li>
+                        <li><a href="about.html" class="text-gray-400 hover:text-gold text-sm transition">About Us</a>
+                        </li>
+                        <li><a href="practice.html"
+                                class="text-gray-400 hover:text-gold text-sm transition">Expertise</a></li>
+                        <li><a href="results.html" class="text-gray-400 hover:text-gold text-sm transition">Results</a>
+                        </li>
+                        <li><a href="contact.html" class="text-gray-400 hover:text-gold text-sm transition">Contact</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Expertise -->
+                <div>
+                    <h4 class="text-white font-bold uppercase tracking-widest text-xs mb-6">Expertise</h4>
+                    <ul class="space-y-3">
+                        <li><a href="practice.html" class="text-gray-400 hover:text-gold text-sm transition">Criminal
+                                Defense</a></li>
+                        <li><a href="practice.html" class="text-gray-400 hover:text-gold text-sm transition">Corporate
+                                Litigation</a></li>
+                        <li><a href="practice.html" class="text-gray-400 hover:text-gold text-sm transition">Family
+                                Law</a></li>
+                        <li><a href="practice.html" class="text-gray-400 hover:text-gold text-sm transition">Property
+                                Disputes</a></li>
+                        <li><a href="practice.html" class="text-gray-400 hover:text-gold text-sm transition">White
+                                Collar Crime</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact -->
+                <div>
+                    <h4 class="text-white font-bold uppercase tracking-widest text-xs mb-6">Connect</h4>
+                    <ul class="space-y-4">
+                        <li class="flex items-start gap-3 text-gray-400 text-sm">
+                            <i class="fa-solid fa-location-dot mt-1 text-gold"></i>
+                            <span>Shivajinagar, Pune 411005<br>Maharashtra, India</span>
+                        </li>
+                        <li class="flex items-center gap-3 text-gray-400 text-sm">
+                            <i class="fa-solid fa-phone text-gold"></i>
+                            <span>+91 98765 43210</span>
+                        </li>
+                        <li class="flex items-center gap-3 text-gray-400 text-sm">
+                            <i class="fa-solid fa-envelope text-gold"></i>
+                            <span>counsel@midnightlegal.com</span>
+                        </li>
+                    </ul>
+                </div>
             </div>
-            <div class="footer-col">
-                <h4>Quick Links</h4>
-                <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="about.html">About</a></li>
-                    <li><a href="practice.html">Services</a></li>
-                </ul>
-            </div>
-            <div class="footer-col">
-                <h4>Contact</h4>
-                <p>📞 +91 98765 43210</p>
+
+            <!-- Bottom Bar -->
+            <div
+                class="border-t border-white/5 pt-8 flex flex-col md:flex-row justify-between items-center bg-transparent">
+                <p class="text-gray-600 text-xs">&copy; 2024 Midnight Counsel. Confidential & Privileged.</p>
+                <p class="text-gray-600 text-xs mt-2 md:mt-0">Attorney Advertisement. Past results do not guarantee
+                    future outcomes.</p>
             </div>
         </div>
     </footer>
+
 </body>
+
 </html>

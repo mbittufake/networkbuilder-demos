@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -22,34 +23,70 @@
             }
         }
     </script>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;600&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        body { font-family: 'Inter', sans-serif; background-color: #1a1a2e; color: #fff; }
-        h1, h2, h3 { font-family: 'Playfair Display', serif; }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #1a1a2e;
+            color: #fff;
+        }
+
+        h1,
+        h2,
+        h3 {
+            font-family: 'Playfair Display', serif;
+        }
     </style>
 </head>
+
 <body class="pt-16">
 
     <!-- Navbar -->
-    <nav class="fixed top-0 w-full z-50 bg-midnight/90 backdrop-blur-md border-b border-white/10 h-16 flex items-center">
+    <nav
+        class="fixed top-0 w-full z-50 bg-midnight/90 backdrop-blur-md border-b border-white/10 h-16 flex items-center">
         <div class="container mx-auto px-6 flex justify-between items-center">
             <a href="index.html" class="text-xl font-bold tracking-widest text-gold uppercase">Midnight</a>
+
+            <!-- Desktop Menu -->
             <div class="hidden md:flex space-x-8">
-                <a href="index.html" class="text-sm uppercase tracking-wider text-gray-400 hover:text-gold transition">Home</a>
-                <a href="about.html" class="text-sm uppercase tracking-wider text-gray-400 hover:text-gold transition">About</a>
-                <a href="practice.html" class="text-sm uppercase tracking-wider text-gray-400 hover:text-gold transition">Expertise</a>
+                <a href="index.html"
+                    class="text-sm uppercase tracking-wider text-gray-400 hover:text-gold transition">Home</a>
+                <a href="about.html"
+                    class="text-sm uppercase tracking-wider text-gray-400 hover:text-gold transition">About</a>
+                <a href="practice.html"
+                    class="text-sm uppercase tracking-wider text-gray-400 hover:text-gold transition">Expertise</a>
+                <a href="results.html"
+                    class="text-sm uppercase tracking-wider text-gray-400 hover:text-gold transition">Results</a>
                 <a href="contact.html" class="text-sm uppercase tracking-wider text-gold font-semibold">Contact</a>
             </div>
+
+            <!-- Mobile Hamburger -->
+            <button class="md:hidden text-gold text-2xl"
+                onclick="document.getElementById('mobile-menu').classList.toggle('hidden')">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu"
+            class="hidden absolute top-16 left-0 w-full bg-midnight border-b border-gold p-6 flex flex-col space-y-4 md:hidden">
+            <a href="index.html" class="text-gray-400 uppercase tracking-wider">Home</a>
+            <a href="about.html" class="text-gray-400 uppercase tracking-wider">About</a>
+            <a href="practice.html" class="text-gray-400 uppercase tracking-wider">Expertise</a>
+            <a href="results.html" class="text-gray-400 uppercase tracking-wider">Results</a>
+            <a href="contact.html" class="text-gold uppercase tracking-wider">Contact</a>
         </div>
     </nav>
 
     <!-- Contact Section -->
     <section class="min-h-screen flex items-center py-20 bg-midnight relative overflow-hidden">
         <div class="absolute inset-0 bg-gradient-to-br from-surface/50 to-midnight z-0"></div>
-        
+
         <div class="container mx-auto px-6 relative z-10 grid md:grid-cols-2 gap-16 items-start">
-            
+
             <!-- Info Side -->
             <div class="space-y-10 pt-10">
                 <div>
@@ -80,18 +117,25 @@
             <div class="bg-surface/50 backdrop-blur-sm p-10 border border-white/5 rounded-lg shadow-2xl">
                 <form class="space-y-6">
                     <div>
-                        <label class="block text-xs uppercase tracking-widest text-gray-500 mb-2">Full Name (Required)</label>
-                        <input type="text" class="w-full bg-midnight/50 border-b border-gray-700 text-white py-3 focus:outline-none focus:border-gold transition placeholder-gray-600" placeholder="e.g. Rajesh Kumar">
+                        <label class="block text-xs uppercase tracking-widest text-gray-500 mb-2">Full Name
+                            (Required)</label>
+                        <input type="text"
+                            class="w-full bg-midnight/50 border-b border-gray-700 text-white py-3 focus:outline-none focus:border-gold transition placeholder-gray-600"
+                            placeholder="e.g. Rajesh Kumar">
                     </div>
 
                     <div>
-                        <label class="block text-xs uppercase tracking-widest text-gray-500 mb-2">Secure Phone Number</label>
-                        <input type="tel" class="w-full bg-midnight/50 border-b border-gray-700 text-white py-3 focus:outline-none focus:border-gold transition placeholder-gray-600" placeholder="+91 ...">
+                        <label class="block text-xs uppercase tracking-widest text-gray-500 mb-2">Secure Phone
+                            Number</label>
+                        <input type="tel"
+                            class="w-full bg-midnight/50 border-b border-gray-700 text-white py-3 focus:outline-none focus:border-gold transition placeholder-gray-600"
+                            placeholder="+91 ...">
                     </div>
 
                     <div>
                         <label class="block text-xs uppercase tracking-widest text-gray-500 mb-2">Matter Urgency</label>
-                        <select class="w-full bg-midnight/50 border-b border-gray-700 text-white py-3 focus:outline-none focus:border-gold transition text-gray-400">
+                        <select
+                            class="w-full bg-midnight/50 border-b border-gray-700 text-white py-3 focus:outline-none focus:border-gold transition text-gray-400">
                             <option>Immediate / Arrest</option>
                             <option>Civil Litigation</option>
                             <option>Consultation Request</option>
@@ -99,11 +143,15 @@
                     </div>
 
                     <div>
-                        <label class="block text-xs uppercase tracking-widest text-gray-500 mb-2">Brief Description (Privileged)</label>
-                        <textarea rows="4" class="w-full bg-midnight/50 border-b border-gray-700 text-white py-3 focus:outline-none focus:border-gold transition placeholder-gray-600" placeholder="Describe the matter briefly..."></textarea>
+                        <label class="block text-xs uppercase tracking-widest text-gray-500 mb-2">Brief Description
+                            (Privileged)</label>
+                        <textarea rows="4"
+                            class="w-full bg-midnight/50 border-b border-gray-700 text-white py-3 focus:outline-none focus:border-gold transition placeholder-gray-600"
+                            placeholder="Describe the matter briefly..."></textarea>
                     </div>
 
-                    <button type="submit" class="w-full bg-gold text-midnight font-bold uppercase tracking-wider py-4 mt-6 hover:bg-white transition duration-300">
+                    <button type="submit"
+                        class="w-full bg-gold text-midnight font-bold uppercase tracking-wider py-4 mt-6 hover:bg-white transition duration-300">
                         Transmit Securely
                     </button>
                 </form>
@@ -111,5 +159,89 @@
         </div>
     </section>
 
+    <!-- Footer -->
+    <footer class="bg-black/40 pt-16 pb-8 border-t border-white/5">
+        <div class="container mx-auto px-6">
+            <div class="grid md:grid-cols-4 gap-12 mb-12">
+                <!-- Brand -->
+                <div class="space-y-4">
+                    <a href="index.html"
+                        class="text-2xl font-bold text-gold uppercase tracking-widest block">Midnight</a>
+                    <p class="text-gray-400 text-sm leading-relaxed">
+                        Victory is the only verdict. We provide aggressive, strategic representation for high-stakes
+                        legal matters.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-gold transition"><i
+                                class="fa-brands fa-linkedin text-xl"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-gold transition"><i
+                                class="fa-brands fa-twitter text-xl"></i></a>
+                    </div>
+                </div>
+
+                <!-- Quick Links -->
+                <div>
+                    <h4 class="text-white font-bold uppercase tracking-widest text-xs mb-6">Quick Links</h4>
+                    <ul class="space-y-3">
+                        <li><a href="index.html" class="text-gray-400 hover:text-gold text-sm transition">Home</a></li>
+                        <li><a href="about.html" class="text-gray-400 hover:text-gold text-sm transition">About Us</a>
+                        </li>
+                        <li><a href="practice.html"
+                                class="text-gray-400 hover:text-gold text-sm transition">Expertise</a></li>
+                        <li><a href="results.html" class="text-gray-400 hover:text-gold text-sm transition">Results</a>
+                        </li>
+                        <li><a href="contact.html" class="text-gray-400 hover:text-gold text-sm transition">Contact</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Expertise -->
+                <div>
+                    <h4 class="text-white font-bold uppercase tracking-widest text-xs mb-6">Expertise</h4>
+                    <ul class="space-y-3">
+                        <li><a href="practice.html" class="text-gray-400 hover:text-gold text-sm transition">Criminal
+                                Defense</a></li>
+                        <li><a href="practice.html" class="text-gray-400 hover:text-gold text-sm transition">Corporate
+                                Litigation</a></li>
+                        <li><a href="practice.html" class="text-gray-400 hover:text-gold text-sm transition">Family
+                                Law</a></li>
+                        <li><a href="practice.html" class="text-gray-400 hover:text-gold text-sm transition">Property
+                                Disputes</a></li>
+                        <li><a href="practice.html" class="text-gray-400 hover:text-gold text-sm transition">White
+                                Collar Crime</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact -->
+                <div>
+                    <h4 class="text-white font-bold uppercase tracking-widest text-xs mb-6">Connect</h4>
+                    <ul class="space-y-4">
+                        <li class="flex items-start gap-3 text-gray-400 text-sm">
+                            <i class="fa-solid fa-location-dot mt-1 text-gold"></i>
+                            <span>Shivajinagar, Pune 411005<br>Maharashtra, India</span>
+                        </li>
+                        <li class="flex items-center gap-3 text-gray-400 text-sm">
+                            <i class="fa-solid fa-phone text-gold"></i>
+                            <span>+91 98765 43210</span>
+                        </li>
+                        <li class="flex items-center gap-3 text-gray-400 text-sm">
+                            <i class="fa-solid fa-envelope text-gold"></i>
+                            <span>counsel@midnightlegal.com</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Bottom Bar -->
+            <div
+                class="border-t border-white/5 pt-8 flex flex-col md:flex-row justify-between items-center bg-transparent">
+                <p class="text-gray-600 text-xs">&copy; 2024 Midnight Counsel. Confidential & Privileged.</p>
+                <p class="text-gray-600 text-xs mt-2 md:mt-0">Attorney Advertisement. Past results do not guarantee
+                    future outcomes.</p>
+            </div>
+        </div>
+    </footer>
+
 </body>
+
 </html>

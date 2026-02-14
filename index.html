@@ -1,11 +1,14 @@
 <!DOCTYPE html>
 <html lang="en" class="bg-black text-white antialiased selection:bg-white selection:text-black">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Network Builder | Premium Digital Solutions</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700&family=Instrument+Serif:ital@0;1&display=swap"
+        rel="stylesheet">
     <script>
         tailwind.config = {
             theme: {
@@ -27,121 +30,202 @@
         }
     </script>
     <style>
-        .preview-card:hover .preview-img { transform: scale(1.05); }
-        .preview-overlay { background: linear-gradient(to top, rgba(0,0,0,0.9), transparent); }
+        .preview-card:hover .preview-img {
+            transform: scale(1.05);
+        }
+
+        .preview-overlay {
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.9), transparent);
+        }
     </style>
 </head>
+
 <body class="min-h-screen flex flex-col justify-center">
 
     <!-- Navbar -->
     <nav class="absolute top-0 w-full z-50 px-6 py-8 mix-blend-difference">
         <div class="max-w-[1400px] mx-auto flex justify-between items-center">
             <span class="text-xl font-bold tracking-tighter">Network<span class="text-gray-500">Builder</span></span>
-            <a href="https://networkbuilder.in" class="text-xs uppercase tracking-widest hover:text-gray-400 transition">Main Site →</a>
+            <a href="https://networkbuilder.in"
+                class="text-xs uppercase tracking-widest hover:text-gray-400 transition">Main Site →</a>
         </div>
     </nav>
 
     <!-- Content -->
     <main class="w-full max-w-[1400px] mx-auto px-4 md:px-6 py-24">
-        
+
         <div class="text-center mb-16 animate-slide-up">
-            <span class="border border-white/20 rounded-full px-4 py-1 text-xs uppercase tracking-widest text-gray-400 mb-6 inline-block">Design Portfolio 2026</span>
+            <span
+                class="border border-white/20 rounded-full px-4 py-1 text-xs uppercase tracking-widest text-gray-400 mb-6 inline-block">Design
+                Portfolio 2026</span>
             <h1 class="text-5xl md:text-7xl font-serif italic mb-4">Select Your Industry</h1>
         </div>
 
-        <!-- Gallery Grid (Centered 4 Cards) -->
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-4 gap-6 max-w-[1400px] mx-auto">
+        <!-- Gallery Grid (Centered 5 Cards) -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-[1400px] mx-auto">
 
             <!-- Card 1: Medical -->
-            <a href="./medical/index.html" class="preview-card group relative h-[450px] rounded-[2rem] overflow-hidden block border border-white/10 opacity-0 animate-slide-up" style="animation-delay: 0.1s">
-                <div class="absolute inset-0 bg-blue-900/20 z-10 group-hover:bg-blue-900/0 transition duration-500"></div>
+            <a href="./medical/index.html"
+                class="preview-card group relative h-[450px] rounded-[2rem] overflow-hidden block border border-white/10 opacity-0 animate-slide-up"
+                style="animation-delay: 0.1s">
+                <div class="absolute inset-0 bg-blue-900/20 z-10 group-hover:bg-blue-900/0 transition duration-500">
+                </div>
                 <div class="absolute inset-0 preview-overlay z-20"></div>
-                
-                <!-- Image -->
-                <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?q=80&w=800&auto=format&fit=crop" class="preview-img w-full h-full object-cover transition duration-700 grayscale group-hover:grayscale-0" alt="Medical">
-                
-                <!-- Content -->
+                <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?q=80&w=800&auto=format&fit=crop"
+                    class="preview-img w-full h-full object-cover transition duration-700 grayscale group-hover:grayscale-0"
+                    alt="Medical">
                 <div class="absolute bottom-0 left-0 p-8 z-30 w-full">
                     <div class="flex justify-between items-end mb-3">
-                        <span class="text-xs font-bold bg-white text-black px-3 py-1 rounded-full uppercase tracking-wider">Healthcare</span>
-                        <div class="w-10 h-10 rounded-full bg-white text-black flex items-center justify-center opacity-0 group-hover:opacity-100 transition transform translate-y-4 group-hover:translate-y-0 scale-75 group-hover:scale-100 duration-300">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7 17L17 7M17 7H7M17 7V17" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        <span
+                            class="text-xs font-bold bg-white text-black px-3 py-1 rounded-full uppercase tracking-wider">Healthcare</span>
+                        <div
+                            class="w-10 h-10 rounded-full bg-white text-black flex items-center justify-center opacity-0 group-hover:opacity-100 transition transform translate-y-4 group-hover:translate-y-0 scale-75 group-hover:scale-100 duration-300">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path d="M7 17L17 7M17 7H7M17 7V17" stroke="currentColor" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
                         </div>
                     </div>
                     <h2 class="text-3xl font-serif mb-1 group-hover:translate-x-1 transition duration-300">Nexus</h2>
-                    <p class="text-gray-400 text-xs opacity-0 group-hover:opacity-100 transition duration-500 translate-y-2 group-hover:translate-y-0">Clean, Modern Tech.</p>
+                    <p
+                        class="text-gray-400 text-xs opacity-0 group-hover:opacity-100 transition duration-500 translate-y-2 group-hover:translate-y-0">
+                        Clean, Modern Tech.</p>
                 </div>
             </a>
 
-            <!-- Card 2: Legal -->
-            <a href="./legal/index.html" class="preview-card group relative h-[450px] rounded-[2rem] overflow-hidden block border border-white/10 opacity-0 animate-slide-up" style="animation-delay: 0.2s">
-                <div class="absolute inset-0 bg-yellow-900/20 z-10 group-hover:bg-yellow-900/0 transition duration-500"></div>
+            <!-- Card 2: Legal Modern -->
+            <a href="./legal-modern/index.html"
+                class="preview-card group relative h-[450px] rounded-[2rem] overflow-hidden block border border-white/10 opacity-0 animate-slide-up"
+                style="animation-delay: 0.2s">
+                <div class="absolute inset-0 bg-yellow-900/20 z-10 group-hover:bg-yellow-900/0 transition duration-500">
+                </div>
                 <div class="absolute inset-0 preview-overlay z-20"></div>
-                
-                <!-- Image -->
-                <img src="https://images.unsplash.com/photo-1505664194779-8beaceb93744?q=80&w=800&auto=format&fit=crop" class="preview-img w-full h-full object-cover transition duration-700 grayscale group-hover:grayscale-0" alt="Legal">
-                
-                <!-- Content -->
+                <img src="https://images.unsplash.com/photo-1505664194779-8beaceb93744?q=80&w=800&auto=format&fit=crop"
+                    class="preview-img w-full h-full object-cover transition duration-700 grayscale group-hover:grayscale-0"
+                    alt="Legal Modern">
                 <div class="absolute bottom-0 left-0 p-8 z-30 w-full">
                     <div class="flex justify-between items-end mb-3">
-                        <span class="text-xs font-bold bg-white text-black px-3 py-1 rounded-full uppercase tracking-wider">Legal</span>
-                        <div class="w-10 h-10 rounded-full bg-white text-black flex items-center justify-center opacity-0 group-hover:opacity-100 transition transform translate-y-4 group-hover:translate-y-0 scale-75 group-hover:scale-100 duration-300">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7 17L17 7M17 7H7M17 7V17" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        <span
+                            class="text-xs font-bold bg-white text-black px-3 py-1 rounded-full uppercase tracking-wider">Legal
+                            • Modern</span>
+                        <div
+                            class="w-10 h-10 rounded-full bg-white text-black flex items-center justify-center opacity-0 group-hover:opacity-100 transition transform translate-y-4 group-hover:translate-y-0 scale-75 group-hover:scale-100 duration-300">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path d="M7 17L17 7M17 7H7M17 7V17" stroke="currentColor" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
                         </div>
                     </div>
-                    <h2 class="text-3xl font-serif mb-1 group-hover:translate-x-1 transition duration-300">Vantage</h2>
-                    <p class="text-gray-400 text-xs opacity-0 group-hover:opacity-100 transition duration-500 translate-y-2 group-hover:translate-y-0">Luxury, Dark Mode.</p>
+                    <h2 class="text-3xl font-serif mb-1 group-hover:translate-x-1 transition duration-300">Midnight
+                        Counsel</h2>
+                    <p
+                        class="text-gray-400 text-xs opacity-0 group-hover:opacity-100 transition duration-500 translate-y-2 group-hover:translate-y-0">
+                        High-Stakes Litigation.</p>
                 </div>
             </a>
 
-            <!-- Card 3: Dental -->
-            <a href="./dental/index.html" class="preview-card group relative h-[450px] rounded-[2rem] overflow-hidden block border border-white/10 opacity-0 animate-slide-up" style="animation-delay: 0.3s">
-                <div class="absolute inset-0 bg-teal-900/20 z-10 group-hover:bg-teal-900/0 transition duration-500"></div>
+            <!-- Card 3: Legal Minimal -->
+            <a href="./legal-minimal/index.html"
+                class="preview-card group relative h-[450px] rounded-[2rem] overflow-hidden block border border-white/10 opacity-0 animate-slide-up"
+                style="animation-delay: 0.3s">
+                <div class="absolute inset-0 bg-stone-800/20 z-10 group-hover:bg-stone-800/0 transition duration-500">
+                </div>
                 <div class="absolute inset-0 preview-overlay z-20"></div>
-                
-                <!-- Image -->
-                <img src="https://images.unsplash.com/photo-1606811841689-23dfddce3e95?q=80&w=800&auto=format&fit=crop" class="preview-img w-full h-full object-cover transition duration-700 grayscale group-hover:grayscale-0" alt="Dental">
-                
-                <!-- Content -->
+                <img src="https://images.unsplash.com/photo-1589829085413-56de8ae18c73?q=80&w=800&auto=format&fit=crop"
+                    class="preview-img w-full h-full object-cover transition duration-700 grayscale group-hover:grayscale-0"
+                    alt="Legal Minimal">
                 <div class="absolute bottom-0 left-0 p-8 z-30 w-full">
                     <div class="flex justify-between items-end mb-3">
-                        <span class="text-xs font-bold bg-white text-black px-3 py-1 rounded-full uppercase tracking-wider">Dental</span>
-                        <div class="w-10 h-10 rounded-full bg-white text-black flex items-center justify-center opacity-0 group-hover:opacity-100 transition transform translate-y-4 group-hover:translate-y-0 scale-75 group-hover:scale-100 duration-300">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7 17L17 7M17 7H7M17 7V17" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        <span
+                            class="text-xs font-bold bg-white text-black px-3 py-1 rounded-full uppercase tracking-wider">Legal
+                            • Brief</span>
+                        <div
+                            class="w-10 h-10 rounded-full bg-white text-black flex items-center justify-center opacity-0 group-hover:opacity-100 transition transform translate-y-4 group-hover:translate-y-0 scale-75 group-hover:scale-100 duration-300">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path d="M7 17L17 7M17 7H7M17 7V17" stroke="currentColor" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                        </div>
+                    </div>
+                    <h2 class="text-3xl font-serif mb-1 group-hover:translate-x-1 transition duration-300">The Advocate
+                    </h2>
+                    <p
+                        class="text-gray-400 text-xs opacity-0 group-hover:opacity-100 transition duration-500 translate-y-2 group-hover:translate-y-0">
+                        Editorial & Boutique.</p>
+                </div>
+            </a>
+
+            <!-- Card 4: Dental -->
+            <a href="./dental/index.html"
+                class="preview-card group relative h-[450px] rounded-[2rem] overflow-hidden block border border-white/10 opacity-0 animate-slide-up"
+                style="animation-delay: 0.4s">
+                <div class="absolute inset-0 bg-teal-900/20 z-10 group-hover:bg-teal-900/0 transition duration-500">
+                </div>
+                <div class="absolute inset-0 preview-overlay z-20"></div>
+                <img src="https://images.unsplash.com/photo-1606811841689-23dfddce3e95?q=80&w=800&auto=format&fit=crop"
+                    class="preview-img w-full h-full object-cover transition duration-700 grayscale group-hover:grayscale-0"
+                    alt="Dental">
+                <div class="absolute bottom-0 left-0 p-8 z-30 w-full">
+                    <div class="flex justify-between items-end mb-3">
+                        <span
+                            class="text-xs font-bold bg-white text-black px-3 py-1 rounded-full uppercase tracking-wider">Dental</span>
+                        <div
+                            class="w-10 h-10 rounded-full bg-white text-black flex items-center justify-center opacity-0 group-hover:opacity-100 transition transform translate-y-4 group-hover:translate-y-0 scale-75 group-hover:scale-100 duration-300">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path d="M7 17L17 7M17 7H7M17 7V17" stroke="currentColor" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
                         </div>
                     </div>
                     <h2 class="text-3xl font-serif mb-1 group-hover:translate-x-1 transition duration-300">Lumina</h2>
-                    <p class="text-gray-400 text-xs opacity-0 group-hover:opacity-100 transition duration-500 translate-y-2 group-hover:translate-y-0">Spa Aesthetic.</p>
+                    <p
+                        class="text-gray-400 text-xs opacity-0 group-hover:opacity-100 transition duration-500 translate-y-2 group-hover:translate-y-0">
+                        Spa Aesthetic.</p>
                 </div>
             </a>
 
-            <!-- Card 4: Gym -->
-            <a href="./gym/index.html" class="preview-card group relative h-[450px] rounded-[2rem] overflow-hidden block border border-white/10 opacity-0 animate-slide-up" style="animation-delay: 0.4s">
-                <div class="absolute inset-0 bg-lime-900/20 z-10 group-hover:bg-lime-900/0 transition duration-500"></div>
+            <!-- Card 5: Gym -->
+            <a href="./gym/index.html"
+                class="preview-card group relative h-[450px] rounded-[2rem] overflow-hidden block border border-white/10 opacity-0 animate-slide-up"
+                style="animation-delay: 0.5s">
+                <div class="absolute inset-0 bg-lime-900/20 z-10 group-hover:bg-lime-900/0 transition duration-500">
+                </div>
                 <div class="absolute inset-0 preview-overlay z-20"></div>
-                
-                <!-- Image -->
-                <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=800&auto=format&fit=crop" class="preview-img w-full h-full object-cover transition duration-700 grayscale group-hover:grayscale-0" alt="Gym">
-                
-                <!-- Content -->
+                <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=800&auto=format&fit=crop"
+                    class="preview-img w-full h-full object-cover transition duration-700 grayscale group-hover:grayscale-0"
+                    alt="Gym">
                 <div class="absolute bottom-0 left-0 p-8 z-30 w-full">
                     <div class="flex justify-between items-end mb-3">
-                        <span class="text-xs font-bold bg-white text-black px-3 py-1 rounded-full uppercase tracking-wider">Fitness</span>
-                        <div class="w-10 h-10 rounded-full bg-white text-black flex items-center justify-center opacity-0 group-hover:opacity-100 transition transform translate-y-4 group-hover:translate-y-0 scale-75 group-hover:scale-100 duration-300">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7 17L17 7M17 7H7M17 7V17" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        <span
+                            class="text-xs font-bold bg-white text-black px-3 py-1 rounded-full uppercase tracking-wider">Fitness</span>
+                        <div
+                            class="w-10 h-10 rounded-full bg-white text-black flex items-center justify-center opacity-0 group-hover:opacity-100 transition transform translate-y-4 group-hover:translate-y-0 scale-75 group-hover:scale-100 duration-300">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path d="M7 17L17 7M17 7H7M17 7V17" stroke="currentColor" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
                         </div>
                     </div>
                     <h2 class="text-3xl font-serif mb-1 group-hover:translate-x-1 transition duration-300">Iron</h2>
-                    <p class="text-gray-400 text-xs opacity-0 group-hover:opacity-100 transition duration-500 translate-y-2 group-hover:translate-y-0">Neon Brutalism.</p>
+                    <p
+                        class="text-gray-400 text-xs opacity-0 group-hover:opacity-100 transition duration-500 translate-y-2 group-hover:translate-y-0">
+                        Neon Brutalism.</p>
                 </div>
             </a>
 
         </div>
     </main>
 
-    <footer class="text-center pb-8 text-gray-600 text-xs uppercase tracking-widest fixed bottom-0 w-full pointer-events-none">
+    <footer
+        class="text-center pb-8 text-gray-600 text-xs uppercase tracking-widest fixed bottom-0 w-full pointer-events-none">
         © 2026 Network Builder
     </footer>
 
 </body>
+
 </html>
