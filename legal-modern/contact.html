@@ -4,85 +4,112 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact | Midnight Counsel</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        midnight: '#1a1a2e',
+                        gold: '#c5a059',
+                        surface: '#16213e'
+                    },
+                    fontFamily: {
+                        serif: ['Playfair Display', 'serif'],
+                        sans: ['Inter', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #1a1a2e; color: #fff; }
+        h1, h2, h3 { font-family: 'Playfair Display', serif; }
+    </style>
 </head>
-<body>
+<body class="pt-16">
+
     <!-- Navbar -->
-    <nav class="navbar">
-        <div class="container nav-flex">
-            <a href="index.html" class="logo">MIDNIGHT</a>
-            <ul class="nav-links">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="practice.html">Expertise</a></li>
-                <li><a href="contact.html" class="active">Contact</a></li>
-            </ul>
-            <div class="hamburger">☰</div>
-        </div>
-        <div class="mobile-menu" id="mobileMenu">
-            <a href="index.html">Home</a>
-            <a href="about.html">About</a>
-            <a href="practice.html">Expertise</a>
-            <a href="contact.html">Contact</a>
+    <nav class="fixed top-0 w-full z-50 bg-midnight/90 backdrop-blur-md border-b border-white/10 h-16 flex items-center">
+        <div class="container mx-auto px-6 flex justify-between items-center">
+            <a href="index.html" class="text-xl font-bold tracking-widest text-gold uppercase">Midnight</a>
+            <div class="hidden md:flex space-x-8">
+                <a href="index.html" class="text-sm uppercase tracking-wider text-gray-400 hover:text-gold transition">Home</a>
+                <a href="about.html" class="text-sm uppercase tracking-wider text-gray-400 hover:text-gold transition">About</a>
+                <a href="practice.html" class="text-sm uppercase tracking-wider text-gray-400 hover:text-gold transition">Expertise</a>
+                <a href="contact.html" class="text-sm uppercase tracking-wider text-gold font-semibold">Contact</a>
+            </div>
         </div>
     </nav>
 
-    <!-- Content -->
-    <section class="section-padding">
-        <div class="container split-layout">
-            <div class="contact-info">
-                <span class="hero-subtitle">Secure Inquiry</span>
-                <h2>Initiate Protocol.</h2>
-                <p style="color: var(--text-muted); margin-bottom: 40px;">All communications are encrypted and privileged. We respond to urgent matters within 1 hour.</p>
-                
-                <div style="margin-bottom: 30px;">
-                    <h4 style="color: #fff; margin-bottom: 5px;">Headquarters</h4>
-                    <p style="color: var(--text-muted);">Shivajinagar, Pune 411005</p>
-                </div>
-                
-                <div style="margin-bottom: 30px;">
-                    <h4 style="color: #fff; margin-bottom: 5px;">Priority Line</h4>
-                    <p style="color: var(--gold); font-size: 1.5rem;">+91 98765 43210</p>
+    <!-- Contact Section -->
+    <section class="min-h-screen flex items-center py-20 bg-midnight relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-br from-surface/50 to-midnight z-0"></div>
+        
+        <div class="container mx-auto px-6 relative z-10 grid md:grid-cols-2 gap-16 items-start">
+            
+            <!-- Info Side -->
+            <div class="space-y-10 pt-10">
+                <div>
+                    <span class="text-gold uppercase tracking-widest text-xs font-bold mb-2 block">Secure Inquiry</span>
+                    <h1 class="text-5xl md:text-6xl font-bold mb-6">Initiate Protocol.</h1>
+                    <p class="text-gray-400 text-lg leading-relaxed max-w-md">
+                        All communications are encrypted and privileged. We respond to urgent matters within 1 hour.
+                    </p>
                 </div>
 
-                <div style="margin-bottom: 30px;">
-                    <h4 style="color: #fff; margin-bottom: 5px;">Secure Email</h4>
-                    <p style="color: var(--text-muted);">counsel@midnightlegal.com</p>
+                <div class="space-y-8">
+                    <div class="border-l-2 border-gold pl-6">
+                        <h4 class="text-white font-bold mb-1">Headquarters</h4>
+                        <p class="text-gray-400 text-sm">Shivajinagar, Pune 411005</p>
+                    </div>
+                    <div class="border-l-2 border-gold pl-6">
+                        <h4 class="text-white font-bold mb-1">Priority Line</h4>
+                        <p class="text-gold text-2xl font-light">+91 98765 43210</p>
+                    </div>
+                    <div class="border-l-2 border-gold pl-6">
+                        <h4 class="text-white font-bold mb-1">Secure Email</h4>
+                        <p class="text-gray-400 text-sm">counsel@midnightlegal.com</p>
+                    </div>
                 </div>
             </div>
 
-            <div class="contact-form-container">
-                <form class="contact-form">
-                    <input type="text" placeholder="Full Name (Required)" required>
-                    <input type="tel" placeholder="Secure Phone Number" required>
-                    <select>
-                        <option>Select Matter Urgency</option>
-                        <option>Immediate / Arrest</option>
-                        <option>Civil Litigation</option>
-                        <option>Consultation Request</option>
-                    </select>
-                    <textarea rows="4" placeholder="Brief Description of Matter (Privileged)"></textarea>
-                    <button type="submit" class="btn-gold" style="width: 100%; margin-top: 20px;">Transmit Securely</button>
+            <!-- Form Side -->
+            <div class="bg-surface/50 backdrop-blur-sm p-10 border border-white/5 rounded-lg shadow-2xl">
+                <form class="space-y-6">
+                    <div>
+                        <label class="block text-xs uppercase tracking-widest text-gray-500 mb-2">Full Name (Required)</label>
+                        <input type="text" class="w-full bg-midnight/50 border-b border-gray-700 text-white py-3 focus:outline-none focus:border-gold transition placeholder-gray-600" placeholder="e.g. Rajesh Kumar">
+                    </div>
+
+                    <div>
+                        <label class="block text-xs uppercase tracking-widest text-gray-500 mb-2">Secure Phone Number</label>
+                        <input type="tel" class="w-full bg-midnight/50 border-b border-gray-700 text-white py-3 focus:outline-none focus:border-gold transition placeholder-gray-600" placeholder="+91 ...">
+                    </div>
+
+                    <div>
+                        <label class="block text-xs uppercase tracking-widest text-gray-500 mb-2">Matter Urgency</label>
+                        <select class="w-full bg-midnight/50 border-b border-gray-700 text-white py-3 focus:outline-none focus:border-gold transition text-gray-400">
+                            <option>Immediate / Arrest</option>
+                            <option>Civil Litigation</option>
+                            <option>Consultation Request</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label class="block text-xs uppercase tracking-widest text-gray-500 mb-2">Brief Description (Privileged)</label>
+                        <textarea rows="4" class="w-full bg-midnight/50 border-b border-gray-700 text-white py-3 focus:outline-none focus:border-gold transition placeholder-gray-600" placeholder="Describe the matter briefly..."></textarea>
+                    </div>
+
+                    <button type="submit" class="w-full bg-gold text-midnight font-bold uppercase tracking-wider py-4 mt-6 hover:bg-white transition duration-300">
+                        Transmit Securely
+                    </button>
                 </form>
             </div>
         </div>
     </section>
 
-    <footer style="padding: 50px 0; border-top: 1px solid rgba(255,255,255,0.05);">
-        <div class="container text-center">
-            <p style="color: #8892b0; font-size: 0.9rem;">&copy; 2024 Midnight Counsel. All Rights Reserved.</p>
-        </div>
-    </footer>
-
-    <script>
-        const hamburger = document.querySelector('.hamburger');
-        const mobileMenu = document.getElementById('mobileMenu');
-        hamburger.addEventListener('click', () => {
-            mobileMenu.classList.toggle('active');
-        });
-    </script>
 </body>
 </html>

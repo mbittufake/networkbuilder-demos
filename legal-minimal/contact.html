@@ -4,93 +4,112 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Consultation | The Advocate</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        paper: '#faf9f6',
+                        ink: '#1e293b',
+                        accent: '#cd5c5c',
+                        border: '#e2e8f0'
+                    },
+                    fontFamily: {
+                        serif: ['Crimson Pro', 'serif'],
+                        sans: ['Manrope', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
     <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,400&family=Manrope:wght@300;400;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body { font-family: 'Manrope', sans-serif; background-color: #faf9f6; color: #1e293b; }
+        h1, h2, h3, h4, blockquote { font-family: 'Crimson Pro', serif; }
+    </style>
 </head>
-<body>
-    <nav class="navbar">
-        <div class="container nav-flex">
-            <a href="index.html" class="logo">The Advocate.</a>
-            <ul class="nav-links">
-                <li><a href="index.html">Journal</a></li>
-                <li><a href="about.html">Firm Profile</a></li>
-                <li><a href="services.html">Practice Areas</a></li>
-                <li><a href="contact.html" class="active">Consultation</a></li>
-            </ul>
-            <div class="hamburger">☰</div>
-        </div>
-        <div class="mobile-menu" id="mobileMenu">
-            <a href="index.html">Journal</a>
-            <a href="about.html">Firm Profile</a>
-            <a href="services.html">Practice Areas</a>
-            <a href="contact.html">Consultation</a>
+<body class="pt-20">
+
+    <!-- Navbar -->
+    <nav class="fixed top-0 w-full z-50 bg-paper/95 backdrop-blur-sm border-b border-gray-200 h-20 flex items-center">
+        <div class="container mx-auto px-6 flex justify-between items-center">
+            <a href="index.html" class="text-2xl font-serif font-bold tracking-tight text-ink">The Advocate.</a>
+            <div class="hidden md:flex space-x-10">
+                <a href="index.html" class="text-sm font-medium text-gray-500 hover:text-ink transition pb-1">Journal</a>
+                <a href="about.html" class="text-sm font-medium text-gray-500 hover:text-ink transition pb-1">Firm Profile</a>
+                <a href="services.html" class="text-sm font-medium text-gray-500 hover:text-ink transition pb-1">Practice Areas</a>
+                <a href="contact.html" class="text-sm font-medium text-ink border-b-2 border-ink pb-1 transition">Consultation</a>
+            </div>
         </div>
     </nav>
 
-    <!-- Consultation Form -->
-    <section class="section-padding">
-        <div class="container">
-            <div class="hero-grid" style="align-items: flex-start;">
-                <div class="contact-text">
-                    <span class="tag">Confidential Inquiry</span>
-                    <h1 style="font-size: 3rem; margin-bottom: 2rem;">Begin the Conversation.</h1>
-                    <p style="font-size: 1.1rem; color: #475569; margin-bottom: 40px;">To schedule an initial consultation, please complete the form. All information is privileged and will be treated with strict confidentiality.</p>
-                    
-                    <div style="margin-bottom: 40px;">
-                        <h4 style="font-family: var(--font-serif); margin-bottom: 10px;">Office</h4>
-                        <p style="color: #64748b;">402 Justice Plaza, Shivajinagar<br>Pune, Maharashtra 411005</p>
+    <!-- Consultation Section -->
+    <section class="py-24 bg-paper min-h-screen">
+        <div class="container mx-auto px-6 grid md:grid-cols-2 gap-20 items-start">
+            
+            <!-- Text Side -->
+            <div>
+                <span class="text-accent text-xs font-bold uppercase tracking-widest mb-4 block">Confidential Inquiry</span>
+                <h1 class="text-5xl md:text-6xl font-serif text-ink mb-8 leading-tight">Begin the<br>Conversation.</h1>
+                <p class="text-xl text-gray-600 leading-relaxed mb-12 font-light">
+                    To schedule an initial consultation, please complete the form. All information is privileged and will be treated with strict confidentiality.
+                </p>
+
+                <div class="space-y-10 border-t border-gray-200 pt-10">
+                    <div>
+                        <h4 class="text-lg font-serif font-bold mb-2">Office</h4>
+                        <p class="text-gray-500">402 Justice Plaza, Shivajinagar<br>Pune, Maharashtra 411005</p>
                     </div>
-
-                    <div style="margin-bottom: 40px;">
-                        <h4 style="font-family: var(--font-serif); margin-bottom: 10px;">Direct Line</h4>
-                        <p style="color: #64748b;">+91 98765 43210</p>
+                    <div>
+                        <h4 class="text-lg font-serif font-bold mb-2">Direct Line</h4>
+                        <p class="text-accent text-xl font-medium">+91 98765 43210</p>
                     </div>
-
-                    <div style="margin-bottom: 40px;">
-                        <h4 style="font-family: var(--font-serif); margin-bottom: 10px;">Email</h4>
-                        <p style="color: #64748b;">consult@theadvocate.in</p>
+                    <div>
+                        <h4 class="text-lg font-serif font-bold mb-2">Email</h4>
+                        <p class="text-gray-500">consult@theadvocate.in</p>
                     </div>
-                </div>
-
-                <div class="form-wrapper" style="background: #fff; padding: 40px; border: 1px solid var(--border); border-radius: 4px;">
-                    <form class="minimal-form">
-                        <label style="display: block; font-size: 0.8rem; text-transform: uppercase; color: #94a3b8; letter-spacing: 1px; margin-bottom: 5px;">Full Name</label>
-                        <input type="text" placeholder="e.g. Rajesh Kumar" required>
-
-                        <label style="display: block; font-size: 0.8rem; text-transform: uppercase; color: #94a3b8; letter-spacing: 1px; margin-bottom: 5px;">Phone Number</label>
-                        <input type="tel" placeholder="+91 ..." required>
-
-                        <label style="display: block; font-size: 0.8rem; text-transform: uppercase; color: #94a3b8; letter-spacing: 1px; margin-bottom: 5px;">Email Address</label>
-                        <input type="email" placeholder="name@example.com" required>
-
-                        <label style="display: block; font-size: 0.8rem; text-transform: uppercase; color: #94a3b8; letter-spacing: 1px; margin-bottom: 5px;">Nature of Inquiry</label>
-                        <input type="text" placeholder="e.g. Divorce Proceeding, Property Dispute" required>
-
-                        <label style="display: block; font-size: 0.8rem; text-transform: uppercase; color: #94a3b8; letter-spacing: 1px; margin-bottom: 5px;">Message</label>
-                        <textarea rows="4" placeholder="Briefly describe your situation..."></textarea>
-
-                        <button type="submit" class="btn-editorial" style="width: 100%; text-align: center; cursor: pointer; border: none;">Submit Inquiry</button>
-                    </form>
                 </div>
             </div>
+
+            <!-- Form Side -->
+            <div class="bg-white p-10 shadow-xl border border-gray-100 rounded-lg">
+                <form class="space-y-8">
+                    <div class="grid md:grid-cols-2 gap-8">
+                        <div>
+                            <label class="block text-xs uppercase tracking-widest text-gray-400 font-bold mb-2">Full Name</label>
+                            <input type="text" class="w-full border-b border-gray-300 py-2 focus:outline-none focus:border-ink transition placeholder-gray-300" placeholder="e.g. Rajesh Kumar">
+                        </div>
+                        <div>
+                            <label class="block text-xs uppercase tracking-widest text-gray-400 font-bold mb-2">Phone</label>
+                            <input type="tel" class="w-full border-b border-gray-300 py-2 focus:outline-none focus:border-ink transition placeholder-gray-300" placeholder="+91 ...">
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="block text-xs uppercase tracking-widest text-gray-400 font-bold mb-2">Email Address</label>
+                        <input type="email" class="w-full border-b border-gray-300 py-2 focus:outline-none focus:border-ink transition placeholder-gray-300" placeholder="name@example.com">
+                    </div>
+
+                    <div>
+                        <label class="block text-xs uppercase tracking-widest text-gray-400 font-bold mb-2">Nature of Inquiry</label>
+                        <input type="text" class="w-full border-b border-gray-300 py-2 focus:outline-none focus:border-ink transition placeholder-gray-300" placeholder="e.g. Divorce Proceeding">
+                    </div>
+
+                    <div>
+                        <label class="block text-xs uppercase tracking-widest text-gray-400 font-bold mb-2">Message</label>
+                        <textarea rows="4" class="w-full border-b border-gray-300 py-2 focus:outline-none focus:border-ink transition placeholder-gray-300" placeholder="Briefly describe your situation..."></textarea>
+                    </div>
+
+                    <button type="submit" class="w-full bg-ink text-white font-bold uppercase tracking-widest py-4 mt-4 hover:bg-accent transition transform hover:-translate-y-1 shadow-lg">
+                        Submit Inquiry
+                    </button>
+                </form>
+            </div>
+
         </div>
     </section>
 
-    <footer style="padding: 60px 0; border-top: 1px solid var(--border);">
-        <div class="container nav-flex">
-            <span class="logo" style="font-size: 1.2rem;">The Advocate.</span>
-            <span style="color: #94a3b8; font-size: 0.9rem;">&copy; 2024 Legal Insights.</span>
-        </div>
-    </footer>
-
-    <script>
-        const hamburger = document.querySelector('.hamburger');
-        const mobileMenu = document.getElementById('mobileMenu');
-        hamburger.addEventListener('click', () => {
-            mobileMenu.classList.toggle('active');
-        });
-    </script>
 </body>
 </html>

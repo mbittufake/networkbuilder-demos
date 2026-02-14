@@ -4,181 +4,149 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Midnight Counsel | Elite Defense</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
-    <!-- FontAwesome for Icons -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        midnight: '#1a1a2e',
+                        gold: '#c5a059',
+                        surface: '#16213e'
+                    },
+                    fontFamily: {
+                        serif: ['Playfair Display', 'serif'],
+                        sans: ['Inter', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #1a1a2e; color: #fff; }
+        h1, h2, h3 { font-family: 'Playfair Display', serif; }
+    </style>
 </head>
-<body>
+<body class="pt-16"> <!-- Padding top for fixed header -->
+
     <!-- Navbar -->
-    <nav class="navbar">
-        <div class="container nav-flex">
-            <a href="index.html" class="logo">MIDNIGHT</a>
-            <ul class="nav-links">
-                <li><a href="index.html" class="active">Home</a></li>
-                <li><a href="about.html">Firm Profile</a></li>
-                <li><a href="practice.html">Expertise</a></li>
-                <li><a href="contact.html">Secure Contact</a></li>
-            </ul>
-            <div class="hamburger">
-                <i class="fa-solid fa-bars"></i>
+    <nav class="fixed top-0 w-full z-50 bg-midnight/90 backdrop-blur-md border-b border-white/10 h-16 flex items-center">
+        <div class="container mx-auto px-6 flex justify-between items-center">
+            <a href="index.html" class="text-xl font-bold tracking-widest text-gold uppercase">Midnight</a>
+            
+            <!-- Desktop Menu -->
+            <div class="hidden md:flex space-x-8">
+                <a href="index.html" class="text-sm uppercase tracking-wider text-gold font-semibold">Home</a>
+                <a href="about.html" class="text-sm uppercase tracking-wider text-gray-400 hover:text-gold transition">About</a>
+                <a href="practice.html" class="text-sm uppercase tracking-wider text-gray-400 hover:text-gold transition">Expertise</a>
+                <a href="contact.html" class="text-sm uppercase tracking-wider text-gray-400 hover:text-gold transition">Contact</a>
             </div>
+
+            <!-- Mobile Hamburger -->
+            <button class="md:hidden text-gold text-2xl" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')">
+                <i class="fa-solid fa-bars"></i>
+            </button>
         </div>
-        <div class="mobile-menu" id="mobileMenu">
-            <a href="index.html">Home</a>
-            <a href="about.html">Firm Profile</a>
-            <a href="practice.html">Expertise</a>
-            <a href="contact.html">Secure Contact</a>
+        
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden absolute top-16 left-0 w-full bg-midnight border-b border-gold p-6 flex flex-col space-y-4 md:hidden">
+            <a href="index.html" class="text-gold uppercase tracking-wider">Home</a>
+            <a href="about.html" class="text-gray-400 uppercase tracking-wider">About</a>
+            <a href="practice.html" class="text-gray-400 uppercase tracking-wider">Expertise</a>
+            <a href="contact.html" class="text-gray-400 uppercase tracking-wider">Contact</a>
         </div>
     </nav>
 
-    <!-- Cinematic Hero -->
-    <header class="hero">
-        <div class="hero-video-bg"></div> <!-- Placeholder for video loop -->
-        <div class="hero-overlay"></div>
-        <div class="container hero-content">
-            <span style="color: var(--gold); letter-spacing: 3px; font-size: 0.9rem; text-transform: uppercase; margin-bottom: 2rem; display: block;">Defending High-Stakes Interests Since 1998</span>
-            <h1>Uncompromising<br><span>Legal Dominance.</span></h1>
-            <p>We represent corporations, executives, and public figures in their most critical moments. When the outcome is non-negotiable, we are the only choice.</p>
-            
-            <div style="display: flex; gap: 20px;">
-                <a href="contact.html" class="btn-pill" style="background: var(--gold); color: #000;">Book Consultation</a>
-                <a href="practice.html" class="btn-pill">View Case Results</a>
+    <!-- Hero -->
+    <header class="relative h-screen flex items-center overflow-hidden">
+        <!-- Background Image -->
+        <div class="absolute inset-0 z-0">
+            <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80" class="w-full h-full object-cover opacity-40">
+            <div class="absolute inset-0 bg-gradient-to-r from-midnight via-midnight/80 to-transparent"></div>
+        </div>
+
+        <div class="container mx-auto px-6 relative z-10 grid md:grid-cols-2 gap-12 items-center">
+            <div class="space-y-6">
+                <span class="text-gold uppercase tracking-[0.2em] text-sm font-semibold">Defending High-Stakes Interests</span>
+                <h1 class="text-5xl md:text-7xl leading-tight font-bold">
+                    Victory Is The<br><span class="text-gold">Only Verdict.</span>
+                </h1>
+                <p class="text-gray-400 text-lg max-w-lg leading-relaxed">
+                    We represent corporations, executives, and public figures in their most critical moments. When the outcome is non-negotiable.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 pt-4">
+                    <a href="contact.html" class="px-8 py-3 bg-gold text-midnight font-bold uppercase tracking-wider rounded-full hover:bg-white transition text-center">
+                        Book Consultation
+                    </a>
+                    <a href="practice.html" class="px-8 py-3 border border-gold text-gold font-bold uppercase tracking-wider rounded-full hover:bg-gold hover:text-midnight transition text-center">
+                        View Results
+                    </a>
+                </div>
             </div>
 
-            <!-- Animated Trust Signals -->
-            <div class="trust-signals">
-                <div class="signal">
-                    <h3 class="counter" data-target="500">0</h3>
-                    <p>Cases Won</p>
+            <!-- Stats -->
+            <div class="grid grid-cols-2 gap-8 md:pl-20 border-t border-white/10 pt-8 md:border-t-0 md:pt-0">
+                <div>
+                    <h3 class="text-4xl md:text-5xl font-light text-gold mb-1">500+</h3>
+                    <p class="text-gray-500 uppercase text-xs tracking-widest">Cases Won</p>
                 </div>
-                <div class="signal">
-                    <h3 class="counter" data-target="50">0</h3>
-                    <p>₹ Cr Recovered</p>
-                </div>
-                <div class="signal">
-                    <h3>24/7</h3>
-                    <p>Crisis Response</p>
+                <div>
+                    <h3 class="text-4xl md:text-5xl font-light text-gold mb-1">₹50Cr</h3>
+                    <p class="text-gray-500 uppercase text-xs tracking-widest">Recovered</p>
                 </div>
             </div>
         </div>
     </header>
 
-    <!-- Practice Areas -->
-    <section class="section-padding">
-        <div class="container">
-            <div class="section-header">
+    <!-- Expertise Preview -->
+    <section class="py-24 bg-midnight">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
                 <div>
-                    <span style="color: var(--gold); text-transform: uppercase; letter-spacing: 2px; font-size: 0.8rem; margin-bottom: 10px; display: block;">Our Expertise</span>
-                    <h2>Strategic Counsel.</h2>
+                    <span class="text-gold uppercase tracking-widest text-xs font-bold mb-2 block">Our Expertise</span>
+                    <h2 class="text-4xl md:text-5xl font-bold">Strategic Counsel.</h2>
                 </div>
-                <a href="practice.html" class="btn-pill">All Practice Areas →</a>
+                <a href="practice.html" class="text-gold uppercase text-sm font-bold tracking-wider hover:text-white transition">View All Areas →</a>
             </div>
-            <div class="grid-3">
-                <div class="practice-card">
-                    <i class="fa-solid fa-gavel" style="font-size: 2rem; color: var(--gold); margin-bottom: 20px;"></i>
-                    <h3>Criminal Defense</h3>
-                    <p>Aggressive representation for white-collar crimes, fraud, and high-profile felonies. We dismantle the prosecution's case before trial.</p>
-                    <a href="practice.html" class="card-link">Learn More</a>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Card 1 -->
+                <div class="group p-8 border border-white/5 bg-white/5 hover:border-gold hover:-translate-y-2 transition duration-300">
+                    <i class="fa-solid fa-gavel text-3xl text-gold mb-6"></i>
+                    <h3 class="text-2xl font-bold mb-4 group-hover:text-gold transition">Criminal Defense</h3>
+                    <p class="text-gray-400 mb-6 leading-relaxed">Aggressive representation for white-collar crimes and fraud. We dismantle the prosecution's case before trial.</p>
+                    <a href="practice.html" class="text-gold uppercase text-xs font-bold tracking-wider">Learn More</a>
                 </div>
-                <div class="practice-card">
-                    <i class="fa-solid fa-building-columns" style="font-size: 2rem; color: var(--gold); margin-bottom: 20px;"></i>
-                    <h3>Corporate Litigation</h3>
-                    <p>Protecting shareholder value and executive reputation in complex commercial disputes and regulatory investigations.</p>
-                    <a href="practice.html" class="card-link">Learn More</a>
+
+                <!-- Card 2 -->
+                <div class="group p-8 border border-white/5 bg-white/5 hover:border-gold hover:-translate-y-2 transition duration-300">
+                    <i class="fa-solid fa-building-columns text-3xl text-gold mb-6"></i>
+                    <h3 class="text-2xl font-bold mb-4 group-hover:text-gold transition">Corporate Litigation</h3>
+                    <p class="text-gray-400 mb-6 leading-relaxed">Protecting shareholder value and executive reputation in complex commercial disputes.</p>
+                    <a href="practice.html" class="text-gold uppercase text-xs font-bold tracking-wider">Learn More</a>
                 </div>
-                <div class="practice-card">
-                    <i class="fa-solid fa-scale-balanced" style="font-size: 2rem; color: var(--gold); margin-bottom: 20px;"></i>
-                    <h3>High-Net Divorce</h3>
-                    <p>Discreet settlements for substantial estates. We ensure your assets and privacy remain intact during dissolution.</p>
-                    <a href="practice.html" class="card-link">Learn More</a>
+
+                <!-- Card 3 -->
+                <div class="group p-8 border border-white/5 bg-white/5 hover:border-gold hover:-translate-y-2 transition duration-300">
+                    <i class="fa-solid fa-scale-balanced text-3xl text-gold mb-6"></i>
+                    <h3 class="text-2xl font-bold mb-4 group-hover:text-gold transition">High-Net Divorce</h3>
+                    <p class="text-gray-400 mb-6 leading-relaxed">Discreet settlements for substantial estates. Ensuring assets and privacy remain intact.</p>
+                    <a href="practice.html" class="text-gold uppercase text-xs font-bold tracking-wider">Learn More</a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Attorney Profile -->
-    <section class="section-padding" style="background: #151525;">
-        <div class="container attorney-section">
-            <img src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" class="attorney-img" alt="Lead Attorney">
-            <div class="attorney-text">
-                <span style="color: var(--gold); text-transform: uppercase; letter-spacing: 2px; font-size: 0.8rem; margin-bottom: 10px; display: block;">Lead Counsel</span>
-                <h2>Adv. Bhaskar Mandal</h2>
-                <p>Recognized as one of the top litigators in the country. With over two decades of experience, Bhaskar has secured acquittals and settlements in some of the most complex cases of the decade.</p>
-                <div class="credential-list">
-                    <div class="credential-item">
-                        <h4>Supreme Court</h4>
-                        <p>Bar Admission</p>
-                    </div>
-                    <div class="credential-item">
-                        <h4>Best Lawyers 2024</h4>
-                        <p>Award Recipient</p>
-                    </div>
-                    <div class="credential-item">
-                        <h4>LL.M. Harvard</h4>
-                        <p>Education</p>
-                    </div>
-                    <div class="credential-item">
-                        <h4>500+ Clients</h4>
-                        <p>Represented</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <footer style="padding: 80px 0; border-top: 1px solid rgba(255,255,255,0.05);">
-        <div class="container" style="text-align: center;">
-            <span class="logo" style="font-size: 2rem; margin-bottom: 20px; display: block;">MIDNIGHT</span>
-            <p style="color: var(--text-muted); margin-bottom: 40px;">Shivajinagar, Pune • +91 98765 43210</p>
-            <p style="color: rgba(255,255,255,0.3); font-size: 0.8rem;">&copy; 2024 Midnight Counsel. Confidential & Privileged.</p>
+    <!-- Footer -->
+    <footer class="py-12 border-t border-white/5 bg-black/20 text-center">
+        <div class="container mx-auto px-6">
+            <span class="text-2xl font-bold text-gold uppercase tracking-widest mb-4 block">Midnight</span>
+            <p class="text-gray-500 text-sm">Shivajinagar, Pune • +91 98765 43210</p>
+            <p class="text-gray-600 text-xs mt-8">&copy; 2024 Midnight Counsel. Confidential & Privileged.</p>
         </div>
     </footer>
 
-    <script>
-        // Hamburger Menu
-        const hamburger = document.querySelector('.hamburger');
-        const mobileMenu = document.getElementById('mobileMenu');
-        hamburger.addEventListener('click', () => {
-            mobileMenu.classList.toggle('active');
-        });
-
-        // Animated Counters
-        const counters = document.querySelectorAll('.counter');
-        const speed = 200;
-
-        const animateCounters = () => {
-            counters.forEach(counter => {
-                const updateCount = () => {
-                    const target = +counter.getAttribute('data-target');
-                    const count = +counter.innerText;
-                    const inc = target / speed;
-
-                    if(count < target) {
-                        counter.innerText = Math.ceil(count + inc);
-                        setTimeout(updateCount, 20);
-                    } else {
-                        counter.innerText = target + (target === 50 ? 'Cr+' : '+');
-                    }
-                };
-                updateCount();
-            });
-        };
-
-        // Trigger animation when in view
-        let animated = false;
-        window.addEventListener('scroll', () => {
-            const section = document.querySelector('.trust-signals');
-            const sectionPos = section.getBoundingClientRect().top;
-            const screenPos = window.innerHeight / 1.3;
-
-            if(sectionPos < screenPos && !animated) {
-                animateCounters();
-                animated = true;
-            }
-        });
-    </script>
 </body>
 </html>

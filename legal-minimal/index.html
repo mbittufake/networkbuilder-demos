@@ -4,136 +4,156 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Advocate | Legal Insights</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        paper: '#faf9f6',
+                        ink: '#1e293b',
+                        accent: '#cd5c5c',
+                        border: '#e2e8f0'
+                    },
+                    fontFamily: {
+                        serif: ['Crimson Pro', 'serif'],
+                        sans: ['Manrope', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
     <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,400&family=Manrope:wght@300;400;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
-    <!-- FontAwesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body { font-family: 'Manrope', sans-serif; background-color: #faf9f6; color: #1e293b; }
+        h1, h2, h3, h4, blockquote { font-family: 'Crimson Pro', serif; }
+    </style>
 </head>
-<body>
+<body class="pt-20"> <!-- Sticky Header Spacing -->
+
     <!-- Navbar -->
-    <nav class="navbar">
-        <div class="container nav-flex">
-            <a href="index.html" class="logo">The Advocate.</a>
-            <ul class="nav-links">
-                <li><a href="index.html" class="active">Journal</a></li>
-                <li><a href="about.html">Firm Profile</a></li>
-                <li><a href="services.html">Practice Areas</a></li>
-                <li><a href="contact.html">Consultation</a></li>
-            </ul>
-            <div class="hamburger">
-                <i class="fa-solid fa-bars"></i>
+    <nav class="fixed top-0 w-full z-50 bg-paper/95 backdrop-blur-sm border-b border-gray-200 h-20 flex items-center transition-all duration-300">
+        <div class="container mx-auto px-6 flex justify-between items-center">
+            <a href="index.html" class="text-2xl font-serif font-bold tracking-tight text-ink">The Advocate.</a>
+            
+            <div class="hidden md:flex space-x-10">
+                <a href="index.html" class="text-sm font-medium text-ink border-b-2 border-ink pb-1 transition">Journal</a>
+                <a href="about.html" class="text-sm font-medium text-gray-500 hover:text-ink transition pb-1">Firm Profile</a>
+                <a href="services.html" class="text-sm font-medium text-gray-500 hover:text-ink transition pb-1">Practice Areas</a>
+                <a href="contact.html" class="text-sm font-medium text-gray-500 hover:text-ink transition pb-1">Consultation</a>
             </div>
+
+            <button class="md:hidden text-ink text-xl" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')">
+                <i class="fa-solid fa-bars"></i>
+            </button>
         </div>
-        <div class="mobile-menu" id="mobileMenu">
-            <a href="index.html">Journal</a>
-            <a href="about.html">Firm Profile</a>
-            <a href="services.html">Practice Areas</a>
-            <a href="contact.html">Consultation</a>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden absolute top-20 left-0 w-full bg-paper border-b border-gray-200 p-8 flex flex-col space-y-6 md:hidden shadow-lg">
+            <a href="index.html" class="text-ink font-serif text-lg">Journal</a>
+            <a href="about.html" class="text-gray-600 font-serif text-lg">Firm Profile</a>
+            <a href="services.html" class="text-gray-600 font-serif text-lg">Practice Areas</a>
+            <a href="contact.html" class="text-gray-600 font-serif text-lg">Consultation</a>
         </div>
     </nav>
 
     <!-- Editorial Hero -->
-    <header class="hero">
-        <div class="container hero-grid">
-            <div class="hero-text">
-                <span class="tag">Vol. 24 &mdash; Winter Edition</span>
-                <h1>Intellectual Rigor.<br>Human Impact.</h1>
-                <p>We approach every case not just as a legal dispute, but as a narrative to be understood and a future to be secured.</p>
-                <a href="contact.html" class="btn-editorial">Request Counsel</a>
+    <header class="py-20 md:py-32 border-b border-gray-200">
+        <div class="container mx-auto px-6 grid md:grid-cols-2 gap-16 items-center">
+            <div class="order-2 md:order-1">
+                <span class="inline-block border border-ink px-4 py-1 text-xs uppercase tracking-widest rounded-full mb-8 font-medium">Vol. 24 — Winter Edition</span>
+                <h1 class="text-5xl md:text-7xl font-light leading-none mb-8 text-ink tracking-tight">
+                    Intellectual Rigor.<br>Human Impact.
+                </h1>
+                <p class="text-xl text-gray-600 leading-relaxed mb-10 max-w-lg font-light">
+                    We approach every case not just as a legal dispute, but as a narrative to be understood and a future to be secured.
+                </p>
+                <a href="contact.html" class="inline-block bg-ink text-white px-8 py-4 font-medium rounded hover:bg-accent transition transform hover:-translate-y-1 shadow-lg hover:shadow-xl">
+                    Request Counsel
+                </a>
             </div>
-            <img src="https://images.unsplash.com/photo-1589829085413-56de8ae18c73?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Law Library" class="hero-img">
+            <div class="order-1 md:order-2">
+                <img src="https://images.unsplash.com/photo-1589829085413-56de8ae18c73?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80" 
+                     class="w-full h-[500px] object-cover rounded shadow-sm sepia-[.20] contrast-125">
+            </div>
         </div>
     </header>
 
-    <!-- Featured Insights (Services disguised as articles) -->
-    <section class="section-padding">
-        <div class="container">
-            <div class="section-header">
+    <!-- Featured Insights -->
+    <section class="py-24 bg-paper">
+        <div class="container mx-auto px-6">
+            <div class="flex justify-between items-end mb-16 border-b border-gray-200 pb-8">
                 <div>
-                    <span class="tag" style="margin-bottom: 1rem; border: none; padding: 0; letter-spacing: 2px; color: var(--accent);">Our Perspective</span>
-                    <h2>Practice Areas</h2>
+                    <span class="text-accent text-xs font-bold uppercase tracking-widest mb-2 block">Our Perspective</span>
+                    <h2 class="text-4xl md:text-5xl font-serif text-ink tracking-tight">Practice Areas</h2>
                 </div>
-                <a href="services.html" class="read-link">View All Expertise →</a>
+                <a href="services.html" class="text-sm font-bold border-b border-accent pb-1 hover:text-accent transition">View All →</a>
             </div>
-            <div class="grid-3">
-                <div class="article-card">
-                    <img src="https://images.unsplash.com/photo-1621360841012-3f82a9388277?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" class="article-img">
-                    <span class="article-meta">Family Law</span>
-                    <h3>Navigating Divorce with Dignity: A Strategic Approach.</h3>
-                    <p style="color: #64748b; margin-bottom: 20px;">We prioritize mediation over litigation to preserve assets and relationships.</p>
-                    <a href="services.html" class="read-link">Read Analysis</a>
-                </div>
-                <div class="article-card">
-                    <img src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" class="article-img">
-                    <span class="article-meta">Corporate</span>
-                    <h3>The Art of the Deal: Mergers in a Volatile Market.</h3>
-                    <p style="color: #64748b; margin-bottom: 20px;">Protecting shareholder value through rigorous due diligence and airtight contracts.</p>
-                    <a href="services.html" class="read-link">Read Analysis</a>
-                </div>
-                <div class="article-card">
-                    <img src="https://images.unsplash.com/photo-1593115057322-e94b77572f20?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" class="article-img">
-                    <span class="article-meta">Property</span>
-                    <h3>Securing Legacy: The Importance of Estate Planning.</h3>
-                    <p style="color: #64748b; margin-bottom: 20px;">Ensuring your assets are transferred seamlessly to the next generation.</p>
-                    <a href="services.html" class="read-link">Read Analysis</a>
-                </div>
-            </div>
-        </div>
-    </section>
 
-    <!-- Attorney Profile (Magazine Style) -->
-    <section class="section-padding" style="background: #fff; border-top: 1px solid var(--border);">
-        <div class="container hero-grid" style="grid-template-columns: 0.8fr 1.2fr;">
-            <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" class="hero-img" style="height: 600px; filter: grayscale(100%); transition: 0.5s;" onmouseover="this.style.filter='grayscale(0%)'" onmouseout="this.style.filter='grayscale(100%)'">
-            <div class="hero-text">
-                <span class="tag">Founder Profile</span>
-                <h2 style="margin-bottom: 2rem;">Adv. Anjali Deshmukh</h2>
-                <p style="font-size: 1.2rem; margin-bottom: 2rem;">"The law is not a static set of rules. It is a living instrument of justice that must be wielded with precision and empathy."</p>
-                <p style="color: #64748b; margin-bottom: 2rem;">Anjali founded The Advocate in 2010 with a vision to create a boutique firm that values intellectual depth over volume. Her work in high-stakes family law has been cited in major legal journals.</p>
-                
-                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px; border-top: 1px solid var(--border); padding-top: 30px;">
-                    <div>
-                        <h4 style="font-size: 1.1rem; margin-bottom: 5px;">Education</h4>
-                        <p style="font-size: 0.9rem; color: #64748b;">J.D. Columbia Law<br>B.A. Political Science</p>
+            <div class="grid md:grid-cols-3 gap-12">
+                <!-- Card 1 -->
+                <div class="group cursor-pointer">
+                    <div class="overflow-hidden rounded mb-6">
+                        <img src="https://images.unsplash.com/photo-1621360841012-3f82a9388277?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" 
+                             class="w-full h-64 object-cover grayscale group-hover:grayscale-0 transition duration-500 transform group-hover:scale-105">
                     </div>
-                    <div>
-                        <h4 style="font-size: 1.1rem; margin-bottom: 5px;">Recognition</h4>
-                        <p style="font-size: 0.9rem; color: #64748b;">"Top 40 Under 40"<br>Legal Insights Award</p>
+                    <span class="text-xs font-bold text-accent uppercase tracking-widest mb-3 block">Family Law</span>
+                    <h3 class="text-2xl font-serif leading-tight mb-4 group-hover:text-accent transition">Navigating Divorce with Dignity.</h3>
+                    <p class="text-gray-500 leading-relaxed mb-4 text-sm">We prioritize mediation over litigation to preserve assets and relationships.</p>
+                    <a href="services.html" class="text-xs font-bold border-b border-gray-300 pb-1 hover:border-accent transition">Read Analysis</a>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="group cursor-pointer">
+                    <div class="overflow-hidden rounded mb-6">
+                        <img src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" 
+                             class="w-full h-64 object-cover grayscale group-hover:grayscale-0 transition duration-500 transform group-hover:scale-105">
                     </div>
+                    <span class="text-xs font-bold text-accent uppercase tracking-widest mb-3 block">Corporate</span>
+                    <h3 class="text-2xl font-serif leading-tight mb-4 group-hover:text-accent transition">Mergers in a Volatile Market.</h3>
+                    <p class="text-gray-500 leading-relaxed mb-4 text-sm">Protecting shareholder value through rigorous due diligence and airtight contracts.</p>
+                    <a href="services.html" class="text-xs font-bold border-b border-gray-300 pb-1 hover:border-accent transition">Read Analysis</a>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="group cursor-pointer">
+                    <div class="overflow-hidden rounded mb-6">
+                        <img src="https://images.unsplash.com/photo-1593115057322-e94b77572f20?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" 
+                             class="w-full h-64 object-cover grayscale group-hover:grayscale-0 transition duration-500 transform group-hover:scale-105">
+                    </div>
+                    <span class="text-xs font-bold text-accent uppercase tracking-widest mb-3 block">Property</span>
+                    <h3 class="text-2xl font-serif leading-tight mb-4 group-hover:text-accent transition">Securing Legacy & Estate.</h3>
+                    <p class="text-gray-500 leading-relaxed mb-4 text-sm">Ensuring your assets are transferred seamlessly to the next generation.</p>
+                    <a href="services.html" class="text-xs font-bold border-b border-gray-300 pb-1 hover:border-accent transition">Read Analysis</a>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Quote -->
-    <section class="quote-section">
-        <div class="container">
-            <blockquote>"The law is reason, free from passion."</blockquote>
-            <cite>— Aristotle</cite>
+    <section class="py-32 bg-gray-100 text-center relative overflow-hidden">
+        <span class="absolute top-0 left-1/2 -translate-x-1/2 text-[15rem] leading-none text-gray-200 font-serif opacity-50">"</span>
+        <div class="container mx-auto px-6 relative z-10">
+            <blockquote class="text-4xl md:text-5xl font-serif italic text-ink mb-8 max-w-4xl mx-auto leading-tight">
+                "The law is reason, free from passion."
+            </blockquote>
+            <cite class="text-accent font-sans font-bold uppercase tracking-widest not-italic">— Aristotle</cite>
         </div>
     </section>
 
-    <footer style="padding: 80px 0; border-top: 1px solid var(--border); background: #fff;">
-        <div class="container" style="text-align: center;">
-            <span class="logo" style="font-size: 1.5rem; display: block; margin-bottom: 20px;">The Advocate.</span>
-            <p style="color: #94a3b8; font-size: 0.9rem; margin-bottom: 40px;">Shivajinagar, Pune • +91 98765 43210</p>
-            <div style="display: flex; justify-content: center; gap: 20px; margin-bottom: 40px;">
-                <a href="#" style="color: var(--text-ink); font-weight: 600;">LinkedIn</a>
-                <a href="#" style="color: var(--text-ink); font-weight: 600;">Twitter</a>
-                <a href="#" style="color: var(--text-ink); font-weight: 600;">Instagram</a>
+    <!-- Footer -->
+    <footer class="py-16 border-t border-gray-200 bg-white text-center">
+        <div class="container mx-auto px-6">
+            <span class="text-2xl font-serif font-bold mb-6 block">The Advocate.</span>
+            <div class="flex justify-center space-x-6 mb-8 text-sm font-bold text-ink">
+                <a href="#" class="hover:text-accent">LinkedIn</a>
+                <a href="#" class="hover:text-accent">Twitter</a>
+                <a href="#" class="hover:text-accent">Instagram</a>
             </div>
-            <p style="color: #cbd5e1; font-size: 0.8rem;">&copy; 2024 Legal Insights. All Rights Reserved.</p>
+            <p class="text-gray-400 text-xs uppercase tracking-widest">&copy; 2024 Legal Insights. All Rights Reserved.</p>
         </div>
     </footer>
 
-    <script>
-        const hamburger = document.querySelector('.hamburger');
-        const mobileMenu = document.getElementById('mobileMenu');
-        hamburger.addEventListener('click', () => {
-            mobileMenu.classList.toggle('active');
-        });
-    </script>
 </body>
 </html>
