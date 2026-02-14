@@ -3,11 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Midnight Counsel | Elite Legal Defense</title>
+    <title>Midnight Counsel | Elite Defense</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
     <!-- Navbar -->
@@ -16,38 +18,47 @@
             <a href="index.html" class="logo">MIDNIGHT</a>
             <ul class="nav-links">
                 <li><a href="index.html" class="active">Home</a></li>
-                <li><a href="about.html">About</a></li>
+                <li><a href="about.html">Firm Profile</a></li>
                 <li><a href="practice.html">Expertise</a></li>
-                <li><a href="contact.html">Contact</a></li>
+                <li><a href="contact.html">Secure Contact</a></li>
             </ul>
-            <div class="hamburger">☰</div>
+            <div class="hamburger">
+                <i class="fa-solid fa-bars"></i>
+            </div>
         </div>
         <div class="mobile-menu" id="mobileMenu">
             <a href="index.html">Home</a>
-            <a href="about.html">About</a>
+            <a href="about.html">Firm Profile</a>
             <a href="practice.html">Expertise</a>
-            <a href="contact.html">Contact</a>
+            <a href="contact.html">Secure Contact</a>
         </div>
     </nav>
 
-    <!-- Hero -->
+    <!-- Cinematic Hero -->
     <header class="hero">
+        <div class="hero-video-bg"></div> <!-- Placeholder for video loop -->
+        <div class="hero-overlay"></div>
         <div class="container hero-content">
-            <span class="hero-subtitle">Defending The Indefensible</span>
-            <h1>Victory Is The<br>Only Verdict.</h1>
-            <p style="color: #8892b0; max-width: 500px; margin-bottom: 2rem;">Strategic counsel for high-stakes litigation. When your reputation, freedom, and assets are on the line, we are the first call.</p>
-            <a href="contact.html" class="btn-gold">Secure Representation</a>
+            <span style="color: var(--gold); letter-spacing: 3px; font-size: 0.9rem; text-transform: uppercase; margin-bottom: 2rem; display: block;">Defending High-Stakes Interests Since 1998</span>
+            <h1>Uncompromising<br><span>Legal Dominance.</span></h1>
+            <p>We represent corporations, executives, and public figures in their most critical moments. When the outcome is non-negotiable, we are the only choice.</p>
+            
+            <div style="display: flex; gap: 20px;">
+                <a href="contact.html" class="btn-pill" style="background: var(--gold); color: #000;">Book Consultation</a>
+                <a href="practice.html" class="btn-pill">View Case Results</a>
+            </div>
 
-            <div class="hero-stats">
-                <div class="stat">
-                    <h3>₹50Cr+</h3>
-                    <p>Assets Recovered</p>
+            <!-- Animated Trust Signals -->
+            <div class="trust-signals">
+                <div class="signal">
+                    <h3 class="counter" data-target="500">0</h3>
+                    <p>Cases Won</p>
                 </div>
-                <div class="stat">
-                    <h3>500+</h3>
-                    <p>Wins</p>
+                <div class="signal">
+                    <h3 class="counter" data-target="50">0</h3>
+                    <p>₹ Cr Recovered</p>
                 </div>
-                <div class="stat">
+                <div class="signal">
                     <h3>24/7</h3>
                     <p>Crisis Response</p>
                 </div>
@@ -55,39 +66,118 @@
         </div>
     </header>
 
-    <!-- Expertise Preview -->
+    <!-- Practice Areas -->
     <section class="section-padding">
         <div class="container">
-            <h2 class="section-title">Core Expertise</h2>
+            <div class="section-header">
+                <div>
+                    <span style="color: var(--gold); text-transform: uppercase; letter-spacing: 2px; font-size: 0.8rem; margin-bottom: 10px; display: block;">Our Expertise</span>
+                    <h2>Strategic Counsel.</h2>
+                </div>
+                <a href="practice.html" class="btn-pill">All Practice Areas →</a>
+            </div>
             <div class="grid-3">
-                <div class="premium-card">
-                    <h3>Corporate Defense</h3>
-                    <p>Navigating complex regulatory landscapes and defending against white-collar allegations with precision.</p>
+                <div class="practice-card">
+                    <i class="fa-solid fa-gavel" style="font-size: 2rem; color: var(--gold); margin-bottom: 20px;"></i>
+                    <h3>Criminal Defense</h3>
+                    <p>Aggressive representation for white-collar crimes, fraud, and high-profile felonies. We dismantle the prosecution's case before trial.</p>
+                    <a href="practice.html" class="card-link">Learn More</a>
                 </div>
-                <div class="premium-card">
+                <div class="practice-card">
+                    <i class="fa-solid fa-building-columns" style="font-size: 2rem; color: var(--gold); margin-bottom: 20px;"></i>
+                    <h3>Corporate Litigation</h3>
+                    <p>Protecting shareholder value and executive reputation in complex commercial disputes and regulatory investigations.</p>
+                    <a href="practice.html" class="card-link">Learn More</a>
+                </div>
+                <div class="practice-card">
+                    <i class="fa-solid fa-scale-balanced" style="font-size: 2rem; color: var(--gold); margin-bottom: 20px;"></i>
                     <h3>High-Net Divorce</h3>
-                    <p>Discreetly handling settlements involving significant assets, ensuring your privacy remains intact.</p>
-                </div>
-                <div class="premium-card">
-                    <h3>Criminal Litigation</h3>
-                    <p>Aggressive courtroom strategies designed to dismantle the prosecution's case piece by piece.</p>
+                    <p>Discreet settlements for substantial estates. We ensure your assets and privacy remain intact during dissolution.</p>
+                    <a href="practice.html" class="card-link">Learn More</a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer style="padding: 50px 0; border-top: 1px solid rgba(255,255,255,0.05);">
-        <div class="container text-center">
-            <p style="color: #8892b0; font-size: 0.9rem;">&copy; 2024 Midnight Counsel. All Rights Reserved.</p>
+    <!-- Attorney Profile -->
+    <section class="section-padding" style="background: #151525;">
+        <div class="container attorney-section">
+            <img src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" class="attorney-img" alt="Lead Attorney">
+            <div class="attorney-text">
+                <span style="color: var(--gold); text-transform: uppercase; letter-spacing: 2px; font-size: 0.8rem; margin-bottom: 10px; display: block;">Lead Counsel</span>
+                <h2>Adv. Bhaskar Mandal</h2>
+                <p>Recognized as one of the top litigators in the country. With over two decades of experience, Bhaskar has secured acquittals and settlements in some of the most complex cases of the decade.</p>
+                <div class="credential-list">
+                    <div class="credential-item">
+                        <h4>Supreme Court</h4>
+                        <p>Bar Admission</p>
+                    </div>
+                    <div class="credential-item">
+                        <h4>Best Lawyers 2024</h4>
+                        <p>Award Recipient</p>
+                    </div>
+                    <div class="credential-item">
+                        <h4>LL.M. Harvard</h4>
+                        <p>Education</p>
+                    </div>
+                    <div class="credential-item">
+                        <h4>500+ Clients</h4>
+                        <p>Represented</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer style="padding: 80px 0; border-top: 1px solid rgba(255,255,255,0.05);">
+        <div class="container" style="text-align: center;">
+            <span class="logo" style="font-size: 2rem; margin-bottom: 20px; display: block;">MIDNIGHT</span>
+            <p style="color: var(--text-muted); margin-bottom: 40px;">Shivajinagar, Pune • +91 98765 43210</p>
+            <p style="color: rgba(255,255,255,0.3); font-size: 0.8rem;">&copy; 2024 Midnight Counsel. Confidential & Privileged.</p>
         </div>
     </footer>
 
     <script>
+        // Hamburger Menu
         const hamburger = document.querySelector('.hamburger');
         const mobileMenu = document.getElementById('mobileMenu');
         hamburger.addEventListener('click', () => {
             mobileMenu.classList.toggle('active');
+        });
+
+        // Animated Counters
+        const counters = document.querySelectorAll('.counter');
+        const speed = 200;
+
+        const animateCounters = () => {
+            counters.forEach(counter => {
+                const updateCount = () => {
+                    const target = +counter.getAttribute('data-target');
+                    const count = +counter.innerText;
+                    const inc = target / speed;
+
+                    if(count < target) {
+                        counter.innerText = Math.ceil(count + inc);
+                        setTimeout(updateCount, 20);
+                    } else {
+                        counter.innerText = target + (target === 50 ? 'Cr+' : '+');
+                    }
+                };
+                updateCount();
+            });
+        };
+
+        // Trigger animation when in view
+        let animated = false;
+        window.addEventListener('scroll', () => {
+            const section = document.querySelector('.trust-signals');
+            const sectionPos = section.getBoundingClientRect().top;
+            const screenPos = window.innerHeight / 1.3;
+
+            if(sectionPos < screenPos && !animated) {
+                animateCounters();
+                animated = true;
+            }
         });
     </script>
 </body>

@@ -3,13 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Advocate | Legal Insights & Counsel</title>
+    <title>The Advocate | Legal Insights</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,400&family=Manrope:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
+    <!-- Navbar -->
     <nav class="navbar">
         <div class="container nav-flex">
             <a href="index.html" class="logo">The Advocate.</a>
@@ -19,7 +22,9 @@
                 <li><a href="services.html">Practice Areas</a></li>
                 <li><a href="contact.html">Consultation</a></li>
             </ul>
-            <div class="hamburger">☰</div>
+            <div class="hamburger">
+                <i class="fa-solid fa-bars"></i>
+            </div>
         </div>
         <div class="mobile-menu" id="mobileMenu">
             <a href="index.html">Journal</a>
@@ -29,7 +34,7 @@
         </div>
     </nav>
 
-    <!-- Hero Editorial -->
+    <!-- Editorial Hero -->
     <header class="hero">
         <div class="container hero-grid">
             <div class="hero-text">
@@ -46,30 +51,57 @@
     <section class="section-padding">
         <div class="container">
             <div class="section-header">
-                <h2>Practice Areas</h2>
+                <div>
+                    <span class="tag" style="margin-bottom: 1rem; border: none; padding: 0; letter-spacing: 2px; color: var(--accent);">Our Perspective</span>
+                    <h2>Practice Areas</h2>
+                </div>
                 <a href="services.html" class="read-link">View All Expertise →</a>
             </div>
             <div class="grid-3">
                 <div class="article-card">
-                    <img src="https://images.unsplash.com/photo-1621360841012-3f82a9388277?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" class="article-img">
+                    <img src="https://images.unsplash.com/photo-1621360841012-3f82a9388277?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" class="article-img">
                     <span class="article-meta">Family Law</span>
                     <h3>Navigating Divorce with Dignity: A Strategic Approach.</h3>
-                    <p style="color: #64748b; margin-bottom: 15px;">We prioritize mediation over litigation to preserve assets and relationships.</p>
-                    <a href="services.html" class="read-link">Read More</a>
+                    <p style="color: #64748b; margin-bottom: 20px;">We prioritize mediation over litigation to preserve assets and relationships.</p>
+                    <a href="services.html" class="read-link">Read Analysis</a>
                 </div>
                 <div class="article-card">
-                    <img src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" class="article-img">
+                    <img src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" class="article-img">
                     <span class="article-meta">Corporate</span>
                     <h3>The Art of the Deal: Mergers in a Volatile Market.</h3>
-                    <p style="color: #64748b; margin-bottom: 15px;">Protecting shareholder value through rigorous due diligence and airtight contracts.</p>
-                    <a href="services.html" class="read-link">Read More</a>
+                    <p style="color: #64748b; margin-bottom: 20px;">Protecting shareholder value through rigorous due diligence and airtight contracts.</p>
+                    <a href="services.html" class="read-link">Read Analysis</a>
                 </div>
                 <div class="article-card">
-                    <img src="https://images.unsplash.com/photo-1593115057322-e94b77572f20?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" class="article-img">
+                    <img src="https://images.unsplash.com/photo-1593115057322-e94b77572f20?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" class="article-img">
                     <span class="article-meta">Property</span>
                     <h3>Securing Legacy: The Importance of Estate Planning.</h3>
-                    <p style="color: #64748b; margin-bottom: 15px;">Ensuring your assets are transferred seamlessly to the next generation.</p>
-                    <a href="services.html" class="read-link">Read More</a>
+                    <p style="color: #64748b; margin-bottom: 20px;">Ensuring your assets are transferred seamlessly to the next generation.</p>
+                    <a href="services.html" class="read-link">Read Analysis</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Attorney Profile (Magazine Style) -->
+    <section class="section-padding" style="background: #fff; border-top: 1px solid var(--border);">
+        <div class="container hero-grid" style="grid-template-columns: 0.8fr 1.2fr;">
+            <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" class="hero-img" style="height: 600px; filter: grayscale(100%); transition: 0.5s;" onmouseover="this.style.filter='grayscale(0%)'" onmouseout="this.style.filter='grayscale(100%)'">
+            <div class="hero-text">
+                <span class="tag">Founder Profile</span>
+                <h2 style="margin-bottom: 2rem;">Adv. Anjali Deshmukh</h2>
+                <p style="font-size: 1.2rem; margin-bottom: 2rem;">"The law is not a static set of rules. It is a living instrument of justice that must be wielded with precision and empathy."</p>
+                <p style="color: #64748b; margin-bottom: 2rem;">Anjali founded The Advocate in 2010 with a vision to create a boutique firm that values intellectual depth over volume. Her work in high-stakes family law has been cited in major legal journals.</p>
+                
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px; border-top: 1px solid var(--border); padding-top: 30px;">
+                    <div>
+                        <h4 style="font-size: 1.1rem; margin-bottom: 5px;">Education</h4>
+                        <p style="font-size: 0.9rem; color: #64748b;">J.D. Columbia Law<br>B.A. Political Science</p>
+                    </div>
+                    <div>
+                        <h4 style="font-size: 1.1rem; margin-bottom: 5px;">Recognition</h4>
+                        <p style="font-size: 0.9rem; color: #64748b;">"Top 40 Under 40"<br>Legal Insights Award</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -83,10 +115,16 @@
         </div>
     </section>
 
-    <footer style="padding: 60px 0; border-top: 1px solid var(--border);">
-        <div class="container nav-flex">
-            <span class="logo" style="font-size: 1.2rem;">The Advocate.</span>
-            <span style="color: #94a3b8; font-size: 0.9rem;">&copy; 2024 Legal Insights.</span>
+    <footer style="padding: 80px 0; border-top: 1px solid var(--border); background: #fff;">
+        <div class="container" style="text-align: center;">
+            <span class="logo" style="font-size: 1.5rem; display: block; margin-bottom: 20px;">The Advocate.</span>
+            <p style="color: #94a3b8; font-size: 0.9rem; margin-bottom: 40px;">Shivajinagar, Pune • +91 98765 43210</p>
+            <div style="display: flex; justify-content: center; gap: 20px; margin-bottom: 40px;">
+                <a href="#" style="color: var(--text-ink); font-weight: 600;">LinkedIn</a>
+                <a href="#" style="color: var(--text-ink); font-weight: 600;">Twitter</a>
+                <a href="#" style="color: var(--text-ink); font-weight: 600;">Instagram</a>
+            </div>
+            <p style="color: #cbd5e1; font-size: 0.8rem;">&copy; 2024 Legal Insights. All Rights Reserved.</p>
         </div>
     </footer>
 
