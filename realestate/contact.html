@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us — Estate</title>
+  <meta name="description" content="Get in touch with Estate — India's most trusted real estate platform. Call, email, or fill out the form and we'll respond within 2 hours.">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: { sans:['Inter','sans-serif'], head:['Poppins','sans-serif'] },
+          colors: { accent:'#2563EB', 'accent-light':'#EFF6FF' }
+        }
+      }
+    }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+    h1,h2,h3,h4 { font-family: 'Poppins', sans-serif; }
+    .nav-scrolled { box-shadow: 0 2px 24px rgba(0,0,0,.07); }
+    [data-aos] { opacity:0; transform:translateY(20px); transition:opacity .5s ease,transform .5s ease; }
+    [data-aos].aos-visible { opacity:1; transform:translateY(0); }
+    .faq-body { display: none; }
+    .faq-item.open .faq-body { display: block; }
+    .faq-item.open .faq-icon { transform: rotate(45deg); }
+    .faq-icon { transition: transform .3s ease; }
+  </style>
+</head>
+<body class="bg-white text-gray-800">
+
+<!-- NAVBAR -->
+<nav id="navbar" class="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm transition-shadow duration-300">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center justify-between h-16 lg:h-[72px]">
+      <a href="index.html" class="text-2xl font-black font-head text-gray-900">Estate<span class="text-accent">.</span></a>
+      <ul class="hidden lg:flex items-center gap-8">
+        <li><a href="index.html" class="text-sm font-medium text-gray-600 hover:text-accent">Home</a></li>
+        <li><a href="listings.html" class="text-sm font-medium text-gray-600 hover:text-accent">Properties</a></li>
+        <li><a href="about.html" class="text-sm font-medium text-gray-600 hover:text-accent">About</a></li>
+        <li><a href="contact.html" class="text-sm font-semibold text-accent">Contact</a></li>
+      </ul>
+      <div class="hidden lg:flex items-center gap-3">
+        <a href="listings.html" class="text-sm font-semibold border border-gray-200 px-4 py-2 rounded-full hover:border-accent hover:text-accent transition-all">Browse Listings</a>
+        <a href="contact.html" class="text-sm font-semibold bg-accent text-white px-4 py-2 rounded-full hover:bg-blue-700 transition-all">Get in Touch</a>
+      </div>
+      <button id="hamburger" class="lg:hidden p-2 rounded-lg hover:bg-gray-100"><svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/></svg></button>
+    </div>
+  </div>
+  <div id="mobile-menu" class="hidden lg:hidden border-t border-gray-100 bg-white px-4 py-4 flex flex-col gap-3">
+    <a href="index.html" class="text-sm font-medium text-gray-700 py-2">Home</a>
+    <a href="listings.html" class="text-sm font-medium text-gray-700 py-2">Properties</a>
+    <a href="about.html" class="text-sm font-medium text-gray-700 py-2">About</a>
+    <a href="contact.html" class="text-sm font-semibold text-accent py-2">Contact</a>
+  </div>
+</nav>
+
+<!-- PAGE HERO -->
+<div class="pt-16 lg:pt-[72px] bg-gradient-to-br from-blue-50 via-white to-gray-50 border-b border-gray-100">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-16 text-center">
+    <div class="flex items-center justify-center gap-2 text-accent text-xs font-black uppercase tracking-widest mb-4">
+      <span class="w-8 h-0.5 bg-accent rounded"></span> Get in Touch <span class="w-8 h-0.5 bg-accent rounded"></span>
+    </div>
+    <h1 class="text-4xl lg:text-5xl font-black font-head text-gray-900 mb-3">We're Here to Help</h1>
+    <p class="text-gray-500 max-w-xl mx-auto">Whether you're buying, renting, or investing — our team responds within 2 hours. We've helped 12,000+ families find their perfect home.</p>
+  </div>
+</div>
+
+<!-- INFO CARDS -->
+<section class="py-10 bg-white">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
+      <div class="border border-gray-200 rounded-2xl p-5 hover:border-accent hover:shadow-md transition-all text-center" data-aos>
+        <div class="w-10 h-10 bg-accent-light rounded-xl flex items-center justify-center text-xl mx-auto mb-3">📞</div>
+        <div class="text-xs font-bold text-gray-400 mb-1">CALL US</div>
+        <a href="tel:+919876543210" class="text-sm font-bold text-accent hover:underline">+91-98765 43210</a>
+        <div class="text-xs text-gray-400 mt-1">Mon–Sat, 9am–7pm IST</div>
+      </div>
+      <div class="border border-gray-200 rounded-2xl p-5 hover:border-accent hover:shadow-md transition-all text-center" data-aos>
+        <div class="w-10 h-10 bg-accent-light rounded-xl flex items-center justify-center text-xl mx-auto mb-3">📧</div>
+        <div class="text-xs font-bold text-gray-400 mb-1">EMAIL US</div>
+        <a href="mailto:hello@estate.in" class="text-sm font-bold text-accent hover:underline">hello@estate.in</a>
+        <div class="text-xs text-gray-400 mt-1">Response within 2 hours</div>
+      </div>
+      <div class="border border-gray-200 rounded-2xl p-5 hover:border-accent hover:shadow-md transition-all text-center" data-aos>
+        <div class="w-10 h-10 bg-accent-light rounded-xl flex items-center justify-center text-xl mx-auto mb-3">📍</div>
+        <div class="text-xs font-bold text-gray-400 mb-1">VISIT US</div>
+        <div class="text-sm font-bold text-gray-900">Bandra, Mumbai</div>
+        <div class="text-xs text-gray-400 mt-1">Mon–Sat, 10am–6pm IST</div>
+      </div>
+      <div class="border border-gray-200 rounded-2xl p-5 hover:border-accent hover:shadow-md transition-all text-center" data-aos>
+        <div class="w-10 h-10 bg-accent-light rounded-xl flex items-center justify-center text-xl mx-auto mb-3">💬</div>
+        <div class="text-xs font-bold text-gray-400 mb-1">WHATSAPP</div>
+        <a href="#" class="text-sm font-bold text-accent hover:underline">Chat with Us</a>
+        <div class="text-xs text-gray-400 mt-1">Available 7 days a week</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT FORM + MAP -->
+<section class="py-10 lg:py-16">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid lg:grid-cols-2 gap-10">
+
+      <!-- Form -->
+      <div class="bg-white border border-gray-200 rounded-2xl p-6 sm:p-8 shadow-lg" data-aos>
+        <h2 class="text-2xl font-black font-head text-gray-900 mb-6">Send Us a Message</h2>
+        <div id="success-msg" class="hidden bg-green-50 border border-green-200 text-green-700 rounded-xl p-4 mb-5 text-sm font-semibold">✅ Message sent! We'll get back to you within 2 hours.</div>
+        <form id="contact-form" class="flex flex-col gap-4">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div>
+              <label class="text-xs font-bold text-gray-500 block mb-1">First Name *</label>
+              <input type="text" required placeholder="Rahul" class="w-full text-sm border border-gray-200 rounded-xl px-4 py-3 focus:outline-none focus:border-accent bg-gray-50">
+            </div>
+            <div>
+              <label class="text-xs font-bold text-gray-500 block mb-1">Last Name *</label>
+              <input type="text" required placeholder="Desai" class="w-full text-sm border border-gray-200 rounded-xl px-4 py-3 focus:outline-none focus:border-accent bg-gray-50">
+            </div>
+          </div>
+          <div>
+            <label class="text-xs font-bold text-gray-500 block mb-1">Email Address *</label>
+            <input type="email" required placeholder="rahul@example.com" class="w-full text-sm border border-gray-200 rounded-xl px-4 py-3 focus:outline-none focus:border-accent bg-gray-50">
+          </div>
+          <div>
+            <label class="text-xs font-bold text-gray-500 block mb-1">Phone Number *</label>
+            <input type="tel" required placeholder="+91 98765 43210" class="w-full text-sm border border-gray-200 rounded-xl px-4 py-3 focus:outline-none focus:border-accent bg-gray-50">
+          </div>
+          <div>
+            <label class="text-xs font-bold text-gray-500 block mb-1">I'm interested in</label>
+            <select class="w-full text-sm border border-gray-200 rounded-xl px-4 py-3 focus:outline-none focus:border-accent bg-gray-50">
+              <option>Buying a Property</option>
+              <option>Renting a Property</option>
+              <option>Selling My Property</option>
+              <option>Investment Advice</option>
+              <option>Just Exploring</option>
+            </select>
+          </div>
+          <div>
+            <label class="text-xs font-bold text-gray-500 block mb-1">Message</label>
+            <textarea rows="4" placeholder="Tell us more about what you're looking for..." class="w-full text-sm border border-gray-200 rounded-xl px-4 py-3 focus:outline-none focus:border-accent bg-gray-50 resize-none"></textarea>
+          </div>
+          <!-- Service preferences -->
+          <div>
+            <label class="text-xs font-bold text-gray-500 block mb-2">Services (optional)</label>
+            <div class="flex flex-wrap gap-2">
+              <button type="button" class="text-xs font-semibold px-3 py-1.5 rounded-full border border-gray-200 hover:border-accent hover:text-accent transition-all">Home Loans</button>
+              <button type="button" class="text-xs font-semibold px-3 py-1.5 rounded-full border border-gray-200 hover:border-accent hover:text-accent transition-all">Legal Advice</button>
+              <button type="button" class="text-xs font-semibold px-3 py-1.5 rounded-full border border-gray-200 hover:border-accent hover:text-accent transition-all">Virtual Tour</button>
+              <button type="button" class="text-xs font-semibold px-3 py-1.5 rounded-full border border-gray-200 hover:border-accent hover:text-accent transition-all">Site Visit</button>
+              <button type="button" class="text-xs font-semibold px-3 py-1.5 rounded-full border border-gray-200 hover:border-accent hover:text-accent transition-all">Interior Design</button>
+            </div>
+          </div>
+          <button type="submit" class="w-full bg-accent text-white font-bold py-3.5 rounded-xl flex items-center justify-center gap-2 hover:bg-blue-700 transition-all">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+            Send Message
+          </button>
+          <p class="text-xs text-gray-400 text-center">🔒 We never share your info. You'll hear back within 2 hours.</p>
+        </form>
+      </div>
+
+      <!-- Map + Offices -->
+      <div class="flex flex-col gap-6">
+        <!-- Map placeholder -->
+        <div class="bg-gray-100 rounded-2xl h-52 flex flex-col items-center justify-center border-2 border-dashed border-gray-300 text-gray-400 gap-2" data-aos>
+          <svg class="w-10 h-10" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          <div class="text-sm font-semibold text-gray-600">Mumbai HQ — Bandra West</div>
+          <a href="#" class="text-accent text-xs font-semibold hover:underline">Open in Google Maps →</a>
+        </div>
+
+        <!-- Office cards -->
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4" data-aos>
+          <div class="border border-gray-200 rounded-xl p-4 hover:border-accent hover:shadow-md transition-all">
+            <div class="text-lg mb-2">🏙️</div>
+            <div class="font-bold text-sm text-gray-900">Mumbai HQ</div>
+            <div class="text-xs text-gray-500 mt-1 leading-relaxed">14, Linking Road, Bandra West, Mumbai – 400050</div>
+            <div class="text-xs text-accent mt-2 font-semibold">Call: 98765 43210</div>
+          </div>
+          <div class="border border-gray-200 rounded-xl p-4 hover:border-accent hover:shadow-md transition-all">
+            <div class="text-lg mb-2">🌿</div>
+            <div class="font-bold text-sm text-gray-900">Pune Branch</div>
+            <div class="text-xs text-gray-500 mt-1 leading-relaxed">7, Koregaon Park Rd, Pune – 411001</div>
+            <div class="text-xs text-accent mt-2 font-semibold">Call: 91234 56789</div>
+          </div>
+          <div class="border border-gray-200 rounded-xl p-4 hover:border-accent hover:shadow-md transition-all">
+            <div class="text-lg mb-2">🌆</div>
+            <div class="font-bold text-sm text-gray-900">Bangalore Branch</div>
+            <div class="text-xs text-gray-500 mt-1 leading-relaxed">22, MG Road, Indiranagar, Bangalore – 560001</div>
+            <div class="text-xs text-accent mt-2 font-semibold">Call: 94321 09876</div>
+          </div>
+        </div>
+
+        <!-- Quick facts -->
+        <div class="bg-gray-50 rounded-2xl p-5" data-aos>
+          <div class="text-sm font-bold text-gray-900 mb-3">Why Estate?</div>
+          <ul class="flex flex-col gap-2 text-sm text-gray-600">
+            <li class="flex items-center gap-2"><span class="text-green-500">✓</span> 15+ years of trusted service</li>
+            <li class="flex items-center gap-2"><span class="text-green-500">✓</span> 200+ verified agents across 18 cities</li>
+            <li class="flex items-center gap-2"><span class="text-green-500">✓</span> RERA-certified listings only</li>
+            <li class="flex items-center gap-2"><span class="text-green-500">✓</span> 4.9/5 client satisfaction rating</li>
+            <li class="flex items-center gap-2"><span class="text-green-500">✓</span> Average closure in 21 days</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="py-14 bg-gray-50">
+  <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-10" data-aos>
+      <div class="flex items-center justify-center gap-2 text-accent text-xs font-black uppercase tracking-widest mb-3">
+        <span class="w-8 h-0.5 bg-accent rounded"></span> FAQ <span class="w-8 h-0.5 bg-accent rounded"></span>
+      </div>
+      <h2 class="text-3xl lg:text-4xl font-black font-head text-gray-900">Frequently Asked Questions</h2>
+    </div>
+    <div class="flex flex-col gap-3">
+      <div class="faq-item bg-white border border-gray-200 rounded-xl overflow-hidden">
+        <button class="faq-toggle w-full flex items-center justify-between p-5 text-left">
+          <span class="font-semibold text-sm text-gray-900">How do I know if a property is RERA registered?</span>
+          <span class="faq-icon text-gray-400 text-xl font-light flex-shrink-0 ml-2">+</span>
+        </button>
+        <div class="faq-body px-5 pb-5 text-sm text-gray-500 leading-relaxed">Every listing on Estate displays the RERA registration number prominently. You can cross-verify it on your state's RERA website. Our in-house legal team verifies all listings before they go live.</div>
+      </div>
+      <div class="faq-item bg-white border border-gray-200 rounded-xl overflow-hidden">
+        <button class="faq-toggle w-full flex items-center justify-between p-5 text-left">
+          <span class="font-semibold text-sm text-gray-900">What are the charges for buying through Estate?</span>
+          <span class="faq-icon text-gray-400 text-xl font-light flex-shrink-0 ml-2">+</span>
+        </button>
+        <div class="faq-body px-5 pb-5 text-sm text-gray-500 leading-relaxed">Estate charges 0% brokerage for buyers — you pay absolutely nothing. Our fee is covered by the sellers/developers. Sellers pay 1-2% depending on the property type.</div>
+      </div>
+      <div class="faq-item bg-white border border-gray-200 rounded-xl overflow-hidden">
+        <button class="faq-toggle w-full flex items-center justify-between p-5 text-left">
+          <span class="font-semibold text-sm text-gray-900">Can I get a home loan through Estate?</span>
+          <span class="faq-icon text-gray-400 text-xl font-light flex-shrink-0 ml-2">+</span>
+        </button>
+        <div class="faq-body px-5 pb-5 text-sm text-gray-500 leading-relaxed">Yes! We partner with 12+ banks and NBFCs (SBI, HDFC, ICICI, Kotak, Axis) to offer you the best home loan rates. Our loan team will help you compare, apply, and get approval within 48 hours in most cases.</div>
+      </div>
+      <div class="faq-item bg-white border border-gray-200 rounded-xl overflow-hidden">
+        <button class="faq-toggle w-full flex items-center justify-between p-5 text-left">
+          <span class="font-semibold text-sm text-gray-900">How long does a property transaction take?</span>
+          <span class="faq-icon text-gray-400 text-xl font-light flex-shrink-0 ml-2">+</span>
+        </button>
+        <div class="faq-body px-5 pb-5 text-sm text-gray-500 leading-relaxed">Our average transaction time is 21 days from offer to registration. Ready-to-move properties are faster (7–14 days), while under-construction transactions may take longer for legal formalities.</div>
+      </div>
+      <div class="faq-item bg-white border border-gray-200 rounded-xl overflow-hidden">
+        <button class="faq-toggle w-full flex items-center justify-between p-5 text-left">
+          <span class="font-semibold text-sm text-gray-900">Can I list my property on Estate for free?</span>
+          <span class="faq-icon text-gray-400 text-xl font-light flex-shrink-0 ml-2">+</span>
+        </button>
+        <div class="faq-body px-5 pb-5 text-sm text-gray-500 leading-relaxed">Yes, listing is free for individual property owners (up to 2 listings). Developers and builders can contact our team for a partnership plan. All listings are reviewed by our team before going live.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="py-14">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="bg-gradient-to-br from-accent to-blue-700 rounded-3xl px-8 sm:px-12 py-12 text-center text-white">
+      <h2 class="text-3xl lg:text-4xl font-black font-head mb-3">Still Have Questions?</h2>
+      <p class="text-blue-100 mb-7">Our agents are standing by and will respond in under 2 hours.</p>
+      <div class="flex flex-wrap gap-4 justify-center">
+        <a href="listings.html" class="bg-white text-accent font-bold px-7 py-3 rounded-full hover:bg-gray-50 transition-all shadow-lg">Browse Properties</a>
+        <a href="tel:+919876543210" class="bg-white/15 text-white border border-white/30 font-bold px-7 py-3 rounded-full hover:bg-white/25 transition-all">📞 Call Now</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="bg-gray-900 text-white">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
+      <div class="sm:col-span-2 lg:col-span-1"><div class="text-2xl font-black font-head mb-3">Estate<span class="text-accent">.</span></div><p class="text-gray-400 text-sm">India's most trusted real estate platform since 2009.</p></div>
+      <div><h4 class="font-bold text-sm mb-4">Properties</h4><ul class="flex flex-col gap-2 text-sm text-gray-400"><li><a href="listings.html" class="hover:text-white">Buy</a></li><li><a href="listings.html" class="hover:text-white">Rent</a></li></ul></div>
+      <div><h4 class="font-bold text-sm mb-4">Company</h4><ul class="flex flex-col gap-2 text-sm text-gray-400"><li><a href="about.html" class="hover:text-white">About</a></li><li><a href="contact.html" class="hover:text-white">Contact</a></li></ul></div>
+      <div><h4 class="font-bold text-sm mb-4">Support</h4><ul class="flex flex-col gap-2 text-sm text-gray-400"><li><a href="#" class="hover:text-white">FAQs</a></li><li><a href="#" class="hover:text-white">RERA</a></li></ul></div>
+    </div>
+    <div class="border-t border-gray-800 mt-8 pt-6 flex flex-col sm:flex-row items-center justify-between gap-2 text-sm text-gray-500">
+      <span>© 2026 Estate. All rights reserved.</span>
+      <span>Built by <a href="https://networkbuilder.in" class="text-accent hover:underline">Network Builder</a></span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const nav = document.getElementById('navbar');
+  window.addEventListener('scroll', () => nav.classList.toggle('nav-scrolled', window.scrollY > 10));
+  document.getElementById('hamburger').addEventListener('click', () => document.getElementById('mobile-menu').classList.toggle('hidden'));
+  const observer = new IntersectionObserver(entries => entries.forEach(e => { if(e.isIntersecting){e.target.classList.add('aos-visible');observer.unobserve(e.target);} }), {threshold:0.1});
+  document.querySelectorAll('[data-aos]').forEach(el => observer.observe(el));
+  // Contact form
+  document.getElementById('contact-form').addEventListener('submit', e => {
+    e.preventDefault();
+    document.getElementById('success-msg').classList.remove('hidden');
+    e.target.reset();
+    setTimeout(() => document.getElementById('success-msg').classList.add('hidden'), 6000);
+  });
+  // FAQ accordion
+  document.querySelectorAll('.faq-toggle').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const item = btn.closest('.faq-item');
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+      if(!isOpen) item.classList.add('open');
+    });
+  });
+</script>
+</body>
+</html>

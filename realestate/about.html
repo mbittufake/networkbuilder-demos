@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Us — Estate</title>
+  <meta name="description"
+    content="Learn about Estate — India's most trusted real estate platform with 15 years of excellence and 12,000+ happy clients.">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: { sans: ['Inter', 'sans-serif'], head: ['Poppins', 'sans-serif'], serif: ['Playfair Display', 'serif'] },
+          colors: { accent: '#2563EB', 'accent-light': '#EFF6FF' }
+        }
+      }
+    }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@600;700;800&family=Playfair+Display:wght@700&display=swap"
+    rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4 {
+      font-family: 'Poppins', sans-serif;
+    }
+
+    .nav-scrolled {
+      box-shadow: 0 2px 24px rgba(0, 0, 0, .07);
+    }
+
+    [data-aos] {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity .6s ease, transform .6s ease;
+    }
+
+    [data-aos].aos-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .card-hover {
+      transition: transform .25s ease, box-shadow .25s ease;
+    }
+
+    .card-hover:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 40px rgba(0, 0, 0, .1);
+    }
+  </style>
+</head>
+
+<body class="bg-white text-gray-800">
+
+  <!-- NAVBAR -->
+  <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm transition-shadow duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16 lg:h-[72px]">
+        <a href="index.html" class="text-2xl font-black font-head text-gray-900">Estate<span
+            class="text-accent">.</span></a>
+        <ul class="hidden lg:flex items-center gap-8">
+          <li><a href="index.html" class="text-sm font-medium text-gray-600 hover:text-accent">Home</a></li>
+          <li><a href="listings.html" class="text-sm font-medium text-gray-600 hover:text-accent">Properties</a></li>
+          <li><a href="about.html" class="text-sm font-semibold text-accent">About</a></li>
+          <li><a href="contact.html" class="text-sm font-medium text-gray-600 hover:text-accent">Contact</a></li>
+        </ul>
+        <div class="hidden lg:flex items-center gap-3">
+          <a href="listings.html"
+            class="text-sm font-semibold border border-gray-200 px-4 py-2 rounded-full hover:border-accent hover:text-accent transition-all">Browse
+            Listings</a>
+          <a href="contact.html"
+            class="text-sm font-semibold bg-accent text-white px-4 py-2 rounded-full hover:bg-blue-700 transition-all">Get
+            in Touch</a>
+        </div>
+        <button id="hamburger" class="lg:hidden p-2 rounded-lg hover:bg-gray-100"><svg class="w-6 h-6" fill="none"
+            stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+          </svg></button>
+      </div>
+    </div>
+    <div id="mobile-menu" class="hidden lg:hidden border-t border-gray-100 bg-white px-4 py-4 flex flex-col gap-3">
+      <a href="index.html" class="text-sm font-medium text-gray-700 py-2">Home</a>
+      <a href="listings.html" class="text-sm font-medium text-gray-700 py-2">Properties</a>
+      <a href="about.html" class="text-sm font-semibold text-accent py-2">About</a>
+      <a href="contact.html" class="text-sm font-medium text-gray-700 py-2">Contact</a>
+    </div>
+  </nav>
+
+  <!-- PAGE HERO -->
+  <div class="pt-16 lg:pt-[72px] bg-gradient-to-br from-blue-50 via-white to-gray-50 border-b border-gray-100">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14 lg:py-20 text-center">
+      <div class="flex items-center justify-center gap-2 text-accent text-xs font-black uppercase tracking-widest mb-4">
+        <span class="w-8 h-0.5 bg-accent rounded"></span> Our Story <span class="w-8 h-0.5 bg-accent rounded"></span>
+      </div>
+      <h1 class="text-4xl lg:text-6xl font-black font-head text-gray-900 mb-4 max-w-3xl mx-auto">15 Years of
+        Connecting<br>Families to Dream Homes</h1>
+      <p class="text-gray-500 text-lg max-w-2xl mx-auto">Estate was founded in 2009 with a simple belief: buying or
+        renting a home should be a joyful, transparent, and stress-free experience for every Indian family.</p>
+    </div>
+  </div>
+
+  <!-- MISSION -->
+  <section class="py-16 lg:py-24">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid lg:grid-cols-2 gap-16 items-center">
+        <div class="relative" data-aos>
+          <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=700&h=600&fit=crop&q=85"
+            class="rounded-3xl w-full h-[360px] sm:h-[440px] object-cover shadow-2xl" alt="Estate Office">
+        </div>
+        <div data-aos>
+          <div class="flex items-center gap-2 text-accent text-xs font-black uppercase tracking-widest mb-4">
+            <span class="w-8 h-0.5 bg-accent rounded"></span> Our Mission
+          </div>
+          <h2 class="text-4xl lg:text-5xl font-black font-head text-gray-900 mb-6">Making Real Estate<br>Radically
+            Simple</h2>
+          <p class="text-gray-500 leading-relaxed mb-4">We started Estate because we personally experienced how painful,
+            opaque, and exhausting property transactions could be. Hidden fees, unreliable agents, and unverified
+            listings made what should be a life milestone into a nightmare.</p>
+          <p class="text-gray-500 leading-relaxed mb-8">Today, we operate across 18 cities, with a team of 200+ verified
+            agents and 4,200+ personally-inspected properties. Every listing on Estate is real — no ghost listings, no
+            fake photos, no hidden charges.</p>
+          <div class="grid grid-cols-2 gap-4">
+            <div class="bg-gray-50 rounded-2xl p-4">
+              <div class="text-3xl font-black font-head text-accent">18</div>
+              <div class="text-sm text-gray-500 mt-1">Cities Covered</div>
+            </div>
+            <div class="bg-gray-50 rounded-2xl p-4">
+              <div class="text-3xl font-black font-head text-accent">200+</div>
+              <div class="text-sm text-gray-500 mt-1">Verified Agents</div>
+            </div>
+            <div class="bg-gray-50 rounded-2xl p-4">
+              <div class="text-3xl font-black font-head text-accent">₹500Cr+</div>
+              <div class="text-sm text-gray-500 mt-1">Properties Sold</div>
+            </div>
+            <div class="bg-gray-50 rounded-2xl p-4">
+              <div class="text-3xl font-black font-head text-accent">4.9★</div>
+              <div class="text-sm text-gray-500 mt-1">Average Rating</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VALUES -->
+  <section class="py-16 lg:py-24 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12" data-aos>
+        <div
+          class="flex items-center justify-center gap-2 text-accent text-xs font-black uppercase tracking-widest mb-3">
+          <span class="w-8 h-0.5 bg-accent rounded"></span> What We Stand For <span
+            class="w-8 h-0.5 bg-accent rounded"></span>
+        </div>
+        <h2 class="text-4xl lg:text-5xl font-black font-head text-gray-900">Our Core Values</h2>
+      </div>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="bg-white rounded-2xl p-6 border border-gray-200 card-hover" data-aos>
+          <div class="w-12 h-12 bg-accent-light rounded-xl flex items-center justify-center mb-4 text-xl">✅</div>
+          <h3 class="font-bold text-base text-gray-900 mb-2">Radical Transparency</h3>
+          <p class="text-sm text-gray-500 leading-relaxed">Every property listing includes full legal history, actual
+            photos (no staging), and real price comparisons. No surprises, ever.</p>
+        </div>
+        <div class="bg-white rounded-2xl p-6 border border-gray-200 card-hover" data-aos>
+          <div class="w-12 h-12 bg-accent-light rounded-xl flex items-center justify-center mb-4 text-xl">🛡️</div>
+          <h3 class="font-bold text-base text-gray-900 mb-2">Client First, Always</h3>
+          <p class="text-sm text-gray-500 leading-relaxed">Our agents work for you, not the seller. We only succeed when
+            you walk away happy and into your dream home.</p>
+        </div>
+        <div class="bg-white rounded-2xl p-6 border border-gray-200 card-hover" data-aos>
+          <div class="w-12 h-12 bg-accent-light rounded-xl flex items-center justify-center mb-4 text-xl">🏘️</div>
+          <h3 class="font-bold text-base text-gray-900 mb-2">Community Building</h3>
+          <p class="text-sm text-gray-500 leading-relaxed">We don't just sell homes — we help you find your community.
+            Neighbourhood guides, school ratings, and local insights included.</p>
+        </div>
+        <div class="bg-white rounded-2xl p-6 border border-gray-200 card-hover" data-aos>
+          <div class="w-12 h-12 bg-accent-light rounded-xl flex items-center justify-center mb-4 text-xl">⭐</div>
+          <h3 class="font-bold text-base text-gray-900 mb-2">Excellence in Service</h3>
+          <p class="text-sm text-gray-500 leading-relaxed">From your first enquiry to the day you get the keys, we
+            maintain the highest standards of professionalism.</p>
+        </div>
+        <div class="bg-white rounded-2xl p-6 border border-gray-200 card-hover" data-aos>
+          <div class="w-12 h-12 bg-accent-light rounded-xl flex items-center justify-center mb-4 text-xl">⚖️</div>
+          <h3 class="font-bold text-base text-gray-900 mb-2">Legal Clarity</h3>
+          <p class="text-sm text-gray-500 leading-relaxed">In-house legal team handles RERA compliance, title
+            verification, and registration, so you never face legal complications.</p>
+        </div>
+        <div class="bg-white rounded-2xl p-6 border border-gray-200 card-hover" data-aos>
+          <div class="w-12 h-12 bg-accent-light rounded-xl flex items-center justify-center mb-4 text-xl">⚡</div>
+          <h3 class="font-bold text-base text-gray-900 mb-2">Speed & Efficiency</h3>
+          <p class="text-sm text-gray-500 leading-relaxed">Our streamlined process means you can complete a property
+            transaction in as little as 21 days — the fastest in the industry.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TEAM -->
+  <section class="py-16 lg:py-24">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12" data-aos>
+        <div
+          class="flex items-center justify-center gap-2 text-accent text-xs font-black uppercase tracking-widest mb-3">
+          <span class="w-8 h-0.5 bg-accent rounded"></span> The People Behind Estate <span
+            class="w-8 h-0.5 bg-accent rounded"></span>
+        </div>
+        <h2 class="text-4xl lg:text-5xl font-black font-head text-gray-900">Meet Our Leadership Team</h2>
+      </div>
+      <div class="grid grid-cols-2 lg:grid-cols-4 gap-5">
+        <div class="bg-white border border-gray-100 rounded-2xl overflow-hidden card-hover" data-aos>
+          <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&h=320&fit=crop&q=80"
+            class="w-full h-44 object-cover" alt="Sanjana Reddy">
+          <div class="p-4">
+            <div class="font-bold text-sm text-gray-900">Sanjana Reddy</div>
+            <div class="text-xs text-accent font-semibold mt-0.5 mb-2">CEO & Co-Founder</div>
+            <div class="text-xs text-gray-500 leading-relaxed">Former McKinsey consultant. 20+ years in Indian real
+              estate.</div>
+            <div class="flex gap-2 mt-3">
+              <a href="#"
+                class="w-7 h-7 border border-gray-200 rounded-full flex items-center justify-center text-gray-400 hover:border-accent hover:text-accent transition-all"><svg
+                  class="w-3 h-3" fill="currentColor" viewBox="0 0 24 24">
+                  <path
+                    d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286z" />
+                </svg></a>
+            </div>
+          </div>
+        </div>
+        <div class="bg-white border border-gray-100 rounded-2xl overflow-hidden card-hover" data-aos>
+          <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=320&fit=crop&q=80"
+            class="w-full h-44 object-cover" alt="Arjun Mehta">
+          <div class="p-4">
+            <div class="font-bold text-sm text-gray-900">Arjun Mehta</div>
+            <div class="text-xs text-accent font-semibold mt-0.5 mb-2">Head of Luxury Sales</div>
+            <div class="text-xs text-gray-500 leading-relaxed">₹340Cr+ in transactions. Specialises in Mumbai & Delhi
+              NCR.</div>
+            <div class="flex gap-2 mt-3">
+              <a href="#"
+                class="w-7 h-7 border border-gray-200 rounded-full flex items-center justify-center text-gray-400 hover:border-accent hover:text-accent transition-all"><svg
+                  class="w-3 h-3" fill="currentColor" viewBox="0 0 24 24">
+                  <path
+                    d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286z" />
+                </svg></a>
+            </div>
+          </div>
+        </div>
+        <div class="bg-white border border-gray-100 rounded-2xl overflow-hidden card-hover" data-aos>
+          <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=400&h=320&fit=crop&q=80"
+            class="w-full h-44 object-cover" alt="Priya Sharma">
+          <div class="p-4">
+            <div class="font-bold text-sm text-gray-900">Priya Sharma</div>
+            <div class="text-xs text-accent font-semibold mt-0.5 mb-2">Head of Client Experience</div>
+            <div class="text-xs text-gray-500 leading-relaxed">500+ transactions. Known for 5-star buyer outcomes.</div>
+            <div class="flex gap-2 mt-3">
+              <a href="#"
+                class="w-7 h-7 border border-gray-200 rounded-full flex items-center justify-center text-gray-400 hover:border-accent hover:text-accent transition-all"><svg
+                  class="w-3 h-3" fill="currentColor" viewBox="0 0 24 24">
+                  <path
+                    d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286z" />
+                </svg></a>
+            </div>
+          </div>
+        </div>
+        <div class="bg-white border border-gray-100 rounded-2xl overflow-hidden card-hover" data-aos>
+          <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&h=320&fit=crop&q=80"
+            class="w-full h-44 object-cover" alt="Meera Nair">
+          <div class="p-4">
+            <div class="font-bold text-sm text-gray-900">Meera Nair</div>
+            <div class="text-xs text-accent font-semibold mt-0.5 mb-2">Investment & Research Head</div>
+            <div class="text-xs text-gray-500 leading-relaxed">Publishes India's only free quarterly real estate value
+              report.</div>
+            <div class="flex gap-2 mt-3">
+              <a href="#"
+                class="w-7 h-7 border border-gray-200 rounded-full flex items-center justify-center text-gray-400 hover:border-accent hover:text-accent transition-all"><svg
+                  class="w-3 h-3" fill="currentColor" viewBox="0 0 24 24">
+                  <path
+                    d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286z" />
+                </svg></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TIMELINE -->
+  <section class="py-16 lg:py-24 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid lg:grid-cols-2 gap-16 items-start">
+        <div data-aos>
+          <div class="flex items-center gap-2 text-accent text-xs font-black uppercase tracking-widest mb-4">
+            <span class="w-8 h-0.5 bg-accent rounded"></span> Our Journey
+          </div>
+          <h2 class="text-4xl lg:text-5xl font-black font-head text-gray-900 mb-4">15 Years,<br>One Mission</h2>
+          <p class="text-gray-500 leading-relaxed">From a small 3-person team in a Pune garage to India's most trusted
+            property platform.</p>
+        </div>
+        <div data-aos class="space-y-0">
+          <!-- Timeline items -->
+          <div class="flex gap-4">
+            <div class="flex flex-col items-center">
+              <div class="w-3 h-3 rounded-full bg-accent border-2 border-blue-200 flex-shrink-0 mt-1"></div>
+              <div class="w-0.5 flex-1 bg-gray-200 mt-1 min-h-[48px]"></div>
+            </div>
+            <div class="pb-8 pl-2">
+              <div class="text-accent text-sm font-black mb-1">2009</div>
+              <div class="font-bold text-gray-900 text-base">Founded in Pune</div>
+              <div class="text-sm text-gray-500 mt-1">Started with 3 team members, 40 listings, and a dream to make real
+                estate honest.</div>
+            </div>
+          </div>
+          <div class="flex gap-4">
+            <div class="flex flex-col items-center">
+              <div class="w-3 h-3 rounded-full bg-accent border-2 border-blue-200 flex-shrink-0 mt-1"></div>
+              <div class="w-0.5 flex-1 bg-gray-200 mt-1 min-h-[48px]"></div>
+            </div>
+            <div class="pb-8 pl-2">
+              <div class="text-accent text-sm font-black mb-1">2012</div>
+              <div class="font-bold text-gray-900 text-base">Expanded to Mumbai & Bangalore</div>
+              <div class="text-sm text-gray-500 mt-1">Grew to 50+ agents. Raised Series A from Tiger Global.</div>
+            </div>
+          </div>
+          <div class="flex gap-4">
+            <div class="flex flex-col items-center">
+              <div class="w-3 h-3 rounded-full bg-accent border-2 border-blue-200 flex-shrink-0 mt-1"></div>
+              <div class="w-0.5 flex-1 bg-gray-200 mt-1 min-h-[48px]"></div>
+            </div>
+            <div class="pb-8 pl-2">
+              <div class="text-accent text-sm font-black mb-1">2016</div>
+              <div class="font-bold text-gray-900 text-base">Launched Verified Listings Program</div>
+              <div class="text-sm text-gray-500 mt-1">First platform in India to personally visit every listing before
+                publishing.</div>
+            </div>
+          </div>
+          <div class="flex gap-4">
+            <div class="flex flex-col items-center">
+              <div class="w-3 h-3 rounded-full bg-accent border-2 border-blue-200 flex-shrink-0 mt-1"></div>
+              <div class="w-0.5 flex-1 bg-gray-200 mt-1 min-h-[48px]"></div>
+            </div>
+            <div class="pb-8 pl-2">
+              <div class="text-accent text-sm font-black mb-1">2020</div>
+              <div class="font-bold text-gray-900 text-base">Virtual Tours During Pandemic</div>
+              <div class="text-sm text-gray-500 mt-1">Launched 360° virtual tours, enabling 2,000+ transactions during
+                lockdown.</div>
+            </div>
+          </div>
+          <div class="flex gap-4">
+            <div class="flex flex-col items-center">
+              <div class="w-3 h-3 rounded-full bg-accent border-2 border-blue-200 flex-shrink-0 mt-1"></div>
+            </div>
+            <div class="pl-2">
+              <div class="text-accent text-sm font-black mb-1">2024</div>
+              <div class="font-bold text-gray-900 text-base">18 Cities, ₹500Cr+ Sold</div>
+              <div class="text-sm text-gray-500 mt-1">Reached 12,000+ happy clients and celebrated ₹500Cr in total
+                transactions.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRESS -->
+  <section class="py-10 border-b border-gray-100">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <p class="text-center text-xs font-bold uppercase tracking-widest text-gray-400 mb-6">As Seen In</p>
+      <div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
+        <div
+          class="border border-gray-200 rounded-xl py-5 text-center font-black text-lg text-gray-400 hover:border-accent hover:text-accent transition-all cursor-default">
+          Abc</div>
+        <div
+          class="border border-gray-200 rounded-xl py-5 text-center font-black text-lg text-gray-400 hover:border-accent hover:text-accent transition-all cursor-default">
+          Xyz</div>
+        <div
+          class="border border-gray-200 rounded-xl py-5 text-center font-black text-lg text-gray-400 hover:border-accent hover:text-accent transition-all cursor-default">
+          Pqr</div>
+        <div
+          class="border border-gray-200 rounded-xl py-5 text-center font-black text-lg text-gray-400 hover:border-accent hover:text-accent transition-all cursor-default">
+          Lmn</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-16 lg:py-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="bg-gradient-to-br from-accent to-blue-700 rounded-3xl px-8 sm:px-12 py-14 text-center text-white">
+        <h2 class="text-4xl lg:text-5xl font-black font-head mb-4">Join the Estate Family</h2>
+        <p class="text-blue-100 text-lg mb-8 max-w-lg mx-auto">Whether you're buying, selling, or renting — we're here
+          to make it easy.</p>
+        <div class="flex flex-wrap gap-4 justify-center">
+          <a href="listings.html"
+            class="bg-white text-accent font-bold px-8 py-3.5 rounded-full hover:bg-gray-50 transition-all shadow-lg">Browse
+            Properties</a>
+          <a href="contact.html"
+            class="bg-white/15 text-white border border-white/30 font-bold px-8 py-3.5 rounded-full hover:bg-white/25 transition-all">Contact
+            Us</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="bg-gray-900 text-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div class="sm:col-span-2 lg:col-span-1">
+          <div class="text-2xl font-black font-head mb-3">Estate<span class="text-accent">.</span></div>
+          <p class="text-gray-400 text-sm">India's most trusted real estate platform since 2009.</p>
+        </div>
+        <div>
+          <h4 class="font-bold text-sm mb-4">Properties</h4>
+          <ul class="flex flex-col gap-2 text-sm text-gray-400">
+            <li><a href="listings.html" class="hover:text-white">Buy</a></li>
+            <li><a href="listings.html" class="hover:text-white">Rent</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="font-bold text-sm mb-4">Company</h4>
+          <ul class="flex flex-col gap-2 text-sm text-gray-400">
+            <li><a href="about.html" class="hover:text-white">About</a></li>
+            <li><a href="contact.html" class="hover:text-white">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="font-bold text-sm mb-4">Support</h4>
+          <ul class="flex flex-col gap-2 text-sm text-gray-400">
+            <li><a href="#" class="hover:text-white">FAQs</a></li>
+            <li><a href="#" class="hover:text-white">RERA</a></li>
+          </ul>
+        </div>
+      </div>
+      <div
+        class="border-t border-gray-800 mt-8 pt-6 flex flex-col sm:flex-row items-center justify-between gap-2 text-sm text-gray-500">
+        <span>© 2026 Estate. All rights reserved.</span>
+        <span>Built by <a href="https://networkbuilder.in" class="text-accent hover:underline">Network
+            Builder</a></span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const nav = document.getElementById('navbar');
+    window.addEventListener('scroll', () => nav.classList.toggle('nav-scrolled', window.scrollY > 10));
+    document.getElementById('hamburger').addEventListener('click', () => document.getElementById('mobile-menu').classList.toggle('hidden'));
+    const observer = new IntersectionObserver(entries => entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('aos-visible'); observer.unobserve(e.target); } }), { threshold: 0.1 });
+    document.querySelectorAll('[data-aos]').forEach(el => observer.observe(el));
+  </script>
+</body>
+
+</html>
