@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ClassDesk | Best Coaching Institute in Siliguri</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;500;600;700&family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['DM Sans', 'sans-serif'], serif: ['Playfair Display', 'serif'] },
+                    colors: { brand: { 50: '#fef7ee', 100: '#fdedd6', 500: '#f97316', 600: '#ea580c', 700: '#c2410c' } }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-stone-50 text-stone-800 font-sans antialiased">
+
+    <!-- Header -->
+    <header class="bg-white border-b border-stone-200 sticky top-0 z-50">
+        <div class="max-w-6xl mx-auto px-4 md:px-6">
+            <div class="flex items-center justify-between h-16">
+                <a href="index.html" class="flex items-center gap-2">
+                    <div class="w-8 h-8 bg-brand-500 rounded-lg flex items-center justify-center">
+                        <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
+                    </div>
+                    <span class="text-lg font-semibold tracking-tight">ClassDesk</span>
+                </a>
+                <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-stone-600">
+                    <a href="index.html" class="text-stone-900">Home</a>
+                    <a href="courses.html" class="hover:text-stone-900 transition">Courses</a>
+                    <a href="contact.html" class="hover:text-stone-900 transition">Contact</a>
+                    <a href="admin/dashboard.html" class="text-xs px-3 py-1.5 bg-stone-100 rounded-full hover:bg-stone-200 transition">Admin Panel</a>
+                </nav>
+                <a href="contact.html" class="bg-stone-900 text-white px-5 py-2 rounded-lg text-sm font-medium hover:bg-stone-800 transition">Enroll Now</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero -->
+    <section class="bg-white py-16 md:py-24">
+        <div class="max-w-6xl mx-auto px-4 md:px-6">
+            <div class="max-w-3xl">
+                <span class="inline-block text-xs font-semibold tracking-wider uppercase text-stone-500 mb-4">Since 2014 • Siliguri's Trusted Name</span>
+                <h1 class="text-4xl md:text-5xl lg:text-6xl font-serif text-stone-900 leading-tight mb-6">Every student deserves the <span class="text-brand-500">best guidance</span></h1>
+                <p class="text-lg text-stone-600 mb-8 leading-relaxed max-w-xl">Join 500+ successful students. Expert faculty, proven results, and personal attention for Class 9-12, JEE & NEET preparation.</p>
+                <div class="flex flex-wrap gap-4">
+                    <a href="courses.html" class="bg-brand-500 text-white px-6 py-3 rounded-lg font-medium hover:bg-brand-600 transition">View Courses</a>
+                    <a href="contact.html" class="border border-stone-300 px-6 py-3 rounded-lg font-medium hover:bg-stone-50 transition">Talk to Counselor</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Bar -->
+    <section class="bg-stone-900 py-8">
+        <div class="max-w-6xl mx-auto px-4 md:px-6">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                <div class="text-center md:text-left">
+                    <div class="text-2xl md:text-3xl font-semibold text-white">500+</div>
+                    <div class="text-stone-400 text-sm">Students Taught</div>
+                </div>
+                <div class="text-center md:text-left">
+                    <div class="text-2xl md:text-3xl font-semibold text-white">95%</div>
+                    <div class="text-stone-400 text-sm">Pass Rate</div>
+                </div>
+                <div class="text-center md:text-left">
+                    <div class="text-2xl md:text-3xl font-semibold text-white">150+</div>
+                    <div class="text-stone-400 text-sm">JEE/NEET Selected</div>
+                </div>
+                <div class="text-center md:text-left">
+                    <div class="text-2xl md:text-3xl font-semibold text-white">10+</div>
+                    <div class="text-stone-400 text-sm">Years Experience</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About -->
+    <section class="py-16 md:py-20">
+        <div class="max-w-6xl mx-auto px-4 md:px-6">
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div>
+                    <h2 class="text-2xl md:text-3xl font-serif text-stone-900 mb-4">Building Futures Since 2014</h2>
+                    <p class="text-stone-600 mb-4">ClassDesk started with a simple mission: provide quality education to every student in Siliguri who dreams of cracking JEE or NEET but lacks access to proper guidance.</p>
+                    <p class="text-stone-600 mb-6">Over the years, we've helped 500+ students achieve their goals. Our students have secured admissions in IITs, NITs, AIIMS, and top medical colleges across India.</p>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="bg-white p-4 rounded-xl border border-stone-200">
+                            <div class="text-2xl font-bold text-brand-600">₹2Cr+</div>
+                            <div class="text-sm text-stone-600">Scholarship Given</div>
+                        </div>
+                        <div class="bg-white p-4 rounded-xl border border-stone-200">
+                            <div class="text-2xl font-bold text-brand-600">50+</div>
+                            <div class="text-sm text-stone-600">Top Rankers</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="relative">
+                    <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=800&h=600&fit=crop&q=85" alt="Students in classroom" class="rounded-2xl w-full h-80 object-cover">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Courses -->
+    <section class="py-16 md:py-20 bg-white">
+        <div class="max-w-6xl mx-auto px-4 md:px-6">
+            <div class="flex items-end justify-between mb-12">
+                <div>
+                    <h2 class="text-2xl md:text-3xl font-serif text-stone-900 mb-2">Our Courses</h2>
+                    <p class="text-stone-600">Choose the right path for your career</p>
+                </div>
+                <a href="courses.html" class="hidden md:block text-brand-600 font-medium hover:underline">See all courses →</a>
+            </div>
+            <div class="grid md:grid-cols-3 gap-6">
+                <div class="bg-stone-50 rounded-2xl p-6 border border-stone-200 hover:border-stone-300 hover:shadow-lg transition duration-300">
+                    <div class="w-10 h-10 bg-brand-50 rounded-xl flex items-center justify-center mb-4">
+                        <svg class="w-5 h-5 text-brand-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
+                    </div>
+                    <h3 class="font-semibold text-lg mb-1">CBSE Foundation</h3>
+                    <p class="text-stone-600 text-sm mb-4">Class 9-10 complete preparation</p>
+                    <div class="flex items-center justify-between">
+                        <span class="text-xl font-bold">₹12,000</span>
+                        <span class="text-xs text-stone-500 bg-stone-200 px-2 py-1 rounded">6 months</span>
+                    </div>
+                </div>
+                <div class="bg-stone-50 rounded-2xl p-6 border border-stone-200 hover:border-stone-300 hover:shadow-lg transition duration-300">
+                    <div class="w-10 h-10 bg-brand-50 rounded-xl flex items-center justify-center mb-4">
+                        <svg class="w-5 h-5 text-brand-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.293 3.414-1.414 3.414H12.828a2 2 0 00-1.414.586l-1.414 1.414a2 2 0 01-1.414.586l-1.414-1.414a2 2 0 00-2 0l-1.414 1.414a2 2 0 01-2.828 0"></path></svg>
+                    </div>
+                    <h3 class="font-semibold text-lg mb-1">Science (PCM/PCB)</h3>
+                    <p class="text-stone-600 text-sm mb-4">Class 11-12 with JEE/NEET focus</p>
+                    <div class="flex items-center justify-between">
+                        <span class="text-xl font-bold">₹18,000</span>
+                        <span class="text-xs text-stone-500 bg-stone-200 px-2 py-1 rounded">1 year</span>
+                    </div>
+                </div>
+                <div class="bg-stone-50 rounded-2xl p-6 border border-stone-200 hover:border-stone-300 hover:shadow-lg transition duration-300">
+                    <div class="w-10 h-10 bg-brand-50 rounded-xl flex items-center justify-center mb-4">
+                        <svg class="w-5 h-5 text-brand-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path></svg>
+                    </div>
+                    <h3 class="font-semibold text-lg mb-1">JEE/NEET Crash</h3>
+                    <p class="text-stone-600 text-sm mb-4">Intensive exam preparation</p>
+                    <div class="flex items-center justify-between">
+                        <span class="text-xl font-bold">₹25,000</span>
+                        <span class="text-xs text-stone-500 bg-stone-200 px-2 py-1 rounded">6 months</span>
+                    </div>
+                </div>
+            </div>
+            <a href="courses.html" class="md:hidden mt-6 block text-brand-600 font-medium hover:underline">See all courses →</a>
+        </div>
+    </section>
+
+    <!-- Faculty -->
+    <section class="py-16 md:py-20">
+        <div class="max-w-6xl mx-auto px-4 md:px-6">
+            <div class="text-center mb-12">
+                <h2 class="text-2xl md:text-3xl font-serif text-stone-900 mb-2">Meet Our Faculty</h2>
+                <p class="text-stone-600">Experienced educators dedicated to your success</p>
+            </div>
+            <div class="grid md:grid-cols-4 gap-6">
+                <div class="bg-white rounded-2xl p-6 border border-stone-200 text-center">
+                    <div class="w-20 h-20 bg-brand-100 rounded-full mx-auto mb-4 flex items-center justify-center">
+                        <span class="text-2xl font-bold text-brand-600">RK</span>
+                    </div>
+                    <h3 class="font-semibold">Rajesh Kumar</h3>
+                    <p class="text-sm text-stone-500 mb-2">Physics</p>
+                    <p class="text-xs text-stone-600">IIT Kharagpur<br>12+ years exp.</p>
+                </div>
+                <div class="bg-white rounded-2xl p-6 border border-stone-200 text-center">
+                    <div class="w-20 h-20 bg-brand-100 rounded-full mx-auto mb-4 flex items-center justify-center">
+                        <span class="text-2xl font-bold text-brand-600">SS</span>
+                    </div>
+                    <h3 class="font-semibold">Sarita Sharma</h3>
+                    <p class="text-sm text-stone-500 mb-2">Chemistry</p>
+                    <p class="text-xs text-stone-600">IIT Bombay<br>10+ years exp.</p>
+                </div>
+                <div class="bg-white rounded-2xl p-6 border border-stone-200 text-center">
+                    <div class="w-20 h-20 bg-brand-100 rounded-full mx-auto mb-4 flex items-center justify-center">
+                        <span class="text-2xl font-bold text-brand-600">AS</span>
+                    </div>
+                    <h3 class="font-semibold">Amitabh Singh</h3>
+                    <p class="text-sm text-stone-500 mb-2">Mathematics</p>
+                    <p class="text-xs text-stone-600">NIT Siliguri<br>8+ years exp.</p>
+                </div>
+                <div class="bg-white rounded-2xl p-6 border border-stone-200 text-center">
+                    <div class="w-20 h-20 bg-brand-100 rounded-full mx-auto mb-4 flex items-center justify-center">
+                        <span class="text-2xl font-bold text-brand-600">PD</span>
+                    </div>
+                    <h3 class="font-semibold">Priya Das</h3>
+                    <p class="text-sm text-stone-500 mb-2">Biology</p>
+                    <p class="text-xs text-stone-600">AIIMS Delhi<br>7+ years exp.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose -->
+    <section class="py-16 md:py-20 bg-white">
+        <div class="max-w-6xl mx-auto px-4 md:px-6">
+            <div class="text-center mb-12">
+                <h2 class="text-2xl md:text-3xl font-serif text-stone-900 mb-2">Why Parents Trust Us</h2>
+                <p class="text-stone-600">We've helped hundreds achieve their dreams</p>
+            </div>
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="text-center">
+                    <div class="w-14 h-14 bg-brand-100 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                        <svg class="w-7 h-7 text-brand-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
+                    </div>
+                    <h3 class="font-semibold mb-1">Expert Faculty</h3>
+                    <p class="text-sm text-stone-600">IITians & NITians with 10+ years experience</p>
+                </div>
+                <div class="text-center">
+                    <div class="w-14 h-14 bg-brand-100 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                        <svg class="w-7 h-7 text-brand-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
+                    </div>
+                    <h3 class="font-semibold mb-1">Study Material</h3>
+                    <p class="text-sm text-stone-600">Complete notes, PYQs & mock tests</p>
+                </div>
+                <div class="text-center">
+                    <div class="w-14 h-14 bg-brand-100 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                        <svg class="w-7 h-7 text-brand-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                    </div>
+                    <h3 class="font-semibold mb-1">Small Batches</h3>
+                    <p class="text-sm text-stone-600">Max 25 students per batch</p>
+                </div>
+                <div class="text-center">
+                    <div class="w-14 h-14 bg-brand-100 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                        <svg class="w-7 h-7 text-brand-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path></svg>
+                    </div>
+                    <h3 class="font-semibold mb-1">Regular Tests</h3>
+                    <p class="text-sm text-stone-600">Weekly CTs & monthly exams</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="py-16 md:py-20">
+        <div class="max-w-6xl mx-auto px-4 md:px-6">
+            <div class="text-center mb-12">
+                <h2 class="text-2xl md:text-3xl font-serif text-stone-900 mb-2">What Parents Say</h2>
+                <p class="text-stone-600">Real feedback from real parents</p>
+            </div>
+            <div class="grid md:grid-cols-3 gap-6">
+                <div class="bg-white rounded-2xl p-6 border border-stone-200">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-12 h-12 bg-brand-100 rounded-full flex items-center justify-center">
+                            <span class="text-lg font-bold text-brand-600">SA</span>
+                        </div>
+                        <div>
+                            <p class="font-medium text-sm">— Mrs. S. Agarwal</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-1 mb-2">
+                        <svg class="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l.07.704a1.5 1.5 0 001.19 1.21l.723.113c.956.149 1.234 1.385.459 2.018l-.52.653a1.5 1.5 0 01-.651.451l-.723.113a1.5 1.5 0 00-1.19 1.21l-.07.704c-.921.3-.921 1.603 0 1.902l.704.07a1.5 1.5 0 001.19-1.19l.113-.723c.149-.956-1.385-1.234-2.018-.459l-.653.52a1.5 1.5 0 01-.451.651l-.113.723a1.5 1.5 0 00-1.21 1.19l-.704.07c-.3.921-1.603.921-1.902 0l-.07-.704a1.5 1.5 0 00-1.19-1.21l-.723-.113c-.956-.149-1.234-1.385-.459-2.018l.52-.653a1.5 1.5 0 01.651-.451l.723-.113a1.5 1.5 0 001.19-1.21l.07-.704zM12 15a3 3 0 100-6 3 3 0 000 6z"/></svg>
+                    </div>
+                    <p class="text-stone-600">"My daughter scored 95% in Class 10 thanks to ClassDesk teachers. Highly recommended!"</p>
+                </div>
+                <div class="bg-white rounded-2xl p-6 border border-stone-200">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-12 h-12 bg-brand-100 rounded-full flex items-center justify-center">
+                            <span class="text-lg font-bold text-brand-600">RG</span>
+                        </div>
+                        <div>
+                            <p class="font-medium text-sm">— Mr. R. Gupta</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-1 mb-2">
+                        <svg class="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l.07.704a1.5 1.5 0 001.19 1.21l.723.113c.956.149 1.234 1.385.459 2.018l-.52.653a1.5 1.5 0 01-.651.451l-.723.113a1.5 1.5 0 00-1.19 1.21l-.07.704c-.921.3-.921 1.603 0 1.902l.704.07a1.5 1.5 0 001.19-1.19l.113-.723c.149-.956-1.385-1.234-2.018-.459l-.653.52a1.5 1.5 0 01-.451.651l-.113.723a1.5 1.5 0 00-1.21 1.19l-.704.07c-.3.921-1.603.921-1.902 0l-.07-.704a1.5 1.5 0 00-1.19-1.21l-.723-.113c-.956-.149-1.234-1.385-.459-2.018l.52-.653a1.5 1.5 0 01.651-.451l.723-.113a1.5 1.5 0 001.19-1.21l.07-.704zM12 15a3 3 0 100-6 3 3 0 000 6z"/></svg>
+                    </div>
+                    <p class="text-stone-600">"Great faculty and study material. My son got into NIT with their help."</p>
+                </div>
+                <div class="bg-white rounded-2xl p-6 border border-stone-200">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-12 h-12 bg-brand-100 rounded-full flex items-center justify-center">
+                            <span class="text-lg font-bold text-brand-600">PS</span>
+                        </div>
+                        <div>
+                            <p class="font-medium text-sm">— Mr. P. Saha</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-1 mb-2">
+                        <svg class="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l.07.704a1.5 1.5 0 001.19 1.21l.723.113c.956.149 1.234 1.385.459 2.018l-.52.653a1.5 1.5 0 01-.651.451l-.723.113a1.5 1.5 0 00-1.19 1.21l-.07.704c-.921.3-.921 1.603 0 1.902l.704.07a1.5 1.5 0 001.19-1.19l.113-.723c.149-.956-1.385-1.234-2.018-.459l-.653.52a1.5 1.5 0 01-.451.651l-.113.723a1.5 1.5 0 00-1.21 1.19l-.704.07c-.3.921-1.603.921-1.902 0l-.07-.704a1.5 1.5 0 00-1.19-1.21l-.723-.113c-.956-.149-1.234-1.385-.459-2.018l.52-.653a1.5 1.5 0 01.651-.451l.723-.113a1.5 1.5 0 001.19-1.21l.07-.704zM12 15a3 3 0 100-6 3 3 0 000 6z"/></svg>
+                    </div>
+                    <p class="text-stone-600">"Best coaching in Siliguri. My daughter cleared JEE Mains in first attempt."</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Success Stories -->
+    <section class="py-16 md:py-20 bg-white">
+        <div class="max-w-6xl mx-auto px-4 md:px-6">
+            <div class="text-center mb-12">
+                <h2 class="text-2xl md:text-3xl font-serif text-stone-900 mb-2">Success Stories</h2>
+                <p class="text-stone-600">Our students made it to top institutions</p>
+            </div>
+            <div class="grid md:grid-cols-3 gap-6">
+                <div class="bg-stone-900 text-white rounded-2xl p-6">
+                    <div class="text-3xl font-bold text-brand-500 mb-2">IIT Bombay</div>
+                    <p class="text-stone-300 mb-4">Rahul Sharma secured AIR 452 in JEE Mains</p>
+                    <p class="text-sm text-stone-400">JEE Crash Course 2025</p>
+                </div>
+                <div class="bg-stone-900 text-white rounded-2xl p-6">
+                    <div class="text-3xl font-bold text-brand-500 mb-2">AIIMS Delhi</div>
+                    <p class="text-stone-300 mb-4">Priya Singh secured AIR 892 in NEET</p>
+                    <p class="text-sm text-stone-400">NEET Crash Course 2025</p>
+                </div>
+                <div class="bg-stone-900 text-white rounded-2xl p-6">
+                    <div class="text-3xl font-bold text-brand-500 mb-2">NIT Warangal</div>
+                    <p class="text-stone-300 mb-4">Amit Kumar secured AIR 1245 in JEE Mains</p>
+                    <p class="text-sm text-stone-400">PCM Class 12 - 2025</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="py-16 md:py-20">
+        <div class="max-w-3xl mx-auto px-4 md:px-6">
+            <div class="text-center mb-12">
+                <h2 class="text-2xl md:text-3xl font-serif text-stone-900 mb-2">Frequently Asked Questions</h2>
+            </div>
+            <div class="space-y-4">
+                <div class="bg-white rounded-xl border border-stone-200 p-5">
+                    <h3 class="font-semibold mb-2">What is the batch size?</h3>
+                    <p class="text-stone-600 text-sm">We limit batches to 25-35 students to ensure personal attention for every student.</p>
+                </div>
+                <div class="bg-white rounded-xl border border-stone-200 p-5">
+                    <h3 class="font-semibold mb-2">Do you provide study material?</h3>
+                    <p class="text-stone-600 text-sm">Yes, comprehensive notes, PYQs, and mock test papers are included in the course fee.</p>
+                </div>
+                <div class="bg-white rounded-xl border border-stone-200 p-5">
+                    <h3 class="font-semibold mb-2">Can I pay fees in installments?</h3>
+                    <p class="text-stone-600 text-sm">Yes, we offer flexible payment plans. Contact our counselor for details.</p>
+                </div>
+                <div class="bg-white rounded-xl border border-stone-200 p-5">
+                    <h3 class="font-semibold mb-2">What if my child misses a class?</h3>
+                    <p class="text-stone-600 text-sm">Recorded sessions are available. You can also attend the same class in another batch.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="bg-stone-900 py-16">
+        <div class="max-w-4xl mx-auto px-4 md:px-6 text-center">
+            <h2 class="text-2xl md:text-3xl font-serif text-white mb-4">Ready to ace your exams?</h2>
+            <p class="text-stone-400 mb-8">Book a free counseling session today. No commitment, just guidance.</p>
+            <a href="contact.html" class="inline-block bg-brand-500 text-white px-8 py-4 rounded-lg font-medium hover:bg-brand-600 transition">Book Free Counseling</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-stone-950 text-stone-400 py-12">
+        <div class="max-w-6xl mx-auto px-4 md:px-6">
+            <div class="grid md:grid-cols-4 gap-8 mb-8">
+                <div class="md:col-span-2">
+                    <div class="flex items-center gap-2 mb-4">
+                        <div class="w-8 h-8 bg-brand-500 rounded-lg flex items-center justify-center">
+                            <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
+                        </div>
+                        <span class="text-lg font-semibold text-white">ClassDesk</span>
+                    </div>
+                    <p class="text-sm max-w-xs">Siliguri's most trusted coaching institute for Class 9-12, JEE & NEET preparation since 2014.</p>
+                </div>
+                <div>
+                    <h4 class="text-white font-semibold mb-4">Quick Links</h4>
+                    <div class="flex flex-col gap-2 text-sm">
+                        <a href="index.html" class="hover:text-white transition">Home</a>
+                        <a href="courses.html" class="hover:text-white transition">Courses</a>
+                        <a href="contact.html" class="hover:text-white transition">Contact</a>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="text-white font-semibold mb-4">Contact</h4>
+                    <div class="flex flex-col gap-2 text-sm">
+                        <p>📍 Siliguri, West Bengal</p>
+                        <a href="tel:+919876543210" class="hover:text-white transition">📞 +91 98765 43210</a>
+                        <a href="mailto:info@classdesk.in" class="hover:text-white transition">✉️ info@classdesk.in</a>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-stone-800 pt-8 text-sm text-center">
+                © 2026 ClassDesk. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
