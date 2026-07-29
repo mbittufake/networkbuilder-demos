@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Visit Us — Crumb & Craft Bakery</title>
+  <meta name="description" content="3 locations in Malda. Find a Crumb & Craft bakery near you, view opening hours and contact us for special orders.">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/htmx.org@2.0.3" defer></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,700;1,500&display=swap" rel="stylesheet">
+<!-- ============ CART DRAWER ============ -->
+  <div id="cartDrawer" class="fixed inset-0 z-[60] hidden">
+    <div id="cartBackdrop" class="absolute inset-0 bg-black/50 backdrop-blur-sm opacity-0 transition-opacity duration-300" onclick="closeCart()"></div>
+    <aside id="cartPanel" class="absolute top-0 right-0 h-full w-full max-w-md bg-cream shadow-warm translate-x-full transition-transform duration-300 flex flex-col" role="dialog" aria-modal="true" aria-label="Shopping cart">
+      <header class="px-6 py-5 border-b border-brown/10 flex items-center justify-between flex-shrink-0 bg-cream">
+        <div class="flex items-center gap-2">
+          <svg class="w-6 h-6 text-cocoa" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2 8h13M9 21a1 1 0 11-2 0 1 1 0 012 0zm9 0a1 1 0 11-2 0 1 1 0 012 0z"/></svg>
+        </div>
+        <button onclick="closeCart()" class="w-10 h-10 rounded-full bg-white border border-brown/20 flex items-center justify-center hover:border-brown transition-all" aria-label="Close cart">
+          <svg class="w-4 h-4 text-cocoa" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M6 6l12 12M6 18 18 6"/></svg>
+        </button>
+      </header>
+      <div id="cartItems" class="flex-1 overflow-y-auto px-5 py-4"></div>
+      <footer id="cartFooter" class="hidden px-6 py-5 border-t border-brown/10 flex-shrink-0 bg-cream">
+        <div class="space-y-1.5 mb-4 text-sm">
+          <div class="flex justify-between"><span class="text-cocoa/60">Subtotal</span><span class="font-bold" id="cartSubtotal">₹0</span></div>
+          <div class="flex justify-between"><span class="text-cocoa/60">Local delivery</span><span class="font-bold" id="cartDelivery">Free</span></div>
+          <div id="freeShipNote" class="text-xs text-cocoa/50 pt-1"></div>
+          <div class="flex justify-between border-t border-cocoa/10 pt-3 mt-2 text-base"><span class="font-bold text-cocoa">Total</span><span class="font-bold text-brown text-xl" id="cartTotal">₹0</span></div>
+        </div>
+        <button onclick="checkoutDemo()" class="w-full bg-cocoa text-cream font-bold py-3.5 rounded-full hover:bg-brown transition-all flex items-center justify-center gap-2 shadow-warm">
+          Proceed to Checkout · <span id="cartBtnTotal">₹0</span>
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14m-7-7 7 7-7 7"/></svg>
+        </button>
+        <button onclick="closeCart()" class="w-full text-cocoa/60 hover:text-cocoa font-semibold py-2 mt-2 text-sm flex items-center justify-center gap-2">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="m15 19-7-7 7-7"/></svg>
+          Continue shopping
+        </button>
+        <p class="text-[10px] text-cocoa/40 text-center mt-3 flex items-center justify-center gap-1">
+          <svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
+          Secured by Razorpay · FSSAI certified kitchen
+        </p>
+      </footer>
+    </aside>
+  </div>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: { sans:['Inter','sans-serif'], serif:['Playfair Display','serif'] },
+          colors: { cocoa:'#3E2723', brown:'#8B5A3C', caramel:'#D4A574', cream:'#FAF3E7', parchment:'#FFF8EE', gold:'#C8964F' },
+          boxShadow: { warm:'0 10px 40px -10px rgba(139,90,60,0.35)', soft:'0 6px 24px -6px rgba(62,39,35,0.12)' }
+        }
+      }
+    }
+/* ===== Cart drawer (slide-in from right) ===== */
+    const FREE_SHIP_THRESHOLD = 800;
+    const cartDrawer = document.getElementById('cartDrawer');
+    function openCart() { renderCart(); cartDrawer.classList.remove('hidden'); requestAnimationFrame(() => cartDrawer.classList.add('is-open')); }
+    function closeCart() { cartDrawer.classList.remove('is-open'); setTimeout(() => cartDrawer.classList.add('hidden'), 300); }
+    function checkoutDemo() {
+      if (!cart.length) return;
+      closeCart();
+      setTimeout(() => window.location.href = 'cart.html', 220);
+    }
+    function itemEmoji(name) {
+      const n = name.toLowerCase();
+      if (n.includes('croissant') || n.includes('brioche') || n.includes('babka') || n.includes('pain au chocolat') || n.includes('danish') || n.includes('kouign')) return '🥐';
+      if (n.includes('sourdough') || n.includes('boule') || n.includes('loaf') || n.includes('ciabatta')) return '🍞';
+      if (n.includes('focaccia') || n.includes('pita')) return '🥖';
+      if (n.includes('cake') || n.includes('tiramisu') || n.includes('cheesecake')) return '🎂';
+      if (n.includes('cookie') || n.includes('brownie') || n.includes('biscotti') || n.includes('shortbread') || n.includes('snickerdoodle') || n.includes('raisin')) return '🍪';
+      if (n.includes('quiche') || n.includes('galette') || n.includes('pie')) return '🥧';
+      if (n.includes('roll')) return '🍥';
+      if (n.includes('cupcake') || n.includes('tart') || n.includes('mango') || n.includes('pumpkin')) return '🧁';
+      return '🥐';
+    }
+    function renderCart() {
+      const wrap = document.getElementById('cartItems');
+      const footer = document.getElementById('cartFooter');
+      const subtotal = cart.reduce((s,i) => s + i.price*i.qty, 0);
+      const itemCount = cart.reduce((s,i) => s + i.qty, 0);
+
+      document.getElementById('cartDrawerCount').textContent = `(${itemCount})`;
+
+      if (!cart.length) {
+        wrap.innerHTML = `
+          <div class="text-center py-12 flex flex-col items-center justify-center h-full">
+            <div class="text-6xl mb-4">🥐</div>
+            <h3 class="font-serif text-2xl font-bold text-cocoa mb-2">Your basket is empty</h3>
+            <p class="text-cocoa/60 mb-6 text-sm max-w-[260px]">Add some fresh bakes to get started. Everything's baked this morning.</p>
+            <a href="menu.html" onclick="closeCart()" class="inline-flex items-center gap-2 bg-cocoa text-cream px-6 py-2.5 rounded-full text-sm font-semibold shadow-warm hover:bg-brown transition-all">
+              See today's menu
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="m9 5 7 7-7 7"/></svg>
+            </a>
+            <div class="mt-8 text-xs text-cocoa/40">Try our bestsellers:</div>
+            <div class="flex gap-2 mt-3 text-xs">
+              <button onclick="quickAdd('Sourdough Boule',280,this)" class="bg-cream border border-brown/20 rounded-full px-3 py-1.5 hover:border-brown">🍞 Sourdough ₹280</button>
+              <button onclick="quickAdd('Butter Croissant',120,this)" class="bg-cream border border-brown/20 rounded-full px-3 py-1.5 hover:border-brown">🥐 Croissant ₹120</button>
+            </div>
+          </div>`;
+        footer.classList.add('hidden');
+        const c = document.getElementById('cartCount'); if (c) c.textContent = 0;
+        return;
+      }
+
+      footer.classList.remove('hidden');
+      wrap.innerHTML = cart.map((item, idx) => `
+        <div class="cart-line flex gap-3 p-2 rounded-2xl mb-2 items-start">
+          <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-caramel/40 to-brown/10 flex items-center justify-center text-2xl flex-shrink-0">${itemEmoji(item.name)}</div>
+          <div class="flex-1 min-w-0">
+            <div class="flex items-start justify-between gap-2 mb-1">
+              <div class="font-bold text-cocoa text-sm leading-tight pr-2">${item.name}</div>
+              <button onclick="removeFromCart(${idx})" class="text-cocoa/40 hover:text-rose-500 transition-colors flex-shrink-0 mt-0.5" aria-label="Remove ${item.name}">
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M6 6l12 12M6 18 18 6"/></svg>
+              </button>
+            </div>
+            <div class="flex items-center justify-between mt-2">
+              <div class="flex items-center bg-white border border-brown/20 rounded-full overflow-hidden">
+                <button onclick="changeQty(${idx}, -1)" class="qty-btn w-7 h-7 flex items-center justify-center text-cocoa text-base" aria-label="Decrease">−</button>
+                <span class="w-7 text-center text-xs font-bold">${item.qty}</span>
+                <button onclick="changeQty(${idx}, 1)" class="qty-btn w-7 h-7 flex items-center justify-center text-cocoa text-base" aria-label="Increase">+</button>
+              </div>
+              <div class="text-sm font-bold text-brown">₹${(item.price * item.qty).toLocaleString('en-IN')}</div>
+            </div>
+          </div>
+        </div>`).join('');
+
+      document.getElementById('cartSubtotal').textContent = '₹' + subtotal.toLocaleString('en-IN');
+      const remain = Math.max(0, FREE_SHIP_THRESHOLD - subtotal);
+      const note = document.getElementById('freeShipNote');
+      if (subtotal >= FREE_SHIP_THRESHOLD) {
+        note.innerHTML = '<span class="text-caramel font-semibold">✓ Free local delivery unlocked!</span>';
+      } else {
+        note.innerHTML = `Add <strong class="text-cocoa">₹${remain}</strong> more for free local delivery`;
+      }
+      document.getElementById('cartDelivery').textContent = 'Free';
+      document.getElementById('cartTotal').textContent = '₹' + subtotal.toLocaleString('en-IN');
+      document.getElementById('cartBtnTotal').textContent = '₹' + subtotal.toLocaleString('en-IN');
+
+      const c = document.getElementById('cartCount');
+      if (c) {
+        c.textContent = itemCount;
+        c.classList.remove('bump');
+        // force reflow to retrigger animation
+        void c.offsetWidth;
+        c.classList.add('bump');
+      }
+      localStorage.setItem('crumb_cart', JSON.stringify(cart));
+    }
+
+    function changeQty(idx, delta) {
+      cart[idx].qty = Math.max(1, cart[idx].qty + delta);
+      renderCart();
+    }
+    function removeFromCart(idx) {
+      const name = cart[idx].name;
+      cart.splice(idx, 1);
+      renderCart();
+      showToast(`${name} removed`);
+    }
+    function quickAdd(name, price, btn) {
+      const existing = cart.find(i => i.name === name);
+      existing ? existing.qty++ : cart.push({ name, price, qty: 1 });
+      renderCart();
+      if (btn) {
+        btn.style.transform = 'scale(1.1)';
+        setTimeout(() => btn.style.transform = '', 180);
+      }
+    }
+
+    document.getElementById('cartBtn').addEventListener('click', openCart);
+    document.addEventListener('keydown', e => { if (e.key === 'Escape' && !cartDrawer.classList.contains('hidden')) closeCart(); });
+  </script>
+  <style>
+    body { font-family:'Inter',sans-serif; }
+    h1,h2,h3,h4 { font-family:'Playfair Display',serif; }
+    .crumb-divider { display:inline-block; width:64px; height:1px; background:#8B5A3C; vertical-align:middle; }
+    [data-aos]{ opacity:0; transform:translateY(20px); transition:opacity .6s ease, transform .6s ease; }
+    [data-aos].aos-in{ opacity:1; transform:translateY(0); }
+    .card-hover{ transition:transform .25s ease, box-shadow .25s ease; }
+    .card-hover:hover{ transform:translateY(-4px); box-shadow:0 18px 40px -12px rgba(62,39,35,0.18); }
+    #toast{ transition:transform .35s cubic-bezier(.2,.8,.2,1), opacity .35s; transform:translateY(20px); opacity:0; }
+    #toast.show{ transform:translateY(0); opacity:1; }
+    /* FAQ accordion */
+    .faq-item summary { list-style:none; cursor:pointer; }
+    .faq-item summary::-webkit-details-marker { display:none; }
+    .faq-item .chev { transition: transform .3s; }
+    .faq-item[open] .chev { transform: rotate(180deg); }
+    .faq-item .body { display:grid; grid-template-rows:0fr; transition: grid-template-rows .3s ease; }
+    .faq-item[open] .body { grid-template-rows:1fr; }
+    .faq-item .body > div { overflow:hidden; }
+/* ===== Cart drawer (slide-in from right) ===== */
+    #cartDrawer.is-open #cartBackdrop { opacity: 1; }
+    #cartDrawer.is-open #cartPanel { transform: translateX(0); }
+    .cart-line { transition: background .2s ease; }
+    .cart-line:hover { background: rgba(212,165,116,0.12); }
+    .qty-btn { transition: background .15s ease, color .15s ease; }
+    .qty-btn:hover { background: rgba(212,165,116,0.35); color: #3E2723; }
+    @keyframes cartBadgePop { 0% { transform: scale(1); } 40% { transform: scale(1.35); } 100% { transform: scale(1); } }
+    #cartCount.bump { animation: cartBadgePop .35s ease; }
+  </style>
+</head>
+<body class="bg-parchment text-cocoa antialiased">
+
+  <!-- NAV -->
+  <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 bg-parchment/90 backdrop-blur-md">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16 lg:h-20">
+        <a href="index.html" class="flex items-center gap-2">
+          <div class="w-10 h-10 rounded-full bg-cocoa text-cream flex items-center justify-center font-serif text-xl font-bold shadow-warm">C</div>
+          <div class="leading-tight">
+            <div class="font-serif text-xl font-bold text-cocoa">Crumb &amp; Craft</div>
+            <div class="text-[10px] tracking-[0.2em] text-brown uppercase font-semibold">Artisanal Bakery</div>
+          </div>
+        </a>
+        <ul class="hidden lg:flex items-center gap-8 text-sm font-medium">
+          <li><a href="index.html" class="hover:text-brown transition-colors">Home</a></li>
+          <li><a href="menu.html" class="hover:text-brown transition-colors">Menu</a></li>
+          <li><a href="custom-orders.html" class="hover:text-brown transition-colors">Custom Orders</a></li>
+          <li><a href="about.html" class="hover:text-brown transition-colors">Our Story</a></li>
+          <li><a href="contact.html" class="text-brown font-semibold">Visit Us</a></li>
+        </ul>
+        <div class="flex items-center gap-3">
+                    <!-- Admin Panel -->
+          <a href="admin/index.html" class="hidden lg:inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider border border-brown/30 text-cocoa/70 px-3 py-2 rounded-full hover:border-brown hover:text-cocoa hover:bg-cream transition-all" title="Admin Panel">
+            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>
+            Admin
+          </a>
+          <!-- Cart (button) -->
+          <button id="cartBtn"
+          <button id="cartBtn" class="relative w-10 h-10 rounded-full bg-white border border-brown/20 flex items-center justify-center hover:border-brown transition-all">
+            <svg class="w-5 h-5 text-cocoa" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2 8h13M9 21a1 1 0 11-2 0 1 1 0 012 0zm9 0a1 1 0 11-2 0 1 1 0 012 0z"/></svg>
+            <span id="cartCount" class="absolute -top-1.5 -right-1.5 min-w-[20px] h-5 px-1.5 rounded-full bg-caramel text-cocoa text-[10px] font-bold flex items-center justify-center">0</span>
+          </button>
+          <a href="menu.html" class="hidden lg:inline-flex items-center gap-2 bg-cocoa text-cream text-sm font-semibold px-5 py-2.5 rounded-full hover:bg-brown transition-all">Menu <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="m9 5 7 7-7 7"/></svg></a>
+          <button id="hamburger" class="lg:hidden w-10 h-10 rounded-full bg-white border border-brown/20 flex items-center justify-center" aria-label="Menu" aria-expanded="false" aria-controls="mobile-menu">
+            <svg class="w-5 h-5 text-cocoa" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div id="mobile-menu" class="hidden lg:hidden bg-parchment/95 border-t border-brown/10 px-4 py-5 flex flex-col gap-3">
+      <a href="index.html" class="text-base font-medium text-cocoa py-2">Home</a>
+      <a href="menu.html" class="text-base font-medium text-cocoa py-2">Menu</a>
+      <a href="custom-orders.html" class="text-base font-medium text-cocoa py-2">Custom Orders</a>
+      <a href="about.html" class="text-base font-medium text-cocoa py-2">Our Story</a>
+      <a href="user-orders.html" class="text-base font-medium text-cocoa/70 hover:text-cocoa py-2">My Orders</a>
+         <a href="contact.html" class="text-base font-semibold text-brown py-2">Visit Us</a>
+      <a href="admin/index.html" class="text-base font-medium text-cocoa/70 hover:text-cocoa py-2 border-t border-brown/10 mt-1">Admin Panel</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header class="pt-32 lg:pt-40 pb-12 bg-gradient-to-br from-cream to-parchment">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <div class="inline-flex items-center gap-2 bg-white border border-brown/20 text-brown text-xs font-bold px-3 py-1.5 rounded-full uppercase tracking-widest mb-5">
+        <span class="w-1.5 h-1.5 bg-brown rounded-full animate-pulse"></span>
+        3 bakeries · 1 obsession
+      </div>
+      <h1 class="font-serif text-5xl lg:text-7xl font-black text-cocoa leading-tight mb-5">Come say <span class="italic text-brown">hello.</span></h1>
+      <p class="text-cocoa/70 text-lg max-w-2xl mx-auto">Three Malda locations, all freshly baked on the same morning. Find the one closest to you, or send us a note — we answer every message.</p>
+    </div>
+  </header>
+
+  <!-- LOCATIONS -->
+  <section class="py-16 lg:py-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12" data-aos>
+        <div class="flex items-center justify-center gap-3 text-brown text-xs font-black uppercase tracking-widest mb-3">
+          <span class="crumb-divider"></span> Our Locations <span class="crumb-divider"></span>
+        </div>
+        <h2 class="font-serif text-4xl lg:text-5xl font-bold text-cocoa">Find a Crumb near you.</h2>
+      </div>
+      <div class="grid lg:grid-cols-3 gap-6">
+        <!-- Loc 1 -->
+        <article class="bg-white border border-brown/10 rounded-3xl overflow-hidden card-hover" data-aos>
+          <div class="relative aspect-[16/10] overflow-hidden bg-cocoa/5">
+            <img src="https://images.unsplash.com/photo-1509365465985-25d11c17e812?w=500&h=320&fit=crop&q=80" class="w-full h-full object-cover" alt="Malda main">
+            <div class="absolute top-4 left-4 bg-caramel text-cocoa text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">Flagship</div>
+          </div>
+          <div class="p-7">
+            <h3 class="font-serif text-2xl font-bold text-cocoa">Malda · Rash Behari</h3>
+            <div class="text-xs text-brown uppercase tracking-widest font-bold mt-1 mb-4">Flagship · Since 2018</div>
+            <div class="space-y-3 text-sm text-cocoa/80">
+              <div class="flex gap-3"><span class="text-brown">📍</span>14 Rash Behari Avenue, Malda, West Bengal 732101</div>
+              <div class="flex gap-3"><span class="text-brown">📞</span><a href="tel:+913524112233" class="hover:text-brown">+91 3524 112 233</a></div>
+              <div class="flex gap-3"><span class="text-brown">📧</span><a href="mailto:hello@crumbcraft.in" class="hover:text-brown">hello@crumbcraft.in</a></div>
+            </div>
+            <div class="mt-5 pt-5 border-t border-cocoa/10 text-sm">
+              <div class="flex items-center justify-between">
+                <span class="text-cocoa/60">Tue – Sun</span>
+                <span class="font-bold text-cocoa">7:00 AM – 9:30 PM</span>
+              </div>
+              <div class="flex items-center justify-between mt-1">
+                <span class="text-cocoa/60">Monday</span>
+                <span class="font-bold text-rose-500">Closed</span>
+              </div>
+            </div>
+            <a href="https://maps.google.com" target="_blank" class="mt-4 inline-flex items-center gap-2 text-sm font-bold text-brown hover:underline">
+              Get directions
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M7 17 17 7M7 7h10v10"/></svg>
+            </a>
+          </div>
+        </article>
+        <!-- Loc 2 -->
+        <article class="bg-white border border-brown/10 rounded-3xl overflow-hidden card-hover" data-aos>
+          <div class="relative aspect-[16/10] overflow-hidden bg-cocoa/5">
+            <img src="https://images.unsplash.com/photo-1559339352-11d035aa65de?w=500&h=320&fit=crop&q=80" class="w-full h-full object-cover" alt="English Bazar">
+            <div class="absolute top-4 left-4 bg-cocoa text-cream text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">New 2024</div>
+          </div>
+          <div class="p-7">
+            <h3 class="font-serif text-2xl font-bold text-cocoa">English Bazar</h3>
+            <div class="text-xs text-brown uppercase tracking-widest font-bold mt-1 mb-4">Café +amp; Storefront</div>
+            <div class="space-y-3 text-sm text-cocoa/80">
+              <div class="flex gap-3"><span class="text-brown">📍</span>5B Sadar Road, English Bazar, Malda 732101</div>
+              <div class="flex gap-3"><span class="text-brown">📞</span><a href="tel:+913524114455" class="hover:text-brown">+91 3524 114 455</a></div>
+              <div class="flex gap-3"><span class="text-brown">📧</span><a href="mailto:eb@crumbcraft.in" class="hover:text-brown">eb@crumbcraft.in</a></div>
+            </div>
+            <div class="mt-5 pt-5 border-t border-cocoa/10 text-sm">
+              <div class="flex items-center justify-between">
+                <span class="text-cocoa/60">Tue – Sun</span>
+                <span class="font-bold text-cocoa">7:30 AM – 10:00 PM</span>
+              </div>
+              <div class="flex items-center justify-between mt-1">
+                <span class="text-cocoa/60">Monday</span>
+                <span class="font-bold text-rose-500">Closed</span>
+              </div>
+            </div>
+            <a href="https://maps.google.com" target="_blank" class="mt-4 inline-flex items-center gap-2 text-sm font-bold text-brown hover:underline">
+              Get directions
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M7 17 17 7M7 7h10v10"/></svg>
+            </a>
+          </div>
+        </article>
+        <!-- Loc 3 -->
+        <article class="bg-white border border-brown/10 rounded-3xl overflow-hidden card-hover" data-aos>
+          <div class="relative aspect-[16/10] overflow-hidden bg-cocoa/5">
+            <img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?w=500&h=320&fit=crop&q=80" class="w-full h-full object-cover" alt="Kolkata">
+            <div class="absolute top-4 left-4 bg-caramel text-cocoa text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">Kolkata</div>
+          </div>
+          <div class="p-7">
+            <h3 class="font-serif text-2xl font-bold text-cocoa">Salt Lake · Kolkata</h3>
+            <div class="text-xs text-brown uppercase tracking-widest font-bold mt-1 mb-4">Takeaway &amp; wholesale</div>
+            <div class="space-y-3 text-sm text-cocoa/80">
+              <div class="flex gap-3"><span class="text-brown">📍</span>City Centre 1, Salt Lake Bypass, Kolkata 700064</div>
+              <div class="flex gap-3"><span class="text-brown">📞</span><a href="tel:+913323501122" class="hover:text-brown">+91 33 2350 1122</a></div>
+              <div class="flex gap-3"><span class="text-brown">📧</span><a href="mailto:kol@crumbcraft.in" class="hover:text-brown">kol@crumbcraft.in</a></div>
+            </div>
+            <div class="mt-5 pt-5 border-t border-cocoa/10 text-sm">
+              <div class="flex items-center justify-between">
+                <span class="text-cocoa/60">Mon – Sun</span>
+                <span class="font-bold text-cocoa">10:00 AM – 9:00 PM</span>
+              </div>
+              <div class="flex items-center justify-between mt-1">
+                <span class="text-cocoa/60">Closed</span>
+                <span class="font-bold text-cocoa/60">Never</span>
+              </div>
+            </div>
+            <a href="https://maps.google.com" target="_blank" class="mt-4 inline-flex items-center gap-2 text-sm font-bold text-brown hover:underline">
+              Get directions
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M7 17 17 7M7 7h10v10"/></svg>
+            </a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT FORM -->
+  <section class="py-16 lg:py-24 bg-cream">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-2 gap-12 lg:gap-20">
+      <!-- Left -->
+      <div data-aos>
+        <div class="flex items-center gap-3 text-brown text-xs font-black uppercase tracking-widest mb-4">
+          <span class="crumb-divider"></span> Drop Us a Note
+        </div>
+        <h2 class="font-serif text-4xl lg:text-5xl font-bold text-cocoa leading-tight mb-6">Wholesale, events,<br>or just <span class="italic text-brown">hi.</span></h2>
+        <p class="text-cocoa/70 leading-relaxed mb-8">We read every message. Wholesale enquiries usually get a reply within a day, custom cake briefings within four hours, and "hi"s within the week.</p>
+        <div class="space-y-4">
+          <div class="flex items-start gap-4">
+            <div class="w-12 h-12 rounded-2xl bg-cocoa text-cream flex items-center justify-center text-xl flex-shrink-0">✉️</div>
+            <div>
+              <div class="font-bold text-sm text-cocoa">Email</div>
+              <a href="mailto:hello@crumbcraft.in" class="text-cocoa/70 hover:text-brown">hello@crumbcraft.in</a>
+              <div class="text-xs text-cocoa/50">Replies within 24 hours</div>
+            </div>
+          </div>
+          <div class="flex items-start gap-4">
+            <div class="w-12 h-12 rounded-2xl bg-cocoa text-cream flex items-center justify-center text-xl flex-shrink-0">📞</div>
+            <div>
+              <div class="font-bold text-sm text-cocoa">Phone</div>
+              <a href="tel:+913524112233" class="text-cocoa/70 hover:text-brown">+91 3524 112 233</a>
+              <div class="text-xs text-cocoa/50">Tue–Sun, 9 AM – 6 PM</div>
+            </div>
+          </div>
+          <div class="flex items-start gap-4">
+            <div class="w-12 h-12 rounded-2xl bg-cocoa text-cream flex items-center justify-center text-xl flex-shrink-0">💬</div>
+            <div>
+              <div class="font-bold text-sm text-cocoa">WhatsApp</div>
+              <a href="https://wa.me/913524112233" class="text-cocoa/70 hover:text-brown">+91 35241 12233</a>
+              <div class="text-xs text-cocoa/50">Fastest for quick questions</div>
+            </div>
+          </div>
+          <div class="flex items-start gap-4">
+            <div class="w-12 h-12 rounded-2xl bg-cocoa text-cream flex items-center justify-center text-xl flex-shrink-0">📸</div>
+            <div>
+              <div class="font-bold text-sm text-cocoa">Instagram</div>
+              <a href="#" class="text-cocoa/70 hover:text-brown">@crumb.and.craft</a>
+              <div class="text-xs text-cocoa/50">Daily bake photos &amp; behind-the-scenes</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Right: form -->
+      <div data-aos>
+        <form
+          hx-post="/api/contact"
+          hx-target="#contact-result"
+          hx-swap="innerHTML"
+          hx-on::before-request="event.preventDefault(); submitContact();"
+          class="bg-white border border-brown/10 rounded-3xl p-6 sm:p-8 shadow-soft"
+        >
+          <div class="grid sm:grid-cols-2 gap-4 mb-4">
+            <div>
+              <label class="block text-xs font-bold uppercase tracking-wider text-cocoa/60 mb-2">Name</label>
+              <input name="name" type="text" required placeholder="Your name" class="w-full bg-cream border border-brown/20 rounded-xl px-4 py-3 outline-none focus:border-cocoa">
+            </div>
+            <div>
+              <label class="block text-xs font-bold uppercase tracking-wider text-cocoa/60 mb-2">Phone</label>
+              <input name="phone" type="tel" placeholder="+91 98XXX XXXXX" class="w-full bg-cream border border-brown/20 rounded-xl px-4 py-3 outline-none focus:border-cocoa">
+            </div>
+          </div>
+          <div class="mb-4">
+            <label class="block text-xs font-bold uppercase tracking-wider text-cocoa/60 mb-2">Email</label>
+            <input name="email" type="email" required placeholder="your@email.com" class="w-full bg-cream border border-brown/20 rounded-xl px-4 py-3 outline-none focus:border-cocoa">
+          </div>
+          <div class="mb-4">
+            <label class="block text-xs font-bold uppercase tracking-wider text-cocoa/60 mb-2">Reason</label>
+            <select name="reason" class="w-full bg-cream border border-brown/20 rounded-xl px-4 py-3 outline-none focus:border-cocoa">
+              <option>Custom cake enquiry</option>
+              <option>Wedding / private events</option>
+              <option>Wholesale / corporate</option>
+              <option>Press / collab</option>
+              <option>General hello</option>
+            </select>
+          </div>
+          <div class="mb-4">
+            <label class="block text-xs font-bold uppercase tracking-wider text-cocoa/60 mb-2">Your message</label>
+            <textarea name="message" required rows="4" placeholder="Tell us what you have in mind…" class="w-full bg-cream border border-brown/20 rounded-xl px-4 py-3 outline-none focus:border-cocoa resize-none"></textarea>
+          </div>
+          <button type="submit" class="w-full bg-cocoa text-cream font-bold py-3.5 rounded-full hover:bg-brown transition-all flex items-center justify-center gap-2 shadow-warm">
+            Send message
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14m-7-7 7 7-7 7"/></svg>
+          </button>
+          <div id="contact-result" class="mt-5"></div>
+          <p class="text-xs text-cocoa/40 text-center mt-3">We typically reply within 24 hours. Your details are safe with us.</p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="py-16 lg:py-24">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-10" data-aos>
+        <div class="flex items-center justify-center gap-3 text-brown text-xs font-black uppercase tracking-widest mb-3">
+          <span class="crumb-divider"></span> Common Questions <span class="crumb-divider"></span>
+        </div>
+        <h2 class="font-serif text-4xl lg:text-5xl font-bold text-cocoa">FAQ</h2>
+      </div>
+      <div class="space-y-3" data-aos>
+        <details class="faq-item bg-cream border border-brown/10 rounded-2xl p-5 open:bg-cream">
+          <summary class="flex items-center justify-between gap-2">
+            <span class="font-bold text-cocoa">Do you ship across India?</span>
+            <svg class="chev w-5 h-5 text-brown flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg>
+          </summary>
+          <div class="body"><div class="pt-3 text-cocoa/70 leading-relaxed">Currently we deliver within West Bengal and to NCR via overnight partner couriers. For the rest of India, we ship shelf-stable items like biscotti, cookies, and our signature brown butter shortbread. <a href="mailto:kol@crumbcraft.in" class="text-brown font-bold">Email us</a> for a custom shipping quote.</div></div>
+        </details>
+        <details class="faq-item bg-cream border border-brown/10 rounded-2xl p-5">
+          <summary class="flex items-center justify-between gap-2">
+            <span class="font-bold text-cocoa">How far in advance should I order a custom cake?</span>
+            <svg class="chev w-5 h-5 text-brown flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg>
+          </summary>
+          <div class="body"><div class="pt-3 text-cocoa/70 leading-relaxed">Birthday &amp; theme cakes need at least 48 hours. Wedding &amp; multi-tier cakes need 2–4 weeks so we can do a design consult, mockups, and a tasting. Last-minute custom orders? Call us — sometimes we can squeeze you in.</div></div>
+        </details>
+        <details class="faq-item bg-cream border border-brown/10 rounded-2xl p-5">
+          <summary class="flex items-center justify-between gap-2">
+            <span class="font-bold text-cocoa">Are your items eggless / vegan / gluten-free?</span>
+            <svg class="chev w-5 h-5 text-brown flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg>
+          </summary>
+          <div class="body"><div class="pt-3 text-cocoa/70 leading-relaxed">Yes! We have a dedicated eggless and vegan bakery line — most breads, croissants (with cultured vegan butter), and cakes have a plant-based alternative. For custom orders, tick the boxes in step 2 and we'll quote accordingly.</div></div>
+        </details>
+        <details class="faq-item bg-cream border border-brown/10 rounded-2xl p-5">
+          <summary class="flex items-center justify-between gap-2">
+            <span class="font-bold text-cocoa">Where do you source your flour?</span>
+            <svg class="chev w-5 h-5 text-brown flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg>
+          </summary>
+          <div class="body"><div class="pt-3 text-cocoa/70 leading-relaxed">100% from Punjab — we work directly with two farms that grow heritage wheat for us. The atta is stone-milled fresh every week in our kitchen. Butter comes from a Sahiwal co-op 60km away.</div></div>
+        </details>
+        <details class="faq-item bg-cream border border-brown/10 rounded-2xl p-5">
+          <summary class="flex items-center justify-between gap-2">
+            <span class="font-bold text-cocoa">Do you sell wholesale to cafés?</span>
+            <svg class="chev w-5 h-5 text-brown flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg>
+          </summary>
+          <div class="body"><div class="pt-3 text-cocoa/70 leading-relaxed">Yes — we currently supply 12 cafés and 4 hotels in Kolkata &amp; Malda. Breads, viennoiserie, and biscuits are available for daily delivery. Email <a href="mailto:wholesale@crumbcraft.in" class="text-brown font-bold">wholesale@crumbcraft.in</a> for a wholesale deck &amp; pricing.</div></div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="bg-cocoa text-cream pt-14 pb-6">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-10 mb-10">
+        <div><a href="index.html" class="flex items-center gap-2 mb-4"><div class="w-10 h-10 rounded-full bg-cream text-cocoa flex items-center justify-center font-serif text-xl font-bold">C</div><div class="font-serif text-xl font-bold">Crumb &amp; Craft</div></a><p class="text-cream/60 text-sm">Hand-crafted. Slowly proven. Honestly made.</p></div>
+        <div><h4 class="font-bold text-sm text-caramel mb-4 uppercase tracking-wider">Visit</h4><ul class="text-sm text-cream/70 space-y-2"><li><a href="contact.html">Locations</a></li><li><a href="contact.html">Hours</a></li></ul></div>
+        <div><h4 class="font-bold text-sm text-caramel mb-4 uppercase tracking-wider">Shop</h4><ul class="text-sm text-cream/70 space-y-2"><li><a href="menu.html">Menu</a></li><li><a href="custom-orders.html">Custom Orders</a></li></ul></div>
+        <div><h4 class="font-bold text-sm text-caramel mb-4 uppercase tracking-wider">About</h4><ul class="text-sm text-cream/70 space-y-2"><li><a href="about.html">Our Story</a></li><li><a href="contact.html">Contact</a></li>
+          <li><a href="admin/index.html" class="hover:text-caramel transition-colors text-[10px] uppercase tracking-wider font-bold">Admin &rarr;</a></li></ul></div>
+      </div>
+      <div class="border-t border-cream/10 pt-5 text-xs text-cream/50 flex flex-col sm:flex-row justify-between gap-2">
+        <span>© 2026 Crumb &amp; Craft Bakery.</span>
+        <span>Demo by <a href="https://networkbuilder.in" class="text-caramel hover:underline">Network Builder</a></span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    /* ===== Contact form ===== */
+    function submitContact() {
+      const result = document.getElementById('contact-result');
+      result.innerHTML = `<div class="text-sm text-cocoa/70 flex items-center gap-2"><span class="w-4 h-4 border-2 border-caramel border-t-transparent rounded-full spinner"></span> Sending…</div>`;
+      setTimeout(() => {
+        result.innerHTML = `<div class="bg-caramel/15 border border-caramel rounded-xl p-4 flex items-start gap-3"><div class="w-8 h-8 rounded-full bg-caramel text-cocoa flex items-center justify-center flex-shrink-0">✓</div><div><div class="font-bold text-cocoa text-sm">Thanks — message received!</div><div class="text-xs text-cocoa/60 mt-0.5">We'll get back within 24 hours. Promise.</div></div></div>`;
+        const form = document.querySelector('#contact-result').closest('form');
+        form.reset();
+      }, 900);
+    }
+
+    /* ===== Misc ===== */
+    const cart = JSON.parse(localStorage.getItem('crumb_cart') || '[]');
+    document.getElementById('cartCount').textContent = cart.reduce((s,i)=>s+i.qty,0);
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => navbar.classList.toggle('shadow-warm', window.scrollY > 24));
+    document.getElementById('hamburger').addEventListener('click', () => { const menu = document.getElementById('mobile-menu'); menu.classList.toggle('hidden'); document.getElementById('hamburger').setAttribute('aria-expanded', menu.classList.contains('hidden') ? 'false' : 'true'); });
+    const obs = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('aos-in'); obs.unobserve(e.target); } }), { threshold: 0.1 });
+    document.querySelectorAll('[data-aos]').forEach(el => obs.observe(el));
+  </script>
+</body>
+</html>

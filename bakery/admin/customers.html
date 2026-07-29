@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Customers — Crumb & Craft Admin</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/htmx.org@2.0.3" defer></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: { sans:['Inter','sans-serif'], serif:['Playfair Display','serif'] },
+          colors: { cocoa:'#3E2723', brown:'#8B5A3C', caramel:'#D4A574', cream:'#FAF3E7', parchment:'#FFF8EE',
+            ink:'#2A1810', ash:'#7F6F65', sand:'#E8DFD3', adminBase:'#FAF6F0', adminCard:'#FFFFFF' },
+        }
+      }
+    }
+  </script>
+  <style>
+    body { font-family:'Inter',sans-serif; }
+    h1,h2,h3,h4 { font-family:'Playfair Display',serif; }
+    .sidebar { background: linear-gradient(180deg, #2A1810 0%, #3E2723 100%); }
+    .nav-item { transition: all .15s; }
+    .nav-item.active { background: rgba(212,165,116,0.18); color:#FAF3E7; }
+    .nav-item:not(.active):hover { background: rgba(212,165,116,0.08); color:#FAF3E7; }
+    .row-expand { transition: background .15s; }
+    .row-expand:hover { background: #FFF8EE; }
+  </style>
+</head>
+<body class="bg-adminBase text-ink min-h-screen">
+
+<div class="flex min-h-screen">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar w-64 text-cream flex-shrink-0 hidden lg:flex flex-col fixed top-0 left-0 h-screen z-30">
+    <div class="px-6 py-6 border-b border-cream/10">
+      <a href="../index.html" class="flex items-center gap-2">
+        <div class="w-10 h-10 rounded-full bg-caramel text-cocoa flex items-center justify-center font-serif text-xl font-bold">C</div>
+        <div>
+          <div class="font-serif font-bold text-cream">Crumb &amp; Craft</div>
+          <div class="text-[10px] uppercase tracking-widest text-caramel font-bold">Admin Console</div>
+        </div>
+      </a>
+    </div>
+    <nav class="flex-1 px-3 py-4 overflow-y-auto">
+      <div class="text-[10px] uppercase tracking-widest text-cream/40 font-bold px-3 mb-2">Operations</div>
+      <a href="index.html" class="nav-item flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium text-cream/70 mb-0.5">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 12l9-9 9 9M5 10v10h14V10"/></svg> Dashboard
+      </a>
+      <a href="orders.html" class="nav-item flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium text-cream/70 mb-0.5">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="4" y="6" width="16" height="14" rx="2"/><path d="M9 10h6M9 14h4"/></svg> Orders
+      </a>
+      <a href="products.html" class="nav-item flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium text-cream/70 mb-0.5">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.7l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.7l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg> Products
+      </a>
+      <a href="customers.html" class="nav-item active flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium text-cream/70 mb-0.5">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="9" cy="7" r="4"/><path d="M3 21v-2a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v2"/></svg> Customers
+      </a>
+      <div class="text-[10px] uppercase tracking-widest text-cream/40 font-bold px-3 mt-6 mb-2">Tools</div>
+       <a href="customer-order.html" class="nav-item flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium text-cream/70 mb-0.5">
+         <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg> Place order
+       </a>
+       <a href="../index.html" target="_blank" class="nav-item flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium text-cream/70 mb-0.5">
+         <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14 21 3"/></svg> View site
+       </a>
+     </nav>
+    <div class="px-4 py-4 border-t border-cream/10 flex items-center gap-3">
+      <div class="w-10 h-10 rounded-full bg-caramel/40 text-cream flex items-center justify-center font-bold">M</div>
+      <div class="flex-1 min-w-0">
+        <div class="text-sm font-semibold text-cream truncate">Maya Bose</div>
+        <div class="text-[10px] text-cream/50 uppercase tracking-wider">Owner</div>
+      </div>
+    </div>
+  </aside>
+
+  <main class="flex-1 lg:ml-64">
+    <header class="lg:hidden bg-cocoa text-cream px-4 py-3 flex items-center justify-between sticky top-0 z-30">
+      <a href="../index.html" class="flex items-center gap-2">
+        <div class="w-8 h-8 rounded-full bg-caramel text-cocoa flex items-center justify-center font-serif font-bold">C</div>
+        <span class="font-serif font-bold">Customers</span>
+      </a>
+    </header>
+
+    <div class="p-5 sm:p-8 lg:p-10">
+
+      <!-- Title row -->
+      <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-3 mb-7">
+        <div>
+          <div class="flex items-center gap-3 text-brown text-xs font-black uppercase tracking-widest mb-2">
+            <span class="inline-block w-12 h-px bg-brown align-middle"></span> Relationships
+          </div>
+          <h1 class="font-serif text-3xl lg:text-4xl font-bold text-ink">Customers</h1>
+          <p class="text-ash mt-1 text-sm"><span class="font-bold text-cocoa">2,408</span> total · <span class="font-bold text-emerald-600">+38</span> this week</p>
+        </div>
+        <div class="flex gap-2">
+          <button class="text-sm font-semibold border border-brown/20 bg-white px-4 py-2 rounded-full text-cocoa hover:border-brown">Export</button>
+          <button class="text-sm font-semibold bg-cocoa text-cream px-4 py-2 rounded-full hover:bg-brown transition-all">+ Add customer</button>
+        </div>
+      </div>
+
+      <!-- KPI ROW -->
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
+        <div class="bg-adminCard rounded-2xl p-5 border border-sand">
+          <div class="text-[10px] uppercase tracking-wider text-ash font-bold mb-1">Total customers</div>
+          <div class="font-serif text-2xl font-bold">2,408</div>
+          <div class="text-xs text-emerald-600 font-semibold mt-1">+38 this week</div>
+        </div>
+        <div class="bg-adminCard rounded-2xl p-5 border border-sand">
+          <div class="text-[10px] uppercase tracking-wider text-ash font-bold mb-1">Avg. lifetime value</div>
+          <div class="font-serif text-2xl font-bold">₹2,180</div>
+          <div class="text-xs text-emerald-600 font-semibold mt-1">+₹120 MoM</div>
+        </div>
+        <div class="bg-adminCard rounded-2xl p-5 border border-sand">
+          <div class="text-[10px] uppercase tracking-wider text-ash font-bold mb-1">Repeat rate</div>
+          <div class="font-serif text-2xl font-bold">62%</div>
+          <div class="text-xs text-emerald-600 font-semibold mt-1">+4% MoM</div>
+        </div>
+        <div class="bg-adminCard rounded-2xl p-5 border border-sand">
+          <div class="text-[10px] uppercase tracking-wider text-ash font-bold mb-1">VIP (Loyalty tier)</div>
+          <div class="font-serif text-2xl font-bold">218</div>
+          <div class="text-xs text-caramel font-semibold mt-1">9% of base</div>
+        </div>
+      </div>
+
+      <!-- TOP CUSTOMERS BANNER -->
+      <div class="bg-gradient-to-br from-cocoa to-ink rounded-2xl p-5 sm:p-6 mb-6 text-cream shadow-warm">
+        <div class="flex items-center justify-between mb-4">
+          <h3 class="font-serif text-xl font-bold flex items-center gap-2">🏆 Top customers this month</h3>
+          <button class="text-xs text-caramel uppercase tracking-wider font-bold hover:underline">Reward them →</button>
+        </div>
+        <div class="grid sm:grid-cols-3 gap-3">
+          <div class="bg-cream/10 rounded-xl p-4 flex items-center gap-3">
+            <div class="w-12 h-12 rounded-full bg-caramel text-cocoa flex items-center justify-center font-bold text-lg">P</div>
+            <div>
+              <div class="font-bold">Priya Iyer</div>
+              <div class="text-[10px] uppercase tracking-wider text-caramel font-bold mb-0.5">VIP · Gold</div>
+              <div class="text-xs text-cream/70">14 orders · ₹18,420</div>
+            </div>
+          </div>
+          <div class="bg-cream/10 rounded-xl p-4 flex items-center gap-3">
+            <div class="w-12 h-12 rounded-full bg-caramel text-cocoa flex items-center justify-center font-bold text-lg">S</div>
+            <div>
+              <div class="font-bold">Subhojit Das</div>
+              <div class="text-[10px] uppercase tracking-wider text-caramel font-bold mb-0.5">VIP · Gold</div>
+              <div class="text-xs text-cream/70">11 orders · ₹14,860</div>
+            </div>
+          </div>
+          <div class="bg-cream/10 rounded-xl p-4 flex items-center gap-3">
+            <div class="w-12 h-12 rounded-full bg-caramel text-cocoa flex items-center justify-center font-bold text-lg">R</div>
+            <div>
+              <div class="font-bold">Rohan Banerjee</div>
+              <div class="text-[10px] uppercase tracking-wider text-caramel font-bold mb-0.5">Wholesale</div>
+              <div class="text-xs text-cream/70">3 events · ₹24,500</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Search + table -->
+      <div class="bg-adminCard rounded-2xl border border-sand shadow-editor">
+        <div class="p-4 sm:p-5 border-b border-sand flex flex-col sm:flex-row gap-3">
+          <div class="flex items-center gap-2 flex-wrap flex-1">
+            <button class="filter-chip active px-4 py-1.5 rounded-full text-xs font-bold border border-brown/20 bg-cocoa text-cream" onclick="setFilter('all', this)">All</button>
+            <button class="filter-chip px-4 py-1.5 rounded-full text-xs font-bold border border-brown/20 bg-cream text-cocoa" onclick="setFilter('vip', this)">VIP</button>
+            <button class="filter-chip px-4 py-1.5 rounded-full text-xs font-bold border border-brown/20 bg-cream text-cocoa" onclick="setFilter('new', this)">New (30d)</button>
+            <button class="filter-chip px-4 py-1.5 rounded-full text-xs font-bold border border-brown/20 bg-cream text-cocoa" onclick="setFilter('inactive', this)">Inactive</button>
+          </div>
+          <div class="relative sm:w-72">
+            <svg class="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-ash" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+            <input id="searchInput" oninput="render()" type="search" placeholder="Search customer…" class="w-full pl-9 pr-4 py-2.5 bg-cream border border-brown/15 rounded-xl text-sm focus:border-cocoa outline-none">
+          </div>
+        </div>
+        <table class="w-full text-sm">
+          <thead>
+            <tr class="text-left text-[10px] uppercase tracking-wider text-ash font-bold">
+              <th class="py-3 px-4">Customer</th>
+              <th class="py-3 px-3 hidden md:table-cell">Phone</th>
+              <th class="py-3 px-3">Orders</th>
+              <th class="py-3 px-3 hidden md:table-cell">Lifetime value</th>
+              <th class="py-3 px-3">Last order</th>
+              <th class="py-3 px-3">Tier</th>
+              <th class="py-3 px-3"></th>
+            </tr>
+          </thead>
+          <tbody id="cusTbl"></tbody>
+        </table>
+      </div>
+
+    </div>
+
+    <footer class="px-5 sm:px-8 lg:px-10 py-6 border-t border-sand text-xs text-ash flex flex-col sm:flex-row items-center justify-between gap-2">
+      <span>Crumb &amp; Craft Admin · v2.6 demo</span>
+      <span>Built for internal ops · Demo by <a href="https://networkbuilder.in" class="text-caramel hover:underline">Network Builder</a></span>
+    </footer>
+  </main>
+</div>
+
+<script>
+  const CUSTOMERS = [
+    { name:'Priya Iyer', email:'priya@example.com', phone:'+91 98765 43210', orders:14, ltv:18420, last:'2 hours ago', tier:'VIP' },
+    { name:'Subhojit Das', email:'subhojit@example.com', phone:'+91 90909 09090', orders:11, ltv:14860, last:'1 day ago', tier:'VIP' },
+    { name:'Rohan Banerjee', email:'rohan@example.com', phone:'+91 99887 76655', orders:3, ltv:24500, last:'5 hours ago', tier:'Wholesale' },
+    { name:'Arjun Mehta', email:'arjun@example.com', phone:'+91 99001 22334', orders:7, ltv:9200, last:'14 min ago', tier:'Regular' },
+    { name:'Meera Nair', email:'meera@example.com', phone:'+91 90876 54321', orders:6, ltv:7840, last:'42 min ago', tier:'Regular' },
+    { name:'Tanya Roy', email:'tanya@example.com', phone:'+91 98712 34567', orders:5, ltv:8400, last:'3 hours ago', tier:'Regular' },
+    { name:'Karthik Iyer', email:'karthik@example.com', phone:'+91 98123 45678', orders:2, ltv:1980, last:'4 days ago', tier:'New' },
+    { name:'Sneha Patel', email:'sneha@example.com', phone:'+91 97654 32109', orders:4, ltv:4620, last:'1 hour ago', tier:'Regular' },
+    { name:'Divya Sharma', email:'divya@example.com', phone:'+91 99885 54433', orders:1, ltv:1450, last:'6 days ago', tier:'New' },
+    { name:'Vikram Iyer', email:'vikram@example.com', phone:'+91 98000 11122', orders:8, ltv:11800, last:'2 days ago', tier:'Regular' },
+    { name:'Anita Bhatt', email:'anita@example.com', phone:'+91 99881 33221', orders:2, ltv:2980, last:'8 days ago', tier:'New' },
+    { name:'Sandhya Roy', email:'sandhya@example.com', phone:'+91 90983 44411', orders:9, ltv:13420, last:'12 hours ago', tier:'VIP' },
+  ];
+  let activeFilter = 'all';
+  function setFilter(f, btn) {
+    activeFilter = f;
+    document.querySelectorAll('.filter-chip').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    render();
+  }
+  function render() {
+    const q = (document.getElementById('searchInput').value || '').toLowerCase().trim();
+    const tbody = document.getElementById('cusTbl');
+    const list = CUSTOMERS.filter(c => {
+      if (activeFilter === 'vip' && c.tier !== 'VIP') return false;
+      if (activeFilter === 'new' && c.tier !== 'New') return false;
+      if (activeFilter === 'inactive' && !c.last.includes('days')) return false;
+      if (q && !(c.name.toLowerCase().includes(q) || (c.email||'').includes(q) || c.phone.includes(q))) return false;
+      return true;
+    });
+    tbody.innerHTML = list.map(c => {
+      const initials = c.name.split(' ').map(s=>s[0]).slice(0,2).join('');
+      const tierBg = c.tier === 'VIP' ? 'bg-gold/30 text-cocoa' : c.tier === 'Wholesale' ? 'bg-caramel/30 text-cocoa' : c.tier === 'New' ? 'bg-emerald-100 text-emerald-700' : 'bg-cream text-cocoa';
+      return `
+        <tr class="row-expand border-t border-sand/40">
+          <td class="py-3 px-4">
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 rounded-full bg-caramel/30 text-cocoa flex items-center justify-center font-bold flex-shrink-0">${initials}</div>
+              <div>
+                <div class="font-bold text-cocoa">${c.name}</div>
+                <div class="text-[10px] text-ash">${c.email}</div>
+              </div>
+            </div>
+          </td>
+          <td class="py-3 px-3 hidden md:table-cell text-ash text-xs">${c.phone}</td>
+          <td class="py-3 px-3 font-bold text-cocoa">${c.orders}</td>
+          <td class="py-3 px-3 hidden md:table-cell font-bold text-brown">₹${c.ltv.toLocaleString('en-IN')}</td>
+          <td class="py-3 px-3 text-ash text-xs">${c.last}</td>
+          <td class="py-3 px-3"><span class="${tierBg} text-[10px] font-bold px-2 py-1 rounded-full uppercase tracking-wider">${c.tier}</span></td>
+          <td class="py-3 px-3 text-right">
+            <button class="text-xs text-ash hover:text-cocoa font-bold">View</button>
+          </td>
+        </tr>`;
+    }).join('');
+  }
+  render();
+</script>
+</body>
+</html>

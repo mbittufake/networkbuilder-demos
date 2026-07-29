@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Products — Crumb & Craft Admin</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/htmx.org@2.0.3" defer></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: { sans:['Inter','sans-serif'], serif:['Playfair Display','serif'] },
+          colors: { cocoa:'#3E2723', brown:'#8B5A3C', caramel:'#D4A574', cream:'#FAF3E7', parchment:'#FFF8EE', gold:'#C8964F',
+            ink:'#2A1810', ash:'#7F6F65', sand:'#E8DFD3',
+            adminBase:'#FAF6F0', adminCard:'#FFFFFF' },
+        }
+      }
+    }
+  </script>
+  <style>
+    body { font-family:'Inter',sans-serif; }
+    h1,h2,h3,h4 { font-family:'Playfair Display',serif; }
+    .sidebar { background: linear-gradient(180deg, #2A1810 0%, #3E2723 100%); }
+    .nav-item { transition: all .15s; }
+    .nav-item.active { background: rgba(212,165,116,0.18); color:#FAF3E7; }
+    .nav-item:not(.active):hover { background: rgba(212,165,116,0.08); color:#FAF3E7; }
+    .row-expand { transition: background .15s; }
+    .row-expand:hover { background: #FFF8EE; }
+    .stock-toggle:checked + .stock-track { background: #D1FAE5; }
+    .stock-toggle:checked + .stock-track .stock-thumb { transform: translateX(16px); background:#10B981; }
+    .stock-track { transition: background .15s; }
+    .stock-thumb { transition: transform .15s, background .15s; }
+  </style>
+</head>
+<body class="bg-adminBase text-ink min-h-screen">
+
+<div class="flex min-h-screen">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar w-64 text-cream flex-shrink-0 hidden lg:flex flex-col fixed top-0 left-0 h-screen z-30">
+    <div class="px-6 py-6 border-b border-cream/10">
+      <a href="../index.html" class="flex items-center gap-2">
+        <div class="w-10 h-10 rounded-full bg-caramel text-cocoa flex items-center justify-center font-serif text-xl font-bold">C</div>
+        <div>
+          <div class="font-serif font-bold text-cream">Crumb &amp; Craft</div>
+          <div class="text-[10px] uppercase tracking-widest text-caramel font-bold">Admin Console</div>
+        </div>
+      </a>
+    </div>
+    <nav class="flex-1 px-3 py-4 overflow-y-auto">
+      <div class="text-[10px] uppercase tracking-widest text-cream/40 font-bold px-3 mb-2">Operations</div>
+      <a href="index.html" class="nav-item flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium text-cream/70 mb-0.5">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 12l9-9 9 9M5 10v10h14V10"/></svg> Dashboard </a>
+      <a href="orders.html" class="nav-item flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium text-cream/70 mb-0.5">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="4" y="6" width="16" height="14" rx="2"/><path d="M9 10h6M9 14h4"/></svg> Orders </a>
+      <a href="products.html" class="nav-item active flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium text-cream/70 mb-0.5">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.7l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.7l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg> Products </a>
+      <a href="customers.html" class="nav-item flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium text-cream/70 mb-0.5">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="9" cy="7" r="4"/><path d="M3 21v-2a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v2"/></svg> Customers </a>
+      <div class="text-[10px] uppercase tracking-widest text-cream/40 font-bold px-3 mt-6 mb-2">Tools</div>
+       <a href="customer-order.html" class="nav-item flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium text-cream/70 mb-0.5">
+         <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg> Place order
+       </a>
+       <a href="../index.html" target="_blank" class="nav-item flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium text-cream/70 mb-0.5">
+         <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14 21 3"/></svg> View site
+       </a>
+     </nav>
+    <div class="px-4 py-4 border-t border-cream/10 flex items-center gap-3">
+      <div class="w-10 h-10 rounded-full bg-caramel/40 text-cream flex items-center justify-center font-bold">M</div>
+      <div class="flex-1 min-w-0">
+        <div class="text-sm font-semibold text-cream truncate">Maya Bose</div>
+        <div class="text-[10px] text-cream/50 uppercase tracking-wider">Owner</div>
+      </div>
+    </div>
+  </aside>
+
+  <main class="flex-1 lg:ml-64">
+
+    <header class="lg:hidden bg-cocoa text-cream px-4 py-3 flex items-center justify-between sticky top-0 z-30">
+      <a href="../index.html" class="flex items-center gap-2">
+        <div class="w-8 h-8 rounded-full bg-caramel text-cocoa flex items-center justify-center font-serif font-bold">C</div>
+        <span class="font-serif font-bold">Products</span>
+      </a>
+    </header>
+
+    <div class="p-5 sm:p-8 lg:p-10">
+
+      <!-- Title row -->
+      <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-3 mb-7">
+        <div>
+          <div class="flex items-center gap-3 text-brown text-xs font-black uppercase tracking-widest mb-2">
+            <span class="inline-block w-12 h-px bg-brown align-middle"></span> Inventory
+          </div>
+          <h1 class="font-serif text-3xl lg:text-4xl font-bold text-ink">Products</h1>
+          <p class="text-ash mt-1 text-sm"><span class="font-bold text-cocoa">31</span> items · 2 weekend specials · Last updated Aug 14, 4:12 PM</p>
+        </div>
+        <div class="flex gap-2">
+          <button class="text-sm font-semibold border border-brown/20 bg-white px-4 py-2 rounded-full text-cocoa hover:border-brown">Export CSV</button>
+          <button onclick="openNewProduct()" class="text-sm font-semibold bg-cocoa text-cream px-4 py-2 rounded-full hover:bg-brown transition-all">+ New product</button>
+        </div>
+      </div>
+
+      <!-- Stats -->
+      <div class="grid sm:grid-cols-4 gap-4 mb-6">
+        <div class="bg-adminCard rounded-2xl p-5 border border-sand">
+          <div class="text-[10px] uppercase tracking-wider text-ash font-bold mb-1">Total items</div>
+          <div class="font-serif text-2xl font-bold">31</div>
+        </div>
+        <div class="bg-adminCard rounded-2xl p-5 border border-sand">
+          <div class="text-[10px] uppercase tracking-wider text-ash font-bold mb-1">Out of stock</div>
+          <div class="font-serif text-2xl font-bold text-rose-500">3</div>
+        </div>
+        <div class="bg-adminCard rounded-2xl p-5 border border-sand">
+          <div class="text-[10px] uppercase tracking-wider text-ash font-bold mb-1">Avg. price</div>
+          <div class="font-serif text-2xl font-bold">₹520</div>
+        </div>
+        <div class="bg-adminCard rounded-2xl p-5 border border-sand">
+          <div class="text-[10px] uppercase tracking-wider text-ash font-bold mb-1">Categories</div>
+          <div class="font-serif text-2xl font-bold">6</div>
+        </div>
+      </div>
+
+      <!-- Filter chips -->
+      <div class="bg-adminCard rounded-2xl border border-sand shadow-editor p-4 sm:p-5 mb-5">
+        <div class="flex flex-wrap items-center gap-2">
+          <button class="filter-chip active px-4 py-1.5 rounded-full text-xs font-bold border border-brown/20 bg-cocoa text-cream" onclick="setFilter('all', this)">All</button>
+          <button class="filter-chip px-4 py-1.5 rounded-full text-xs font-bold border border-brown/20 bg-cream text-cocoa" onclick="setFilter('breads', this)">Breads (6)</button>
+          <button class="filter-chip px-4 py-1.5 rounded-full text-xs font-bold border border-brown/20 bg-cream text-cocoa" onclick="setFilter('pastries', this)">Pastries (6)</button>
+          <button class="filter-chip px-4 py-1.5 rounded-full text-xs font-bold border border-brown/20 bg-cream text-cocoa" onclick="setFilter('cakes', this)">Cakes (6)</button>
+          <button class="filter-chip px-4 py-1.5 rounded-full text-xs font-bold border border-brown/20 bg-cream text-cocoa" onclick="setFilter('cookies', this)">Cookies (6)</button>
+          <button class="filter-chip px-4 py-1.5 rounded-full text-xs font-bold border border-brown/20 bg-cream text-cocoa" onclick="setFilter('savory', this)">Savory (4)</button>
+          <button class="filter-chip px-4 py-1.5 rounded-full text-xs font-bold border border-brown/20 bg-cream text-cocoa" onclick="setFilter('seasonal', this)">Seasonal (3)</button>
+          <div class="ml-auto relative">
+            <svg class="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-ash" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+            <input id="searchInput" oninput="render()" type="search" placeholder="Search product…" class="pl-9 pr-4 py-2.5 bg-cream border border-brown/15 rounded-xl text-sm focus:border-cocoa outline-none w-56">
+          </div>
+        </div>
+      </div>
+
+      <!-- PRODUCTS TABLE -->
+      <div class="bg-adminCard rounded-2xl border border-sand shadow-editor overflow-hidden">
+        <table class="w-full text-sm">
+          <thead>
+            <tr class="text-left text-[10px] uppercase tracking-wider text-ash font-bold bg-cream">
+              <th class="py-3 px-4">Product</th>
+              <th class="py-3 px-3">Category</th>
+              <th class="py-3 px-3">Price</th>
+              <th class="py-3 px-3 hidden md:table-cell">Sold today</th>
+              <th class="py-3 px-3 hidden lg:table-cell">Stock</th>
+              <th class="py-3 px-3">Available</th>
+              <th class="py-3 px-3"></th>
+            </tr>
+          </thead>
+          <tbody id="prodTbl"></tbody>
+        </table>
+      </div>
+
+    </div>
+
+    <footer class="px-5 sm:px-8 lg:px-10 py-6 border-t border-sand text-xs text-ash flex flex-col sm:flex-row items-center justify-between gap-2">
+      <span>Crumb &amp; Craft Admin · v2.6 demo</span>
+      <span>Built for internal ops · Demo by <a href="https://networkbuilder.in" class="text-caramel hover:underline">Network Builder</a></span>
+    </footer>
+  </main>
+</div>
+
+<!-- New product modal -->
+<div id="newModal" class="fixed inset-0 z-[60] hidden">
+  <div class="absolute inset-0 bg-cocoa/60 backdrop-blur-sm" onclick="closeNew()"></div>
+  <div class="relative h-full flex items-center justify-center p-4">
+    <div class="bg-cream rounded-3xl max-w-lg w-full p-7 shadow-warm">
+      <div class="flex items-center justify-between mb-5">
+        <h3 class="font-serif text-2xl font-bold text-cocoa">New product</h3>
+        <button onclick="closeNew()" class="text-cocoa/50 hover:text-cocoa"><svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M6 6l12 12M6 18 18 6"/></svg></button>
+      </div>
+      <div class="space-y-3 text-sm">
+        <div><label class="block text-xs font-bold uppercase tracking-wider text-cocoa/60 mb-1">Name</label><input class="w-full bg-white border border-brown/20 rounded-xl px-4 py-2.5 outline-none focus:border-cocoa" placeholder="e.g. Sesame Baguette"></div>
+        <div><label class="block text-xs font-bold uppercase tracking-wider text-cocoa/60 mb-1">Category</label>
+          <select class="w-full bg-white border border-brown/20 rounded-xl px-4 py-2.5 outline-none focus:border-cocoa">
+            <option>breads</option><option>pastries</option><option>cakes</option><option>cookies</option><option>savory</option><option>seasonal</option>
+          </select>
+        </div>
+        <div class="grid grid-cols-2 gap-3">
+          <div><label class="block text-xs font-bold uppercase tracking-wider text-cocoa/60 mb-1">Price (₹)</label><input type="number" class="w-full bg-white border border-brown/20 rounded-xl px-4 py-2.5 outline-none focus:border-cocoa" value="280"></div>
+          <div><label class="block text-xs font-bold uppercase tracking-wider text-cocoa/60 mb-1">Stock</label><input type="number" class="w-full bg-white border border-brown/20 rounded-xl px-4 py-2.5 outline-none focus:border-cocoa" value="50"></div>
+        </div>
+      </div>
+      <div class="flex gap-3 mt-6">
+        <button onclick="closeNew()" class="flex-1 border border-cocoa/20 text-cocoa py-2.5 rounded-full font-semibold text-sm">Cancel</button>
+        <button onclick="closeNew()" class="flex-1 bg-cocoa text-cream py-2.5 rounded-full font-semibold text-sm hover:bg-brown">Add product</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  /* ===== 31-product catalog with stock + sales ===== */
+  const PRODUCTS = [
+    { name:'Country Sourdough Boule', cat:'breads', price:280, sold:21, stock:42 },
+    { name:'Whole Wheat Loaf', cat:'breads', price:220, sold:14, stock:60 },
+    { name:'Olive & Rosemary Focaccia', cat:'breads', price:340, sold:9, stock:30 },
+    { name:'Multigrain Seeded Loaf', cat:'breads', price:300, sold:6, stock:25 },
+    { name:'Rosemary Sea-Salt Ciabatta', cat:'breads', price:240, sold:5, stock:48 },
+    { name:'Chocolate Babka', cat:'breads', price:380, sold:3, stock:12 },
+    { name:'Classic Butter Croissant', cat:'pastries', price:120, sold:38, stock:80 },
+    { name:'Pain au Chocolat', cat:'pastries', price:140, sold:22, stock:55 },
+    { name:'Almond Croissant', cat:'pastries', price:180, sold:14, stock:38 },
+    { name:'Cinnamon Kouign-Amann', cat:'pastries', price:160, sold:11, stock:24 },
+    { name:'Lemon Poppy Seed Danish', cat:'pastries', price:150, sold:8, stock:26 },
+    { name:'Cheese & Spinach Borek', cat:'pastries', price:200, sold:4, stock:18 },
+    { name:'Classic Tiramisu', cat:'cakes', price:1450, sold:9, stock:6 },
+    { name:'Red Velvet Layer Cake', cat:'cakes', price:1620, sold:5, stock:3 },
+    { name:'Chocolate Fudge Cake', cat:'cakes', price:1380, sold:7, stock:5 },
+    { name:'Vanilla Bean Sponge', cat:'cakes', price:980, sold:4, stock:8 },
+    { name:'Tangy Lemon Cheesecake', cat:'cakes', price:1490, sold:6, stock:7 },
+    { name:'Black Forest Cake', cat:'cakes', price:1550, sold:3, stock:4 },
+    { name:'Tahini Chocolate Chunk', cat:'cookies', price:240, sold:15, stock:65 },
+    { name:'Brown Butter Snickerdoodle', cat:'cookies', price:200, sold:12, stock:50 },
+    { name:'Walnut Brownie (Box of 6)', cat:'cookies', price:520, sold:9, stock:22 },
+    { name:'Almond Biscotti', cat:'cookies', price:280, sold:4, stock:30 },
+    { name:'Cardamom Shortbread', cat:'cookies', price:220, sold:6, stock:28 },
+    { name:'Oatmeal Raisin (Box of 8)', cat:'cookies', price:260, sold:5, stock:20 },
+    { name:'Cheese & Jalapeño Quiche', cat:'savory', price:380, sold:6, stock:14 },
+    { name:'Spinach & Feta Pie', cat:'savory', price:340, sold:4, stock:11 },
+    { name:'Ham & Gruyère Croissant', cat:'savory', price:200, sold:8, stock:24 },
+    { name:'Mushroom & Thyme Galette', cat:'savory', price:420, sold:3, stock:9 },
+    { name:'Spiced Pumpkin Loaf', cat:'seasonal', price:320, sold:7, stock:16 },
+    { name:'Mango & Coconut Tart', cat:'seasonal', price:480, sold:5, stock:11 },
+    { name:'Hot Cocoa Cupcake (6 pc)', cat:'seasonal', price:540, sold:4, stock:6 },
+  ];
+  let activeFilter = 'all';
+  function setFilter(c, btn) {
+    activeFilter = c;
+    document.querySelectorAll('.filter-chip').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    render();
+  }
+
+  const CAT_LABEL = { breads:'Breads', pastries:'Pastries', cakes:'Cakes', cookies:'Cookies', savory:'Savory', seasonal:'Seasonal' };
+  function render() {
+    const q = (document.getElementById('searchInput').value || '').toLowerCase().trim();
+    const tbody = document.getElementById('prodTbl');
+    const list = PRODUCTS.filter(p => (activeFilter==='all' || p.cat===activeFilter) && (!q || p.name.toLowerCase().includes(q)));
+    tbody.innerHTML = list.map((p, i) => {
+      const stockBadge = p.stock === 0 ? '<span class="text-[10px] font-bold text-rose-500">· Out</span>' : p.stock < 6 ? '<span class="text-[10px] font-bold text-amber-600">· Low</span>' : '';
+      return `
+        <tr class="row-expand border-t border-sand/40">
+          <td class="py-3 px-4">
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 rounded-xl bg-cream flex items-center justify-center text-lg flex-shrink-0">${categoryEmoji(p.cat)}</div>
+              <div>
+                <div class="font-bold text-cocoa">${p.name}</div>
+                <div class="text-[10px] text-ash">#CC-${(100+i)}</div>
+              </div>
+            </div>
+          </td>
+          <td class="py-3 px-3"><span class="text-xs font-bold text-cocoa">${CAT_LABEL[p.cat]}</span></td>
+          <td class="py-3 px-3 font-bold text-brown">₹${p.price}</td>
+          <td class="py-3 px-3 hidden md:table-cell text-ash font-semibold">${p.sold}</td>
+          <td class="py-3 px-3 hidden lg:table-cell text-ash">${p.stock}${stockBadge}</td>
+          <td class="py-3 px-3">
+            <label class="inline-flex items-center cursor-pointer">
+              <input type="checkbox" class="stock-toggle sr-only" ${p.stock > 0 ? 'checked' : ''} onchange="toggleStock(${PRODUCTS.indexOf(p)}, this)">
+              <div class="stock-track w-9 h-5 bg-gray-200 rounded-full relative">
+                <span class="stock-thumb absolute top-0.5 left-0.5 w-4 h-4 bg-white rounded-full shadow"></span>
+              </div>
+            </label>
+          </td>
+          <td class="py-3 px-3 text-right">
+            <button class="text-xs text-ash hover:text-cocoa font-bold">Edit</button>
+          </td>
+        </tr>`;
+    }).join('');
+  }
+  function categoryEmoji(c) {
+    return ({breads:'🍞',pastries:'🥐',cakes:'🎂',cookies:'🍪',savory:'🥧',seasonal:'🧁'})[c] || '🥐';
+  }
+  function toggleStock(i, cb) {
+    PRODUCTS[i].stock = cb.checked ? Math.max(1, PRODUCTS[i].stock) : 0;
+    render();
+  }
+  function openNewProduct() { document.getElementById('newModal').classList.remove('hidden'); }
+  function closeNew() { document.getElementById('newModal').classList.add('hidden'); }
+  render();
+
+  document.querySelectorAll('.filter-chip').forEach(b => {
+    if (b.classList.contains('active')) b.classList.remove('bg-cream');
+  });
+</script>
+</body>
+</html>

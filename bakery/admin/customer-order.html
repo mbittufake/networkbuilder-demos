@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Place Order — Crumb & Craft Admin</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/htmx.org@2.0.3" defer></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,700;1,500&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: { sans:['Inter','sans-serif'], serif:['Playfair Display','serif'] },
+          colors: { cocoa:'#3E2723', brown:'#8B5A3C', caramel:'#D4A574', cream:'#FAF3E7', parchment:'#FFF8EE', gold:'#C8964F',
+            ink:'#2A1810', ash:'#7F6F65', sand:'#E8DFD3', adminBase:'#FAF6F0', adminCard:'#FFFFFF' },
+          boxShadow: { warm:'0 10px 40px -10px rgba(139,90,60,0.35)', soft:'0 6px 24px -6px rgba(62,39,35,0.12)' }
+        }
+      }
+    }
+  </script>
+  <style>
+    body { font-family:'Inter',sans-serif; }
+    h1,h2,h3,h4 { font-family:'Playfair Display',serif; }
+    .sidebar { background: linear-gradient(180deg, #2A1810 0%, #3E2723 100%); }
+    .nav-item { transition: all .15s; }
+    .nav-item.active { background: rgba(212,165,116,0.18); color:#FAF3E7; }
+    .nav-item:not(.active):hover { background: rgba(212,165,116,0.08); color:#FAF3E7; }
+    .crumb-divider { display:inline-block; width:48px; height:1px; background:#8B5A3C; vertical-align:middle; }
+    [data-aos]{ opacity:0; transform:translateY(20px); transition:opacity .6s ease, transform .6s ease; }
+    [data-aos].aos-in{ opacity:1; transform:translateY(0); }
+    .opt { transition: all .2s; cursor:pointer; }
+    .opt:hover { border-color:#8B5A3C; }
+    .opt.selected { border-color:#3E2723; background:#FAF3E7; box-shadow: 0 0 0 2px #3E2723 inset; }
+    .qty-btn { transition: background .15s; }
+    .qty-btn:hover { background: rgba(212,165,116,0.4); }
+    @keyframes pop { 0% { transform: scale(.4); opacity:0; } 60% { transform: scale(1.1); opacity:1; } 100% { transform: scale(1); opacity:1; } }
+    .anim-pop { animation: pop .6s cubic-bezier(.2,.8,.2,1.4) forwards; }
+  </style>
+</head>
+<body class="bg-parchment text-cocoa antialiased min-h-screen">
+
+  <div class="flex min-h-screen">
+
+    <!-- ============ SIDEBAR ============ -->
+    <aside class="sidebar w-64 text-cream flex-shrink-0 hidden lg:flex flex-col fixed top-0 left-0 h-screen z-30">
+      <div class="px-6 py-6 border-b border-cream/10">
+        <a href="../index.html" class="flex items-center gap-2">
+          <div class="w-10 h-10 rounded-full bg-caramel text-cocoa flex items-center justify-center font-serif text-xl font-bold">C</div>
+          <div>
+            <div class="font-serif font-bold text-cream">Crumb &amp; Craft</div>
+            <div class="text-[10px] uppercase tracking-widest text-caramel font-bold">Admin Console</div>
+          </div>
+        </a>
+      </div>
+      <nav class="flex-1 px-3 py-4 overflow-y-auto">
+        <div class="text-[10px] uppercase tracking-widest text-cream/40 font-bold px-3 mb-2">Operations</div>
+        <a href="index.html" class="nav-item flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium text-cream/70 mb-0.5">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 12l9-9 9 9M5 10v10h14V10"/></svg> Dashboard
+        </a>
+        <a href="orders.html" class="nav-item flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium text-cream/70 mb-0.5">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="4" y="6" width="16" height="14" rx="2"/><path d="M9 10h6M9 14h4"/></svg> Orders
+        </a>
+        <a href="products.html" class="nav-item flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium text-cream/70 mb-0.5">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.7l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.7l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg> Products
+        </a>
+        <a href="customers.html" class="nav-item flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium text-cream/70 mb-0.5">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="9" cy="7" r="4"/><path d="M3 21v-2a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v2"/></svg> Customers
+        </a>
+        <div class="text-[10px] uppercase tracking-widest text-cream/40 font-bold px-3 mt-6 mb-2">Tools</div>
+        <a href="customer-order.html" class="nav-item active flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium text-cream/70 mb-0.5">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg> Place order
+        </a>
+        <a href="../index.html" target="_blank" class="nav-item flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium text-cream/70 mb-0.5">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14 21 3"/></svg> View site
+        </a>
+      </nav>
+      <div class="px-4 py-4 border-t border-cream/10 flex items-center gap-3">
+        <div class="w-10 h-10 rounded-full bg-caramel/40 text-cream flex items-center justify-center font-bold">M</div>
+        <div class="flex-1 min-w-0">
+          <div class="text-sm font-semibold text-cream truncate">Maya Bose</div>
+          <div class="text-[10px] text-cream/50 uppercase tracking-wider">Owner</div>
+        </div>
+      </div>
+    </aside>
+
+    <!-- ============ MAIN ============ -->
+    <main class="flex-1 lg:ml-64">
+
+      <!-- TOPBAR (mobile) -->
+      <header class="lg:hidden bg-cocoa text-cream px-4 py-3 flex items-center justify-between sticky top-0 z-30">
+        <a href="../index.html" class="flex items-center gap-2">
+          <div class="w-8 h-8 rounded-full bg-caramel text-cocoa flex items-center justify-center font-serif font-bold">C</div>
+          <span class="font-serif font-bold">Place order</span>
+        </a>
+        <a href="orders.html" class="text-xs bg-caramel/20 px-3 py-1.5 rounded-full">Orders</a>
+      </header>
+
+      <!-- HERO -->
+      <header class="bg-cream border-b border-cocoa/10 py-10 lg:py-14">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center" data-aos>
+          <div class="flex items-center justify-center gap-3 text-brown text-xs font-black uppercase tracking-widest mb-3">
+            <span class="crumb-divider"></span> Place Your Order<span class="crumb-divider"></span>
+          </div>
+          <h1 class="font-serif text-4xl lg:text-5xl font-bold text-cocoa mb-3">Pick your <span class="italic text-brown">bakes.</span></h1>
+          <p class="text-cocoa/60 text-sm">Browse our menu, add what you'd like, and we'll have it ready for you.</p>
+        </div>
+      </header>
+
+      <!-- MAIN content -->
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 lg:py-14">
+        <div class="grid lg:grid-cols-3 gap-8 lg:gap-10">
+
+          <!-- LEFT: product grid -->
+          <section class="lg:col-span-2">
+            <div class="flex items-center justify-between mb-6" data-aos>
+              <h2 class="font-serif text-2xl font-bold text-cocoa">Today's Menu</h2>
+              <span class="text-sm text-cocoa/60">31 items · All prices in ₹</span>
+            </div>
+
+            <!-- Category pills -->
+            <div class="flex flex-wrap gap-2 mb-6" data-aos>
+              <button class="pill active px-4 py-1.5 rounded-full text-sm font-semibold border border-brown/20 bg-cocoa text-cream" data-cat="all" onclick="setCat('all',this)">All</button>
+              <button class="pill px-4 py-1.5 rounded-full text-sm font-semibold border border-brown/20 bg-cream text-cocoa" data-cat="breads" onclick="setCat('breads',this)">🍞 Breads</button>
+              <button class="pill px-4 py-1.5 rounded-full text-sm font-semibold border border-brown/20 bg-cream text-cocoa" data-cat="pastries" onclick="setCat('pastries',this)">🥐 Pastries</button>
+              <button class="pill px-4 py-1.5 rounded-full text-sm font-semibold border border-brown/20 bg-cream text-cocoa" data-cat="cakes" onclick="setCat('cakes',this)">🎂 Cakes</button>
+              <button class="pill px-4 py-1.5 rounded-full text-sm font-semibold border border-brown/20 bg-cream text-cocoa" data-cat="cookies" onclick="setCat('cookies',this)">🍪 Cookies</button>
+              <button class="pill px-4 py-1.5 rounded-full text-sm font-semibold border border-brown/20 bg-cream text-cocoa" data-cat="savory" onclick="setCat('savory',this)">🥧 Savory</button>
+              <button class="pill px-4 py-1.5 rounded-full text-sm font-semibold border border-brown/20 bg-cream text-cocoa" data-cat="seasonal" onclick="setCat('seasonal',this)">🧁 Seasonal</button>
+            </div>
+
+            <!-- Product grid -->
+            <div id="prodGrid" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5"></div>
+          </section>
+
+          <!-- RIGHT: cart summary -->
+          <aside class="lg:col-span-1">
+            <div class="bg-cocoa text-cream rounded-3xl p-6 lg:p-8 sticky top-24 shadow-warm" data-aos>
+              <div class="flex items-center justify-between mb-4">
+                <h3 class="font-serif text-2xl font-bold">Your order</h3>
+                <span class="text-xs text-caramel uppercase tracking-wider font-bold" id="cartCount">0 items</span>
+              </div>
+              <div id="cartList" class="space-y-3 text-sm max-h-64 overflow-y-auto"></div>
+              <div id="emptyCart" class="text-center py-6">
+                <div class="text-4xl mb-2">🥐</div>
+                <p class="text-cream/60 text-sm">Add items from the menu</p>
+              </div>
+              <div class="border-t border-cream/15 pt-4 mt-4 space-y-2 text-sm">
+                <div class="flex justify-between"><span class="text-cream/60">Subtotal</span><span class="font-bold" id="sumSub">₹0</span></div>
+                <div class="flex justify-between"><span class="text-cream/60">GST (5%)</span><span class="font-bold" id="sumTax">₹0</span></div>
+                <div class="flex justify-between"><span class="text-cream/60">Delivery</span><span class="font-bold" id="sumDel">Free</span></div>
+                <div class="border-t border-cream/15 pt-3 mt-3 flex items-baseline justify-between">
+                  <span class="text-cream">Total</span>
+                  <span class="font-serif text-3xl font-bold text-caramel" id="sumTotal">₹0</span>
+                </div>
+              </div>
+              <button onclick="placeOrder()" class="w-full bg-caramel text-cocoa font-bold py-3.5 rounded-full mt-6 hover:bg-gold transition-all flex items-center justify-center gap-2 shadow-warm">
+                Place Order
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="m9 5 7 7-7 7"/></svg>
+              </button>
+              <p class="text-[11px] text-cream/50 mt-3 text-center">By ordering you agree to our terms. Fresh items can't be returned.</p>
+            </div>
+          </aside>
+
+        </div>
+      </div>
+
+      <!-- SUCCESS MODAL -->
+      <div id="successModal" class="fixed inset-0 z-[60] hidden">
+        <div class="absolute inset-0 bg-cocoa/70 backdrop-blur-sm" onclick="closeSuccess()"></div>
+        <div class="relative h-full flex items-center justify-center p-4">
+          <div class="bg-cream rounded-3xl max-w-md w-full p-8 text-center anim-pop shadow-warm">
+            <div class="w-20 h-20 rounded-full bg-caramel text-cocoa flex items-center justify-center mx-auto text-4xl mb-4">✓</div>
+            <h2 class="font-serif text-3xl font-bold text-cocoa mb-2">Order placed!</h2>
+            <p class="text-cocoa/70 mb-5">We've received your order and will start preparing it right away.</p>
+            <div class="bg-white rounded-2xl p-4 text-left text-sm mb-5">
+              <div class="flex justify-between mb-1"><span class="text-cocoa/60">Order #</span><span class="font-bold" id="succId">CC-10042</span></div>
+              <div class="flex justify-between mb-1"><span class="text-cocoa/60">Total</span><span class="font-bold" id="succTotal">₹0</span></div>
+              <div class="flex justify-between"><span class="text-cocoa/60">Pickup</span><span class="font-bold" id="succSlot">Today 4 PM</span></div>
+            </div>
+            <div class="flex gap-3">
+              <a href="customer-order.html" onclick="closeSuccess()" class="flex-1 bg-cocoa text-cream py-2.5 rounded-full font-semibold text-sm">Order more</a>
+              <a href="index.html" onclick="closeSuccess()" class="flex-1 border-2 border-cocoa text-cocoa py-2.5 rounded-full font-semibold text-sm">Back to admin</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- footer -->
+      <footer class="px-5 sm:px-8 lg:px-10 py-6 border-t border-sand text-xs text-ash flex flex-col sm:flex-row items-center justify-between gap-2">
+        <span>Crumb &amp; Craft Admin · v2.6 demo</span>
+        <span>Built for internal ops · Demo by <a href="https://networkbuilder.in" class="text-caramel hover:underline">Network Builder</a></span>
+      </footer>
+
+    </main>
+
+  </div>
+
+  <script>
+    const PRODUCTS = [
+      { id:1, name:"Country Sourdough Boule", cat:"breads", price:280, emoji:"🍞" },
+      { id:2, name:"Whole Wheat Loaf", cat:"breads", price:220, emoji:"🍞" },
+      { id:3, name:"Olive & Rosemary Focaccia", cat:"breads", price:340, emoji:"🥖" },
+      { id:4, name:"Multigrain Seeded Loaf", cat:"breads", price:300, emoji:"🍞" },
+      { id:5, name:"Rosemary Sea-Salt Ciabatta", cat:"breads", price:240, emoji:"🥖" },
+      { id:6, name:"Chocolate Babka", cat:"breads", price:380, emoji:"🍞" },
+      { id:7, name:"Classic Butter Croissant", cat:"pastries", price:120, emoji:"🥐" },
+      { id:8, name:"Pain au Chocolat", cat:"pastries", price:140, emoji:"🥐" },
+      { id:9, name:"Almond Croissant", cat:"pastries", price:180, emoji:"🥐" },
+      { id:10, name:"Cinnamon Kouign-Amann", cat:"pastries", price:160, emoji:"🥐" },
+      { id:11, name:"Lemon Poppy Seed Danish", cat:"pastries", price:150, emoji:"🥐" },
+      { id:12, name:"Cheese & Spinach Borek", cat:"pastries", price:200, emoji:"🥐" },
+      { id:13, name:"Classic Tiramisu", cat:"cakes", price:1450, emoji:"🎂" },
+      { id:14, name:"Red Velvet Layer Cake", cat:"cakes", price:1620, emoji:"🎂" },
+      { id:15, name:"Chocolate Fudge Cake", cat:"cakes", price:1380, emoji:"🎂" },
+      { id:16, name:"Vanilla Bean Sponge", cat:"cakes", price:980, emoji:"🎂" },
+      { id:17, name:"Tangy Lemon Cheesecake", cat:"cakes", price:1490, emoji:"🎂" },
+      { id:18, name:"Black Forest Cake", cat:"cakes", price:1550, emoji:"🎂" },
+      { id:19, name:"Tahini Chocolate Chunk", cat:"cookies", price:240, emoji:"🍪" },
+      { id:20, name:"Brown Butter Snickerdoodle", cat:"cookies", price:200, emoji:"🍪" },
+      { id:21, name:"Walnut Brownie (Box of 6)", cat:"cookies", price:520, emoji:"🍪" },
+      { id:22, name:"Almond Biscotti", cat:"cookies", price:280, emoji:"🍪" },
+      { id:23, name:"Cardamom Shortbread", cat:"cookies", price:220, emoji:"🍪" },
+      { id:24, name:"Oatmeal Raisin (Box of 8)", cat:"cookies", price:260, emoji:"🍪" },
+      { id:25, name:"Cheese & Jalapeño Quiche", cat:"savory", price:380, emoji:"🥧" },
+      { id:26, name:"Spinach & Feta Pie", cat:"savory", price:340, emoji:"🥧" },
+      { id:27, name:"Ham & Gruyère Croissant", cat:"savory", price:200, emoji:"🥐" },
+      { id:28, name:"Mushroom & Thyme Galette", cat:"savory", price:420, emoji:"🥧" },
+      { id:29, name:"Spiced Pumpkin Loaf", cat:"seasonal", price:320, emoji:"🧁" },
+      { id:30, name:"Mango & Coconut Tart", cat:"seasonal", price:480, emoji:"🧁" },
+      { id:31, name:"Hot Cocoa Cupcake (6 pc)", cat:"seasonal", price:540, emoji:"🧁" },
+    ];
+
+    const CAT_EMOJI = { breads:'🍞', pastries:'🥐', cakes:'🎂', cookies:'🍪', savory:'🥧', seasonal:'🧁' };
+    const FREE_SHIP = 800;
+    const TAX_RATE = 0.05;
+    const DELIVERY_FEE = { pickup:0, local:150, express:250 };
+
+    let cart = JSON.parse(localStorage.getItem('crumb_cart') || '[]');
+    let activeCat = 'all';
+
+    const card = (p) => `
+      <article class="filter-in bg-cream rounded-3xl overflow-hidden border border-brown/10 group hover:shadow-warm transition-all" data-cat="${p.cat}">
+        <div class="relative aspect-square overflow-hidden">
+          <div class="w-full h-full bg-gradient-to-br from-caramel/30 to-brown/5 flex items-center justify-center text-6xl">${p.emoji}</div>
+          <button onclick="addToCart('${p.name}', ${p.price})" class="add-to-cart absolute top-3 right-3 w-9 h-9 bg-cream rounded-full flex items-center justify-center text-cocoa hover:bg-caramel transition-all shadow">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>
+          </button>
+        </div>
+        <div class="p-5">
+          <div class="flex items-start justify-between gap-2 mb-1">
+            <h3 class="font-serif text-lg font-bold text-cocoa">${p.name}</h3>
+            <span class="font-bold text-brown whitespace-nowrap">₹${p.price}</span>
+          </div>
+          <div class="flex items-center justify-between">
+            <span class="text-[10px] font-bold uppercase tracking-wider text-cocoa/40">${p.cat}</span>
+            <span class="text-xs text-cocoa/60">${CAT_EMOJI[p.cat]}</span>
+          </div>
+        </div>
+      </article>`;
+
+    function renderGrid() {
+      const grid = document.getElementById('prodGrid');
+      const list = activeCat === 'all' ? PRODUCTS : PRODUCTS.filter(p => p.cat === activeCat);
+      grid.innerHTML = list.map(card).join('');
+      requestAnimationFrame(() => grid.querySelectorAll('.filter-in').forEach((el,i) => setTimeout(() => el.classList.add('show'), 25*i)));
+    }
+
+    function setCat(c, btn) {
+      activeCat = c;
+      document.querySelectorAll('.pill').forEach(p => { p.classList.remove('bg-cocoa','text-cream'); p.classList.add('bg-cream','text-cocoa'); });
+      btn.classList.remove('bg-cream','text-cocoa');
+      btn.classList.add('bg-cocoa','text-cream');
+      renderGrid();
+    }
+
+    function addToCart(name, price) {
+      const existing = cart.find(i => i.name === name);
+      existing ? existing.qty++ : cart.push({ name, price, qty: 1 });
+      persist();
+      renderCart();
+    }
+
+    function changeQty(i, d) {
+      cart[i].qty = Math.max(1, cart[i].qty + d);
+      persist(); renderCart();
+    }
+
+    function removeAt(i) {
+      cart.splice(i, 1);
+      persist(); renderCart();
+    }
+
+    function clearCart() {
+      cart = [];
+      persist(); renderCart();
+    }
+
+    function persist() {
+      localStorage.setItem('crumb_cart', JSON.stringify(cart));
+    }
+
+    function renderCart() {
+      const list = document.getElementById('cartList');
+      const empty = document.getElementById('emptyCart');
+      const count = document.getElementById('cartCount');
+      if (!cart.length) {
+        list.innerHTML = '';
+        empty.classList.remove('hidden');
+        count.textContent = '0 items';
+        recalc();
+        return;
+      }
+      empty.classList.add('hidden');
+      const totalQty = cart.reduce((s,i) => s + i.qty, 0);
+      count.textContent = totalQty + ' item' + (totalQty > 1 ? 's' : '');
+      list.innerHTML = cart.map((it, idx) => `
+        <div class="flex gap-3 items-start">
+          <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-caramel/40 to-brown/10 flex items-center justify-center text-2xl flex-shrink-0">${it.emoji || '🥐'}</div>
+          <div class="flex-1 min-w-0">
+            <div class="flex items-start justify-between gap-2 mb-0.5">
+              <div class="font-bold text-cream text-sm leading-tight">${it.name}</div>
+              <button onclick="removeAt(${idx})" class="text-cream/40 hover:text-rose-400 transition-colors flex-shrink-0">
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M6 6l12 12M6 18 18 6"/></svg>
+              </button>
+            </div>
+            <div class="flex items-center justify-between mt-1">
+              <div class="flex items-center bg-white/10 border border-white/10 rounded-full overflow-hidden">
+                <button onclick="changeQty(${idx}, -1)" class="qty-btn w-6 h-6 flex items-center justify-center text-cream text-xs">−</button>
+                <span class="w-6 text-center text-xs font-bold">${it.qty}</span>
+                <button onclick="changeQty(${idx}, 1)" class="qty-btn w-6 h-6 flex items-center justify-center text-cream text-xs">+</button>
+              </div>
+              <div class="font-bold text-caramel text-sm">₹${(it.price*it.qty).toLocaleString('en-IN')}</div>
+            </div>
+          </div>
+        </div>`).join('');
+      recalc();
+    }
+
+    function recalc() {
+      const sub = cart.reduce((s,i) => s + i.price*i.qty, 0);
+      const fee = DELIVERY_FEE['pickup'];
+      const tax = Math.round(sub * TAX_RATE);
+      const total = sub + fee + tax;
+      document.getElementById('sumSub').textContent = '₹' + sub.toLocaleString('en-IN');
+      document.getElementById('sumTax').textContent = '₹' + tax.toLocaleString('en-IN');
+      document.getElementById('sumDel').textContent = 'Free';
+      document.getElementById('sumTotal').textContent = '₹' + total.toLocaleString('en-IN');
+    }
+
+    function placeOrder() {
+      if (!cart.length) return;
+      const sub = cart.reduce((s,i) => s + i.price*i.qty, 0);
+      const fee = DELIVERY_FEE['pickup'];
+      const tax = Math.round(sub * TAX_RATE);
+      const total = sub + fee + tax;
+      const order = {
+        id: 'CC-' + (10000 + Math.floor(Math.random()*9000)),
+        date: new Date().toISOString(),
+        items: cart.slice(),
+        subtotal: sub, tax, delivery: fee, total,
+        method: 'pickup',
+        customer: { name:'Customer', phone:'', email:'' },
+        slot: 'Today · 4 PM – 7 PM',
+        payment: 'upi',
+        status: 'Pending'
+      };
+      const orders = JSON.parse(localStorage.getItem('crumb_orders') || '[]');
+      orders.unshift(order);
+      localStorage.setItem('crumb_orders', JSON.stringify(orders));
+
+      document.getElementById('succId').textContent = order.id;
+      document.getElementById('succTotal').textContent = '₹' + total.toLocaleString('en-IN');
+      document.getElementById('succSlot').textContent = 'Pickup · Today 4 PM';
+      document.getElementById('successModal').classList.remove('hidden');
+      cart = [];
+      persist();
+      renderCart();
+    }
+
+    function closeSuccess() {
+      document.getElementById('successModal').classList.add('hidden');
+    }
+
+    renderGrid();
+    renderCart();
+
+    const obs = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('aos-in'); obs.unobserve(e.target); } }), { threshold: 0.05 });
+    document.querySelectorAll('[data-aos]').forEach(el => obs.observe(el));
+  </script>
+</body>
+</html>

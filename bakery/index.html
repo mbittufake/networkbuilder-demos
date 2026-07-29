@@ -1,0 +1,771 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Crumb & Craft — Artisanal Bakery in Malda</title>
+  <meta name="description" content="Hand-crafted breads, pastries & custom cakes baked fresh every morning in Malda, West Bengal. Family-run since 2014.">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/htmx.org@2.0.3" defer></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,700;1,500&family=Caveat:wght@600&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter','sans-serif'],
+            serif: ['Playfair Display','serif'],
+            hand: ['Caveat','cursive'],
+          },
+          colors: {
+            cocoa:    '#3E2723',
+            brown:    '#8B5A3C',
+            caramel:  '#D4A574',
+            cream:    '#FAF3E7',
+            parchment:'#FFF8EE',
+            gold:     '#C8964F',
+          },
+          boxShadow: {
+            warm: '0 10px 40px -10px rgba(139,90,60,0.35)',
+            soft: '0 6px 24px -6px rgba(62,39,35,0.12)',
+          }
+        }
+      }
+    }
+/* ===== Cart drawer (slide-in from right) ===== */
+    const FREE_SHIP_THRESHOLD = 800;
+    const cartDrawer = document.getElementById('cartDrawer');
+    function openCart() { renderCart(); cartDrawer.classList.remove('hidden'); requestAnimationFrame(() => cartDrawer.classList.add('is-open')); }
+    function closeCart() { cartDrawer.classList.remove('is-open'); setTimeout(() => cartDrawer.classList.add('hidden'), 300); }
+    function checkoutDemo() {
+      if (!cart.length) return;
+      closeCart();
+      setTimeout(() => window.location.href = 'cart.html', 220);
+    }
+    function itemEmoji(name) {
+      const n = name.toLowerCase();
+      if (n.includes('croissant') || n.includes('brioche') || n.includes('babka') || n.includes('pain au chocolat') || n.includes('danish') || n.includes('kouign')) return '🥐';
+      if (n.includes('sourdough') || n.includes('boule') || n.includes('loaf') || n.includes('ciabatta')) return '🍞';
+      if (n.includes('focaccia') || n.includes('pita')) return '🥖';
+      if (n.includes('cake') || n.includes('tiramisu') || n.includes('cheesecake')) return '🎂';
+      if (n.includes('cookie') || n.includes('brownie') || n.includes('biscotti') || n.includes('shortbread') || n.includes('snickerdoodle') || n.includes('raisin')) return '🍪';
+      if (n.includes('quiche') || n.includes('galette') || n.includes('pie')) return '🥧';
+      if (n.includes('roll')) return '🍥';
+      if (n.includes('cupcake') || n.includes('tart') || n.includes('mango') || n.includes('pumpkin')) return '🧁';
+      return '🥐';
+    }
+    function renderCart() {
+      const wrap = document.getElementById('cartItems');
+      const footer = document.getElementById('cartFooter');
+      const subtotal = cart.reduce((s,i) => s + i.price*i.qty, 0);
+      const itemCount = cart.reduce((s,i) => s + i.qty, 0);
+
+      document.getElementById('cartDrawerCount').textContent = `(${itemCount})`;
+
+      if (!cart.length) {
+        wrap.innerHTML = `
+          <div class="text-center py-12 flex flex-col items-center justify-center h-full">
+            <div class="text-6xl mb-4">🥐</div>
+            <h3 class="font-serif text-2xl font-bold text-cocoa mb-2">Your basket is empty</h3>
+            <p class="text-cocoa/60 mb-6 text-sm max-w-[260px]">Add some fresh bakes to get started. Everything's baked this morning.</p>
+            <a href="menu.html" onclick="closeCart()" class="inline-flex items-center gap-2 bg-cocoa text-cream px-6 py-2.5 rounded-full text-sm font-semibold shadow-warm hover:bg-brown transition-all">
+              See today's menu
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="m9 5 7 7-7 7"/></svg>
+            </a>
+            <div class="mt-8 text-xs text-cocoa/40">Try our bestsellers:</div>
+            <div class="flex gap-2 mt-3 text-xs">
+              <button onclick="quickAdd('Sourdough Boule',280,this)" class="bg-cream border border-brown/20 rounded-full px-3 py-1.5 hover:border-brown">🍞 Sourdough ₹280</button>
+              <button onclick="quickAdd('Butter Croissant',120,this)" class="bg-cream border border-brown/20 rounded-full px-3 py-1.5 hover:border-brown">🥐 Croissant ₹120</button>
+            </div>
+          </div>`;
+        footer.classList.add('hidden');
+        const c = document.getElementById('cartCount'); if (c) c.textContent = 0;
+        return;
+      }
+
+      footer.classList.remove('hidden');
+      wrap.innerHTML = cart.map((item, idx) => `
+        <div class="cart-line flex gap-3 p-2 rounded-2xl mb-2 items-start">
+          <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-caramel/40 to-brown/10 flex items-center justify-center text-2xl flex-shrink-0">${itemEmoji(item.name)}</div>
+          <div class="flex-1 min-w-0">
+            <div class="flex items-start justify-between gap-2 mb-1">
+              <div class="font-bold text-cocoa text-sm leading-tight pr-2">${item.name}</div>
+              <button onclick="removeFromCart(${idx})" class="text-cocoa/40 hover:text-rose-500 transition-colors flex-shrink-0 mt-0.5" aria-label="Remove ${item.name}">
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M6 6l12 12M6 18 18 6"/></svg>
+              </button>
+            </div>
+            <div class="flex items-center justify-between mt-2">
+              <div class="flex items-center bg-white border border-brown/20 rounded-full overflow-hidden">
+                <button onclick="changeQty(${idx}, -1)" class="qty-btn w-7 h-7 flex items-center justify-center text-cocoa text-base" aria-label="Decrease">−</button>
+                <span class="w-7 text-center text-xs font-bold">${item.qty}</span>
+                <button onclick="changeQty(${idx}, 1)" class="qty-btn w-7 h-7 flex items-center justify-center text-cocoa text-base" aria-label="Increase">+</button>
+              </div>
+              <div class="text-sm font-bold text-brown">₹${(item.price * item.qty).toLocaleString('en-IN')}</div>
+            </div>
+          </div>
+        </div>`).join('');
+
+      document.getElementById('cartSubtotal').textContent = '₹' + subtotal.toLocaleString('en-IN');
+      const remain = Math.max(0, FREE_SHIP_THRESHOLD - subtotal);
+      const note = document.getElementById('freeShipNote');
+      if (subtotal >= FREE_SHIP_THRESHOLD) {
+        note.innerHTML = '<span class="text-caramel font-semibold">✓ Free local delivery unlocked!</span>';
+      } else {
+        note.innerHTML = `Add <strong class="text-cocoa">₹${remain}</strong> more for free local delivery`;
+      }
+      document.getElementById('cartDelivery').textContent = 'Free';
+      document.getElementById('cartTotal').textContent = '₹' + subtotal.toLocaleString('en-IN');
+      document.getElementById('cartBtnTotal').textContent = '₹' + subtotal.toLocaleString('en-IN');
+
+      const c = document.getElementById('cartCount');
+      if (c) {
+        c.textContent = itemCount;
+        c.classList.remove('bump');
+        // force reflow to retrigger animation
+        void c.offsetWidth;
+        c.classList.add('bump');
+      }
+      localStorage.setItem('crumb_cart', JSON.stringify(cart));
+    }
+
+    function changeQty(idx, delta) {
+      cart[idx].qty = Math.max(1, cart[idx].qty + delta);
+      renderCart();
+    }
+    function removeFromCart(idx) {
+      const name = cart[idx].name;
+      cart.splice(idx, 1);
+      renderCart();
+      showToast(`${name} removed`);
+    }
+    function quickAdd(name, price, btn) {
+      const existing = cart.find(i => i.name === name);
+      existing ? existing.qty++ : cart.push({ name, price, qty: 1 });
+      renderCart();
+      if (btn) {
+        btn.style.transform = 'scale(1.1)';
+        setTimeout(() => btn.style.transform = '', 180);
+      }
+    }
+
+    /* Cart drawer (used on cart.html) */
+    document.addEventListener('keydown', e => { if (e.key === 'Escape' && !cartDrawer.classList.contains('hidden')) closeCart(); });
+  </script>
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+    h1,h2,h3,h4 { font-family: 'Playfair Display', serif; }
+    .hero-serif { font-family: 'Playfair Display', serif; }
+    .crumb-bg { background-image: radial-gradient(circle at 20% 10%, rgba(212,165,116,0.18), transparent 40%), radial-gradient(circle at 80% 80%, rgba(200,150,79,0.15), transparent 40%); }
+    .paper-bg { background-color: #FFF8EE; background-image: radial-gradient(circle at 1px 1px, rgba(139,90,60,0.07) 1px, transparent 0); background-size: 24px 24px; }
+    .paper-bg-dark { background-color: #3E2723; background-image: radial-gradient(circle at 1px 1px, rgba(212,165,116,0.10) 1px, transparent 0); background-size: 22px 22px; }
+    .newsletter[disabled], .newsletter.htmx-disabled { opacity: .5; pointer-events: none; }
+    .crumb-divider { display:inline-block; width:64px; height:1px; background:#8B5A3C; vertical-align: middle; }
+    [data-aos] { opacity: 0; transform: translateY(20px); transition: opacity .6s ease, transform .6s ease; }
+    [data-aos].aos-in { opacity: 1; transform: translateY(0); }
+    .card-hover { transition: transform .25s ease, box-shadow .25s ease; }
+    .card-hover:hover { transform: translateY(-6px); box-shadow: 0 24px 48px -12px rgba(62,39,35,0.2); }
+    .shine::before { content:''; position:absolute; inset:0; background:linear-gradient(120deg,transparent 30%,rgba(255,255,255,.5) 50%,transparent 70%); opacity:0; transition: opacity .6s; }
+    .shine:hover::before { opacity:1; }
+    @keyframes floaty { 0%,100% { transform: translateY(0) rotate(-2deg); } 50% { transform: translateY(-8px) rotate(2deg); } }
+    .floaty { animation: floaty 5s ease-in-out infinite; }
+    /* Cart toast */
+    #toast { transition: transform .35s cubic-bezier(.2,.8,.2,1), opacity .35s; transform: translateY(20px); opacity:0; }
+    #toast.show { transform: translateY(0); opacity:1; }
+/* ===== Cart drawer (slide-in from right) ===== */
+    #cartDrawer.is-open #cartBackdrop { opacity: 1; }
+    #cartDrawer.is-open #cartPanel { transform: translateX(0); }
+    .cart-line { transition: background .2s ease; }
+    .cart-line:hover { background: rgba(212,165,116,0.12); }
+    .qty-btn { transition: background .15s ease, color .15s ease; }
+    .qty-btn:hover { background: rgba(212,165,116,0.35); color: #3E2723; }
+    @keyframes cartBadgePop { 0% { transform: scale(1); } 40% { transform: scale(1.35); } 100% { transform: scale(1); } }
+    #cartCount.bump { animation: cartBadgePop .35s ease; }
+  </style>
+</head>
+<body class="bg-parchment text-cocoa antialiased">
+
+  <!-- ============ NAVBAR ============ -->
+  <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 bg-parchment/90 backdrop-blur-md transition-shadow duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16 lg:h-20">
+        <!-- Logo -->
+        <a href="index.html" class="flex items-center gap-2 group">
+          <div class="w-10 h-10 rounded-full bg-cocoa text-cream flex items-center justify-center font-serif text-xl font-bold shadow-warm">C</div>
+          <div class="leading-tight">
+            <div class="font-serif text-xl font-bold text-cocoa">Crumb &amp; Craft</div>
+            <div class="text-[10px] tracking-[0.2em] text-brown uppercase font-semibold">Artisanal Bakery</div>
+          </div>
+        </a>
+        <!-- Desktop -->
+        <ul class="hidden lg:flex items-center gap-8 text-sm font-medium">
+          <li><a href="index.html" class="text-brown font-semibold">Home</a></li>
+          <li><a href="menu.html" class="hover:text-brown transition-colors">Menu</a></li>
+          <li><a href="custom-orders.html" class="hover:text-brown transition-colors">Custom Orders</a></li>
+          <li><a href="about.html" class="hover:text-brown transition-colors">Our Story</a></li>
+          <li><a href="contact.html" class="hover:text-brown transition-colors">Contact</a></li>
+        </ul>
+        <!-- Right -->
+        <div class="flex items-center gap-3">
+                    <!-- Admin Panel -->
+          <a href="admin/index.html" class="hidden lg:inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider border border-brown/30 text-cocoa/70 px-3 py-2 rounded-full hover:border-brown hover:text-cocoa hover:bg-cream transition-all" title="Admin Panel">
+            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>
+            Admin
+          </a>
+          <!-- Cart icon → links to cart page -->
+          <a href="cart.html" class="relative w-10 h-10 rounded-full bg-white border border-brown/20 flex items-center justify-center hover:border-brown transition-all" aria-label="Cart">
+            <svg class="w-5 h-5 text-cocoa" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2 8h13M9 21a1 1 0 11-2 0 1 1 0 012 0zm9 0a1 1 0 11-2 0 1 1 0 012 0z"/></svg>
+            <span id="cartCount" class="absolute -top-1.5 -right-1.5 min-w-[20px] h-5 px-1.5 rounded-full bg-caramel text-cocoa text-[10px] font-bold flex items-center justify-center">0</span>
+          </a>
+          <a href="menu.html" class="hidden lg:inline-flex items-center gap-2 bg-cocoa text-cream text-sm font-semibold px-5 py-2.5 rounded-full hover:bg-brown transition-all">
+            Order Now
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="m9 5 7 7-7 7"/></svg>
+          </a>
+          <button id="hamburger" class="lg:hidden w-10 h-10 rounded-full bg-white border border-brown/20 flex items-center justify-center" aria-label="Menu" aria-expanded="false" aria-controls="mobile-menu">
+            <svg class="w-5 h-5 text-cocoa" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="hidden lg:hidden bg-parchment/95 border-t border-brown/10 px-4 py-5 flex flex-col gap-3">
+      <a href="index.html" class="text-base font-semibold text-brown py-2">Home</a>
+        <a href="menu.html" class="text-base font-medium text-cocoa py-2">Menu</a>
+        <a href="custom-orders.html" class="text-base font-medium text-cocoa py-2">Custom Orders</a>
+        <a href="about.html" class="text-base font-medium text-cocoa py-2">Our Story</a>
+        <a href="user-orders.html" class="text-base font-medium text-cocoa/70 hover:text-cocoa py-2">My Orders</a>
+          <a href="contact.html" class="text-base font-medium text-cocoa py-2">Contact</a>
+        <a href="admin/index.html" class="text-base font-medium text-cocoa/70 hover:text-cocoa py-2 border-t border-brown/10 mt-1">Admin Panel</a>
+    </div>
+  </nav>
+
+  <!-- ============ HERO ============ -->
+  <header class="relative pt-28 lg:pt-36 pb-12 lg:pb-24 crumb-bg overflow-hidden">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+      <!-- Left -->
+      <div data-aos>
+        <div class="inline-flex items-center gap-2 bg-cream border border-brown/20 text-brown text-xs font-bold px-3 py-1.5 rounded-full uppercase tracking-widest mb-6">
+          <span class="w-1.5 h-1.5 bg-brown rounded-full"></span>
+          Freshly Baked · Since 2014
+        </div>
+        <h1 class="text-5xl sm:text-6xl lg:text-7xl font-black font-serif leading-[1.02] text-cocoa mb-6">
+          Slow dough.<br>
+          <span class="italic text-brown">Honest</span> craft.<br>
+          Pure joy.
+        </h1>
+        <p class="text-lg text-cocoa/70 leading-relaxed mb-8 max-w-lg">
+          Hand-shaped sourdough, flaky croissants, and celebration cakes — all baked from scratch in our small Malda kitchen, from sunrise to sunset.
+        </p>
+        <div class="flex flex-wrap gap-4 mb-10">
+          <a href="menu.html" class="group relative overflow-hidden inline-flex items-center gap-2 bg-cocoa text-cream font-semibold px-7 py-3.5 rounded-full shadow-warm shine">
+            <span class="relative">See Today's Menu</span>
+            <svg class="w-5 h-5 relative" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="m9 5 7 7-7 7"/></svg>
+          </a>
+          <a href="custom-orders.html" class="inline-flex items-center gap-2 border-2 border-cocoa text-cocoa font-semibold px-6 py-3.5 rounded-full hover:bg-cocoa hover:text-cream transition-all">
+            Order a Custom Cake
+          </a>
+        </div>
+        <div class="flex items-center gap-5 pt-6 border-t border-cocoa/10">
+          <div class="flex -space-x-3">
+            <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=64&h=64&fit=crop&q=80" class="w-10 h-10 rounded-full border-2 border-cream object-cover" alt="">
+            <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=64&h=64&fit=crop&q=80" class="w-10 h-10 rounded-full border-2 border-cream object-cover" alt="">
+            <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=64&h=64&fit=crop&q=80" class="w-10 h-10 rounded-full border-2 border-cream object-cover" alt="">
+            <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=64&h=64&fit=crop&q=80" class="w-10 h-10 rounded-full border-2 border-cream object-cover" alt="">
+          </div>
+          <div>
+            <div class="flex gap-0.5 text-gold text-sm">★★★★★</div>
+            <p class="text-xs text-cocoa/70 mt-0.5"><span class="font-bold text-cocoa">2,400+</span> happy bellies · 4.9 / 5</p>
+          </div>
+        </div>
+      </div>
+      <!-- Right: floating art -->
+      <div class="relative" data-aos>
+        <div class="relative aspect-[5/6] lg:aspect-square max-w-lg mx-auto">
+          <!-- main image -->
+          <div class="absolute inset-0 rounded-[40px] overflow-hidden shadow-warm">
+            <img src="https://images.unsplash.com/photo-1565958011703-44f9829ba187?w=800&h=900&fit=crop&q=85" alt="Fresh pastries" class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-gradient-to-t from-cocoa/30 via-transparent to-transparent"></div>
+          </div>
+          <!-- floating card 1: bake of the day -->
+          <div class="absolute -left-6 lg:-left-10 top-10 bg-cream rounded-3xl p-4 shadow-warm max-w-[200px] floaty">
+            <div class="text-[11px] uppercase tracking-wider text-brown font-bold mb-1">Today's Bake</div>
+            <div class="font-serif font-bold text-lg text-cocoa leading-tight">Cinnamon Kouign-Amann</div>
+            <div class="text-xs text-cocoa/60 mt-1">Just out of the oven</div>
+            <div class="mt-2 inline-flex items-center gap-1 text-xs font-bold text-gold">
+              <span class="w-1.5 h-1.5 bg-gold rounded-full animate-pulse"></span>
+              LIMITED
+            </div>
+          </div>
+          <!-- floating card 2: rating -->
+          <div class="absolute -right-4 lg:-right-8 bottom-12 bg-cocoa text-cream rounded-3xl p-5 shadow-warm max-w-[200px]">
+            <div class="font-serif text-3xl text-gold font-bold">“</div>
+            <p class="text-sm leading-snug -mt-2 mb-3">The best croissant I've had outside of Paris, honestly.</p>
+            <div class="flex items-center gap-2 text-xs">
+              <div class="w-7 h-7 rounded-full bg-cream/20 flex items-center justify-center font-bold">A</div>
+              <div>
+                <div class="font-semibold">Anika Roy</div>
+                <div class="text-cream/60">Food Critic</div>
+              </div>
+            </div>
+          </div>
+          <!-- floating card 3: timer -->
+          <div class="absolute right-2 -bottom-4 bg-white border border-cocoa/10 rounded-2xl p-3 shadow-warm flex items-center gap-2 text-xs">
+            <div class="w-8 h-8 rounded-full bg-caramel/20 flex items-center justify-center">🕐</div>
+            <div>
+              <div class="font-bold text-cocoa">Opens 7:00 AM</div>
+              <div class="text-cocoa/50">Closed on Mondays</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ============ DAILY BAKE MARQUEE ============ -->
+  <section class="bg-cocoa text-cream py-5 overflow-hidden">
+    <div class="flex items-center gap-10 whitespace-nowrap animate-[scroll_28s_linear_infinite]" style="animation: scroll 28s linear infinite;">
+      <span class="font-serif text-2xl flex items-center gap-10">
+        ✦ Sourdough Boule &nbsp;•&nbsp; Butter Croissants &nbsp;•&nbsp; Tiramisu Cake &nbsp;•&nbsp; Focaccia &nbsp;•&nbsp; Pain au Chocolat &nbsp;•&nbsp; Walnut Brownies &nbsp;•&nbsp; Cinnamon Rolls &nbsp;•&nbsp; Red Velvet &nbsp;•&nbsp; Pita Pockets &nbsp;•&nbsp;
+      </span>
+      <span class="font-serif text-2xl flex items-center gap-10">
+        ✦ Sourdough Boule &nbsp;•&nbsp; Butter Croissants &nbsp;•&nbsp; Tiramisu Cake &nbsp;•&nbsp; Focaccia &nbsp;•&nbsp; Pain au Chocolat &nbsp;•&nbsp; Walnut Brownies &nbsp;•&nbsp; Cinnamon Rolls &nbsp;•&nbsp; Red Velvet &nbsp;•&nbsp; Pita Pockets &nbsp;•&nbsp;
+      </span>
+    </div>
+    <style>@keyframes scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }</style>
+  </section>
+
+  <!-- ============ FEATURED PRODUCTS ============ -->
+  <section id="featured" class="py-16 lg:py-24 paper-bg">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-12" data-aos>
+        <div class="max-w-xl">
+          <div class="flex items-center gap-3 text-brown text-xs font-black uppercase tracking-widest mb-3">
+            <span class="crumb-divider"></span>
+            Today's Favourites
+          </div>
+          <h2 class="text-4xl lg:text-5xl font-serif font-bold text-cocoa leading-tight">Bakes our regulars<br><span class="italic text-brown">come back for.</span></h2>
+        </div>
+        <p class="text-cocoa/60 max-w-md">Every item is hand-shaped, proofed overnight, and baked the morning of. Nothing sits on shelves past lunchtime.</p>
+      </div>
+
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+        <!-- Product 1 -->
+        <article class="bg-cream rounded-3xl overflow-hidden card-hover border border-brown/10 group" data-aos>
+          <div class="relative aspect-square overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?w=500&h=500&fit=crop&q=80" alt="Sourdough Boule" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+            <span class="absolute top-3 left-3 bg-cocoa text-cream text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full">Bestseller</span>
+            <button class="add-to-cart absolute top-3 right-3 w-9 h-9 bg-cream rounded-full flex items-center justify-center text-cocoa hover:bg-caramel transition-all shadow" data-name="Sourdough Boule" data-price="280">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>
+            </button>
+          </div>
+          <div class="p-5">
+            <div class="flex items-start justify-between gap-2 mb-1">
+              <h3 class="font-serif text-lg font-bold text-cocoa">Sourdough Boule</h3>
+              <span class="font-bold text-brown whitespace-nowrap">₹280</span>
+            </div>
+            <p class="text-sm text-cocoa/60 mb-3">48-hour fermented · naturally leavened</p>
+            <div class="flex items-center gap-1 text-xs text-gold">★★★★★ <span class="text-cocoa/40 ml-1">(312)</span></div>
+          </div>
+        </article>
+        <!-- Product 2 -->
+        <article class="bg-cream rounded-3xl overflow-hidden card-hover border border-brown/10 group" data-aos>
+          <div class="relative aspect-square overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1555507036-ab1f4038808a?w=500&h=500&fit=crop&q=80&sat=-100" alt="Butter Croissant" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+            <span class="absolute top-3 left-3 bg-caramel text-cocoa text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full">Just Baked</span>
+            <button class="add-to-cart absolute top-3 right-3 w-9 h-9 bg-cream rounded-full flex items-center justify-center text-cocoa hover:bg-caramel transition-all shadow" data-name="Butter Croissant" data-price="120">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>
+            </button>
+          </div>
+          <div class="p-5">
+            <div class="flex items-start justify-between gap-2 mb-1">
+              <h3 class="font-serif text-lg font-bold text-cocoa">Butter Croissant</h3>
+              <span class="font-bold text-brown whitespace-nowrap">₹120</span>
+            </div>
+            <p class="text-sm text-cocoa/60 mb-3">27 flaky layers · French AOP butter</p>
+            <div class="flex items-center gap-1 text-xs text-gold">★★★★★ <span class="text-cocoa/40 ml-1">(485)</span></div>
+          </div>
+        </article>
+        <!-- Product 3 -->
+        <article class="bg-cream rounded-3xl overflow-hidden card-hover border border-brown/10 group" data-aos>
+          <div class="relative aspect-square overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1571115177098-24ec42ed204d?w=500&h=500&fit=crop&q=80" alt="Tiramisu Cake" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+            <span class="absolute top-3 left-3 bg-gold text-cocoa text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full">Chefs Pick</span>
+            <button class="add-to-cart absolute top-3 right-3 w-9 h-9 bg-cream rounded-full flex items-center justify-center text-cocoa hover:bg-caramel transition-all shadow" data-name="Tiramisu Cake" data-price="1450">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>
+            </button>
+          </div>
+          <div class="p-5">
+            <div class="flex items-start justify-between gap-2 mb-1">
+              <h3 class="font-serif text-lg font-bold text-cocoa">Classic Tiramisu</h3>
+              <span class="font-bold text-brown whitespace-nowrap">₹1,450</span>
+            </div>
+            <p class="text-sm text-cocoa/60 mb-3">Mascarpone · espresso-soaked savoiardi</p>
+            <div class="flex items-center gap-1 text-xs text-gold">★★★★★ <span class="text-cocoa/40 ml-1">(208)</span></div>
+          </div>
+        </article>
+        <!-- Product 4 -->
+        <article class="bg-cream rounded-3xl overflow-hidden card-hover border border-brown/10 group" data-aos>
+          <div class="relative aspect-square overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1607478900766-efe13248b125?w=500&h=500&fit=crop&q=80" alt="Cinnamon Rolls" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+            <span class="absolute top-3 left-3 bg-rose-400 text-cream text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full">Weekend Only</span>
+            <button class="add-to-cart absolute top-3 right-3 w-9 h-9 bg-cream rounded-full flex items-center justify-center text-cocoa hover:bg-caramel transition-all shadow" data-name="Cinnamon Rolls (4 pc)" data-price="380">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>
+            </button>
+          </div>
+          <div class="p-5">
+            <div class="flex items-start justify-between gap-2 mb-1">
+              <h3 class="font-serif text-lg font-bold text-cocoa">Cinnamon Rolls (4)</h3>
+              <span class="font-bold text-brown whitespace-nowrap">₹380</span>
+            </div>
+            <p class="text-sm text-cocoa/60 mb-3">Brown butter glaze · gooey centre</p>
+            <div class="flex items-center gap-1 text-xs text-gold">★★★★☆ <span class="text-cocoa/40 ml-1">(176)</span></div>
+          </div>
+        </article>
+      </div>
+
+      <div class="flex justify-center mt-12" data-aos>
+        <a href="menu.html" class="group inline-flex items-center gap-2 border-2 border-cocoa text-cocoa font-semibold px-7 py-3 rounded-full hover:bg-cocoa hover:text-cream transition-all">
+          View Full Menu
+          <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="m9 5 7 7-7 7"/></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CATEGORIES ============ -->
+  <section class="py-16 lg:py-24 bg-cocoa text-cream paper-bg-dark">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12" data-aos>
+        <div class="flex items-center justify-center gap-3 text-caramel text-xs font-black uppercase tracking-widest mb-3">
+          <span class="crumb-divider bg-caramel"></span>
+          Browse by shelf
+          <span class="crumb-divider bg-caramel"></span>
+        </div>
+        <h2 class="text-4xl lg:text-5xl font-serif font-bold">Pick your pleasure.</h2>
+      </div>
+      <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6">
+        <a href="menu.html?cat=breads" class="group relative aspect-square rounded-3xl overflow-hidden card-hover" data-aos>
+          <img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?w=500&h=500&fit=crop&q=80" class="w-full h-full object-cover brightness-90 group-hover:brightness-100 group-hover:scale-105 transition-all duration-700" alt="Breads">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+          <div class="absolute bottom-4 left-4 right-4">
+            <div class="text-xs text-caramel font-bold uppercase tracking-wider">01</div>
+            <div class="font-serif text-2xl font-bold">Breads</div>
+            <div class="text-xs text-cream/70 mt-1">12 varieties</div>
+          </div>
+        </a>
+        <a href="menu.html?cat=pastries" class="group relative aspect-square rounded-3xl overflow-hidden card-hover" data-aos>
+          <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=500&h=500&fit=crop&q=80" class="w-full h-full object-cover brightness-90 group-hover:brightness-100 group-hover:scale-105 transition-all duration-700" alt="Pastries">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+          <div class="absolute bottom-4 left-4 right-4">
+            <div class="text-xs text-caramel font-bold uppercase tracking-wider">02</div>
+            <div class="font-serif text-2xl font-bold">Pastries</div>
+            <div class="text-xs text-cream/70 mt-1">9 varieties</div>
+          </div>
+        </a>
+        <a href="menu.html?cat=cakes" class="group relative aspect-square rounded-3xl overflow-hidden card-hover" data-aos>
+          <img src="https://images.unsplash.com/photo-1565958011703-44f9829ba187?w=500&h=500&fit=crop&q=80" class="w-full h-full object-cover brightness-90 group-hover:brightness-100 group-hover:scale-105 transition-all duration-700" alt="Cakes">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+          <div class="absolute bottom-4 left-4 right-4">
+            <div class="text-xs text-caramel font-bold uppercase tracking-wider">03</div>
+            <div class="font-serif text-2xl font-bold">Cakes</div>
+            <div class="text-xs text-cream/70 mt-1">14 varieties</div>
+          </div>
+        </a>
+        <a href="menu.html?cat=cookies" class="group relative aspect-square rounded-3xl overflow-hidden card-hover" data-aos>
+          <img src="https://images.unsplash.com/photo-1499636136210-6f4ee915583e?w=500&h=500&fit=crop&q=80" class="w-full h-full object-cover brightness-90 group-hover:brightness-100 group-hover:scale-105 transition-all duration-700" alt="Cookies & Treats">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+          <div class="absolute bottom-4 left-4 right-4">
+            <div class="text-xs text-caramel font-bold uppercase tracking-wider">04</div>
+            <div class="font-serif text-2xl font-bold">Cookies</div>
+            <div class="text-xs text-cream/70 mt-1">18 varieties</div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ STORY SNIPPET ============ -->
+  <section class="py-20 lg:py-28 bg-cream">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-2 gap-10 lg:gap-20 items-center">
+      <div class="relative order-2 lg:order-1" data-aos>
+        <div class="grid grid-cols-6 gap-4">
+          <img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?w=400&h=520&fit=crop&q=80" class="col-span-4 rounded-3xl h-[420px] object-cover shadow-warm" alt="">
+          <div class="col-span-2 flex flex-col gap-4">
+            <img src="https://images.unsplash.com/photo-1509365465985-25d11c17e812?w=300&h=200&fit=crop&q=80" class="rounded-3xl h-[200px] object-cover shadow-warm" alt="">
+            <div class="bg-cocoa rounded-3xl p-5 text-cream text-center flex-1 flex flex-col justify-center">
+              <div class="font-serif text-5xl text-caramel font-bold">11</div>
+              <div class="text-sm leading-tight mt-1">Years of slow<br>craftsmanship</div>
+            </div>
+          </div>
+        </div>
+        <!-- handwritten note -->
+        <div class="absolute -bottom-6 -right-4 lg:-right-8 bg-parchment border border-cocoa/10 rounded-2xl p-4 shadow-warm max-w-[220px] rotate-3 hidden lg:block">
+          <div class="font-hand text-2xl text-cocoa leading-tight">"Slow dough, honest hands."</div>
+          <div class="text-xs text-cocoa/50 mt-1">— Maya, founder</div>
+        </div>
+      </div>
+      <div class="order-1 lg:order-2" data-aos>
+        <div class="flex items-center gap-3 text-brown text-xs font-black uppercase tracking-widest mb-4">
+          <span class="crumb-divider"></span>
+          Our Story
+        </div>
+        <h2 class="text-4xl lg:text-5xl font-serif font-bold text-cocoa leading-tight mb-6">A small kitchen,<br>a big appetite for <span class="italic text-brown">good.</span></h2>
+        <p class="text-cocoa/70 leading-relaxed mb-5">
+          Crumb &amp; Craft began in 2014 in Maya's home oven — sourdough loaves for friends, gradually turning into a neighbourhood ritual. Eleven years later, we still mill our flour in-house, source butter from a co-op 60km away, and wake up at 4 AM to greet the dough.
+        </p>
+        <p class="text-cocoa/70 leading-relaxed mb-8">
+          We don't do shortcuts, preservatives, or "mass production." We do honest, slow craft — and we'd love to bake for you.
+        </p>
+        <a href="about.html" class="inline-flex items-center gap-2 bg-cocoa text-cream font-semibold px-6 py-3 rounded-full hover:bg-brown transition-all">
+          Read Our Story
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="m9 5 7 7-7 7"/></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ STATS ============ -->
+  <section class="py-12 bg-parchment border-y border-cocoa/10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-2 lg:grid-cols-4 gap-8">
+      <div class="text-center" data-aos>
+        <div class="font-serif text-4xl lg:text-5xl font-bold text-brown">4 AM</div>
+        <div class="text-sm text-cocoa/60 mt-1">Daily bake start</div>
+      </div>
+      <div class="text-center" data-aos>
+        <div class="font-serif text-4xl lg:text-5xl font-bold text-brown">31</div>
+        <div class="text-sm text-cocoa/60 mt-1">Items on the menu</div>
+      </div>
+      <div class="text-center" data-aos>
+        <div class="font-serif text-4xl lg:text-5xl font-bold text-brown">120+</div>
+        <div class="text-sm text-cocoa/60 mt-1">Weddings & events</div>
+      </div>
+      <div class="text-center" data-aos>
+        <div class="font-serif text-4xl lg:text-5xl font-bold text-brown">4.9★</div>
+        <div class="text-sm text-cocoa/60 mt-1">Google rating</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ TESTIMONIALS ============ -->
+  <section class="py-20 lg:py-28 paper-bg">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12" data-aos>
+        <div class="flex items-center justify-center gap-3 text-brown text-xs font-black uppercase tracking-widest mb-3">
+          <span class="crumb-divider"></span>
+          What people say
+          <span class="crumb-divider"></span>
+        </div>
+        <h2 class="text-4xl lg:text-5xl font-serif font-bold text-cocoa">Loved by <span class="italic text-brown">2,400+</span> regulars.</h2>
+      </div>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <article class="bg-white rounded-3xl p-7 border border-brown/10 card-hover" data-aos>
+          <div class="flex text-gold text-sm mb-3">★★★★★</div>
+          <p class="text-cocoa leading-relaxed mb-5">"The cinnamon rolls are out of this world — soft, gooey, with that perfect crackle on top. My Sunday mornings are ruined for me anywhere else."</p>
+          <div class="flex items-center gap-3 pt-4 border-t border-cocoa/10">
+            <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=80&h=80&fit=crop&q=80" class="w-11 h-11 rounded-full object-cover" alt="">
+            <div><div class="font-bold text-sm">Priya Iyer</div><div class="text-xs text-cocoa/50">Customer since 2018</div></div>
+          </div>
+        </article>
+        <article class="bg-white rounded-3xl p-7 border border-brown/10 card-hover" data-aos>
+          <div class="flex text-gold text-sm mb-3">★★★★★</div>
+          <p class="text-cocoa leading-relaxed mb-5">"They made our wedding cake — three tiers, vegan, AND it tasted incredible. Half our guests asked for the baker's number. Worth every rupee."</p>
+          <div class="flex items-center gap-3 pt-4 border-t border-cocoa/10">
+            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=80&h=80&fit=crop&q=80" class="w-11 h-11 rounded-full object-cover" alt="">
+            <div><div class="font-bold text-sm">Rohan &amp; Meera</div><div class="text-xs text-cocoa/50">Custom wedding cake</div></div>
+          </div>
+        </article>
+        <article class="bg-white rounded-3xl p-7 border border-brown/10 card-hover" data-aos>
+          <div class="flex text-gold text-sm mb-3">★★★★★</div>
+          <p class="text-cocoa leading-relaxed mb-5">"Best sourdough in Kolkata, hands down. The crust shatters, the crumb is open and tangy. I drive 40 minutes every Saturday just for this loaf."</p>
+          <div class="flex items-center gap-3 pt-4 border-t border-cocoa/10">
+            <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=80&h=80&fit=crop&q=80" class="w-11 h-11 rounded-full object-cover" alt="">
+            <div><div class="font-bold text-sm">Subhojit Das</div><div class="text-xs text-cocoa/50">Sourdough devotee</div></div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ NEWSLETTER (HTMX) ============ -->
+  <section class="py-20 lg:py-24 bg-gradient-to-br from-brown via-cocoa to-cocoa text-cream">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center" data-aos>
+      <div class="font-serif text-5xl text-caramel">✦</div>
+      <h2 class="font-serif text-4xl lg:text-5xl font-bold mt-3 mb-4">Letters from the kitchen.</h2>
+      <p class="text-cream/70 mb-8">Saturday morning recipes, weekend specials, and the occasional bake-along. No spam — just warm crumbs.</p>
+
+      <form
+        hx-post="/api/subscribe"
+        hx-target="#newsletter-result"
+        hx-swap="innerHTML"
+        hx-on::before-request="event.preventDefault(); showNewsletterDemo(this);"
+        class="bg-cream/5 backdrop-blur border border-cream/20 rounded-full p-2 flex flex-col sm:flex-row gap-2 max-w-xl mx-auto"
+      >
+        <input name="email" type="email" required placeholder="your@email.com" class="flex-1 bg-transparent text-cream placeholder:text-cream/50 px-5 py-3 outline-none">
+        <button type="submit" class="newsletter bg-caramel text-cocoa font-bold px-6 py-3 rounded-full hover:bg-gold transition-all whitespace-nowrap">
+          Subscribe ✨
+        </button>
+      </form>
+      <div id="newsletter-result" class="mt-5 text-sm"></div>
+      <p class="text-xs text-cream/40 mt-4">Join <span class="font-bold text-caramel">3,800+</span> weekend bakers. Unsubscribe anytime.</p>
+    </div>
+  </section>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="bg-cocoa text-cream pt-16 pb-6">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-10 mb-10">
+        <div class="sm:col-span-2 lg:col-span-1">
+          <a href="index.html" class="flex items-center gap-2 mb-4">
+            <div class="w-10 h-10 rounded-full bg-cream text-cocoa flex items-center justify-center font-serif text-xl font-bold">C</div>
+            <div>
+              <div class="font-serif text-xl font-bold">Crumb &amp; Craft</div>
+              <div class="text-[10px] tracking-[0.2em] text-caramel uppercase font-semibold">Artisanal Bakery</div>
+            </div>
+          </a>
+          <p class="text-cream/60 text-sm leading-relaxed mb-5">Hand-crafted breads, pastries &amp; cakes baked fresh every morning in Malda, West Bengal.</p>
+          <div class="flex gap-3">
+            <a href="#" class="w-9 h-9 rounded-full bg-cream/10 hover:bg-caramel hover:text-cocoa flex items-center justify-center transition-all" aria-label="Instagram">
+              <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.2c3.2 0 3.6 0 4.85.07 1.17.05 1.8.25 2.23.41.56.22.96.48 1.38.9.42.42.68.82.9 1.38.16.42.36 1.06.41 2.23.06 1.25.07 1.65.07 4.85s0 3.6-.07 4.85c-.05 1.17-.25 1.8-.41 2.23-.22.56-.48.96-.9 1.38-.42.42-.82.68-1.38.9-.42.16-1.06.36-2.23.41-1.25.06-1.65.07-4.85.07s-3.6 0-4.85-.07c-1.17-.05-1.8-.25-2.23-.41-.56-.22-.96-.48-1.38-.9-.42-.42-.68-.82-.9-1.38-.16-.42-.36-1.06-.41-2.23C2.21 15.6 2.2 15.2 2.2 12s0-3.6.07-4.85c.05-1.17.25-1.8.41-2.23.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.42-.16 1.06-.36 2.23-.41C8.4 2.21 8.8 2.2 12 2.2zm0 1.8c-3.15 0-3.5 0-4.74.07-.96.05-1.48.2-1.83.34-.46.18-.79.4-1.13.74-.34.34-.56.67-.74 1.13-.14.35-.29.87-.34 1.83C2.95 8.5 2.95 8.85 2.95 12s0 3.5.07 4.74c.05.96.2 1.48.34 1.83.18.46.4.79.74 1.13.34.34.67.56 1.13.74.35.14.87.29 1.83.34 1.24.06 1.59.07 4.74.07s3.5 0 4.74-.07c.96-.05 1.48-.2 1.83-.34.46-.18.79-.4 1.13-.74.34-.34.56-.67.74-1.13.14-.35.29-.87.34-1.83.06-1.24.07-1.59.07-4.74s0-3.5-.07-4.74c-.05-.96-.2-1.48-.34-1.83a3.06 3.06 0 0 0-.74-1.13 3.06 3.06 0 0 0-1.13-.74c-.35-.14-.87-.29-1.83-.34C15.5 4 15.15 4 12 4zm0 3.06A4.94 4.94 0 1 1 7.06 12 4.94 4.94 0 0 1 12 7.06zm0 8.15A3.21 3.21 0 1 0 8.79 12 3.21 3.21 0 0 0 12 15.21zm5.18-8.36a1.15 1.15 0 1 1-1.15-1.15 1.15 1.15 0 0 1 1.15 1.15z"/></svg>
+            </a>
+            <a href="#" class="w-9 h-9 rounded-full bg-cream/10 hover:bg-caramel hover:text-cocoa flex items-center justify-center transition-all" aria-label="Facebook">
+              <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M22 12a10 10 0 1 0-11.6 9.88V14.9H7.9v-2.9h2.5V9.8c0-2.5 1.5-3.9 3.78-3.9 1.1 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56V12h2.78l-.44 2.9h-2.34v6.98A10 10 0 0 0 22 12z"/></svg>
+            </a>
+            <a href="#" class="w-9 h-9 rounded-full bg-cream/10 hover:bg-caramel hover:text-cocoa flex items-center justify-center transition-all" aria-label="WhatsApp">
+              <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M20.5 3.5A11.94 11.94 0 0 0 12.05 0C5.5 0 .2 5.3.2 11.85c0 2.1.55 4.15 1.6 5.95L0 24l6.4-1.7a11.85 11.85 0 0 0 5.65 1.45h.01c6.55 0 11.85-5.3 11.85-11.85a11.8 11.8 0 0 0-3.41-8.4zM12.05 21.7h-.01a9.83 9.83 0 0 1-5-1.36l-.36-.21-3.8 1 1.02-3.7-.23-.38A9.82 9.82 0 0 1 2.2 11.86c0-5.45 4.4-9.85 9.84-9.85a9.83 9.83 0 0 1 9.84 9.84c0 5.45-4.4 9.85-9.84 9.85zm5.4-7.36c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.16-.17.2-.34.22-.64.07-.3-.15-1.27-.47-2.42-1.5-.9-.8-1.5-1.78-1.67-2.08-.17-.3-.02-.46.13-.61l.46-.54c.16-.2.21-.34.32-.57.1-.22.05-.42-.03-.57-.07-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.5l-.57-.01c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48s1.06 2.88 1.21 3.08c.15.2 2.1 3.2 5.08 4.49.71.3 1.27.49 1.7.62.71.23 1.36.2 1.87.12.57-.09 1.76-.72 2-1.41.25-.7.25-1.3.18-1.42-.07-.13-.27-.2-.57-.35z"/></svg>
+            </a>
+          </div>
+        </div>
+        <div>
+          <h4 class="font-bold text-sm mb-4 text-caramel uppercase tracking-wider">Visit</h4>
+          <ul class="flex flex-col gap-2 text-sm text-cream/70">
+            <li><a href="contact.html" class="hover:text-caramel transition-colors">Our Locations</a></li>
+            <li><a href="contact.html" class="hover:text-caramel transition-colors">Hours &amp; Map</a></li>
+            <li><a href="contact.html" class="hover:text-caramel transition-colors">Private Events</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="font-bold text-sm mb-4 text-caramel uppercase tracking-wider">Shop</h4>
+          <ul class="flex flex-col gap-2 text-sm text-cream/70">
+            <li><a href="menu.html" class="hover:text-caramel transition-colors">Today's Menu</a></li>
+            <li><a href="menu.html?cat=breads" class="hover:text-caramel transition-colors">Breads</a></li>
+            <li><a href="menu.html?cat=cakes" class="hover:text-caramel transition-colors">Cakes</a></li>
+            <li><a href="custom-orders.html" class="hover:text-caramel transition-colors">Custom Orders</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="font-bold text-sm mb-4 text-caramel uppercase tracking-wider">About</h4>
+          <ul class="flex flex-col gap-2 text-sm text-cream/70">
+            <li><a href="about.html" class="hover:text-caramel transition-colors">Our Story</a></li>
+            <li><a href="about.html" class="hover:text-caramel transition-colors">The Bakers</a></li>
+            <li><a href="about.html" class="hover:text-caramel transition-colors">Sourcing</a></li>
+            <li><a href="contact.html" class="hover:text-caramel transition-colors">Contact</a>
+          <li><a href="admin/index.html" class="hover:text-caramel transition-colors text-xs uppercase tracking-wider font-bold">Admin →</a></li></li>
+          </ul>
+        </div>
+      </div>
+      <div class="border-t border-cream/10 pt-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-cream/50">
+        <span>© 2026 Crumb &amp; Craft Bakery. Baked with love in Malda.</span>
+        <span>Demo by <a href="https://networkbuilder.in" class="text-caramel hover:underline">Network Builder</a></span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ============ TOAST ============ -->
+  <!-- ============ CART DRAWER ============ -->
+  <div id="cartDrawer" class="fixed inset-0 z-[60] hidden">
+    <div id="cartBackdrop" class="absolute inset-0 bg-black/50 backdrop-blur-sm opacity-0 transition-opacity duration-300" onclick="closeCart()"></div>
+    <aside id="cartPanel" class="absolute top-0 right-0 h-full w-full max-w-md bg-cream shadow-warm translate-x-full transition-transform duration-300 flex flex-col" role="dialog" aria-modal="true" aria-label="Shopping cart">
+      <header class="px-6 py-5 border-b border-brown/10 flex items-center justify-between flex-shrink-0 bg-cream">
+        <div class="flex items-center gap-2">
+          <svg class="w-6 h-6 text-cocoa" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2 8h13M9 21a1 1 0 11-2 0 1 1 0 012 0zm9 0a1 1 0 11-2 0 1 1 0 012 0z"/></svg>
+        </div>
+        <button onclick="closeCart()" class="w-10 h-10 rounded-full bg-white border border-brown/20 flex items-center justify-center hover:border-brown transition-all" aria-label="Close cart">
+          <svg class="w-4 h-4 text-cocoa" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M6 6l12 12M6 18 18 6"/></svg>
+        </button>
+      </header>
+      <div id="cartItems" class="flex-1 overflow-y-auto px-5 py-4"></div>
+      <footer id="cartFooter" class="hidden px-6 py-5 border-t border-brown/10 flex-shrink-0 bg-cream">
+        <div class="space-y-1.5 mb-4 text-sm">
+          <div class="flex justify-between"><span class="text-cocoa/60">Subtotal</span><span class="font-bold" id="cartSubtotal">₹0</span></div>
+          <div class="flex justify-between"><span class="text-cocoa/60">Local delivery</span><span class="font-bold" id="cartDelivery">Free</span></div>
+          <div id="freeShipNote" class="text-xs text-cocoa/50 pt-1"></div>
+          <div class="flex justify-between border-t border-cocoa/10 pt-3 mt-2 text-base"><span class="font-bold text-cocoa">Total</span><span class="font-bold text-brown text-xl" id="cartTotal">₹0</span></div>
+        </div>
+        <button onclick="checkoutDemo()" class="w-full bg-cocoa text-cream font-bold py-3.5 rounded-full hover:bg-brown transition-all flex items-center justify-center gap-2 shadow-warm">
+          Proceed to Checkout · <span id="cartBtnTotal">₹0</span>
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14m-7-7 7 7-7 7"/></svg>
+        </button>
+        <button onclick="closeCart()" class="w-full text-cocoa/60 hover:text-cocoa font-semibold py-2 mt-2 text-sm flex items-center justify-center gap-2">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="m15 19-7-7 7-7"/></svg>
+          Continue shopping
+        </button>
+        <p class="text-[10px] text-cocoa/40 text-center mt-3 flex items-center justify-center gap-1">
+          <svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
+          Secured by Razorpay · FSSAI certified kitchen
+        </p>
+      </footer>
+    </aside>
+  </div>
+
+  <div id="toast" class="fixed bottom-6 right-6 bg-cocoa text-cream rounded-2xl px-5 py-4 shadow-warm flex items-center gap-3 max-w-xs z-50">
+    <div class="w-9 h-9 rounded-full bg-caramel text-cocoa flex items-center justify-center">✓</div>
+    <div>
+      <div class="font-bold text-sm">Added to cart</div>
+      <div class="text-xs text-cream/70" id="toast-msg">Item added</div>
+    </div>
+  </div>
+
+  <script>
+    // Navbar shadow on scroll
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => navbar.classList.toggle('shadow-warm', window.scrollY > 24));
+    // Mobile menu
+    document.getElementById('hamburger').addEventListener('click', () => { const menu = document.getElementById('mobile-menu'); menu.classList.toggle('hidden'); document.getElementById('hamburger').setAttribute('aria-expanded', menu.classList.contains('hidden') ? 'false' : 'true'); });
+    // AOS reveal
+    const obs = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('aos-in'); obs.unobserve(e.target); } }), { threshold: 0.1 });
+    document.querySelectorAll('[data-aos]').forEach(el => obs.observe(el));
+    // Cart logic
+    const cart = JSON.parse(localStorage.getItem('crumb_cart') || '[]');
+    const refresh = () => {
+      const c = document.getElementById('cartCount');
+      c.textContent = cart.reduce((s,i) => s + i.qty, 0);
+      localStorage.setItem('crumb_cart', JSON.stringify(cart));
+    };
+    refresh();
+    const toast = document.getElementById('toast');
+    const toastMsg = document.getElementById('toast-msg');
+    let toastT;
+    function showToast(msg) {
+      toastMsg.textContent = msg;
+      toast.classList.add('show');
+      clearTimeout(toastT);
+      toastT = setTimeout(() => toast.classList.remove('show'), 2200);
+    }
+    document.querySelectorAll('.add-to-cart').forEach(btn => {
+      btn.addEventListener('click', e => {
+        e.preventDefault();
+        const name = btn.dataset.name, price = parseFloat(btn.dataset.price);
+        const existing = cart.find(i => i.name === name);
+        existing ? existing.qty++ : cart.push({ name, price, qty: 1 });
+        refresh();
+        showToast(`${name} added`);
+        // micro animation
+        btn.style.transform = 'scale(1.2) rotate(90deg)';
+        setTimeout(() => btn.style.transform = '', 220);
+      });
+    });
+    // Newsletter demo
+    function showNewsletterDemo(form) {
+      const email = form.querySelector('input[name=email]').value;
+      const target = document.getElementById('newsletter-result');
+      form.classList.add('htmx-disabled');
+      target.innerHTML = '<span class="text-cream/50">Sending...</span>';
+      setTimeout(() => {
+        form.classList.remove('htmx-disabled');
+        target.innerHTML = `<div class="inline-flex items-center gap-2 bg-caramel/15 border border-caramel/40 text-caramel px-4 py-2 rounded-full"><span>✓</span> Welcome aboard, <strong>${email.split('@')[0]}</strong>! Check your inbox.</div>`;
+        form.reset();
+      }, 700);
+    }
+  </script>
+</body>
+</html>

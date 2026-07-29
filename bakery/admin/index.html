@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard — Crumb & Craft Admin</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/htmx.org@2.0.3" defer></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,500&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: { sans:['Inter','sans-serif'], serif:['Playfair Display','serif'] },
+          colors: {
+            cocoa:'#3E2723', brown:'#8B5A3C', caramel:'#D4A574', cream:'#FAF3E7',
+            parchment:'#FFF8EE', gold:'#C8964F',
+            ink:'#2A1810', ash:'#7F6F65', sand:'#E8DFD3',
+            adminBase:'#FAF6F0', adminCard:'#FFFFFF',
+          },
+          boxShadow: { warm:'0 10px 40px -10px rgba(139,90,60,0.35)', editor:'0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04)' }
+        }
+      }
+    }
+  </script>
+  <style>
+    body { font-family:'Inter',sans-serif; }
+    h1,h2,h3,h4 { font-family:'Playfair Display',serif; }
+    .sidebar { background: linear-gradient(180deg, #2A1810 0%, #3E2723 100%); }
+    .nav-item { transition: all .15s; }
+    .nav-item.active { background: rgba(212,165,116,0.18); color:#FAF3E7; }
+    .nav-item:not(.active):hover { background: rgba(212,165,116,0.08); color:#FAF3E7; }
+    .kpi-card { transition: transform .2s, box-shadow .2s; }
+    .kpi-card:hover { transform: translateY(-2px); box-shadow: 0 12px 30px -8px rgba(62,39,35,0.15); }
+    /* Sparkline */
+    .spark { stroke:#D4A574; stroke-width:2; fill:none; stroke-linecap:round; stroke-linejoin:round; }
+    .spark-fill { fill: rgba(212,165,116,0.12); }
+    /* Status pill colors */
+    .pill-pending { background:#FEF3C7; color:#92400E; }
+    .pill-baking { background:#DBEAFE; color:#1E40AF; }
+    .pill-out { background:#FCE7F3; color:#9D174D; }
+    .pill-delivered { background:#D1FAE5; color:#065F46; }
+    .pill-cancelled { background:#FEE2E2; color:#991B1B; }
+  </style>
+</head>
+<body class="bg-adminBase text-ink antialiased min-h-screen">
+
+  <div class="flex min-h-screen">
+
+    <!-- ============ SIDEBAR ============ -->
+    <aside class="sidebar w-64 text-cream flex-shrink-0 hidden lg:flex flex-col fixed top-0 left-0 h-screen z-30">
+      <div class="px-6 py-6 border-b border-cream/10">
+        <a href="../index.html" class="flex items-center gap-2">
+          <div class="w-10 h-10 rounded-full bg-caramel text-cocoa flex items-center justify-center font-serif text-xl font-bold">C</div>
+          <div>
+            <div class="font-serif font-bold text-cream">Crumb &amp; Craft</div>
+            <div class="text-[10px] uppercase tracking-widest text-caramel font-bold">Admin Console</div>
+          </div>
+        </a>
+      </div>
+      <nav class="flex-1 px-3 py-4 overflow-y-auto">
+        <div class="text-[10px] uppercase tracking-widest text-cream/40 font-bold px-3 mb-2">Operations</div>
+        <a href="index.html" class="nav-item active flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium text-cream/70 mb-0.5">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 12l9-9 9 9M5 10v10h14V10"/></svg>
+          Dashboard
+        </a>
+        <a href="orders.html" class="nav-item flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium text-cream/70 mb-0.5">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="4" y="6" width="16" height="14" rx="2"/><path d="M9 10h6M9 14h4"/></svg>
+          Orders
+          <span class="ml-auto bg-caramel/30 text-cream text-[10px] font-bold px-2 py-0.5 rounded-full" id="newOrdersBadge">0</span>
+        </a>
+        <a href="products.html" class="nav-item flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium text-cream/70 mb-0.5">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.7l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.7l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
+          Products
+        </a>
+        <a href="customers.html" class="nav-item flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium text-cream/70 mb-0.5">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/><circle cx="9" cy="7" r="4"/></svg>
+          Customers
+        </a>
+        <div class="text-[10px] uppercase tracking-widest text-cream/40 font-bold px-3 mt-6 mb-2">Tools</div>
+        <a href="customer-order.html" class="nav-item flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium text-cream/70 mb-0.5">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg> Place order
+        </a>
+        <a href="../index.html" target="_blank" class="nav-item flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium text-cream/70 mb-0.5">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14 21 3"/></svg>
+          View site
+        </a>
+      </nav>
+      <div class="px-4 py-4 border-t border-cream/10 flex items-center gap-3">
+        <div class="w-10 h-10 rounded-full bg-caramel/40 text-cream flex items-center justify-center font-bold">M</div>
+        <div class="flex-1 min-w-0">
+          <div class="text-sm font-semibold text-cream truncate">Maya Bose</div>
+          <div class="text-[10px] text-cream/50 uppercase tracking-wider">Owner</div>
+        </div>
+        <button class="text-cream/50 hover:text-cream">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4M16 17l5-5-5-5M21 12H9"/></svg>
+        </button>
+      </div>
+    </aside>
+
+    <!-- ============ MAIN ============ -->
+    <main class="flex-1 lg:ml-64">
+
+      <!-- TOPBAR (mobile) -->
+      <header class="lg:hidden bg-cocoa text-cream px-4 py-3 flex items-center justify-between sticky top-0 z-30">
+        <a href="../index.html" class="flex items-center gap-2">
+          <div class="w-8 h-8 rounded-full bg-caramel text-cocoa flex items-center justify-center font-serif font-bold">C</div>
+          <span class="font-serif font-bold">Admin</span>
+        </a>
+        <a href="orders.html" class="text-xs bg-caramel/20 px-3 py-1.5 rounded-full"><span id="newOrdersBadgeM">0</span> new orders</a>
+      </header>
+
+      <div class="p-5 sm:p-8 lg:p-10">
+
+        <!-- Greeting -->
+        <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-3 mb-7">
+          <div>
+            <div class="flex items-center gap-3 text-brown text-xs font-black uppercase tracking-widest mb-2">
+              <span class="inline-block w-12 h-px bg-brown align-middle"></span>
+              Dashboard · Today
+            </div>
+            <h1 class="font-serif text-3xl lg:text-4xl font-bold text-ink">Good morning, Maya.</h1>
+            <p class="text-ash mt-1 text-sm">Here's what's happening in the kitchen today.</p>
+          </div>
+          <div class="flex gap-2">
+            <button class="text-sm font-semibold border border-brown/20 px-4 py-2 rounded-full text-cocoa bg-white hover:border-brown">Export</button>
+            <a href="orders.html" class="text-sm font-semibold bg-cocoa text-cream px-4 py-2 rounded-full hover:bg-brown transition-all">+ New order</a>
+          </div>
+        </div>
+
+        <!-- KPI ROW -->
+        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-7">
+          <div class="kpi-card bg-adminCard rounded-2xl p-5 shadow-editor border border-sand">
+            <div class="flex items-center justify-between mb-2">
+              <span class="text-xs uppercase tracking-wider text-ash font-bold">Today's revenue</span>
+              <span class="text-caramel">₹</span>
+            </div>
+            <div class="font-serif text-3xl font-bold text-ink">₹18,420</div>
+            <div class="flex items-center gap-1 mt-2 text-xs"><span class="text-emerald-600 font-bold">+12.4%</span><span class="text-ash">vs yesterday</span></div>
+          </div>
+          <div class="kpi-card bg-adminCard rounded-2xl p-5 shadow-editor border border-sand">
+            <div class="flex items-center justify-between mb-2">
+              <span class="text-xs uppercase tracking-wider text-ash font-bold">Orders today</span>
+              <svg class="w-4 h-4 text-caramel" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="4" y="6" width="16" height="14" rx="2"/></svg>
+            </div>
+            <div class="font-serif text-3xl font-bold text-ink" id="kpiOrdersToday">0</div>
+            <div class="flex items-center gap-1 mt-2 text-xs"><span class="text-emerald-600 font-bold">+8 today</span></div>
+          </div>
+          <div class="kpi-card bg-adminCard rounded-2xl p-5 shadow-editor border border-sand">
+            <div class="flex items-center justify-between mb-2">
+              <span class="text-xs uppercase tracking-wider text-ash font-bold">Avg. order value</span>
+              <span class="text-caramel">~</span>
+            </div>
+            <div class="font-serif text-3xl font-bold text-ink">₹840</div>
+            <div class="flex items-center gap-1 mt-2 text-xs"><span class="text-emerald-600 font-bold">+₹60</span><span class="text-ash">this week</span></div>
+          </div>
+          <div class="kpi-card bg-adminCard rounded-2xl p-5 shadow-editor border border-sand">
+            <div class="flex items-center justify-between mb-2">
+              <span class="text-xs uppercase tracking-wider text-ash font-bold">Low stock alerts</span>
+              <span class="text-rose-500">⚠</span>
+            </div>
+            <div class="font-serif text-3xl font-bold text-ink">3</div>
+            <div class="flex items-center gap-1 mt-2 text-xs"><span class="text-rose-600 font-bold">Action needed</span></div>
+          </div>
+        </div>
+
+        <!-- CHART + BESTSELLERS -->
+        <div class="grid lg:grid-cols-3 gap-5 mb-7">
+          <div class="kpi-card bg-adminCard rounded-2xl p-5 sm:p-6 shadow-editor border border-sand lg:col-span-2">
+            <div class="flex items-center justify-between mb-4">
+              <div>
+                <h3 class="font-serif text-xl font-bold">Revenue · Last 14 days</h3>
+                <p class="text-xs text-ash">Daily revenue across all channels</p>
+              </div>
+              <div class="flex bg-cream rounded-full p-1 text-xs font-bold">
+                <button class="px-3 py-1 rounded-full bg-cocoa text-cream">Day</button>
+                <button class="px-3 py-1 rounded-full text-cocoa">Week</button>
+                <button class="px-3 py-1 rounded-full text-cocoa">Month</button>
+              </div>
+            </div>
+            <div class="relative h-56">
+              <svg viewBox="0 0 700 200" preserveAspectRatio="none" class="w-full h-full">
+                <defs><linearGradient id="sparkGrad" x1="0" x2="0" y1="0" y2="1">
+                  <stop offset="0%" stop-color="#D4A574" stop-opacity="0.3"/>
+                  <stop offset="100%" stop-color="#D4A574" stop-opacity="0"/>
+                </linearGradient></defs>
+                <path class="spark-fill" d="M0,180 L50,150 L100,160 L150,120 L200,130 L250,90 L300,100 L350,70 L400,85 L450,50 L500,75 L550,40 L600,55 L650,30 L700,45 L700,200 L0,200 Z"/>
+                <path class="spark" d="M0,180 L50,150 L100,160 L150,120 L200,130 L250,90 L300,100 L350,70 L400,85 L450,50 L500,75 L550,40 L600,55 L650,30 L700,45"/>
+                <g font-family="Inter" font-size="9" fill="#7F6F65">
+                  <text x="0" y="195">Mon</text><text x="100" y="195">Wed</text><text x="200" y="195">Fri</text><text x="300" y="195">Sun</text><text x="400" y="195">Tue</text><text x="500" y="195">Thu</text><text x="600" y="195">Sat</text>
+                </g>
+              </svg>
+            </div>
+          </div>
+          <div class="kpi-card bg-adminCard rounded-2xl p-5 sm:p-6 shadow-editor border border-sand">
+            <h3 class="font-serif text-xl font-bold mb-4">Top sellers · today</h3>
+            <ol class="space-y-3">
+              <li class="flex items-center gap-3">
+                <span class="w-7 h-7 rounded-full bg-caramel text-cocoa flex items-center justify-center text-xs font-bold">1</span>
+                <div class="flex-1">
+                  <div class="font-semibold text-sm">Butter Croissant</div>
+                  <div class="text-[10px] text-ash">38 sold · ₹4,560</div>
+                </div>
+              </li>
+              <li class="flex items-center gap-3">
+                <span class="w-7 h-7 rounded-full bg-caramel/70 text-cocoa flex items-center justify-center text-xs font-bold">2</span>
+                <div class="flex-1">
+                  <div class="font-semibold text-sm">Sourdough Boule</div>
+                  <div class="text-[10px] text-ash">21 sold · ₹5,880</div>
+                </div>
+              </li>
+              <li class="flex items-center gap-3">
+                <span class="w-7 h-7 rounded-full bg-caramel/40 text-cocoa flex items-center justify-center text-xs font-bold">3</span>
+                <div class="flex-1">
+                  <div class="font-semibold text-sm">Tiramisu</div>
+                  <div class="text-[10px] text-ash">9 sold · ₹13,050</div>
+                </div>
+              </li>
+              <li class="flex items-center gap-3">
+                <span class="w-7 h-7 rounded-full bg-caramel/20 text-cocoa flex items-center justify-center text-xs font-bold">4</span>
+                <div class="flex-1">
+                  <div class="font-semibold text-sm">Almond Croissant</div>
+                  <div class="text-[10px] text-ash">14 sold · ₹2,520</div>
+                </div>
+              </li>
+              <li class="flex items-center gap-3">
+                <span class="w-7 h-7 rounded-full bg-caramel/15 text-cocoa flex items-center justify-center text-xs font-bold">5</span>
+                <div class="flex-1">
+                  <div class="font-semibold text-sm">Baguette</div>
+                  <div class="text-[10px] text-ash">17 sold · ₹1,360</div>
+                </div>
+              </li>
+            </ol>
+          </div>
+        </div>
+
+        <!-- RECENT ORDERS + LOW STOCK -->
+        <div class="grid lg:grid-cols-3 gap-5 mb-7">
+          <div class="kpi-card bg-adminCard rounded-2xl p-5 sm:p-6 shadow-editor border border-sand lg:col-span-2">
+            <div class="flex items-center justify-between mb-4">
+              <h3 class="font-serif text-xl font-bold">Recent orders</h3>
+              <a href="orders.html" class="text-xs font-bold text-caramel hover:underline">View all →</a>
+            </div>
+            <div class="overflow-hidden">
+              <table class="w-full text-sm">
+                <thead>
+                  <tr class="text-left text-[10px] uppercase tracking-wider text-ash font-bold border-b border-sand">
+                    <th class="py-2">Order</th><th>Customer</th><th>Items</th><th>Total</th><th>Status</th>
+                  </tr>
+                </thead>
+                <tbody id="recentOrdersTbl"></tbody>
+              </table>
+            </div>
+          </div>
+          <div class="kpi-card bg-adMinCard bg-adminCard rounded-2xl p-5 sm:p-6 shadow-editor border border-sand">
+            <h3 class="font-serif text-xl font-bold mb-1">⚠ Low stock</h3>
+            <p class="text-xs text-ash mb-4">Items needing restock this week</p>
+            <ul class="space-y-3">
+              <li class="flex items-center justify-between gap-3 text-sm">
+                <div>
+                  <div class="font-semibold">Tiramisu (8″)</div>
+                  <div class="text-[10px] text-ash">Sold out by 2 PM</div>
+                </div>
+                <button class="text-xs font-bold bg-rose-500 text-cream px-3 py-1.5 rounded-full">Restock</button>
+              </li>
+              <li class="flex items-center justify-between gap-3 text-sm">
+                <div>
+                  <div class="font-semibold">Sourdough starter</div>
+                  <div class="text-[10px] text-ash">Feed tonight</div>
+                </div>
+                <button class="text-xs font-bold bg-caramel text-cocoa px-3 py-1.5 rounded-full">Note</button>
+              </li>
+              <li class="flex items-center justify-between gap-3 text-sm">
+                <div>
+                  <div class="font-semibold">Butter (AOP)</div>
+                  <div class="text-[10px] text-ash">2 kg left</div>
+                </div>
+                <button class="text-xs font-bold bg-caramel text-cocoa px-3 py-1.5 rounded-full">Order</button>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- INVENTORY STRIP -->
+        <div class="grid sm:grid-cols-3 gap-4 mb-7">
+          <div class="kpi-card bg-adminCard rounded-2xl p-5 shadow-editor border border-sand">
+            <div class="text-xs uppercase tracking-wider text-ash font-bold mb-1">Active products</div>
+            <div class="font-serif text-2xl font-bold">31</div>
+            <div class="text-xs text-caramel mt-1 font-semibold">2 holiday specials</div>
+          </div>
+          <div class="kpi-card bg-adminCard rounded-2xl p-5 shadow-editor border border-sand">
+            <div class="text-xs uppercase tracking-wider text-ash font-bold mb-1">Out for delivery</div>
+            <div class="font-serif text-2xl font-bold">12</div>
+            <div class="text-xs text-caramel mt-1 font-semibold">6 by bike · 6 by van</div>
+          </div>
+          <div class="kpi-card bg-adminCard rounded-2xl p-5 shadow-editor border border-sand">
+            <div class="text-xs uppercase tracking-wider text-ash font-bold mb-1">Avg. customer rating</div>
+            <div class="font-serif text-2xl font-bold">4.9 ★</div>
+            <div class="text-xs text-caramel mt-1 font-semibold">+0.1 vs last month</div>
+          </div>
+        </div>
+
+        <!-- MENU ITEMS LIST -->
+        <div class="kpi-card bg-adminCard rounded-2xl p-5 sm:p-6 shadow-editor border border-sand mb-7">
+          <div class="flex items-center justify-between mb-4">
+            <div>
+              <h3 class="font-serif text-xl font-bold">Menu Items</h3>
+              <p class="text-xs text-ash"><span id="itemCount">31</span> items across 6 categories</p>
+            </div>
+            <div class="flex gap-2">
+              <select id="catFilter" onchange="filterItems()" class="text-xs font-bold bg-cream border border-brown/20 rounded-full px-3 py-1.5 outline-none text-cocoa">
+                <option value="all">All categories</option>
+                <option value="breads">Breads</option>
+                <option value="pastries">Pastries</option>
+                <option value="cakes">Cakes</option>
+                <option value="cookies">Cookies</option>
+                <option value="savory">Savory</option>
+                <option value="seasonal">Seasonal</option>
+              </select>
+              <a href="products.html" class="text-xs font-bold text-caramel hover:underline">View all →</a>
+            </div>
+          </div>
+          <div id="menuItemsList" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-3"></div>
+      </div>
+
+      <!-- footer -->
+      <footer class="px-5 sm:px-8 lg:px-10 py-6 border-t border-sand text-xs text-ash flex flex-col sm:flex-row items-center justify-between gap-2">
+        <span>Crumb &amp; Craft Admin · v2.6 demo</span>
+        <span>Built for internal ops · Demo by <a href="https://networkbuilder.in" class="text-caramel hover:underline">Network Builder</a></span>
+      </footer>
+    </main>
+
+  </div>
+
+  <script>
+    /* ===== 31-product catalog for menu items card ===== */
+    const ALL_PRODUCTS = [
+      { name:'Country Sourdough Boule', cat:'breads', price:280, stock:42 },
+      { name:'Whole Wheat Loaf', cat:'breads', price:220, stock:60 },
+      { name:'Olive & Rosemary Focaccia', cat:'breads', price:340, stock:30 },
+      { name:'Multigrain Seeded Loaf', cat:'breads', price:300, stock:25 },
+      { name:'Rosemary Sea-Salt Ciabatta', cat:'breads', price:240, stock:48 },
+      { name:'Chocolate Babka', cat:'breads', price:380, stock:12 },
+      { name:'Classic Butter Croissant', cat:'pastries', price:120, stock:80 },
+      { name:'Pain au Chocolat', cat:'pastries', price:140, stock:55 },
+      { name:'Almond Croissant', cat:'pastries', price:180, stock:38 },
+      { name:'Cinnamon Kouign-Amann', cat:'pastries', price:160, stock:24 },
+      { name:'Lemon Poppy Seed Danish', cat:'pastries', price:150, stock:26 },
+      { name:'Cheese & Spinach Borek', cat:'pastries', price:200, stock:18 },
+      { name:'Classic Tiramisu', cat:'cakes', price:1450, stock:6 },
+      { name:'Red Velvet Layer Cake', cat:'cakes', price:1620, stock:3 },
+      { name:'Chocolate Fudge Cake', cat:'cakes', price:1380, stock:5 },
+      { name:'Vanilla Bean Sponge', cat:'cakes', price:980, stock:8 },
+      { name:'Tangy Lemon Cheesecake', cat:'cakes', price:1490, stock:7 },
+      { name:'Black Forest Cake', cat:'cakes', price:1550, stock:4 },
+      { name:'Tahini Chocolate Chunk', cat:'cookies', price:240, stock:65 },
+      { name:'Brown Butter Snickerdoodle', cat:'cookies', price:200, stock:50 },
+      { name:'Walnut Brownie (Box of 6)', cat:'cookies', price:520, stock:22 },
+      { name:'Almond Biscotti', cat:'cookies', price:280, stock:30 },
+      { name:'Cardamom Shortbread', cat:'cookies', price:220, stock:28 },
+      { name:'Oatmeal Raisin (Box of 8)', cat:'cookies', price:260, stock:20 },
+      { name:'Cheese & Jalapeño Quiche', cat:'savory', price:380, stock:14 },
+      { name:'Spinach & Feta Pie', cat:'savory', price:340, stock:11 },
+      { name:'Ham & Gruyère Croissant', cat:'savory', price:200, stock:24 },
+      { name:'Mushroom & Thyme Galette', cat:'savory', price:420, stock:9 },
+      { name:'Spiced Pumpkin Loaf', cat:'seasonal', price:320, stock:16 },
+      { name:'Mango & Coconut Tart', cat:'seasonal', price:480, stock:11 },
+      { name:'Hot Cocoa Cupcake (6 pc)', cat:'seasonal', price:540, stock:6 },
+    ];
+    const CAT_EMOJI = { breads:'🍞', pastries:'🥐', cakes:'🎂', cookies:'🍪', savory:'🥧', seasonal:'🧁' };
+
+    function filterItems() {
+      const cat = document.getElementById('catFilter').value;
+      const list = cat === 'all' ? ALL_PRODUCTS : ALL_PRODUCTS.filter(p => p.cat === cat);
+      document.getElementById('itemCount').textContent = list.length;
+      renderMenuItems(list);
+    }
+
+    function renderMenuItems(list) {
+      const wrap = document.getElementById('menuItemsList');
+      wrap.innerHTML = list.map(p => {
+        const stockBadge = p.stock === 0 ? '<span class="text-[10px] font-bold text-rose-500 bg-rose-50 px-1.5 py-0.5 rounded">Out</span>'
+          : p.stock < 10 ? '<span class="text-[10px] font-bold text-amber-600 bg-amber-50 px-1.5 py-0.5 rounded">Low</span>'
+          : '<span class="text-[10px] font-bold text-emerald-600 bg-emerald-50 px-1.5 py-0.5 rounded">In stock</span>';
+        return `
+          <div class="flex items-center gap-3 bg-cream/50 rounded-xl p-3 border border-sand/60 hover:border-brown/20 transition-all">
+            <div class="w-10 h-10 rounded-lg bg-white flex items-center justify-center text-lg flex-shrink-0 border border-sand">${CAT_EMOJI[p.cat]}</div>
+            <div class="flex-1 min-w-0">
+              <div class="font-semibold text-sm text-cocoa truncate">${p.name}</div>
+              <div class="text-[10px] text-ash">${p.stock} in stock</div>
+            </div>
+            <div class="text-right flex-shrink-0">
+              <div class="font-bold text-brown text-sm">₹${p.price}</div>
+              ${stockBadge}
+            </div>
+          </div>`;
+      }).join('');
+    }
+
+
+    /* ===== Mock-data seed (first load only) ===== */
+    function seed() {
+      const seedOrders = [
+        { id:'CC-10041', c:'Priya Iyer', items:'2× Sourdough, 1× Croissant', total:680, status:'Baking', time:'8 min ago', method:'local' },
+        { id:'CC-10040', c:'Arjun Mehta', items:'1× Tiramisu', total:1450, status:'Out for delivery', time:'14 min ago', method:'express' },
+        { id:'CC-10039', c:'Meera Nair', items:'3× Croissant, 1× Pain au Chocolat', total:560, status:'Delivered', time:'42 min ago', method:'pickup' },
+        { id:'CC-10038', c:'Rohan Banerjee', items:'Custom cake · 3-tier wedding', total:8400, status:'Pending', time:'1 hr ago', method:'local' },
+        { id:'CC-10037', c:'Subhojit Das', items:'2× Sourdough, 1× Focaccia', total:900, status:'Delivered', time:'2 hr ago', method:'pickup' },
+      ];
+      if (!localStorage.getItem('crumb_orders')) localStorage.setItem('crumb_orders', JSON.stringify(seedOrders));
+    }
+    seed();
+    const orders = JSON.parse(localStorage.getItem('crumb_orders') || '[]');
+    document.getElementById('kpiOrdersToday').textContent = orders.length + 7;
+    document.getElementById('newOrdersBadge').textContent = orders.filter(o=>o.status==='Pending').length;
+    document.getElementById('newOrdersBadgeM').textContent = orders.filter(o=>o.status==='Pending').length;
+
+    /* ===== Recent orders table ===== */
+    const STATUS_CLASS = { Pending:'pill-pending', Baking:'pill-baking', 'Out for delivery':'pill-out', Delivered:'pill-delivered', Cancelled:'pill-cancelled' };
+    const tbl = document.getElementById('recentOrdersTbl');
+    tbl.innerHTML = orders.slice(0,5).map(o => `
+      <tr class="border-b border-sand/50 last:border-0">
+        <td class="py-3 font-bold text-cocoa">${o.id}</td>
+        <td>${o.c}</td>
+        <td class="text-ash text-xs">${o.items}</td>
+        <td class="font-semibold text-brown">₹${o.total.toLocaleString('en-IN')}</td>
+        <td><span class="${STATUS_CLASS[o.status]} text-[10px] font-bold px-2 py-1 rounded-full uppercase tracking-wider">${o.status}</span></td>
+      </tr>`).join('');
+    </script>
+    </body>
+    </html>

@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Your Basket — Crumb & Craft Bakery</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/htmx.org@2.0.3" defer></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,700;1,500&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: { sans:['Inter','sans-serif'], serif:['Playfair Display','serif'] },
+          colors: { cocoa:'#3E2723', brown:'#8B5A3C', caramel:'#D4A574', cream:'#FAF3E7', parchment:'#FFF8EE', gold:'#C8964F' },
+          boxShadow: { warm:'0 10px 40px -10px rgba(139,90,60,0.35)', soft:'0 6px 24px -6px rgba(62,39,35,0.12)' }
+        }
+      }
+    }
+  </script>
+  <style>
+    body { font-family:'Inter',sans-serif; }
+    h1,h2,h3,h4 { font-family:'Playfair Display',serif; }
+    .crumb-divider { display:inline-block; width:48px; height:1px; background:#8B5A3C; vertical-align:middle; }
+    [data-aos]{ opacity:0; transform:translateY(20px); transition:opacity .6s ease, transform .6s ease; }
+    [data-aos].aos-in{ opacity:1; transform:translateY(0); }
+    .opt { transition: all .2s; cursor:pointer; }
+    .opt:hover { border-color:#8B5A3C; }
+    .opt.selected { border-color:#3E2723; background:#FAF3E7; box-shadow: 0 0 0 2px #3E2723 inset; }
+    .qty-btn { transition: background .15s; }
+    .qty-btn:hover { background: rgba(212,165,116,0.4); }
+    /* Confetti */
+    @keyframes pop { 0% { transform: scale(.4); opacity:0; } 60% { transform: scale(1.1); opacity:1; } 100% { transform: scale(1); opacity:1; } }
+    .anim-pop { animation: pop .6s cubic-bezier(.2,.8,.2,1.4) forwards; }
+  </style>
+</head>
+<body class="bg-parchment text-cocoa antialiased min-h-screen">
+
+  <!-- MINIMAL NAV -->
+  <nav class="bg-parchment/90 backdrop-blur-md border-b border-cocoa/10 sticky top-0 z-40">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+      <a href="index.html" class="flex items-center gap-2">
+        <div class="w-10 h-10 rounded-full bg-cocoa text-cream flex items-center justify-center font-serif text-xl font-bold">C</div>
+        <span class="font-serif text-xl font-bold text-cocoa hidden sm:inline">Crumb &amp; Craft</span>
+      </a>
+      <ol class="hidden sm:flex items-center gap-2 text-xs text-cocoa/60 font-semibold uppercase tracking-wider">
+        <li class="text-brown">Cart</li><li>›</li><li class="text-cocoa/40">Details</li><li>›</li><li class="text-cocoa/40">Pay</li><li>›</li><li class="text-cocoa/40">Done</li>
+      </ol>
+      <a href="index.html" class="text-sm font-semibold text-cocoa hover:text-brown flex items-center gap-1">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="m15 19-7-7 7-7"/></svg>
+        Keep shopping
+      </a>
+    </div>
+  </nav>
+
+  <!-- HERO STRIP -->
+  <header class="bg-cream border-b border-cocoa/10 py-10 lg:py-14">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center" data-aos>
+      <div class="flex items-center justify-center gap-3 text-brown text-xs font-black uppercase tracking-widest mb-3">
+        <span class="crumb-divider"></span>
+        Checkout
+        <span class="crumb-divider"></span>
+      </div>
+      <h1 class="font-serif text-4xl lg:text-5xl font-bold text-cocoa mb-3">Your <span class="italic text-brown">basket.</span></h1>
+      <p class="text-cocoa/60 text-sm">Review your bakes, then tell us where & how you'd like them.</p>
+    </div>
+  </header>
+
+  <!-- MAIN: 2-COLUMN -->
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 lg:py-14">
+    <div class="grid lg:grid-cols-3 gap-8 lg:gap-10">
+
+      <!-- LEFT: items + forms -->
+      <section class="lg:col-span-2 space-y-6">
+
+        <!-- ITEMS -->
+        <div class="bg-white rounded-3xl border border-brown/10 shadow-soft p-5 sm:p-7" data-aos>
+          <div class="flex items-center justify-between mb-5">
+            <h2 class="font-serif text-2xl font-bold text-cocoa">Your bakes <span id="itemCount" class="text-brown font-normal text-lg">(0)</span></h2>
+            <div class="flex gap-2">
+              <button id="clearCartBtn" onclick="clearCart()" class="text-xs font-semibold text-cocoa/60 hover:text-rose-500">Clear all</button>
+              <button id="addItemBtn" onclick="toggleAddItem()" class="text-xs font-semibold text-cocoa/70 hover:text-cocoa border border-brown/20 rounded-full px-3 py-1 transition-all">＋ Add item</button>
+            </div>
+          </div>
+          <div id="addItemForm" class="hidden bg-cream/60 border border-brown/10 rounded-xl p-4 mb-4">
+            <div class="grid grid-cols-2 gap-3">
+              <input id="newItemName" type="text" placeholder="Item name" class="bg-white border border-brown/20 rounded-xl px-3 py-2 text-sm outline-none focus:border-cocoa">
+              <input id="newItemPrice" type="number" placeholder="Price (₹)" class="bg-white border border-brown/20 rounded-xl px-3 py-2 text-sm outline-none focus:border-cocoa">
+            </div>
+            <div class="flex gap-2 mt-3">
+              <button onclick="addNewItem()" class="flex-1 bg-cocoa text-cream text-sm font-semibold py-2 rounded-full hover:bg-brown transition-all">Add to cart</button>
+              <button onclick="toggleAddItem()" class="flex-1 border border-brown/20 text-cocoa text-sm font-semibold py-2 rounded-full hover:border-brown transition-all">Cancel</button>
+            </div>
+          </div>
+          <div id="cartList" class="divide-y divide-cocoa/10"></div>
+          <!-- empty state -->
+          <div id="emptyCart" class="hidden text-center py-12">
+            <div class="text-6xl mb-3">🥐</div>
+            <h3 class="font-serif text-2xl font-bold text-cocoa mb-2">Empty basket</h3>
+            <p class="text-cocoa/60 mb-5 text-sm">Time to fill it with something warm.</p>
+            <a href="menu.html" class="inline-flex items-center gap-2 bg-cocoa text-cream font-semibold px-5 py-2.5 rounded-full hover:bg-brown transition-all">
+              Browse today's menu →
+            </a>
+          </div>
+        </div>
+
+        <!-- DELIVERY METHOD -->
+        <div class="bg-white rounded-3xl border border-brown/10 shadow-soft p-5 sm:p-7" data-aos>
+          <h2 class="font-serif text-2xl font-bold text-cocoa mb-5">How would you like it?</h2>
+          <div class="grid sm:grid-cols-3 gap-3">
+            <label class="opt border-2 border-brown/20 rounded-2xl p-4 selected">
+              <input type="radio" name="delivery" value="pickup" class="sr-only" checked onchange="recalc()">
+              <div class="flex items-start gap-3">
+                <div class="text-2xl">🏬</div>
+                <div>
+                  <div class="font-bold text-cocoa">Pickup</div>
+                  <div class="text-xs text-cocoa/60 mt-0.5">Free · from our shop</div>
+                  <div class="text-[11px] text-brown font-semibold mt-1">Ready in ~30 min</div>
+                </div>
+              </div>
+            </label>
+            <label class="opt border-2 border-brown/20 rounded-2xl p-4">
+              <input type="radio" name="delivery" value="local" class="sr-only" onchange="recalc()">
+              <div class="flex items-start gap-3">
+                <div class="text-2xl">🚲</div>
+                <div>
+                  <div class="font-bold text-cocoa">Local delivery</div>
+                  <div class="text-xs text-cocoa/60 mt-0.5">₹150 · 1–2 hr within Malda</div>
+                  <div class="text-[11px] text-brown font-semibold mt-1">12 km radius</div>
+                </div>
+              </div>
+            </label>
+            <label class="opt border-2 border-brown/20 rounded-2xl p-4">
+              <input type="radio" name="delivery" value="express" class="sr-only" onchange="recalc()">
+              <div class="flex items-start gap-3">
+                <div class="text-2xl">⚡</div>
+                <div>
+                  <div class="font-bold text-cocoa">Express (90 min)</div>
+                  <div class="text-xs text-cocoa/60 mt-0.5">₹250 · door-to-door</div>
+                  <div class="text-[11px] text-brown font-semibold mt-1">Same-day cut-off 11 AM</div>
+                </div>
+              </div>
+            </label>
+          </div>
+        </div>
+
+        <!-- CUSTOMER DETAILS -->
+        <div class="bg-white rounded-3xl border border-brown/10 shadow-soft p-5 sm:p-7" data-aos>
+          <h2 class="font-serif text-2xl font-bold text-cocoa mb-5">Your details</h2>
+          <div class="grid sm:grid-cols-2 gap-4">
+            <div>
+              <label class="block text-xs font-bold uppercase tracking-wider text-cocoa/60 mb-1.5">Full name</label>
+              <input id="custName" type="text" placeholder="Anika Roy" class="w-full bg-cream border border-brown/20 rounded-xl px-4 py-3 outline-none focus:border-cocoa">
+            </div>
+            <div>
+              <label class="block text-xs font-bold uppercase tracking-wider text-cocoa/60 mb-1.5">Phone</label>
+              <input id="custPhone" type="tel" placeholder="+91 98XXX XXXXX" class="w-full bg-cream border border-brown/20 rounded-xl px-4 py-3 outline-none focus:border-cocoa">
+            </div>
+            <div class="sm:col-span-2">
+              <label class="block text-xs font-bold uppercase tracking-wider text-cocoa/60 mb-1.5">Email</label>
+              <input id="custEmail" type="email" placeholder="your@email.com" class="w-full bg-cream border border-brown/20 rounded-xl px-4 py-3 outline-none focus:border-cocoa">
+            </div>
+            <div class="sm:col-span-2" id="addressWrap" style="display:none">
+              <label class="block text-xs font-bold uppercase tracking-wider text-cocoa/60 mb-1.5">Delivery address</label>
+              <textarea id="custAddress" rows="2" placeholder="House / flat no, street, landmark, Malda 732101" class="w-full bg-cream border border-brown/20 rounded-xl px-4 py-3 outline-none focus:border-cocoa resize-none"></textarea>
+            </div>
+            <div id="pickuplocationWrap">
+              <label class="block text-xs font-bold uppercase tracking-wider text-cocoa/60 mb-1.5">Pickup at</label>
+              <select id="pickupLoc" class="w-full bg-cream border border-brown/20 rounded-xl px-4 py-3 outline-none focus:border-cocoa">
+                <option>Rash Behari, Malda (Flagship)</option>
+                <option>English Bazar</option>
+                <option>Salt Lake, Kolkata</option>
+              </select>
+            </div>
+            <div>
+              <label class="block text-xs font-bold uppercase tracking-wider text-cocoa/60 mb-1.5">Time slot</label>
+              <select id="timeSlot" class="w-full bg-cream border border-brown/20 rounded-xl px-4 py-3 outline-none focus:border-cocoa">
+                <option>Today · 4 PM – 7 PM</option>
+                <option>Today · 7 PM – 9 PM</option>
+                <option>Tomorrow · 9 AM – 12 PM</option>
+                <option>Tomorrow · 4 PM – 7 PM</option>
+              </select>
+            </div>
+            <div class="sm:col-span-2">
+              <label class="block text-xs font-bold uppercase tracking-wider text-cocoa/60 mb-1.5">Order note (optional)</label>
+              <textarea id="orderNote" rows="2" placeholder="e.g. extra frosting, leave at door, ring twice…" class="w-full bg-cream border border-brown/20 rounded-xl px-4 py-3 outline-none focus:border-cocoa resize-none"></textarea>
+            </div>
+          </div>
+        </div>
+
+        <!-- PAYMENT -->
+        <div class="bg-white rounded-3xl border border-brown/10 shadow-soft p-5 sm:p-7" data-aos>
+          <h2 class="font-serif text-2xl font-bold text-cocoa mb-5">Payment</h2>
+          <div class="grid sm:grid-cols-3 gap-3">
+            <label class="opt border-2 border-brown/20 rounded-2xl p-4 selected">
+              <input type="radio" name="pay" value="upi" class="sr-only" checked>
+              <div class="flex items-start gap-3">
+                <div class="text-2xl">📱</div>
+                <div>
+                  <div class="font-bold text-cocoa">UPI</div>
+                  <div class="text-xs text-cocoa/60 mt-0.5">GPay · PhonePe · Paytm</div>
+                </div>
+              </div>
+            </label>
+            <label class="opt border-2 border-brown/20 rounded-2xl p-4">
+              <input type="radio" name="pay" value="card" class="sr-only">
+              <div class="flex items-start gap-3">
+                <div class="text-2xl">💳</div>
+                <div>
+                  <div class="font-bold text-cocoa">Card</div>
+                  <div class="text-xs text-cocoa/60 mt-0.5">Debit / Credit</div>
+                </div>
+              </div>
+            </label>
+            <label class="opt border-2 border-brown/20 rounded-2xl p-4">
+              <input type="radio" name="pay" value="cod" class="sr-only">
+              <div class="flex items-start gap-3">
+                <div class="text-2xl">💵</div>
+                <div>
+                  <div class="font-bold text-cocoa">Cash on Pickup</div>
+                  <div class="text-xs text-cocoa/60 mt-0.5">Pay at counter</div>
+                </div>
+              </div>
+            </label>
+          </div>
+        </div>
+
+      </section>
+
+      <!-- RIGHT: sticky summary -->
+      <aside class="lg:col-span-1">
+        <div class="bg-cocoa text-cream rounded-3xl p-6 lg:p-8 sticky top-24 shadow-warm" data-aos>
+          <div class="flex items-center justify-between mb-4">
+            <h3 class="font-serif text-2xl font-bold">Order summary</h3>
+            <span class="text-xs text-caramel uppercase tracking-wider font-bold">Live</span>
+          </div>
+          <div class="space-y-2 text-sm">
+            <div class="flex justify-between"><span class="text-cream/60">Subtotal</span><span class="font-bold" id="sumSubtotal">₹0</span></div>
+            <div class="flex justify-between"><span class="text-cream/60">GST (5%)</span><span class="font-bold" id="sumTax">₹0</span></div>
+            <div class="flex justify-between"><span class="text-cream/60">Delivery</span><span class="font-bold" id="sumDelivery">Free</span></div>
+            <div class="border-t border-cream/15 pt-3 mt-3 flex items-baseline justify-between">
+              <span class="text-cream">Total</span>
+              <span class="font-serif text-3xl font-bold text-caramel" id="sumTotal">₹0</span>
+            </div>
+          </div>
+          <button onclick="placeOrder()" class="w-full bg-caramel text-cocoa font-bold py-3.5 rounded-full mt-6 hover:bg-gold transition-all flex items-center justify-center gap-2 shadow-warm">
+            Place Order
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="m9 5 7 7-7 7"/></svg>
+          </button>
+          <p class="text-[11px] text-cream/50 mt-3 text-center">By placing this order you agree to our terms. Fresh items can't be returned.</p>
+          <div class="mt-5 pt-5 border-t border-cream/10 grid grid-cols-3 gap-2 text-[10px] uppercase tracking-wider text-cream/50 font-bold text-center">
+            <div class="flex flex-col items-center gap-1"><span>🔒</span>Secure</div>
+            <div class="flex flex-col items-center gap-1"><span>✓</span>Razorpay</div>
+            <div class="flex flex-col items-center gap-1"><span>🍃</span>FSSAI</div>
+          </div>
+        </div>
+      </aside>
+
+    </div>
+  </main>
+
+  <!-- SUCCESS MODAL -->
+  <div id="successModal" class="fixed inset-0 z-[60] hidden">
+    <div class="absolute inset-0 bg-cocoa/70 backdrop-blur-sm" onclick="closeSuccess()"></div>
+    <div class="relative h-full flex items-center justify-center p-4">
+      <div class="bg-cream rounded-3xl max-w-md w-full p-8 text-center anim-pop shadow-warm">
+        <div class="w-20 h-20 rounded-full bg-caramel text-cocoa flex items-center justify-center mx-auto text-4xl mb-4">✓</div>
+        <h2 class="font-serif text-3xl font-bold text-cocoa mb-2">Order placed!</h2>
+        <p class="text-cocoa/70 mb-5">We've sent a confirmation to your email. Your bakes are being prepared.</p>
+        <div class="bg-white rounded-2xl p-4 text-left text-sm mb-5">
+          <div class="flex justify-between mb-1"><span class="text-cocoa/60">Order #</span><span class="font-bold" id="successId">CC-10042</span></div>
+          <div class="flex justify-between mb-1"><span class="text-cocoa/60">Total</span><span class="font-bold" id="successTotal">₹0</span></div>
+          <div class="flex justify-between"><span class="text-cocoa/60">Pickup / Delivery</span><span class="font-bold" id="successSlot">Today 4 PM</span></div>
+        </div>
+        <div class="flex gap-3">
+          <a href="menu.html" onclick="closeSuccess()" class="flex-1 bg-cocoa text-cream py-2.5 rounded-full font-semibold text-sm">Order more</a>
+          <a href="admin/orders.html" onclick="closeSuccess()" class="flex-1 border-2 border-cocoa text-cocoa py-2.5 rounded-full font-semibold text-sm">View in admin</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    /* ===== Demo cart bootstrap (if empty) ===== */
+    let cart = JSON.parse(localStorage.getItem('crumb_cart') || 'null');
+    if (!cart || !Array.isArray(cart)) {
+      cart = [
+        { name:"Country Sourdough Boule", price:280, qty:1 },
+        { name:"Butter Croissant", price:120, qty:2 },
+        { name:"Classic Tiramisu", price:1450, qty:1 }
+      ];
+      localStorage.setItem('crumb_cart', JSON.stringify(cart));
+    }
+    localStorage.setItem('crumb_cart', JSON.stringify(cart));
+    const FREE_SHIP = 800;
+    const DELIVERY_FEE = { pickup:0, local:150, express:250 };
+    const TAX_RATE = 0.05;
+
+    function itemEmoji(name) {
+      const n = name.toLowerCase();
+      if (n.includes('croissant')||n.includes('brioche')||n.includes('babka')||n.includes('pain')||n.includes('danish')||n.includes('kouign')) return '🥐';
+      if (n.includes('sourdough')||n.includes('boule')||n.includes('loaf')||n.includes('ciabatta')||n.includes('babka')) return '🍞';
+      if (n.includes('focaccia')) return '🥖';
+      if (n.includes('cake')||n.includes('tiramisu')||n.includes('cheesecake')) return '🎂';
+      if (n.includes('cookie')||n.includes('brownie')||n.includes('biscotti')||n.includes('shortbread')) return '🍪';
+      if (n.includes('quiche')||n.includes('galette')||n.includes('pie')) return '🥧';
+      if (n.includes('roll')) return '🍥';
+      if (n.includes('cupcake')||n.includes('tart')||n.includes('mango')||n.includes('pumpkin')) return '🧁';
+      return '🥐';
+    }
+
+    function render() {
+      const list = document.getElementById('cartList');
+      const empty = document.getElementById('emptyCart');
+      const count = document.getElementById('itemCount');
+      if (!cart.length) {
+        list.innerHTML = '';
+        empty.classList.remove('hidden');
+        count.textContent = '(0)';
+        recalc();
+        return;
+      }
+      empty.classList.add('hidden');
+      count.textContent = `(${cart.reduce((s,i)=>s+i.qty,0)})`;
+      list.innerHTML = cart.map((it, idx) => `
+        <div class="flex gap-4 py-4 first:pt-0 last:pb-0">
+          <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-caramel/40 to-brown/10 flex items-center justify-center text-3xl flex-shrink-0">${itemEmoji(it.name)}</div>
+          <div class="flex-1 min-w-0">
+            <div class="flex items-start justify-between gap-2 mb-1">
+              <div class="font-bold text-cocoa leading-tight">${it.name}</div>
+              <button onclick="removeAt(${idx})" class="text-cocoa/40 hover:text-rose-500" aria-label="Remove"><svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M6 6l12 12M6 18 18 6"/></svg></button>
+            </div>
+            <div class="text-xs text-cocoa/60 mb-2">₹${it.price} each</div>
+            <div class="flex items-center justify-between">
+              <div class="flex items-center bg-cream border border-brown/20 rounded-full overflow-hidden">
+                <button onclick="changeQty(${idx}, -1)" class="qty-btn w-8 h-8 flex items-center justify-center font-bold text-cocoa">−</button>
+                <span class="w-8 text-center font-bold text-sm">${it.qty}</span>
+                <button onclick="changeQty(${idx}, 1)" class="qty-btn w-8 h-8 flex items-center justify-center font-bold text-cocoa">+</button>
+              </div>
+              <div class="font-bold text-brown">₹${(it.price*it.qty).toLocaleString('en-IN')}</div>
+            </div>
+          </div>
+        </div>`).join('');
+      recalc();
+    }
+
+    function changeQty(i, d) { cart[i].qty = Math.max(1, cart[i].qty + d); persist(); render(); }
+    function removeAt(i) {
+      const n = cart[i].name; cart.splice(i, 1); persist(); render();
+    }
+    function clearCart() { cart = []; persist(); render(); }
+    function toggleAddItem() {
+      const f = document.getElementById('addItemForm');
+      f.classList.toggle('hidden');
+      if (!f.classList.contains('hidden')) {
+        document.getElementById('newItemName').value = '';
+        document.getElementById('newItemPrice').value = '';
+        document.getElementById('newItemName').focus();
+      }
+    }
+    function addNewItem() {
+      const name = document.getElementById('newItemName').value.trim();
+      const price = parseFloat(document.getElementById('newItemPrice').value);
+      if (!name || isNaN(price) || price <= 0) return;
+      const existing = cart.find(i => i.name === name);
+      existing ? existing.qty++ : cart.push({ name, price, qty: 1 });
+      persist();
+      render();
+      toggleAddItem();
+    }
+    function persist() { localStorage.setItem('crumb_cart', JSON.stringify(cart)); }
+
+    function recalc() {
+      const sub = cart.reduce((s,i)=>s+i.price*i.qty,0);
+      const fee = DELIVERY_FEE[document.querySelector('[name=delivery]:checked')?.value || 'pickup'];
+      const tax = Math.round(sub * TAX_RATE);
+      const total = sub + fee + tax;
+      document.getElementById('sumSubtotal').textContent = '₹' + sub.toLocaleString('en-IN');
+      document.getElementById('sumTax').textContent = '₹' + tax.toLocaleString('en-IN');
+      document.getElementById('sumDelivery').textContent = fee === 0 ? 'Free' : '₹' + fee;
+      document.getElementById('sumTotal').textContent = '₹' + total.toLocaleString('en-IN');
+
+      // Toggle pickup vs delivery address fields
+      const method = document.querySelector('[name=delivery]:checked')?.value || 'pickup';
+      document.getElementById('addressWrap').style.display = method === 'pickup' ? 'none' : 'block';
+      document.getElementById('pickuplocationWrap').style.display = method === 'pickup' ? 'block' : 'none';
+    }
+
+    /* ===== Order submission (HTMX pattern, demo only) ===== */
+    function placeOrder() {
+      if (!cart.length) return;
+      const method = document.querySelector('[name=delivery]:checked')?.value || 'pickup';
+      const sub = cart.reduce((s,i)=>s+i.price*i.qty,0);
+      const fee = DELIVERY_FEE[method];
+      const tax = Math.round(sub * TAX_RATE);
+      const total = sub + fee + tax;
+
+      const order = {
+        id: 'CC-' + (10000 + Math.floor(Math.random()*9000)),
+        date: new Date().toISOString(),
+        items: cart.slice(),
+        subtotal: sub, tax, delivery: fee, total,
+        method,
+        customer: {
+          name: document.getElementById('custName').value || 'Walk-in Customer',
+          phone: document.getElementById('custPhone').value || '',
+          email: document.getElementById('custEmail').value || '',
+        },
+        slot: document.getElementById('timeSlot').value,
+        payment: document.querySelector('[name=pay]:checked')?.value || 'upi',
+        status: 'Pending'
+      };
+
+      // Save to localStorage for admin demo — format matches admin/orders.html
+      const orders = JSON.parse(localStorage.getItem('crumb_orders') || '[]');
+      const nextId = orders.length ? 10000 + orders.length : 10042;
+      order.id = 'CC-' + nextId;
+      const adminOrder = {
+        id: order.id,
+        c: order.customer.name,
+        p: order.customer.phone,
+        items: cart.slice().map(i => `${i.qty}× ${i.name}`).join(', '),
+        total: order.total,
+        status: order.status,
+        time: 'just now',
+        method: order.method,
+        slot: order.slot,
+        payment: order.payment,
+        note: document.getElementById('orderNote').value || ''
+      };
+      orders.unshift(adminOrder);
+      localStorage.setItem('crumb_orders', JSON.stringify(orders));
+
+      // Clear cart, show success
+      document.getElementById('successId').textContent = order.id;
+      document.getElementById('successTotal').textContent = '₹' + total.toLocaleString('en-IN');
+      document.getElementById('successSlot').textContent = (method === 'pickup' ? 'Pickup · ' : 'Delivery · ') + order.slot;
+      document.getElementById('successModal').classList.remove('hidden');
+      cart = [];
+      persist();
+      render();
+    }
+
+    function closeSuccess() { document.getElementById('successModal').classList.add('hidden'); }
+
+    /* ===== UI wiring ===== */
+    document.querySelectorAll('label.opt').forEach(l => {
+      l.addEventListener('click', () => {
+        const name = l.querySelector('input[type=radio]').name;
+        document.querySelectorAll(`label.opt input[name=${name}]`).forEach(i => {
+          i.closest('label.opt').classList.remove('selected');
+        });
+        l.classList.add('selected');
+        l.querySelector('input[type=radio]').checked = true;
+        recalc();
+      });
+    });
+
+    render();
+    const obs = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('aos-in'); obs.unobserve(e.target); } }), { threshold: 0.05 });
+    document.querySelectorAll('[data-aos]').forEach(el => obs.observe(el));
+  </script>
+</body>
+</html>

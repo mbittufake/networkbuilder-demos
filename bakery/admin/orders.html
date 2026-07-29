@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Orders — Crumb & Craft Admin</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/htmx.org@2.0.3" defer></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: { sans:['Inter','sans-serif'], serif:['Playfair Display','serif'] },
+          colors: { cocoa:'#3E2723', brown:'#8B5A3C', caramel:'#D4A574', cream:'#FAF3E7', parchment:'#FFF8EE', gold:'#C8964F',
+            ink:'#2A1810', ash:'#7F6F65', sand:'#E8DFD3',
+            adminBase:'#FAF6F0', adminCard:'#FFFFFF' },
+        }
+      }
+    }
+  </script>
+  <style>
+    body { font-family:'Inter',sans-serif; }
+    h1,h2,h3,h4 { font-family:'Playfair Display',serif; }
+    .sidebar { background: linear-gradient(180deg, #2A1810 0%, #3E2723 100%); }
+    .nav-item { transition: all .15s; }
+    .nav-item.active { background: rgba(212,165,116,0.18); color:#FAF3E7; }
+    .nav-item:not(.active):hover { background: rgba(212,165,116,0.08); color:#FAF3E7; }
+    .filter-chip { transition: all .15s; }
+    .filter-chip.active { background:#3E2723; color:#FAF3E7; }
+    .row-expand { transition: background .15s; }
+    .row-expand:hover { background: #FFF8EE; }
+    .pill-pending { background:#FEF3C7; color:#92400E; }
+    .pill-baking { background:#DBEAFE; color:#1E40AF; }
+    .pill-out { background:#FCE7F3; color:#9D174D; }
+    .pill-delivered { background:#D1FAE5; color:#065F46; }
+    .pill-cancelled { background:#FEE2E2; color:#991B1B; }
+  </style>
+</head>
+<body class="bg-adminBase text-ink min-h-screen">
+
+<div class="flex min-h-screen">
+
+  <!-- SIDEBAR (same shell as dashboard) -->
+  <aside class="sidebar w-64 text-cream flex-shrink-0 hidden lg:flex flex-col fixed top-0 left-0 h-screen z-30">
+    <div class="px-6 py-6 border-b border-cream/10">
+      <a href="../index.html" class="flex items-center gap-2">
+        <div class="w-10 h-10 rounded-full bg-caramel text-cocoa flex items-center justify-center font-serif text-xl font-bold">C</div>
+        <div>
+          <div class="font-serif font-bold text-cream">Crumb &amp; Craft</div>
+          <div class="text-[10px] uppercase tracking-widest text-caramel font-bold">Admin Console</div>
+        </div>
+      </a>
+    </div>
+    <nav class="flex-1 px-3 py-4 overflow-y-auto">
+      <div class="text-[10px] uppercase tracking-widest text-cream/40 font-bold px-3 mb-2">Operations</div>
+      <a href="index.html" class="nav-item flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium text-cream/70 mb-0.5">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 12l9-9 9 9M5 10v10h14V10"/></svg> Dashboard
+      </a>
+      <a href="orders.html" class="nav-item active flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium text-cream/70 mb-0.5">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="4" y="6" width="16" height="14" rx="2"/><path d="M9 10h6M9 14h4"/></svg> Orders
+        <span class="ml-auto bg-caramel/30 text-cream text-[10px] font-bold px-2 py-0.5 rounded-full" id="newOrdersBadge">0</span>
+      </a>
+      <a href="products.html" class="nav-item flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium text-cream/70 mb-0.5">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.7l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.7l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg> Products
+      </a>
+      <a href="customers.html" class="nav-item flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium text-cream/70 mb-0.5">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="9" cy="7" r="4"/><path d="M3 21v-2a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v2"/></svg> Customers
+      </a>
+      <div class="text-[10px] uppercase tracking-widest text-cream/40 font-bold px-3 mt-6 mb-2">Tools</div>
+       <a href="customer-order.html" class="nav-item flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium text-cream/70 mb-0.5">
+         <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg> Place order
+       </a>
+       <a href="../index.html" target="_blank" class="nav-item flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium text-cream/70 mb-0.5">
+         <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14 21 3"/></svg> View site
+       </a>
+     </nav>
+    <div class="px-4 py-4 border-t border-cream/10 flex items-center gap-3">
+      <div class="w-10 h-10 rounded-full bg-caramel/40 text-cream flex items-center justify-center font-bold">M</div>
+      <div class="flex-1 min-w-0">
+        <div class="text-sm font-semibold text-cream truncate">Maya Bose</div>
+        <div class="text-[10px] text-cream/50 uppercase tracking-wider">Owner</div>
+      </div>
+    </div>
+  </aside>
+
+  <main class="flex-1 lg:ml-64">
+
+    <header class="lg:hidden bg-cocoa text-cream px-4 py-3 flex items-center justify-between sticky top-0 z-30">
+      <a href="../index.html" class="flex items-center gap-2">
+        <div class="w-8 h-8 rounded-full bg-caramel text-cocoa flex items-center justify-center font-serif font-bold">C</div>
+        <span class="font-serif font-bold">Orders</span>
+      </a>
+    </header>
+
+    <div class="p-5 sm:p-8 lg:p-10">
+
+      <!-- Title row -->
+      <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-3 mb-7">
+        <div>
+          <div class="flex items-center gap-3 text-brown text-xs font-black uppercase tracking-widest mb-2">
+            <span class="inline-block w-12 h-px bg-brown align-middle"></span> Sales
+          </div>
+          <h1 class="font-serif text-3xl lg:text-4xl font-bold text-ink">Orders</h1>
+          <p class="text-ash mt-1 text-sm">Manage incoming, in-flight and delivered orders.</p>
+        </div>
+        <div class="flex flex-wrap gap-2">
+          <button class="text-sm font-semibold border border-brown/20 bg-white px-4 py-2 rounded-full text-cocoa hover:border-brown">Export CSV</button>
+          <button class="text-sm font-semibold bg-cocoa text-cream px-4 py-2 rounded-full hover:bg-brown transition-all">+ Manual order</button>
+        </div>
+      </div>
+
+      <!-- Filters + Search -->
+      <div class="bg-adminCard rounded-2xl border border-sand shadow-editor p-4 sm:p-5 mb-5">
+        <div class="flex flex-col lg:flex-row lg:items-center gap-4">
+          <div class="flex flex-wrap gap-2 flex-1">
+            <button class="filter-chip active px-4 py-1.5 rounded-full text-xs font-bold border border-brown/20 bg-cream" data-status="all" onclick="setFilter('all', this)">All <span class="ml-1 text-[10px] opacity-60" id="cntAll">0</span></button>
+            <button class="filter-chip px-4 py-1.5 rounded-full text-xs font-bold border border-brown/20 bg-cream text-cocoa" data-status="Pending" onclick="setFilter('Pending', this)">Pending <span class="ml-1 inline-block w-1.5 h-1.5 bg-yellow-500 rounded-full"></span></button>
+            <button class="filter-chip px-4 py-1.5 rounded-full text-xs font-bold border border-brown/20 bg-cream text-cocoa" data-status="Baking" onclick="setFilter('Baking', this)">Baking <span class="ml-1 inline-block w-1.5 h-1.5 bg-blue-500 rounded-full"></span></button>
+            <button class="filter-chip px-4 py-1.5 rounded-full text-xs font-bold border border-brown/20 bg-cream text-cocoa" data-status="Out for delivery" onclick="setFilter('Out for delivery', this)">Out for delivery <span class="ml-1 inline-block w-1.5 h-1.5 bg-pink-500 rounded-full"></span></button>
+            <button class="filter-chip px-4 py-1.5 rounded-full text-xs font-bold border border-brown/20 bg-cream text-cocoa" data-status="Delivered" onclick="setFilter('Delivered', this)">Delivered <span class="ml-1 inline-block w-1.5 h-1.5 bg-emerald-500 rounded-full"></span></button>
+            <button class="filter-chip px-4 py-1.5 rounded-full text-xs font-bold border border-brown/20 bg-cream text-cocoa" data-status="Cancelled" onclick="setFilter('Cancelled', this)">Cancelled</button>
+          </div>
+          <div class="relative lg:w-72">
+            <svg class="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-ash" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+            <input id="searchInput" oninput="render()" type="search" placeholder="Search order #, name, phone…" class="w-full pl-9 pr-4 py-2.5 bg-cream border border-brown/15 rounded-xl text-sm focus:border-cocoa outline-none">
+          </div>
+        </div>
+      </div>
+
+      <!-- ORDERS TABLE -->
+      <div class="bg-adminCard rounded-2xl border border-sand shadow-editor overflow-hidden">
+        <table class="w-full text-sm">
+          <thead>
+            <tr class="text-left text-[10px] uppercase tracking-wider text-ash font-bold bg-cream">
+              <th class="py-3 px-4"><input type="checkbox" id="selAll" onchange="toggleSelAll(this)"></th>
+              <th class="py-3 px-3">Order</th>
+              <th class="py-3 px-3">Customer</th>
+              <th class="py-3 px-3 hidden md:table-cell">Items</th>
+              <th class="py-3 px-3 hidden lg:table-cell">Method</th>
+              <th class="py-3 px-3">Total</th>
+              <th class="py-3 px-3">Status</th>
+              <th class="py-3 px-3">Action</th>
+            </tr>
+          </thead>
+          <tbody id="ordersTbl"></tbody>
+        </table>
+        <div id="noOrders" class="hidden text-center py-16 text-ash">
+          <div class="text-5xl mb-2">📭</div>
+          <p class="text-sm">No orders match your filter.</p>
+        </div>
+      </div>
+
+    </div>
+
+    <footer class="px-5 sm:px-8 lg:px-10 py-6 border-t border-sand text-xs text-ash flex flex-col sm:flex-row items-center justify-between gap-2">
+      <span>Crumb &amp; Craft Admin · v2.6 demo</span>
+      <span>Built for internal ops · Demo by <a href="https://networkbuilder.in" class="text-caramel hover:underline">Network Builder</a></span>
+    </footer>
+  </main>
+</div>
+
+<script>
+  /* ===== Seed orders (extends dashboard seed) ===== */
+  if (!localStorage.getItem('crumb_orders')) {
+    localStorage.setItem('crumb_orders', JSON.stringify([
+      { id:'CC-10041', c:'Priya Iyer', p:'+91 98765 43210', items:'2× Country Sourdough Boule, 1× Butter Croissant', total:680, status:'Baking', time:'8 min ago', method:'local' },
+      { id:'CC-10040', c:'Arjun Mehta', p:'+91 99001 22334', items:'1× Classic Tiramisu', total:1450, status:'Out for delivery', time:'14 min ago', method:'express' },
+      { id:'CC-10039', c:'Meera Nair', p:'+91 90876 54321', items:'3× Butter Croissant, 1× Pain au Chocolat', total:560, status:'Delivered', time:'42 min ago', method:'pickup' },
+      { id:'CC-10038', c:'Rohan Banerjee', p:'+91 99887 76655', items:'Custom cake · 3-tier · Wedding', total:8400, status:'Pending', time:'1 hr ago', method:'local' },
+      { id:'CC-10037', c:'Subhojit Das', p:'+91 90909 09090', items:'2× Country Sourdough Boule, 1× Olive & Rosemary Focaccia', total:900, status:'Delivered', time:'2 hr ago', method:'pickup' },
+      { id:'CC-10036', c:'Tanya Roy', p:'+91 98712 34567', items:'1× Red Velvet Layer Cake', total:1620, status:'Baking', time:'3 hr ago', method:'local' },
+      { id:'CC-10035', c:'Karthik Iyer', p:'+91 98123 45678', items:'6× Cinnamon Kouign-Amann', total:960, status:'Cancelled', time:'4 hr ago', method:'pickup' },
+    ]));
+  }
+  const ALL_ORDERS = JSON.parse(localStorage.getItem('crumb_orders'));
+  document.getElementById('cntAll').textContent = ALL_ORDERS.length;
+  document.getElementById('newOrdersBadge').textContent = ALL_ORDERS.filter(o=>o.status==='Pending').length;
+
+  let activeFilter = 'all';
+  function setFilter(s, btn) {
+    activeFilter = s;
+    document.querySelectorAll('.filter-chip').forEach(c => c.classList.remove('active'));
+    btn.classList.add('active');
+    render();
+  }
+
+  const STATUS_CLASS = { Pending:'pill-pending', Baking:'pill-baking', 'Out for delivery':'pill-out', Delivered:'pill-delivered', Cancelled:'pill-cancelled' };
+  const STATUS_FLOW = ['Pending','Baking','Out for delivery','Delivered'];
+
+  function render() {
+    const q = (document.getElementById('searchInput').value || '').toLowerCase().trim();
+    const tbl = document.getElementById('ordersTbl');
+    const no = document.getElementById('noOrders');
+    const list = ALL_ORDERS.filter(o => {
+      if (activeFilter !== 'all' && o.status !== activeFilter) return false;
+      if (q && !(o.id.toLowerCase().includes(q) || o.c.toLowerCase().includes(q) || (o.p||'').includes(q))) return false;
+      return true;
+    });
+    if (!list.length) { tbl.innerHTML = ''; no.classList.remove('hidden'); return; }
+    no.classList.add('hidden');
+    tbl.innerHTML = list.map((o,i) => `
+      <tr class="row-expand border-t border-sand/40">
+        <td class="py-3 px-4"><input type="checkbox" class="ordSel" data-i="${ALL_ORDERS.indexOf(o)}"></td>
+        <td class="py-3 px-3">
+          <div class="font-bold text-cocoa">${o.id}</div>
+          <div class="text-[10px] text-ash">${o.time}</div>
+        </td>
+        <td class="py-3 px-3">
+          <div class="font-semibold">${o.c}</div>
+          <div class="text-[10px] text-ash">${o.p||''}</div>
+        </td>
+        <td class="py-3 px-3 hidden md:table-cell text-ash text-xs max-w-xs truncate">${o.items}</td>
+        <td class="py-3 px-3 hidden lg:table-cell">
+          <span class="text-xs font-semibold uppercase tracking-wider text-cocoa">${o.method}</span>
+        </td>
+        <td class="py-3 px-3 font-bold text-brown">₹${o.total.toLocaleString('en-IN')}</td>
+        <td class="py-3 px-3">
+          <select onchange="changeStatus(${ALL_ORDERS.indexOf(o)}, this.value)" class="${STATUS_CLASS[o.status]} text-[10px] font-bold px-2 py-1 rounded-full uppercase tracking-wider border-0 cursor-pointer">
+            ${STATUS_FLOW.map(s => `<option value="${s}" ${o.status===s?'selected':''}>${s}</option>`).join('')}
+            <option value="Cancelled">Cancelled</option>
+          </select>
+        </td>
+        <td class="py-3 px-3">
+          <button class="text-ash hover:text-cocoa" title="View details">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="m9 18 6-6-6-6"/></svg>
+          </button>
+        </td>
+      </tr>`).join('');
+  }
+
+  function changeStatus(i, s) {
+    ALL_ORDERS[i].status = s;
+    localStorage.setItem('crumb_orders', JSON.stringify(ALL_ORDERS));
+    render();
+  }
+  function toggleSelAll(c) { document.querySelectorAll('.ordSel').forEach(x => x.checked = c.checked); }
+  render();
+</script>
+</body>
+</html>
