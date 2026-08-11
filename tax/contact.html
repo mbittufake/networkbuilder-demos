@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact CA Team | TaxMitra Advisory India</title>
+    <meta name="description" content="Reach TaxMitra Chartered Accountants. WhatsApp, call, email or visit us in Mumbai, Delhi NCR, Bengaluru or Ahmedabad.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        deepTeal: '#0F2A22',
+                        deepTealDark: '#0A1F1B',
+                        tealCard: '#1A3329',
+                        emeraldPrimary: '#10B981',
+                        emeraldDark: '#047857',
+                        emeraldDeeper: '#064E3B',
+                        amberGold: '#D97706',
+                        amberLight: '#FBBF24',
+                        bgLight: '#F8FAFC',
+                        cardLight: '#F1F5F9'
+                    },
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                        display: ['Outfit', 'sans-serif']
+                    },
+                    animation: {
+                        'fade-up': 'fadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) both'
+                    },
+                    keyframes: {
+                        fadeUp: { '0%': { opacity: 0, transform: 'translateY(24px)' }, '100%': { opacity: 1, transform: 'translateY(0)' } }
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #F8FAFC; color: #0F172A; -webkit-font-smoothing: antialiased; }
+        .font-display { font-family: 'Outfit', sans-serif; }
+        .pill-btn { border-radius: 9999px; transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1); }
+        .pill-btn:hover { transform: translateY(-2px); }
+        .glass-light { background: rgba(255, 255, 255, 0.7); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border: 1px solid rgba(255, 255, 255, 0.5); }
+        .blob { position: absolute; border-radius: 50%; filter: blur(80px); opacity: 0.4; pointer-events: none; }
+        .hover-lift { transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1); }
+        .hover-lift:hover { transform: translateY(-6px); }
+        ::-webkit-scrollbar { width: 10px; height: 10px; }
+        ::-webkit-scrollbar-track { background: #F1F5F9; }
+        ::-webkit-scrollbar-thumb { background: #10B981; border-radius: 6px; }
+        .success-check { animation: successPop 0.5s cubic-bezier(0.16, 1, 0.3, 1); }
+        @keyframes successPop { 0% { opacity: 0; transform: scale(0.5); } 100% { opacity: 1; transform: scale(1); } }
+    </style>
+</head>
+
+<body class="min-h-screen flex flex-col selection:bg-emeraldPrimary selection:text-white overflow-x-hidden">
+
+    <!-- Announcement Bar -->
+    <div class="bg-deepTealDark text-slate-300 text-[11px] sm:text-xs py-2.5 px-6 border-b border-emerald-900/50 relative z-50">
+        <div class="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-2">
+            <div class="flex items-center gap-3">
+                <span class="relative flex h-2.5 w-2.5"><span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emeraldPrimary opacity-75"></span><span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-emeraldPrimary"></span></span>
+                <span><strong class="text-white">FY 2025-26 (AY 2026-27):</strong> ITR Filing Window Open · Last Date 31 July 2026</span>
+            </div>
+            <div class="flex items-center gap-5 text-xs font-semibold">
+                <a href="./admin/index.html" class="text-emeraldPrimary hover:text-white transition flex items-center gap-1.5"><i class="fa-solid fa-gauge-high"></i> CA Portal Demo</a>
+                <a href="https://wa.me/919876543210" target="_blank" class="text-white hover:text-emeraldPrimary transition flex items-center gap-1.5"><i class="fa-brands fa-whatsapp text-emeraldPrimary text-sm"></i> WhatsApp Help</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sticky Glass Navigation -->
+    <header class="sticky top-0 z-40">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 py-3">
+            <nav class="glass-light rounded-full px-4 sm:px-6 py-3 flex items-center justify-between shadow-lg shadow-emerald-900/5 border border-white/40">
+                <a href="index.html" class="flex items-center gap-2.5 group">
+                    <div class="w-10 h-10 rounded-full bg-gradient-to-br from-emeraldPrimary to-emeraldDark text-white flex items-center justify-center text-base font-bold shadow-md shadow-emerald-500/30 group-hover:rotate-12 transition">
+                        <i class="fa-solid fa-indian-rupee-sign"></i>
+                    </div>
+                    <div class="leading-tight">
+                        <span class="text-lg font-bold font-display tracking-tight text-slate-900">TaxMitra <span class="text-emeraldDark">CA</span></span>
+                        <span class="block text-[9px] uppercase tracking-[0.18em] text-slate-500 font-bold -mt-0.5">Advisory · ICAI</span>
+                    </div>
+                </a>
+                <div class="hidden lg:flex items-center gap-1 text-sm font-semibold text-slate-700">
+                    <a href="index.html" class="px-4 py-2 rounded-full hover:bg-slate-100 hover:text-emeraldDark transition">Home</a>
+                    <a href="services.html" class="px-4 py-2 rounded-full hover:bg-slate-100 hover:text-emeraldDark transition">Services</a>
+                    <a href="calculator.html" class="px-4 py-2 rounded-full hover:bg-slate-100 hover:text-emeraldDark transition">Calculator</a>
+                    <a href="about.html" class="px-4 py-2 rounded-full hover:bg-slate-100 hover:text-emeraldDark transition">About CA</a>
+                    <a href="contact.html" class="px-4 py-2 rounded-full bg-emeraldPrimary/10 text-emeraldDark">Contact</a>
+                    <a href="./admin/index.html" class="px-4 py-2 rounded-full hover:bg-amber-50 hover:text-amber-700 transition flex items-center gap-1.5"><i class="fa-solid fa-gauge-high text-amber-600 text-xs"></i> Admin</a>
+                </div>
+                <div class="flex items-center gap-2">
+                    <a href="https://wa.me/919876543210" target="_blank" class="hidden sm:inline-flex pill-btn px-5 py-2.5 bg-gradient-to-r from-emeraldPrimary to-emeraldDark text-white text-xs font-bold uppercase tracking-wider items-center gap-2 shadow-md shadow-emerald-500/30">
+                        <i class="fa-brands fa-whatsapp text-sm"></i> WhatsApp
+                    </a>
+                    <button id="mobile-toggle" class="lg:hidden w-10 h-10 rounded-full bg-slate-100 text-slate-700 flex items-center justify-center"><i class="fa-solid fa-bars"></i></button>
+                </div>
+            </nav>
+        </div>
+        <div id="mobile-drawer" class="hidden lg:hidden px-4 pb-3">
+            <div class="glass-light rounded-2xl p-4 border border-white/40 shadow-lg space-y-1 text-sm font-semibold text-slate-700">
+                <a href="index.html" class="block px-4 py-2.5 rounded-xl hover:bg-slate-100">Home</a>
+                <a href="services.html" class="block px-4 py-2.5 rounded-xl hover:bg-slate-100">Services</a>
+                <a href="calculator.html" class="block px-4 py-2.5 rounded-xl hover:bg-slate-100">Calculator</a>
+                <a href="about.html" class="block px-4 py-2.5 rounded-xl hover:bg-slate-100">About CA</a>
+                <a href="contact.html" class="block px-4 py-2.5 rounded-xl bg-emeraldPrimary/10 text-emeraldDark">Contact</a>
+                <a href="./admin/index.html" class="block px-4 py-2.5 rounded-xl bg-amber-50 text-amber-700">CA Admin Portal Demo</a>
+                <a href="https://wa.me/919876543210" class="block px-4 py-3 rounded-xl bg-emeraldPrimary text-white text-center font-bold uppercase tracking-wider text-xs mt-2">WhatsApp a CA →</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="flex-grow">
+
+        <!-- ============== HERO ============== -->
+        <section class="relative bg-deepTeal text-white overflow-hidden border-b border-deepTealDark">
+            <div class="blob bg-emeraldPrimary w-96 h-96 -top-32 -right-32"></div>
+            <div class="blob bg-amberGold w-80 h-80 bottom-0 left-0 opacity-20"></div>
+            <div class="absolute inset-0 opacity-[0.04]" style="background-image: linear-gradient(rgba(255,255,255,0.6) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.6) 1px, transparent 1px); background-size: 60px 60px;"></div>
+
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 pt-14 pb-14 sm:pt-20 sm:pb-16 relative z-10 text-center">
+                <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emeraldPrimary/10 border border-emeraldPrimary/30 text-emeraldPrimary text-xs font-bold uppercase tracking-[0.15em]">
+                    <i class="fa-solid fa-headset"></i> Senior CA Responds Within 2 Hours · Mon-Sat
+                </div>
+                <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold font-display leading-[1.05] tracking-tight mt-5">
+                    Talk to a <span class="bg-gradient-to-r from-emeraldPrimary to-amberLight bg-clip-text text-transparent">Chartered Accountant</span>
+                </h1>
+                <p class="text-slate-300/90 text-base sm:text-lg max-w-2xl mx-auto mt-4 leading-relaxed">
+                    WhatsApp, call, email, or drop into our Mumbai office. Every enquiry is personally answered by a Senior CA — never a support bot.
+                </p>
+                <div class="flex flex-wrap justify-center gap-2 mt-6 text-xs font-bold">
+                    <span class="px-3.5 py-1.5 rounded-full bg-white/8 border border-white/20 text-slate-200"><i class="fa-brands fa-whatsapp text-emeraldPrimary mr-1.5"></i> WhatsApp-first · &lt;2 hr</span>
+                    <span class="px-3.5 py-1.5 rounded-full bg-white/8 border border-white/20 text-slate-200"><i class="fa-solid fa-phone text-amberLight mr-1.5"></i> Mon-Sat helpline</span>
+                    <span class="px-3.5 py-1.5 rounded-full bg-white/8 border border-white/20 text-slate-200"><i class="fa-solid fa-lock text-emeraldPrimary mr-1.5"></i> 100% confidential</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============== CHANNEL CARDS ============== -->
+        <section class="py-12 sm:py-16 bg-bgLight border-b border-slate-200">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6">
+                <div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
+                    <!-- WhatsApp -->
+                    <a href="https://wa.me/919876543210" target="_blank" class="group bg-gradient-to-br from-emeraldPrimary to-emeraldDark text-white p-6 rounded-3xl hover-lift relative overflow-hidden">
+                        <div class="blob bg-white w-32 h-32 -top-12 -right-12 opacity-10"></div>
+                        <div class="relative z-10">
+                            <div class="w-12 h-12 rounded-2xl bg-white/15 flex items-center justify-center text-2xl mb-4"><i class="fa-brands fa-whatsapp"></i></div>
+                            <div class="text-[10px] uppercase tracking-wider font-bold text-emerald-100">Fastest Reply</div>
+                            <div class="font-display font-bold text-lg mt-1">WhatsApp Now</div>
+                            <div class="text-emerald-100 text-sm font-mono mt-3">+91 98765 43210</div>
+                            <div class="text-[11px] text-emerald-100 mt-2 flex items-center gap-1.5 group-hover:gap-2 transition-all">Open Chat <i class="fa-solid fa-arrow-right text-[10px]"></i></div>
+                        </div>
+                    </a>
+                    <!-- Phone -->
+                    <a href="tel:+919876543210" class="group bg-gradient-to-br from-amberGold to-amber-700 text-white p-6 rounded-3xl hover-lift relative overflow-hidden">
+                        <div class="blob bg-white w-32 h-32 -top-12 -right-12 opacity-10"></div>
+                        <div class="relative z-10">
+                            <div class="w-12 h-12 rounded-2xl bg-white/15 flex items-center justify-center text-2xl mb-4"><i class="fa-solid fa-phone"></i></div>
+                            <div class="text-[10px] uppercase tracking-wider font-bold text-amber-100">CA Helpline</div>
+                            <div class="font-display font-bold text-lg mt-1">Call Us</div>
+                            <div class="text-amber-100 text-sm font-mono mt-3">+91 98765 43210</div>
+                            <div class="text-[11px] text-amber-100 mt-2 flex items-center gap-1.5 group-hover:gap-2 transition-all">Tap to Call <i class="fa-solid fa-arrow-right text-[10px]"></i></div>
+                        </div>
+                    </a>
+                    <!-- Email -->
+                    <a href="mailto:support@taxmitra.in" class="group bg-gradient-to-br from-blue-500 to-blue-700 text-white p-6 rounded-3xl hover-lift relative overflow-hidden">
+                        <div class="blob bg-white w-32 h-32 -top-12 -right-12 opacity-10"></div>
+                        <div class="relative z-10">
+                            <div class="w-12 h-12 rounded-2xl bg-white/15 flex items-center justify-center text-2xl mb-4"><i class="fa-solid fa-envelope"></i></div>
+                            <div class="text-[10px] uppercase tracking-wider font-bold text-blue-100">In Writing</div>
+                            <div class="font-display font-bold text-lg mt-1">Email Us</div>
+                            <div class="text-blue-100 text-sm font-mono mt-3 break-all">support@taxmitra.in</div>
+                            <div class="text-[11px] text-blue-100 mt-2 flex items-center gap-1.5 group-hover:gap-2 transition-all">Compose <i class="fa-solid fa-arrow-right text-[10px]"></i></div>
+                        </div>
+                    </a>
+                    <!-- Visit -->
+                    <a href="#office-locations" class="group bg-deepTeal text-white p-6 rounded-3xl hover-lift relative overflow-hidden border border-deepTealDark">
+                        <div class="blob bg-emeraldPrimary w-32 h-32 -bottom-12 -right-12 opacity-30"></div>
+                        <div class="relative z-10">
+                            <div class="w-12 h-12 rounded-2xl bg-emeraldPrimary/20 text-emeraldPrimary flex items-center justify-center text-2xl mb-4"><i class="fa-solid fa-location-dot"></i></div>
+                            <div class="text-[10px] uppercase tracking-wider font-bold text-slate-300">In Person</div>
+                            <div class="font-display font-bold text-lg mt-1">Visit Office</div>
+                            <div class="text-slate-300 text-sm mt-3">4 cities · India</div>
+                            <div class="text-[11px] text-emeraldPrimary mt-2 flex items-center gap-1.5 group-hover:gap-2 transition-all">See Locations <i class="fa-solid fa-arrow-right text-[10px]"></i></div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============== FORM + CONTACT PANELS ============== -->
+        <section class="py-16 sm:py-20 bg-white border-b border-slate-200">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6">
+                <div class="grid lg:grid-cols-12 gap-6 sm:gap-8 items-start">
+                    <!-- LEFT: Form -->
+                    <div class="lg:col-span-7 bg-bgLight rounded-3xl p-6 sm:p-9 border border-slate-200 hover-lift">
+                        <div class="flex items-start justify-between mb-5">
+                            <div>
+                                <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emeraldPrimary/10 text-emeraldDark text-[10px] font-bold uppercase tracking-[0.15em]"><i class="fa-solid fa-file-pen"></i> Send Enquiry</span>
+                                <h3 class="font-display font-bold text-2xl sm:text-3xl text-slate-900 mt-3">Request a CA Callback</h3>
+                                <p class="text-sm text-slate-500 mt-1">A Senior CA will personally call/WhatsApp you within <strong class="text-slate-900">2 hours</strong> on a weekday.</p>
+                            </div>
+                            <div class="hidden sm:flex w-14 h-14 rounded-2xl bg-emeraldPrimary/10 text-emeraldDark flex items-center justify-center text-2xl shrink-0">
+                                <i class="fa-solid fa-phone-volume"></i>
+                            </div>
+                        </div>
+
+                        <form id="callback-form" onsubmit="handleContactSubmit(event)" class="space-y-4">
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                <div>
+                                    <label class="block font-bold text-slate-700 mb-1.5 text-xs uppercase tracking-wider">Full Name *</label>
+                                    <input type="text" required placeholder="E.g. Sanjay Mehta" class="w-full bg-white border border-slate-300 rounded-xl px-4 py-3 text-sm text-slate-900 focus:ring-2 focus:ring-emeraldPrimary focus:border-emeraldPrimary focus:outline-none transition">
+                                </div>
+                                <div>
+                                    <label class="block font-bold text-slate-700 mb-1.5 text-xs uppercase tracking-wider">Phone (WhatsApp) *</label>
+                                    <input type="tel" required placeholder="+91 98765 43210" class="w-full bg-white border border-slate-300 rounded-xl px-4 py-3 text-sm text-slate-900 focus:ring-2 focus:ring-emeraldPrimary focus:border-emeraldPrimary focus:outline-none transition">
+                                </div>
+                            </div>
+
+                            <div>
+                                <label class="block font-bold text-slate-700 mb-1.5 text-xs uppercase tracking-wider">Email (Optional)</label>
+                                <input type="email" placeholder="sanjay@mybusiness.in" class="w-full bg-white border border-slate-300 rounded-xl px-4 py-3 text-sm text-slate-900 focus:ring-2 focus:ring-emeraldPrimary focus:border-emeraldPrimary focus:outline-none transition">
+                            </div>
+
+                            <div>
+                                <label class="block font-bold text-slate-700 mb-1.5 text-xs uppercase tracking-wider">Service Required *</label>
+                                <select required class="w-full bg-white border border-slate-300 rounded-xl px-4 py-3 text-sm text-slate-900 focus:ring-2 focus:ring-emeraldPrimary focus:border-emeraldPrimary focus:outline-none transition">
+                                    <option value="">-- Choose a service --</option>
+                                    <option>Income Tax Filing (ITR 1-4)</option>
+                                    <option>GST Registration / Monthly Return</option>
+                                    <option>Private Limited / LLP Registration</option>
+                                    <option>Income Tax Notice Reply (u/s 143 / 148)</option>
+                                    <option>NRI / Foreign Asset Tax</option>
+                                    <option>Capital Gains / ESOP Planning</option>
+                                    <option>Annual CA Retainer / CFO Service</option>
+                                    <option>Other (mention in message)</option>
+                                </select>
+                            </div>
+
+                            <div>
+                                <label class="block font-bold text-slate-700 mb-1.5 text-xs uppercase tracking-wider">What's your tax concern?</label>
+                                <textarea rows="4" placeholder="Mention your income source, any pending notices, last filing year, etc. — helps our CA prepare..." class="w-full bg-white border border-slate-300 rounded-xl px-4 py-3 text-sm text-slate-900 focus:ring-2 focus:ring-emeraldPrimary focus:border-emeraldPrimary focus:outline-none transition resize-none"></textarea>
+                            </div>
+
+                            <div class="flex items-start gap-2.5 p-3.5 rounded-xl bg-amber-50 border border-amber-200/60 text-xs text-amber-900 leading-relaxed">
+                                <i class="fa-solid fa-shield-halved text-amber-700 mt-0.5"></i>
+                                <p>Your data is <strong>encrypted at rest</strong>, shared only with assigned Senior CA. By submitting, you consent to a callback from TaxMitra.</p>
+                            </div>
+
+                            <button type="submit" class="w-full py-4 rounded-xl font-bold text-xs uppercase tracking-wider text-white bg-gradient-to-r from-emeraldPrimary to-emeraldDark hover:shadow-2xl hover:shadow-emerald-500/30 transition shadow-lg flex items-center justify-center gap-2">
+                                <span>Submit & Request Callback</span> <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                            </button>
+                        </form>
+
+                        <!-- Success message -->
+                        <div id="success-box" class="hidden mt-5 p-5 rounded-2xl bg-emeraldPrimary/10 border border-emeraldPrimary/30 flex items-start gap-3 success-check">
+                            <div class="w-10 h-10 rounded-full bg-emeraldPrimary flex items-center justify-center text-white text-base shrink-0"><i class="fa-solid fa-check"></i></div>
+                            <div>
+                                <h4 class="font-display font-bold text-base text-emeraldDark">Enquiry Received</h4>
+                                <p class="text-xs text-slate-600 mt-1 leading-relaxed">A Senior CA will WhatsApp / call you within 2 hours (Mon-Sat, 9:30 AM – 7:30 PM). For urgent matters, please WhatsApp directly at <strong>+91 98765 43210</strong>.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- RIGHT: Direct contact info -->
+                    <div class="lg:col-span-5 space-y-5">
+                        <div class="bg-deepTeal text-white rounded-3xl p-6 sm:p-8 border border-deepTealDark shadow-xl hover-lift relative overflow-hidden">
+                            <div class="blob bg-emeraldPrimary w-48 h-48 -top-12 -right-12 opacity-20"></div>
+                            <div class="relative z-10">
+                                <h3 class="font-display font-bold text-xl border-b border-white/10 pb-3 flex items-center gap-2"><i class="fa-solid fa-building text-amberLight"></i> Head Office · Mumbai</h3>
+                                <div class="space-y-4 mt-5 text-sm">
+                                    <div class="flex items-start gap-3">
+                                        <i class="fa-solid fa-location-dot text-emeraldPrimary text-base mt-0.5 shrink-0"></i>
+                                        <div>
+                                            <div class="text-slate-400 text-[11px] uppercase tracking-wider font-bold">Registered Address</div>
+                                            <p class="text-white leading-snug mt-0.5">Suite 402, Nariman Bhavan, <br>Nariman Point, Mumbai 400021</p>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-start gap-3">
+                                        <i class="fa-solid fa-phone-volume text-emeraldPrimary text-base mt-0.5 shrink-0"></i>
+                                        <div>
+                                            <div class="text-slate-400 text-[11px] uppercase tracking-wider font-bold">CA Helpline</div>
+                                            <a href="tel:+919876543210" class="text-white font-mono font-bold text-base block mt-0.5 hover:text-emeraldPrimary transition">+91 98765 43210</a>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-start gap-3">
+                                        <i class="fa-brands fa-whatsapp text-emeraldPrimary text-lg mt-0.5 shrink-0"></i>
+                                        <div>
+                                            <div class="text-slate-400 text-[11px] uppercase tracking-wider font-bold">WhatsApp Support</div>
+                                            <a href="https://wa.me/919876543210" target="_blank" class="text-white font-mono font-bold text-base block mt-0.5 hover:text-emeraldPrimary transition">+91 98765 43210</a>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-start gap-3">
+                                        <i class="fa-solid fa-envelope text-emeraldPrimary text-base mt-0.5 shrink-0"></i>
+                                        <div>
+                                            <div class="text-slate-400 text-[11px] uppercase tracking-wider font-bold">Email Support Desk</div>
+                                            <a href="mailto:support@taxmitra.in" class="text-white font-mono text-sm block mt-0.5 hover:text-emeraldPrimary transition">support@taxmitra.in</a>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-start gap-3">
+                                        <i class="fa-regular fa-clock text-emeraldPrimary text-base mt-0.5 shrink-0"></i>
+                                        <div>
+                                            <div class="text-slate-400 text-[11px] uppercase tracking-wider font-bold">Office Hours</div>
+                                            <p class="text-white text-sm mt-0.5">Mon – Sat · 9:30 AM – 7:30 PM IST</p>
+                                            <p class="text-emeraldPrimary text-[11px] font-bold mt-0.5">Emergency WhatsApp: 24×7</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="bg-bgLight rounded-3xl p-6 border border-slate-200 hover-lift">
+                            <h4 class="font-display font-bold text-sm text-slate-900 mb-3 flex items-center gap-2"><i class="fa-solid fa-bolt text-amberGold"></i> Quick SLA Promise</h4>
+                            <ul class="text-xs text-slate-600 space-y-2">
+                                <li class="flex items-start gap-2"><i class="fa-solid fa-check text-emeraldPrimary mt-0.5"></i> <span><strong>WhatsApp reply:</strong> Under 2 hours (Mon-Sat)</span></li>
+                                <li class="flex items-start gap-2"><i class="fa-solid fa-check text-emeraldPrimary mt-0.5"></i> <span><strong>Senior CA callback:</strong> same business day</span></li>
+                                <li class="flex items-start gap-2"><i class="fa-solid fa-check text-emeraldPrimary mt-0.5"></i> <span><strong>Email reply:</strong> within 24 hours</span></li>
+                                <li class="flex items-start gap-2"><i class="fa-solid fa-check text-emeraldPrimary mt-0.5"></i> <span><strong>IT Notice defence:</strong> 24-hour crisis hotline</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============== OFFICE LOCATIONS + MAP ============== -->
+        <section id="office-locations" class="py-20 sm:py-24 bg-bgLight border-b border-slate-200">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6">
+                <div class="text-center max-w-2xl mx-auto mb-12 space-y-3">
+                    <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emeraldPrimary/10 text-emeraldDark text-xs font-bold uppercase tracking-[0.15em]">✦ 4 Indian Cities</div>
+                    <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold font-display text-slate-900 leading-tight">Visit our <span class="text-emeraldDark">CA offices</span></h2>
+                    <p class="text-slate-600 text-base">Ready to meet in person? Drop into any of our 4 Indian practice locations (Mon-Sat, 9:30 AM – 7:30 PM).</p>
+                </div>
+
+                <div class="grid lg:grid-cols-12 gap-6">
+                    <!-- Map -->
+                    <div class="lg:col-span-7 rounded-3xl overflow-hidden shadow-2xl border border-slate-200 h-[480px] relative bg-deepTeal group">
+                        <iframe src="https://www.openstreetmap.org/export/embed.html?bbox=72.8200%2C18.9300%2C72.8400%2C18.9450&amp;layer=mapnik&amp;marker=18.9388%2C72.8300" class="w-full h-full grayscale-[0.2] group-hover:grayscale-0 transition" title="Mumbai Office Location"></iframe>
+                        <div class="absolute top-4 left-4 px-4 py-2 rounded-full bg-white text-emeraldDark font-bold text-xs shadow-lg flex items-center gap-2"><i class="fa-solid fa-map-location-dot"></i> Mumbai (HQ) — Nariman Point</div>
+                    </div>
+
+                    <!-- City list -->
+                    <div class="lg:col-span-5 space-y-3">
+                        <div class="bg-white rounded-2xl border-2 border-emeraldPrimary p-4 hover-lift relative">
+                            <span class="absolute top-3 right-3 px-2 py-0.5 rounded-full bg-emeraldPrimary text-slate-900 text-[9px] font-bold uppercase tracking-wider">HQ</span>
+                            <div class="flex items-start gap-3">
+                                <div class="w-11 h-11 rounded-xl bg-emeraldPrimary text-white flex items-center justify-center text-base shrink-0"><i class="fa-solid fa-location-dot"></i></div>
+                                <div>
+                                    <div class="font-display font-bold text-base text-slate-900">Mumbai · Nariman Point</div>
+                                    <p class="text-[11px] text-slate-500 leading-snug mt-0.5">Suite 402, Nariman Bhavan, 400021</p>
+                                    <a href="https://maps.google.com/?q=Nariman+Point+Mumbai" target="_blank" class="text-emeraldDark font-bold text-[11px] mt-1 inline-flex items-center gap-1 hover:gap-2 transition-all">Open in Maps <i class="fa-solid fa-arrow-up-right-from-square text-[9px]"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="bg-white rounded-2xl border border-slate-200 p-4 hover-lift hover:border-emeraldPrimary transition">
+                            <div class="flex items-start gap-3">
+                                <div class="w-11 h-11 rounded-xl bg-blue-100 text-blue-700 flex items-center justify-center text-base shrink-0"><i class="fa-solid fa-location-dot"></i></div>
+                                <div>
+                                    <div class="font-display font-bold text-base text-slate-900">Delhi NCR · Connaught Place</div>
+                                    <p class="text-[11px] text-slate-500 leading-snug mt-0.5">Block N, Connaught Place, New Delhi 110001</p>
+                                    <a href="https://maps.google.com/?q=Connaught+Place+Delhi" target="_blank" class="text-blue-700 font-bold text-[11px] mt-1 inline-flex items-center gap-1 hover:gap-2 transition-all">Open in Maps <i class="fa-solid fa-arrow-up-right-from-square text-[9px]"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="bg-white rounded-2xl border border-slate-200 p-4 hover-lift hover:border-emeraldPrimary transition">
+                            <div class="flex items-start gap-3">
+                                <div class="w-11 h-11 rounded-xl bg-purple-100 text-purple-700 flex items-center justify-center text-base shrink-0"><i class="fa-solid fa-location-dot"></i></div>
+                                <div>
+                                    <div class="font-display font-bold text-base text-slate-900">Bengaluru · Koramangala</div>
+                                    <p class="text-[11px] text-slate-500 leading-snug mt-0.5">4th Floor, Koramangala Industrial Layout, 560034</p>
+                                    <a href="https://maps.google.com/?q=Koramangala+Bengaluru" target="_blank" class="text-purple-700 font-bold text-[11px] mt-1 inline-flex items-center gap-1 hover:gap-2 transition-all">Open in Maps <i class="fa-solid fa-arrow-up-right-from-square text-[9px]"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="bg-white rounded-2xl border border-slate-200 p-4 hover-lift hover:border-emeraldPrimary transition">
+                            <div class="flex items-start gap-3">
+                                <div class="w-11 h-11 rounded-xl bg-amber-100 text-amber-700 flex items-center justify-center text-base shrink-0"><i class="fa-solid fa-location-dot"></i></div>
+                                <div>
+                                    <div class="font-display font-bold text-base text-slate-900">Ahmedabad · CG Road</div>
+                                    <p class="text-[11px] text-slate-500 leading-snug mt-0.5">3rd Floor, CG Road, Navrangpura, 380009</p>
+                                    <a href="https://maps.google.com/?q=CG+Road+Ahmedabad" target="_blank" class="text-amber-700 font-bold text-[11px] mt-1 inline-flex items-center gap-1 hover:gap-2 transition-all">Open in Maps <i class="fa-solid fa-arrow-up-right-from-square text-[9px]"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============== FAQ ============== -->
+        <section class="py-20 sm:py-24 bg-white">
+            <div class="max-w-4xl mx-auto px-4 sm:px-6">
+                <div class="text-center max-w-2xl mx-auto mb-12 space-y-3">
+                    <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emeraldPrimary/10 text-emeraldDark text-xs font-bold uppercase tracking-[0.15em]">✦ FAQs</div>
+                    <h2 class="text-3xl sm:text-4xl font-bold font-display text-slate-900">Common <span class="text-emeraldDark">contact</span> questions</h2>
+                </div>
+                <div class="space-y-3">
+                    <details open class="group bg-bgLight p-5 rounded-2xl border border-slate-200">
+                        <summary class="cursor-pointer flex justify-between items-start font-semibold text-slate-900 list-none">
+                            <span class="pr-4">Is the first consultation truly free?</span>
+                            <i class="fa-solid fa-plus text-emeraldDark text-sm mt-1 group-open:hidden"></i>
+                            <i class="fa-solid fa-minus text-emeraldDark text-sm mt-1 hidden group-open:block"></i>
+                        </summary>
+                        <p class="text-sm text-slate-600 mt-3 leading-relaxed">Yes — your first 15-minute CA call is unconditionally free, with zero obligation to engage. We will discuss your concern, scope, and recommended next steps.</p>
+                    </details>
+                    <details class="group bg-bgLight p-5 rounded-2xl border border-slate-200">
+                        <summary class="cursor-pointer flex justify-between items-start font-semibold text-slate-900 list-none">
+                            <span class="pr-4">How quickly will a Senior CA respond?</span>
+                            <i class="fa-solid fa-plus text-emeraldDark text-sm mt-1 group-open:hidden"></i>
+                            <i class="fa-solid fa-minus text-emeraldDark text-sm mt-1 hidden group-open:block"></i>
+                        </summary>
+                        <p class="text-sm text-slate-600 mt-3 leading-relaxed">WhatsApp messages are replied to within 2 working hours. Form submissions receive a call-back on the same business day. For IT notices (Scrutiny / u/s 148), we activate our 24×7 crisis hotline.</p>
+                    </details>
+                    <details class="group bg-bgLight p-5 rounded-2xl border border-slate-200">
+                        <summary class="cursor-pointer flex justify-between items-start font-semibold text-slate-900 list-none">
+                            <span class="pr-4">I'm outside Mumbai / Delhi / Bengaluru / Ahmedabad — can you still help?</span>
+                            <i class="fa-solid fa-plus text-emeraldDark text-sm mt-1 group-open:hidden"></i>
+                            <i class="fa-solid fa-minus text-emeraldDark text-sm mt-1 hidden group-open:block"></i>
+                        </summary>
+                        <p class="text-sm text-slate-600 mt-3 leading-relaxed">Absolutely. 50%+ of our engagements are remote-document, fully digital. WhatsApp us your Form 16 / bank statements / Form 26AS and our CA team will handle your entire case file remotely. We serve clients in 200+ Indian cities and 12 countries.</p>
+                    </details>
+                    <details class="group bg-bgLight p-5 rounded-2xl border border-slate-200">
+                        <summary class="cursor-pointer flex justify-between items-start font-semibold text-slate-900 list-none">
+                            <span class="pr-4">Is my data confidential?</span>
+                            <i class="fa-solid fa-plus text-emeraldDark text-sm mt-1 group-open:hidden"></i>
+                            <i class="fa-solid fa-minus text-emeraldDark text-sm mt-1 hidden group-open:block"></i>
+                        </summary>
+                        <p class="text-sm text-slate-600 mt-3 leading-relaxed">Yes. We are bound by ICAI's professional confidentiality code. All data is stored on India-hosted, AES-256 encrypted servers. We sign NDAs on request and never share your documents with any third party.</p>
+                    </details>
+                    <details class="group bg-bgLight p-5 rounded-2xl border border-slate-200">
+                        <summary class="cursor-pointer flex justify-between items-start font-semibold text-slate-900 list-none">
+                            <span class="pr-4">Which language can I communicate in?</span>
+                            <i class="fa-solid fa-plus text-emeraldDark text-sm mt-1 group-open:hidden"></i>
+                            <i class="fa-solid fa-minus text-emeraldDark text-sm mt-1 hidden group-open:block"></i>
+                        </summary>
+                        <p class="text-sm text-slate-600 mt-3 leading-relaxed">English, Hindi, Marathi, Gujarati and Tamil. For other languages, we'll arrange an interpreter within 24 hours of your request.</p>
+                    </details>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- ============== UNIFIED FOOTER ============== -->
+    <footer class="bg-deepTealDark text-slate-300 pt-16 pb-8 border-t border-emerald-900/40">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 grid grid-cols-2 md:grid-cols-12 gap-8 mb-10">
+            <div class="col-span-2 md:col-span-4 space-y-4">
+                <div class="flex items-center gap-2.5">
+                    <div class="w-10 h-10 rounded-full bg-gradient-to-br from-emeraldPrimary to-emeraldDark text-white flex items-center justify-center text-base font-bold shadow-md shadow-emerald-500/30"><i class="fa-solid fa-indian-rupee-sign"></i></div>
+                    <div>
+                        <div class="text-white font-display font-bold text-lg">TaxMitra Advisory</div>
+                        <div class="text-[10px] uppercase tracking-[0.18em] text-emeraldPrimary font-bold">ICAI · FCA · Since 2009</div>
+                    </div>
+                </div>
+                <p class="text-sm leading-relaxed text-slate-400 max-w-sm">A full-service, ICAI-licensed Chartered Accountancy firm delivering Income Tax, GST compliance, capital gains optimisation & business structuring across India.</p>
+            </div>
+            <div class="col-span-1 md:col-span-2 space-y-3">
+                <h5 class="text-white font-bold mb-1 uppercase tracking-wider text-xs">Quick Links</h5>
+                <ul class="space-y-2 text-sm">
+                    <li><a href="index.html" class="hover:text-emeraldPrimary transition">Home</a></li>
+                    <li><a href="services.html" class="hover:text-emeraldPrimary transition">All Services</a></li>
+                    <li><a href="calculator.html" class="hover:text-emeraldPrimary transition">Tax Calculator</a></li>
+                    <li><a href="about.html" class="hover:text-emeraldPrimary transition">About CA Team</a></li>
+                    <li><a href="contact.html" class="hover:text-emeraldPrimary transition">Contact</a></li>
+                    <li><a href="./admin/index.html" class="text-emeraldPrimary font-bold">CA Admin Demo</a></li>
+                </ul>
+            </div>
+            <div class="col-span-1 md:col-span-3 space-y-3">
+                <h5 class="text-white font-bold mb-1 uppercase tracking-wider text-xs">Practice Areas</h5>
+                <ul class="space-y-2 text-sm">
+                    <li><a href="services.html" class="hover:text-emeraldPrimary transition">Income Tax & ITR Filing</a></li>
+                    <li><a href="services.html" class="hover:text-emeraldPrimary transition">GST Registration & Returns</a></li>
+                    <li><a href="services.html" class="hover:text-emeraldPrimary transition">Company / LLP Incorporation</a></li>
+                    <li><a href="services.html" class="hover:text-emeraldPrimary transition">Capital Gains Planning</a></li>
+                    <li><a href="services.html" class="hover:text-emeraldPrimary transition">IT Notice Defence & ITAT</a></li>
+                </ul>
+            </div>
+            <div class="col-span-2 md:col-span-3 space-y-4">
+                <h5 class="text-white font-bold mb-1 uppercase tracking-wider text-xs">Direct Contact</h5>
+                <div class="space-y-2.5 text-sm">
+                    <div class="flex items-start gap-2"><i class="fa-solid fa-location-dot text-emeraldPrimary mt-1 text-xs"></i><span>Mumbai · Delhi NCR · Bengaluru</span></div>
+                    <div class="flex items-start gap-2"><i class="fa-solid fa-phone text-emeraldPrimary mt-1 text-xs"></i><span class="font-mono font-bold text-white">+91 98765 43210</span></div>
+                    <div class="flex items-start gap-2"><i class="fa-solid fa-envelope text-emeraldPrimary mt-1 text-xs"></i><span class="font-mono">support@taxmitra.in</span></div>
+                    <div class="flex items-start gap-2"><i class="fa-regular fa-clock text-emeraldPrimary mt-1 text-xs"></i><span>Mon–Sat · 9:30 AM – 7:30 PM IST</span></div>
+                </div>
+                <a href="https://wa.me/919876543210" target="_blank" class="inline-flex items-center gap-2 bg-emeraldPrimary hover:bg-emeraldDark text-slate-900 font-bold px-4 py-2.5 rounded-full text-xs transition">
+                    <i class="fa-brands fa-whatsapp text-sm"></i> Chat on WhatsApp
+                </a>
+            </div>
+        </div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 pt-6 border-t border-white/5 flex flex-col sm:flex-row justify-between items-center gap-3 text-[11px] text-slate-500">
+            <span>© 2026 TaxMitra Advisory LLP. <strong class="text-slate-400">ICAI Firm Reg #054921</strong> · All rights reserved.</span>
+            <div class="flex items-center gap-4"><a href="#" class="hover:text-emeraldPrimary">Privacy</a><a href="#" class="hover:text-emeraldPrimary">Terms</a><a href="#" class="hover:text-emeraldPrimary">Disclaimers</a></div>
+        </div>
+    </footer>
+
+    <script>
+        const mobileToggle = document.getElementById('mobile-toggle');
+        const mobileDrawer = document.getElementById('mobile-drawer');
+        if (mobileToggle) {
+            mobileToggle.addEventListener('click', () => {
+                mobileDrawer.classList.toggle('hidden');
+                const icon = mobileToggle.querySelector('i');
+                icon.classList.toggle('fa-bars');
+                icon.classList.toggle('fa-xmark');
+            });
+        }
+
+        function handleContactSubmit(e) {
+            e.preventDefault();
+            e.target.classList.add('opacity-50', 'pointer-events-none');
+            document.getElementById('success-box').classList.remove('hidden');
+            document.getElementById('success-box').scrollIntoView({ behavior: 'smooth', block: 'center' });
+            setTimeout(() => {
+                e.target.reset();
+                e.target.classList.remove('opacity-50', 'pointer-events-none');
+            }, 1500);
+        }
+    </script>
+</body>
+
+</html>

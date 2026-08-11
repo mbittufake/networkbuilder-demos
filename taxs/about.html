@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AscendTax — About Our Firm</title>
+    <meta name="description" content="AscendTax is a licensed Chartered Accountancy firm. 15+ years of practice, senior CAs on WhatsApp, and a client portal that shows every step of your filing.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        ink: '#0B1220',
+                        inkSoft: '#111A2E',
+                        forest: '#052E22',
+                        forestSoft: '#0B3D2C',
+                        gold: '#D4AF37',
+                        goldHover: '#C19B2E',
+                        goldLight: '#F3E6B8',
+                        cream: '#FBF7EF',
+                        slateLine: '#E8E2D6'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Fraunces', 'serif']
+                    },
+                    boxShadow: {
+                        soft: '0 10px 40px -12px rgba(11,18,32,0.12)',
+                        lift: '0 24px 60px -20px rgba(11,18,32,0.28)',
+                        gold: '0 12px 40px -10px rgba(212,175,55,0.45)'
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #FFFFFF;
+            color: #0B1220;
+        }
+        .font-serif-display {
+            font-family: 'Fraunces', serif;
+        }
+        .reveal {
+            opacity: 0;
+            transform: translateY(28px);
+            transition: opacity .7s cubic-bezier(.16,1,.3,1), transform .7s cubic-bezier(.16,1,.3,1);
+        }
+        .reveal.in-view {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .gold-gradient-text {
+            background: linear-gradient(120deg, #D4AF37, #F3E6B8 45%, #C19B2E);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .btn-gold {
+            background: linear-gradient(120deg, #D4AF37, #E6C75C);
+            box-shadow: 0 10px 30px -8px rgba(212,175,55,.5);
+            transition: all .3s cubic-bezier(.16,1,.3,1);
+        }
+        .btn-gold:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 18px 40px -10px rgba(212,175,55,.6);
+        }
+        .glass-dark {
+            background: rgba(255,255,255,.06);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(255,255,255,.12);
+        }
+        .nav-link {
+            position: relative;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -6px;
+            width: 0;
+            height: 2px;
+            background: #D4AF37;
+            transition: width .3s ease;
+        }
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        .nav-link.active {
+            color: #0B1220;
+            font-weight: 600;
+        }
+        .nav-link.active::after {
+            width: 100%;
+        }
+        .card-hover {
+            transition: all .4s cubic-bezier(.16,1,.3,1);
+        }
+        .card-hover:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 30px 60px -20px rgba(11,18,32,.22);
+        }
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #F1EDE3;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #C19B2E;
+            border-radius: 8px;
+        }
+            /* Hide scrollbars — clean app look */
+        html { scrollbar-width: none; -ms-overflow-style: none; }
+        html::-webkit-scrollbar { display: none; }
+        * { scrollbar-width: none; -ms-overflow-style: none; }
+        *::-webkit-scrollbar { width: 0; height: 0; display: none; }
+        @media (max-width: 640px) {
+            html { font-size: 92%; }
+        }
+    </style>
+</head>
+
+<body class="antialiased selection:bg-gold selection:text-ink">
+
+    <!-- ═══════════ TOP ANNOUNCEMENT BAR ═══════════ -->
+    <div class="bg-ink text-slate-300 text-xs py-2.5 relative z-50">
+        <div class="max-w-7xl mx-auto px-6 flex items-center justify-between gap-4">
+            <div class="flex items-center gap-2.5 overflow-hidden">
+                <span class="w-2 h-2 rounded-full bg-gold animate-pulse shrink-0"></span>
+                <p class="sm:truncate leading-snug"><span class="font-semibold text-gold">FY 2025-26 filings open:</span> Last date 31 July — book your CA before slots fill.</p>
+            </div>
+            <div class="hidden md:flex items-center gap-5 shrink-0">
+                <a href="./admin/index.html" class="font-semibold text-gold hover:text-white transition flex items-center gap-1.5">
+                    <i class="fa-solid fa-gauge-high text-[10px]"></i> Admin Portal Demo
+                </a>
+                <a href="https://wa.me/919876543210" target="_blank" class="font-semibold text-white hover:text-gold transition flex items-center gap-1.5">
+                    <i class="fa-brands fa-whatsapp text-emerald-400"></i> WhatsApp
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- ═══════════ NAVBAR ═══════════ -->
+    <header id="site-nav" class="sticky top-0 z-40 bg-white/85 backdrop-blur-xl border-b border-slateLine transition-all">
+        <nav class="max-w-7xl mx-auto px-6 h-18 py-4 flex items-center justify-between">
+            <a href="index.html" class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-xl bg-ink text-gold flex items-center justify-center text-lg shadow-soft">
+                    <i class="fa-solid fa-landmark"></i>
+                </div>
+                <div class="leading-tight">
+                    <span class="font-serif-display text-xl font-semibold tracking-tight text-ink">Ascend<span class="text-gold">Tax</span></span>
+                    <span class="block text-[10px] uppercase tracking-[0.2em] text-slate-400 font-semibold">Wealth & Tax Advisory</span>
+                </div>
+            </a>
+
+            <div class="hidden lg:flex items-center gap-7 text-sm font-medium text-slate-600">
+                <a href="index.html" class="nav-link hover:text-ink transition">Home</a>
+                <a href="services.html" class="nav-link hover:text-ink transition">Services</a>
+                <a href="calculator.html" class="nav-link hover:text-ink transition">Tax Calculator</a>
+                <a href="pricing.html" class="nav-link hover:text-ink transition">Pricing</a>
+                <a href="about.html" class="nav-link active">About</a>
+                <a href="contact.html" class="nav-link hover:text-ink transition">Contact</a>
+            </div>
+
+            <div class="flex items-center gap-3">
+                <a href="contact.html" class="hidden xl:inline-flex items-center gap-2 btn-gold text-ink font-bold text-sm px-5 py-2.5 rounded-full">
+                    <i class="fa-solid fa-phone text-xs"></i> Book Consultation
+                </a>
+                <a href="./admin/index.html" class="hidden lg:inline-flex items-center gap-2 bg-ink text-gold border border-ink hover:bg-forest hover:border-forest font-bold text-sm px-4 py-2.5 rounded-full transition">
+                    <i class="fa-solid fa-gauge-high text-xs"></i> Admin Panel
+                </a>
+                <button id="menu-btn" class="lg:hidden w-10 h-10 rounded-xl border border-slateLine flex items-center justify-center text-ink">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+            </div>
+        </nav>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="lg:hidden hidden bg-white border-t border-slateLine px-6 py-6 space-y-1">
+            <a href="index.html" class="block py-2.5 text-slate-600">Home</a>
+            <a href="services.html" class="block py-2.5 text-slate-600">Services</a>
+            <a href="calculator.html" class="block py-2.5 text-slate-600">Tax Calculator</a>
+            <a href="pricing.html" class="block py-2.5 text-slate-600">Pricing</a>
+            <a href="about.html" class="block py-2.5 font-semibold text-gold">About</a>
+            <a href="contact.html" class="block py-2.5 text-slate-600">Contact</a>
+            <a href="./admin/index.html" class="mt-2 block py-3 px-4 bg-ink text-gold font-bold rounded-xl text-center">Admin Panel →</a>
+        </div>
+    </header>
+
+    <!-- ═══════════ ABOUT HERO ═══════════ -->
+    <section class="relative overflow-hidden bg-ink text-white">
+        <div class="absolute -top-40 -right-40 w-[600px] h-[600px] rounded-full bg-forestSoft blur-3xl opacity-60"></div>
+        <div class="absolute bottom-0 left-1/4 w-80 h-80 rounded-full bg-gold/10 blur-3xl"></div>
+        <div class="max-w-7xl mx-auto px-6 pt-20 pb-24 relative z-10 text-center">
+            <span class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.2em] text-gold">
+                <span class="w-8 h-px bg-gold"></span> About AscendTax <span class="w-8 h-px bg-gold"></span>
+            </span>
+            <h1 class="font-serif-display text-5xl sm:text-6xl font-semibold leading-tight mt-5">
+                A CA firm that actually<br><span class="gold-gradient-text">picks up the phone.</span>
+            </h1>
+            <p class="text-slate-300 text-lg max-w-2xl mx-auto mt-6">AscendTax is a licensed Chartered Accountancy firm blending 15+ years of practice with modern automation. Senior CAs on WhatsApp, automated deadline reminders, and a client portal that shows every step of your filing.</p>
+            <div class="flex flex-wrap justify-center gap-4 mt-10">
+                <a href="contact.html" class="btn-gold inline-flex items-center gap-3 text-ink font-bold px-8 py-4 rounded-full">
+                    <span>Meet Our Team</span><i class="fa-solid fa-arrow-right text-xs"></i>
+                </a>
+                <a href="calculator.html" class="inline-flex items-center gap-2.5 text-sm font-semibold text-white hover:text-gold transition px-2 py-3">
+                    <span class="w-11 h-11 rounded-full border border-white/25 flex items-center justify-center"><i class="fa-solid fa-calculator"></i></span>
+                    Try Tax Calculator
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════ WHY CHOOSE US ═══════════ -->
+    <section class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid lg:grid-cols-12 gap-16 items-center">
+                <div class="lg:col-span-5 reveal">
+                    <div class="relative">
+                        <div class="rounded-[2rem] overflow-hidden border border-slateLine shadow-lift">
+                            <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?q=80&w=900&auto=format&fit=crop" alt="AscendTax team" class="w-full h-[520px] object-cover">
+                        </div>
+                        <div class="absolute -bottom-6 -right-6 bg-ink text-white rounded-2xl p-6 shadow-lift">
+                            <div class="font-serif-display text-4xl font-semibold gold-gradient-text">15+</div>
+                            <p class="text-xs text-slate-300 mt-1">Years licensed<br>CA practice</p>
+                        </div>
+                        <div class="absolute -top-6 -left-6 bg-gold text-ink rounded-2xl px-5 py-4 shadow-gold">
+                            <div class="flex items-center gap-1 text-sm"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                            <p class="text-xs font-bold mt-1">Rated 4.9/5 by 2,300+ clients</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-7 space-y-8 reveal">
+                    <span class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.2em] text-goldHover">
+                        <span class="w-8 h-px bg-gold"></span> Why AscendTax
+                    </span>
+                    <h2 class="font-serif-display text-4xl sm:text-5xl font-semibold text-ink leading-tight">
+                        A CA firm that actually<br><span class="gold-gradient-text">picks up the phone.</span>
+                    </h2>
+                    <p class="text-slate-500 leading-relaxed max-w-xl">
+                        Most firms are great on paper and impossible to reach. We built AscendTax to be the opposite — senior CAs on WhatsApp, automated reminders, and a client portal that shows every step of your filing.
+                    </p>
+
+                    <div class="grid sm:grid-cols-2 gap-5">
+                        <div class="bg-cream rounded-2xl border border-slateLine p-6 flex gap-4">
+                            <span class="w-10 h-10 rounded-xl bg-ink text-gold flex items-center justify-center shrink-0"><i class="fa-solid fa-shield-halved"></i></span>
+                            <div>
+                                <h4 class="font-bold text-ink mb-1">Bank-grade security</h4>
+                                <p class="text-xs text-slate-500">256-bit encrypted vault, RBI-grade compliance.</p>
+                            </div>
+                        </div>
+                        <div class="bg-cream rounded-2xl border border-slateLine p-6 flex gap-4">
+                            <span class="w-10 h-10 rounded-xl bg-ink text-gold flex items-center justify-center shrink-0"><i class="fa-solid fa-bolt"></i></span>
+                            <div>
+                                <h4 class="font-bold text-ink mb-1">48-hr turnaround</h4>
+                                <p class="text-xs text-slate-500">Most filings delivered within two working days.</p>
+                            </div>
+                        </div>
+                        <div class="bg-cream rounded-2xl border border-slateLine p-6 flex gap-4">
+                            <span class="w-10 h-10 rounded-xl bg-ink text-gold flex items-center justify-center shrink-0"><i class="fa-solid fa-comments"></i></span>
+                            <div>
+                                <h4 class="font-bold text-ink mb-1">Real human support</h4>
+                                <p class="text-xs text-slate-500">Senior CAs, not bots. WhatsApp replies under 2 hrs.</p>
+                            </div>
+                        </div>
+                        <div class="bg-cream rounded-2xl border border-slateLine p-6 flex gap-4">
+                            <span class="w-10 h-10 rounded-xl bg-ink text-gold flex items-center justify-center shrink-0"><i class="fa-solid fa-scale-balanced"></i></span>
+                            <div>
+                                <h4 class="font-bold text-ink mb-1">Zero penalty promise</h4>
+                                <p class="text-xs text-slate-500">Deadline alerts so you never miss a filing again.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════ STATS BANNER ═══════════ -->
+    <section class="bg-forest text-white">
+        <div class="max-w-7xl mx-auto px-6 py-16">
+            <div class="grid grid-cols-2 lg:grid-cols-4 gap-10 text-center">
+                <div class="reveal">
+                    <div class="font-serif-display text-4xl lg:text-5xl font-semibold gold-gradient-text">5,000+</div>
+                    <p class="text-sm text-emerald-100/70 mt-2">Returns filed yearly</p>
+                </div>
+                <div class="reveal">
+                    <div class="font-serif-display text-4xl lg:text-5xl font-semibold gold-gradient-text">800+</div>
+                    <p class="text-sm text-emerald-100/70 mt-2">Business clients on GST</p>
+                </div>
+                <div class="reveal">
+                    <div class="font-serif-display text-4xl lg:text-5xl font-semibold gold-gradient-text">₹1.8 Cr</div>
+                    <p class="text-sm text-emerald-100/70 mt-2">Tax saved last year</p>
+                </div>
+                <div class="reveal">
+                    <div class="font-serif-display text-4xl lg:text-5xl font-semibold gold-gradient-text">98%</div>
+                    <p class="text-sm text-emerald-100/70 mt-2">Filings error-free</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════ HOW IT WORKS ═══════════ -->
+    <section class="py-24 bg-ink text-white relative overflow-hidden">
+        <div class="absolute -bottom-40 -right-40 w-[500px] h-[500px] rounded-full bg-forestSoft blur-3xl opacity-70"></div>
+        <div class="max-w-7xl mx-auto px-6 relative z-10">
+            <div class="max-w-2xl mx-auto text-center space-y-4 mb-16 reveal">
+                <span class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.2em] text-gold">
+                    <span class="w-8 h-px bg-gold"></span> How It Works <span class="w-8 h-px bg-gold"></span>
+                </span>
+                <h2 class="font-serif-display text-4xl sm:text-5xl font-semibold leading-tight">Tax season, minus the panic</h2>
+                <p class="text-slate-400">Three steps. Zero headaches. Full transparency.</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="reveal glass-dark rounded-3xl p-8 relative">
+                    <span class="font-serif-display text-6xl font-bold text-gold/20 absolute top-6 right-8">01</span>
+                    <div class="w-12 h-12 rounded-2xl bg-gold text-ink flex items-center justify-center text-lg mb-6"><i class="fa-solid fa-clipboard-list"></i></div>
+                    <h3 class="font-serif-display text-xl font-semibold mb-3">Share your documents</h3>
+                    <p class="text-slate-300 text-sm leading-relaxed">Upload Form 16, bank statements and investment proofs to a secure, encrypted vault.</p>
+                </div>
+                <div class="reveal glass-dark rounded-3xl p-8 relative">
+                    <span class="font-serif-display text-6xl font-bold text-gold/20 absolute top-6 right-8">02</span>
+                    <div class="w-12 h-12 rounded-2xl bg-gold text-ink flex items-center justify-center text-lg mb-6"><i class="fa-solid fa-chart-simple"></i></div>
+                    <h3 class="font-serif-display text-xl font-semibold mb-3">We optimize, you review</h3>
+                    <p class="text-slate-300 text-sm leading-relaxed">A dedicated CA prepares your returns and hunts for every legal deduction you're missing.</p>
+                </div>
+                <div class="reveal glass-dark rounded-3xl p-8 relative">
+                    <span class="font-serif-display text-6xl font-bold text-gold/20 absolute top-6 right-8">03</span>
+                    <div class="w-12 h-12 rounded-2xl bg-gold text-ink flex items-center justify-center text-lg mb-6"><i class="fa-solid fa-file-signature"></i></div>
+                    <h3 class="font-serif-display text-xl font-semibold mb-3">e-Sign & track to refund</h3>
+                    <p class="text-slate-300 text-sm leading-relaxed">Approve with OTP, we file instantly. Track status live until your refund lands.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════ TESTIMONIALS ═══════════ -->
+    <section class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="max-w-2xl mx-auto text-center space-y-4 mb-16 reveal">
+                <span class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.2em] text-goldHover">
+                    <span class="w-8 h-px bg-gold"></span> Client Stories <span class="w-8 h-px bg-gold"></span>
+                </span>
+                <h2 class="font-serif-display text-4xl sm:text-5xl font-semibold text-ink leading-tight">
+                    Don't take our word for it
+                </h2>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-6">
+                <div class="reveal bg-cream rounded-3xl border border-slateLine p-8 card-hover">
+                    <div class="flex items-center gap-1 text-gold text-sm mb-5"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                    <p class="text-slate-600 text-sm leading-relaxed mb-6">"Refund of ₹1.2 lakh I'd given up on — AscendTax found mistakes in my old filings and got it back in 3 weeks. Genuinely changed how I feel about taxes."</p>
+                    <div class="flex items-center gap-3">
+                        <span class="w-11 h-11 rounded-full bg-ink text-gold font-bold flex items-center justify-center">AK</span>
+                        <div>
+                            <strong class="text-sm text-ink block">Aarav Kapoor</strong>
+                            <span class="text-xs text-slate-400">Sr. Software Engineer, Bengaluru</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="reveal bg-ink text-white rounded-3xl p-8 card-hover relative overflow-hidden">
+                    <div class="absolute -top-8 -right-8 w-32 h-32 bg-gold/20 rounded-full blur-2xl"></div>
+                    <div class="flex items-center gap-1 text-gold text-sm mb-5"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                    <p class="text-slate-200 text-sm leading-relaxed mb-6">"We onboarded 40+ employees on GST and payroll with zero errors. The client portal means my finance team always knows where every filing stands."</p>
+                    <div class="flex items-center gap-3">
+                        <span class="w-11 h-11 rounded-full bg-gold text-ink font-bold flex items-center justify-center">SM</span>
+                        <div>
+                            <strong class="text-sm text-white block">Sneha Malhotra</strong>
+                            <span class="text-xs text-slate-400">CFO, NovaLabs Pvt Ltd</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="reveal bg-cream rounded-3xl border border-slateLine p-8 card-hover">
+                    <div class="flex items-center gap-1 text-gold text-sm mb-5"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                    <p class="text-slate-600 text-sm leading-relaxed mb-6">"Got a 148 notice and panicked. Their team drafted a response, joined my virtual hearing, and closed the case in 40 days. Worth every rupee."</p>
+                    <div class="flex items-center gap-3">
+                        <span class="w-11 h-11 rounded-full bg-ink text-gold font-bold flex items-center justify-center">RV</span>
+                        <div>
+                            <strong class="text-sm text-ink block">Rohan Verma</strong>
+                            <span class="text-xs text-slate-400">Founder, UrbanNest</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════ FAQ ═══════════ -->
+    <section class="py-24 bg-cream">
+        <div class="max-w-3xl mx-auto px-6">
+            <div class="text-center space-y-4 mb-14 reveal">
+                <span class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.2em] text-goldHover">
+                    <span class="w-8 h-px bg-gold"></span> FAQ <span class="w-8 h-px bg-gold"></span>
+                </span>
+                <h2 class="font-serif-display text-4xl sm:text-5xl font-semibold text-ink leading-tight">Questions, answered</h2>
+            </div>
+
+            <div class="space-y-4" id="faq-list">
+                <div class="reveal bg-white rounded-2xl border border-slateLine overflow-hidden">
+                    <button class="faq-q w-full flex items-center justify-between gap-4 px-6 py-5 text-left font-semibold text-ink hover:bg-slate-50 transition">
+                        Which tax regime should I choose — old or new?
+                        <span class="faq-icon w-8 h-8 rounded-full bg-cream flex items-center justify-center text-goldHover shrink-0 transition-transform"><i class="fa-solid fa-chevron-down text-xs"></i></span>
+                    </button>
+                    <div class="faq-a hidden px-6 pb-5 text-sm text-slate-500 leading-relaxed">
+                        It depends on your deductions. The new regime is simpler but offers fewer deductions, while the old regime rewards investments like 80C, HRA and home loans. Use our calculator — it computes both in real time. Generally, high-income earners with heavy deductions still win under the old regime.
+                    </div>
+                </div>
+                <div class="reveal bg-white rounded-2xl border border-slateLine overflow-hidden">
+                    <button class="faq-q w-full flex items-center justify-between gap-4 px-6 py-5 text-left font-semibold text-ink hover:bg-slate-50 transition">
+                        What documents do I need to share?
+                        <span class="faq-icon w-8 h-8 rounded-full bg-cream flex items-center justify-center text-goldHover shrink-0 transition-transform"><i class="fa-solid fa-chevron-down text-xs"></i></span>
+                    </button>
+                    <div class="faq-a hidden px-6 pb-5 text-sm text-slate-500 leading-relaxed">
+                        Just Form 16, bank statements, salary slips and investment proofs (80C, HRA, home loan). For business filings we'll guide you on books and GST data. Everything is uploaded to an encrypted vault and never shared.
+                    </div>
+                </div>
+                <div class="reveal bg-white rounded-2xl border border-slateLine overflow-hidden">
+                    <button class="faq-q w-full flex items-center justify-between gap-4 px-6 py-5 text-left font-semibold text-ink hover:bg-slate-50 transition">
+                        How long does filing actually take?
+                        <span class="faq-icon w-8 h-8 rounded-full bg-cream flex items-center justify-center text-goldHover shrink-0 transition-transform"><i class="fa-solid fa-chevron-down text-xs"></i></span>
+                    </button>
+                    <div class="faq-a hidden px-6 pb-5 text-sm text-slate-500 leading-relaxed">
+                        Salaried ITRs are typically filed within 48 hours of receiving your documents. GST filings go out 2 days before each deadline. Complex corporate work is scheduled with a dedicated CA on a clear timeline.
+                    </div>
+                </div>
+                <div class="reveal bg-white rounded-2xl border border-slateLine overflow-hidden">
+                    <button class="faq-q w-full flex items-center justify-between gap-4 px-6 py-5 text-left font-semibold text-ink hover:bg-slate-50 transition">
+                        What if I already got an income tax notice?
+                        <span class="faq-icon w-8 h-8 rounded-full bg-cream flex items-center justify-center text-goldHover shrink-0 transition-transform"><i class="fa-solid fa-chevron-down text-xs"></i></span>
+                    </button>
+                    <div class="faq-a hidden px-6 pb-5 text-sm text-slate-500 leading-relaxed">
+                        Don't ignore it. Share the notice with us within 24 hours. Our litigation team responds to 143(1), 143(2), 148 and GST notices, drafts replies, and represents you before authorities — usually closing cases in 30-60 days.
+                    </div>
+                </div>
+                <div class="reveal bg-white rounded-2xl border border-slateLine overflow-hidden">
+                    <button class="faq-q w-full flex items-center justify-between gap-4 px-6 py-5 text-left font-semibold text-ink hover:bg-slate-50 transition">
+                        Is my financial data secure?
+                        <span class="faq-icon w-8 h-8 rounded-full bg-cream flex items-center justify-center text-goldHover shrink-0 transition-transform"><i class="fa-solid fa-chevron-down text-xs"></i></span>
+                    </button>
+                    <div class="faq-a hidden px-6 pb-5 text-sm text-slate-500 leading-relaxed">
+                        Absolutely. All documents are stored in a 256-bit AES encrypted vault with strict access controls. We never share your data with third parties and delete files on request after filing.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════ FINAL CTA ═══════════ -->
+    <section class="relative overflow-hidden bg-ink text-white py-24">
+        <div class="absolute top-0 left-1/4 w-96 h-96 bg-forestSoft rounded-full blur-3xl opacity-70"></div>
+        <div class="absolute bottom-0 right-1/4 w-80 h-80 bg-gold/10 rounded-full blur-3xl"></div>
+        <div class="max-w-4xl mx-auto px-6 text-center relative z-10">
+            <h2 class="font-serif-display text-4xl sm:text-6xl font-semibold leading-tight">
+                Ready to keep more of<br><span class="gold-gradient-text">what you earn?</span>
+            </h2>
+            <p class="text-slate-300 mt-6 max-w-xl mx-auto">Book a free 15-minute review with a senior CA. We'll tell you exactly what you're overpaying — whether or not you hire us.</p>
+            <div class="flex flex-wrap justify-center gap-4 mt-10">
+                <a href="contact.html" class="btn-gold inline-flex items-center gap-3 text-ink font-bold px-8 py-4 rounded-full">
+                    <span>Book Free Review</span><i class="fa-solid fa-arrow-right text-xs"></i>
+                </a>
+                <a href="https://wa.me/919876543210" target="_blank" class="inline-flex items-center gap-2.5 px-6 py-4 rounded-full glass-dark font-semibold hover:bg-white/10 transition">
+                    <i class="fa-brands fa-whatsapp text-emerald-400 text-lg"></i> Chat on WhatsApp
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════ FOOTER ═══════════ -->
+    <footer class="bg-ink border-t border-white/10 text-slate-400 pt-16 pb-8">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid md:grid-cols-12 gap-10 pb-12 border-b border-white/10">
+                <div class="md:col-span-4 space-y-4">
+                    <a href="index.html" class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-xl bg-gold text-ink flex items-center justify-center text-lg">
+                            <i class="fa-solid fa-landmark"></i>
+                        </div>
+                        <div class="leading-tight">
+                            <span class="font-serif-display text-xl font-semibold text-white">Ascend<span class="text-gold">Tax</span></span>
+                            <span class="block text-[10px] uppercase tracking-[0.2em] text-slate-500 font-semibold">Wealth & Tax Advisory</span>
+                        </div>
+                    </a>
+                    <p class="text-sm leading-relaxed text-slate-500">Licensed Chartered Accountants making tax simple, legal and profitable for individuals, startups and enterprises across India.</p>
+                    <div class="flex items-center gap-3">
+                        <a href="#" class="w-9 h-9 rounded-full border border-white/15 flex items-center justify-center hover:bg-gold hover:text-ink hover:border-gold transition"><i class="fa-brands fa-linkedin-in text-sm"></i></a>
+                        <a href="#" class="w-9 h-9 rounded-full border border-white/15 flex items-center justify-center hover:bg-gold hover:text-ink hover:border-gold transition"><i class="fa-brands fa-x-twitter text-sm"></i></a>
+                        <a href="#" class="w-9 h-9 rounded-full border border-white/15 flex items-center justify-center hover:bg-gold hover:text-ink hover:border-gold transition"><i class="fa-brands fa-instagram text-sm"></i></a>
+                        <a href="https://wa.me/919876543210" target="_blank" class="w-9 h-9 rounded-full border border-white/15 flex items-center justify-center hover:bg-gold hover:text-ink hover:border-gold transition"><i class="fa-brands fa-whatsapp text-sm"></i></a>
+                    </div>
+                </div>
+
+                <div class="md:col-span-2">
+                    <h5 class="text-white font-bold mb-4 text-sm uppercase tracking-wider">Services</h5>
+                    <ul class="space-y-2.5 text-sm">
+                        <li><a href="services.html" class="hover:text-gold transition">Income Tax & ITR</a></li>
+                        <li><a href="services.html" class="hover:text-gold transition">GST Compliance</a></li>
+                        <li><a href="services.html" class="hover:text-gold transition">Company Registration</a></li>
+                        <li><a href="services.html" class="hover:text-gold transition">Payroll & TDS</a></li>
+                        <li><a href="services.html" class="hover:text-gold transition">Notice Defense</a></li>
+                    </ul>
+                </div>
+
+                <div class="md:col-span-2">
+                    <h5 class="text-white font-bold mb-4 text-sm uppercase tracking-wider">Company</h5>
+                    <ul class="space-y-2.5 text-sm">
+                        <li><a href="about.html" class="hover:text-gold transition">About Us</a></li>
+                        <li><a href="calculator.html" class="hover:text-gold transition">Tax Calculator</a></li>
+                        <li><a href="pricing.html" class="hover:text-gold transition">Pricing</a></li>
+                        <li><a href="contact.html" class="hover:text-gold transition">Contact</a></li>
+                        <li><a href="./admin/index.html" class="hover:text-gold transition font-semibold text-gold">Admin Portal Demo →</a></li>
+                    </ul>
+                </div>
+
+                <div class="md:col-span-4 space-y-4">
+                    <h5 class="text-white font-bold text-sm uppercase tracking-wider">Get in touch</h5>
+                    <div class="space-y-3 text-sm">
+                        <p class="flex items-center gap-3"><i class="fa-solid fa-location-dot text-gold"></i> Mumbai • Delhi NCR • Bengaluru</p>
+                        <p class="flex items-center gap-3"><i class="fa-solid fa-phone text-gold"></i> +91 98765 43210</p>
+                        <p class="flex items-center gap-3"><i class="fa-solid fa-envelope text-gold"></i> hello@ascendtax.in</p>
+                    </div>
+                    <a href="https://wa.me/919876543210" target="_blank" class="inline-flex items-center gap-2.5 glass-dark rounded-full px-5 py-3 text-sm font-semibold text-white hover:bg-white/10 transition">
+                        <i class="fa-brands fa-whatsapp text-emerald-400"></i> WhatsApp Support — replies in 2 hrs
+                    </a>
+                </div>
+            </div>
+
+            <div class="flex flex-col sm:flex-row items-center justify-between gap-4 pt-8 text-xs text-slate-600">
+                <p>© 2026 AscendTax Advisory LLP. All rights reserved. FCA Reg #054921.</p>
+                <div class="flex items-center gap-6">
+                    <a href="#" class="hover:text-gold transition">Privacy Policy</a>
+                    <a href="#" class="hover:text-gold transition">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        menuBtn.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+
+        window.addEventListener('scroll', () => {
+            document.getElementById('site-nav').classList.toggle('shadow-soft', window.scrollY > 20);
+        });
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry, i) => {
+                if (entry.isIntersecting) {
+                    setTimeout(() => entry.target.classList.add('in-view'), i * 80);
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.12 });
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+        // FAQ accordion
+        document.querySelectorAll('.faq-q').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const answer = btn.nextElementSibling;
+                const icon = btn.querySelector('.faq-icon');
+                const isOpen = !answer.classList.contains('hidden');
+                document.querySelectorAll('.faq-a').forEach(a => a.classList.add('hidden'));
+                document.querySelectorAll('.faq-icon').forEach(i => i.style.transform = 'rotate(0deg)');
+                if (!isOpen) {
+                    answer.classList.remove('hidden');
+                    icon.style.transform = 'rotate(180deg)';
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

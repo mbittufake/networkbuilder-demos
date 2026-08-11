@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AscendTax — Pricing & Plans</title>
+    <meta name="description" content="Transparent CA and tax-filing pricing. Salaried Saver, Business Pro and Corporate Suite plans with no hidden charges.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        ink: '#0B1220',
+                        inkSoft: '#111A2E',
+                        forest: '#052E22',
+                        forestSoft: '#0B3D2C',
+                        gold: '#D4AF37',
+                        goldHover: '#C19B2E',
+                        goldLight: '#F3E6B8',
+                        cream: '#FBF7EF',
+                        slateLine: '#E8E2D6'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Fraunces', 'serif']
+                    },
+                    boxShadow: {
+                        soft: '0 10px 40px -12px rgba(11,18,32,0.12)',
+                        lift: '0 24px 60px -20px rgba(11,18,32,0.28)',
+                        gold: '0 12px 40px -10px rgba(212,175,55,0.45)'
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #FFFFFF;
+            color: #0B1220;
+        }
+        .font-serif-display {
+            font-family: 'Fraunces', serif;
+        }
+        .reveal {
+            opacity: 0;
+            transform: translateY(28px);
+            transition: opacity .7s cubic-bezier(.16,1,.3,1), transform .7s cubic-bezier(.16,1,.3,1);
+        }
+        .reveal.in-view {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .gold-gradient-text {
+            background: linear-gradient(120deg, #D4AF37, #F3E6B8 45%, #C19B2E);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .btn-gold {
+            background: linear-gradient(120deg, #D4AF37, #E6C75C);
+            box-shadow: 0 10px 30px -8px rgba(212,175,55,.5);
+            transition: all .3s cubic-bezier(.16,1,.3,1);
+        }
+        .btn-gold:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 18px 40px -10px rgba(212,175,55,.6);
+        }
+        .glass-dark {
+            background: rgba(255,255,255,.06);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(255,255,255,.12);
+        }
+        .nav-link {
+            position: relative;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -6px;
+            width: 0;
+            height: 2px;
+            background: #D4AF37;
+            transition: width .3s ease;
+        }
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        .nav-link.active {
+            color: #0B1220;
+            font-weight: 600;
+        }
+        .nav-link.active::after {
+            width: 100%;
+        }
+        .card-hover {
+            transition: all .4s cubic-bezier(.16,1,.3,1);
+        }
+        .card-hover:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 30px 60px -20px rgba(11,18,32,.22);
+        }
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #F1EDE3;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #C19B2E;
+            border-radius: 8px;
+        }
+            /* Hide scrollbars — clean app look */
+        html { scrollbar-width: none; -ms-overflow-style: none; }
+        html::-webkit-scrollbar { display: none; }
+        * { scrollbar-width: none; -ms-overflow-style: none; }
+        *::-webkit-scrollbar { width: 0; height: 0; display: none; }
+        @media (max-width: 640px) {
+            html { font-size: 92%; }
+        }
+    </style>
+</head>
+
+<body class="antialiased selection:bg-gold selection:text-ink">
+
+    <!-- ═══════════ TOP ANNOUNCEMENT BAR ═══════════ -->
+    <div class="bg-ink text-slate-300 text-xs py-2.5 relative z-50">
+        <div class="max-w-7xl mx-auto px-6 flex items-center justify-between gap-4">
+            <div class="flex items-center gap-2.5 overflow-hidden">
+                <span class="w-2 h-2 rounded-full bg-gold animate-pulse shrink-0"></span>
+                <p class="sm:truncate leading-snug"><span class="font-semibold text-gold">FY 2025-26 filings open:</span> Last date 31 July — book your CA before slots fill.</p>
+            </div>
+            <div class="hidden md:flex items-center gap-5 shrink-0">
+                <a href="./admin/index.html" class="font-semibold text-gold hover:text-white transition flex items-center gap-1.5">
+                    <i class="fa-solid fa-gauge-high text-[10px]"></i> Admin Portal Demo
+                </a>
+                <a href="https://wa.me/919876543210" target="_blank" class="font-semibold text-white hover:text-gold transition flex items-center gap-1.5">
+                    <i class="fa-brands fa-whatsapp text-emerald-400"></i> WhatsApp
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- ═══════════ NAVBAR ═══════════ -->
+    <header id="site-nav" class="sticky top-0 z-40 bg-white/85 backdrop-blur-xl border-b border-slateLine transition-all">
+        <nav class="max-w-7xl mx-auto px-6 h-18 py-4 flex items-center justify-between">
+            <a href="index.html" class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-xl bg-ink text-gold flex items-center justify-center text-lg shadow-soft">
+                    <i class="fa-solid fa-landmark"></i>
+                </div>
+                <div class="leading-tight">
+                    <span class="font-serif-display text-xl font-semibold tracking-tight text-ink">Ascend<span class="text-gold">Tax</span></span>
+                    <span class="block text-[10px] uppercase tracking-[0.2em] text-slate-400 font-semibold">Wealth & Tax Advisory</span>
+                </div>
+            </a>
+
+            <div class="hidden lg:flex items-center gap-7 text-sm font-medium text-slate-600">
+                <a href="index.html" class="nav-link hover:text-ink transition">Home</a>
+                <a href="services.html" class="nav-link hover:text-ink transition">Services</a>
+                <a href="calculator.html" class="nav-link hover:text-ink transition">Tax Calculator</a>
+                <a href="pricing.html" class="nav-link active">Pricing</a>
+                <a href="about.html" class="nav-link hover:text-ink transition">About</a>
+                <a href="contact.html" class="nav-link hover:text-ink transition">Contact</a>
+            </div>
+
+            <div class="flex items-center gap-3">
+                <a href="contact.html" class="hidden xl:inline-flex items-center gap-2 btn-gold text-ink font-bold text-sm px-5 py-2.5 rounded-full">
+                    <i class="fa-solid fa-phone text-xs"></i> Book Consultation
+                </a>
+                <a href="./admin/index.html" class="hidden lg:inline-flex items-center gap-2 bg-ink text-gold border border-ink hover:bg-forest hover:border-forest font-bold text-sm px-4 py-2.5 rounded-full transition">
+                    <i class="fa-solid fa-gauge-high text-xs"></i> Admin Panel
+                </a>
+                <button id="menu-btn" class="lg:hidden w-10 h-10 rounded-xl border border-slateLine flex items-center justify-center text-ink">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+            </div>
+        </nav>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="lg:hidden hidden bg-white border-t border-slateLine px-6 py-6 space-y-1">
+            <a href="index.html" class="block py-2.5 text-slate-600">Home</a>
+            <a href="services.html" class="block py-2.5 text-slate-600">Services</a>
+            <a href="calculator.html" class="block py-2.5 text-slate-600">Tax Calculator</a>
+            <a href="pricing.html" class="block py-2.5 font-semibold text-gold">Pricing</a>
+            <a href="about.html" class="block py-2.5 text-slate-600">About</a>
+            <a href="contact.html" class="block py-2.5 text-slate-600">Contact</a>
+            <a href="./admin/index.html" class="mt-2 block py-3 px-4 bg-ink text-gold font-bold rounded-xl text-center">Admin Panel →</a>
+        </div>
+    </header>
+
+    <!-- ═══════════ PRICING HERO ═══════════ -->
+    <section class="relative overflow-hidden bg-ink text-white">
+        <div class="absolute -top-40 -right-40 w-[600px] h-[600px] rounded-full bg-forestSoft blur-3xl opacity-60"></div>
+        <div class="absolute bottom-0 left-1/4 w-80 h-80 rounded-full bg-gold/10 blur-3xl"></div>
+        <div class="max-w-7xl mx-auto px-6 pt-20 pb-24 relative z-10 text-center">
+            <span class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.2em] text-gold">
+                <span class="w-8 h-px bg-gold"></span> Transparent Pricing <span class="w-8 h-px bg-gold"></span>
+            </span>
+            <h1 class="font-serif-display text-5xl sm:text-6xl font-semibold leading-tight mt-5">
+                Plans that pay<br><span class="gold-gradient-text">for themselves</span>
+            </h1>
+            <p class="text-slate-300 text-lg max-w-2xl mx-auto mt-6">Every rupee itemised upfront. No hidden charges, no lock-ins, no "we'll call you back". Switch or cancel anytime.</p>
+            <div class="flex flex-wrap justify-center gap-4 mt-10">
+                <a href="#plans" class="btn-gold inline-flex items-center gap-3 text-ink font-bold px-8 py-4 rounded-full">
+                    <span>Compare Plans</span><i class="fa-solid fa-arrow-down text-xs"></i>
+                </a>
+                <a href="contact.html" class="inline-flex items-center gap-2.5 text-sm font-semibold text-white hover:text-gold transition px-2 py-3">
+                    <span class="w-11 h-11 rounded-full border border-white/25 flex items-center justify-center"><i class="fa-solid fa-comments"></i></span>
+                    Talk to a CA first
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════ PLANS ═══════════ -->
+    <section id="plans" class="py-24 bg-cream">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="max-w-2xl mx-auto text-center space-y-4 mb-16 reveal">
+                <span class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.2em] text-goldHover">
+                    <span class="w-8 h-px bg-gold"></span> Choose Your Plan <span class="w-8 h-px bg-gold"></span>
+                </span>
+                <h2 class="font-serif-display text-4xl sm:text-5xl font-semibold text-ink leading-tight">
+                    One firm, every stage<br>of your journey
+                </h2>
+            </div>
+
+            <div class="grid lg:grid-cols-3 gap-8 max-w-5xl mx-auto items-stretch">
+                <!-- Basic -->
+                <div class="reveal bg-white rounded-3xl border border-slateLine p-8 flex flex-col card-hover">
+                    <h3 class="font-serif-display text-xl font-semibold text-ink mb-1">Salaried Saver</h3>
+                    <p class="text-xs text-slate-400 mb-6">For salaried individuals & freelancers</p>
+                    <div class="mb-6">
+                        <span class="font-serif-display text-4xl font-semibold text-ink">₹999</span>
+                        <span class="text-slate-400 text-sm">/ filing</span>
+                    </div>
+                    <ul class="space-y-3 text-sm text-slate-600 mb-8 flex-grow">
+                        <li class="flex items-start gap-3"><i class="fa-solid fa-circle-check text-emerald-500 mt-0.5"></i> ITR-1 / ITR-4 filing</li>
+                        <li class="flex items-start gap-3"><i class="fa-solid fa-circle-check text-emerald-500 mt-0.5"></i> Deduction optimization review</li>
+                        <li class="flex items-start gap-3"><i class="fa-solid fa-circle-check text-emerald-500 mt-0.5"></i> Refund tracking till credit</li>
+                        <li class="flex items-start gap-3"><i class="fa-solid fa-circle-check text-emerald-500 mt-0.5"></i> e-Filing + DSC included</li>
+                        <li class="flex items-start gap-3 text-slate-400"><i class="fa-solid fa-circle-xmark mt-0.5"></i> Business / capital gains</li>
+                    </ul>
+                    <a href="contact.html" class="text-center font-bold text-ink border-2 border-ink rounded-full py-3 text-sm hover:bg-ink hover:text-gold transition">Choose Plan</a>
+                </div>
+
+                <!-- Popular -->
+                <div class="reveal bg-ink text-white rounded-3xl p-8 flex flex-col relative shadow-lift lg:-my-4 lg:py-12">
+                    <div class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-gold text-ink text-xs font-bold uppercase tracking-wider px-5 py-1.5 rounded-full shadow-gold">Most Popular</div>
+                    <h3 class="font-serif-display text-xl font-semibold mb-1">Business Pro</h3>
+                    <p class="text-xs text-slate-300 mb-6">For SMEs, startups & consultants</p>
+                    <div class="mb-6">
+                        <span class="font-serif-display text-4xl font-semibold gold-gradient-text">₹3,999</span>
+                        <span class="text-slate-400 text-sm">/ year</span>
+                    </div>
+                    <ul class="space-y-3 text-sm text-slate-200 mb-8 flex-grow">
+                        <li class="flex items-start gap-3"><i class="fa-solid fa-circle-check text-gold mt-0.5"></i> ITR-3 / 5 + business books</li>
+                        <li class="flex items-start gap-3"><i class="fa-solid fa-circle-check text-gold mt-0.5"></i> 12 GST filings (GSTR-1, 3B)</li>
+                        <li class="flex items-start gap-3"><i class="fa-solid fa-circle-check text-gold mt-0.5"></i> TDS returns (quarterly)</li>
+                        <li class="flex items-start gap-3"><i class="fa-solid fa-circle-check text-gold mt-0.5"></i> Dedicated CA on WhatsApp</li>
+                        <li class="flex items-start gap-3"><i class="fa-solid fa-circle-check text-gold mt-0.5"></i> Notice support included</li>
+                    </ul>
+                    <a href="contact.html" class="text-center font-bold text-ink bg-gold rounded-full py-3 text-sm hover:bg-goldHover transition">Get Business Pro</a>
+                </div>
+
+                <!-- Enterprise -->
+                <div class="reveal bg-white rounded-3xl border border-slateLine p-8 flex flex-col card-hover">
+                    <h3 class="font-serif-display text-xl font-semibold text-ink mb-1">Corporate Suite</h3>
+                    <p class="text-xs text-slate-400 mb-6">For growing & established companies</p>
+                    <div class="mb-6">
+                        <span class="font-serif-display text-4xl font-semibold text-ink">Custom</span>
+                        <span class="text-slate-400 text-sm">/ engagement</span>
+                    </div>
+                    <ul class="space-y-3 text-sm text-slate-600 mb-8 flex-grow">
+                        <li class="flex items-start gap-3"><i class="fa-solid fa-circle-check text-emerald-500 mt-0.5"></i> Full accounting & payroll</li>
+                        <li class="flex items-start gap-3"><i class="fa-solid fa-circle-check text-emerald-500 mt-0.5"></i> Audit & statutory compliance</li>
+                        <li class="flex items-start gap-3"><i class="fa-solid fa-circle-check text-emerald-500 mt-0.5"></i> Structuring & valuation</li>
+                        <li class="flex items-start gap-3"><i class="fa-solid fa-circle-check text-emerald-500 mt-0.5"></i> CFO-on-call advisory</li>
+                        <li class="flex items-start gap-3"><i class="fa-solid fa-circle-check text-emerald-500 mt-0.5"></i> Litigation representation</li>
+                    </ul>
+                    <a href="contact.html" class="text-center font-bold text-ink border-2 border-ink rounded-full py-3 text-sm hover:bg-ink hover:text-gold transition">Talk To Us</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════ EVERY PLAN INCLUDES ═══════════ -->
+    <section class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="max-w-2xl mx-auto text-center space-y-4 mb-16 reveal">
+                <span class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.2em] text-goldHover">
+                    <span class="w-8 h-px bg-gold"></span> Included With Every Plan <span class="w-8 h-px bg-gold"></span>
+                </span>
+                <h2 class="font-serif-display text-4xl sm:text-5xl font-semibold text-ink leading-tight">
+                    No plan? You still get<br><span class="gold-gradient-text">peace of mind.</span>
+                </h2>
+            </div>
+
+            <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="reveal bg-cream rounded-3xl border border-slateLine p-8 card-hover">
+                    <div class="w-12 h-12 rounded-2xl bg-ink text-gold flex items-center justify-center text-lg mb-5"><i class="fa-solid fa-bell"></i></div>
+                    <h3 class="font-bold text-ink mb-2">Deadline alerts</h3>
+                    <p class="text-xs text-slate-500 leading-relaxed">Automated reminders before every filing date. Miss a deadline again, we pay the penalty.</p>
+                </div>
+                <div class="reveal bg-cream rounded-3xl border border-slateLine p-8 card-hover">
+                    <div class="w-12 h-12 rounded-2xl bg-ink text-gold flex items-center justify-center text-lg mb-5"><i class="fa-solid fa-vault"></i></div>
+                    <h3 class="font-bold text-ink mb-2">Encrypted vault</h3>
+                    <p class="text-xs text-slate-500 leading-relaxed">Every document in a 256-bit AES vault with strict access logs. Deleted on request post-filing.</p>
+                </div>
+                <div class="reveal bg-cream rounded-3xl border border-slateLine p-8 card-hover">
+                    <div class="w-12 h-12 rounded-2xl bg-ink text-gold flex items-center justify-center text-lg mb-5"><i class="fa-solid fa-clipboard-check"></i></div>
+                    <h3 class="font-bold text-ink mb-2">Live client portal</h3>
+                    <p class="text-xs text-slate-500 leading-relaxed">Track each filing step-by-step — draft, review, e-sign, submitted, refund — in real time.</p>
+                </div>
+                <div class="reveal bg-cream rounded-3xl border border-slateLine p-8 card-hover">
+                    <div class="w-12 h-12 rounded-2xl bg-ink text-gold flex items-center justify-center text-lg mb-5"><i class="fa-solid fa-user-check"></i></div>
+                    <h3 class="font-bold text-ink mb-2">Dedicated CA</h3>
+                    <p class="text-xs text-slate-500 leading-relaxed">A named senior CA on WhatsApp — replies typically within 2 working hours, never a bot.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════ FINAL CTA ═══════════ -->
+    <section class="relative overflow-hidden bg-ink text-white py-24">
+        <div class="absolute top-0 left-1/4 w-96 h-96 bg-forestSoft rounded-full blur-3xl opacity-70"></div>
+        <div class="absolute bottom-0 right-1/4 w-80 h-80 bg-gold/10 rounded-full blur-3xl"></div>
+        <div class="max-w-4xl mx-auto px-6 text-center relative z-10">
+            <h2 class="font-serif-display text-4xl sm:text-6xl font-semibold leading-tight">
+                Not sure which plan<br><span class="gold-gradient-text">fits your situation?</span>
+            </h2>
+            <p class="text-slate-300 mt-6 max-w-xl mx-auto">Book a free 15-minute review with a senior CA. We'll tell you exactly what you need — whether or not you hire us.</p>
+            <div class="flex flex-wrap justify-center gap-4 mt-10">
+                <a href="contact.html" class="btn-gold inline-flex items-center gap-3 text-ink font-bold px-8 py-4 rounded-full">
+                    <span>Book Free Review</span><i class="fa-solid fa-arrow-right text-xs"></i>
+                </a>
+                <a href="https://wa.me/919876543210" target="_blank" class="inline-flex items-center gap-2.5 px-6 py-4 rounded-full glass-dark font-semibold hover:bg-white/10 transition">
+                    <i class="fa-brands fa-whatsapp text-emerald-400 text-lg"></i> Chat on WhatsApp
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════ FOOTER ═══════════ -->
+    <footer class="bg-ink border-t border-white/10 text-slate-400 pt-16 pb-8">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid md:grid-cols-12 gap-10 pb-12 border-b border-white/10">
+                <div class="md:col-span-4 space-y-4">
+                    <a href="index.html" class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-xl bg-gold text-ink flex items-center justify-center text-lg">
+                            <i class="fa-solid fa-landmark"></i>
+                        </div>
+                        <div class="leading-tight">
+                            <span class="font-serif-display text-xl font-semibold text-white">Ascend<span class="text-gold">Tax</span></span>
+                            <span class="block text-[10px] uppercase tracking-[0.2em] text-slate-500 font-semibold">Wealth & Tax Advisory</span>
+                        </div>
+                    </a>
+                    <p class="text-sm leading-relaxed text-slate-500">Licensed Chartered Accountants making tax simple, legal and profitable for individuals, startups and enterprises across India.</p>
+                    <div class="flex items-center gap-3">
+                        <a href="#" class="w-9 h-9 rounded-full border border-white/15 flex items-center justify-center hover:bg-gold hover:text-ink hover:border-gold transition"><i class="fa-brands fa-linkedin-in text-sm"></i></a>
+                        <a href="#" class="w-9 h-9 rounded-full border border-white/15 flex items-center justify-center hover:bg-gold hover:text-ink hover:border-gold transition"><i class="fa-brands fa-x-twitter text-sm"></i></a>
+                        <a href="#" class="w-9 h-9 rounded-full border border-white/15 flex items-center justify-center hover:bg-gold hover:text-ink hover:border-gold transition"><i class="fa-brands fa-instagram text-sm"></i></a>
+                        <a href="https://wa.me/919876543210" target="_blank" class="w-9 h-9 rounded-full border border-white/15 flex items-center justify-center hover:bg-gold hover:text-ink hover:border-gold transition"><i class="fa-brands fa-whatsapp text-sm"></i></a>
+                    </div>
+                </div>
+
+                <div class="md:col-span-2">
+                    <h5 class="text-white font-bold mb-4 text-sm uppercase tracking-wider">Services</h5>
+                    <ul class="space-y-2.5 text-sm">
+                        <li><a href="services.html" class="hover:text-gold transition">Income Tax & ITR</a></li>
+                        <li><a href="services.html" class="hover:text-gold transition">GST Compliance</a></li>
+                        <li><a href="services.html" class="hover:text-gold transition">Company Registration</a></li>
+                        <li><a href="services.html" class="hover:text-gold transition">Payroll & TDS</a></li>
+                        <li><a href="services.html" class="hover:text-gold transition">Notice Defense</a></li>
+                    </ul>
+                </div>
+
+                <div class="md:col-span-2">
+                    <h5 class="text-white font-bold mb-4 text-sm uppercase tracking-wider">Company</h5>
+                    <ul class="space-y-2.5 text-sm">
+                        <li><a href="about.html" class="hover:text-gold transition">About Us</a></li>
+                        <li><a href="calculator.html" class="hover:text-gold transition">Tax Calculator</a></li>
+                        <li><a href="pricing.html" class="hover:text-gold transition">Pricing</a></li>
+                        <li><a href="contact.html" class="hover:text-gold transition">Contact</a></li>
+                        <li><a href="./admin/index.html" class="hover:text-gold transition font-semibold text-gold">Admin Portal Demo →</a></li>
+                    </ul>
+                </div>
+
+                <div class="md:col-span-4 space-y-4">
+                    <h5 class="text-white font-bold text-sm uppercase tracking-wider">Get in touch</h5>
+                    <div class="space-y-3 text-sm">
+                        <p class="flex items-center gap-3"><i class="fa-solid fa-location-dot text-gold"></i> Mumbai • Delhi NCR • Bengaluru</p>
+                        <p class="flex items-center gap-3"><i class="fa-solid fa-phone text-gold"></i> +91 98765 43210</p>
+                        <p class="flex items-center gap-3"><i class="fa-solid fa-envelope text-gold"></i> hello@ascendtax.in</p>
+                    </div>
+                    <a href="https://wa.me/919876543210" target="_blank" class="inline-flex items-center gap-2.5 glass-dark rounded-full px-5 py-3 text-sm font-semibold text-white hover:bg-white/10 transition">
+                        <i class="fa-brands fa-whatsapp text-emerald-400"></i> WhatsApp Support — replies in 2 hrs
+                    </a>
+                </div>
+            </div>
+
+            <div class="flex flex-col sm:flex-row items-center justify-between gap-4 pt-8 text-xs text-slate-600">
+                <p>© 2026 AscendTax Advisory LLP. All rights reserved. FCA Reg #054921.</p>
+                <div class="flex items-center gap-6">
+                    <a href="#" class="hover:text-gold transition">Privacy Policy</a>
+                    <a href="#" class="hover:text-gold transition">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        menuBtn.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+
+        window.addEventListener('scroll', () => {
+            document.getElementById('site-nav').classList.toggle('shadow-soft', window.scrollY > 20);
+        });
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry, i) => {
+                if (entry.isIntersecting) {
+                    setTimeout(() => entry.target.classList.add('in-view'), i * 80);
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.12 });
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    </script>
+</body>
+
+</html>

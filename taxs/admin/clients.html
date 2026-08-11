@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AscendTax Admin Portal — Clients</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        ink: '#0B1220',
+                        inkSidebar: '#0E1726',
+                        forest: '#052E22',
+                        forestSoft: '#0B3D2C',
+                        gold: '#D4AF37',
+                        goldHover: '#C19B2E',
+                        goldLight: '#F3E6B8',
+                        bgAdmin: '#F4F5F7',
+                        slateLine: '#E5E7EB'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Fraunces', 'serif']
+                    },
+                    boxShadow: {
+                        card: '0 1px 3px rgba(16,24,40,.06), 0 1px 2px rgba(16,24,40,.04)',
+                        pop: '0 12px 32px -8px rgba(16,24,40,.18)'
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body { font-family: 'Inter', sans-serif; background: #F4F5F7; color: #0B1220; }
+        .font-serif-display { font-family: 'Fraunces', serif; }
+        .nav-item { transition: all .2s ease; }
+        .nav-item.active { background: #D4AF37; color: #0B1220; font-weight: 700; }
+        .nav-item:not(.active):hover { background: rgba(255,255,255,.06); color: #fff; }
+        .table-row { transition: background .15s ease; }
+        .table-row:hover { background: #F9FAFB; }
+        .toast { animation: slideIn .35s ease; }
+        @keyframes slideIn { from { opacity: 0; transform: translateY(16px) scale(.97); } to { opacity: 1; transform: translateY(0) scale(1); } }
+        .spark { stroke-dasharray: 600; stroke-dashoffset: 600; animation: draw 1.8s cubic-bezier(.16,1,.3,1) forwards; }
+        @keyframes draw { to { stroke-dashoffset: 0; } }
+        .fade-dot { animation: pulseDot 2s ease-in-out infinite; }
+        @keyframes pulseDot { 0%,100% { opacity: 1; } 50% { opacity: .3; } }
+        .field { width: 100%; background: #fff; border: 1px solid #E5E7EB; border-radius: 12px; padding: 11px 14px; font-size: 14px; font-weight: 500; color: #0B1220; }
+        .field:focus { outline: none; border-color: #D4AF37; box-shadow: 0 0 0 3px rgba(212,175,55,.2); }
+        label.field-label { display: block; font-size: 12px; font-weight: 600; color: #64748B; margin-bottom: 6px; }
+        /* Hide scrollbars — clean app look */
+        html { scrollbar-width: none; -ms-overflow-style: none; }
+        html::-webkit-scrollbar { display: none; }
+        * { scrollbar-width: none; -ms-overflow-style: none; }
+        *::-webkit-scrollbar { width: 0; height: 0; display: none; }
+        @media (max-width: 640px) {
+            html { font-size: 92%; }
+        }
+
+    </style>
+</head>
+
+<body class="min-h-screen antialiased selection:bg-gold selection:text-ink">
+
+    <div class="flex min-h-screen">
+
+        <aside id="sidebar" class="fixed lg:static inset-y-0 left-0 z-50 w-72 bg-inkSidebar text-slate-300 flex flex-col border-r border-white/5 -translate-x-full lg:translate-x-0 transition-transform duration-300">
+            <div class="p-6 border-b border-white/5">
+                <a href="../index.html" class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-xl bg-gold text-ink flex items-center justify-center text-lg"><i class="fa-solid fa-landmark"></i></div>
+                    <div class="leading-tight">
+                        <span class="font-serif-display text-lg font-semibold text-white">Ascend<span class="text-gold">Tax</span></span>
+                        <span class="block text-[10px] uppercase tracking-[0.2em] text-slate-500 font-semibold">Admin Portal</span>
+                    </div>
+                </a>
+            </div>
+            <nav class="flex-grow p-4 space-y-1 overflow-y-auto">
+                <p class="px-3 py-2 text-[10px] uppercase tracking-widest text-slate-500 font-bold">Menu</p>
+                <a href="index.html" class="nav-item w-full flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium">
+                    <i class="fa-solid fa-chart-pie w-4 text-center"></i> Dashboard
+                </a>
+                <a href="clients.html" class="nav-item active w-full flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium">
+                    <i class="fa-solid fa-users w-4 text-center"></i> Clients
+                    <span class="ml-auto text-[10px] bg-gold/20 text-gold px-2 py-0.5 rounded-full font-bold">1,420</span>
+                </a>
+                <a href="itr.html" class="nav-item w-full flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium">
+                    <i class="fa-solid fa-file-invoice-dollar w-4 text-center"></i> ITR Filings
+                    <span class="ml-auto text-[10px] bg-emerald-500/20 text-emerald-400 px-2 py-0.5 rounded-full font-bold">AY 26-27</span>
+                </a>
+                <a href="gst.html" class="nav-item w-full flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium">
+                    <i class="fa-solid fa-receipt w-4 text-center"></i> GST Manager
+                </a>
+                <a href="notices.html" class="nav-item w-full flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium">
+                    <i class="fa-solid fa-gavel w-4 text-center"></i> Notice Tracker
+                    <span class="ml-auto text-[10px] bg-red-500/20 text-red-400 px-2 py-0.5 rounded-full font-bold">7</span>
+                </a>
+                <a href="invoices.html" class="nav-item w-full flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium">
+                    <i class="fa-solid fa-wallet w-4 text-center"></i> Invoices & Payments
+                </a>
+                <a href="reports.html" class="nav-item w-full flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium">
+                    <i class="fa-solid fa-chart-column w-4 text-center"></i> Reports
+                </a>
+                <p class="px-3 py-2 mt-6 text-[10px] uppercase tracking-widest text-slate-500 font-bold">General</p>
+                <a href="settings.html" class="nav-item w-full flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium">
+                    <i class="fa-solid fa-gear w-4 text-center"></i> Settings
+                </a>
+                <a href="../index.html" class="nav-item flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-gold">
+                    <i class="fa-solid fa-arrow-left w-4 text-center"></i> Back to Website
+                </a>
+            </nav>
+            <div class="p-5 border-t border-white/5">
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-full bg-gold text-ink font-bold flex items-center justify-center text-sm">SM</div>
+                    <div class="min-w-0">
+                        <strong class="text-white block text-sm truncate">CA Sneha Malhotra</strong>
+                        <span class="text-[11px] text-slate-500">Senior Partner</span>
+                    </div>
+                    <button class="ml-auto text-slate-500 hover:text-white transition text-sm"><i class="fa-solid fa-right-from-bracket"></i></button>
+                </div>
+            </div>
+        </aside>
+
+        <div id="sidebar-overlay" class="hidden fixed inset-0 bg-ink/60 z-40 lg:hidden"></div>
+
+        <!-- ════════ MAIN COLUMN ════════ -->
+        <div class="flex-grow flex flex-col min-w-0">
+            <header class="sticky top-0 z-30 bg-white/90 backdrop-blur border-b border-slateLine">
+                <div class="px-4 sm:px-6 py-3.5 flex items-center gap-4">
+                    <button id="sidebar-toggle" class="lg:hidden w-10 h-10 rounded-xl border border-slateLine flex items-center justify-center text-ink shrink-0"><i class="fa-solid fa-bars"></i></button>
+                    <div class="relative flex-grow max-w-lg hidden sm:block">
+                        <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-3 text-slate-400 text-sm"></i>
+                        <input id="global-search" oninput="globalSearch(this.value)" placeholder="Search client, PAN, filing ID…" class="w-full bg-bgAdmin border border-slateLine rounded-xl pl-10 pr-4 py-2.5 text-sm focus:ring-2 focus:ring-gold focus:outline-none">
+                    </div>
+                    <div class="flex items-center gap-3 ml-auto">
+                        <div class="hidden md:flex items-center gap-1.5 bg-emerald-50 text-emerald-700 border border-emerald-200 rounded-full px-3 py-1.5 text-xs font-semibold">
+                            <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 fade-dot"></span> All systems operational
+                        </div>
+                        <button class="relative w-10 h-10 rounded-xl border border-slateLine flex items-center justify-center text-ink hover:bg-bgAdmin transition">
+                            <i class="fa-regular fa-bell"></i>
+                            <span class="absolute top-2 right-2.5 w-2 h-2 rounded-full bg-gold border-2 border-white"></span>
+                        </button>
+                        <button onclick="openNewClient()" class="hidden sm:inline-flex items-center gap-2 bg-ink text-white hover:bg-forest text-sm font-bold px-4 py-2.5 rounded-xl transition">
+                            <i class="fa-solid fa-plus"></i> Add Client
+                        </button>
+                    </div>
+                </div>
+                <div class="px-4 sm:px-6 pb-3.5 sm:hidden">
+                    <div class="relative">
+                        <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-3 text-slate-400 text-sm"></i>
+                        <input oninput="globalSearch(this.value)" placeholder="Search client, PAN, filing ID…" class="w-full bg-bgAdmin border border-slateLine rounded-xl pl-10 pr-4 py-2.5 text-sm focus:ring-2 focus:ring-gold focus:outline-none">
+                    </div>
+                </div>
+            </header>
+
+            <main class="p-4 sm:p-6 space-y-6 flex-grow">
+
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                    <div>
+                        <h1 class="font-serif-display text-2xl font-semibold">Clients</h1>
+                        <p class="text-sm text-slate-400 mt-0.5">1,420 active clients · 86 new this month</p>
+                    </div>
+                    <button onclick="openNewClient()" class="inline-flex items-center gap-2 bg-ink text-white hover:bg-forest text-sm font-bold px-5 py-3 rounded-xl transition w-fit">
+                        <i class="fa-solid fa-plus"></i> Add New Client
+                    </button>
+                </div>
+
+                <div class="bg-white rounded-2xl border border-slateLine shadow-card overflow-hidden">
+                    <div class="p-5 flex flex-col md:flex-row md:items-center gap-4 border-b border-slateLine">
+                        <div class="relative flex-grow">
+                            <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-3 text-slate-400 text-sm"></i>
+                            <input id="client-search" oninput="filterClients()" placeholder="Search by name, PAN, GSTIN…" class="w-full bg-bgAdmin border border-slateLine rounded-xl pl-10 pr-4 py-2.5 text-sm focus:ring-2 focus:ring-gold focus:outline-none">
+                        </div>
+                        <div class="flex items-center gap-2 flex-wrap">
+                            <button onclick="setFilter('all')" data-filter="all" class="filter-pill text-xs font-semibold px-4 py-2 rounded-full border transition" style="background:#D4AF37;color:#0B1220;border-color:#D4AF37;">All</button>
+                            <button onclick="setFilter('Individual')" data-filter="Individual" class="filter-pill text-xs font-semibold px-4 py-2 rounded-full border border-slateLine text-slate-500 hover:bg-bgAdmin transition">Individual</button>
+                            <button onclick="setFilter('Business')" data-filter="Business" class="filter-pill text-xs font-semibold px-4 py-2 rounded-full border border-slateLine text-slate-500 hover:bg-bgAdmin transition">Business</button>
+                            <button onclick="setFilter('notice')" data-filter="notice" class="filter-pill text-xs font-semibold px-4 py-2 rounded-full border border-slateLine text-slate-500 hover:bg-bgAdmin transition">Has Notice</button>
+                        </div>
+                    </div>
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-sm">
+                            <thead>
+                                <tr class="text-left text-xs text-slate-400 border-b border-slateLine bg-bgAdmin/50">
+                                    <th class="px-6 py-3.5 font-semibold">Client</th>
+                                    <th class="px-6 py-3.5 font-semibold">Type</th>
+                                    <th class="px-6 py-3.5 font-semibold">PAN / GSTIN</th>
+                                    <th class="px-6 py-3.5 font-semibold">Engagement</th>
+                                    <th class="px-6 py-3.5 font-semibold">Status</th>
+                                    <th class="px-6 py-3.5 font-semibold">Last Filing</th>
+                                    <th class="px-6 py-3.5 font-semibold text-right">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="client-body">
+                                <tr class="table-row border-b border-slateLine/60 client-row" data-type="Individual" data-notice="no">
+                                    <td class="px-6 py-4"><div class="flex items-center gap-3"><span class="w-10 h-10 rounded-full bg-ink text-gold text-xs font-bold flex items-center justify-center">AK</span><div><p class="font-semibold">Aarav Kapoor</p><p class="text-[11px] text-slate-400">a.kapoor@gmail.com · +91 98xxx 12345</p></div></div></td>
+                                    <td class="px-6 py-4"><span class="text-xs font-semibold bg-slate-100 text-slate-600 rounded-full px-2.5 py-1">Individual</span></td>
+                                    <td class="px-6 py-4 font-mono text-xs">AADPK1234K</td>
+                                    <td class="px-6 py-4 text-xs text-slate-500">ITR + GST</td>
+                                    <td class="px-6 py-4"><span class="text-xs font-bold bg-emerald-50 text-emerald-700 border border-emerald-200 rounded-full px-3 py-1">Active</span></td>
+                                    <td class="px-6 py-4 text-xs text-slate-500">ITR-1 · 2 hrs ago</td>
+                                    <td class="px-6 py-4 text-right"><div class="flex justify-end gap-1.5"><button class="w-8 h-8 rounded-lg border border-slateLine hover:border-gold hover:text-goldHover transition"><i class="fa-solid fa-eye text-xs"></i></button><button class="w-8 h-8 rounded-lg border border-slateLine hover:border-gold hover:text-goldHover transition"><i class="fa-solid fa-pen text-xs"></i></button></div></td>
+                                </tr>
+                                <tr class="table-row border-b border-slateLine/60 client-row" data-type="Business" data-notice="yes">
+                                    <td class="px-6 py-4"><div class="flex items-center gap-3"><span class="w-10 h-10 rounded-full bg-gold text-ink text-xs font-bold flex items-center justify-center">NL</span><div><p class="font-semibold">NovaLabs Pvt Ltd</p><p class="text-[11px] text-slate-400">finance@novalabs.in · 40 employees</p></div></div></td>
+                                    <td class="px-6 py-4"><span class="text-xs font-semibold bg-blue-50 text-blue-700 rounded-full px-2.5 py-1">Business</span></td>
+                                    <td class="px-6 py-4 font-mono text-xs">27AABCN6789P</td>
+                                    <td class="px-6 py-4 text-xs text-slate-500">GST + Payroll</td>
+                                    <td class="px-6 py-4"><span class="text-xs font-bold bg-emerald-50 text-emerald-700 border border-emerald-200 rounded-full px-3 py-1">Active</span></td>
+                                    <td class="px-6 py-4 text-xs text-slate-500">GSTR-3B · Yesterday</td>
+                                    <td class="px-6 py-4 text-right"><div class="flex justify-end gap-1.5"><button class="w-8 h-8 rounded-lg border border-slateLine hover:border-gold hover:text-goldHover transition"><i class="fa-solid fa-eye text-xs"></i></button><button class="w-8 h-8 rounded-lg border border-slateLine hover:border-gold hover:text-goldHover transition"><i class="fa-solid fa-pen text-xs"></i></button></div></td>
+                                </tr>
+                                <tr class="table-row border-b border-slateLine/60 client-row" data-type="Business" data-notice="no">
+                                    <td class="px-6 py-4"><div class="flex items-center gap-3"><span class="w-10 h-10 rounded-full bg-emerald-500 text-white text-xs font-bold flex items-center justify-center">UN</span><div><p class="font-semibold">UrbanNest Realty</p><p class="text-[11px] text-slate-400">accounts@urbannest.co · 25 employees</p></div></div></td>
+                                    <td class="px-6 py-4"><span class="text-xs font-semibold bg-blue-50 text-blue-700 rounded-full px-2.5 py-1">Business</span></td>
+                                    <td class="px-6 py-4 font-mono text-xs">27AAFCE1122K</td>
+                                    <td class="px-6 py-4 text-xs text-slate-500">ITR + GST</td>
+                                    <td class="px-6 py-4"><span class="text-xs font-bold bg-emerald-50 text-emerald-700 border border-emerald-200 rounded-full px-3 py-1">Active</span></td>
+                                    <td class="px-6 py-4 text-xs text-slate-500">GST invoice · 5 hrs ago</td>
+                                    <td class="px-6 py-4 text-right"><div class="flex justify-end gap-1.5"><button class="w-8 h-8 rounded-lg border border-slateLine hover:border-gold hover:text-goldHover transition"><i class="fa-solid fa-eye text-xs"></i></button><button class="w-8 h-8 rounded-lg border border-slateLine hover:border-gold hover:text-goldHover transition"><i class="fa-solid fa-pen text-xs"></i></button></div></td>
+                                </tr>
+                                <tr class="table-row border-b border-slateLine/60 client-row" data-type="Individual" data-notice="yes">
+                                    <td class="px-6 py-4"><div class="flex items-center gap-3"><span class="w-10 h-10 rounded-full bg-blue-500 text-white text-xs font-bold flex items-center justify-center">RV</span><div><p class="font-semibold">Rohan Verma</p><p class="text-[11px] text-slate-400">rohan@urbannest.co · +91 97xxx 88901</p></div></div></td>
+                                    <td class="px-6 py-4"><span class="text-xs font-semibold bg-slate-100 text-slate-600 rounded-full px-2.5 py-1">Individual</span></td>
+                                    <td class="px-6 py-4 font-mono text-xs">BHPPV5678L</td>
+                                    <td class="px-6 py-4 text-xs text-slate-500">ITR + Notice</td>
+                                    <td class="px-6 py-4"><span class="text-xs font-bold bg-amber-50 text-amber-700 border border-amber-200 rounded-full px-3 py-1">Notice</span></td>
+                                    <td class="px-6 py-4 text-xs text-slate-500">ITR-3 · 2 days ago</td>
+                                    <td class="px-6 py-4 text-right"><div class="flex justify-end gap-1.5"><button class="w-8 h-8 rounded-lg border border-slateLine hover:border-gold hover:text-goldHover transition"><i class="fa-solid fa-eye text-xs"></i></button><button class="w-8 h-8 rounded-lg border border-slateLine hover:border-gold hover:text-goldHover transition"><i class="fa-solid fa-pen text-xs"></i></button></div></td>
+                                </tr>
+                                <tr class="table-row border-b border-slateLine/60 client-row" data-type="Individual" data-notice="no">
+                                    <td class="px-6 py-4"><div class="flex items-center gap-3"><span class="w-10 h-10 rounded-full bg-purple-500 text-white text-xs font-bold flex items-center justify-center">PK</span><div><p class="font-semibold">Priya Kulkarni</p><p class="text-[11px] text-slate-400">priya.k@gmail.com · +91 99xxx 44556</p></div></div></td>
+                                    <td class="px-6 py-4"><span class="text-xs font-semibold bg-slate-100 text-slate-600 rounded-full px-2.5 py-1">Individual</span></td>
+                                    <td class="px-6 py-4 font-mono text-xs">AVAPK9012M</td>
+                                    <td class="px-6 py-4 text-xs text-slate-500">ITR only</td>
+                                    <td class="px-6 py-4"><span class="text-xs font-bold bg-emerald-50 text-emerald-700 border border-emerald-200 rounded-full px-3 py-1">Active</span></td>
+                                    <td class="px-6 py-4 text-xs text-slate-500">ITR-2 · 3 days ago</td>
+                                    <td class="px-6 py-4 text-right"><div class="flex justify-end gap-1.5"><button class="w-8 h-8 rounded-lg border border-slateLine hover:border-gold hover:text-goldHover transition"><i class="fa-solid fa-eye text-xs"></i></button><button class="w-8 h-8 rounded-lg border border-slateLine hover:border-gold hover:text-goldHover transition"><i class="fa-solid fa-pen text-xs"></i></button></div></td>
+                                </tr>
+                                <tr class="table-row client-row" data-type="Business" data-notice="no">
+                                    <td class="px-6 py-4"><div class="flex items-center gap-3"><span class="w-10 h-10 rounded-full bg-rose-500 text-white text-xs font-bold flex items-center justify-center">MM</span><div><p class="font-semibold">MeridianMart LLP</p><p class="text-[11px] text-slate-400">ops@meridianmart.in · 12 employees</p></div></div></td>
+                                    <td class="px-6 py-4"><span class="text-xs font-semibold bg-blue-50 text-blue-700 rounded-full px-2.5 py-1">Business</span></td>
+                                    <td class="px-6 py-4 font-mono text-xs">27AAOMM3344L</td>
+                                    <td class="px-6 py-4 text-xs text-slate-500">GST + Audit</td>
+                                    <td class="px-6 py-4"><span class="text-xs font-bold bg-emerald-50 text-emerald-700 border border-emerald-200 rounded-full px-3 py-1">Active</span></td>
+                                    <td class="px-6 py-4 text-xs text-slate-500">GSTR-1 · 4 days ago</td>
+                                    <td class="px-6 py-4 text-right"><div class="flex justify-end gap-1.5"><button class="w-8 h-8 rounded-lg border border-slateLine hover:border-gold hover:text-goldHover transition"><i class="fa-solid fa-eye text-xs"></i></button><button class="w-8 h-8 rounded-lg border border-slateLine hover:border-gold hover:text-goldHover transition"><i class="fa-solid fa-pen text-xs"></i></button></div></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="px-6 py-4 border-t border-slateLine flex items-center justify-between text-xs text-slate-400">
+                        <p>Showing <strong class="text-ink">6</strong> of 1,420 clients</p>
+                        <div class="flex items-center gap-2">
+                            <button class="w-8 h-8 rounded-lg border border-slateLine hover:border-gold transition"><i class="fa-solid fa-chevron-left text-[10px]"></i></button>
+                            <span class="w-8 h-8 rounded-lg bg-ink text-gold font-bold flex items-center justify-center">1</span>
+                            <button class="w-8 h-8 rounded-lg border border-slateLine hover:border-gold transition">2</button>
+                            <button class="w-8 h-8 rounded-lg border border-slateLine hover:border-gold transition">3</button>
+                            <button class="w-8 h-8 rounded-lg border border-slateLine hover:border-gold transition"><i class="fa-solid fa-chevron-right text-[10px]"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <!-- Mobile FAB: Add Client (app-style, phones) -->
+    <button onclick="openNewClient()" class="lg:hidden fixed bottom-6 left-6 z-50 w-14 h-14 rounded-full bg-ink text-gold shadow-pop flex items-center justify-center text-xl active:scale-95 transition">
+        <i class="fa-solid fa-plus"></i>
+    </button>
+
+    <!-- ════════ ADD CLIENT MODAL ════════ -->
+    <div id="new-client-modal" class="fixed inset-0 z-[60] hidden bg-ink/60 backdrop-blur-sm flex items-center justify-center p-4">
+        <div class="bg-white w-full max-w-lg rounded-3xl shadow-pop p-7 relative max-h-[90vh] overflow-y-auto">
+            <button onclick="closeNewClient()" class="absolute top-5 right-5 w-9 h-9 rounded-full bg-bgAdmin text-slate-500 hover:text-ink transition"><i class="fa-solid fa-xmark"></i></button>
+            <span class="w-12 h-12 rounded-2xl bg-gold/15 text-goldHover flex items-center justify-center text-xl mb-4"><i class="fa-solid fa-user-plus"></i></span>
+            <h2 class="font-serif-display text-2xl font-semibold text-ink mb-1">Add New Client</h2>
+            <p class="text-sm text-slate-400 mb-6">Onboard a client to the AscendTax portal</p>
+            <form onsubmit="addClient(event)" class="space-y-4">
+                <div class="grid grid-cols-2 gap-4">
+                    <div><label class="field-label">First Name *</label><input required class="field" placeholder="Priya"></div>
+                    <div><label class="field-label">Last Name</label><input class="field" placeholder="Sharma"></div>
+                </div>
+                <div class="grid grid-cols-2 gap-4">
+                    <div><label class="field-label">Client Type *</label><select class="field"><option>Individual</option><option>Business</option></select></div>
+                    <div><label class="field-label">PAN *</label><input required class="field font-mono uppercase" placeholder="ABCDE1234F"></div>
+                </div>
+                <div><label class="field-label">Email</label><input type="email" class="field" placeholder="priya@example.com"></div>
+                <div>
+                    <label class="field-label">Services</label>
+                    <div class="flex flex-wrap gap-2">
+                        <label class="flex items-center gap-1.5 text-xs bg-bgAdmin rounded-full px-3 py-2 font-semibold"><input type="checkbox" class="accent-goldHover"> ITR</label>
+                        <label class="flex items-center gap-1.5 text-xs bg-bgAdmin rounded-full px-3 py-2 font-semibold"><input type="checkbox" class="accent-goldHover"> GST</label>
+                        <label class="flex items-center gap-1.5 text-xs bg-bgAdmin rounded-full px-3 py-2 font-semibold"><input type="checkbox" class="accent-goldHover"> Payroll</label>
+                        <label class="flex items-center gap-1.5 text-xs bg-bgAdmin rounded-full px-3 py-2 font-semibold"><input type="checkbox" class="accent-goldHover"> Notice</label>
+                    </div>
+                </div>
+                <button type="submit" class="w-full bg-ink text-white hover:bg-forest text-sm font-bold px-4 py-3.5 rounded-xl transition flex items-center justify-center gap-2"><i class="fa-solid fa-check text-xs"></i> Add Client & Send Invite</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Toast -->
+    <div id="toast" class="toast fixed bottom-6 right-6 z-[70] hidden bg-ink text-white rounded-2xl pl-4 pr-5 py-4 shadow-pop items-center gap-3">
+        <span class="w-9 h-9 rounded-full bg-emerald-500 flex items-center justify-center shrink-0"><i class="fa-solid fa-check"></i></span>
+        <div><p class="font-bold text-sm">Success!</p><p class="text-xs text-slate-300" id="toast-msg">Action completed</p></div>
+    </div>
+    <script>
+        const sidebar = document.getElementById('sidebar');
+        const overlay = document.getElementById('sidebar-overlay');
+        document.getElementById('sidebar-toggle').addEventListener('click', () => { sidebar.classList.toggle('-translate-x-full'); overlay.classList.toggle('hidden'); });
+        overlay.addEventListener('click', closeSidebar);
+        function closeSidebar() { sidebar.classList.add('-translate-x-full'); overlay.classList.add('hidden'); }
+        function globalSearch(q) { window.location.href = 'clients.html'; }
+        function openNewClient() { document.getElementById('new-client-modal').classList.remove('hidden'); }
+        function closeNewClient() { document.getElementById('new-client-modal').classList.add('hidden'); }
+        function addClient(e) { e.preventDefault(); closeNewClient(); showToast('Client added & onboarding email sent'); }
+        let toastTimer;
+        function showToast(msg) { const t = document.getElementById('toast'); document.getElementById('toast-msg').innerText = msg; t.classList.remove('hidden'); t.classList.add('flex'); clearTimeout(toastTimer); toastTimer = setTimeout(() => { t.classList.add('hidden'); t.classList.remove('flex'); }, 3500); }
+        function setFilter(f) { document.querySelectorAll('.filter-pill').forEach(p => { if (p.dataset.filter === f) { p.style.background = '#D4AF37'; p.style.color = '#0B1220'; p.style.borderColor = '#D4AF37'; } else { p.style.background = '#fff'; p.style.color = '#64748B'; p.style.borderColor = '#E5E7EB'; } }); filterClients(); }
+        function filterClients() { const q = (document.getElementById('client-search').value || '').toLowerCase(); const active = document.querySelector('.filter-pill[style*="background: #D4AF37"]'); const f = active ? active.dataset.filter : 'all'; document.querySelectorAll('#client-body .client-row').forEach(row => { const text = row.textContent.toLowerCase(); const type = row.dataset.type; const notice = row.dataset.notice; let ok = text.includes(q); if (f !== 'all') { if (f === 'notice') ok = ok && notice === 'yes'; else ok = ok && type === f; } row.style.display = ok ? '' : 'none'; }); }
+    </script>
+</body>
+
+</html>

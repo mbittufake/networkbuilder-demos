@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Our CA Team | TaxMitra Advisory India</title>
+    <meta name="description" content="Meet the TaxMitra Chartered Accountants. ICAI-licensed Fellows, Advocates & Tax Litigators with 17+ years of expertise.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        deepTeal: '#0F2A22',
+                        deepTealDark: '#0A1F1B',
+                        tealCard: '#1A3329',
+                        emeraldPrimary: '#10B981',
+                        emeraldDark: '#047857',
+                        emeraldDeeper: '#064E3B',
+                        amberGold: '#D97706',
+                        amberLight: '#FBBF24',
+                        bgLight: '#F8FAFC',
+                        cardLight: '#F1F5F9'
+                    },
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                        display: ['Outfit', 'sans-serif']
+                    },
+                    animation: {
+                        'fade-up': 'fadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) both'
+                    },
+                    keyframes: {
+                        fadeUp: { '0%': { opacity: 0, transform: 'translateY(24px)' }, '100%': { opacity: 1, transform: 'translateY(0)' } }
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #F8FAFC; color: #0F172A; -webkit-font-smoothing: antialiased; }
+        .font-display { font-family: 'Outfit', sans-serif; }
+        .pill-btn { border-radius: 9999px; transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1); }
+        .pill-btn:hover { transform: translateY(-2px); }
+        .glass-light { background: rgba(255, 255, 255, 0.7); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border: 1px solid rgba(255, 255, 255, 0.5); }
+        .blob { position: absolute; border-radius: 50%; filter: blur(80px); opacity: 0.4; pointer-events: none; }
+        .hover-lift { transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1); }
+        .hover-lift:hover { transform: translateY(-6px); }
+        ::-webkit-scrollbar { width: 10px; height: 10px; }
+        ::-webkit-scrollbar-track { background: #F1F5F9; }
+        ::-webkit-scrollbar-thumb { background: #10B981; border-radius: 6px; }
+    </style>
+</head>
+
+<body class="min-h-screen flex flex-col selection:bg-emeraldPrimary selection:text-white overflow-x-hidden">
+
+    <!-- Announcement Bar -->
+    <div class="bg-deepTealDark text-slate-300 text-[11px] sm:text-xs py-2.5 px-6 border-b border-emerald-900/50 relative z-50">
+        <div class="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-2">
+            <div class="flex items-center gap-3">
+                <span class="relative flex h-2.5 w-2.5"><span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emeraldPrimary opacity-75"></span><span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-emeraldPrimary"></span></span>
+                <span><strong class="text-white">FY 2025-26 (AY 2026-27):</strong> ITR Filing Window Open · Last Date 31 July 2026</span>
+            </div>
+            <div class="flex items-center gap-5 text-xs font-semibold">
+                <a href="./admin/index.html" class="text-emeraldPrimary hover:text-white transition flex items-center gap-1.5"><i class="fa-solid fa-gauge-high"></i> CA Portal Demo</a>
+                <a href="https://wa.me/919876543210" target="_blank" class="text-white hover:text-emeraldPrimary transition flex items-center gap-1.5"><i class="fa-brands fa-whatsapp text-emeraldPrimary text-sm"></i> WhatsApp Help</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sticky Glass Navigation -->
+    <header class="sticky top-0 z-40">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 py-3">
+            <nav class="glass-light rounded-full px-4 sm:px-6 py-3 flex items-center justify-between shadow-lg shadow-emerald-900/5 border border-white/40">
+                <a href="index.html" class="flex items-center gap-2.5 group">
+                    <div class="w-10 h-10 rounded-full bg-gradient-to-br from-emeraldPrimary to-emeraldDark text-white flex items-center justify-center text-base font-bold shadow-md shadow-emerald-500/30 group-hover:rotate-12 transition">
+                        <i class="fa-solid fa-indian-rupee-sign"></i>
+                    </div>
+                    <div class="leading-tight">
+                        <span class="text-lg font-bold font-display tracking-tight text-slate-900">TaxMitra <span class="text-emeraldDark">CA</span></span>
+                        <span class="block text-[9px] uppercase tracking-[0.18em] text-slate-500 font-bold -mt-0.5">Advisory · ICAI</span>
+                    </div>
+                </a>
+                <div class="hidden lg:flex items-center gap-1 text-sm font-semibold text-slate-700">
+                    <a href="index.html" class="px-4 py-2 rounded-full hover:bg-slate-100 hover:text-emeraldDark transition">Home</a>
+                    <a href="services.html" class="px-4 py-2 rounded-full hover:bg-slate-100 hover:text-emeraldDark transition">Services</a>
+                    <a href="calculator.html" class="px-4 py-2 rounded-full hover:bg-slate-100 hover:text-emeraldDark transition">Calculator</a>
+                    <a href="about.html" class="px-4 py-2 rounded-full bg-emeraldPrimary/10 text-emeraldDark">About CA</a>
+                    <a href="contact.html" class="px-4 py-2 rounded-full hover:bg-slate-100 hover:text-emeraldDark transition">Contact</a>
+                    <a href="./admin/index.html" class="px-4 py-2 rounded-full hover:bg-amber-50 hover:text-amber-700 transition flex items-center gap-1.5"><i class="fa-solid fa-gauge-high text-amber-600 text-xs"></i> Admin</a>
+                </div>
+                <div class="flex items-center gap-2">
+                    <a href="contact.html" class="hidden sm:inline-flex pill-btn px-5 py-2.5 bg-gradient-to-r from-emeraldPrimary to-emeraldDark text-white text-xs font-bold uppercase tracking-wider items-center gap-2 shadow-md shadow-emerald-500/30">
+                        <i class="fa-solid fa-phone-volume text-[11px]"></i> Consult a CA
+                    </a>
+                    <button id="mobile-toggle" class="lg:hidden w-10 h-10 rounded-full bg-slate-100 text-slate-700 flex items-center justify-center"><i class="fa-solid fa-bars"></i></button>
+                </div>
+            </nav>
+        </div>
+        <div id="mobile-drawer" class="hidden lg:hidden px-4 pb-3">
+            <div class="glass-light rounded-2xl p-4 border border-white/40 shadow-lg space-y-1 text-sm font-semibold text-slate-700">
+                <a href="index.html" class="block px-4 py-2.5 rounded-xl hover:bg-slate-100">Home</a>
+                <a href="services.html" class="block px-4 py-2.5 rounded-xl hover:bg-slate-100">Services</a>
+                <a href="calculator.html" class="block px-4 py-2.5 rounded-xl hover:bg-slate-100">Calculator</a>
+                <a href="about.html" class="block px-4 py-2.5 rounded-xl bg-emeraldPrimary/10 text-emeraldDark">About CA</a>
+                <a href="contact.html" class="block px-4 py-2.5 rounded-xl hover:bg-slate-100">Contact</a>
+                <a href="./admin/index.html" class="block px-4 py-2.5 rounded-xl bg-amber-50 text-amber-700">CA Admin Portal Demo</a>
+                <a href="contact.html" class="block px-4 py-3 rounded-xl bg-emeraldPrimary text-white text-center font-bold uppercase tracking-wider text-xs mt-2">Consult a CA →</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="flex-grow">
+
+        <!-- ============== HERO ============== -->
+        <section class="relative bg-deepTeal text-white overflow-hidden border-b border-deepTealDark">
+            <div class="blob bg-emeraldPrimary w-96 h-96 -top-32 -left-32"></div>
+            <div class="blob bg-amberGold w-80 h-80 bottom-0 right-0 opacity-20"></div>
+            <div class="absolute inset-0 opacity-[0.04]" style="background-image: linear-gradient(rgba(255,255,255,0.6) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.6) 1px, transparent 1px); background-size: 60px 60px;"></div>
+
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 pt-14 pb-16 sm:pt-20 sm:pb-20 relative z-10">
+                <div class="grid lg:grid-cols-12 gap-10 items-center">
+                    <div class="lg:col-span-7 space-y-6 reveal-on-load">
+                        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emeraldPrimary/10 border border-emeraldPrimary/30 text-emeraldPrimary text-xs font-bold uppercase tracking-[0.15em]">
+                            <i class="fa-solid fa-people-group"></i> ICAI Certified Firm · Since 2009
+                        </div>
+                        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold font-display leading-[1.05] tracking-tight">
+                            The Chartered Accountants<br>
+                            <span class="bg-gradient-to-r from-emeraldPrimary via-amberLight to-amberGold bg-clip-text text-transparent">India trusts most.</span>
+                        </h1>
+                        <p class="text-slate-300/90 text-base sm:text-lg max-w-xl leading-relaxed">
+                            21 Chartered Accountants. 6 Specialists. A 17-year record of clean, ethics-driven tax practice across individuals, HNIs and India's fastest-growing startups.
+                        </p>
+
+                        <!-- Mini stats strip -->
+                        <div class="grid grid-cols-3 gap-3 sm:gap-6 pt-4 border-t border-white/10 max-w-md">
+                            <div>
+                                <div class="font-display font-bold text-2xl text-emeraldPrimary">21</div>
+                                <div class="text-[10px] uppercase tracking-wider text-slate-400 font-bold">Chartered Accountants</div>
+                            </div>
+                            <div>
+                                <div class="font-display font-bold text-2xl text-amberLight">17+</div>
+                                <div class="text-[10px] uppercase tracking-wider text-slate-400 font-bold">Years in Practice</div>
+                            </div>
+                            <div>
+                                <div class="font-display font-bold text-2xl text-white">4</div>
+                                <div class="text-[10px] uppercase tracking-wider text-slate-400 font-bold">Major Indian Cities</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="lg:col-span-5 reveal-on-load" style="animation-delay: 0.15s">
+                        <div class="relative max-w-md mx-auto">
+                            <!-- Group photo / collage -->
+                            <div class="grid grid-cols-12 gap-2">
+                                <div class="col-span-7 row-span-2 rounded-3xl overflow-hidden shadow-2xl border-2 border-white/10 aspect-[3/4] bg-tealCard">
+                                    <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=800&auto=format&fit=crop" alt="Senior CA" class="w-full h-full object-cover">
+                                </div>
+                                <div class="col-span-5 rounded-2xl overflow-hidden shadow-xl border border-white/10 aspect-square bg-tealCard">
+                                    <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?q=80&w=400&auto=format&fit=crop" alt="Female CA" class="w-full h-full object-cover">
+                                </div>
+                                <div class="col-span-5 rounded-2xl overflow-hidden shadow-xl border border-white/10 aspect-square bg-tealCard">
+                                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=400&auto=format&fit=crop" alt="Male CA" class="w-full h-full object-cover">
+                                </div>
+                            </div>
+                            <!-- ICAI badge overlay -->
+                            <div class="absolute -bottom-5 -right-2 sm:-right-5 bg-white text-slate-900 px-4 py-3 rounded-2xl shadow-2xl border border-slate-200">
+                                <div class="flex items-center gap-2.5">
+                                    <div class="w-10 h-10 rounded-xl bg-emeraldPrimary/10 text-emeraldDark flex items-center justify-center"><i class="fa-solid fa-medal text-base"></i></div>
+                                    <div>
+                                        <div class="font-display font-bold text-xs">ICAI Firm Reg</div>
+                                        <div class="text-[10px] text-emeraldDark font-mono font-bold">#054921 · FCA</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============== OUR STORY ============== -->
+        <section class="py-20 sm:py-24 bg-bgLight border-b border-slate-200">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6">
+                <div class="grid lg:grid-cols-12 gap-10 items-center">
+                    <div class="lg:col-span-7 space-y-6 reveal-on-load">
+                        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emeraldPrimary/10 text-emeraldDark text-xs font-bold uppercase tracking-[0.15em]">✦ Our Story</div>
+                        <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold font-display text-slate-900 leading-tight">
+                            From a 2-person Mumbai desk in <span class="text-emeraldDark">2009</span> to India's most-trusted CA firm.
+                        </h2>
+                        <div class="space-y-4 text-slate-600 text-base leading-relaxed">
+                            <p><strong class="text-slate-900">TaxMitra started in 2009</strong> with two Chartered Accountants, one rented desk at Nariman Point, and a simple belief: taxpayers deserve honest advice, not just a return. 17 years later, we're a 21-Chartered Accountant, 6-Specialist, ICAI-licensed firm headquartered in Mumbai & Delhi NCR with branches in Bengaluru & Ahmedabad.</p>
+                            <p>We've filed <strong class="text-slate-900">17,000+ ITRs</strong>, defended <strong class="text-slate-900">350+ IT notices</strong>, incorporated <strong class="text-slate-900">900+ companies</strong>, and saved Indian taxpayers cumulatively <strong class="text-slate-900">₹35 Cr+</strong> legally.</p>
+                            <p>We are appointed advisors to leading Indian founders, HNIs, VC-funded SaaS startups, NRI family offices and listed corporations. Our work is trusted because <strong class="text-slate-900">we never file what we cannot defend in ITAT</strong>.</p>
+                        </div>
+                        <div class="flex flex-wrap gap-2 pt-2">
+                            <span class="px-3.5 py-1.5 rounded-full bg-white border border-slate-200 text-xs font-bold text-slate-700">ICAI Member</span>
+                            <span class="px-3.5 py-1.5 rounded-full bg-white border border-slate-200 text-xs font-bold text-slate-700">CMA Affiliated</span>
+                            <span class="px-3.5 py-1.5 rounded-full bg-white border border-slate-200 text-xs font-bold text-slate-700">BCI Registered</span>
+                            <span class="px-3.5 py-1.5 rounded-full bg-white border border-slate-200 text-xs font-bold text-slate-700">FTA-NTRP Empaneled</span>
+                            <span class="px-3.5 py-1.5 rounded-full bg-white border border-slate-200 text-xs font-bold text-slate-700">GST Simplified EVC</span>
+                        </div>
+                    </div>
+
+                    <div class="lg:col-span-5 space-y-4 reveal-on-load" style="animation-delay: 0.15s">
+                        <div class="grid grid-cols-2 gap-3">
+                            <div class="bg-emeraldPrimary p-6 rounded-3xl text-white shadow-xl hover-lift">
+                                <div class="font-display font-bold text-4xl">17k+</div>
+                                <div class="text-[11px] uppercase tracking-wider font-bold mt-1 text-emerald-100">ITRs Filed (lifetime)</div>
+                            </div>
+                            <div class="bg-amberGold p-6 rounded-3xl text-white shadow-xl hover-lift">
+                                <div class="font-display font-bold text-4xl">900+</div>
+                                <div class="text-[11px] uppercase tracking-wider font-bold mt-1 text-amber-100">Companies Incorporated</div>
+                            </div>
+                            <div class="bg-blue-500 p-6 rounded-3xl text-white shadow-xl hover-lift">
+                                <div class="font-display font-bold text-4xl">350+</div>
+                                <div class="text-[11px] uppercase tracking-wider font-bold mt-1 text-blue-100">IT Notices Defended</div>
+                            </div>
+                            <div class="bg-deepTeal p-6 rounded-3xl text-white shadow-xl hover-lift relative overflow-hidden">
+                                <div class="blob bg-emeraldPrimary w-32 h-32 -bottom-12 -right-12 opacity-40"></div>
+                                <div class="font-display font-bold text-4xl relative z-10">94%</div>
+                                <div class="text-[11px] uppercase tracking-wider font-bold mt-1 text-emerald-100 relative z-10">ITAT Win Rate</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============== THE TEAM (with photos) ============== -->
+        <section class="py-20 sm:py-24 bg-white border-b border-slate-200">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6">
+                <div class="text-center max-w-2xl mx-auto mb-14 space-y-3">
+                    <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emeraldPrimary/10 text-emeraldDark text-xs font-bold uppercase tracking-[0.15em]">✦ Meet Our CAs</div>
+                    <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold font-display text-slate-900 leading-tight">Senior <span class="text-emeraldDark">Chartered Accountants</span> & Specialists</h2>
+                    <p class="text-slate-600 text-base">Every senior partner is ICAI-licensed, checkable on the public register, and personally accountable for your engagement.</p>
+                </div>
+
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <!-- Card 1 -->
+                    <div class="group bg-white rounded-3xl overflow-hidden border border-slate-200 hover-lift shadow-sm">
+                        <div class="relative h-72 overflow-hidden bg-tealCard">
+                            <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=600&auto=format&fit=crop" alt="CA Rajesh Kulkarni" class="w-full h-full object-cover group-hover:scale-105 transition duration-700">
+                            <!-- Gradient overlay -->
+                            <div class="absolute inset-0 bg-gradient-to-t from-deepTeal via-deepTeal/20 to-transparent"></div>
+                            <!-- Top badges -->
+                            <div class="absolute top-3 left-3 flex gap-2">
+                                <span class="px-2.5 py-1 rounded-full bg-emeraldPrimary text-slate-900 text-[10px] font-bold uppercase tracking-wider">FCA · Senior</span>
+                            </div>
+                            <div class="absolute bottom-3 left-3 right-3">
+                                <div class="font-display font-bold text-xl text-white leading-tight drop-shadow">CA Rajesh Kulkarni</div>
+                                <div class="text-[11px] text-emeraldPrimary uppercase tracking-[0.15em] font-bold mt-1">Senior Managing Partner</div>
+                            </div>
+                        </div>
+                        <div class="p-6 space-y-3">
+                            <div class="flex items-center gap-2 text-[11px] text-slate-500 font-mono">
+                                <i class="fa-solid fa-id-card text-emeraldDark"></i> ICAI M.No. 054921
+                            </div>
+                            <p class="text-sm text-slate-700 leading-relaxed">
+                                <strong class="text-slate-900">18+ years</strong> in Corporate Tax, Statutory Audits & ITAT appellate practice. Personally represented 200+ cases before CIT (Appeals) & ITAT benches in Mumbai, Delhi & Ahmedabad. Mentor to the firm's junior CA batch.
+                            </p>
+                            <div class="flex flex-wrap gap-1.5 pt-2 border-t border-slate-100">
+                                <span class="px-2 py-0.5 rounded-full bg-emeraldPrimary/10 text-emeraldDark text-[10px] font-bold">Corporate Tax</span>
+                                <span class="px-2 py-0.5 rounded-full bg-emeraldPrimary/10 text-emeraldDark text-[10px] font-bold">Statutory Audit</span>
+                                <span class="px-2 py-0.5 rounded-full bg-emeraldPrimary/10 text-emeraldDark text-[10px] font-bold">ITAT Appeals</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 2 -->
+                    <div class="group bg-gradient-to-b from-amber-50 to-white rounded-3xl overflow-hidden border-2 border-amber-200 hover-lift shadow-md relative">
+                        <div class="absolute top-3 right-3 z-10 px-3 py-1.5 rounded-full bg-amberGold text-white text-[10px] font-bold uppercase tracking-wider">GST Lead</div>
+                        <div class="relative h-72 overflow-hidden bg-amber-100">
+                            <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?q=80&w=600&auto=format&fit=crop" alt="CA Sneha Sharma" class="w-full h-full object-cover group-hover:scale-105 transition duration-700">
+                            <div class="absolute inset-0 bg-gradient-to-t from-amber-900 via-amber-900/20 to-transparent"></div>
+                            <div class="absolute bottom-3 left-3 right-3">
+                                <div class="font-display font-bold text-xl text-white leading-tight drop-shadow">CA Sneha Sharma</div>
+                                <div class="text-[11px] text-amberLight uppercase tracking-[0.15em] font-bold mt-1">Head of GST & Indirect Taxes</div>
+                            </div>
+                        </div>
+                        <div class="p-6 space-y-3">
+                            <div class="flex items-center gap-2 text-[11px] text-slate-500 font-mono">
+                                <i class="fa-solid fa-id-card text-amber-700"></i> ICAI M.No. 128764
+                            </div>
+                            <p class="text-sm text-slate-700 leading-relaxed">
+                                <strong class="text-slate-900">12+ years</strong> in GST practice. Ex-GST Practitioner advisor to CBIC. Personally resolved 800+ GSTR reconciliations, e-Way Bill disputes & ITC reversals. Speaker at GST Council roadshows.
+                            </p>
+                            <div class="flex flex-wrap gap-1.5 pt-2 border-t border-amber-100">
+                                <span class="px-2 py-0.5 rounded-full bg-amber-100 text-amber-700 text-[10px] font-bold">GSTR 1/3B</span>
+                                <span class="px-2 py-0.5 rounded-full bg-amber-100 text-amber-700 text-[10px] font-bold">ITC Audit</span>
+                                <span class="px-2 py-0.5 rounded-full bg-amber-100 text-amber-700 text-[10px] font-bold">E-Way Bill</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 3 - Advocate -->
+                    <div class="group bg-gradient-to-b from-rose-50 to-white rounded-3xl overflow-hidden border-2 border-rose-200 hover-lift shadow-md relative">
+                        <div class="absolute top-3 right-3 z-10 px-3 py-1.5 rounded-full bg-rose-500 text-white text-[10px] font-bold uppercase tracking-wider">Tax Litigation</div>
+                        <div class="relative h-72 overflow-hidden bg-rose-100">
+                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=600&auto=format&fit=crop" alt="Adv. Vikramaditya Roy" class="w-full h-full object-cover group-hover:scale-105 transition duration-700">
+                            <div class="absolute inset-0 bg-gradient-to-t from-rose-900 via-rose-900/20 to-transparent"></div>
+                            <div class="absolute bottom-3 left-3 right-3">
+                                <div class="font-display font-bold text-xl text-white leading-tight drop-shadow">Adv. Vikramaditya Roy</div>
+                                <div class="text-[11px] text-rose-200 uppercase tracking-[0.15em] font-bold mt-1">Senior Tax Advocate & Counsel</div>
+                            </div>
+                        </div>
+                        <div class="p-6 space-y-3">
+                            <div class="flex items-center gap-2 text-[11px] text-slate-500 font-mono">
+                                <i class="fa-solid fa-scale-balanced text-rose-700"></i> BCI Reg · Bombay HC
+                            </div>
+                            <p class="text-sm text-slate-700 leading-relaxed">
+                                <strong class="text-slate-900">20+ years</strong> at the Bar, specialises in income tax search & seizure defence (u/s 132), 148 reassessment, DTAA & NRI residency disputes, and ITAT arguments at Mumbai & Delhi benches.
+                            </p>
+                            <div class="flex flex-wrap gap-1.5 pt-2 border-t border-rose-100">
+                                <span class="px-2 py-0.5 rounded-full bg-rose-100 text-rose-700 text-[10px] font-bold">ITAT Counsel</span>
+                                <span class="px-2 py-0.5 rounded-full bg-rose-100 text-rose-700 text-[10px] font-bold">DTAA</span>
+                                <span class="px-2 py-0.5 rounded-full bg-rose-100 text-rose-700 text-[10px] font-bold">Search & Seizure</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 4 -->
+                    <div class="group bg-white rounded-3xl overflow-hidden border border-slate-200 hover-lift shadow-sm">
+                        <div class="relative h-72 overflow-hidden bg-blue-100">
+                            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=600&auto=format&fit=crop" alt="CA Meera Iyer" class="w-full h-full object-cover group-hover:scale-105 transition duration-700">
+                            <div class="absolute inset-0 bg-gradient-to-t from-blue-900 via-blue-900/20 to-transparent"></div>
+                            <div class="absolute bottom-3 left-3 right-3">
+                                <div class="font-display font-bold text-xl text-white leading-tight drop-shadow">CA Meera Iyer</div>
+                                <div class="text-[11px] text-blue-200 uppercase tracking-[0.15em] font-bold mt-1">Partner · Capital Markets & Tax</div>
+                            </div>
+                        </div>
+                        <div class="p-6 space-y-3">
+                            <div class="flex items-center gap-2 text-[11px] text-slate-500 font-mono">
+                                <i class="fa-solid fa-id-card text-blue-700"></i> ICAI M.No. 184521
+                            </div>
+                            <p class="text-sm text-slate-700 leading-relaxed">
+                                <strong class="text-slate-900">9+ years</strong> advising HNIs and founders on equity, mutual fund, ESOP RSU and crypto taxation. Smart contract reviewer for SaaS founders. Securities law background.
+                            </p>
+                            <div class="flex flex-wrap gap-1.5 pt-2 border-t border-slate-100">
+                                <span class="px-2 py-0.5 rounded-full bg-blue-100 text-blue-700 text-[10px] font-bold">Capital Gains</span>
+                                <span class="px-2 py-0.5 rounded-full bg-blue-100 text-blue-700 text-[10px] font-bold">ESOP RSU</span>
+                                <span class="px-2 py-0.5 rounded-full bg-blue-100 text-blue-700 text-[10px] font-bold">Crypto</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 5 -->
+                    <div class="group bg-white rounded-3xl overflow-hidden border border-slate-200 hover-lift shadow-sm">
+                        <div class="relative h-72 overflow-hidden bg-purple-100">
+                            <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=600&auto=format&fit=crop" alt="CA Arjun Reddy" class="w-full h-full object-cover group-hover:scale-105 transition duration-700">
+                            <div class="absolute inset-0 bg-gradient-to-t from-purple-900 via-purple-900/20 to-transparent"></div>
+                            <div class="absolute bottom-3 left-3 right-3">
+                                <div class="font-display font-bold text-xl text-white leading-tight drop-shadow">CA Arjun Reddy</div>
+                                <div class="text-[11px] text-purple-200 uppercase tracking-[0.15em] font-bold mt-1">Partner · MCA Compliance & Startup</div>
+                            </div>
+                        </div>
+                        <div class="p-6 space-y-3">
+                            <div class="flex items-center gap-2 text-[11px] text-slate-500 font-mono">
+                                <i class="fa-solid fa-id-card text-purple-700"></i> ICAI M.No. 217804
+                            </div>
+                            <p class="text-sm text-slate-700 leading-relaxed">
+                                <strong class="text-slate-900">11+ years</strong> in Pvt Ltd & LLP incorporations, founder-side SaaS contracts, ESOP pool structuring, Series A due-diligence and MCA ROC compliance.
+                            </p>
+                            <div class="flex flex-wrap gap-1.5 pt-2 border-t border-slate-100">
+                                <span class="px-2 py-0.5 rounded-full bg-purple-100 text-purple-700 text-[10px] font-bold">SPICe+</span>
+                                <span class="px-2 py-0.5 rounded-full bg-purple-100 text-purple-700 text-[10px] font-bold">ESOP Pool</span>
+                                <span class="px-2 py-0.5 rounded-full bg-purple-100 text-purple-700 text-[10px] font-bold">DD Support</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 6 - Manager / Seniors card -->
+                    <div class="bg-deepTeal text-white rounded-3xl p-6 sm:p-8 border border-emeraldPrimary/30 hover-lift relative overflow-hidden flex flex-col justify-between">
+                        <div class="blob bg-emeraldPrimary w-48 h-48 -top-12 -right-12 opacity-30"></div>
+                        <div class="relative">
+                            <div class="font-display font-bold text-xl mb-3">+ 16 Senior CAs & 8 Junior Associates</div>
+                            <p class="text-sm text-emerald-100 leading-relaxed mb-5">Our back-end team includes 16 additional CAs (mostly all-India rankers) and a junior batch of 8 articles & interns who handle day-to-day filings, audit sampling & IT preparation — so partners never get distracted from high-judgment work.</p>
+                            <div class="grid grid-cols-2 gap-3 text-xs">
+                                <div class="bg-white/10 rounded-xl p-3 backdrop-blur-sm border border-white/20">
+                                    <div class="text-amberLight font-bold text-lg">4</div>
+                                    <div class="text-slate-300">Avg ICAI All-India Rank</div>
+                                </div>
+                                <div class="bg-white/10 rounded-xl p-3 backdrop-blur-sm border border-white/20">
+                                    <div class="text-emeraldPrimary font-bold text-lg">100%</div>
+                                    <div class="text-slate-300">Articles Passed in 1st Attempt</div>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="about.html" class="relative mt-5 px-5 py-3 bg-emeraldPrimary hover:bg-emerald-400 text-slate-900 font-bold uppercase tracking-wider text-xs rounded-full text-center transition shadow-lg shadow-emerald-500/30">View Full Directory</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============== MISSION & VALUES ============== -->
+        <section class="py-20 sm:py-24 bg-bgLight border-b border-slate-200">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6">
+                <div class="text-center max-w-2xl mx-auto mb-14 space-y-3">
+                    <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emeraldPrimary/10 text-emeraldDark text-xs font-bold uppercase tracking-[0.15em]">✦ What We Stand For</div>
+                    <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold font-display text-slate-900 leading-tight">Our <span class="text-emeraldDark">mission, values</span> & compliance promise</h2>
+                </div>
+
+                <div class="grid md:grid-cols-3 gap-5">
+                    <div class="bg-white p-7 rounded-3xl border border-slate-200 hover-lift">
+                        <div class="w-12 h-12 rounded-2xl bg-emeraldPrimary text-white flex items-center justify-center text-xl mb-4 shadow-lg shadow-emerald-500/30"><i class="fa-solid fa-eye"></i></div>
+                        <h3 class="font-display font-bold text-xl text-slate-900">Mission</h3>
+                        <p class="text-sm text-slate-600 leading-relaxed mt-2">To make Indian taxpayers financially confident — never anxious — about Income Tax, GST, compliance and corporate decisions.</p>
+                    </div>
+                    <div class="bg-white p-7 rounded-3xl border border-slate-200 hover-lift">
+                        <div class="w-12 h-12 rounded-2xl bg-amberGold text-white flex items-center justify-center text-xl mb-4 shadow-lg shadow-amber-500/30"><i class="fa-solid fa-shield-halved"></i></div>
+                        <h3 class="font-display font-bold text-xl text-slate-900">Ethics</h3>
+                        <p class="text-sm text-slate-600 leading-relaxed mt-2">We refuse to file anything that cannot be defended under ITAT scrutiny. We've walked away from clients who asked us to. That's the TaxMitra pledge.</p>
+                    </div>
+                    <div class="bg-white p-7 rounded-3xl border border-slate-200 hover-lift">
+                        <div class="w-12 h-12 rounded-2xl bg-blue-500 text-white flex items-center justify-center text-xl mb-4 shadow-lg shadow-blue-500/30"><i class="fa-solid fa-brain"></i></div>
+                        <h3 class="font-display font-bold text-xl text-slate-900">Innovation</h3>
+                        <p class="text-sm text-slate-600 leading-relaxed mt-2">AI-assisted 2B reconciliation, WhatsApp-first client onboarding, ICAI-compliant data security, encrypted cloud storage, automated ack tracking.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============== LOCATIONS ============== -->
+        <section class="py-16 bg-white border-b border-slate-200">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 text-center space-y-6">
+                <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emeraldPrimary/10 text-emeraldDark text-xs font-bold uppercase tracking-[0.15em]">✦ 4 Indian Cities · 12 Service Verticals</div>
+                <h3 class="text-2xl sm:text-3xl font-display font-bold text-slate-900">Practice Locations Across India</h3>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 pt-4">
+                    <div class="bg-bgLight p-5 rounded-2xl border border-slate-200 hover-lift group">
+                        <div class="w-10 h-10 rounded-xl bg-emeraldPrimary/10 text-emeraldDark flex items-center justify-center text-base mx-auto mb-3 group-hover:scale-110 transition"><i class="fa-solid fa-location-dot"></i></div>
+                        <div class="font-display font-bold text-base text-slate-900">Mumbai</div>
+                        <div class="text-[11px] text-slate-500 font-semibold mb-2">HQ · Nariman Point</div>
+                        <div class="text-[10px] text-emeraldDark font-mono font-bold">021 · 400021</div>
+                    </div>
+                    <div class="bg-bgLight p-5 rounded-2xl border border-slate-200 hover-lift group">
+                        <div class="w-10 h-10 rounded-xl bg-emeraldPrimary/10 text-emeraldDark flex items-center justify-center text-base mx-auto mb-3 group-hover:scale-110 transition"><i class="fa-solid fa-location-dot"></i></div>
+                        <div class="font-display font-bold text-base text-slate-900">Delhi NCR</div>
+                        <div class="text-[11px] text-slate-500 font-semibold mb-2">Connaught Place</div>
+                        <div class="text-[10px] text-emeraldDark font-mono font-bold">011 · 110001</div>
+                    </div>
+                    <div class="bg-bgLight p-5 rounded-2xl border border-slate-200 hover-lift group">
+                        <div class="w-10 h-10 rounded-xl bg-emeraldPrimary/10 text-emeraldDark flex items-center justify-center text-base mx-auto mb-3 group-hover:scale-110 transition"><i class="fa-solid fa-location-dot"></i></div>
+                        <div class="font-display font-bold text-base text-slate-900">Bengaluru</div>
+                        <div class="text-[11px] text-slate-500 font-semibold mb-2">Koramangala</div>
+                        <div class="text-[10px] text-emeraldDark font-mono font-bold">080 · 560034</div>
+                    </div>
+                    <div class="bg-bgLight p-5 rounded-2xl border border-slate-200 hover-lift group">
+                        <div class="w-10 h-10 rounded-xl bg-emeraldPrimary/10 text-emeraldDark flex items-center justify-center text-base mx-auto mb-3 group-hover:scale-110 transition"><i class="fa-solid fa-location-dot"></i></div>
+                        <div class="font-display font-bold text-base text-slate-900">Ahmedabad</div>
+                        <div class="text-[11px] text-slate-500 font-semibold mb-2">CG Road</div>
+                        <div class="text-[10px] text-emeraldDark font-mono font-bold">079 · 380009</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============== FINAL CTA ============== -->
+        <section class="py-16 bg-deepTealDark text-white relative overflow-hidden">
+            <div class="blob bg-emeraldPrimary w-80 h-80 -top-24 -left-24 opacity-30"></div>
+            <div class="max-w-4xl mx-auto px-4 sm:px-6 text-center space-y-6 relative z-10">
+                <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emeraldPrimary/15 border border-emeraldPrimary/30 text-emeraldPrimary text-xs font-bold uppercase tracking-[0.15em]">✦ Talk to a Senior CA Today</div>
+                <h2 class="text-3xl sm:text-4xl font-display font-bold">Ready to meet your <span class="bg-gradient-to-r from-emeraldPrimary to-amberLight bg-clip-text text-transparent">future CA?</span></h2>
+                <p class="text-slate-300 max-w-xl mx-auto">One WhatsApp message with a problem is all it takes. Our Senior CA responds in &lt;2 hours.</p>
+                <div class="flex flex-wrap justify-center gap-3 pt-2">
+                    <a href="contact.html" class="pill-btn px-7 py-4 bg-gradient-to-r from-emeraldPrimary to-emeraldDark text-white font-bold text-sm inline-flex items-center gap-2 shadow-2xl shadow-emerald-500/40">
+                        <span>Schedule a Free 15-min Call</span> <i class="fa-solid fa-arrow-right text-xs"></i>
+                    </a>
+                    <a href="https://wa.me/919876543210" target="_blank" class="pill-btn px-7 py-4 bg-white/10 backdrop-blur-sm border border-white/30 text-white font-bold text-sm inline-flex items-center gap-2 hover:bg-white/20">
+                        <i class="fa-brands fa-whatsapp text-emeraldPrimary text-base"></i> WhatsApp Now
+                    </a>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ============== UNIFIED FOOTER ============== -->
+    <footer class="bg-deepTealDark text-slate-300 pt-16 pb-8 border-t border-emerald-900/40">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 grid grid-cols-2 md:grid-cols-12 gap-8 mb-10">
+            <div class="col-span-2 md:col-span-4 space-y-4">
+                <div class="flex items-center gap-2.5">
+                    <div class="w-10 h-10 rounded-full bg-gradient-to-br from-emeraldPrimary to-emeraldDark text-white flex items-center justify-center text-base font-bold shadow-md shadow-emerald-500/30"><i class="fa-solid fa-indian-rupee-sign"></i></div>
+                    <div>
+                        <div class="text-white font-display font-bold text-lg">TaxMitra Advisory</div>
+                        <div class="text-[10px] uppercase tracking-[0.18em] text-emeraldPrimary font-bold">ICAI · FCA · Since 2009</div>
+                    </div>
+                </div>
+                <p class="text-sm leading-relaxed text-slate-400 max-w-sm">A full-service, ICAI-licensed Chartered Accountancy firm delivering Income Tax, GST compliance, capital gains optimisation & business structuring across India.</p>
+            </div>
+            <div class="col-span-1 md:col-span-2 space-y-3">
+                <h5 class="text-white font-bold mb-1 uppercase tracking-wider text-xs">Quick Links</h5>
+                <ul class="space-y-2 text-sm">
+                    <li><a href="index.html" class="hover:text-emeraldPrimary transition">Home</a></li>
+                    <li><a href="services.html" class="hover:text-emeraldPrimary transition">All Services</a></li>
+                    <li><a href="calculator.html" class="hover:text-emeraldPrimary transition">Tax Calculator</a></li>
+                    <li><a href="about.html" class="hover:text-emeraldPrimary transition">About CA Team</a></li>
+                    <li><a href="contact.html" class="hover:text-emeraldPrimary transition">Contact</a></li>
+                    <li><a href="./admin/index.html" class="text-emeraldPrimary font-bold">CA Admin Demo</a></li>
+                </ul>
+            </div>
+            <div class="col-span-1 md:col-span-3 space-y-3">
+                <h5 class="text-white font-bold mb-1 uppercase tracking-wider text-xs">Practice Areas</h5>
+                <ul class="space-y-2 text-sm">
+                    <li><a href="services.html" class="hover:text-emeraldPrimary transition">Income Tax & ITR Filing</a></li>
+                    <li><a href="services.html" class="hover:text-emeraldPrimary transition">GST Registration & Returns</a></li>
+                    <li><a href="services.html" class="hover:text-emeraldPrimary transition">Company / LLP Incorporation</a></li>
+                    <li><a href="services.html" class="hover:text-emeraldPrimary transition">Capital Gains Planning</a></li>
+                    <li><a href="services.html" class="hover:text-emeraldPrimary transition">IT Notice Defence & ITAT</a></li>
+                </ul>
+            </div>
+            <div class="col-span-2 md:col-span-3 space-y-4">
+                <h5 class="text-white font-bold mb-1 uppercase tracking-wider text-xs">Direct Contact</h5>
+                <div class="space-y-2.5 text-sm">
+                    <div class="flex items-start gap-2"><i class="fa-solid fa-location-dot text-emeraldPrimary mt-1 text-xs"></i><span>Mumbai · Delhi NCR · Bengaluru</span></div>
+                    <div class="flex items-start gap-2"><i class="fa-solid fa-phone text-emeraldPrimary mt-1 text-xs"></i><span class="font-mono font-bold text-white">+91 98765 43210</span></div>
+                    <div class="flex items-start gap-2"><i class="fa-solid fa-envelope text-emeraldPrimary mt-1 text-xs"></i><span class="font-mono">support@taxmitra.in</span></div>
+                    <div class="flex items-start gap-2"><i class="fa-regular fa-clock text-emeraldPrimary mt-1 text-xs"></i><span>Mon–Sat · 9:30 AM – 7:30 PM IST</span></div>
+                </div>
+                <a href="https://wa.me/919876543210" target="_blank" class="inline-flex items-center gap-2 bg-emeraldPrimary hover:bg-emeraldDark text-slate-900 font-bold px-4 py-2.5 rounded-full text-xs transition">
+                    <i class="fa-brands fa-whatsapp text-sm"></i> Chat on WhatsApp
+                </a>
+            </div>
+        </div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 pt-6 border-t border-white/5 flex flex-col sm:flex-row justify-between items-center gap-3 text-[11px] text-slate-500">
+            <span>© 2026 TaxMitra Advisory LLP. <strong class="text-slate-400">ICAI Firm Reg #054921</strong> · All rights reserved.</span>
+            <div class="flex items-center gap-4"><a href="#" class="hover:text-emeraldPrimary">Privacy</a><a href="#" class="hover:text-emeraldPrimary">Terms</a><a href="#" class="hover:text-emeraldPrimary">Disclaimers</a></div>
+        </div>
+    </footer>
+
+    <script>
+        const mobileToggle = document.getElementById('mobile-toggle');
+        const mobileDrawer = document.getElementById('mobile-drawer');
+        if (mobileToggle) {
+            mobileToggle.addEventListener('click', () => {
+                mobileDrawer.classList.toggle('hidden');
+                const icon = mobileToggle.querySelector('i');
+                icon.classList.toggle('fa-bars');
+                icon.classList.toggle('fa-xmark');
+            });
+        }
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('animate-fade-up'); revealObserver.unobserve(entry.target); } });
+        }, { threshold: 0.12 });
+        document.querySelectorAll('.reveal-on-load').forEach(el => revealObserver.observe(el));
+    </script>
+</body>
+
+</html>

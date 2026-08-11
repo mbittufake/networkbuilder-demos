@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Indian Tax Regime Calculator FY 2025-26 | TaxMitra Advisory</title>
+    <meta name="description" content="Free Old vs New Tax Regime calculator for FY 2025-26 (AY 2026-27). Save up to ₹1.5 Lakhs legally under the new regime slabs. Updated with Finance Act 2025.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        deepTeal: '#0F2A22',
+                        deepTealDark: '#0A1F1B',
+                        tealCard: '#1A3329',
+                        emeraldPrimary: '#10B981',
+                        emeraldDark: '#047857',
+                        emeraldDeeper: '#064E3B',
+                        amberGold: '#D97706',
+                        amberLight: '#FBBF24',
+                        bgLight: '#F8FAFC',
+                        cardLight: '#F1F5F9'
+                    },
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                        display: ['Outfit', 'sans-serif']
+                    },
+                    animation: {
+                        'fade-up': 'fadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) both'
+                    },
+                    keyframes: {
+                        fadeUp: { '0%': { opacity: 0, transform: 'translateY(24px)' }, '100%': { opacity: 1, transform: 'translateY(0)' } }
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #F8FAFC; color: #0F172A; -webkit-font-smoothing: antialiased; }
+        .font-display { font-family: 'Outfit', sans-serif; }
+        .pill-btn { border-radius: 9999px; transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1); }
+        .pill-btn:hover { transform: translateY(-2px); }
+        .glass-light { background: rgba(255, 255, 255, 0.7); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border: 1px solid rgba(255, 255, 255, 0.5); }
+        .blob { position: absolute; border-radius: 50%; filter: blur(80px); opacity: 0.4; pointer-events: none; }
+        .hover-lift { transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1); }
+        .hover-lift:hover { transform: translateY(-6px); }
+        input[type="range"] {
+            -webkit-appearance: none;
+            appearance: none;
+            background: linear-gradient(to right, #10B981 0%, #10B981 var(--range-progress), #E2E8F0 var(--range-progress), #E2E8F0 100%);
+        }
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 26px; height: 26px;
+            background: #fff;
+            border: 5px solid #10B981;
+            border-radius: 50%;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(16,185,129,0.4);
+            transition: transform 0.2s;
+        }
+        input[type="range"]::-webkit-slider-thumb:hover { transform: scale(1.15); }
+        input[type="range"]::-moz-range-thumb {
+            width: 26px; height: 26px;
+            background: #fff;
+            border: 5px solid #10B981;
+            border-radius: 50%;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(16,185,129,0.4);
+        }
+        .stat-num { font-variant-numeric: tabular-nums; }
+        /* Animated pulse for recommendation */
+        .winner-pulse { animation: winnerPulse 2.5s ease-in-out infinite; }
+        @keyframes winnerPulse { 0%, 100% { box-shadow: 0 0 0 0 rgba(16,185,129,0.35); } 50% { box-shadow: 0 0 0 14px rgba(16,185,129,0); } }
+        ::-webkit-scrollbar { width: 10px; height: 10px; }
+        ::-webkit-scrollbar-track { background: #F1F5F9; }
+        ::-webkit-scrollbar-thumb { background: #10B981; border-radius: 6px; }
+    </style>
+</head>
+
+<body class="min-h-screen flex flex-col selection:bg-emeraldPrimary selection:text-white overflow-x-hidden">
+
+    <!-- Announcement Bar -->
+    <div class="bg-deepTealDark text-slate-300 text-[11px] sm:text-xs py-2.5 px-6 border-b border-emerald-900/50 relative z-50">
+        <div class="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-2">
+            <div class="flex items-center gap-3">
+                <span class="relative flex h-2.5 w-2.5"><span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emeraldPrimary opacity-75"></span><span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-emeraldPrimary"></span></span>
+                <span><strong class="text-white">FY 2025-26 (AY 2026-27):</strong> ITR Filing Window Open · Last Date 31 July 2026</span>
+            </div>
+            <div class="flex items-center gap-5 text-xs font-semibold">
+                <a href="./admin/index.html" class="text-emeraldPrimary hover:text-white transition flex items-center gap-1.5"><i class="fa-solid fa-gauge-high"></i> CA Portal Demo</a>
+                <a href="https://wa.me/919876543210" target="_blank" class="text-white hover:text-emeraldPrimary transition flex items-center gap-1.5"><i class="fa-brands fa-whatsapp text-emeraldPrimary text-sm"></i> WhatsApp Help</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sticky Glass Navigation -->
+    <header class="sticky top-0 z-40">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 py-3">
+            <nav class="glass-light rounded-full px-4 sm:px-6 py-3 flex items-center justify-between shadow-lg shadow-emerald-900/5 border border-white/40">
+                <a href="index.html" class="flex items-center gap-2.5 group">
+                    <div class="w-10 h-10 rounded-full bg-gradient-to-br from-emeraldPrimary to-emeraldDark text-white flex items-center justify-center text-base font-bold shadow-md shadow-emerald-500/30 group-hover:rotate-12 transition">
+                        <i class="fa-solid fa-indian-rupee-sign"></i>
+                    </div>
+                    <div class="leading-tight">
+                        <span class="text-lg font-bold font-display tracking-tight text-slate-900">TaxMitra <span class="text-emeraldDark">CA</span></span>
+                        <span class="block text-[9px] uppercase tracking-[0.18em] text-slate-500 font-bold -mt-0.5">Advisory · ICAI</span>
+                    </div>
+                </a>
+                <div class="hidden lg:flex items-center gap-1 text-sm font-semibold text-slate-700">
+                    <a href="index.html" class="px-4 py-2 rounded-full hover:bg-slate-100 hover:text-emeraldDark transition">Home</a>
+                    <a href="services.html" class="px-4 py-2 rounded-full hover:bg-slate-100 hover:text-emeraldDark transition">Services</a>
+                    <a href="calculator.html" class="px-4 py-2 rounded-full bg-emeraldPrimary/10 text-emeraldDark">Calculator</a>
+                    <a href="about.html" class="px-4 py-2 rounded-full hover:bg-slate-100 hover:text-emeraldDark transition">About CA</a>
+                    <a href="contact.html" class="px-4 py-2 rounded-full hover:bg-slate-100 hover:text-emeraldDark transition">Contact</a>
+                    <a href="./admin/index.html" class="px-4 py-2 rounded-full hover:bg-amber-50 hover:text-amber-700 transition flex items-center gap-1.5"><i class="fa-solid fa-gauge-high text-amber-600 text-xs"></i> Admin</a>
+                </div>
+                <div class="flex items-center gap-2">
+                    <a href="contact.html" class="hidden sm:inline-flex pill-btn px-5 py-2.5 bg-gradient-to-r from-emeraldPrimary to-emeraldDark text-white text-xs font-bold uppercase tracking-wider items-center gap-2 shadow-md shadow-emerald-500/30">
+                        <i class="fa-solid fa-phone-volume text-[11px]"></i> Consult a CA
+                    </a>
+                    <button id="mobile-toggle" class="lg:hidden w-10 h-10 rounded-full bg-slate-100 text-slate-700 flex items-center justify-center"><i class="fa-solid fa-bars"></i></button>
+                </div>
+            </nav>
+        </div>
+        <div id="mobile-drawer" class="hidden lg:hidden px-4 pb-3">
+            <div class="glass-light rounded-2xl p-4 border border-white/40 shadow-lg space-y-1 text-sm font-semibold text-slate-700">
+                <a href="index.html" class="block px-4 py-2.5 rounded-xl hover:bg-slate-100">Home</a>
+                <a href="services.html" class="block px-4 py-2.5 rounded-xl hover:bg-slate-100">Services</a>
+                <a href="calculator.html" class="block px-4 py-2.5 rounded-xl bg-emeraldPrimary/10 text-emeraldDark">Calculator</a>
+                <a href="about.html" class="block px-4 py-2.5 rounded-xl hover:bg-slate-100">About CA</a>
+                <a href="contact.html" class="block px-4 py-2.5 rounded-xl hover:bg-slate-100">Contact</a>
+                <a href="./admin/index.html" class="block px-4 py-2.5 rounded-xl bg-amber-50 text-amber-700">CA Admin Portal Demo</a>
+                <a href="contact.html" class="block px-4 py-3 rounded-xl bg-emeraldPrimary text-white text-center font-bold uppercase tracking-wider text-xs mt-2">Consult a CA →</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="flex-grow">
+
+        <!-- ============== HERO ============== -->
+        <section class="relative bg-deepTeal text-white overflow-hidden border-b border-deepTealDark">
+            <div class="blob bg-emeraldPrimary w-96 h-96 -top-32 -right-32"></div>
+            <div class="blob bg-amberGold w-80 h-80 bottom-0 left-0 opacity-20"></div>
+            <div class="absolute inset-0 opacity-[0.04]" style="background-image: linear-gradient(rgba(255,255,255,0.6) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.6) 1px, transparent 1px); background-size: 60px 60px;"></div>
+
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 pt-14 pb-14 sm:pt-20 sm:pb-16 relative z-10 text-center">
+                <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emeraldPrimary/10 border border-emeraldPrimary/30 text-emeraldPrimary text-xs font-bold uppercase tracking-[0.15em]">
+                    <i class="fa-solid fa-calculator"></i> FY 2025-26 / AY 2026-27 · Finance Act 2025
+                </div>
+                <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold font-display leading-[1.05] tracking-tight mt-5">
+                    Income Tax <span class="bg-gradient-to-r from-emeraldPrimary to-amberLight bg-clip-text text-transparent">Regime Selector</span>
+                </h1>
+                <p class="text-slate-300/90 text-base sm:text-lg max-w-2xl mx-auto mt-4 leading-relaxed">
+                    Compute your exact Income Tax under both <strong class="text-white">Old & New regimes</strong> in seconds. Find your legal sweet spot with every Section 80C–80CCD(1B) deduction modelled.
+                </p>
+                <div class="flex flex-wrap items-center justify-center gap-2 mt-6 text-xs font-bold">
+                    <span class="px-3.5 py-1.5 rounded-full bg-white/8 border border-white/20 text-slate-200"><i class="fa-solid fa-bolt text-amberLight mr-1.5"></i> Real-time computation</span>
+                    <span class="px-3.5 py-1.5 rounded-full bg-white/8 border border-white/20 text-slate-200"><i class="fa-solid fa-shield-halved text-emeraldPrimary mr-1.5"></i> 100% private · runs in browser</span>
+                    <span class="px-3.5 py-1.5 rounded-full bg-white/8 border border-white/20 text-slate-200"><i class="fa-solid fa-scale-balanced text-amberLight mr-1.5"></i> Both regimes compared</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============== CALCULATOR ============== -->
+        <section class="py-12 sm:py-16 bg-bgLight relative">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6">
+                <div class="grid lg:grid-cols-12 gap-5 sm:gap-6 items-start">
+
+                    <!-- LEFT: Controls -->
+                    <div class="lg:col-span-7 bg-white rounded-3xl border border-slate-200 shadow-xl shadow-slate-200/50 p-6 sm:p-8 space-y-6 hover-lift">
+                        <div class="flex items-center justify-between border-b border-slate-100 pb-3">
+                            <h3 class="font-display font-bold text-lg text-slate-900 flex items-center gap-2"><i class="fa-solid fa-sliders text-emeraldDark"></i> Your Inputs</h3>
+                            <span class="text-[10px] bg-emeraldPrimary/10 text-emeraldDark px-2.5 py-1 rounded-full font-bold uppercase tracking-wider">Auto-calculating</span>
+                        </div>
+
+                        <!-- Income slider -->
+                        <div class="space-y-3">
+                            <div class="flex flex-col sm:flex-row sm:justify-between sm:items-end gap-1">
+                                <label class="text-sm font-bold text-slate-800 flex items-center gap-2"><i class="fa-solid fa-indian-rupee-sign text-emeraldDark"></i> Gross Annual Income</label>
+                                <span id="full-inc-disp" class="font-display font-bold text-3xl text-emeraldDark stat-num">₹15,00,000</span>
+                            </div>
+                            <input type="range" id="full-inc" min="300000" max="6000000" step="50000" value="1500000" oninput="runFullCalc()" class="w-full h-2 rounded-lg appearance-none cursor-pointer" style="--range-progress: 22%;">
+                            <div class="flex justify-between text-[11px] text-slate-500 font-semibold">
+                                <span>₹3L</span><span>₹15L</span><span>₹30L</span><span>₹45L</span><span>₹60L+</span>
+                            </div>
+                        </div>
+
+                        <!-- Category & 80C -->
+                        <div class="grid sm:grid-cols-2 gap-3">
+                            <div>
+                                <label class="text-[10px] font-bold uppercase tracking-wider text-slate-500 block mb-1.5">Taxpayer Profile</label>
+                                <select id="taxpayer-cat" onchange="runFullCalc()" class="w-full bg-bgLight border border-slate-300 rounded-xl px-3.5 py-3 text-sm font-medium text-slate-800 focus:ring-2 focus:ring-emeraldPrimary focus:outline-none">
+                                    <option value="salaried" selected>Salaried Employee (Std. Ded.)</option>
+                                    <option value="business">Business / Freelancer</option>
+                                    <option value="senior">Senior Citizen (60+ Years)</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="text-[10px] font-bold uppercase tracking-wider text-slate-500 block mb-1.5">Section 80C Investments</label>
+                                <select id="full-80c" onchange="runFullCalc()" class="w-full bg-bgLight border border-slate-300 rounded-xl px-3.5 py-3 text-sm font-medium text-slate-800 focus:ring-2 focus:ring-emeraldPrimary focus:outline-none">
+                                    <option value="150000" selected>₹1,50,000 (EPF, PPF, ELSS, LIC)</option>
+                                    <option value="100000">₹1,00,000</option>
+                                    <option value="50000">₹50,000</option>
+                                    <option value="0">Zero / None</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- Old Regime deductions chips -->
+                        <div class="space-y-3 pt-3 border-t border-slate-100">
+                            <h4 class="text-[10px] font-bold uppercase tracking-[0.15em] text-slate-500">Old Regime Additional Deductions</h4>
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                                <label class="flex items-start gap-3 p-4 bg-emeraldPrimary/5 border border-emeraldPrimary/30 rounded-2xl cursor-pointer transition hover:bg-emeraldPrimary/10">
+                                    <input type="checkbox" id="chk-80d" checked onchange="runFullCalc()" class="mt-1 w-4 h-4 accent-emeraldPrimary rounded">
+                                    <div class="text-sm"><strong class="text-slate-900">Sec 80D Health Insurance</strong><div class="text-[11px] text-slate-500">Self + family · ₹25,000</div></div>
+                                </label>
+                                <label class="flex items-start gap-3 p-4 bg-emeraldPrimary/5 border border-emeraldPrimary/30 rounded-2xl cursor-pointer transition hover:bg-emeraldPrimary/10">
+                                    <input type="checkbox" id="chk-hra" checked onchange="runFullCalc()" class="mt-1 w-4 h-4 accent-emeraldPrimary rounded">
+                                    <div class="text-sm"><strong class="text-slate-900">HRA Rent Exemption</strong><div class="text-[11px] text-slate-500">Avg rent · ₹1,50,000</div></div>
+                                </label>
+                                <label class="flex items-start gap-3 p-4 bg-bgLight border border-slate-200 rounded-2xl cursor-pointer transition hover:border-emeraldPrimary">
+                                    <input type="checkbox" id="chk-home-loan" onchange="runFullCalc()" class="mt-1 w-4 h-4 accent-emeraldPrimary rounded">
+                                    <div class="text-sm"><strong class="text-slate-900">Home Loan Interest</strong><div class="text-[11px] text-slate-500">Sec 24b · ₹2,00,000</div></div>
+                                </label>
+                                <label class="flex items-start gap-3 p-4 bg-bgLight border border-slate-200 rounded-2xl cursor-pointer transition hover:border-emeraldPrimary">
+                                    <input type="checkbox" id="chk-nps" onchange="runFullCalc()" class="mt-1 w-4 h-4 accent-emeraldPrimary rounded">
+                                    <div class="text-sm"><strong class="text-slate-900">NPS Tier-1 (80CCD 1B)</strong><div class="text-[11px] text-slate-500">Extra · ₹50,000</div></div>
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Reset tip -->
+                        <div class="flex items-start gap-2.5 p-3 rounded-xl bg-emeraldPrimary/5 border border-emeraldPrimary/20 text-xs text-slate-600">
+                            <i class="fa-solid fa-lightbulb text-amberGold mt-0.5"></i>
+                            <p><strong class="text-slate-900">Pro tip:</strong> Toggle Home Loan + NPS and watch your Old Regime total drop by up to ~₹30,000. Run different scenarios — the calculator is free and unlimited.</p>
+                        </div>
+                    </div>
+
+                    <!-- RIGHT: Results -->
+                    <div class="lg:col-span-5 space-y-4">
+                        <!-- Winner banner -->
+                        <div id="result-card" class="bg-gradient-to-br from-emeraldPrimary via-emeraldDark to-emeraldDeeper text-white rounded-3xl p-7 sm:p-8 border border-emeraldPrimary/30 shadow-2xl shadow-emerald-500/30 relative overflow-hidden winner-pulse">
+                            <div class="blob bg-white w-48 h-48 -top-12 -right-12 opacity-10"></div>
+                            <div class="relative z-10 text-center space-y-3">
+                                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/15 border border-white/30 text-[10px] font-bold uppercase tracking-wider">
+                                    <i class="fa-solid fa-trophy text-amberLight"></i> Your Tax Champion
+                                </div>
+                                <div id="full-recommendation" class="font-display font-bold text-2xl sm:text-3xl leading-tight">New Regime Saves ₹34,200</div>
+                                <p class="text-emerald-100 text-xs leading-relaxed max-w-xs mx-auto">Switch to this regime for your ITR-1 filing this FY to legally minimise outflow.</p>
+                                <a href="contact.html" class="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-white text-emeraldDeeper font-bold text-xs uppercase tracking-wider hover:shadow-xl transition">
+                                    <span>Book Free CA Review Call</span> <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Individual regime cards -->
+                        <div class="bg-white rounded-3xl border border-slate-200 shadow-sm p-6 space-y-4">
+                            <h4 class="text-[10px] font-bold uppercase tracking-[0.15em] text-slate-500 flex items-center justify-between">
+                                Detailed Tax Breakup
+                                <span class="bg-emeraldPrimary/10 text-emeraldDark px-2.5 py-0.5 rounded-full font-mono">FY 25-26</span>
+                            </h4>
+
+                            <!-- Gross Income row -->
+                            <div class="flex justify-between items-center border-b border-slate-100 pb-3">
+                                <span class="text-[11px] text-slate-500 font-semibold uppercase tracking-wider">Total Gross Income</span>
+                                <span id="full-gross-disp" class="font-display font-bold text-sm text-slate-900 stat-num">₹15,00,000</span>
+                            </div>
+
+                            <!-- Old Regime card -->
+                            <div class="bg-bgLight rounded-2xl p-4 border border-slate-200 space-y-2 relative overflow-hidden">
+                                <div class="flex items-center justify-between">
+                                    <div class="flex items-center gap-2">
+                                        <div class="w-7 h-7 rounded-lg bg-amberGold/15 text-amber-700 flex items-center justify-center text-xs"><i class="fa-solid fa-landmark"></i></div>
+                                        <span class="text-sm font-bold text-slate-900">Old Regime</span>
+                                    </div>
+                                    <span class="text-[10px] bg-amberGold/10 text-amber-700 px-2 py-0.5 rounded-full font-bold">+ 4% Cess</span>
+                                </div>
+                                <div class="text-[11px] text-slate-600">Deductions: <strong id="full-old-ded-disp" class="text-amber-700 stat-num">₹3,75,000</strong></div>
+                                <div class="flex items-baseline gap-1.5">
+                                    <span class="text-[10px] text-slate-500 font-bold uppercase tracking-wider">Tax:</span>
+                                    <span id="full-old-tax-disp" class="font-display font-bold text-2xl text-slate-900 stat-num">₹1,56,000</span>
+                                </div>
+                                <!-- Progress bar -->
+                                <div class="h-1.5 bg-slate-200 rounded-full overflow-hidden mt-2">
+                                    <div id="old-bar" class="h-full bg-gradient-to-r from-amberGold to-amber-500 transition-all duration-700" style="width: 78%;"></div>
+                                </div>
+                            </div>
+
+                            <!-- New Regime card -->
+                            <div class="bg-emeraldPrimary/5 rounded-2xl p-4 border border-emeraldPrimary/30 space-y-2 relative overflow-hidden">
+                                <div class="flex items-center justify-between">
+                                    <div class="flex items-center gap-2">
+                                        <div class="w-7 h-7 rounded-lg bg-emeraldPrimary text-white flex items-center justify-center text-xs"><i class="fa-solid fa-leaf"></i></div>
+                                        <span class="text-sm font-bold text-slate-900">New Regime</span>
+                                    </div>
+                                    <span class="text-[10px] bg-emeraldPrimary/15 text-emeraldDark px-2 py-0.5 rounded-full font-bold">Std Ded ₹75K</span>
+                                </div>
+                                <div class="text-[11px] text-slate-600">Deductions: <strong class="text-emeraldDark">₹75,000 (std. deduction only)</strong></div>
+                                <div class="flex items-baseline gap-1.5">
+                                    <span class="text-[10px] text-slate-500 font-bold uppercase tracking-wider">Tax:</span>
+                                    <span id="full-new-tax-disp" class="font-display font-bold text-2xl text-emeraldDark stat-num">₹1,30,000</span>
+                                </div>
+                                <div class="h-1.5 bg-emeraldPrimary/20 rounded-full overflow-hidden mt-2">
+                                    <div id="new-bar" class="h-full bg-gradient-to-r from-emeraldPrimary to-emerald-400 transition-all duration-700" style="width: 65%;"></div>
+                                </div>
+                            </div>
+
+                            <!-- Effective tax rate -->
+                            <div class="grid grid-cols-2 gap-3 pt-2">
+                                <div class="bg-bgLight rounded-xl p-3 text-center">
+                                    <div class="text-[10px] uppercase tracking-wider text-slate-500 font-bold mb-0.5">Effective Rate (Old)</div>
+                                    <div id="eff-old" class="font-display font-bold text-lg text-slate-900 stat-num">10.4%</div>
+                                </div>
+                                <div class="bg-emeraldPrimary/5 rounded-xl p-3 text-center">
+                                    <div class="text-[10px] uppercase tracking-wider text-emeraldDark font-bold mb-0.5">Effective Rate (New)</div>
+                                    <div id="eff-new" class="font-display font-bold text-lg text-emeraldDark stat-num">8.7%</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Slab legend -->
+                <div class="mt-10 grid md:grid-cols-2 gap-5">
+                    <div class="bg-white rounded-3xl border border-slate-200 p-6 sm:p-8 hover-lift">
+                        <div class="flex items-center gap-3 mb-4">
+                            <div class="w-10 h-10 rounded-xl bg-amberGold/15 text-amber-700 flex items-center justify-center text-base"><i class="fa-solid fa-landmark"></i></div>
+                            <h4 class="font-display font-bold text-lg text-slate-900">Old Regime Slabs (FY 25-26)</h4>
+                        </div>
+                        <div class="overflow-hidden rounded-xl border border-slate-200">
+                            <table class="w-full text-xs">
+                                <thead class="bg-amber-50 text-amber-700 uppercase tracking-wider text-[10px]"><tr><th class="p-3 text-left font-bold">Income Range</th><th class="p-3 text-right font-bold">Tax Rate</th></tr></thead>
+                                <tbody class="divide-y divide-slate-100 text-slate-700 font-medium">
+                                    <tr><td class="p-3">₹0 – ₹2,50,000</td><td class="p-3 text-right font-bold text-emeraldPrimary">Nil</td></tr>
+                                    <tr><td class="p-3">₹2,50,001 – ₹5,00,000</td><td class="p-3 text-right">5%</td></tr>
+                                    <tr><td class="p-3">₹5,00,001 – ₹10,00,000</td><td class="p-3 text-right">20%</td></tr>
+                                    <tr><td class="p-3">Above ₹10,00,000</td><td class="p-3 text-right font-bold">30%</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <p class="text-[11px] text-slate-500 mt-3 italic">+ 4% Health & Education Cess on tax amount. Sections 80C, 80D, 80CCD(1B), 24b, HRA — all allowed.</p>
+                    </div>
+                    <div class="bg-white rounded-3xl border-2 border-emeraldPrimary/40 p-6 sm:p-8 hover-lift relative overflow-hidden">
+                        <div class="absolute -top-2 -right-2 px-3 py-1 rounded-full bg-emeraldPrimary text-slate-900 text-[10px] font-bold uppercase tracking-wider">Default · FY 25-26</div>
+                        <div class="flex items-center gap-3 mb-4">
+                            <div class="w-10 h-10 rounded-xl bg-emeraldPrimary text-white flex items-center justify-center text-base"><i class="fa-solid fa-leaf"></i></div>
+                            <h4 class="font-display font-bold text-lg text-slate-900">New Regime Slabs (FY 25-26)</h4>
+                        </div>
+                        <div class="overflow-hidden rounded-xl border border-emeraldPrimary/30">
+                            <table class="w-full text-xs">
+                                <thead class="bg-emeraldPrimary/10 text-emeraldDark uppercase tracking-wider text-[10px]"><tr><th class="p-3 text-left font-bold">Income Range</th><th class="p-3 text-right font-bold">Tax Rate</th></tr></thead>
+                                <tbody class="divide-y divide-emeraldPrimary/10 text-slate-700 font-medium">
+                                    <tr><td class="p-3">₹0 – ₹3,00,000</td><td class="p-3 text-right font-bold text-emeraldPrimary">Nil</td></tr>
+                                    <tr><td class="p-3">₹3,00,001 – ₹7,00,000</td><td class="p-3 text-right">5%</td></tr>
+                                    <tr><td class="p-3">₹7,00,001 – ₹10,00,000</td><td class="p-3 text-right">10%</td></tr>
+                                    <tr><td class="p-3">₹10,00,001 – ₹12,00,000</td><td class="p-3 text-right">15%</td></tr>
+                                    <tr><td class="p-3">₹12,00,001 – ₹15,00,000</td><td class="p-3 text-right">20%</td></tr>
+                                    <tr><td class="p-3">Above ₹15,00,000</td><td class="p-3 text-right font-bold">30%</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <p class="text-[11px] text-slate-500 mt-3 italic">+ 4% Health & Education Cess on tax amount. Only 80CCD(2) employer NPS allowed. Most other deductions not available.</p>
+                    </div>
+                </div>
+
+                <!-- Disclaimer -->
+                <div class="mt-8 p-5 rounded-2xl bg-amber-50 border border-amber-200/60 text-xs text-amber-900 leading-relaxed flex items-start gap-3">
+                    <i class="fa-solid fa-circle-info text-amber-600 text-base mt-0.5"></i>
+                    <div><strong class="text-amber-900">Disclaimer:</strong> This calculator uses the FY 2025-26 (AY 2026-27) Finance Act slabs. For capital gains, business income, multi-source income, NRI/foreign assets, or specific 80CCD scenarios, please <a href="contact.html" class="text-amber-700 font-bold underline">schedule a free Senior CA call</a> for a personalised computation.</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============== FAQ strip ============== -->
+        <section class="py-16 bg-white border-t border-slate-200">
+            <div class="max-w-4xl mx-auto px-4 sm:px-6 space-y-8">
+                <div class="text-center space-y-2">
+                    <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emeraldPrimary/10 text-emeraldDark text-xs font-bold uppercase tracking-[0.15em]">✦ Calculator FAQs</div>
+                    <h2 class="text-2xl sm:text-3xl font-display font-bold text-slate-900">Tax Regime Questions, Answered</h2>
+                </div>
+                <div class="grid md:grid-cols-2 gap-3">
+                    <div class="bg-bgLight p-5 rounded-2xl border border-slate-200">
+                        <h4 class="font-display font-bold text-sm text-slate-900 mb-1.5">Which regime is usually better?</h4>
+                        <p class="text-xs text-slate-600 leading-relaxed">For income under ₹15L with limited investments, New Regime wins. Above ₹15L with heavy 80C/80D/HRA/home loan, Old Regime usually wins. The real answer: <strong>it depends.</strong></p>
+                    </div>
+                    <div class="bg-bgLight p-5 rounded-2xl border border-slate-200">
+                        <h4 class="font-display font-bold text-sm text-slate-900 mb-1.5">Can I switch regimes every year?</h4>
+                        <p class="text-xs text-slate-600 leading-relaxed">Yes, salaried employees can choose Old or New regime each financial year. Business / freelancer taxpayers can switch once in their lifetime (now allowed from FY 24-25).</p>
+                    </div>
+                    <div class="bg-bgLight p-5 rounded-2xl border border-slate-200">
+                        <h4 class="font-display font-bold text-sm text-slate-900 mb-1.5">What about capital gains?</h4>
+                        <p class="text-xs text-slate-600 leading-relaxed">Capital gains are computed <strong>separately</strong> under both regimes using Section 111A & 112A rates — savings from this calculator don't include capital gains. Ask our CAs for the full picture.</p>
+                    </div>
+                    <div class="bg-bgLight p-5 rounded-2xl border border-slate-200">
+                        <h4 class="font-display font-bold text-sm text-slate-900 mb-1.5">Is this calculation accurate?</h4>
+                        <p class="text-xs text-slate-600 leading-relaxed">Yes — slabs & cess match Finance Act 2025 / CBDT Notification 25/2025. For ₹1 Cr+ incomes, multi-source income or NRI cases please request a manual <a href="contact.html" class="text-emeraldDark font-bold underline">CA review</a>.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- ============== UNIFIED FOOTER ============== -->
+    <footer class="bg-deepTealDark text-slate-300 pt-16 pb-8 border-t border-emerald-900/40">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 grid grid-cols-2 md:grid-cols-12 gap-8 mb-10">
+            <div class="col-span-2 md:col-span-4 space-y-4">
+                <div class="flex items-center gap-2.5">
+                    <div class="w-10 h-10 rounded-full bg-gradient-to-br from-emeraldPrimary to-emeraldDark text-white flex items-center justify-center text-base font-bold shadow-md shadow-emerald-500/30"><i class="fa-solid fa-indian-rupee-sign"></i></div>
+                    <div>
+                        <div class="text-white font-display font-bold text-lg">TaxMitra Advisory</div>
+                        <div class="text-[10px] uppercase tracking-[0.18em] text-emeraldPrimary font-bold">ICAI · FCA · Since 2009</div>
+                    </div>
+                </div>
+                <p class="text-sm leading-relaxed text-slate-400 max-w-sm">A full-service, ICAI-licensed Chartered Accountancy firm delivering Income Tax, GST compliance, capital gains optimisation & business structuring across India.</p>
+            </div>
+            <div class="col-span-1 md:col-span-2 space-y-3">
+                <h5 class="text-white font-bold mb-1 uppercase tracking-wider text-xs">Quick Links</h5>
+                <ul class="space-y-2 text-sm">
+                    <li><a href="index.html" class="hover:text-emeraldPrimary transition">Home</a></li>
+                    <li><a href="services.html" class="hover:text-emeraldPrimary transition">All Services</a></li>
+                    <li><a href="calculator.html" class="hover:text-emeraldPrimary transition">Tax Calculator</a></li>
+                    <li><a href="about.html" class="hover:text-emeraldPrimary transition">About CA Team</a></li>
+                    <li><a href="contact.html" class="hover:text-emeraldPrimary transition">Contact</a></li>
+                    <li><a href="./admin/index.html" class="text-emeraldPrimary font-bold">CA Admin Demo</a></li>
+                </ul>
+            </div>
+            <div class="col-span-1 md:col-span-3 space-y-3">
+                <h5 class="text-white font-bold mb-1 uppercase tracking-wider text-xs">Practice Areas</h5>
+                <ul class="space-y-2 text-sm">
+                    <li><a href="services.html" class="hover:text-emeraldPrimary transition">Income Tax & ITR Filing</a></li>
+                    <li><a href="services.html" class="hover:text-emeraldPrimary transition">GST Registration & Returns</a></li>
+                    <li><a href="services.html" class="hover:text-emeraldPrimary transition">Company / LLP Incorporation</a></li>
+                    <li><a href="services.html" class="hover:text-emeraldPrimary transition">Capital Gains Planning</a></li>
+                    <li><a href="services.html" class="hover:text-emeraldPrimary transition">IT Notice Defence & ITAT</a></li>
+                </ul>
+            </div>
+            <div class="col-span-2 md:col-span-3 space-y-4">
+                <h5 class="text-white font-bold mb-1 uppercase tracking-wider text-xs">Direct Contact</h5>
+                <div class="space-y-2.5 text-sm">
+                    <div class="flex items-start gap-2"><i class="fa-solid fa-location-dot text-emeraldPrimary mt-1 text-xs"></i><span>Mumbai · Delhi NCR · Bengaluru</span></div>
+                    <div class="flex items-start gap-2"><i class="fa-solid fa-phone text-emeraldPrimary mt-1 text-xs"></i><span class="font-mono font-bold text-white">+91 98765 43210</span></div>
+                    <div class="flex items-start gap-2"><i class="fa-solid fa-envelope text-emeraldPrimary mt-1 text-xs"></i><span class="font-mono">support@taxmitra.in</span></div>
+                    <div class="flex items-start gap-2"><i class="fa-regular fa-clock text-emeraldPrimary mt-1 text-xs"></i><span>Mon–Sat · 9:30 AM – 7:30 PM IST</span></div>
+                </div>
+                <a href="https://wa.me/919876543210" target="_blank" class="inline-flex items-center gap-2 bg-emeraldPrimary hover:bg-emeraldDark text-slate-900 font-bold px-4 py-2.5 rounded-full text-xs transition">
+                    <i class="fa-brands fa-whatsapp text-sm"></i> Chat on WhatsApp
+                </a>
+            </div>
+        </div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 pt-6 border-t border-white/5 flex flex-col sm:flex-row justify-between items-center gap-3 text-[11px] text-slate-500">
+            <span>© 2026 TaxMitra Advisory LLP. <strong class="text-slate-400">ICAI Firm Reg #054921</strong> · All rights reserved.</span>
+            <div class="flex items-center gap-4"><a href="#" class="hover:text-emeraldPrimary">Privacy</a><a href="#" class="hover:text-emeraldPrimary">Terms</a><a href="#" class="hover:text-emeraldPrimary">Disclaimers</a></div>
+        </div>
+    </footer>
+
+    <script>
+        const mobileToggle = document.getElementById('mobile-toggle');
+        const mobileDrawer = document.getElementById('mobile-drawer');
+        if (mobileToggle) {
+            mobileToggle.addEventListener('click', () => {
+                mobileDrawer.classList.toggle('hidden');
+                const icon = mobileToggle.querySelector('i');
+                icon.classList.toggle('fa-bars');
+                icon.classList.toggle('fa-xmark');
+            });
+        }
+        document.querySelectorAll('input[type="range"]').forEach(slider => {
+            const update = () => {
+                const min = +slider.min, max = +slider.max;
+                const pct = ((slider.value - min) / (max - min)) * 100;
+                slider.style.setProperty('--range-progress', pct + '%');
+            };
+            slider.addEventListener('input', update);
+            update();
+        });
+
+        function fmt(n) { return '₹' + n.toLocaleString('en-IN'); }
+        function runFullCalc() {
+            const inc = parseInt(document.getElementById('full-inc').value);
+            document.getElementById('full-inc-disp').innerText = fmt(inc);
+            document.getElementById('full-gross-disp').innerText = fmt(inc);
+
+            const category = document.getElementById('taxpayer-cat').value;
+            const oldStdDed = category === 'salaried' ? 50000 : 0;
+            const newStdDed = category === 'salaried' ? 75000 : 0;
+
+            const ded80c = parseInt(document.getElementById('full-80c').value);
+            const ded80d = document.getElementById('chk-80d').checked ? 25000 : 0;
+            const dedHra = document.getElementById('chk-hra').checked ? 150000 : 0;
+            const ded24b = document.getElementById('chk-home-loan').checked ? 200000 : 0;
+            const dedNps = document.getElementById('chk-nps').checked ? 50000 : 0;
+
+            const totalOldDeductions = oldStdDed + ded80c + ded80d + dedHra + ded24b + dedNps;
+            document.getElementById('full-old-ded-disp').innerText = fmt(totalOldDeductions);
+
+            // Old Tax
+            const oldTaxable = Math.max(0, inc - totalOldDeductions);
+            let oldTax = 0;
+            if (oldTaxable > 500000) {
+                if (oldTaxable <= 1000000) oldTax = 12500 + (oldTaxable - 500000) * 0.20;
+                else oldTax = 112500 + (oldTaxable - 1000000) * 0.30;
+            } else if (oldTaxable > 250000) {
+                oldTax = (oldTaxable - 250000) * 0.05;
+            }
+            oldTax = Math.round(oldTax * 1.04);
+
+            // New Tax
+            const newTaxable = Math.max(0, inc - newStdDed);
+            let newTax = 0;
+            if (newTaxable > 700000) {
+                if (newTaxable <= 1000000) newTax = 20000 + (newTaxable - 700000) * 0.10;
+                else if (newTaxable <= 1200000) newTax = 50000 + (newTaxable - 1000000) * 0.15;
+                else if (newTaxable <= 1500000) newTax = 80000 + (newTaxable - 1200000) * 0.20;
+                else newTax = 140000 + (newTaxable - 1500000) * 0.30;
+            } else if (newTaxable > 300000) {
+                newTax = (newTaxable - 300000) * 0.05;
+            }
+            newTax = Math.round(newTax * 1.04);
+
+            document.getElementById('full-old-tax-disp').innerText = fmt(oldTax);
+            document.getElementById('full-new-tax-disp').innerText = fmt(newTax);
+
+            // Effective rate
+            const effOld = inc > 0 ? ((oldTax / inc) * 100).toFixed(1) : '0.0';
+            const effNew = inc > 0 ? ((newTax / inc) * 100).toFixed(1) : '0.0';
+            document.getElementById('eff-old').innerText = effOld + '%';
+            document.getElementById('eff-new').innerText = effNew + '%';
+
+            // Progress bars (proportional)
+            const maxV = Math.max(oldTax, newTax, 100000);
+            document.getElementById('old-bar').style.width = Math.min(100, (oldTax / maxV) * 100) + '%';
+            document.getElementById('new-bar').style.width = Math.min(100, (newTax / maxV) * 100) + '%';
+
+            // Recommendation
+            const diff = Math.abs(oldTax - newTax);
+            const resultEl = document.getElementById('full-recommendation');
+            const cardEl = document.getElementById('result-card');
+            if (newTax < oldTax) {
+                resultEl.innerText = 'New Regime Saves ' + fmt(diff);
+                cardEl.className = 'bg-gradient-to-br from-emeraldPrimary via-emeraldDark to-emeraldDeeper text-white rounded-3xl p-7 sm:p-8 border border-emeraldPrimary/30 shadow-2xl shadow-emerald-500/30 relative overflow-hidden winner-pulse';
+            } else if (oldTax < newTax) {
+                resultEl.innerText = 'Old Regime Saves ' + fmt(diff);
+                cardEl.className = 'bg-gradient-to-br from-amberGold via-amberDark to-amber-700 text-white rounded-3xl p-7 sm:p-8 border border-amber-400/40 shadow-2xl shadow-amber-500/30 relative overflow-hidden winner-pulse';
+            } else {
+                resultEl.innerText = 'Both Regimes = ₹0 Tax';
+                cardEl.className = 'bg-gradient-to-br from-deepTeal to-deepTealDark text-white rounded-3xl p-7 sm:p-8 border border-slate-400/30 shadow-2xl relative overflow-hidden winner-pulse';
+            }
+        }
+        runFullCalc();
+    </script>
+</body>
+
+</html>

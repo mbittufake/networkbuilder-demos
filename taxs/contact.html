@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact — AscendTax | Book a Free Tax Consultation</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        ink: '#0B1220',
+                        inkSoft: '#111A2E',
+                        forest: '#052E22',
+                        forestSoft: '#0B3D2C',
+                        gold: '#D4AF37',
+                        goldHover: '#C19B2E',
+                        goldLight: '#F3E6B8',
+                        cream: '#FBF7EF',
+                        slateLine: '#E8E2D6'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Fraunces', 'serif']
+                    },
+                    boxShadow: {
+                        soft: '0 10px 40px -12px rgba(11,18,32,0.12)',
+                        lift: '0 24px 60px -20px rgba(11,18,32,0.28)',
+                        gold: '0 12px 40px -10px rgba(212,175,55,0.45)'
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body { font-family: 'Inter', sans-serif; background: #FFFFFF; color: #0B1220; }
+        .font-serif-display { font-family: 'Fraunces', serif; }
+        .gold-gradient-text { background: linear-gradient(120deg, #D4AF37, #F3E6B8 45%, #C19B2E); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+        .btn-gold { background: linear-gradient(120deg, #D4AF37, #E6C75C); box-shadow: 0 10px 30px -8px rgba(212,175,55,.5); transition: all .3s cubic-bezier(.16,1,.3,1); }
+        .btn-gold:hover { transform: translateY(-2px); box-shadow: 0 18px 40px -10px rgba(212,175,55,.6); }
+        .glass-dark { background: rgba(255,255,255,.06); backdrop-filter: blur(16px); border: 1px solid rgba(255,255,255,.12); }
+        .field { width: 100%; background: #FBF7EF; border: 1px solid #E8E2D6; border-radius: 12px; padding: 12px 14px; font-size: 14px; font-weight: 500; color: #0B1220; }
+        .field:focus { outline: none; border-color: #D4AF37; box-shadow: 0 0 0 3px rgba(212,175,55,.2); background: #fff; }
+        label.field-label { display: block; font-size: 12px; font-weight: 600; color: #64748B; margin-bottom: 6px; }
+            /* Hide scrollbars — clean app look */
+        html { scrollbar-width: none; -ms-overflow-style: none; }
+        html::-webkit-scrollbar { display: none; }
+        * { scrollbar-width: none; -ms-overflow-style: none; }
+        *::-webkit-scrollbar { width: 0; height: 0; display: none; }
+        @media (max-width: 640px) {
+            html { font-size: 92%; }
+        }
+            .nav-link { position: relative; }
+        .nav-link::after { content: ''; position: absolute; left: 0; bottom: -6px; width: 0; height: 2px; background: #D4AF37; transition: width .3s ease; }
+        .nav-link:hover::after { width: 100%; }
+        .nav-link.active {
+            color: #0B1220;
+            font-weight: 600;
+        }
+        .nav-link.active::after {
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body class="antialiased selection:bg-gold selection:text-ink">
+
+    <!-- Top bar -->
+    <div class="bg-ink text-slate-300 text-xs py-2.5 relative z-50">
+        <div class="max-w-7xl mx-auto px-6 flex items-center justify-between gap-4">
+            <div class="flex items-center gap-2.5">
+                <span class="w-2 h-2 rounded-full bg-gold animate-pulse shrink-0"></span>
+                <p class="sm:truncate leading-snug"><span class="font-semibold text-gold">FY 2025-26 filings open:</span> Last date 31 July — book your CA before slots fill.</p>
+            </div>
+            <div class="hidden md:flex items-center gap-5 shrink-0">
+                <a href="./admin/index.html" class="font-semibold text-gold hover:text-white transition flex items-center gap-1.5"><i class="fa-solid fa-gauge-high text-[10px]"></i> Admin Portal Demo</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navbar -->
+    <header id="site-nav" class="sticky top-0 z-40 bg-white/85 backdrop-blur-xl border-b border-slateLine">
+        <nav class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+            <a href="index.html" class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-xl bg-ink text-gold flex items-center justify-center text-lg shadow-soft"><i class="fa-solid fa-landmark"></i></div>
+                <div class="leading-tight">
+                    <span class="font-serif-display text-xl font-semibold tracking-tight text-ink">Ascend<span class="text-gold">Tax</span></span>
+                    <span class="block text-[10px] uppercase tracking-[0.2em] text-slate-400 font-semibold">Wealth & Tax Advisory</span>
+                </div>
+            </a>
+            <div class="hidden lg:flex items-center gap-8 text-sm font-medium text-slate-600">
+                <a href="index.html" class="nav-link hover:text-ink transition">Home</a>
+                <a href="services.html" class="nav-link hover:text-ink transition">Services</a>
+                <a href="calculator.html" class="nav-link hover:text-ink transition">Tax Calculator</a>
+                <a href="pricing.html" class="nav-link hover:text-ink transition">Pricing</a>
+                <a href="about.html" class="nav-link hover:text-ink transition">About</a>
+                <a href="contact.html" class="nav-link active">Contact</a>
+            </div>
+            <div class="flex items-center gap-3">
+                <a href="contact.html" class="hidden xl:inline-flex items-center gap-2 btn-gold text-ink font-bold text-sm px-5 py-2.5 rounded-full"><i class="fa-solid fa-phone text-xs"></i> Book Consultation</a>
+                <a href="./admin/index.html" class="hidden lg:inline-flex items-center gap-2 bg-ink text-gold border border-ink hover:bg-forest hover:border-forest font-bold text-sm px-4 py-2.5 rounded-full transition">
+                    <i class="fa-solid fa-gauge-high text-xs"></i> Admin Panel
+                </a>
+                <button id="menu-btn" class="lg:hidden w-10 h-10 rounded-xl border border-slateLine flex items-center justify-center text-ink"><i class="fa-solid fa-bars"></i></button>
+            </div>
+        </nav>
+        <div id="mobile-menu" class="lg:hidden hidden bg-white border-t border-slateLine px-6 py-6 space-y-1">
+            <a href="index.html" class="block py-2.5 text-slate-600">Home</a>
+            <a href="services.html" class="block py-2.5 text-slate-600">Services</a>
+            <a href="calculator.html" class="block py-2.5 text-slate-600">Tax Calculator</a>
+            <a href="pricing.html" class="block py-2.5 text-slate-600">Pricing</a>
+            <a href="about.html" class="block py-2.5 text-slate-600">About</a>
+            <a href="contact.html" class="block py-2.5 font-semibold text-gold">Contact</a>
+            <a href="./admin/index.html" class="mt-2 block py-3 px-4 bg-ink text-gold font-bold rounded-xl text-center">Admin Panel →</a>
+        </div>
+    </header>
+
+    <!-- Page hero -->
+    <section class="relative overflow-hidden bg-ink text-white">
+        <div class="absolute -top-40 -right-40 w-[600px] h-[600px] rounded-full bg-forestSoft blur-3xl opacity-60"></div>
+        <div class="absolute bottom-0 left-1/4 w-80 h-80 rounded-full bg-gold/10 blur-3xl"></div>
+        <div class="max-w-7xl mx-auto px-6 pt-20 pb-24 relative z-10 text-center">
+            <span class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.2em] text-gold">
+                <span class="w-8 h-px bg-gold"></span> Get In Touch <span class="w-8 h-px bg-gold"></span>
+            </span>
+            <h1 class="font-serif-display text-5xl sm:text-6xl font-semibold leading-tight mt-5">
+                Talk to a <span class="gold-gradient-text">real CA</span><br>in 15 minutes
+            </h1>
+            <p class="text-slate-300 text-lg max-w-2xl mx-auto mt-6">Tell us about your situation. We'll reply within 2 working hours with a clear recommendation — free, no strings attached.</p>
+        </div>
+    </section>
+
+    <!-- Contact grid -->
+    <section class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid lg:grid-cols-12 gap-10">
+
+                <!-- Info cards -->
+                <div class="lg:col-span-5 space-y-5">
+                    <div class="bg-cream rounded-3xl border border-slateLine p-7 flex gap-4">
+                        <span class="w-12 h-12 rounded-2xl bg-ink text-gold flex items-center justify-center text-lg shrink-0"><i class="fa-solid fa-phone"></i></span>
+                        <div>
+                            <h3 class="font-bold text-ink mb-1">Call us</h3>
+                            <p class="text-sm text-slate-500">+91 98765 43210<br>Mon–Sat, 9:30 AM – 7:00 PM</p>
+                        </div>
+                    </div>
+                    <div class="bg-cream rounded-3xl border border-slateLine p-7 flex gap-4">
+                        <span class="w-12 h-12 rounded-2xl bg-ink text-gold flex items-center justify-center text-lg shrink-0"><i class="fa-solid fa-envelope"></i></span>
+                        <div>
+                            <h3 class="font-bold text-ink mb-1">Email us</h3>
+                            <p class="text-sm text-slate-500">hello@ascendtax.in<br>support@ascendtax.in</p>
+                        </div>
+                    </div>
+                    <div class="bg-cream rounded-3xl border border-slateLine p-7 flex gap-4">
+                        <span class="w-12 h-12 rounded-2xl bg-ink text-gold flex items-center justify-center text-lg shrink-0"><i class="fa-solid fa-location-dot"></i></span>
+                        <div>
+                            <h3 class="font-bold text-ink mb-1">Visit us</h3>
+                            <p class="text-sm text-slate-500">Mumbai • Delhi NCR • Bengaluru<br>By appointment</p>
+                        </div>
+                    </div>
+                    <a href="https://wa.me/919876543210" target="_blank" class="block bg-ink text-white rounded-3xl p-7 flex gap-4 hover:bg-forest transition">
+                        <span class="w-12 h-12 rounded-2xl bg-emerald-500 text-white flex items-center justify-center text-lg shrink-0"><i class="fa-brands fa-whatsapp"></i></span>
+                        <div>
+                            <h3 class="font-bold mb-1">WhatsApp — fastest reply</h3>
+                            <p class="text-sm text-slate-300">Chat with a senior CA. Average response under 2 hours.</p>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- Form -->
+                <div class="lg:col-span-7 bg-white rounded-3xl border border-slateLine p-8 shadow-soft">
+                    <h2 class="font-serif-display text-2xl font-semibold text-ink mb-1">Book your free consultation</h2>
+                    <p class="text-sm text-slate-400 mb-8">Fields marked * are required.</p>
+
+                    <form id="contact-form" onsubmit="handleSubmit(event)" class="space-y-5">
+                        <div class="grid sm:grid-cols-2 gap-5">
+                            <div>
+                                <label class="field-label">Full name *</label>
+                                <input required type="text" placeholder="e.g. Priya Sharma" class="field">
+                            </div>
+                            <div>
+                                <label class="field-label">Phone (WhatsApp) *</label>
+                                <input required type="tel" placeholder="+91 98765 43210" class="field">
+                            </div>
+                            <div>
+                                <label class="field-label">Email</label>
+                                <input type="email" placeholder="you@example.com" class="field">
+                            </div>
+                            <div>
+                                <label class="field-label">I am a…</label>
+                                <select class="field">
+                                    <option>Salaried individual</option>
+                                    <option>Freelancer / Consultant</option>
+                                    <option>Business owner / SME</option>
+                                    <option>Startup founder</option>
+                                    <option>Received a tax notice</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="field-label">Service needed *</label>
+                            <select required class="field">
+                                <option>Income Tax & ITR Filing</option>
+                                <option>GST Registration / Filing</option>
+                                <option>Company / LLP Registration</option>
+                                <option>Tax Notice Defense</option>
+                                <option>Wealth & Capital Gains Planning</option>
+                                <option>Payroll / Accounting / Audit</option>
+                                <option>Not sure — need advice</option>
+                            </select>
+                        </div>
+
+                        <div>
+                            <label class="field-label">Tell us about your situation</label>
+                            <textarea rows="4" placeholder="E.g. I have capital gains from property sale, salary income, and want to understand the best regime…" class="field resize-none"></textarea>
+                        </div>
+
+                        <div class="flex items-start gap-3 text-xs text-slate-500">
+                            <input type="checkbox" class="mt-0.5 accent-goldHover" checked>
+                            <p>I agree to be contacted by AscendTax and accept the <a href="#" class="text-goldHover font-semibold">privacy policy</a>.</p>
+                        </div>
+
+                        <button type="submit" class="btn-gold w-full inline-flex items-center justify-center gap-3 text-ink font-bold px-8 py-4 rounded-full">
+                            <span>Request Free Callback</span><i class="fa-solid fa-arrow-right text-xs"></i>
+                        </button>
+                        <p class="text-center text-[11px] text-slate-400">No spam. No obligation. A senior CA will call you back.</p>
+                    </form>
+
+                    <div id="form-success" class="hidden mt-6 rounded-2xl bg-emerald-50 border border-emerald-200 p-6 text-center">
+                        <span class="w-14 h-14 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center text-2xl mx-auto mb-3"><i class="fa-solid fa-check"></i></span>
+                        <h3 class="font-bold text-emerald-800 mb-1">Request received!</h3>
+                        <p class="text-sm text-emerald-700">A senior CA will call or WhatsApp you shortly. Keep your phone handy.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Offices -->
+    <section class="py-16 bg-cream">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center space-y-4 mb-12">
+                <span class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.2em] text-goldHover"><span class="w-8 h-px bg-gold"></span> Our Offices <span class="w-8 h-px bg-gold"></span></span>
+                <h2 class="font-serif-display text-4xl font-semibold text-ink">Nationwide, yet personal</h2>
+            </div>
+            <div class="grid md:grid-cols-3 gap-6">
+                <div class="bg-white rounded-3xl border border-slateLine p-8 text-center card-hover">
+                    <span class="w-12 h-12 rounded-2xl bg-ink text-gold flex items-center justify-center text-lg mx-auto mb-4"><i class="fa-solid fa-city"></i></span>
+                    <h3 class="font-serif-display text-xl font-semibold text-ink mb-1">Mumbai — HQ</h3>
+                    <p class="text-sm text-slate-500">Bandra Kurla Complex, Mumbai, MH 400051</p>
+                </div>
+                <div class="bg-white rounded-3xl border border-slateLine p-8 text-center card-hover">
+                    <span class="w-12 h-12 rounded-2xl bg-ink text-gold flex items-center justify-center text-lg mx-auto mb-4"><i class="fa-solid fa-building"></i></span>
+                    <h3 class="font-serif-display text-xl font-semibold text-ink mb-1">Delhi NCR</h3>
+                    <p class="text-sm text-slate-500">Sector 44, Gurugram, Haryana 122003</p>
+                </div>
+                <div class="bg-white rounded-3xl border border-slateLine p-8 text-center card-hover">
+                    <span class="w-12 h-12 rounded-2xl bg-ink text-gold flex items-center justify-center text-lg mx-auto mb-4"><i class="fa-solid fa-tree-city"></i></span>
+                    <h3 class="font-serif-display text-xl font-semibold text-ink mb-1">Bengaluru</h3>
+                    <p class="text-sm text-slate-500">Indiranagar, Bengaluru, KA 560038</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-ink border-t border-white/10 text-slate-400 pt-16 pb-8">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid md:grid-cols-12 gap-10 pb-12 border-b border-white/10">
+                <div class="md:col-span-4 space-y-4">
+                    <a href="index.html" class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-xl bg-gold text-ink flex items-center justify-center text-lg"><i class="fa-solid fa-landmark"></i></div>
+                        <span class="font-serif-display text-xl font-semibold text-white">Ascend<span class="text-gold">Tax</span></span>
+                    </a>
+                    <p class="text-sm leading-relaxed text-slate-500">Licensed Chartered Accountants making tax simple, legal and profitable for individuals, startups and enterprises across India.</p>
+                </div>
+                <div class="md:col-span-3">
+                    <h5 class="text-white font-bold mb-4 text-sm uppercase tracking-wider">Services</h5>
+                    <ul class="space-y-2.5 text-sm">
+                        <li><a href="services.html#service-itr" class="hover:text-gold transition">Income Tax & ITR</a></li>
+                        <li><a href="services.html#service-gst" class="hover:text-gold transition">GST Compliance</a></li>
+                        <li><a href="services.html#service-company" class="hover:text-gold transition">Company Registration</a></li>
+                        <li><a href="services.html#service-notice" class="hover:text-gold transition">Notice Defense</a></li>
+                        <li><a href="services.html#service-payroll" class="hover:text-gold transition">Payroll & Accounting</a></li>
+                    </ul>
+                </div>
+                <div class="md:col-span-2">
+                    <h5 class="text-white font-bold mb-4 text-sm uppercase tracking-wider">Company</h5>
+                    <ul class="space-y-2.5 text-sm">
+                        <li><a href="about.html" class="hover:text-gold transition">About Us</a></li>
+                        <li><a href="calculator.html" class="hover:text-gold transition">Tax Calculator</a></li>
+                        <li><a href="pricing.html" class="hover:text-gold transition">Pricing</a></li>
+                        <li><a href="contact.html" class="hover:text-gold transition">Contact</a></li>
+                        <li><a href="./admin/index.html" class="hover:text-gold transition font-semibold text-gold">Admin Portal Demo →</a></li>
+                    </ul>
+                </div>
+                <div class="md:col-span-3 space-y-3">
+                    <h5 class="text-white font-bold text-sm uppercase tracking-wider">Contact</h5>
+                    <p class="flex items-center gap-3 text-sm"><i class="fa-solid fa-location-dot text-gold"></i> Mumbai • Delhi NCR • Bengaluru</p>
+                    <p class="flex items-center gap-3 text-sm"><i class="fa-solid fa-phone text-gold"></i> +91 98765 43210</p>
+                    <p class="flex items-center gap-3 text-sm"><i class="fa-solid fa-envelope text-gold"></i> hello@ascendtax.in</p>
+                </div>
+            </div>
+            <div class="flex flex-col sm:flex-row items-center justify-between gap-4 pt-8 text-xs text-slate-600">
+                <p>© 2026 AscendTax Advisory LLP. All rights reserved. FCA Reg #054921.</p>
+                <div class="flex items-center gap-6"><a href="#" class="hover:text-gold transition">Privacy Policy</a><a href="#" class="hover:text-gold transition">Terms of Service</a></div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById('menu-btn').addEventListener('click', () => document.getElementById('mobile-menu').classList.toggle('hidden'));
+        window.addEventListener('scroll', () => document.getElementById('site-nav').classList.toggle('shadow-soft', window.scrollY > 20));
+        function handleSubmit(e) {
+            e.preventDefault();
+            document.getElementById('contact-form').classList.add('hidden');
+            document.getElementById('form-success').classList.remove('hidden');
+        }
+    </script>
+</body>
+
+</html>

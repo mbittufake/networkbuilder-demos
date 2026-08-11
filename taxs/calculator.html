@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tax Calculator — AscendTax | Compare Old vs New Regime FY 2025-26</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        ink: '#0B1220',
+                        inkSoft: '#111A2E',
+                        forest: '#052E22',
+                        forestSoft: '#0B3D2C',
+                        gold: '#D4AF37',
+                        goldHover: '#C19B2E',
+                        goldLight: '#F3E6B8',
+                        cream: '#FBF7EF',
+                        slateLine: '#E8E2D6'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Fraunces', 'serif']
+                    },
+                    boxShadow: {
+                        soft: '0 10px 40px -12px rgba(11,18,32,0.12)',
+                        lift: '0 24px 60px -20px rgba(11,18,32,0.28)',
+                        gold: '0 12px 40px -10px rgba(212,175,55,0.45)'
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body { font-family: 'Inter', sans-serif; background: #FBF7EF; color: #0B1220; }
+        .font-serif-display { font-family: 'Fraunces', serif; }
+        .gold-gradient-text { background: linear-gradient(120deg, #D4AF37, #F3E6B8 45%, #C19B2E); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+        .btn-gold { background: linear-gradient(120deg, #D4AF37, #E6C75C); box-shadow: 0 10px 30px -8px rgba(212,175,55,.5); transition: all .3s cubic-bezier(.16,1,.3,1); }
+        .btn-gold:hover { transform: translateY(-2px); box-shadow: 0 18px 40px -10px rgba(212,175,55,.6); }
+        .glass-dark { background: rgba(255,255,255,.06); backdrop-filter: blur(16px); border: 1px solid rgba(255,255,255,.12); }
+        .range-input { -webkit-appearance: none; appearance: none; height: 8px; border-radius: 9999px; outline: none; }
+        .range-input::-webkit-slider-thumb { -webkit-appearance: none; appearance: none; width: 26px; height: 26px; border-radius: 9999px; background: linear-gradient(120deg, #D4AF37, #E6C75C); border: 4px solid #0B1220; box-shadow: 0 4px 14px rgba(0,0,0,.35); cursor: pointer; }
+        .range-input::-moz-range-thumb { width: 26px; height: 26px; border-radius: 9999px; background: #D4AF37; border: 4px solid #0B1220; cursor: pointer; }
+        .field { width: 100%; background: #fff; border: 1px solid #E8E2D6; border-radius: 12px; padding: 11px 14px; font-size: 14px; font-weight: 500; color: #0B1220; }
+        .field:focus { outline: none; border-color: #D4AF37; box-shadow: 0 0 0 3px rgba(212,175,55,.2); }
+        label.field-label { display: block; font-size: 12px; font-weight: 600; color: #64748B; margin-bottom: 6px; }
+            /* Hide scrollbars — clean app look */
+        html { scrollbar-width: none; -ms-overflow-style: none; }
+        html::-webkit-scrollbar { display: none; }
+        * { scrollbar-width: none; -ms-overflow-style: none; }
+        *::-webkit-scrollbar { width: 0; height: 0; display: none; }
+        @media (max-width: 640px) {
+            html { font-size: 92%; }
+        }
+            .nav-link { position: relative; }
+        .nav-link::after { content: ''; position: absolute; left: 0; bottom: -6px; width: 0; height: 2px; background: #D4AF37; transition: width .3s ease; }
+        .nav-link:hover::after { width: 100%; }
+        .nav-link.active {
+            color: #0B1220;
+            font-weight: 600;
+        }
+        .nav-link.active::after {
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body class="antialiased selection:bg-gold selection:text-ink">
+
+    <!-- Top bar -->
+    <div class="bg-ink text-slate-300 text-xs py-2.5 relative z-50">
+        <div class="max-w-7xl mx-auto px-6 flex items-center justify-between gap-4">
+            <div class="flex items-center gap-2.5">
+                <span class="w-2 h-2 rounded-full bg-gold animate-pulse shrink-0"></span>
+                <p class="sm:truncate leading-snug"><span class="font-semibold text-gold">FY 2025-26 filings open:</span> Last date 31 July — book your CA before slots fill.</p>
+            </div>
+            <div class="hidden md:flex items-center gap-5 shrink-0">
+                <a href="./admin/index.html" class="font-semibold text-gold hover:text-white transition flex items-center gap-1.5"><i class="fa-solid fa-gauge-high text-[10px]"></i> Admin Portal Demo</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navbar -->
+    <header id="site-nav" class="sticky top-0 z-40 bg-white/85 backdrop-blur-xl border-b border-slateLine">
+        <nav class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+            <a href="index.html" class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-xl bg-ink text-gold flex items-center justify-center text-lg shadow-soft"><i class="fa-solid fa-landmark"></i></div>
+                <div class="leading-tight">
+                    <span class="font-serif-display text-xl font-semibold tracking-tight text-ink">Ascend<span class="text-gold">Tax</span></span>
+                    <span class="block text-[10px] uppercase tracking-[0.2em] text-slate-400 font-semibold">Wealth & Tax Advisory</span>
+                </div>
+            </a>
+            <div class="hidden lg:flex items-center gap-7 text-sm font-medium text-slate-600">
+                <a href="index.html" class="nav-link hover:text-ink transition">Home</a>
+                <a href="services.html" class="nav-link hover:text-ink transition">Services</a>
+                <a href="calculator.html" class="nav-link active">Tax Calculator</a>
+                <a href="pricing.html" class="nav-link hover:text-ink transition">Pricing</a>
+                <a href="about.html" class="nav-link hover:text-ink transition">About</a>
+                <a href="contact.html" class="nav-link hover:text-ink transition">Contact</a>
+            </div>
+            <div class="flex items-center gap-3">
+                <a href="contact.html" class="hidden xl:inline-flex items-center gap-2 btn-gold text-ink font-bold text-sm px-5 py-2.5 rounded-full"><i class="fa-solid fa-phone text-xs"></i> Book Consultation</a>
+                <a href="./admin/index.html" class="hidden lg:inline-flex items-center gap-2 bg-ink text-gold border border-ink hover:bg-forest hover:border-forest font-bold text-sm px-4 py-2.5 rounded-full transition">
+                    <i class="fa-solid fa-gauge-high text-xs"></i> Admin Panel
+                </a>
+                <button id="menu-btn" class="lg:hidden w-10 h-10 rounded-xl border border-slateLine flex items-center justify-center text-ink"><i class="fa-solid fa-bars"></i></button>
+            </div>
+        </nav>
+        <div id="mobile-menu" class="lg:hidden hidden bg-white border-t border-slateLine px-6 py-6 space-y-1">
+            <a href="index.html" class="block py-2.5 text-slate-600">Home</a>
+            <a href="services.html" class="block py-2.5 text-slate-600">Services</a>
+            <a href="calculator.html" class="block py-2.5 font-semibold text-gold">Tax Calculator</a>
+            <a href="pricing.html" class="block py-2.5 text-slate-600">Pricing</a>
+            <a href="about.html" class="block py-2.5 text-slate-600">About</a>
+            <a href="contact.html" class="block py-2.5 text-slate-600">Contact</a>
+            <a href="./admin/index.html" class="mt-2 block py-3 px-4 bg-ink text-gold font-bold rounded-xl text-center">Admin Panel →</a>
+        </div>
+    </header>
+
+    <!-- Page hero -->
+    <section class="relative overflow-hidden bg-ink text-white">
+        <div class="absolute -top-40 -right-40 w-[600px] h-[600px] rounded-full bg-forestSoft blur-3xl opacity-60"></div>
+        <div class="absolute bottom-0 left-1/4 w-80 h-80 rounded-full bg-gold/10 blur-3xl"></div>
+        <div class="max-w-7xl mx-auto px-6 pt-20 pb-24 relative z-10 text-center">
+            <span class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.2em] text-gold">
+                <span class="w-8 h-px bg-gold"></span> FY 2025-26 <span class="w-8 h-px bg-gold"></span>
+            </span>
+            <h1 class="font-serif-display text-5xl sm:text-6xl font-semibold leading-tight mt-5">
+                Old vs New Regime<br><span class="gold-gradient-text">Tax Calculator</span>
+            </h1>
+            <p class="text-slate-300 text-lg max-w-2xl mx-auto mt-6">Include every deduction — 80C, HRA, home loan, NPS — and see exactly which regime keeps more of your salary. Updated for FY 2025-26 (AY 2026-27) rates.</p>
+        </div>
+    </section>
+
+    <!-- Calculator -->
+    <section class="py-16 bg-cream">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid lg:grid-cols-12 gap-8">
+
+                <!-- Inputs -->
+                <div class="lg:col-span-7 bg-white rounded-3xl border border-slateLine p-8 shadow-soft">
+                    <div class="flex items-center justify-between mb-8">
+                        <h2 class="font-serif-display text-2xl font-semibold text-ink">1 · Your details</h2>
+                        <span class="text-xs text-slate-400 bg-cream rounded-full px-3 py-1.5 font-medium"><i class="fa-solid fa-lock text-goldHover mr-1"></i> Stays on your device</span>
+                    </div>
+
+                    <div class="space-y-8">
+                        <div>
+                            <div class="flex justify-between items-end mb-2">
+                                <label class="field-label !mb-0">Annual Gross Income (salary + other)</label>
+                                <span id="gross-disp" class="font-serif-display text-3xl font-semibold text-ink">₹12,00,000</span>
+                            </div>
+                            <input type="range" id="gross" min="300000" max="5000000" step="50000" value="1200000" oninput="calc()" class="range-input w-full bg-slateLine">
+                            <div class="flex justify-between text-[11px] text-slate-400 mt-2 font-medium"><span>₹3L</span><span>₹25L</span><span>₹50L</span></div>
+                        </div>
+
+                        <div class="grid sm:grid-cols-2 gap-5">
+                            <div>
+                                <label class="field-label">Standard Deduction</label>
+                                <select id="std-ded" onchange="calc()" class="field">
+                                    <option value="75000" selected>₹75,000 (default)</option>
+                                    <option value="0">Not applicable</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="field-label">Section 80C (PPF, ELSS, LIC, EPF)</label>
+                                <select id="c80c" onchange="calc()" class="field">
+                                    <option value="150000" selected>₹1.5 Lakh (max)</option>
+                                    <option value="120000">₹1.2 Lakh</option>
+                                    <option value="100000">₹1.0 Lakh</option>
+                                    <option value="50000">₹50,000</option>
+                                    <option value="0">None</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="field-label">HRA Exemption</label>
+                                <select id="hra" onchange="calc()" class="field">
+                                    <option value="120000">₹1.2 Lakh</option>
+                                    <option value="200000" selected>₹2.0 Lakh</option>
+                                    <option value="300000">₹3.0 Lakh</option>
+                                    <option value="0">None</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="field-label">Home Loan Interest (Sec 24b)</label>
+                                <select id="home" onchange="calc()" class="field">
+                                    <option value="200000" selected>₹2.0 Lakh (max)</option>
+                                    <option value="150000">₹1.5 Lakh</option>
+                                    <option value="100000">₹1.0 Lakh</option>
+                                    <option value="0">None</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="field-label">NPS (Sec 80CCD(1B))</label>
+                                <select id="nps" onchange="calc()" class="field">
+                                    <option value="50000" selected>₹50,000 (max)</option>
+                                    <option value="25000">₹25,000</option>
+                                    <option value="0">None</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="field-label">Health Insurance (Sec 80D)</label>
+                                <select id="c80d" onchange="calc()" class="field">
+                                    <option value="25000">₹25,000</option>
+                                    <option value="50000" selected>₹50,000 (max)</option>
+                                    <option value="75000">₹75,000 (seniors)</option>
+                                    <option value="0">None</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Results -->
+                <div class="lg:col-span-5 space-y-6">
+                    <div class="bg-ink text-white rounded-3xl p-8 shadow-lift">
+                        <div class="flex items-center justify-between mb-6">
+                            <h2 class="font-serif-display text-2xl font-semibold">2 · Your tax</h2>
+                            <span class="w-10 h-10 rounded-2xl bg-gold text-ink flex items-center justify-center"><i class="fa-solid fa-scale-balanced"></i></span>
+                        </div>
+
+                        <div class="space-y-4">
+                            <div class="glass-dark rounded-2xl p-5">
+                                <div class="flex justify-between items-center text-sm mb-1">
+                                    <span class="text-slate-300">Old Regime</span>
+                                    <span id="old-tax" class="font-bold font-mono text-white text-lg">₹0</span>
+                                </div>
+                                <p id="old-taxable" class="text-[11px] text-slate-500">Taxable: ₹0</p>
+                            </div>
+                            <div class="glass-dark rounded-2xl p-5">
+                                <div class="flex justify-between items-center text-sm mb-1">
+                                    <span class="text-slate-300">New Regime</span>
+                                    <span id="new-tax" class="font-bold font-mono text-white text-lg">₹0</span>
+                                </div>
+                                <p id="new-taxable" class="text-[11px] text-slate-500">Taxable: ₹0</p>
+                            </div>
+                        </div>
+
+                        <div id="verdict" class="mt-6 rounded-2xl bg-gradient-to-r from-gold to-goldHover text-ink p-5 text-center">
+                            <p class="font-bold text-sm"><i class="fa-solid fa-trophy"></i> New Regime wins — saves ₹0 / yr</p>
+                            <p class="text-xs mt-1 opacity-80">That's ₹0 extra in your pocket every month</p>
+                        </div>
+                    </div>
+
+                    <div class="bg-white rounded-3xl border border-slateLine p-6">
+                        <h3 class="font-bold text-ink mb-4">FY 2025-26 slab rates</h3>
+                        <div class="space-y-3 text-xs">
+                            <div>
+                                <p class="font-semibold text-slate-500 mb-1.5">New Regime</p>
+                                <p class="text-slate-600">0–3L : 0% &nbsp;•&nbsp; 3–7L : 5% &nbsp;•&nbsp; 7–10L : 10% &nbsp;•&nbsp; 10–12L : 15% &nbsp;•&nbsp; 12–15L : 20% &nbsp;•&nbsp; 15L+ : 30%</p>
+                            </div>
+                            <div>
+                                <p class="font-semibold text-slate-500 mb-1.5">Old Regime</p>
+                                <p class="text-slate-600">0–2.5L : 0% &nbsp;•&nbsp; 2.5–5L : 5% &nbsp;•&nbsp; 5–10L : 20% &nbsp;•&nbsp; 10L+ : 30%</p>
+                            </div>
+                            <p class="text-slate-400 pt-1">+ 4% health & education cess. Rebate u/s 87A for income up to ₹5L (old) / ₹7L (new). Results are indicative only.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-10 text-center">
+                <p class="text-slate-500 text-sm mb-4">This is indicative only. Get a personalized plan from a senior CA before you file.</p>
+                <a href="contact.html" class="btn-gold inline-flex items-center gap-3 text-ink font-bold px-8 py-4 rounded-full"><span>Get Expert Filing Help</span><i class="fa-solid fa-arrow-right text-xs"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-ink border-t border-white/10 text-slate-400 pt-16 pb-8">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid md:grid-cols-12 gap-10 pb-12 border-b border-white/10">
+                <div class="md:col-span-4 space-y-4">
+                    <a href="index.html" class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-xl bg-gold text-ink flex items-center justify-center text-lg"><i class="fa-solid fa-landmark"></i></div>
+                        <span class="font-serif-display text-xl font-semibold text-white">Ascend<span class="text-gold">Tax</span></span>
+                    </a>
+                    <p class="text-sm leading-relaxed text-slate-500">Licensed Chartered Accountants making tax simple, legal and profitable for individuals, startups and enterprises across India.</p>
+                </div>
+                <div class="md:col-span-3">
+                    <h5 class="text-white font-bold mb-4 text-sm uppercase tracking-wider">Services</h5>
+                    <ul class="space-y-2.5 text-sm">
+                        <li><a href="services.html#service-itr" class="hover:text-gold transition">Income Tax & ITR</a></li>
+                        <li><a href="services.html#service-gst" class="hover:text-gold transition">GST Compliance</a></li>
+                        <li><a href="services.html#service-company" class="hover:text-gold transition">Company Registration</a></li>
+                        <li><a href="services.html#service-notice" class="hover:text-gold transition">Notice Defense</a></li>
+                    </ul>
+                </div>
+                <div class="md:col-span-2">
+                    <h5 class="text-white font-bold mb-4 text-sm uppercase tracking-wider">Company</h5>
+                    <ul class="space-y-2.5 text-sm">
+                        <li><a href="about.html" class="hover:text-gold transition">About Us</a></li>
+                        <li><a href="services.html" class="hover:text-gold transition">Services</a></li>
+                        <li><a href="pricing.html" class="hover:text-gold transition">Pricing</a></li>
+                        <li><a href="contact.html" class="hover:text-gold transition">Contact</a></li>
+                        <li><a href="./admin/index.html" class="hover:text-gold transition font-semibold text-gold">Admin Portal Demo →</a></li>
+                    </ul>
+                </div>
+                <div class="md:col-span-3 space-y-3">
+                    <h5 class="text-white font-bold text-sm uppercase tracking-wider">Contact</h5>
+                    <p class="flex items-center gap-3 text-sm"><i class="fa-solid fa-location-dot text-gold"></i> Mumbai • Delhi NCR • Bengaluru</p>
+                    <p class="flex items-center gap-3 text-sm"><i class="fa-solid fa-phone text-gold"></i> +91 98765 43210</p>
+                    <p class="flex items-center gap-3 text-sm"><i class="fa-solid fa-envelope text-gold"></i> hello@ascendtax.in</p>
+                </div>
+            </div>
+            <div class="flex flex-col sm:flex-row items-center justify-between gap-4 pt-8 text-xs text-slate-600">
+                <p>© 2026 AscendTax Advisory LLP. All rights reserved. FCA Reg #054921.</p>
+                <div class="flex items-center gap-6"><a href="#" class="hover:text-gold transition">Privacy Policy</a><a href="#" class="hover:text-gold transition">Terms of Service</a></div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById('menu-btn').addEventListener('click', () => document.getElementById('mobile-menu').classList.toggle('hidden'));
+        window.addEventListener('scroll', () => document.getElementById('site-nav').classList.toggle('shadow-soft', window.scrollY > 20));
+
+        function computeOld(taxable) {
+            if (taxable <= 250000) return 0;
+            let tax = 0;
+            if (taxable <= 500000) tax = (taxable - 250000) * 0.05;
+            else if (taxable <= 1000000) tax = 12500 + (taxable - 500000) * 0.20;
+            else tax = 112500 + (taxable - 1000000) * 0.30;
+            if (taxable <= 500000) tax = 0;
+            return Math.round(tax * 1.04);
+        }
+        function computeNew(taxable) {
+            if (taxable <= 300000) return 0;
+            let tax = 0;
+            if (taxable <= 700000) tax = (taxable - 300000) * 0.05;
+            else if (taxable <= 1000000) tax = 20000 + (taxable - 700000) * 0.10;
+            else if (taxable <= 1200000) tax = 50000 + (taxable - 1000000) * 0.15;
+            else if (taxable <= 1500000) tax = 80000 + (taxable - 1200000) * 0.20;
+            else tax = 140000 + (taxable - 1500000) * 0.30;
+            if (taxable <= 700000) tax = 0;
+            return Math.round(tax * 1.04);
+        }
+
+        function calc() {
+            const gross = parseInt(document.getElementById('gross').value);
+            const std = parseInt(document.getElementById('std-ded').value);
+            const c80c = parseInt(document.getElementById('c80c').value);
+            const hra = parseInt(document.getElementById('hra').value);
+            const home = parseInt(document.getElementById('home').value);
+            const nps = parseInt(document.getElementById('nps').value);
+            const c80d = parseInt(document.getElementById('c80d').value);
+
+            document.getElementById('gross-disp').innerText = '₹' + gross.toLocaleString('en-IN');
+
+            const oldTaxable = Math.max(0, gross - std - c80c - hra - home - nps - c80d);
+            const newTaxable = Math.max(0, gross - std);
+
+            const oldTax = computeOld(oldTaxable);
+            const newTax = computeNew(newTaxable);
+
+            document.getElementById('old-tax').innerText = '₹' + oldTax.toLocaleString('en-IN');
+            document.getElementById('old-taxable').innerText = 'Taxable: ₹' + oldTaxable.toLocaleString('en-IN');
+            document.getElementById('new-tax').innerText = '₹' + newTax.toLocaleString('en-IN');
+            document.getElementById('new-taxable').innerText = 'Taxable: ₹' + newTaxable.toLocaleString('en-IN');
+
+            const verdict = document.getElementById('verdict');
+            const diff = Math.abs(oldTax - newTax);
+            const monthly = Math.round(diff / 12);
+            if (newTax < oldTax) {
+                verdict.innerHTML = '<p class="font-bold text-sm"><i class="fa-solid fa-trophy"></i> New Regime wins — saves ₹' + diff.toLocaleString('en-IN') + ' / yr</p><p class="text-xs mt-1 opacity-80">That\'s ₹' + monthly.toLocaleString('en-IN') + ' extra in your pocket every month</p>';
+            } else if (oldTax < newTax) {
+                verdict.innerHTML = '<p class="font-bold text-sm"><i class="fa-solid fa-trophy"></i> Old Regime wins — saves ₹' + diff.toLocaleString('en-IN') + ' / yr</p><p class="text-xs mt-1 opacity-80">Your deductions beat the new-regime tax cuts</p>';
+            } else {
+                verdict.innerHTML = '<p class="font-bold text-sm"><i class="fa-solid fa-handshake"></i> Both regimes — same tax ₹0</p><p class="text-xs mt-1 opacity-80">You fall under the tax-free rebate slab</p>';
+            }
+        }
+        calc();
+    </script>
+</body>
+
+</html>

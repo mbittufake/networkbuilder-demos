@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AscendTax Admin Portal — ITR Filings</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        ink: '#0B1220',
+                        inkSidebar: '#0E1726',
+                        forest: '#052E22',
+                        forestSoft: '#0B3D2C',
+                        gold: '#D4AF37',
+                        goldHover: '#C19B2E',
+                        goldLight: '#F3E6B8',
+                        bgAdmin: '#F4F5F7',
+                        slateLine: '#E5E7EB'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Fraunces', 'serif']
+                    },
+                    boxShadow: {
+                        card: '0 1px 3px rgba(16,24,40,.06), 0 1px 2px rgba(16,24,40,.04)',
+                        pop: '0 12px 32px -8px rgba(16,24,40,.18)'
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body { font-family: 'Inter', sans-serif; background: #F4F5F7; color: #0B1220; }
+        .font-serif-display { font-family: 'Fraunces', serif; }
+        .nav-item { transition: all .2s ease; }
+        .nav-item.active { background: #D4AF37; color: #0B1220; font-weight: 700; }
+        .nav-item:not(.active):hover { background: rgba(255,255,255,.06); color: #fff; }
+        .table-row { transition: background .15s ease; }
+        .table-row:hover { background: #F9FAFB; }
+        .toast { animation: slideIn .35s ease; }
+        @keyframes slideIn { from { opacity: 0; transform: translateY(16px) scale(.97); } to { opacity: 1; transform: translateY(0) scale(1); } }
+        .spark { stroke-dasharray: 600; stroke-dashoffset: 600; animation: draw 1.8s cubic-bezier(.16,1,.3,1) forwards; }
+        @keyframes draw { to { stroke-dashoffset: 0; } }
+        .fade-dot { animation: pulseDot 2s ease-in-out infinite; }
+        @keyframes pulseDot { 0%,100% { opacity: 1; } 50% { opacity: .3; } }
+        .field { width: 100%; background: #fff; border: 1px solid #E5E7EB; border-radius: 12px; padding: 11px 14px; font-size: 14px; font-weight: 500; color: #0B1220; }
+        .field:focus { outline: none; border-color: #D4AF37; box-shadow: 0 0 0 3px rgba(212,175,55,.2); }
+        label.field-label { display: block; font-size: 12px; font-weight: 600; color: #64748B; margin-bottom: 6px; }
+        /* Hide scrollbars — clean app look */
+        html { scrollbar-width: none; -ms-overflow-style: none; }
+        html::-webkit-scrollbar { display: none; }
+        * { scrollbar-width: none; -ms-overflow-style: none; }
+        *::-webkit-scrollbar { width: 0; height: 0; display: none; }
+        @media (max-width: 640px) {
+            html { font-size: 92%; }
+        }
+
+    </style>
+</head>
+
+<body class="min-h-screen antialiased selection:bg-gold selection:text-ink">
+
+    <div class="flex min-h-screen">
+
+        <aside id="sidebar" class="fixed lg:static inset-y-0 left-0 z-50 w-72 bg-inkSidebar text-slate-300 flex flex-col border-r border-white/5 -translate-x-full lg:translate-x-0 transition-transform duration-300">
+            <div class="p-6 border-b border-white/5">
+                <a href="../index.html" class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-xl bg-gold text-ink flex items-center justify-center text-lg"><i class="fa-solid fa-landmark"></i></div>
+                    <div class="leading-tight">
+                        <span class="font-serif-display text-lg font-semibold text-white">Ascend<span class="text-gold">Tax</span></span>
+                        <span class="block text-[10px] uppercase tracking-[0.2em] text-slate-500 font-semibold">Admin Portal</span>
+                    </div>
+                </a>
+            </div>
+            <nav class="flex-grow p-4 space-y-1 overflow-y-auto">
+                <p class="px-3 py-2 text-[10px] uppercase tracking-widest text-slate-500 font-bold">Menu</p>
+                <a href="index.html" class="nav-item w-full flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium">
+                    <i class="fa-solid fa-chart-pie w-4 text-center"></i> Dashboard
+                </a>
+                <a href="clients.html" class="nav-item w-full flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium">
+                    <i class="fa-solid fa-users w-4 text-center"></i> Clients
+                    <span class="ml-auto text-[10px] bg-gold/20 text-gold px-2 py-0.5 rounded-full font-bold">1,420</span>
+                </a>
+                <a href="itr.html" class="nav-item active w-full flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium">
+                    <i class="fa-solid fa-file-invoice-dollar w-4 text-center"></i> ITR Filings
+                    <span class="ml-auto text-[10px] bg-emerald-500/20 text-emerald-400 px-2 py-0.5 rounded-full font-bold">AY 26-27</span>
+                </a>
+                <a href="gst.html" class="nav-item w-full flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium">
+                    <i class="fa-solid fa-receipt w-4 text-center"></i> GST Manager
+                </a>
+                <a href="notices.html" class="nav-item w-full flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium">
+                    <i class="fa-solid fa-gavel w-4 text-center"></i> Notice Tracker
+                    <span class="ml-auto text-[10px] bg-red-500/20 text-red-400 px-2 py-0.5 rounded-full font-bold">7</span>
+                </a>
+                <a href="invoices.html" class="nav-item w-full flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium">
+                    <i class="fa-solid fa-wallet w-4 text-center"></i> Invoices & Payments
+                </a>
+                <a href="reports.html" class="nav-item w-full flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium">
+                    <i class="fa-solid fa-chart-column w-4 text-center"></i> Reports
+                </a>
+                <p class="px-3 py-2 mt-6 text-[10px] uppercase tracking-widest text-slate-500 font-bold">General</p>
+                <a href="settings.html" class="nav-item w-full flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium">
+                    <i class="fa-solid fa-gear w-4 text-center"></i> Settings
+                </a>
+                <a href="../index.html" class="nav-item flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-gold">
+                    <i class="fa-solid fa-arrow-left w-4 text-center"></i> Back to Website
+                </a>
+            </nav>
+            <div class="p-5 border-t border-white/5">
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-full bg-gold text-ink font-bold flex items-center justify-center text-sm">SM</div>
+                    <div class="min-w-0">
+                        <strong class="text-white block text-sm truncate">CA Sneha Malhotra</strong>
+                        <span class="text-[11px] text-slate-500">Senior Partner</span>
+                    </div>
+                    <button class="ml-auto text-slate-500 hover:text-white transition text-sm"><i class="fa-solid fa-right-from-bracket"></i></button>
+                </div>
+            </div>
+        </aside>
+
+        <div id="sidebar-overlay" class="hidden fixed inset-0 bg-ink/60 z-40 lg:hidden"></div>
+
+        <!-- ════════ MAIN COLUMN ════════ -->
+        <div class="flex-grow flex flex-col min-w-0">
+            <header class="sticky top-0 z-30 bg-white/90 backdrop-blur border-b border-slateLine">
+                <div class="px-4 sm:px-6 py-3.5 flex items-center gap-4">
+                    <button id="sidebar-toggle" class="lg:hidden w-10 h-10 rounded-xl border border-slateLine flex items-center justify-center text-ink shrink-0"><i class="fa-solid fa-bars"></i></button>
+                    <div class="relative flex-grow max-w-lg hidden sm:block">
+                        <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-3 text-slate-400 text-sm"></i>
+                        <input id="global-search" oninput="globalSearch(this.value)" placeholder="Search client, PAN, filing ID…" class="w-full bg-bgAdmin border border-slateLine rounded-xl pl-10 pr-4 py-2.5 text-sm focus:ring-2 focus:ring-gold focus:outline-none">
+                    </div>
+                    <div class="flex items-center gap-3 ml-auto">
+                        <div class="hidden md:flex items-center gap-1.5 bg-emerald-50 text-emerald-700 border border-emerald-200 rounded-full px-3 py-1.5 text-xs font-semibold">
+                            <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 fade-dot"></span> All systems operational
+                        </div>
+                        <button class="relative w-10 h-10 rounded-xl border border-slateLine flex items-center justify-center text-ink hover:bg-bgAdmin transition">
+                            <i class="fa-regular fa-bell"></i>
+                            <span class="absolute top-2 right-2.5 w-2 h-2 rounded-full bg-gold border-2 border-white"></span>
+                        </button>
+                        <button onclick="openNewClient()" class="hidden sm:inline-flex items-center gap-2 bg-ink text-white hover:bg-forest text-sm font-bold px-4 py-2.5 rounded-xl transition">
+                            <i class="fa-solid fa-plus"></i> Add Client
+                        </button>
+                    </div>
+                </div>
+                <div class="px-4 sm:px-6 pb-3.5 sm:hidden">
+                    <div class="relative">
+                        <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-3 text-slate-400 text-sm"></i>
+                        <input oninput="globalSearch(this.value)" placeholder="Search client, PAN, filing ID…" class="w-full bg-bgAdmin border border-slateLine rounded-xl pl-10 pr-4 py-2.5 text-sm focus:ring-2 focus:ring-gold focus:outline-none">
+                    </div>
+                </div>
+            </header>
+
+            <main class="p-4 sm:p-6 space-y-6 flex-grow">
+
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                    <div>
+                        <h1 class="font-serif-display text-2xl font-semibold">ITR Filings — AY 2026-27</h1>
+                        <p class="text-sm text-slate-400 mt-0.5">2,847 filed · 621 in progress · 74 flagged</p>
+                    </div>
+                    <div class="flex gap-2">
+                        <button onclick="showToast('Export prepared — download started')" class="inline-flex items-center gap-2 border border-slateLine bg-white text-ink text-sm font-bold px-4 py-2.5 rounded-xl hover:border-gold transition">
+                            <i class="fa-solid fa-download text-xs"></i> Export CSV
+                        </button>
+                        <button onclick="openNewClient()" class="inline-flex items-center gap-2 bg-ink text-white hover:bg-forest text-sm font-bold px-4 py-2.5 rounded-xl transition">
+                            <i class="fa-solid fa-plus"></i> New Filing
+                        </button>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
+                    <div class="bg-white rounded-2xl border border-slateLine p-5 shadow-card">
+                        <p class="text-xs font-semibold text-slate-500">Filed & Acknowledged</p>
+                        <p class="font-serif-display text-3xl font-semibold mt-1.5 text-emerald-600">2,847</p>
+                    </div>
+                    <div class="bg-white rounded-2xl border border-slateLine p-5 shadow-card">
+                        <p class="text-xs font-semibold text-slate-500">In Progress</p>
+                        <p class="font-serif-display text-3xl font-semibold mt-1.5 text-blue-600">621</p>
+                    </div>
+                    <div class="bg-white rounded-2xl border border-slateLine p-5 shadow-card">
+                        <p class="text-xs font-semibold text-slate-500">Refunds Issued</p>
+                        <p class="font-serif-display text-3xl font-semibold mt-1.5 text-goldHover">₹24.1L</p>
+                    </div>
+                    <div class="bg-white rounded-2xl border border-slateLine p-5 shadow-card">
+                        <p class="text-xs font-semibold text-slate-500">Needs Attention</p>
+                        <p class="font-serif-display text-3xl font-semibold mt-1.5 text-red-500">74</p>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-2xl border border-slateLine shadow-card overflow-hidden">
+                    <div class="p-5 border-b border-slateLine flex flex-col md:flex-row md:items-center gap-3">
+                        <select onchange="filterItr()" id="itr-filter" class="text-sm border border-slateLine rounded-xl px-3 py-2.5 bg-white">
+                            <option value="all">All ITR forms</option>
+                            <option value="ITR-1">ITR-1 (Salaried)</option>
+                            <option value="ITR-2">ITR-2 (Capital gains)</option>
+                            <option value="ITR-3">ITR-3 (Business)</option>
+                        </select>
+                        <select onchange="filterItr()" id="itr-status" class="text-sm border border-slateLine rounded-xl px-3 py-2.5 bg-white">
+                            <option value="all">All statuses</option>
+                            <option value="Filed">Filed</option>
+                            <option value="In Progress">In Progress</option>
+                            <option value="Flagged">Flagged</option>
+                        </select>
+                        <span class="ml-auto text-xs text-slate-400">Updated 2 min ago</span>
+                    </div>
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-sm">
+                            <thead>
+                                <tr class="text-left text-xs text-slate-400 border-b border-slateLine bg-bgAdmin/50">
+                                    <th class="px-6 py-3.5 font-semibold">Client / PAN</th>
+                                    <th class="px-6 py-3.5 font-semibold">Form</th>
+                                    <th class="px-6 py-3.5 font-semibold">Filing ID</th>
+                                    <th class="px-6 py-3.5 font-semibold">Submitted</th>
+                                    <th class="px-6 py-3.5 font-semibold">Status</th>
+                                    <th class="px-6 py-3.5 font-semibold">Refund</th>
+                                </tr>
+                            </thead>
+                            <tbody id="itr-body">
+                                <tr class="table-row border-b border-slateLine/60 itr-row" data-form="ITR-1" data-status="Filed">
+                                    <td class="px-6 py-4"><p class="font-semibold">Aarav Kapoor</p><p class="text-[11px] font-mono text-slate-400">AADPK1234K</p></td>
+                                    <td class="px-6 py-4 font-medium">ITR-1</td>
+                                    <td class="px-6 py-4 font-mono text-xs text-slate-500">ITR-26-27-04821</td>
+                                    <td class="px-6 py-4 text-slate-500">2 hrs ago</td>
+                                    <td class="px-6 py-4"><span class="text-xs font-bold bg-emerald-50 text-emerald-700 border border-emerald-200 rounded-full px-3 py-1">Filed <i class="fa-solid fa-check"></i></span></td>
+                                    <td class="px-6 py-4 font-semibold text-emerald-600">₹8,200</td>
+                                </tr>
+                                <tr class="table-row border-b border-slateLine/60 itr-row" data-form="ITR-3" data-status="In Progress">
+                                    <td class="px-6 py-4"><p class="font-semibold">Rohan Verma</p><p class="text-[11px] font-mono text-slate-400">BHPPV5678L</p></td>
+                                    <td class="px-6 py-4 font-medium">ITR-3</td>
+                                    <td class="px-6 py-4 font-mono text-xs text-slate-500">ITR-26-27-04792</td>
+                                    <td class="px-6 py-4 text-slate-500">2 days ago</td>
+                                    <td class="px-6 py-4"><span class="text-xs font-bold bg-blue-50 text-blue-700 border border-blue-200 rounded-full px-3 py-1">In Progress</span></td>
+                                    <td class="px-6 py-4 font-semibold text-amber-600">₹12,400 est.</td>
+                                </tr>
+                                <tr class="table-row border-b border-slateLine/60 itr-row" data-form="ITR-2" data-status="Filed">
+                                    <td class="px-6 py-4"><p class="font-semibold">Priya Kulkarni</p><p class="text-[11px] font-mono text-slate-400">AVAPK9012M</p></td>
+                                    <td class="px-6 py-4 font-medium">ITR-2</td>
+                                    <td class="px-6 py-4 font-mono text-xs text-slate-500">ITR-26-27-04755</td>
+                                    <td class="px-6 py-4 text-slate-500">3 days ago</td>
+                                    <td class="px-6 py-4"><span class="text-xs font-bold bg-emerald-50 text-emerald-700 border border-emerald-200 rounded-full px-3 py-1">Filed <i class="fa-solid fa-check"></i></span></td>
+                                    <td class="px-6 py-4 font-semibold text-emerald-600">₹4,050</td>
+                                </tr>
+                                <tr class="table-row itr-row" data-form="ITR-1" data-status="Flagged">
+                                    <td class="px-6 py-4"><p class="font-semibold">Kavita Iyer</p><p class="text-[11px] font-mono text-slate-400">AXIPK8877N</p></td>
+                                    <td class="px-6 py-4 font-medium">ITR-1</td>
+                                    <td class="px-6 py-4 font-mono text-xs text-slate-500">ITR-26-27-04610</td>
+                                    <td class="px-6 py-4 text-slate-500">5 days ago</td>
+                                    <td class="px-6 py-4"><span class="text-xs font-bold bg-red-50 text-red-700 border border-red-200 rounded-full px-3 py-1">Flagged</span></td>
+                                    <td class="px-6 py-4 text-slate-400">—</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <!-- Mobile FAB: Add Client (app-style, phones) -->
+    <button onclick="openNewClient()" class="lg:hidden fixed bottom-6 left-6 z-50 w-14 h-14 rounded-full bg-ink text-gold shadow-pop flex items-center justify-center text-xl active:scale-95 transition">
+        <i class="fa-solid fa-plus"></i>
+    </button>
+
+    <!-- ════════ ADD CLIENT MODAL ════════ -->
+    <div id="new-client-modal" class="fixed inset-0 z-[60] hidden bg-ink/60 backdrop-blur-sm flex items-center justify-center p-4">
+        <div class="bg-white w-full max-w-lg rounded-3xl shadow-pop p-7 relative max-h-[90vh] overflow-y-auto">
+            <button onclick="closeNewClient()" class="absolute top-5 right-5 w-9 h-9 rounded-full bg-bgAdmin text-slate-500 hover:text-ink transition"><i class="fa-solid fa-xmark"></i></button>
+            <span class="w-12 h-12 rounded-2xl bg-gold/15 text-goldHover flex items-center justify-center text-xl mb-4"><i class="fa-solid fa-user-plus"></i></span>
+            <h2 class="font-serif-display text-2xl font-semibold text-ink mb-1">Add New Client</h2>
+            <p class="text-sm text-slate-400 mb-6">Onboard a client to the AscendTax portal</p>
+            <form onsubmit="addClient(event)" class="space-y-4">
+                <div class="grid grid-cols-2 gap-4">
+                    <div><label class="field-label">First Name *</label><input required class="field" placeholder="Priya"></div>
+                    <div><label class="field-label">Last Name</label><input class="field" placeholder="Sharma"></div>
+                </div>
+                <div class="grid grid-cols-2 gap-4">
+                    <div><label class="field-label">Client Type *</label><select class="field"><option>Individual</option><option>Business</option></select></div>
+                    <div><label class="field-label">PAN *</label><input required class="field font-mono uppercase" placeholder="ABCDE1234F"></div>
+                </div>
+                <div><label class="field-label">Email</label><input type="email" class="field" placeholder="priya@example.com"></div>
+                <div>
+                    <label class="field-label">Services</label>
+                    <div class="flex flex-wrap gap-2">
+                        <label class="flex items-center gap-1.5 text-xs bg-bgAdmin rounded-full px-3 py-2 font-semibold"><input type="checkbox" class="accent-goldHover"> ITR</label>
+                        <label class="flex items-center gap-1.5 text-xs bg-bgAdmin rounded-full px-3 py-2 font-semibold"><input type="checkbox" class="accent-goldHover"> GST</label>
+                        <label class="flex items-center gap-1.5 text-xs bg-bgAdmin rounded-full px-3 py-2 font-semibold"><input type="checkbox" class="accent-goldHover"> Payroll</label>
+                        <label class="flex items-center gap-1.5 text-xs bg-bgAdmin rounded-full px-3 py-2 font-semibold"><input type="checkbox" class="accent-goldHover"> Notice</label>
+                    </div>
+                </div>
+                <button type="submit" class="w-full bg-ink text-white hover:bg-forest text-sm font-bold px-4 py-3.5 rounded-xl transition flex items-center justify-center gap-2"><i class="fa-solid fa-check text-xs"></i> Add Client & Send Invite</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Toast -->
+    <div id="toast" class="toast fixed bottom-6 right-6 z-[70] hidden bg-ink text-white rounded-2xl pl-4 pr-5 py-4 shadow-pop items-center gap-3">
+        <span class="w-9 h-9 rounded-full bg-emerald-500 flex items-center justify-center shrink-0"><i class="fa-solid fa-check"></i></span>
+        <div><p class="font-bold text-sm">Success!</p><p class="text-xs text-slate-300" id="toast-msg">Action completed</p></div>
+    </div>
+    <script>
+        const sidebar = document.getElementById('sidebar');
+        const overlay = document.getElementById('sidebar-overlay');
+        document.getElementById('sidebar-toggle').addEventListener('click', () => { sidebar.classList.toggle('-translate-x-full'); overlay.classList.toggle('hidden'); });
+        overlay.addEventListener('click', closeSidebar);
+        function closeSidebar() { sidebar.classList.add('-translate-x-full'); overlay.classList.add('hidden'); }
+        function globalSearch(q) { window.location.href = 'clients.html'; }
+        function openNewClient() { document.getElementById('new-client-modal').classList.remove('hidden'); }
+        function closeNewClient() { document.getElementById('new-client-modal').classList.add('hidden'); }
+        function addClient(e) { e.preventDefault(); closeNewClient(); showToast('Client added & onboarding email sent'); }
+        let toastTimer;
+        function showToast(msg) { const t = document.getElementById('toast'); document.getElementById('toast-msg').innerText = msg; t.classList.remove('hidden'); t.classList.add('flex'); clearTimeout(toastTimer); toastTimer = setTimeout(() => { t.classList.add('hidden'); t.classList.remove('flex'); }, 3500); }
+        function filterItr() { const form = document.getElementById('itr-filter').value; const status = document.getElementById('itr-status').value; document.querySelectorAll('.itr-row').forEach(row => { const rForm = row.dataset.form, rStatus = row.dataset.status; let ok = (form === 'all' || rForm === form) && (status === 'all' || rStatus === status); row.style.display = ok ? '' : 'none'; }); }
+    </script>
+</body>
+
+</html>
