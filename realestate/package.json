@@ -1,0 +1,10 @@
+{
+  "name": "estate-htmx",
+  "version": "2.0.0",
+  "private": true,
+  "description": "Estate — a static real estate demo site powered by HTMX + a client-side data layer. No backend; deploy to GitHub Pages.",
+  "scripts": {
+    "serve": "python3 -m http.server 3000",
+    "test": "node tests/estate.test.js"
+  }
+}

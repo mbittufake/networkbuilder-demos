@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>All Properties — Estate</title>
-  <meta name="description" content="Browse 4,200+ verified property listings across India. Filter by city, type, price, and amenities.">
+  <meta name="description" content="Browse verified property listings across India. Search, filter and sort by city, type, price and amenities — powered by HTMX.">
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
@@ -22,13 +22,17 @@
     body { font-family: 'Inter', sans-serif; }
     h1,h2,h3,h4 { font-family: 'Poppins', sans-serif; }
     .nav-scrolled { box-shadow: 0 2px 24px rgba(0,0,0,.07); }
-    [data-aos] { opacity: 0; transform: translateY(20px); transition: opacity .5s ease, transform .5s ease; }
-    [data-aos].aos-visible { opacity: 1; transform: translateY(0); }
     .card-hover { transition: transform .25s ease, box-shadow .25s ease; }
     .card-hover:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(0,0,0,.1); }
     .filter-chip { transition: all .2s; }
     .filter-chip.active { background: #2563EB; color: #fff; border-color: #2563EB; }
     .fav-btn.active svg { fill: #EF4444; color: #EF4444; }
+    .radio-chip:checked + .chip-label { background: #2563EB; color: #fff; border-color: #2563EB; }
+    .check-chip:checked + .chip-label { background: #EFF6FF; color: #2563EB; border-color: #2563EB; }
+    .chip-label { transition: all .2s; cursor: pointer; }
+    .htmx-indicator { opacity: 0; transition: opacity .2s ease; }
+    .htmx-request .htmx-indicator, .htmx-request.htmx-indicator { opacity: 1; }
+    #loading-bar { transition: opacity .2s ease; }
   </style>
 </head>
 <body class="bg-white text-gray-800">
@@ -43,6 +47,7 @@
         <li><a href="listings.html" class="text-sm font-semibold text-accent">Properties</a></li>
         <li><a href="about.html" class="text-sm font-medium text-gray-600 hover:text-accent transition-colors">About</a></li>
         <li><a href="contact.html" class="text-sm font-medium text-gray-600 hover:text-accent transition-colors">Contact</a></li>
+        <li><a href="admin.html" class="text-sm font-medium text-gray-600 hover:text-accent transition-colors">Admin</a></li>
       </ul>
       <div class="hidden lg:flex items-center gap-3">
         <a href="listings.html" class="text-sm font-semibold border border-gray-200 px-4 py-2 rounded-full hover:border-accent hover:text-accent transition-all">Browse Listings</a>
@@ -56,6 +61,7 @@
     <a href="listings.html" class="text-sm font-semibold text-accent py-2">Properties</a>
     <a href="about.html" class="text-sm font-medium text-gray-700 py-2">About</a>
     <a href="contact.html" class="text-sm font-medium text-gray-700 py-2">Contact</a>
+    <a href="admin.html" class="text-sm font-medium text-gray-700 py-2">Admin Panel</a>
   </div>
 </nav>
 
@@ -66,104 +72,148 @@
       <span class="w-8 h-0.5 bg-accent rounded"></span> Our Collection
     </div>
     <h1 class="text-4xl lg:text-5xl font-black font-head text-gray-900 mb-3">Find Your Perfect<br>Property</h1>
-    <p class="text-gray-500 text-base mb-6 max-w-xl">Discover 4,200+ verified listings across Mumbai, Pune, Bangalore, Delhi & more.</p>
-    <!-- Quick filter chips -->
+    <p class="text-gray-500 text-base mb-6 max-w-xl">Search, filter and sort 4,200+ verified listings in real time. Every keystroke is powered by HTMX — no page reloads.</p>
+    <!-- Quick filter chips (deep-link via URL params) -->
     <div class="flex flex-wrap gap-2">
-      <button class="filter-chip active text-xs font-bold px-4 py-2 rounded-full border border-gray-200">All</button>
-      <button class="filter-chip text-xs font-bold px-4 py-2 rounded-full border border-gray-200 hover:border-accent hover:text-accent">Apartments</button>
-      <button class="filter-chip text-xs font-bold px-4 py-2 rounded-full border border-gray-200 hover:border-accent hover:text-accent">Villas</button>
-      <button class="filter-chip text-xs font-bold px-4 py-2 rounded-full border border-gray-200 hover:border-accent hover:text-accent">Penthouses</button>
-      <button class="filter-chip text-xs font-bold px-4 py-2 rounded-full border border-gray-200 hover:border-accent hover:text-accent">Commercial</button>
-      <button class="filter-chip text-xs font-bold px-4 py-2 rounded-full border border-gray-200 hover:border-accent hover:text-accent">Plots</button>
-      <button class="filter-chip text-xs font-bold px-4 py-2 rounded-full border border-gray-200 hover:border-accent hover:text-accent">For Rent</button>
-      <button class="filter-chip text-xs font-bold px-4 py-2 rounded-full border border-gray-200 hover:border-accent hover:text-accent">For Sale</button>
+      <a data-chip="all" href="listings.html" class="filter-chip active text-xs font-bold px-4 py-2 rounded-full border border-gray-200">All</a>
+      <a data-chip="apartment" href="listings.html?type=apartment" class="filter-chip text-xs font-bold px-4 py-2 rounded-full border border-gray-200 hover:border-accent hover:text-accent">Apartments</a>
+      <a data-chip="villa" href="listings.html?type=villa" class="filter-chip text-xs font-bold px-4 py-2 rounded-full border border-gray-200 hover:border-accent hover:text-accent">Villas</a>
+      <a data-chip="penthouse" href="listings.html?type=penthouse" class="filter-chip text-xs font-bold px-4 py-2 rounded-full border border-gray-200 hover:border-accent hover:text-accent">Penthouses</a>
+      <a data-chip="commercial" href="listings.html?type=commercial" class="filter-chip text-xs font-bold px-4 py-2 rounded-full border border-gray-200 hover:border-accent hover:text-accent">Commercial</a>
+      <a data-chip="plot" href="listings.html?type=plot" class="filter-chip text-xs font-bold px-4 py-2 rounded-full border border-gray-200 hover:border-accent hover:text-accent">Plots</a>
+      <a data-chip="rent" href="listings.html?listing=rent" class="filter-chip text-xs font-bold px-4 py-2 rounded-full border border-gray-200 hover:border-accent hover:text-accent">For Rent</a>
+      <a data-chip="buy" href="listings.html?listing=buy" class="filter-chip text-xs font-bold px-4 py-2 rounded-full border border-gray-200 hover:border-accent hover:text-accent">For Sale</a>
     </div>
   </div>
 </div>
+
+<!-- Global loading bar -->
+<div id="loading-bar" class="htmx-indicator fixed top-16 lg:top-[72px] left-0 right-0 z-50 h-1 bg-accent"></div>
 
 <!-- MAIN CONTENT -->
 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
   <div class="flex gap-8 relative">
 
-    <!-- SIDEBAR (hidden on mobile by default) -->
-    <aside id="sidebar" class="hidden lg:block w-64 xl:w-72 flex-shrink-0">
-      <div class="sticky top-24 bg-white border border-gray-200 rounded-2xl p-5 space-y-6">
+    <!-- SIDEBAR (drawer on mobile, static on desktop) -->
+    <div id="sidebar-backdrop" class="fixed inset-0 bg-black/40 z-30 hidden lg:hidden"></div>
+    <aside id="sidebar" class="fixed inset-y-0 left-0 z-40 w-72 bg-white border-r border-gray-100 px-5 pt-20 pb-5 overflow-y-auto transform -translate-x-full transition-transform duration-300 lg:translate-x-0 lg:static lg:w-64 xl:w-72 lg:flex-shrink-0 lg:border-r-0 lg:bg-transparent lg:p-0 lg:overflow-visible">
+      <div class="lg:sticky lg:top-24 bg-white border border-gray-200 rounded-2xl p-5 space-y-6">
         <div class="flex items-center justify-between">
           <h3 class="font-bold text-gray-900">Filters</h3>
-          <button class="text-xs text-accent font-semibold hover:underline">Clear All</button>
-        </div>
-
-        <!-- Location -->
-        <div>
-          <label class="text-xs font-bold uppercase tracking-wider text-gray-400 block mb-2">Search Location</label>
-          <input type="text" placeholder="City, area, pincode..." class="w-full text-sm border border-gray-200 rounded-lg px-3 py-2.5 focus:outline-none focus:border-accent">
-        </div>
-
-        <!-- Listing type -->
-        <div>
-          <label class="text-xs font-bold uppercase tracking-wider text-gray-400 block mb-2">Listing Type</label>
-          <div class="flex gap-2">
-            <button class="flex-1 text-xs font-bold py-2 rounded-lg bg-accent text-white">Buy</button>
-            <button class="flex-1 text-xs font-bold py-2 rounded-lg border border-gray-200 hover:border-accent hover:text-accent">Rent</button>
-            <button class="flex-1 text-xs font-bold py-2 rounded-lg border border-gray-200 hover:border-accent hover:text-accent">Commercial</button>
+          <div class="flex items-center gap-2">
+            <button id="clear-filters" class="text-xs text-accent font-semibold hover:underline">Clear All</button>
+            <button id="close-sidebar" class="lg:hidden w-8 h-8 flex items-center justify-center rounded-lg hover:bg-gray-100 text-gray-400">✕</button>
           </div>
         </div>
 
-        <!-- Property type -->
-        <div>
-          <label class="text-xs font-bold uppercase tracking-wider text-gray-400 block mb-2">Property Type</label>
-          <div class="flex flex-wrap gap-2">
-            <button class="text-xs font-semibold px-3 py-1.5 rounded-full bg-accent text-white">All</button>
-            <button class="text-xs font-semibold px-3 py-1.5 rounded-full border border-gray-200 hover:border-accent hover:text-accent">Apartment</button>
-            <button class="text-xs font-semibold px-3 py-1.5 rounded-full border border-gray-200 hover:border-accent hover:text-accent">Villa</button>
-            <button class="text-xs font-semibold px-3 py-1.5 rounded-full border border-gray-200 hover:border-accent hover:text-accent">Penthouse</button>
-            <button class="text-xs font-semibold px-3 py-1.5 rounded-full border border-gray-200 hover:border-accent hover:text-accent">Plot</button>
+        <!-- All filter controls live inside #filters so HTMX includes them -->
+        <div id="filters" class="space-y-6">
+          <input type="hidden" id="limit" name="limit" value="8">
+          <input type="hidden" name="sort" value="">
+
+          <!-- Search -->
+          <div>
+            <label class="text-xs font-bold uppercase tracking-wider text-gray-400 block mb-2">Search Location</label>
+            <div class="relative">
+              <input type="text" name="q" placeholder="City, area, pincode..." autocomplete="off"
+                     hx-get="/partials/cards" hx-include="#filters" hx-target="#results" hx-swap="outerHTML"
+                     hx-trigger="input changed delay:350ms, search" hx-indicator="#loading-bar"
+                     class="w-full text-sm border border-gray-200 rounded-lg px-3 py-2.5 pr-9 focus:outline-none focus:border-accent">
+              <svg class="w-4 h-4 text-gray-400 absolute right-3 top-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+            </div>
           </div>
-        </div>
 
-        <!-- Price Range -->
-        <div>
-          <label class="text-xs font-bold uppercase tracking-wider text-gray-400 block mb-2">Price Range (₹)</label>
-          <div class="flex gap-2">
-            <input type="text" placeholder="Min (e.g. 50L)" class="flex-1 text-xs border border-gray-200 rounded-lg px-3 py-2 focus:outline-none focus:border-accent">
-            <input type="text" placeholder="Max (e.g. 5Cr)" class="flex-1 text-xs border border-gray-200 rounded-lg px-3 py-2 focus:outline-none focus:border-accent">
+          <!-- Listing type -->
+          <div>
+            <label class="text-xs font-bold uppercase tracking-wider text-gray-400 block mb-2">Listing Type</label>
+            <div class="flex gap-2">
+              <label class="flex-1"><input type="radio" name="listing" value="any" checked class="radio-chip hidden" hx-get="/partials/cards" hx-include="#filters" hx-target="#results" hx-swap="outerHTML" hx-trigger="change" hx-indicator="#loading-bar"><span class="chip-label flex-1 block text-center text-xs font-bold py-2 rounded-lg border border-gray-200">Any</span></label>
+              <label class="flex-1"><input type="radio" name="listing" value="buy" class="radio-chip hidden" hx-get="/partials/cards" hx-include="#filters" hx-target="#results" hx-swap="outerHTML" hx-trigger="change" hx-indicator="#loading-bar"><span class="chip-label flex-1 block text-center text-xs font-bold py-2 rounded-lg border border-gray-200">Buy</span></label>
+              <label class="flex-1"><input type="radio" name="listing" value="rent" class="radio-chip hidden" hx-get="/partials/cards" hx-include="#filters" hx-target="#results" hx-swap="outerHTML" hx-trigger="change" hx-indicator="#loading-bar"><span class="chip-label flex-1 block text-center text-xs font-bold py-2 rounded-lg border border-gray-200">Rent</span></label>
+              <label class="flex-1"><input type="radio" name="listing" value="commercial" class="radio-chip hidden" hx-get="/partials/cards" hx-include="#filters" hx-target="#results" hx-swap="outerHTML" hx-trigger="change" hx-indicator="#loading-bar"><span class="chip-label flex-1 block text-center text-xs font-bold py-2 rounded-lg border border-gray-200">Comm</span></label>
+            </div>
           </div>
-        </div>
 
-        <!-- Bedrooms -->
-        <div>
-          <label class="text-xs font-bold uppercase tracking-wider text-gray-400 block mb-2">Bedrooms</label>
-          <div class="flex flex-wrap gap-2">
-            <button class="text-xs font-semibold px-3 py-1.5 rounded-full bg-accent text-white">Any</button>
-            <button class="text-xs font-semibold px-3 py-1.5 rounded-full border border-gray-200 hover:border-accent hover:text-accent">1 BHK</button>
-            <button class="text-xs font-semibold px-3 py-1.5 rounded-full border border-gray-200 hover:border-accent hover:text-accent">2 BHK</button>
-            <button class="text-xs font-semibold px-3 py-1.5 rounded-full border border-gray-200 hover:border-accent hover:text-accent">3 BHK</button>
-            <button class="text-xs font-semibold px-3 py-1.5 rounded-full border border-gray-200 hover:border-accent hover:text-accent">4+ BHK</button>
+          <!-- Property type -->
+          <div>
+            <label class="text-xs font-bold uppercase tracking-wider text-gray-400 block mb-2">Property Type</label>
+            <div class="flex flex-wrap gap-2">
+              <label><input type="radio" name="type" value="any" checked class="radio-chip hidden" hx-get="/partials/cards" hx-include="#filters" hx-target="#results" hx-swap="outerHTML" hx-trigger="change" hx-indicator="#loading-bar"><span class="chip-label inline-block text-xs font-semibold px-3 py-1.5 rounded-full border border-gray-200">All</span></label>
+              <label><input type="radio" name="type" value="apartment" class="radio-chip hidden" hx-get="/partials/cards" hx-include="#filters" hx-target="#results" hx-swap="outerHTML" hx-trigger="change" hx-indicator="#loading-bar"><span class="chip-label inline-block text-xs font-semibold px-3 py-1.5 rounded-full border border-gray-200">Apartment</span></label>
+              <label><input type="radio" name="type" value="villa" class="radio-chip hidden" hx-get="/partials/cards" hx-include="#filters" hx-target="#results" hx-swap="outerHTML" hx-trigger="change" hx-indicator="#loading-bar"><span class="chip-label inline-block text-xs font-semibold px-3 py-1.5 rounded-full border border-gray-200">Villa</span></label>
+              <label><input type="radio" name="type" value="penthouse" class="radio-chip hidden" hx-get="/partials/cards" hx-include="#filters" hx-target="#results" hx-swap="outerHTML" hx-trigger="change" hx-indicator="#loading-bar"><span class="chip-label inline-block text-xs font-semibold px-3 py-1.5 rounded-full border border-gray-200">Penthouse</span></label>
+              <label><input type="radio" name="type" value="plot" class="radio-chip hidden" hx-get="/partials/cards" hx-include="#filters" hx-target="#results" hx-swap="outerHTML" hx-trigger="change" hx-indicator="#loading-bar"><span class="chip-label inline-block text-xs font-semibold px-3 py-1.5 rounded-full border border-gray-200">Plot</span></label>
+              <label><input type="radio" name="type" value="commercial" class="radio-chip hidden" hx-get="/partials/cards" hx-include="#filters" hx-target="#results" hx-swap="outerHTML" hx-trigger="change" hx-indicator="#loading-bar"><span class="chip-label inline-block text-xs font-semibold px-3 py-1.5 rounded-full border border-gray-200">Commercial</span></label>
+            </div>
           </div>
-        </div>
 
-        <!-- Possession -->
-        <div>
-          <label class="text-xs font-bold uppercase tracking-wider text-gray-400 block mb-2">Possession</label>
-          <select class="w-full text-sm border border-gray-200 rounded-lg px-3 py-2.5 focus:outline-none focus:border-accent">
-            <option>Any</option><option>Ready to Move</option><option>Within 6 Months</option><option>Within 1 Year</option>
-          </select>
-        </div>
-
-        <!-- Amenities -->
-        <div>
-          <label class="text-xs font-bold uppercase tracking-wider text-gray-400 block mb-2">Amenities</label>
-          <div class="flex flex-wrap gap-2">
-            <button class="text-xs font-semibold px-3 py-1.5 rounded-full border border-gray-200 hover:border-accent hover:text-accent">Pool</button>
-            <button class="text-xs font-semibold px-3 py-1.5 rounded-full border border-gray-200 hover:border-accent hover:text-accent">Gym</button>
-            <button class="text-xs font-semibold px-3 py-1.5 rounded-full border border-gray-200 hover:border-accent hover:text-accent">Parking</button>
-            <button class="text-xs font-semibold px-3 py-1.5 rounded-full border border-gray-200 hover:border-accent hover:text-accent">Garden</button>
-            <button class="text-xs font-semibold px-3 py-1.5 rounded-full border border-gray-200 hover:border-accent hover:text-accent">CCTV</button>
-            <button class="text-xs font-semibold px-3 py-1.5 rounded-full border border-gray-200 hover:border-accent hover:text-accent">Lift</button>
+          <!-- City -->
+          <div>
+            <label class="text-xs font-bold uppercase tracking-wider text-gray-400 block mb-2">City</label>
+            <select name="city" hx-get="/partials/cards" hx-include="#filters" hx-target="#results" hx-swap="outerHTML" hx-trigger="change" hx-indicator="#loading-bar" class="w-full text-sm border border-gray-200 rounded-lg px-3 py-2.5 focus:outline-none focus:border-accent">
+              <option value="any">All Cities</option>
+              <option value="Mumbai">Mumbai</option>
+              <option value="Pune">Pune</option>
+              <option value="Bangalore">Bangalore</option>
+              <option value="Gurgaon">Gurgaon</option>
+              <option value="Delhi NCR">Delhi NCR</option>
+            </select>
           </div>
-        </div>
 
-        <button class="w-full bg-accent text-white font-bold py-3 rounded-xl hover:bg-blue-700 transition-all">Apply Filters</button>
+          <!-- Price range -->
+          <div>
+            <label class="text-xs font-bold uppercase tracking-wider text-gray-400 block mb-2">Price Range (₹)</label>
+            <div class="grid grid-cols-2 gap-2">
+              <input type="text" name="minPrice" placeholder="Min · e.g. 50L" hx-get="/partials/cards" hx-include="#filters" hx-target="#results" hx-swap="outerHTML" hx-trigger="input changed delay:500ms, search" hx-indicator="#loading-bar" class="w-full min-w-0 text-xs border border-gray-200 rounded-lg px-2 py-2 focus:outline-none focus:border-accent">
+              <input type="text" name="maxPrice" placeholder="Max · e.g. 5Cr" hx-get="/partials/cards" hx-include="#filters" hx-target="#results" hx-swap="outerHTML" hx-trigger="input changed delay:500ms, search" hx-indicator="#loading-bar" class="w-full min-w-0 text-xs border border-gray-200 rounded-lg px-2 py-2 focus:outline-none focus:border-accent">
+            </div>
+          </div>
+
+          <!-- Bedrooms -->
+          <div>
+            <label class="text-xs font-bold uppercase tracking-wider text-gray-400 block mb-2">Bedrooms</label>
+            <div class="flex flex-wrap gap-2">
+              <label><input type="radio" name="bhk" value="any" checked class="radio-chip hidden" hx-get="/partials/cards" hx-include="#filters" hx-target="#results" hx-swap="outerHTML" hx-trigger="change" hx-indicator="#loading-bar"><span class="chip-label inline-block text-xs font-semibold px-3 py-1.5 rounded-full border border-gray-200">Any</span></label>
+              <label><input type="radio" name="bhk" value="1" class="radio-chip hidden" hx-get="/partials/cards" hx-include="#filters" hx-target="#results" hx-swap="outerHTML" hx-trigger="change" hx-indicator="#loading-bar"><span class="chip-label inline-block text-xs font-semibold px-3 py-1.5 rounded-full border border-gray-200">1 BHK</span></label>
+              <label><input type="radio" name="bhk" value="2" class="radio-chip hidden" hx-get="/partials/cards" hx-include="#filters" hx-target="#results" hx-swap="outerHTML" hx-trigger="change" hx-indicator="#loading-bar"><span class="chip-label inline-block text-xs font-semibold px-3 py-1.5 rounded-full border border-gray-200">2 BHK</span></label>
+              <label><input type="radio" name="bhk" value="3" class="radio-chip hidden" hx-get="/partials/cards" hx-include="#filters" hx-target="#results" hx-swap="outerHTML" hx-trigger="change" hx-indicator="#loading-bar"><span class="chip-label inline-block text-xs font-semibold px-3 py-1.5 rounded-full border border-gray-200">3 BHK</span></label>
+              <label><input type="radio" name="bhk" value="4" class="radio-chip hidden" hx-get="/partials/cards" hx-include="#filters" hx-target="#results" hx-swap="outerHTML" hx-trigger="change" hx-indicator="#loading-bar"><span class="chip-label inline-block text-xs font-semibold px-3 py-1.5 rounded-full border border-gray-200">4+ BHK</span></label>
+            </div>
+          </div>
+
+          <!-- Possession -->
+          <div>
+            <label class="text-xs font-bold uppercase tracking-wider text-gray-400 block mb-2">Possession</label>
+            <select name="possession" hx-get="/partials/cards" hx-include="#filters" hx-target="#results" hx-swap="outerHTML" hx-trigger="change" hx-indicator="#loading-bar" class="w-full text-sm border border-gray-200 rounded-lg px-3 py-2.5 focus:outline-none focus:border-accent">
+              <option value="any">Any</option>
+              <option>Ready to Move</option>
+              <option>Within 6 Months</option>
+              <option>Within 1 Year</option>
+            </select>
+          </div>
+
+          <!-- Amenities -->
+          <div>
+            <label class="text-xs font-bold uppercase tracking-wider text-gray-400 block mb-2">Amenities</label>
+            <div class="flex flex-wrap gap-2">
+              <label><input type="checkbox" name="amenities" value="Pool" class="check-chip hidden" hx-get="/partials/cards" hx-include="#filters" hx-target="#results" hx-swap="outerHTML" hx-trigger="change" hx-indicator="#loading-bar"><span class="chip-label inline-block text-xs font-semibold px-3 py-1.5 rounded-full border border-gray-200">Pool</span></label>
+              <label><input type="checkbox" name="amenities" value="Gym" class="check-chip hidden" hx-get="/partials/cards" hx-include="#filters" hx-target="#results" hx-swap="outerHTML" hx-trigger="change" hx-indicator="#loading-bar"><span class="chip-label inline-block text-xs font-semibold px-3 py-1.5 rounded-full border border-gray-200">Gym</span></label>
+              <label><input type="checkbox" name="amenities" value="Parking" class="check-chip hidden" hx-get="/partials/cards" hx-include="#filters" hx-target="#results" hx-swap="outerHTML" hx-trigger="change" hx-indicator="#loading-bar"><span class="chip-label inline-block text-xs font-semibold px-3 py-1.5 rounded-full border border-gray-200">Parking</span></label>
+              <label><input type="checkbox" name="amenities" value="Garden" class="check-chip hidden" hx-get="/partials/cards" hx-include="#filters" hx-target="#results" hx-swap="outerHTML" hx-trigger="change" hx-indicator="#loading-bar"><span class="chip-label inline-block text-xs font-semibold px-3 py-1.5 rounded-full border border-gray-200">Garden</span></label>
+              <label><input type="checkbox" name="amenities" value="CCTV" class="check-chip hidden" hx-get="/partials/cards" hx-include="#filters" hx-target="#results" hx-swap="outerHTML" hx-trigger="change" hx-indicator="#loading-bar"><span class="chip-label inline-block text-xs font-semibold px-3 py-1.5 rounded-full border border-gray-200">CCTV</span></label>
+              <label><input type="checkbox" name="amenities" value="Lift" class="check-chip hidden" hx-get="/partials/cards" hx-include="#filters" hx-target="#results" hx-swap="outerHTML" hx-trigger="change" hx-indicator="#loading-bar"><span class="chip-label inline-block text-xs font-semibold px-3 py-1.5 rounded-full border border-gray-200">Lift</span></label>
+              <label><input type="checkbox" name="amenities" value="Security" class="check-chip hidden" hx-get="/partials/cards" hx-include="#filters" hx-target="#results" hx-swap="outerHTML" hx-trigger="change" hx-indicator="#loading-bar"><span class="chip-label inline-block text-xs font-semibold px-3 py-1.5 rounded-full border border-gray-200">Security</span></label>
+              <label><input type="checkbox" name="amenities" value="Power Backup" class="check-chip hidden" hx-get="/partials/cards" hx-include="#filters" hx-target="#results" hx-swap="outerHTML" hx-trigger="change" hx-indicator="#loading-bar"><span class="chip-label inline-block text-xs font-semibold px-3 py-1.5 rounded-full border border-gray-200">Power Backup</span></label>
+            </div>
+          </div>
+
+          <label class="flex items-center gap-2 text-sm font-semibold text-gray-700 cursor-pointer">
+            <input type="checkbox" name="featured" value="1" class="check-chip w-4 h-4 accent-blue-600" hx-get="/partials/cards" hx-include="#filters" hx-target="#results" hx-swap="outerHTML" hx-trigger="change" hx-indicator="#loading-bar">
+            ★ Featured only
+          </label>
+
+          <button id="apply-filters" hx-get="/partials/cards" hx-include="#filters" hx-target="#results" hx-swap="outerHTML" hx-indicator="#loading-bar" class="w-full bg-accent text-white font-bold py-3 rounded-xl hover:bg-blue-700 transition-all">Apply Filters</button>
+        </div>
       </div>
     </aside>
 
@@ -173,245 +223,17 @@
       <button id="filter-toggle" class="lg:hidden flex items-center gap-2 border border-gray-200 text-sm font-semibold px-4 py-2 rounded-full mb-4 hover:border-accent hover:text-accent transition-all">
         <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><line x1="4" y1="6" x2="20" y2="6"/><line x1="8" y1="12" x2="16" y2="12"/><line x1="11" y1="18" x2="13" y2="18"/></svg>
         Filters
+        <span id="active-count" class="hidden bg-accent text-white text-xs font-bold w-5 h-5 rounded-full items-center justify-center">0</span>
       </button>
-      <!-- Mobile sidebar -->
-      <div id="mobile-sidebar" class="hidden lg:hidden bg-white border border-gray-200 rounded-2xl p-5 mb-6 space-y-4">
-        <div class="grid grid-cols-2 gap-3">
-          <div>
-            <label class="text-xs font-bold text-gray-400 block mb-1">Location</label>
-            <input type="text" placeholder="City or area..." class="w-full text-sm border border-gray-200 rounded-lg px-3 py-2 focus:outline-none focus:border-accent">
-          </div>
-          <div>
-            <label class="text-xs font-bold text-gray-400 block mb-1">Type</label>
-            <select class="w-full text-sm border border-gray-200 rounded-lg px-3 py-2 focus:outline-none focus:border-accent">
-              <option>All Types</option><option>Apartment</option><option>Villa</option><option>Plot</option>
-            </select>
-          </div>
-          <div>
-            <label class="text-xs font-bold text-gray-400 block mb-1">Min Price</label>
-            <input type="text" placeholder="e.g. 50L" class="w-full text-sm border border-gray-200 rounded-lg px-3 py-2 focus:outline-none focus:border-accent">
-          </div>
-          <div>
-            <label class="text-xs font-bold text-gray-400 block mb-1">Max Price</label>
-            <input type="text" placeholder="e.g. 5Cr" class="w-full text-sm border border-gray-200 rounded-lg px-3 py-2 focus:outline-none focus:border-accent">
-          </div>
+
+      <!-- Results container: first load is triggered by HTMX (hx-trigger="load") -->
+      <div id="results"
+           hx-get="/partials/cards" hx-trigger="load" hx-include="#filters" hx-swap="outerHTML"
+           hx-indicator="#loading-bar">
+        <div class="flex items-center justify-center py-24 text-gray-400">
+          <svg class="animate-spin w-6 h-6 mr-2 text-accent" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg>
+          Loading properties...
         </div>
-        <button class="w-full bg-accent text-white font-bold py-2.5 rounded-xl hover:bg-blue-700 transition-all text-sm">Apply Filters</button>
-      </div>
-
-      <!-- Results header -->
-      <div class="flex items-center justify-between mb-5">
-        <p class="text-sm text-gray-500">Showing <strong class="text-gray-900">48</strong> of <strong class="text-gray-900">4,200+</strong> properties</p>
-        <select class="text-sm border border-gray-200 rounded-lg px-3 py-2 focus:outline-none focus:border-accent">
-          <option>Sort: Recommended</option>
-          <option>Price: Low to High</option>
-          <option>Price: High to Low</option>
-          <option>Newest First</option>
-          <option>Area: Large to Small</option>
-        </select>
-      </div>
-
-      <!-- Grid -->
-      <div class="grid sm:grid-cols-2 gap-5">
-
-        <!-- Property cards (8 total) -->
-        <!-- Card 1 -->
-        <a href="property.html" class="group bg-white border border-gray-100 rounded-2xl overflow-hidden card-hover" data-aos>
-          <div class="relative">
-            <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=500&h=300&fit=crop&q=80" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-500" alt="Villa Serenova">
-            <div class="absolute top-3 left-3 flex gap-1.5">
-              <span class="bg-accent text-white text-xs font-bold px-2.5 py-1 rounded-full">FOR SALE</span>
-              <span class="bg-green-500 text-white text-xs font-bold px-2.5 py-1 rounded-full">NEW</span>
-            </div>
-            <button class="fav-btn absolute top-3 right-3 w-8 h-8 bg-white rounded-full shadow flex items-center justify-center" onclick="event.preventDefault();this.classList.toggle('active')">
-              <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
-            </button>
-          </div>
-          <div class="p-4">
-            <div class="text-accent text-lg font-black font-head">₹3.8 Cr</div>
-            <div class="font-bold text-gray-900 text-sm mt-0.5 mb-1">Villa Serenova</div>
-            <div class="text-xs text-gray-400 flex items-center gap-1 mb-3"><svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/></svg>Juhu, Mumbai</div>
-            <div class="flex items-center gap-4 text-xs text-gray-500 border-t border-gray-100 pt-3">
-              <span>🛏 4 BHK</span><span>🚿 3 Bath</span><span>📐 2,400 sq.ft</span>
-            </div>
-            <div class="flex items-center justify-between mt-3">
-              <div class="flex items-center gap-2"><img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=32&h=32&fit=crop" class="w-6 h-6 rounded-full object-cover" alt=""><span class="text-xs text-gray-500">Arjun Mehta</span></div>
-              <span class="text-xs bg-accent text-white px-3 py-1 rounded-full font-bold">View</span>
-            </div>
-          </div>
-        </a>
-
-        <!-- Card 2 -->
-        <a href="property.html" class="group bg-white border border-gray-100 rounded-2xl overflow-hidden card-hover" data-aos>
-          <div class="relative">
-            <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=500&h=300&fit=crop&q=80" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-500" alt="Azure Heights">
-            <div class="absolute top-3 left-3 flex gap-1.5">
-              <span class="bg-accent text-white text-xs font-bold px-2.5 py-1 rounded-full">FOR SALE</span>
-              <span class="bg-blue-100 text-accent text-xs font-bold px-2.5 py-1 rounded-full">READY</span>
-            </div>
-            <button class="fav-btn absolute top-3 right-3 w-8 h-8 bg-white rounded-full shadow flex items-center justify-center" onclick="event.preventDefault();this.classList.toggle('active')">
-              <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
-            </button>
-          </div>
-          <div class="p-4">
-            <div class="text-accent text-lg font-black font-head">₹2.4 Cr</div>
-            <div class="font-bold text-gray-900 text-sm mt-0.5 mb-1">Azure Heights</div>
-            <div class="text-xs text-gray-400 flex items-center gap-1 mb-3"><svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/></svg>Bandra West, Mumbai</div>
-            <div class="flex items-center gap-4 text-xs text-gray-500 border-t border-gray-100 pt-3"><span>🛏 3 BHK</span><span>🚿 2 Bath</span><span>📐 1,850 sq.ft</span></div>
-            <div class="flex items-center justify-between mt-3">
-              <div class="flex items-center gap-2"><img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=32&h=32&fit=crop" class="w-6 h-6 rounded-full object-cover" alt=""><span class="text-xs text-gray-500">Priya Sharma</span></div>
-              <span class="text-xs bg-accent text-white px-3 py-1 rounded-full font-bold">View</span>
-            </div>
-          </div>
-        </a>
-
-        <!-- Card 3 -->
-        <a href="property.html" class="group bg-white border border-gray-100 rounded-2xl overflow-hidden card-hover" data-aos>
-          <div class="relative">
-            <img src="https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=500&h=300&fit=crop&q=80" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-500" alt="Infinity Gardens">
-            <div class="absolute top-3 left-3 flex gap-1.5">
-              <span class="bg-accent text-white text-xs font-bold px-2.5 py-1 rounded-full">FOR SALE</span>
-              <span class="bg-yellow-400 text-gray-900 text-xs font-bold px-2.5 py-1 rounded-full">PREMIUM</span>
-            </div>
-            <button class="fav-btn absolute top-3 right-3 w-8 h-8 bg-white rounded-full shadow flex items-center justify-center" onclick="event.preventDefault();this.classList.toggle('active')">
-              <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
-            </button>
-          </div>
-          <div class="p-4">
-            <div class="text-accent text-lg font-black font-head">₹5.2 Cr</div>
-            <div class="font-bold text-gray-900 text-sm mt-0.5 mb-1">Infinity Gardens</div>
-            <div class="text-xs text-gray-400 flex items-center gap-1 mb-3"><svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/></svg>DLF, Gurgaon</div>
-            <div class="flex items-center gap-4 text-xs text-gray-500 border-t border-gray-100 pt-3"><span>🛏 5 BHK</span><span>🚿 4 Bath</span><span>📐 4,800 sq.ft</span></div>
-            <div class="flex items-center justify-between mt-3">
-              <div class="flex items-center gap-2"><img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=32&h=32&fit=crop" class="w-6 h-6 rounded-full object-cover" alt=""><span class="text-xs text-gray-500">Sanjana Reddy</span></div>
-              <span class="text-xs bg-accent text-white px-3 py-1 rounded-full font-bold">View</span>
-            </div>
-          </div>
-        </a>
-
-        <!-- Card 4 -->
-        <a href="property.html" class="group bg-white border border-gray-100 rounded-2xl overflow-hidden card-hover" data-aos>
-          <div class="relative">
-            <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=500&h=300&fit=crop&q=80" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-500" alt="Crystal Palms">
-            <div class="absolute top-3 left-3 flex gap-1.5">
-              <span class="bg-accent text-white text-xs font-bold px-2.5 py-1 rounded-full">FOR RENT</span>
-            </div>
-            <button class="fav-btn absolute top-3 right-3 w-8 h-8 bg-white rounded-full shadow flex items-center justify-center" onclick="event.preventDefault();this.classList.toggle('active')">
-              <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
-            </button>
-          </div>
-          <div class="p-4">
-            <div class="text-accent text-lg font-black font-head">₹89 L</div>
-            <div class="font-bold text-gray-900 text-sm mt-0.5 mb-1">Crystal Palms</div>
-            <div class="text-xs text-gray-400 flex items-center gap-1 mb-3"><svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/></svg>Thane, Mumbai</div>
-            <div class="flex items-center gap-4 text-xs text-gray-500 border-t border-gray-100 pt-3"><span>🛏 2 BHK</span><span>🚿 2 Bath</span><span>📐 980 sq.ft</span></div>
-            <div class="flex items-center justify-between mt-3">
-              <div class="flex items-center gap-2"><img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=32&h=32&fit=crop" class="w-6 h-6 rounded-full object-cover" alt=""><span class="text-xs text-gray-500">Meera Nair</span></div>
-              <span class="text-xs bg-accent text-white px-3 py-1 rounded-full font-bold">View</span>
-            </div>
-          </div>
-        </a>
-
-        <!-- Card 5 -->
-        <a href="property.html" class="group bg-white border border-gray-100 rounded-2xl overflow-hidden card-hover" data-aos>
-          <div class="relative">
-            <img src="https://images.unsplash.com/photo-1516455590571-18256e5bb9ff?w=500&h=300&fit=crop&q=80" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-500" alt="Park View Residency">
-            <div class="absolute top-3 left-3 flex gap-1.5">
-              <span class="bg-accent text-white text-xs font-bold px-2.5 py-1 rounded-full">FOR SALE</span>
-              <span class="bg-purple-500 text-white text-xs font-bold px-2.5 py-1 rounded-full">LUXURY</span>
-            </div>
-            <button class="fav-btn absolute top-3 right-3 w-8 h-8 bg-white rounded-full shadow flex items-center justify-center" onclick="event.preventDefault();this.classList.toggle('active')">
-              <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
-            </button>
-          </div>
-          <div class="p-4">
-            <div class="text-accent text-lg font-black font-head">₹4.5 Cr</div>
-            <div class="font-bold text-gray-900 text-sm mt-0.5 mb-1">Park View Residency</div>
-            <div class="text-xs text-gray-400 flex items-center gap-1 mb-3"><svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/></svg>Worli, Mumbai</div>
-            <div class="flex items-center gap-4 text-xs text-gray-500 border-t border-gray-100 pt-3"><span>🛏 4 BHK</span><span>🚿 4 Bath</span><span>📐 3,200 sq.ft</span></div>
-            <div class="flex items-center justify-between mt-3">
-              <div class="flex items-center gap-2"><img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=32&h=32&fit=crop" class="w-6 h-6 rounded-full object-cover" alt=""><span class="text-xs text-gray-500">Arjun Mehta</span></div>
-              <span class="text-xs bg-accent text-white px-3 py-1 rounded-full font-bold">View</span>
-            </div>
-          </div>
-        </a>
-
-        <!-- Card 6 -->
-        <a href="property.html" class="group bg-white border border-gray-100 rounded-2xl overflow-hidden card-hover" data-aos>
-          <div class="relative">
-            <img src="https://images.unsplash.com/photo-1560184897-ae75f418493e?w=500&h=300&fit=crop&q=80" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-500" alt="Green Valley">
-            <div class="absolute top-3 left-3 flex gap-1.5">
-              <span class="bg-accent text-white text-xs font-bold px-2.5 py-1 rounded-full">FOR SALE</span>
-            </div>
-            <button class="fav-btn absolute top-3 right-3 w-8 h-8 bg-white rounded-full shadow flex items-center justify-center" onclick="event.preventDefault();this.classList.toggle('active')">
-              <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
-            </button>
-          </div>
-          <div class="p-4">
-            <div class="text-accent text-lg font-black font-head">₹1.8 Cr</div>
-            <div class="font-bold text-gray-900 text-sm mt-0.5 mb-1">Green Valley Enclave</div>
-            <div class="text-xs text-gray-400 flex items-center gap-1 mb-3"><svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/></svg>Koregaon Park, Pune</div>
-            <div class="flex items-center gap-4 text-xs text-gray-500 border-t border-gray-100 pt-3"><span>🛏 3 BHK</span><span>🚿 2 Bath</span><span>📐 1,450 sq.ft</span></div>
-            <div class="flex items-center justify-between mt-3">
-              <div class="flex items-center gap-2"><img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=32&h=32&fit=crop" class="w-6 h-6 rounded-full object-cover" alt=""><span class="text-xs text-gray-500">Priya Sharma</span></div>
-              <span class="text-xs bg-accent text-white px-3 py-1 rounded-full font-bold">View</span>
-            </div>
-          </div>
-        </a>
-
-        <!-- Card 7 -->
-        <a href="property.html" class="group bg-white border border-gray-100 rounded-2xl overflow-hidden card-hover" data-aos>
-          <div class="relative">
-            <img src="https://images.unsplash.com/photo-1605276374104-dee2a0ed3cd6?w=500&h=300&fit=crop&q=80" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-500" alt="Sunrise Towers">
-            <div class="absolute top-3 left-3 flex gap-1.5">
-              <span class="bg-accent text-white text-xs font-bold px-2.5 py-1 rounded-full">FOR RENT</span>
-              <span class="bg-green-500 text-white text-xs font-bold px-2.5 py-1 rounded-full">FURNISHED</span>
-            </div>
-            <button class="fav-btn absolute top-3 right-3 w-8 h-8 bg-white rounded-full shadow flex items-center justify-center" onclick="event.preventDefault();this.classList.toggle('active')">
-              <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
-            </button>
-          </div>
-          <div class="p-4">
-            <div class="text-accent text-lg font-black font-head">₹55,000/mo</div>
-            <div class="font-bold text-gray-900 text-sm mt-0.5 mb-1">Sunrise Towers</div>
-            <div class="text-xs text-gray-400 flex items-center gap-1 mb-3"><svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/></svg>Indiranagar, Bangalore</div>
-            <div class="flex items-center gap-4 text-xs text-gray-500 border-t border-gray-100 pt-3"><span>🛏 2 BHK</span><span>🚿 2 Bath</span><span>📐 1,100 sq.ft</span></div>
-            <div class="flex items-center justify-between mt-3">
-              <div class="flex items-center gap-2"><img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=32&h=32&fit=crop" class="w-6 h-6 rounded-full object-cover" alt=""><span class="text-xs text-gray-500">Sanjana Reddy</span></div>
-              <span class="text-xs bg-accent text-white px-3 py-1 rounded-full font-bold">View</span>
-            </div>
-          </div>
-        </a>
-
-        <!-- Card 8 -->
-        <a href="property.html" class="group bg-white border border-gray-100 rounded-2xl overflow-hidden card-hover" data-aos>
-          <div class="relative">
-            <img src="https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=500&h=300&fit=crop&q=80" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-500" alt="The Pinnacle">
-            <div class="absolute top-3 left-3 flex gap-1.5">
-              <span class="bg-accent text-white text-xs font-bold px-2.5 py-1 rounded-full">FOR SALE</span>
-              <span class="bg-red-500 text-white text-xs font-bold px-2.5 py-1 rounded-full">HOT</span>
-            </div>
-            <button class="fav-btn absolute top-3 right-3 w-8 h-8 bg-white rounded-full shadow flex items-center justify-center" onclick="event.preventDefault();this.classList.toggle('active')">
-              <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
-            </button>
-          </div>
-          <div class="p-4">
-            <div class="text-accent text-lg font-black font-head">₹7.2 Cr</div>
-            <div class="font-bold text-gray-900 text-sm mt-0.5 mb-1">The Pinnacle</div>
-            <div class="text-xs text-gray-400 flex items-center gap-1 mb-3"><svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/></svg>Ballard Estate, Mumbai</div>
-            <div class="flex items-center gap-4 text-xs text-gray-500 border-t border-gray-100 pt-3"><span>🛏 6 BHK</span><span>🚿 5 Bath</span><span>📐 6,000 sq.ft</span></div>
-            <div class="flex items-center justify-between mt-3">
-              <div class="flex items-center gap-2"><img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=32&h=32&fit=crop" class="w-6 h-6 rounded-full object-cover" alt=""><span class="text-xs text-gray-500">Arjun Mehta</span></div>
-              <span class="text-xs bg-accent text-white px-3 py-1 rounded-full font-bold">View</span>
-            </div>
-          </div>
-        </a>
-
-      </div>
-
-      <!-- Load more -->
-      <div class="text-center mt-10">
-        <button class="border border-gray-200 text-sm font-semibold px-8 py-3 rounded-full hover:border-accent hover:text-accent transition-all">Load More Properties (4,192 more)</button>
       </div>
     </main>
   </div>
@@ -423,11 +245,11 @@
     <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
       <div class="sm:col-span-2 lg:col-span-1">
         <div class="text-2xl font-black font-head mb-3">Estate<span class="text-accent">.</span></div>
-        <p class="text-gray-400 text-sm leading-relaxed">India's most trusted real estate platform since 2009.</p>
+        <p class="text-gray-400 text-sm leading-relaxed">India's most trusted real estate platform since 2009. Search &amp; filter powered by HTMX.</p>
       </div>
-      <div><h4 class="font-bold text-sm mb-4">Properties</h4><ul class="flex flex-col gap-2 text-sm text-gray-400"><li><a href="#" class="hover:text-white">Buy a Home</a></li><li><a href="#" class="hover:text-white">Rent a Home</a></li><li><a href="#" class="hover:text-white">Commercial</a></li></ul></div>
-      <div><h4 class="font-bold text-sm mb-4">Company</h4><ul class="flex flex-col gap-2 text-sm text-gray-400"><li><a href="about.html" class="hover:text-white">About Us</a></li><li><a href="contact.html" class="hover:text-white">Contact</a></li></ul></div>
-      <div><h4 class="font-bold text-sm mb-4">Support</h4><ul class="flex flex-col gap-2 text-sm text-gray-400"><li><a href="#" class="hover:text-white">FAQs</a></li><li><a href="#" class="hover:text-white">Privacy Policy</a></li><li><a href="#" class="hover:text-white">RERA Info</a></li></ul></div>
+      <div><h4 class="font-bold text-sm mb-4">Properties</h4><ul class="flex flex-col gap-2 text-sm text-gray-400"><li><a href="listings.html" class="hover:text-white">Buy a Home</a></li><li><a href="listings.html?listing=rent" class="hover:text-white">Rent a Home</a></li><li><a href="listings.html?type=commercial" class="hover:text-white">Commercial</a></li></ul></div>
+      <div><h4 class="font-bold text-sm mb-4">Company</h4><ul class="flex flex-col gap-2 text-sm text-gray-400"><li><a href="about.html" class="hover:text-white">About Us</a></li><li><a href="contact.html" class="hover:text-white">Contact</a></li><li><a href="admin.html" class="hover:text-white">Admin Panel</a></li></ul></div>
+      <div><h4 class="font-bold text-sm mb-4">Support</h4><ul class="flex flex-col gap-2 text-sm text-gray-400"><li><a href="contact.html" class="hover:text-white">FAQs</a></li><li><a href="#" class="hover:text-white">Privacy Policy</a></li><li><a href="#" class="hover:text-white">RERA Info</a></li></ul></div>
     </div>
     <div class="border-t border-gray-800 mt-8 pt-6 flex flex-col sm:flex-row items-center justify-between gap-2 text-sm text-gray-500">
       <span>© 2026 Estate. All rights reserved.</span>
@@ -437,18 +259,83 @@
 </footer>
 
 <script>
-  const nav = document.getElementById('navbar');
-  window.addEventListener('scroll', () => nav.classList.toggle('nav-scrolled', window.scrollY > 10));
-  document.getElementById('hamburger').addEventListener('click', () => document.getElementById('mobile-menu').classList.toggle('hidden'));
-  document.getElementById('filter-toggle').addEventListener('click', () => document.getElementById('mobile-sidebar').classList.toggle('hidden'));
-  const observer = new IntersectionObserver(entries => entries.forEach(e => { if(e.isIntersecting){e.target.classList.add('aos-visible');observer.unobserve(e.target);} }), {threshold:0.1});
-  document.querySelectorAll('[data-aos]').forEach(el => observer.observe(el));
-  document.querySelectorAll('.filter-chip').forEach(chip => {
-    chip.addEventListener('click', () => {
-      document.querySelectorAll('.filter-chip').forEach(c => c.classList.remove('active'));
-      chip.classList.add('active');
+  // Apply URL query params to the filter controls BEFORE htmx processes the "load" trigger.
+  (function () {
+    var params = new URLSearchParams(location.search);
+    function setVal(name, val) {
+      if (val == null || val === '') return;
+      var els = document.querySelectorAll('#filters [name="' + name + '"]');
+      if (!els.length) return;
+      if (els[0].type === 'radio') {
+        els.forEach(function (e) { e.checked = String(e.value) === String(val); });
+      } else if (els[0].type === 'checkbox' && name === 'amenities') {
+        String(val).split(',').forEach(function (v) { els.forEach(function (e) { if (String(e.value) === v) e.checked = true; }); });
+      } else if (els[0].type === 'checkbox') {
+        els[0].checked = val === '1' || val === 'true';
+      } else {
+        els[0].value = val;
+      }
+    }
+    ['q', 'listing', 'type', 'city', 'bhk', 'possession', 'minPrice', 'maxPrice', 'featured', 'sort'].forEach(function (n) {
+      setVal(n, params.get(n));
     });
+    if (params.get('amenities')) setVal('amenities', params.get('amenities'));
+  })();
+
+  // Navbar + mobile menu
+  var nav = document.getElementById('navbar');
+  window.addEventListener('scroll', function () { nav.classList.toggle('nav-scrolled', window.scrollY > 10); });
+  document.getElementById('hamburger').addEventListener('click', function () { document.getElementById('mobile-menu').classList.toggle('hidden'); });
+
+  // Sidebar drawer (mobile)
+  var sidebar = document.getElementById('sidebar');
+  var backdrop = document.getElementById('sidebar-backdrop');
+  document.getElementById('filter-toggle').addEventListener('click', function () {
+    sidebar.classList.remove('-translate-x-full');
+    backdrop.classList.remove('hidden');
+  });
+  function closeSidebar() {
+    sidebar.classList.add('-translate-x-full');
+    backdrop.classList.add('hidden');
+  }
+  document.getElementById('close-sidebar').addEventListener('click', closeSidebar);
+  backdrop.addEventListener('click', closeSidebar);
+
+  // Keep the hero chips' active state in sync with URL params
+  (function () {
+    var p = new URLSearchParams(location.search);
+    var type = p.get('type'), listing = p.get('listing');
+    document.querySelectorAll('[data-chip]').forEach(function (c) {
+      var active = (c.dataset.chip === 'all' && !type && !listing) || c.dataset.chip === type || c.dataset.chip === listing;
+      c.classList.toggle('active', active);
+    });
+  })();
+
+  // Clear all filters -> reset controls -> refetch
+  document.getElementById('clear-filters').addEventListener('click', function () {
+    document.querySelectorAll('#filters input').forEach(function (el) {
+      if (el.type === 'radio') { if (el.value === 'any') el.checked = true; else el.checked = false; }
+      else if (el.type === 'checkbox') { el.checked = false; }
+      else { el.value = ''; }
+    });
+    document.querySelectorAll('#filters select').forEach(function (el) { el.value = 'any'; });
+    htmx.ajax('GET', '/partials/cards', { target: '#results', swap: 'outerHTML', include: '#filters' });
+  });
+
+  // Keep the sort value mirrored into #filters so other filter requests preserve it
+  document.addEventListener('change', function (e) {
+    if (e.target && e.target.name === 'sort') {
+      var h = document.querySelector('#filters input[name=sort]');
+      if (h) h.value = e.target.value;
+    }
   });
 </script>
+
+<script src="data/properties.js"></script>
+<script src="js/util.js"></script>
+<script src="js/cards.js"></script>
+<script src="js/admin.js"></script>
+<script src="js/estate.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/htmx.org@2.0.4/dist/htmx.min.js"></script>
 </body>
 </html>

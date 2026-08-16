@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Villa Serenova — ₹3.8 Cr | Estate</title>
-  <meta name="description" content="4 BHK Independent Villa in Juhu, Mumbai. 2,400 sq.ft, Private Pool, RERA approved. Contact agent for site visit.">
+  <title>Property Details — Estate</title>
+  <meta name="description" content="View full property details, amenities, site-visit booking and EMI estimate. Loaded dynamically with HTMX.">
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
@@ -22,10 +22,10 @@
     body { font-family: 'Inter', sans-serif; }
     h1,h2,h3,h4 { font-family: 'Poppins', sans-serif; }
     .nav-scrolled { box-shadow: 0 2px 24px rgba(0,0,0,.07); }
-    [data-aos] { opacity:0; transform:translateY(20px); transition:opacity .5s ease,transform .5s ease; }
-    [data-aos].aos-visible { opacity:1; transform:translateY(0); }
     .card-hover { transition:transform .25s ease,box-shadow .25s ease; }
     .card-hover:hover { transform:translateY(-4px); box-shadow:0 12px 40px rgba(0,0,0,.1); }
+    .htmx-indicator { opacity: 0; transition: opacity .2s ease; }
+    .htmx-request .htmx-indicator, .htmx-request.htmx-indicator { opacity: 1; }
   </style>
 </head>
 <body class="bg-white text-gray-800">
@@ -56,212 +56,24 @@
   </div>
 </nav>
 
-<div class="pt-16 lg:pt-[72px]">
-
-  <!-- BREADCRUMBS -->
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
-    <div class="flex items-center gap-2 text-xs text-gray-400">
-      <a href="index.html" class="hover:text-accent">Home</a>
-      <span>/</span><a href="listings.html" class="hover:text-accent">Properties</a>
-      <span>/</span><span>Mumbai</span>
-      <span>/</span><span class="text-gray-800 font-semibold">Villa Serenova</span>
-    </div>
+<!-- Property content loads here via HTMX (hx-trigger="load") -->
+<div class="pt-16 lg:pt-[72px]" id="property-shell"
+     hx-trigger="load" hx-swap="innerHTML" hx-indicator="#prop-loading">
+  <div class="flex items-center justify-center py-40 text-gray-400">
+    <svg class="animate-spin w-6 h-6 mr-2 text-accent" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg>
+    Loading property details...
   </div>
-
-  <!-- GALLERY -->
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-8">
-    <div class="grid grid-cols-1 sm:grid-cols-3 gap-2 rounded-2xl overflow-hidden h-64 sm:h-96">
-      <div class="sm:col-span-2 relative">
-        <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=900&h=600&fit=crop&q=85" class="w-full h-full object-cover" alt="Villa Serenova main">
-      </div>
-      <div class="hidden sm:grid grid-rows-2 gap-2">
-        <img src="https://images.unsplash.com/photo-1600210492493-0946911123ea?w=500&h=300&fit=crop&q=85" class="w-full h-full object-cover" alt="">
-        <div class="relative">
-          <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=500&h=300&fit=crop&q=85" class="w-full h-full object-cover" alt="">
-          <div class="absolute inset-0 bg-black/50 flex items-center justify-center">
-            <button class="text-white text-sm font-bold flex items-center gap-2">📷 +9 Photos</button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- CONTENT GRID -->
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">
-    <div class="flex flex-col lg:flex-row gap-10">
-
-      <!-- LEFT: details -->
-      <div class="flex-1 min-w-0">
-
-        <!-- Header -->
-        <div class="flex flex-wrap items-start justify-between gap-4 mb-6">
-          <div>
-            <div class="flex flex-wrap gap-2 mb-3">
-              <span class="bg-accent text-white text-xs font-bold px-2.5 py-1 rounded-full">FOR SALE</span>
-              <span class="bg-green-100 text-green-700 text-xs font-bold px-2.5 py-1 rounded-full">NEW</span>
-              <span class="bg-blue-100 text-accent text-xs font-bold px-2.5 py-1 rounded-full">RERA APPROVED</span>
-            </div>
-            <h1 class="text-3xl lg:text-4xl font-black font-head text-gray-900 mb-2">Villa Serenova</h1>
-            <div class="flex items-center gap-1 text-sm text-gray-500">
-              <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/></svg>
-              14, Serenova Marg, Juhu, Mumbai – 400049
-            </div>
-          </div>
-          <div class="text-right">
-            <div class="text-sm text-gray-400 mb-1">Sale Price</div>
-            <div class="text-4xl font-black font-head text-accent">₹3.8 Crore</div>
-            <div class="text-sm text-gray-400 mt-1">₹15,833/sq.ft</div>
-          </div>
-        </div>
-
-        <!-- Specs Grid -->
-        <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 bg-gray-50 rounded-2xl p-5 mb-8">
-          <div class="text-center"><div class="text-xl font-black font-head text-gray-900">4</div><div class="text-xs text-gray-500 mt-1">Bedrooms</div></div>
-          <div class="text-center"><div class="text-xl font-black font-head text-gray-900">3</div><div class="text-xs text-gray-500 mt-1">Bathrooms</div></div>
-          <div class="text-center"><div class="text-xl font-black font-head text-gray-900">2,400</div><div class="text-xs text-gray-500 mt-1">sq.ft</div></div>
-          <div class="text-center"><div class="text-xl font-black font-head text-gray-900">2</div><div class="text-xs text-gray-500 mt-1">Parking</div></div>
-          <div class="text-center"><div class="text-xl font-black font-head text-gray-900">G+2</div><div class="text-xs text-gray-500 mt-1">Floors</div></div>
-          <div class="text-center"><div class="text-xl font-black font-head text-gray-900">2024</div><div class="text-xs text-gray-500 mt-1">Built Year</div></div>
-          <div class="text-center"><div class="text-xl font-black font-head text-gray-900">3.2 Cr</div><div class="text-xs text-gray-500 mt-1">Price/Carpet</div></div>
-          <div class="text-center"><div class="text-xl font-black font-head text-gray-900">North</div><div class="text-xs text-gray-500 mt-1">Facing</div></div>
-        </div>
-
-        <!-- About -->
-        <div class="mb-8" data-aos>
-          <h2 class="text-xl font-bold text-gray-900 mb-4">About This Property</h2>
-          <p class="text-gray-600 text-sm leading-relaxed mb-3">Welcome to Villa Serenova — a masterpiece of modern architecture nestled in the heart of Juhu, Mumbai's most coveted residential enclave. This stunning 4 BHK independent villa has been meticulously designed to offer a seamless blend of contemporary aesthetics and timeless comfort.</p>
-          <p class="text-gray-600 text-sm leading-relaxed mb-3">Spread across 2,400 sq.ft of built-up area on a 3,600 sq.ft plot, Villa Serenova features soaring ceiling heights, Italian marble flooring, a chef's modular kitchen with imported fittings, and a private rooftop terrace with city views.</p>
-          <p class="text-gray-600 text-sm leading-relaxed">Located just 5 minutes from Juhu Beach and 10 minutes from Mumbai Airport, this property offers unmatched connectivity to western suburbs, BKC, and South Mumbai.</p>
-        </div>
-
-        <!-- Amenities -->
-        <div class="mb-8" data-aos>
-          <h2 class="text-xl font-bold text-gray-900 mb-4">Amenities & Features</h2>
-          <div class="grid grid-cols-2 sm:grid-cols-3 gap-3">
-            <div class="flex items-center gap-3 p-3 bg-gray-50 rounded-xl text-sm"><span>🏊</span> Private Pool</div>
-            <div class="flex items-center gap-3 p-3 bg-gray-50 rounded-xl text-sm"><span>🏋️</span> Home Gym</div>
-            <div class="flex items-center gap-3 p-3 bg-gray-50 rounded-xl text-sm"><span>✨</span> Italian Marble Floors</div>
-            <div class="flex items-center gap-3 p-3 bg-gray-50 rounded-xl text-sm"><span>🌿</span> Rooftop Terrace</div>
-            <div class="flex items-center gap-3 p-3 bg-gray-50 rounded-xl text-sm"><span>🚗</span> 2 Car Parking</div>
-            <div class="flex items-center gap-3 p-3 bg-gray-50 rounded-xl text-sm"><span>🔒</span> 24/7 Security</div>
-            <div class="flex items-center gap-3 p-3 bg-gray-50 rounded-xl text-sm"><span>⚡</span> Power Backup</div>
-            <div class="flex items-center gap-3 p-3 bg-gray-50 rounded-xl text-sm"><span>🌳</span> Lush Garden</div>
-            <div class="flex items-center gap-3 p-3 bg-gray-50 rounded-xl text-sm"><span>📹</span> Video Doorbell</div>
-          </div>
-        </div>
-
-        <!-- Property Details Table -->
-        <div class="mb-8" data-aos>
-          <h2 class="text-xl font-bold text-gray-900 mb-4">Property Details</h2>
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-            <div class="flex justify-between py-2 border-b border-gray-100 text-sm"><span class="text-gray-500">Property Type</span><span class="font-semibold">Independent Villa</span></div>
-            <div class="flex justify-between py-2 border-b border-gray-100 text-sm"><span class="text-gray-500">RERA ID</span><span class="font-semibold text-accent">P51800049271</span></div>
-            <div class="flex justify-between py-2 border-b border-gray-100 text-sm"><span class="text-gray-500">Furnishing</span><span class="font-semibold">Semi-Furnished</span></div>
-            <div class="flex justify-between py-2 border-b border-gray-100 text-sm"><span class="text-gray-500">Possession</span><span class="font-semibold text-green-600">Ready to Move</span></div>
-            <div class="flex justify-between py-2 border-b border-gray-100 text-sm"><span class="text-gray-500">Overlooking</span><span class="font-semibold">Garden & City</span></div>
-            <div class="flex justify-between py-2 border-b border-gray-100 text-sm"><span class="text-gray-500">Transaction</span><span class="font-semibold">New Property</span></div>
-            <div class="flex justify-between py-2 border-b border-gray-100 text-sm"><span class="text-gray-500">Society</span><span class="font-semibold">Serenova Enclave</span></div>
-            <div class="flex justify-between py-2 border-b border-gray-100 text-sm"><span class="text-gray-500">Floor</span><span class="font-semibold">Ground + 2 Floors</span></div>
-          </div>
-        </div>
-
-        <!-- Location -->
-        <div class="mb-8" data-aos>
-          <h2 class="text-xl font-bold text-gray-900 mb-4">Location</h2>
-          <div class="bg-gray-100 rounded-2xl h-52 flex flex-col items-center justify-center border-2 border-dashed border-gray-300 text-gray-400 gap-3">
-            <svg class="w-10 h-10" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
-            <div class="text-center">
-              <div class="text-sm font-semibold text-gray-700">14, Serenova Marg, Juhu</div>
-              <div class="text-xs text-gray-500">Mumbai, Maharashtra – 400049</div>
-              <a href="#" class="text-accent text-xs font-semibold mt-2 inline-block hover:underline">View on Google Maps →</a>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- RIGHT: sticky contact card -->
-      <div class="w-full lg:w-80 xl:w-96 flex-shrink-0">
-        <div class="lg:sticky lg:top-24">
-          <div class="bg-white border border-gray-200 rounded-2xl p-6 shadow-xl">
-            <div class="text-2xl font-black font-head text-accent mb-1">₹3.8 Crore</div>
-            <div class="text-xs text-gray-400 mb-5">₹15,833/sq.ft</div>
-
-            <!-- Agent -->
-            <div class="flex items-center gap-3 mb-5 pb-5 border-b border-gray-100">
-              <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=60&h=60&fit=crop&q=80" class="w-12 h-12 rounded-full object-cover border-2 border-accent-light" alt="Arjun">
-              <div>
-                <div class="font-bold text-sm text-gray-900">Arjun Mehta</div>
-                <div class="text-xs text-gray-500">Luxury Property Specialist</div>
-                <div class="text-xs text-green-600 font-semibold mt-0.5">✓ Verified Agent</div>
-              </div>
-            </div>
-
-            <!-- Site Visit Form -->
-            <div class="text-sm font-bold text-gray-900 mb-3">Request a Site Visit</div>
-            <div class="flex flex-col gap-3">
-              <input type="text" placeholder="Your Full Name" class="w-full text-sm border border-gray-200 rounded-xl px-4 py-3 focus:outline-none focus:border-accent bg-gray-50">
-              <input type="tel" placeholder="Your Phone Number" class="w-full text-sm border border-gray-200 rounded-xl px-4 py-3 focus:outline-none focus:border-accent bg-gray-50">
-              <input type="email" placeholder="Your Email (optional)" class="w-full text-sm border border-gray-200 rounded-xl px-4 py-3 focus:outline-none focus:border-accent bg-gray-50">
-              <textarea rows="2" placeholder="Any specific requirements?" class="w-full text-sm border border-gray-200 rounded-xl px-4 py-3 focus:outline-none focus:border-accent bg-gray-50 resize-none"></textarea>
-            </div>
-            <button class="w-full mt-3 bg-accent text-white font-bold py-3 rounded-xl flex items-center justify-center gap-2 hover:bg-blue-700 transition-all">
-              <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-              Schedule Visit
-            </button>
-            <button class="w-full mt-2 border border-gray-200 text-gray-700 font-semibold py-3 rounded-xl flex items-center justify-center gap-2 hover:border-accent hover:text-accent transition-all text-sm">
-              <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 014 11.91 19.79 19.79 0 01.92 3.27 2 2 0 012.92 1h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
-              📞 Call Agent
-            </button>
-            <p class="text-xs text-gray-400 text-center mt-3">🔒 Your information is 100% safe & private</p>
-
-            <!-- EMI Estimator -->
-            <div class="mt-5 pt-5 border-t border-gray-100">
-              <div class="text-xs font-bold text-gray-500 mb-2">💰 EMI Estimate</div>
-              <div class="text-2xl font-black font-head text-gray-900">₹2.1 L<span class="text-sm font-normal text-gray-500">/month</span></div>
-              <div class="text-xs text-gray-400 mt-1">@8.5% p.a. for 20 years, 20% down payment</div>
-              <a href="contact.html" class="text-accent text-xs font-semibold hover:underline mt-1 inline-block">Get Home Loan →</a>
-            </div>
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </div>
-
-  <!-- SIMILAR PROPERTIES -->
-  <div class="bg-gray-50 py-14">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex items-center justify-between mb-8">
-        <h2 class="text-2xl lg:text-3xl font-black font-head text-gray-900">Similar Properties</h2>
-        <a href="listings.html" class="text-sm font-semibold border border-gray-200 px-4 py-2 rounded-full hover:border-accent hover:text-accent transition-all">View All</a>
-      </div>
-      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
-        <a href="property.html" class="group bg-white border border-gray-100 rounded-2xl overflow-hidden card-hover">
-          <div class="relative"><img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=500&h=300&fit=crop&q=80" class="w-full h-44 object-cover group-hover:scale-105 transition-transform duration-500" alt="Azure Heights"><span class="absolute top-3 left-3 bg-accent text-white text-xs font-bold px-2.5 py-1 rounded-full">FOR SALE</span></div>
-          <div class="p-4"><div class="text-accent text-lg font-black font-head">₹2.4 Cr</div><div class="font-bold text-sm text-gray-900 mt-0.5">Azure Heights</div><div class="text-xs text-gray-400 mt-1 mb-3">Bandra, Mumbai</div><div class="flex gap-4 text-xs text-gray-500 border-t border-gray-100 pt-3"><span>🛏 3 BHK</span><span>📐 1,850 sq.ft</span></div><div class="mt-3 flex justify-end"><span class="text-xs bg-accent text-white font-bold px-3 py-1 rounded-full">View Details</span></div></div>
-        </a>
-        <a href="property.html" class="group bg-white border border-gray-100 rounded-2xl overflow-hidden card-hover">
-          <div class="relative"><img src="https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=500&h=300&fit=crop&q=80" class="w-full h-44 object-cover group-hover:scale-105 transition-transform duration-500" alt="Infinity Gardens"><span class="absolute top-3 left-3 bg-accent text-white text-xs font-bold px-2.5 py-1 rounded-full">FOR SALE</span><span class="absolute top-3 left-24 bg-yellow-400 text-gray-900 text-xs font-bold px-2.5 py-1 rounded-full">PREMIUM</span></div>
-          <div class="p-4"><div class="text-accent text-lg font-black font-head">₹5.2 Cr</div><div class="font-bold text-sm text-gray-900 mt-0.5">Infinity Gardens</div><div class="text-xs text-gray-400 mt-1 mb-3">DLF, Gurgaon</div><div class="flex gap-4 text-xs text-gray-500 border-t border-gray-100 pt-3"><span>🛏 5 BHK</span><span>📐 4,800 sq.ft</span></div><div class="mt-3 flex justify-end"><span class="text-xs bg-accent text-white font-bold px-3 py-1 rounded-full">View Details</span></div></div>
-        </a>
-        <a href="property.html" class="group bg-white border border-gray-100 rounded-2xl overflow-hidden card-hover">
-          <div class="relative"><img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=500&h=300&fit=crop&q=80" class="w-full h-44 object-cover group-hover:scale-105 transition-transform duration-500" alt="Crystal Palms"><span class="absolute top-3 left-3 bg-accent text-white text-xs font-bold px-2.5 py-1 rounded-full">FOR SALE</span></div>
-          <div class="p-4"><div class="text-accent text-lg font-black font-head">₹89 L</div><div class="font-bold text-sm text-gray-900 mt-0.5">Crystal Palms</div><div class="text-xs text-gray-400 mt-1 mb-3">Thane, Mumbai</div><div class="flex gap-4 text-xs text-gray-500 border-t border-gray-100 pt-3"><span>🛏 2 BHK</span><span>📐 980 sq.ft</span></div><div class="mt-3 flex justify-end"><span class="text-xs bg-accent text-white font-bold px-3 py-1 rounded-full">View Details</span></div></div>
-        </a>
-      </div>
-    </div>
-  </div>
-
 </div>
+<div id="prop-loading" class="htmx-indicator fixed top-16 lg:top-[72px] left-0 right-0 z-50 h-1 bg-accent"></div>
 
 <!-- FOOTER -->
 <footer class="bg-gray-900 text-white">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
     <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
-      <div class="sm:col-span-2 lg:col-span-1"><div class="text-2xl font-black font-head mb-3">Estate<span class="text-accent">.</span></div><p class="text-gray-400 text-sm">India's most trusted real estate platform since 2009.</p></div>
-      <div><h4 class="font-bold text-sm mb-4">Properties</h4><ul class="flex flex-col gap-2 text-sm text-gray-400"><li><a href="listings.html" class="hover:text-white">Buy</a></li><li><a href="listings.html" class="hover:text-white">Rent</a></li></ul></div>
-      <div><h4 class="font-bold text-sm mb-4">Company</h4><ul class="flex flex-col gap-2 text-sm text-gray-400"><li><a href="about.html" class="hover:text-white">About</a></li><li><a href="contact.html" class="hover:text-white">Contact</a></li></ul></div>
-      <div><h4 class="font-bold text-sm mb-4">Support</h4><ul class="flex flex-col gap-2 text-sm text-gray-400"><li><a href="#" class="hover:text-white">FAQs</a></li><li><a href="#" class="hover:text-white">RERA</a></li></ul></div>
+      <div class="sm:col-span-2 lg:col-span-1"><div class="text-2xl font-black font-head mb-3">Estate<span class="text-accent">.</span></div><p class="text-gray-400 text-sm">India's most trusted real estate platform since 2009. Dynamic pages powered by HTMX.</p></div>
+      <div><h4 class="font-bold text-sm mb-4">Properties</h4><ul class="flex flex-col gap-2 text-sm text-gray-400"><li><a href="listings.html" class="hover:text-white">Buy</a></li><li><a href="listings.html?listing=rent" class="hover:text-white">Rent</a></li></ul></div>
+      <div><h4 class="font-bold text-sm mb-4">Company</h4><ul class="flex flex-col gap-2 text-sm text-gray-400"><li><a href="about.html" class="hover:text-white">About</a></li><li><a href="contact.html" class="hover:text-white">Contact</a></li><li><a href="admin.html" class="hover:text-white">Admin Panel</a></li></ul></div>
+      <div><h4 class="font-bold text-sm mb-4">Support</h4><ul class="flex flex-col gap-2 text-sm text-gray-400"><li><a href="contact.html" class="hover:text-white">FAQs</a></li><li><a href="#" class="hover:text-white">RERA</a></li></ul></div>
     </div>
     <div class="border-t border-gray-800 mt-8 pt-6 flex flex-col sm:flex-row items-center justify-between gap-2 text-sm text-gray-500">
       <span>© 2026 Estate. All rights reserved.</span>
@@ -271,11 +83,22 @@
 </footer>
 
 <script>
-  const nav = document.getElementById('navbar');
-  window.addEventListener('scroll', () => nav.classList.toggle('nav-scrolled', window.scrollY > 10));
-  document.getElementById('hamburger').addEventListener('click', () => document.getElementById('mobile-menu').classList.toggle('hidden'));
-  const observer = new IntersectionObserver(entries => entries.forEach(e => { if(e.isIntersecting){e.target.classList.add('aos-visible');observer.unobserve(e.target);} }), {threshold:0.1});
-  document.querySelectorAll('[data-aos]').forEach(el => observer.observe(el));
+  // Point the shell at /partials/property?id=<id> before htmx processes the load trigger.
+  (function () {
+    var id = new URLSearchParams(location.search).get('id') || '1';
+    var shell = document.getElementById('property-shell');
+    shell.setAttribute('hx-get', '/partials/property?id=' + encodeURIComponent(id));
+  })();
+  var nav = document.getElementById('navbar');
+  window.addEventListener('scroll', function () { nav.classList.toggle('nav-scrolled', window.scrollY > 10); });
+  document.getElementById('hamburger').addEventListener('click', function () { document.getElementById('mobile-menu').classList.toggle('hidden'); });
 </script>
+
+<script src="data/properties.js"></script>
+<script src="js/util.js"></script>
+<script src="js/cards.js"></script>
+<script src="js/admin.js"></script>
+<script src="js/estate.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/htmx.org@2.0.4/dist/htmx.min.js"></script>
 </body>
 </html>
