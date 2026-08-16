@@ -25,6 +25,8 @@
     .card-hover:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(0,0,0,.1); }
     .htmx-indicator { opacity: 0; transition: opacity .2s ease; }
     .htmx-request .htmx-indicator, .htmx-request.htmx-indicator { opacity: 1; }
+    body.no-auth #sidebar, body.no-auth #sidebar-backdrop { display: none; }
+    body.no-auth .lg\:pl-64 { padding-left: 0; }
     ::-webkit-scrollbar { width: 8px; height: 8px; }
     ::-webkit-scrollbar-thumb { background: #d1d5db; border-radius: 8px; }
     ::-webkit-scrollbar-track { background: transparent; }
@@ -165,8 +167,20 @@
   // Logout
   document.getElementById('logout-btn').addEventListener('click', function () {
     localStorage.removeItem('estateAdmin');
+    syncAuth();
     setActive('dashboard');
     htmx.ajax('GET', '/partials/admin/dashboard', { target: '#admin-root', swap: 'innerHTML' });
+  });
+  // Show the sidebar only after login, hide it on the login screen.
+  function syncAuth() {
+    document.body.classList.toggle('no-auth', !localStorage.getItem('estateAdmin'));
+  }
+  syncAuth();
+  document.addEventListener('htmx:afterRequest', function () {
+    if (!document.getElementById('admin-login') && !localStorage.getItem('estateAdmin')) {
+      localStorage.setItem('estateAdmin', 'estate-admin');
+    }
+    syncAuth();
   });
   // Reset demo — restore the original seeded data and reload.
   document.getElementById('reset-btn').addEventListener('click', function () {
