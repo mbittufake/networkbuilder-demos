@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin — OTAKU</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Bebas+Neue&display=swap" rel="stylesheet">
+<script>tailwind.config={theme:{extend:{fontFamily:{sans:['Inter','sans-serif'],display:['Bebas Neue','sans-serif']},colors:{ink:'#0A0A0A',muted:'#9CA3AF',paper:'#F3F3F5',line:'#E5E7EB',accent:'#FF3B82',violet:'#7C3AED',yellow:'#FACC15'}}}}</script>
+</head>
+<body class="bg-paper text-ink antialiased">
+<div class="flex min-h-screen">
+  <aside class="hidden lg:flex w-[260px] bg-ink text-white flex-col sticky top-0 h-screen border-r-2 border-ink">
+    <div class="px-6 py-6 border-b border-white/10 flex items-center gap-2"><div class="w-8 h-8 bg-yellow text-ink flex items-center justify-center font-display border-2 border-white">オ</div><span class="font-display text-xl tracking-tight">OTAKU</span><span class="text-xs bg-white text-ink px-2 py-1 rounded-full font-black ml-2">ADMIN</span></div>
+    <nav class="flex-1 px-3 py-4 space-y-1 text-sm font-bold">
+      <a href="index.html" class="flex items-center gap-3 bg-yellow text-ink px-3 py-2.5 rounded-xl border-2 border-ink"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg> DASHBOARD</a>
+      <a href="products.html" class="flex items-center gap-3 text-white/70 hover:text-white px-3 py-2.5 rounded-xl hover:bg-white/10"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h12a3 3 0 0 1 3 3v12a3 3 0 0 1-3 3H6a3 3 0 0 1-3-3V6a3 3 0 0 1 3-3z"/><path d="M3 9h18"/><path d="M9 21V9"/></svg> PRODUCTS</a>
+      <a href="orders.html" class="flex items-center gap-3 text-white/70 hover:text-white px-3 py-2.5 rounded-xl hover:bg-white/10"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6h16"/><path d="M4 12h16"/><path d="M4 18h16"/></svg> ORDERS <span class="ml-auto bg-accent text-white text-xs px-2 py-0.5 rounded-full">4</span></a>
+      <div class="pt-4 mt-4 border-t border-white/10"><a href="../index.html" class="flex items-center gap-3 text-white/70 px-3 py-2.5">← View Store</a><a href="../shop.html" class="flex items-center gap-3 text-yellow px-3 py-2.5">Shop →</a></div>
+    </nav>
+    <div class="p-4 border-t border-white/10"><div class="bg-white text-ink rounded-2xl p-4 border-2 border-white"><div class="font-black">DEMO</div><div class="text-xs text-muted mt-1">localStorage only</div><button onclick="if(confirm('Reset?')){localStorage.clear();location.reload()}" class="mt-3 w-full bg-ink text-white text-xs font-black py-2 rounded-full">RESET</button></div></div>
+  </aside>
+  <div class="flex-1 min-w-0">
+    <header class="bg-white border-b-2 border-ink sticky top-0 z-10"><div class="px-4 lg:px-8 h-[64px] flex items-center justify-between"><h1 class="font-display text-2xl tracking-tight">DASHBOARD</h1><div class="flex items-center gap-3"><span class="hidden sm:inline text-xs font-black bg-yellow border-2 border-ink px-3 py-1 rounded-full">● OTAKU STORE</span><div class="w-9 h-9 rounded-full bg-ink text-white flex items-center justify-center font-black">A</div></div></div></header>
+    <main class="px-4 lg:px-8 py-6 space-y-6">
+      <div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
+        <div class="bg-white rounded-2xl border-2 border-ink p-5"><div class="text-xs font-black uppercase tracking-widest text-muted">Revenue (7d)</div><div class="text-2xl font-black mt-2" id="kRev">₹0</div><div class="text-xs font-bold text-emerald-600 mt-1">↑ 18% vs last week</div></div>
+        <div class="bg-white rounded-2xl border-2 border-ink p-5"><div class="text-xs font-black uppercase tracking-widest text-muted">Orders</div><div class="text-2xl font-black mt-2" id="kOrd">0</div><div class="text-xs font-bold text-muted mt-1">+9 this week</div></div>
+        <div class="bg-yellow border-2 border-ink rounded-2xl p-5"><div class="text-xs font-black uppercase tracking-widest">Top Category</div><div class="text-xl font-black mt-2">Figures</div><div class="text-xs font-bold mt-1">62% of sales</div></div>
+        <div class="bg-white rounded-2xl border-2 border-ink p-5"><div class="text-xs font-black uppercase tracking-widest text-muted">Products</div><div class="text-2xl font-black mt-2" id="kProd">0</div><div class="text-xs font-bold text-amber-600 mt-1">3 low stock</div></div>
+      </div>
+      <div class="grid lg:grid-cols-3 gap-4">
+        <div class="lg:col-span-2 bg-white rounded-2xl border-2 border-ink p-6">
+          <div class="flex items-center justify-between"><h3 class="font-black tracking-widest">REVENUE — 7 DAYS</h3><span class="text-xs font-black border-2 border-ink rounded-full px-3 py-1">INR</span></div>
+          <div class="mt-6 flex items-end gap-2 h-[140px]">
+            <div class="flex-1 flex flex-col items-center gap-2"><div class="w-full bg-paper rounded-t-xl relative border border-ink" style="height:80px"><div class="absolute bottom-0 w-full bg-ink rounded-t-xl" style="height:60%"></div></div><span class="text-xs font-bold">Mon</span></div>
+            <div class="flex-1 flex flex-col items-center gap-2"><div class="w-full bg-paper rounded-t-xl relative border border-ink" style="height:100px"><div class="absolute bottom-0 w-full bg-ink rounded-t-xl" style="height:75%"></div></div><span class="text-xs font-bold">Tue</span></div>
+            <div class="flex-1 flex flex-col items-center gap-2"><div class="w-full bg-paper rounded-t-xl relative border border-ink" style="height:120px"><div class="absolute bottom-0 w-full bg-ink rounded-t-xl" style="height:90%"></div></div><span class="text-xs font-black">Wed</span></div>
+            <div class="flex-1 flex flex-col items-center gap-2"><div class="w-full bg-paper rounded-t-xl relative border border-ink" style="height:90px"><div class="absolute bottom-0 w-full bg-ink/60 rounded-t-xl" style="height:65%"></div></div><span class="text-xs font-bold">Thu</span></div>
+            <div class="flex-1 flex flex-col items-center gap-2"><div class="w-full bg-paper rounded-t-xl relative border border-ink" style="height:110px"><div class="absolute bottom-0 w-full bg-ink rounded-t-xl" style="height:82%"></div></div><span class="text-xs font-bold">Fri</span></div>
+            <div class="flex-1 flex flex-col items-center gap-2"><div class="w-full bg-paper rounded-t-xl relative border border-ink" style="height:130px"><div class="absolute bottom-0 w-full bg-yellow border-2 border-ink rounded-t-xl" style="height:95%"></div></div><span class="text-xs font-bold">Sat</span></div>
+            <div class="flex-1 flex flex-col items-center gap-2"><div class="w-full bg-paper rounded-t-xl relative border border-ink" style="height:70px"><div class="absolute bottom-0 w-full bg-ink/30 rounded-t-xl" style="height:50%"></div></div><span class="text-xs font-bold">Sun</span></div>
+          </div>
+        </div>
+        <div class="bg-ink text-white rounded-2xl border-2 border-ink p-6">
+          <h3 class="font-black tracking-widest text-yellow">TOP GRAILS</h3>
+          <div id="top" class="mt-4 space-y-3"></div>
+          <a href="products.html" class="mt-6 block text-center bg-yellow text-ink py-2.5 rounded-full font-black border-2 border-white">MANAGE →</a>
+        </div>
+      </div>
+      <div class="grid lg:grid-cols-3 gap-4">
+        <div class="lg:col-span-2 bg-white rounded-2xl border-2 border-ink overflow-hidden">
+          <div class="px-6 py-4 border-b-2 border-ink flex items-center justify-between bg-yellow"><h3 class="font-black tracking-widest">RECENT ORDERS</h3><a href="orders.html" class="text-xs font-black border-2 border-ink bg-white px-3 py-1 rounded-full">VIEW ALL →</a></div>
+          <div class="overflow-auto"><table class="w-full text-sm"><thead class="text-xs font-black uppercase tracking-widest text-muted bg-paper"><tr><th class="text-left px-6 py-3">Order</th><th class="text-left px-6 py-3">Customer</th><th class="text-left px-6 py-3">Total</th><th class="text-left px-6 py-3">Status</th></tr></thead><tbody id="recent" class="divide-y-2 divide-zinc-100"></tbody></table></div>
+        </div>
+        <div class="bg-white rounded-2xl border-2 border-ink p-6">
+          <h3 class="font-black tracking-widest">LOW STOCK</h3>
+          <div class="mt-4 space-y-2 text-sm font-bold"><div class="flex justify-between bg-yellow border-2 border-ink rounded-xl px-4 py-3"><span>Gojo Figure</span><span class="bg-ink text-white px-2 py-1 rounded-full text-xs">5 left</span></div><div class="flex justify-between bg-red-50 border-2 border-ink rounded-xl px-4 py-3"><span>Demon Slayer Box Set</span><span class="bg-red-600 text-white px-2 py-1 rounded-full text-xs">7 left</span></div></div>
+          <h3 class="font-black tracking-widest mt-6">QUICK</h3>
+          <div class="grid grid-cols-2 gap-2 mt-3"><a href="products.html" class="bg-ink text-white text-center py-2.5 rounded-xl font-black border-2 border-ink">ADD</a><a href="orders.html" class="bg-white border-2 border-ink text-center py-2.5 rounded-xl font-black">ORDERS</a></div>
+        </div>
+      </div>
+    </main>
+  </div>
+</div>
+<script src="../app.js"></script>
+<script>
+const orders=getOrders(); const products=getProducts();
+document.getElementById('kRev').textContent=formatINR(orders.reduce((s,o)=>s+o.total,0)*3.1);
+document.getElementById('kOrd').textContent=orders.length*15;
+document.getElementById('kProd').textContent=products.length;
+document.getElementById('recent').innerHTML=orders.slice(0,4).map(o=>{
+  const c=o.status==='Paid'?'bg-emerald-100 text-emerald-700 border-2 border-emerald-300':o.status==='Shipped'?'bg-blue-100 text-blue-700 border-2 border-blue-300':o.status==='Delivered'?'bg-ink text-white border-2 border-ink':'bg-yellow text-ink border-2 border-ink';
+  return `<tr><td class="px-6 py-3 font-black">${o.id}</td><td class="px-6 py-3"><div class="font-bold">${o.customer}</div><div class="text-xs text-muted">${o.email}</div></td><td class="px-6 py-3 font-black">${formatINR(o.total)}</td><td class="px-6 py-3"><span class="text-xs font-black px-3 py-1 rounded-full border-2 ${c}">${o.status}</span></td></tr>`;
+}).join('');
+document.getElementById('top').innerHTML=[...products].sort((a,b)=>b.reviews-a.reviews).slice(0,2).map(p=>`
+  <div class="flex gap-3 bg-white text-ink rounded-2xl p-3 border-2 border-white"><img src="${p.image}" class="w-14 h-14 rounded-xl object-cover border-2 border-ink"><div class="flex-1 min-w-0"><div class="text-sm font-black truncate leading-tight">${p.name}</div><div class="text-xs font-bold text-muted">${p.category} • ${p.reviews} sold</div><div class="text-sm font-black">${formatINR(p.price)}</div></div><span class="text-xs bg-yellow border-2 border-ink px-2 py-1 rounded-full font-black self-start"><svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg> ${p.rating}</span></div>
+`).join('');
+</script>
+</body>
+</html>

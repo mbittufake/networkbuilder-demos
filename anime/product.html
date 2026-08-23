@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Product — OTAKU</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&family=Bebas+Neue&display=swap" rel="stylesheet">
+<script>tailwind.config={theme:{extend:{fontFamily:{sans:['Inter','sans-serif'],serif:['Instrument Serif','serif'],display:['Bebas Neue','sans-serif']},colors:{ink:'#0A0A0A',muted:'#9CA3AF',paper:'#F3F3F5',line:'#E5E7EB',accent:'#FF3B82',violet:'#7C3AED',yellow:'#FACC15'}}}}</script>
+</head>
+<body class="bg-white text-ink antialiased">
+<div class="bg-ink text-white text-xs flex items-center justify-center gap-2 py-2.5 tracking-widest uppercase"><span class="hidden sm:inline">Free shipping over ₹1,999 • </span>COD • 7-day returns</div>
+<header class="sticky top-0 z-40 bg-white/90 backdrop-blur border-b border-line">
+  <div class="max-w-[1280px] mx-auto px-4 lg:px-6">
+    <div class="flex items-center justify-between h-[64px] lg:h-[72px]">
+      <button id="mobileMenuBtn" class="lg:hidden w-10 h-10 flex items-center justify-center border border-line rounded-full"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+      <a href="index.html" class="flex items-center gap-2"><div class="w-9 h-9 bg-ink text-accent flex items-center justify-center font-display text-xl border-2 border-ink">オ</div><span class="font-display text-2xl tracking-tight">OTAKU</span></a>
+      <nav class="hidden lg:flex items-center gap-6 text-sm font-semibold">
+        <a href="shop.html" class="hover:text-accent">Shop All</a>
+        <a href="shop.html?cat=Figures" class="hover:text-accent">Figures</a>
+        <a href="shop.html?cat=Keychains" class="hover:text-accent">Keychains</a>
+        <a href="shop.html?cat=Plush" class="hover:text-accent">Plush</a>
+        <a href="shop.html?cat=Manga" class="hover:text-accent">Manga</a>
+      </nav>
+      <div class="flex items-center gap-2">
+        <button onclick="openSearch()" class="w-10 h-10 rounded-full border border-line hover:border-ink flex items-center justify-center"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M20 20L16 16"/></svg></button>
+        <a href="wishlist.html" class="relative hidden sm:flex w-10 h-10 rounded-full border border-line hover:border-ink items-center justify-center"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-6-4.5-8.5-8.2A5 5 0 0 1 12 5a5 5 0 0 1 8.5 7.8C18 16.5 12 21 12 21z"/></svg><span data-wish-count class="hidden absolute -top-1 -right-1 bg-accent text-white text-[10px] min-w-[18px] h-[18px] px-1 rounded-full flex items-center justify-center font-bold">0</span></a>
+        <button onclick="openCartDrawer()" class="relative w-10 h-10 rounded-full bg-ink text-white flex items-center justify-center"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6h15l-1.5 9H7z"/><path d="M6 6L5 2H2"/><circle cx="9" cy="20" r="1.5"/><circle cx="18" cy="20" r="1.5"/></svg><span data-cart-count class="hidden absolute -top-1 -right-1 bg-yellow text-ink text-[10px] min-w-[18px] h-[18px] px-1 rounded-full flex items-center justify-center font-black">0</span></button>
+      </div>
+    </div>
+  </div>
+  <div id="mobileMenu" class="hidden lg:hidden border-t border-line bg-white px-4 py-4 space-y-3"><a href="shop.html" class="block py-2 font-bold">Shop All</a><a href="shop.html?cat=Figures" class="block py-2">Figures</a><a href="shop.html?cat=Keychains" class="block py-2">Keychains</a></div>
+</header>
+
+<div class="max-w-[1280px] mx-auto px-4 lg:px-6 pt-6">
+  <div class="text-xs text-muted"><a href="index.html" class="hover:text-ink">Home</a> <span class="mx-2">/</span> <a href="shop.html" class="hover:text-ink">Shop</a> <span class="mx-2">/</span> <span id="bc" class="text-ink font-bold"></span></div>
+</div>
+
+<section class="max-w-[1280px] mx-auto px-4 lg:px-6 mt-6">
+  <div id="wrap" class="grid lg:grid-cols-2 gap-8 lg:gap-12"></div>
+</section>
+
+<section class="max-w-[1280px] mx-auto px-4 lg:px-6 mt-12">
+  <div class="border-2 border-ink rounded-[24px] overflow-hidden">
+    <div class="flex gap-1 p-1.5 bg-paper border-b-2 border-ink">
+      <button data-tab="details" class="tabBtn flex-1 py-2.5 rounded-full bg-ink text-white text-sm font-black tracking-widest">DETAILS</button>
+      <button data-tab="shipping" class="tabBtn flex-1 py-2.5 rounded-full text-sm font-black tracking-widest">SHIPPING</button>
+      <button data-tab="reviews" class="tabBtn flex-1 py-2.5 rounded-full text-sm font-black tracking-widest">REVIEWS</button>
+    </div>
+    <div class="p-6 lg:p-8">
+      <div id="tab-details" class="tabPanel"><p id="desc" class="text-muted leading-relaxed"></p><ul class="mt-4 grid sm:grid-cols-2 gap-2 text-sm font-medium"><li class="flex gap-2"><span class="text-accent">—</span> Licensed, authentic</li><li class="flex gap-2"><span class="text-accent">—</span> PVC/ABS, pre-painted</li><li class="flex gap-2"><span class="text-accent">—</span> Height as listed, base included</li><li class="flex gap-2"><span class="text-accent">—</span> Box packed with bubble + outer</li></ul></div>
+      <div id="tab-shipping" class="tabPanel hidden"><div class="grid lg:grid-cols-3 gap-4 text-sm"><div class="bg-paper border-2 border-ink rounded-2xl p-5"><div class="font-black">Delivery</div><div class="text-muted mt-1">2-4 days pan-India. Free over ₹1,999 else ₹99.</div></div><div class="bg-paper border-2 border-ink rounded-2xl p-5"><div class="font-black">Returns</div><div class="text-muted mt-1">7-day return if box unopened. Figure must be un-displayed.</div></div><div class="bg-paper border-2 border-ink rounded-2xl p-5"><div class="font-black"> COD</div><div class="text-muted mt-1">COD available +₹50.</div></div></div></div>
+      <div id="tab-reviews" class="tabPanel hidden"><div class="flex items-center gap-4"><div id="rv" class="text-4xl font-black"></div><div><div class="text-yellow"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div><div id="rc" class="text-xs font-bold text-muted"></div></div></div><div class="mt-6 space-y-3 text-sm"><div class="border-2 border-ink rounded-2xl p-5"><div class="font-black"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg> <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg> <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg> <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg> <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg> Aarav — “Graaaail!”</div><p class="text-muted mt-1">Details are crazy, paint clean.</p></div><div class="border-2 border-ink rounded-2xl p-5"><div class="font-black"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg> <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg> <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg> <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg> <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg> Sana — “Loved packaging”</div><p class="text-muted mt-1">Came double-boxed, no damage.</p></div></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="max-w-[1280px] mx-auto px-4 lg:px-6 mt-12">
+  <h2 class="font-display text-3xl tracking-tight">YOU MAY ALSO LIKE</h2>
+  <div id="related" class="grid grid-cols-2 lg:grid-cols-4 gap-4 mt-6"></div>
+</section>
+
+<footer class="max-w-[1280px] mx-auto px-4 lg:px-6 mt-10 border-t-2 border-ink pt-8 pb-8 text-center text-xs font-bold text-muted">© 2026 OTAKU • <a href="shop.html" class="underline">Shop</a></footer>
+
+<div id="searchOverlay" class="hidden fixed inset-0 z-[60] bg-white/95 backdrop-blur"><div class="max-w-2xl mx-auto px-4 pt-8"><div class="flex items-center gap-3"><div class="flex-1 flex items-center gap-3 border-2 border-ink rounded-full px-5 py-3 bg-white"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M20 20L16 16"/></svg><input id="searchInput" type="text" placeholder="Search Naruto, Luffy..." class="flex-1 outline-none text-sm font-medium" oninput="renderSearchResults(this.value)"></div><button onclick="closeSearch()" class="w-11 h-11 rounded-full bg-ink text-white flex items-center justify-center"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6L6 18M6 6l12 12"/></svg></button></div><div id="searchResults" class="mt-6 max-h-[60vh] overflow-auto divide-y divide-zinc-100 border-2 border-ink rounded-2xl bg-white"></div></div></div>
+<div id="cartDrawer" class="hidden fixed inset-0 z-[60]"><div class="absolute inset-0 bg-black/50" onclick="closeCartDrawer()"></div><div class="absolute right-0 top-0 h-full w-full max-w-md bg-white flex flex-col border-l-2 border-ink"><div class="px-6 py-5 border-b-2 border-ink flex items-center justify-between bg-yellow"><div class="font-black tracking-widest">YOUR CART <span id="cartDrawerCountLabel" class="font-normal normal-case text-sm"></span></div><button onclick="closeCartDrawer()" class="w-9 h-9 rounded-full bg-ink text-white flex items-center justify-center"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6L6 18M6 6l12 12"/></svg></button></div><div id="cartDrawerItems" class="flex-1 overflow-auto px-6"></div><div id="cartDrawerFooter" class="hidden border-t-2 border-ink p-6 bg-paper"><div class="flex justify-between text-sm"><span class="text-muted">Subtotal</span><span id="cartDrawerSubtotal" class="font-black"></span></div><a href="cart.html" class="mt-4 block bg-ink text-white text-center py-3.5 rounded-full font-black tracking-widest">CHECKOUT →</a></div></div></div>
+
+<script src="app.js"></script>
+<script>
+const id=Number(new URLSearchParams(location.search).get('id')||1);
+const p=getProducts().find(x=>x.id===id) || getProducts()[0];
+document.title=`${p.name} — OTAKU`;
+document.getElementById('bc').textContent=p.category;
+document.getElementById('desc').textContent=p.desc;
+document.getElementById('rv').textContent=p.rating;
+document.getElementById('rc').textContent=`${p.reviews} reviews`;
+let qty=1;
+function render(){
+  document.getElementById('wrap').innerHTML=`
+    <div class="space-y-3">
+      <div class="relative aspect-[4/5] rounded-[24px] overflow-hidden bg-white border-2 border-ink"><img src="${p.image}" class="w-full h-full object-cover"><span class="absolute top-3 left-3 bg-yellow border-2 border-ink text-ink text-xs font-black px-3 py-1 rounded-full">${p.category}</span>${p.badge?`<span class="absolute top-3 right-3 bg-ink text-white text-xs font-black px-3 py-1 rounded-full">${p.badge}</span>`:''}</div>
+      <div class="grid grid-cols-4 gap-3">${[p.image,p.image,p.image,p.image].map((s,i)=>`<div class="aspect-square rounded-2xl overflow-hidden border-2 ${i===0?'border-ink':'border-line'}"><img src="${s}" class="w-full h-full object-cover"></div>`).join('')}</div>
+    </div>
+    <div>
+      <div class="text-xs font-black uppercase tracking-widest text-violet">${p.category} • ${p.rating}<svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg> (${p.reviews}) • ${p.stock>5?'<span class="text-emerald-600">In stock</span>':'<span class="text-amber-600">Low stock</span>'}</div>
+      <h1 class="font-display text-3xl lg:text-4xl leading-none mt-2 tracking-tight">${p.name}</h1>
+      <div class="flex items-center gap-3 mt-3"><span class="text-2xl font-black">${formatINR(p.price)}</span><span class="text-sm line-through text-muted">${formatINR(p.mrp)}</span><span class="text-xs bg-yellow border-2 border-ink px-2.5 py-1 rounded-full font-black">Save ${formatINR(p.mrp-p.price)}</span></div>
+      <p class="text-sm text-muted leading-relaxed mt-4">${p.desc} Free shipping over ₹1,999. Packed double-boxed.</p>
+      <div class="mt-6 flex gap-3">
+        <div class="flex items-center border-2 border-ink rounded-full overflow-hidden"><button onclick="qty=Math.max(1,qty-1);document.getElementById('qval').textContent=qty" class="w-11 h-11 flex items-center justify-center hover:bg-paper"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14"/></svg></button><span id="qval" class="w-10 text-center font-black">${qty}</span><button onclick="qty++;document.getElementById('qval').textContent=qty" class="w-11 h-11 flex items-center justify-center hover:bg-paper"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></button></div>
+        <button onclick="addToCart(p,{qty});showToast('Added <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>')" class="flex-1 bg-ink text-white rounded-full font-black tracking-widest hover:bg-black transition">ADD TO CART — ${formatINR(p.price)}</button>
+        <button onclick="const a=toggleWishlist(p.id);showToast(a?'Wishlist <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>':'Removed')" class="w-12 h-12 rounded-full border-2 border-ink flex items-center justify-center font-black">${isWishlisted(p.id)?'<svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-6-4.5-8.5-8.2A5 5 0 0 1 12 5a5 5 0 0 1 8.5 7.8C18 16.5 12 21 12 21z"/></svg>':'<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-6-4.5-8.5-8.2A5 5 0 0 1 12 5a5 5 0 0 1 8.5 7.8C18 16.5 12 21 12 21z"/></svg>'}</button>
+      </div>
+      <button onclick="addToCart(p,{qty});location.href='cart.html'" class="w-full mt-3 bg-yellow border-2 border-ink text-ink rounded-full py-3.5 font-black tracking-widest hover:bg-white transition">BUY NOW →</button>
+      <div class="mt-6 grid grid-cols-3 gap-3 text-xs font-black text-center"><div class="bg-paper border-2 border-ink rounded-2xl py-3">FREE SHIP<br><span class="text-muted font-normal">Over ₹1,999</span></div><div class="bg-paper border-2 border-ink rounded-2xl py-3">AUTHENTIC<br><span class="text-muted font-normal">Licensed</span></div><div class="bg-paper border-2 border-ink rounded-2xl py-3">7-DAY<br><span class="text-muted font-normal">Return</span></div></div>
+    </div>
+  `;
+}
+render();
+document.querySelectorAll('.tabBtn').forEach(btn=>{
+  btn.addEventListener('click', ()=>{
+    document.querySelectorAll('.tabBtn').forEach(b=>{b.classList.remove('bg-ink','text-white'); b.classList.add('hover:bg-paper')});
+    btn.classList.add('bg-ink','text-white');
+    document.querySelectorAll('.tabPanel').forEach(p=>p.classList.add('hidden'));
+    document.getElementById('tab-'+btn.dataset.tab).classList.remove('hidden');
+  });
+});
+const rel=getProducts().filter(x=>x.category===p.category && x.id!==p.id).slice(0,4);
+document.getElementById('related').innerHTML=rel.map(x=>`
+  <a href="product.html?id=${x.id}" class="group block"><div class="relative aspect-[4/5] rounded-[20px] overflow-hidden bg-white border-2 border-ink"><img src="${x.image}" class="w-full h-full object-cover group-hover:scale-105 transition duration-700"></div><div class="pt-3"><div class="text-[10px] font-black uppercase tracking-widest text-violet">${x.category}</div><div class="font-bold text-sm leading-tight">${x.name}</div><div class="font-black text-sm">${formatINR(x.price)}</div></div></a>
+`).join('');
+</script>
+</body>
+</html>

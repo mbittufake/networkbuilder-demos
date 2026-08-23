@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin — LUME</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script>tailwind.config={theme:{extend:{fontFamily:{sans:['Inter','sans-serif']},colors:{ink:'#1A1A1A',muted:'#6B6560',paper:'#FDF6EE',line:'#EDE6DA',amber:'#E8B86D',terracotta:'#C86B3C'}}}}</script>
+</head>
+<body class="bg-paper text-ink antialiased">
+<div class="flex min-h-screen">
+  <aside class="hidden lg:flex w-[260px] bg-ink text-white flex-col sticky top-0 h-screen">
+    <div class="px-6 py-6 border-b border-white/10"><a href="../index.html" class="flex items-center gap-2"><div class="w-8 h-8 bg-amber text-ink flex items-center justify-center rounded-full font-serif"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 3a9 9 0 0 1 0 18"/></svg></div><span class="font-serif text-lg">LUME</span><span class="text-xs bg-white/10 px-2 py-1 rounded-full ml-2">ADMIN</span></a></div>
+    <nav class="flex-1 px-3 py-4 space-y-1 text-sm">
+      <a href="index.html" class="flex items-center gap-3 bg-white text-ink px-3 py-2.5 rounded-xl font-semibold"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg> Dashboard</a>
+      <a href="products.html" class="flex items-center gap-3 text-white/70 hover:text-white px-3 py-2.5 rounded-xl hover:bg-white/10"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h12a3 3 0 0 1 3 3v12a3 3 0 0 1-3 3H6a3 3 0 0 1-3-3V6a3 3 0 0 1 3-3z"/><path d="M3 9h18"/><path d="M9 21V9"/></svg> Candles</a>
+      <a href="custom-orders.html" class="flex items-center gap-3 text-white/70 hover:text-white px-3 py-2.5 rounded-xl hover:bg-white/10"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2l2.4 7.2H22l-6.2 4.5 2.4 7.3L12 16.5 5.8 21l2.4-7.3L2 9.2h7.6z"/></svg> Custom Orders <span class="ml-auto bg-amber text-ink text-xs font-bold px-2 py-0.5 rounded-full">3</span></a>
+      <a href="orders.html" class="flex items-center gap-3 text-white/70 hover:text-white px-3 py-2.5 rounded-xl hover:bg-white/10"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6h16"/><path d="M4 12h16"/><path d="M4 18h16"/></svg> Orders</a>
+      <div class="pt-4 mt-4 border-t border-white/10"><a href="../index.html" class="flex items-center gap-3 text-white/70 px-3 py-2.5">← View Store</a><a href="../custom.html" class="flex items-center gap-3 text-amber px-3 py-2.5">Custom Builder →</a></div>
+    </nav>
+    <div class="p-4 border-t border-white/10"><div class="bg-white/10 rounded-2xl p-4"><div class="text-sm font-semibold">Demo data</div><div class="text-xs text-white/60 mt-1">All data in localStorage</div><button onclick="if(confirm('Reset?')){localStorage.clear();location.reload()}" class="mt-3 w-full bg-white text-ink text-xs font-bold py-2 rounded-full">Reset Demo</button></div></div>
+  </aside>
+  <div class="flex-1 min-w-0">
+    <header class="bg-white border-b border-line sticky top-0 z-10"><div class="px-4 lg:px-8 h-[64px] flex items-center justify-between"><h1 class="font-bold text-lg">Dashboard</h1><span class="hidden sm:inline text-xs bg-amber/30 border border-amber/30 px-2.5 py-1 rounded-full">● Single-Product Studio</span><div class="w-9 h-9 rounded-full bg-ink text-white flex items-center justify-center font-bold">A</div></div></header>
+    <main class="px-4 lg:px-8 py-6 space-y-6">
+      <div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
+        <div class="bg-white rounded-2xl border border-line p-5"><div class="text-xs uppercase tracking-widest text-muted">Revenue (7d)</div><div class="text-2xl font-bold mt-2" id="kRev">₹0</div><div class="text-xs text-emerald-600 mt-1">↑ 14% vs last week</div><div class="mt-3 h-1.5 bg-paper rounded-full overflow-hidden"><div class="h-full bg-ink w-[78%]"></div></div></div>
+        <div class="bg-white rounded-2xl border border-line p-5"><div class="text-xs uppercase tracking-widest text-muted">Orders</div><div class="text-2xl font-bold mt-2" id="kOrd">0</div><div class="text-xs text-muted mt-1">+6 this week</div><div class="mt-3 h-1.5 bg-paper rounded-full overflow-hidden"><div class="h-full bg-amber w-[62%]"></div></div></div>
+        <div class="bg-amber/20 border border-amber/30 rounded-2xl p-5"><div class="text-xs uppercase tracking-widest text-muted">Custom Requests</div><div class="text-2xl font-bold mt-2" id="kCus">0</div><div class="text-xs text-terracotta mt-1">2 pending • high value</div><div class="mt-3 h-1.5 bg-white rounded-full overflow-hidden"><div class="h-full bg-terracotta w-[55%]"></div></div></div>
+        <div class="bg-white rounded-2xl border border-line p-5"><div class="text-xs uppercase tracking-widest text-muted">Candles</div><div class="text-2xl font-bold mt-2" id="kProd">0</div><div class="text-xs text-amber-700 mt-1">2 low stock</div></div>
+      </div>
+      <div class="grid lg:grid-cols-3 gap-4">
+        <div class="lg:col-span-2 bg-white rounded-2xl border border-line p-6">
+          <div class="flex items-center justify-between"><h3 class="font-semibold">Revenue — last 7 days</h3><span class="text-xs border border-line rounded-full px-3 py-1">INR</span></div>
+          <div class="mt-6 flex items-end gap-2 h-[140px]">
+            <div class="flex-1 flex flex-col items-center gap-2"><div class="w-full bg-paper rounded-t-xl relative" style="height:80px"><div class="absolute bottom-0 w-full bg-ink rounded-t-xl" style="height:60%"></div></div><span class="text-xs text-muted">Mon</span></div>
+            <div class="flex-1 flex flex-col items-center gap-2"><div class="w-full bg-paper rounded-t-xl relative" style="height:100px"><div class="absolute bottom-0 w-full bg-ink rounded-t-xl" style="height:75%"></div></div><span class="text-xs text-muted">Tue</span></div>
+            <div class="flex-1 flex flex-col items-center gap-2"><div class="w-full bg-paper rounded-t-xl relative" style="height:120px"><div class="absolute bottom-0 w-full bg-ink rounded-t-xl" style="height:90%"></div></div><span class="text-xs font-bold">Wed</span></div>
+            <div class="flex-1 flex flex-col items-center gap-2"><div class="w-full bg-paper rounded-t-xl relative" style="height:90px"><div class="absolute bottom-0 w-full bg-ink/60 rounded-t-xl" style="height:65%"></div></div><span class="text-xs text-muted">Thu</span></div>
+            <div class="flex-1 flex flex-col items-center gap-2"><div class="w-full bg-paper rounded-t-xl relative" style="height:110px"><div class="absolute bottom-0 w-full bg-ink rounded-t-xl" style="height:82%"></div></div><span class="text-xs text-muted">Fri</span></div>
+            <div class="flex-1 flex flex-col items-center gap-2"><div class="w-full bg-paper rounded-t-xl relative" style="height:130px"><div class="absolute bottom-0 w-full bg-amber rounded-t-xl" style="height:95%"></div></div><span class="text-xs text-muted">Sat</span></div>
+            <div class="flex-1 flex flex-col items-center gap-2"><div class="w-full bg-paper rounded-t-xl relative" style="height:70px"><div class="absolute bottom-0 w-full bg-ink/30 rounded-t-xl" style="height:50%"></div></div><span class="text-xs text-muted">Sun</span></div>
+          </div>
+        </div>
+        <div class="bg-ink text-white rounded-2xl p-6">
+          <h3 class="font-semibold">Top Scent</h3>
+          <div id="top" class="mt-4 space-y-3"></div>
+          <a href="products.html" class="mt-6 block text-center bg-white text-ink py-2.5 rounded-full text-sm font-semibold">Manage Candles →</a>
+          <a href="custom-orders.html" class="mt-3 block text-center bg-amber text-ink py-2.5 rounded-full text-sm font-semibold">View Custom Requests →</a>
+        </div>
+      </div>
+      <div class="grid lg:grid-cols-3 gap-4">
+        <div class="lg:col-span-2 bg-white rounded-2xl border border-line overflow-hidden">
+          <div class="px-6 py-4 border-b border-line flex items-center justify-between"><h3 class="font-semibold">Recent Orders</h3><a href="orders.html" class="text-xs border border-line rounded-full px-3 py-1.5">View All →</a></div>
+          <div class="overflow-auto"><table class="w-full text-sm"><thead class="text-xs uppercase tracking-widest text-muted bg-paper"><tr><th class="text-left px-6 py-3">Order</th><th class="text-left px-6 py-3">Customer</th><th class="text-left px-6 py-3">Total</th><th class="text-left px-6 py-3">Status</th></tr></thead><tbody id="recent" class="divide-y divide-line"></tbody></table></div>
+        </div>
+        <div class="bg-white rounded-2xl border border-line p-6">
+          <h3 class="font-semibold">Custom Queue</h3>
+          <div id="customQueue" class="mt-4 space-y-3 text-sm"></div>
+          <h3 class="font-semibold mt-6">Low Stock</h3>
+          <div class="mt-3 space-y-2 text-sm"><div class="flex justify-between bg-amber/20 border border-amber/30 rounded-xl px-4 py-3"><span>Tobacco & Honey</span><span class="text-xs bg-terracotta text-white px-2 py-1 rounded-full">5 left</span></div><div class="flex justify-between bg-red-50 border border-red-200 rounded-xl px-4 py-3"><span>Amber Noir</span><span class="text-xs bg-red-600 text-white px-2 py-1 rounded-full">2 left</span></div></div>
+        </div>
+      </div>
+    </main>
+  </div>
+</div>
+<script src="../app.js"></script>
+<script>
+const orders=getOrders();
+const customs=getCustomOrders();
+const candles=getCandles();
+document.getElementById('kRev').textContent=formatINR(orders.reduce((s,o)=>s+o.total,0)*2.8);
+document.getElementById('kOrd').textContent=orders.length*12;
+document.getElementById('kCus').textContent=customs.length;
+document.getElementById('kProd').textContent=candles.length;
+document.getElementById('recent').innerHTML=orders.slice(0,4).map(o=>{
+  const c=o.status==='Paid'?'bg-emerald-100 text-emerald-700 border-emerald-200':o.status==='Shipped'?'bg-blue-100 text-blue-700 border-blue-200':'bg-amber/20 text-ink border-amber/30';
+  return `<tr><td class="px-6 py-3 font-medium">${o.id}</td><td class="px-6 py-3"><div class="font-medium">${o.customer}</div><div class="text-xs text-muted">${o.email}</div></td><td class="px-6 py-3 font-semibold">${formatINR(o.total)}</td><td class="px-6 py-3"><span class="text-xs border px-2.5 py-1 rounded-full ${c}">${o.status}</span></td></tr>`;
+}).join('');
+document.getElementById('top').innerHTML=[...candles].sort((a,b)=>b.reviews-a.reviews).slice(0,2).map(p=>`
+  <div class="flex gap-3 bg-white/10 rounded-2xl p-3"><img src="${p.image}" class="w-14 h-14 rounded-xl object-cover"><div class="flex-1 min-w-0"><div class="text-sm font-medium truncate">${p.name}</div><div class="text-xs text-white/60">${p.collection} • ${p.reviews} sold</div><div class="text-sm font-bold mt-1">${formatINR(p.price)}</div></div><span class="text-xs bg-white text-ink px-2 py-1 rounded-full self-start"><svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg> ${p.rating}</span></div>
+`).join('');
+document.getElementById('customQueue').innerHTML=customs.slice(0,3).map(c=>{
+  const col=c.status==='Pending'?'bg-amber text-ink':c.status==='In Production'?'bg-blue-100 text-blue-700 border-blue-200':'bg-emerald-100 text-emerald-700';
+  return `<div class="border border-line rounded-2xl p-3"><div class="flex justify-between items-start"><div class="font-medium">${c.id}</div><span class="text-xs px-2 py-1 rounded-full border ${col}">${c.status}</span></div><div class="text-sm mt-1">${c.name}</div><div class="text-xs text-muted">${c.vessel} • ${c.scent} • ${c.qty} pcs • ${formatINR(c.total)}</div></div>`;
+}).join('');
+</script>
+</body>
+</html>

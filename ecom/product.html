@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Product — PERNAL</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+<script>tailwind.config={theme:{extend:{fontFamily:{sans:['Inter','sans-serif'],serif:['Instrument Serif','serif'],display:['Space Grotesk','sans-serif']},colors:{ink:'#0A0A0A',muted:'#6B7280',paper:'#F9F7F3',line:'#E7E5E4',accent:'#C8A96E'}}}}</script>
+</head>
+<body class="bg-white text-ink antialiased">
+<div class="bg-ink text-white text-xs text-center py-2.5 tracking-widest uppercase">
+  <span class="hidden sm:inline">Free shipping on orders over ₹2,999 • Easy 14-day returns • </span> Cash on Delivery available
+  <a href="shop.html" class="underline underline-offset-4 ml-2">Shop Now →</a>
+</div>
+<header class="sticky top-0 z-40 bg-white/90 backdrop-blur border-b border-line">
+  <div class="max-w-[1400px] mx-auto px-4 lg:px-6">
+    <div class="flex items-center justify-between h-[64px] lg:h-[72px]">
+      <button id="mobileMenuBtn" class="lg:hidden w-10 h-10 flex items-center justify-center border rounded-full" aria-label="Menu"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+      <a href="index.html" class="flex items-center gap-3">
+        <div class="w-9 h-9 bg-ink text-white flex items-center justify-center font-display font-bold tracking-tighter text-lg">P</div>
+        <span class="font-display font-bold text-xl tracking-tight">PERNAL</span>
+        <span class="hidden sm:inline text-[10px] tracking-[0.2em] text-muted uppercase font-semibold border-l pl-3 ml-1">Essentials</span>
+      </a>
+      <nav class="hidden lg:flex items-center gap-8 text-sm font-medium">
+        <a href="shop.html" class="hover:opacity-60">Shop</a>
+        <a href="shop.html?cat=Apparel" class="hover:opacity-60">Apparel</a>
+        <a href="shop.html?cat=Footwear" class="hover:opacity-60">Footwear</a>
+        <a href="shop.html?cat=Accessories" class="hover:opacity-60">Accessories</a>
+        <a href="shop.html?cat=Beauty" class="hover:opacity-60">Beauty</a>
+        <a href="shop.html?cat=Home" class="hover:opacity-60">Home</a>
+      </nav>
+      <div class="flex items-center gap-2">
+        <button onclick="openSearch()" class="w-10 h-10 rounded-full border border-line hover:border-ink flex items-center justify-center" aria-label="Search">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="7"/><path d="M20 20L16 16"/></svg>
+        </button>
+        <a href="wishlist.html" class="relative w-10 h-10 rounded-full border border-line hover:border-ink hidden sm:flex items-center justify-center" aria-label="Wishlist">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21s-6-4.5-8.5-8.2A5 5 0 0 1 12 5a5 5 0 0 1 8.5 7.8C18 16.5 12 21 12 21z"/></svg>
+          <span data-wishlist-count class="hidden absolute -top-1 -right-1 bg-ink text-white text-[10px] min-w-[18px] h-[18px] px-1 rounded-full flex items-center justify-center">0</span>
+        </a>
+        <button onclick="openCartDrawer()" class="relative w-10 h-10 rounded-full bg-ink text-white flex items-center justify-center" aria-label="Cart">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 6h15l-1.5 9H7z"/><path d="M6 6L5 2H2"/><circle cx="9" cy="20" r="1.8"/><circle cx="18" cy="20" r="1.8"/></svg>
+          <span data-cart-count class="hidden absolute -top-1 -right-1 bg-accent text-ink text-[10px] min-w-[18px] h-[18px] px-1 rounded-full flex items-center justify-center font-bold">0</span>
+        </button>
+        <a href="admin/index.html" class="hidden lg:inline-flex items-center gap-1.5 ml-2 text-xs font-bold uppercase tracking-widest border border-line px-3 py-2 rounded-full hover:bg-ink hover:text-white transition">Admin</a>
+      </div>
+    </div>
+  </div>
+  <div id="mobileMenu" class="hidden lg:hidden border-t border-line bg-white px-4 py-4 space-y-3">
+    <a href="shop.html" class="block py-2 font-medium">Shop All</a>
+    <a href="shop.html?cat=Apparel" class="block py-2">Apparel</a>
+    <a href="shop.html?cat=Footwear" class="block py-2">Footwear</a>
+    <a href="shop.html?cat=Accessories" class="block py-2">Accessories</a>
+    <a href="shop.html?cat=Beauty" class="block py-2">Beauty</a>
+    <a href="shop.html?cat=Home" class="block py-2">Home</a>
+    <a href="admin/index.html" class="block py-2 text-muted border-t border-line pt-3 mt-2">Admin Panel →</a>
+  </div>
+</header>
+
+<div class="max-w-[1400px] mx-auto px-4 lg:px-6 pt-6">
+  <div class="text-xs text-muted"><a href="index.html" class="hover:text-ink">Home</a> <span class="mx-2">/</span> <a href="shop.html" class="hover:text-ink">Shop</a> <span class="mx-2">/</span> <span id="bcCat" class="text-ink"></span></div>
+</div>
+
+<!-- Product Main -->
+<section class="max-w-[1400px] mx-auto px-4 lg:px-6 mt-6">
+  <div id="productWrap" class="grid lg:grid-cols-2 gap-8 lg:gap-12"></div>
+</section>
+
+<!-- Details Tabs -->
+<section class="max-w-[1400px] mx-auto px-4 lg:px-6 mt-12">
+  <div class="border border-line rounded-[24px] overflow-hidden">
+    <div class="flex gap-1 p-1.5 bg-paper border-b border-line">
+      <button data-tab="desc" class="tabBtn flex-1 py-2.5 rounded-full bg-ink text-white text-sm font-semibold">Details</button>
+      <button data-tab="ship" class="tabBtn flex-1 py-2.5 rounded-full text-sm font-semibold hover:bg-white">Shipping</button>
+      <button data-tab="reviews" class="tabBtn flex-1 py-2.5 rounded-full text-sm font-semibold hover:bg-white">Reviews</button>
+    </div>
+    <div class="p-6 lg:p-8">
+      <div id="tab-desc" class="tabPanel">
+        <p id="descText" class="text-muted leading-relaxed"></p>
+        <ul class="mt-4 grid sm:grid-cols-2 gap-2 text-sm">
+          <li class="flex gap-2"><span class="text-accent">•</span> Premium materials, ethically sourced</li>
+          <li class="flex gap-2"><span class="text-accent">•</span> Designed to last beyond seasons</li>
+          <li class="flex gap-2"><span class="text-accent">•</span> Easy care — machine wash cold</li>
+          <li class="flex gap-2"><span class="text-accent">•</span> Model is 5'9" wearing size S</li>
+        </ul>
+      </div>
+      <div id="tab-ship" class="tabPanel hidden">
+        <div class="grid lg:grid-cols-3 gap-6 text-sm">
+          <div class="bg-paper rounded-2xl p-5"><div class="font-semibold">Delivery</div><div class="text-muted mt-1">2-4 business days across India. Free over ₹2,999, else ₹99.</div></div>
+          <div class="bg-paper rounded-2xl p-5"><div class="font-semibold">Returns</div><div class="text-muted mt-1">14-day free returns. Unworn with tags. Prepaid label emailed.</div></div>
+          <div class="bg-paper rounded-2xl p-5"><div class="font-semibold">COD</div><div class="text-muted mt-1">Cash on Delivery available. ₹50 handling fee.</div></div>
+        </div>
+      </div>
+      <div id="tab-reviews" class="tabPanel hidden">
+        <div class="flex items-center gap-4">
+          <div class="text-4xl font-bold" id="revRating"></div>
+          <div><div class="text-accent text-sm"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div><div class="text-xs text-muted" id="revCount"></div></div>
+        </div>
+        <div class="mt-6 space-y-4">
+          <div class="border border-line rounded-2xl p-5">
+            <div class="flex items-center gap-2 text-sm"><span class="text-accent"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></span><span class="font-semibold">Loved it!</span><span class="text-muted">— Ananya • 2 days ago</span></div>
+            <p class="text-sm text-muted mt-2">Perfect fit and fabric is premium. Exceeded expectations.</p>
+          </div>
+          <div class="border border-line rounded-2xl p-5">
+            <div class="flex items-center gap-2 text-sm"><span class="text-accent"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></span><span class="font-semibold">Great quality</span><span class="text-muted">— Rahul • 1 week ago</span></div>
+            <p class="text-sm text-muted mt-2">Value for money. Packaging was lovely too.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Related -->
+<section class="max-w-[1400px] mx-auto px-4 lg:px-6 mt-16">
+  <h2 class="font-serif text-2xl">You may also like</h2>
+  <div id="relatedGrid" class="grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6 mt-6"></div>
+</section>
+
+<footer class="max-w-[1400px] mx-auto px-4 lg:px-6 mt-10 border-t border-line pt-10 pb-8">
+  <div class="grid lg:grid-cols-5 gap-8">
+    <div class="lg:col-span-2">
+      <div class="flex items-center gap-2">
+        <div class="w-8 h-8 bg-ink text-white flex items-center justify-center font-display font-bold">P</div>
+        <span class="font-display font-bold">PERNAL</span>
+      </div>
+      <p class="text-sm text-muted mt-3 max-w-sm">Modern essentials for everyday living. Designed in India, made to last. This is a demo store for presentation purposes.</p>
+      <div class="flex gap-2 mt-5">
+        <a href="#" class="w-9 h-9 rounded-full border flex items-center justify-center hover:bg-ink hover:text-white transition">IG</a>
+        <a href="#" class="w-9 h-9 rounded-full border flex items-center justify-center hover:bg-ink hover:text-white transition">X</a>
+        <a href="#" class="w-9 h-9 rounded-full border flex items-center justify-center hover:bg-ink hover:text-white transition">YT</a>
+      </div>
+    </div>
+    <div>
+      <div class="text-xs font-bold uppercase tracking-widest">Shop</div>
+      <ul class="mt-3 space-y-2 text-sm text-muted">
+        <li><a href="shop.html" class="hover:text-ink">All Products</a></li>
+        <li><a href="shop.html?cat=Apparel" class="hover:text-ink">Apparel</a></li>
+        <li><a href="shop.html?cat=Footwear" class="hover:text-ink">Footwear</a></li>
+        <li><a href="shop.html?cat=Accessories" class="hover:text-ink">Accessories</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="text-xs font-bold uppercase tracking-widest">Help</div>
+      <ul class="mt-3 space-y-2 text-sm text-muted">
+        <li><a href="#" class="hover:text-ink">Shipping & Returns</a></li>
+        <li><a href="#" class="hover:text-ink">Size Guide</a></li>
+        <li><a href="search.html" class="hover:text-ink">Search</a></li>
+        <li><a href="cart.html" class="hover:text-ink">Cart</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="text-xs font-bold uppercase tracking-widest">Admin Demo</div>
+      <ul class="mt-3 space-y-2 text-sm text-muted">
+        <li><a href="admin/index.html" class="hover:text-ink font-semibold">Dashboard →</a></li>
+        <li><a href="admin/products.html" class="hover:text-ink">Manage Products</a></li>
+        <li><a href="admin/orders.html" class="hover:text-ink">Manage Orders</a></li>
+        <li><a href="admin/customers.html" class="hover:text-ink">Customers</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="flex flex-col lg:flex-row items-center justify-between gap-3 text-xs text-muted border-t border-line mt-8 pt-6">
+    <span>© 2026 PERNAL. Demo by <a href="https://networkbuilder.in" class="underline">Network Builder</a> • All products & prices are demo data.</span>
+    <span class="flex items-center gap-2">Built with HTML + Tailwind • No backend required <span class="w-2 h-2 bg-emerald-500 rounded-full animate-pulse"></span> Live Demo</span>
+  </div>
+</footer>
+
+<!-- Search Overlay -->
+<div id="searchOverlay" class="hidden fixed inset-0 z-[60] bg-white/95 backdrop-blur">
+  <div class="max-w-2xl mx-auto px-4 pt-8">
+    <div class="flex items-center gap-3">
+      <div class="flex-1 flex items-center gap-3 border border-ink rounded-full px-5 py-3 bg-white">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="7"/><path d="M20 20L16 16"/></svg>
+        <input id="searchInput" type="text" placeholder="Search for coat, sneakers, bag..." class="flex-1 outline-none text-sm" oninput="renderSearchResults(this.value)">
+      </div>
+      <button onclick="closeSearch()" class="w-11 h-11 rounded-full bg-ink text-white flex items-center justify-center"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6L6 18M6 6l12 12"/></svg></button>
+    </div>
+    <div class="mt-4 flex flex-wrap gap-2 text-xs">
+      <span class="text-muted">Popular:</span>
+      <button onclick="document.getElementById('searchInput').value='coat';renderSearchResults('coat')" class="border rounded-full px-3 py-1 hover:bg-ink hover:text-white transition">Coat</button>
+      <button onclick="document.getElementById('searchInput').value='sneakers';renderSearchResults('sneakers')" class="border rounded-full px-3 py-1 hover:bg-ink hover:text-white transition">Sneakers</button>
+      <button onclick="document.getElementById('searchInput').value='bag';renderSearchResults('bag')" class="border rounded-full px-3 py-1 hover:bg-ink hover:text-white transition">Bag</button>
+      <button onclick="document.getElementById('searchInput').value='dress';renderSearchResults('dress')" class="border rounded-full px-3 py-1 hover:bg-ink hover:text-white transition">Dress</button>
+    </div>
+    <div id="searchResults" class="mt-6 max-h-[60vh] overflow-auto divide-y divide-line border border-line rounded-2xl bg-white"></div>
+    <div class="text-center mt-4">
+      <a href="search.html" class="text-sm font-semibold underline">Go to advanced search →</a>
+    </div>
+  </div>
+</div>
+
+<!-- Cart Drawer -->
+<div id="cartDrawer" class="hidden fixed inset-0 z-[60]">
+  <div class="absolute inset-0 bg-black/40" onclick="closeCartDrawer()"></div>
+  <div class="absolute right-0 top-0 h-full w-full max-w-md bg-white flex flex-col">
+    <div class="px-6 py-5 border-b border-line flex items-center justify-between">
+      <div class="font-semibold">Your Bag <span id="cartDrawerCountLabel" class="text-muted font-normal"></span></div>
+      <button onclick="closeCartDrawer()" class="w-9 h-9 rounded-full border flex items-center justify-center"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6L6 18M6 6l12 12"/></svg></button>
+    </div>
+    <div id="cartDrawerItems" class="flex-1 overflow-auto px-6"></div>
+    <div id="cartDrawerFooter" class="hidden border-t border-line p-6 bg-paper">
+      <div class="flex justify-between text-sm"><span class="text-muted">Subtotal</span><span id="cartDrawerSubtotal" class="font-semibold"></span></div>
+      <div class="text-xs text-muted mt-1">Shipping & taxes calculated at checkout</div>
+      <a href="cart.html" class="mt-4 block bg-ink text-white text-center py-3.5 rounded-full font-semibold">View Cart & Checkout →</a>
+      <button onclick="closeCartDrawer()" class="w-full mt-2 text-sm font-semibold py-2">Continue Shopping</button>
+    </div>
+  </div>
+</div>
+
+<script src="app.js"></script>
+<script>
+const id = Number(new URLSearchParams(location.search).get('id') || 1);
+const product = getProducts().find(p=>p.id===id) || getProducts()[0];
+document.title = `${product.name} — PERNAL`;
+document.getElementById('bcCat').textContent = product.category;
+document.getElementById('descText').textContent = product.desc;
+document.getElementById('revRating').textContent = product.rating;
+document.getElementById('revCount').textContent = `${product.reviews} reviews`;
+
+let selectedColor = product.colors[0];
+let selectedSize = product.sizes[0];
+let qty = 1;
+
+function renderProduct(){
+  const wrap = document.getElementById('productWrap');
+  const disc = product.mrp>product.price ? `-${discountPercent(product.mrp,product.price)}%` : null;
+  wrap.innerHTML = `
+    <div class="space-y-3">
+      <div class="relative aspect-[4/5] rounded-[24px] overflow-hidden bg-paper">
+        <img id="mainImg" src="${product.image}" class="w-full h-full object-cover">
+        ${product.badge?`<span class="absolute top-4 left-4 bg-white text-xs font-bold uppercase tracking-widest px-3 py-1.5 rounded-full">${product.badge}</span>`:''}
+        ${disc?`<span class="absolute top-4 right-4 bg-ink text-white text-xs font-bold px-3 py-1.5 rounded-full">${disc}</span>`:''}
+      </div>
+      <div class="grid grid-cols-4 gap-3">
+        ${[product.image, product.image, product.image, product.image].map((src,i)=>`
+          <button onclick="document.getElementById('mainImg').src='${src}'" class="aspect-square rounded-2xl overflow-hidden border ${i===0?'border-ink':'border-line'} hover:border-ink"><img src="${src}" class="w-full h-full object-cover"></button>
+        `).join('')}
+      </div>
+    </div>
+    <div>
+      <div class="text-xs uppercase tracking-widest text-muted">${product.category} • ${product.rating} <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg> (${product.reviews})</div>
+      <h1 class="font-serif text-3xl lg:text-4xl leading-tight mt-2">${product.name}</h1>
+      <div class="flex items-center gap-3 mt-3">
+        <span class="text-2xl font-bold">${formatINR(product.price)}</span>
+        ${product.mrp>product.price?`<span class="text-sm text-muted line-through">${formatINR(product.mrp)}</span><span class="text-xs bg-paper border border-line px-2.5 py-1 rounded-full font-semibold">Save ${formatINR(product.mrp-product.price)}</span>`:''}
+      </div>
+      <p class="text-sm text-muted mt-4 leading-relaxed">${product.desc}</p>
+
+      <!-- Colors -->
+      <div class="mt-6">
+        <div class="text-xs font-bold uppercase tracking-widest">Color: <span class="font-normal normal-case text-muted">${selectedColor}</span></div>
+        <div class="flex gap-2 mt-2">
+          ${product.colors.map(c=>`
+            <button onclick="selectedColor='${c}';renderProduct()" class="px-4 py-2 rounded-full border text-sm font-medium ${selectedColor===c?'bg-ink text-white border-ink':'bg-white border-line hover:border-ink'}">${c}</button>
+          `).join('')}
+        </div>
+      </div>
+      <!-- Sizes -->
+      <div class="mt-6">
+        <div class="flex items-center justify-between">
+          <div class="text-xs font-bold uppercase tracking-widest">Size: <span class="font-normal normal-case text-muted">${selectedSize}</span></div>
+          <button class="text-xs underline">Size Guide</button>
+        </div>
+        <div class="flex flex-wrap gap-2 mt-2">
+          ${product.sizes.map(s=>`
+            <button onclick="selectedSize='${s}';renderProduct()" class="min-w-[48px] px-4 py-2 rounded-full border text-sm font-semibold ${selectedSize===s?'bg-ink text-white border-ink':'bg-white border-line hover:border-ink'}">${s}</button>
+          `).join('')}
+        </div>
+      </div>
+      <!-- Qty + Actions -->
+      <div class="mt-8 flex gap-3">
+        <div class="flex items-center border border-line rounded-full overflow-hidden">
+          <button onclick="qty=Math.max(1,qty-1);document.getElementById('qtyVal').textContent=qty" class="w-11 h-11 flex items-center justify-center hover:bg-paper"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14"/></svg></button>
+          <span id="qtyVal" class="w-10 text-center font-semibold">${qty}</span>
+          <button onclick="qty++;document.getElementById('qtyVal').textContent=qty" class="w-11 h-11 flex items-center justify-center hover:bg-paper"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></button>
+        </div>
+        <button onclick="handleAddToCart()" class="flex-1 bg-ink text-white rounded-full font-semibold hover:bg-black transition">Add to Bag — ${formatINR(product.price)}</button>
+        <button onclick="handleWishlist()" class="w-14 h-14 rounded-full border border-line flex items-center justify-center text-lg hover:border-ink">${isWishlisted(product.id)?'<svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-6-4.5-8.5-8.2A5 5 0 0 1 12 5a5 5 0 0 1 8.5 7.8C18 16.5 12 21 12 21z"/></svg>':'<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-6-4.5-8.5-8.2A5 5 0 0 1 12 5a5 5 0 0 1 8.5 7.8C18 16.5 12 21 12 21z"/></svg>'}</button>
+      </div>
+      <button onclick="handleBuyNow()" class="w-full mt-3 bg-white border-2 border-ink text-ink rounded-full py-3.5 font-semibold hover:bg-ink hover:text-white transition">Buy Now →</button>
+      <div class="mt-6 grid grid-cols-3 gap-3 text-xs text-center">
+        <div class="bg-paper rounded-2xl py-3"><div class="font-semibold">Free Shipping</div><div class="text-muted">Over ₹2,999</div></div>
+        <div class="bg-paper rounded-2xl py-3"><div class="font-semibold">14-Day Returns</div><div class="text-muted">Easy & free</div></div>
+        <div class="bg-paper rounded-2xl py-3"><div class="font-semibold">COD</div><div class="text-muted">Available</div></div>
+      </div>
+      <div class="mt-6 flex items-center gap-2 text-xs text-muted">
+        <span>Share:</span>
+        <span class="w-7 h-7 rounded-full border flex items-center justify-center">⧉</span>
+        <span>SKU: PN-${String(product.id).padStart(4,'0')}</span>
+        <span>•</span>
+        <span>In stock</span>
+        <span class="w-2 h-2 bg-emerald-500 rounded-full"></span>
+      </div>
+    </div>
+  `;
+}
+
+function handleAddToCart(){
+  addToCart(product,{qty, color:selectedColor, size:selectedSize});
+  showToast(`${product.name} added to bag`);
+  renderProduct(); // to update wishlist icon if needed
+}
+function handleWishlist(){
+  const added = toggleWishlist(product.id);
+  showToast(added?'Added to wishlist':'Removed from wishlist');
+  renderProduct();
+}
+function handleBuyNow(){
+  addToCart(product,{qty, color:selectedColor, size:selectedSize});
+  location.href='cart.html';
+}
+
+renderProduct();
+
+// Tabs
+document.querySelectorAll('.tabBtn').forEach(btn=>{
+  btn.addEventListener('click', ()=>{
+    document.querySelectorAll('.tabBtn').forEach(b=>{b.classList.remove('bg-ink','text-white'); b.classList.add('hover:bg-white')});
+    btn.classList.add('bg-ink','text-white'); btn.classList.remove('hover:bg-white');
+    document.querySelectorAll('.tabPanel').forEach(p=>p.classList.add('hidden'));
+    document.getElementById('tab-'+btn.dataset.tab).classList.remove('hidden');
+  });
+});
+
+// Related
+const related = getProducts().filter(p=>p.category===product.category && p.id!==product.id).slice(0,4);
+if(!related.length) related.push(...getProducts().filter(p=>p.id!==product.id).slice(0,4));
+document.getElementById('relatedGrid').innerHTML = related.map(p=>`
+  <a href="product.html?id=${p.id}" class="group block">
+    <div class="relative aspect-[3/4] rounded-[20px] overflow-hidden bg-paper">
+      <img src="${p.image}" class="w-full h-full object-cover group-hover:scale-105 transition duration-700">
+      <span class="absolute bottom-3 left-3 right-3 bg-white text-center py-2 rounded-full text-xs font-bold uppercase tracking-widest opacity-0 group-hover:opacity-100 transition">View →</span>
+    </div>
+    <div class="pt-3"><div class="text-xs uppercase tracking-widest text-muted">${p.category}</div><div class="font-medium text-sm leading-tight">${p.name}</div><div class="font-semibold text-sm mt-1">${formatINR(p.price)}</div></div>
+  </a>
+`).join('');
+</script>
+</body>
+</html>

@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin — STICKCRAFT</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script>tailwind.config={theme:{extend:{fontFamily:{sans:['Inter','sans-serif']},colors:{ink:'#0F1A1C',muted:'#6B7280',paper:'#F8F7F5',line:'#E5E7EB',accent:'#0E7490'}}}}</script>
+</head>
+<body class="overflow-x-hidden bg-paper text-ink antialiased">
+<div class="flex min-h-screen">
+  <aside class="hidden lg:flex w-[270px] bg-ink text-white flex-col sticky top-0 h-screen">
+    <div class="px-6 py-6 border-b border-white/10">
+      <a href="../index.html" class="flex items-center gap-3">
+        <div class="w-8 h-8 bg-white text-ink flex items-center justify-center font-bold text-[11px]">SC</div>
+        <span class="font-bold">STICKCRAFT</span>
+        <span class="text-xs bg-white/10 px-2 py-1 rounded-full ml-1">ADMIN</span>
+      </a>
+      <div class="text-xs text-white/50 mt-1">GST • Proof • Bulk • Demo</div>
+    </div>
+    <nav class="flex-1 px-3 py-4 space-y-1 text-sm">
+      <a href="index.html" class="flex items-center gap-3 bg-white text-ink px-3 py-2.5 rounded-xl font-semibold"><svg class="align-middle shrink-0 shrink-0" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg> Dashboard</a>
+      <a href="products.html" class="flex items-center gap-3 text-white/70 hover:text-white px-3 py-2.5 rounded-xl hover:bg-white/10"><svg class="align-middle shrink-0 shrink-0" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 3l7 4v8l-7 4-7-4V7l7-4z"/></svg> Stickers</a>
+      <a href="orders.html" class="flex items-center gap-3 text-white/70 hover:text-white px-3 py-2.5 rounded-xl hover:bg-white/10">⧉ Orders <span id="navOrders" class="ml-auto bg-white text-ink text-xs font-bold px-2 py-0.5 rounded-full">6</span></a>
+      <a href="custom-orders.html" class="flex items-center gap-3 text-white/70 hover:text-white px-3 py-2.5 rounded-xl hover:bg-white/10"><svg class="align-middle shrink-0 shrink-0" width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.4 7.2H22l-6.2 4.5 2.4 7.3L12 16.5 5.8 21l2.4-7.3L2 9.2h7.6z"/></svg> Custom Quotes <span class="ml-auto bg-accent text-white text-xs font-bold px-2 py-0.5 rounded-full">4</span></a>
+      <a href="customers.html" class="flex items-center gap-3 text-white/70 hover:text-white px-3 py-2.5 rounded-xl hover:bg-white/10">◉ Businesses</a>
+      <div class="pt-4 mt-4 border-t border-white/10">
+        <a href="../index.html" class="flex items-center gap-3 text-white/70 px-3 py-2.5">← View Store</a>
+        <a href="../custom.html" class="flex items-center gap-3 text-accent px-3 py-2.5">Custom Builder <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12h14M12 5l7 7-7 7'/%3E%3C/svg%3E" alt="→" class="w-3.5 h-3.5 shrink-0 align-middle inline-block"></a>
+        <a href="../shop.html" class="flex items-center gap-3 text-white/70 px-3 py-2.5">Catalog <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12h14M12 5l7 7-7 7'/%3E%3C/svg%3E" alt="→" class="w-3.5 h-3.5 shrink-0 align-middle inline-block"></a>
+      </div>
+    </nav>
+    <div class="p-4 border-t border-white/10">
+      <div class="bg-white/10 rounded-2xl p-4">
+        <div class="text-sm font-semibold">Demo data</div>
+        <div class="text-xs text-white/60 mt-1">All data stored in localStorage. Reset to restore original catalog.</div>
+        <button onclick="if(confirm('Reset demo data?')){localStorage.clear(); location.reload();}" class="mt-3 w-full bg-white text-ink text-xs font-bold py-2 rounded-full">Reset Demo</button>
+      </div>
+      <div class="mt-3 text-xs text-white/40 text-center">STICKCRAFT • Jaipur • GSTIN 08AABCS1234F1Z5</div>
+    </div>
+  </aside>
+  <!-- Mobile Admin Nav Drawer -->
+  <div id="adminMobileNav" class="hidden lg:hidden fixed inset-0 z-40">
+    <div class="absolute inset-0 bg-black/40 backdrop-blur-sm" onclick="closeAdminMenu()"></div>
+    <div class="absolute left-0 top-0 h-full w-[300px] max-w-[85vw] bg-ink text-white flex flex-col shadow-2xl">
+      <div class="px-6 py-5 border-b border-white/10 flex items-center justify-between">
+        <a href="../index.html" class="flex items-center gap-3">
+          <div class="w-8 h-8 bg-white text-ink flex items-center justify-center font-bold text-[11px]">SC</div>
+          <span class="font-bold">STICKCRAFT</span>
+          <span class="text-xs bg-white/10 px-2 py-1 rounded-full">ADMIN</span>
+        </a>
+        <button onclick="closeAdminMenu()" class="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+        </button>
+      </div>
+      <nav class="flex-1 px-3 py-4 space-y-1 text-sm overflow-y-auto">
+        <a href="index.html" class="flex items-center gap-3 px-3 py-3 rounded-xl bg-white text-ink font-semibold"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg> Dashboard</a>
+        <a href="products.html" class="flex items-center gap-3 px-3 py-3 rounded-xl hover:bg-white/10"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 3l7 4v8l-7 4-7-4V7l7-4z"/></svg> Stickers</a>
+        <a href="orders.html" class="flex items-center gap-3 px-3 py-3 rounded-xl hover:bg-white/10"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 6h12"/><path d="M3 12h12"/><path d="M3 18h12"/></svg> Orders</a>
+        <a href="custom-orders.html" class="flex items-center gap-3 px-3 py-3 rounded-xl hover:bg-white/10"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.4 7.2H22l-6.2 4.5 2.4 7.3L12 16.5 5.8 21l2.4-7.3L2 9.2h7.6z"/></svg> Custom Quotes</a>
+        <a href="customers.html" class="flex items-center gap-3 px-3 py-3 rounded-xl hover:bg-white/10"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="8" r="4"/><path d="M5 20a7 7 0 0 1 14 0"/></svg> Businesses</a>
+        <div class="pt-4 mt-4 border-t border-white/10 space-y-1">
+          <a href="../index.html" class="flex items-center gap-3 px-3 py-3 rounded-xl hover:bg-white/10">← View Store</a>
+          <a href="../shop.html" class="flex items-center gap-3 px-3 py-3 rounded-xl hover:bg-white/10">Catalog</a>
+          <a href="../custom.html" class="flex items-center gap-3 px-3 py-3 rounded-xl bg-white text-ink font-semibold">Custom Builder</a>
+        </div>
+      </nav>
+    </div>
+  </div>
+
+
+  <div class="flex-1 min-w-0">
+    <header class="bg-white border-b border-line sticky top-0 z-10">
+      <div class="px-4 lg:px-8 h-[64px] flex items-center gap-3">
+      <button id="adminMenuBtn" aria-label="Toggle admin menu" aria-expanded="false" class="lg:hidden w-9 h-9 flex items-center justify-center border border-line rounded-full bg-white shrink-0">
+        <svg class="menu-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+        <svg class="close-icon hidden" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6L6 18M6 6l12 12"/></svg>
+      </button>
+      <div class="flex-1 flex items-center justify-between min-w-0">
+        <div class="min-w-0">
+          <h1 class="font-bold text-lg leading-none">Dashboard</h1>
+          <div class="text-xs text-muted">Professional sticker studio • Last updated just now</div>
+        </div>
+        <div class="flex items-center gap-3 shrink-0">
+          <span class="hidden sm:inline-flex items-center gap-2 text-xs border border-line rounded-full px-3 py-1.5"><span class="w-2 h-2 bg-emerald-500 rounded-full animate-pulse"></span> Proof desk: online till 8pm</span>
+          <div class="w-9 h-9 rounded-full bg-ink text-white flex items-center justify-center font-bold">A</div>
+        </div>
+      </div>
+      </div>
+    </header>
+
+    <main class="px-4 lg:px-8 py-6 space-y-6">
+      <!-- KPIs -->
+      <div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
+        <div class="bg-white rounded-2xl border border-line p-5">
+          <div class="text-xs uppercase tracking-widest text-muted">Revenue (7d)</div>
+          <div class="text-2xl font-bold mt-2" id="kRev">₹0</div>
+          <div class="text-xs text-emerald-600 mt-1">↑ 12% vs last week</div>
+          <div class="mt-3 h-1.5 bg-paper rounded-full overflow-hidden"><div class="h-full bg-ink w-[72%]"></div></div>
+        </div>
+        <div class="bg-white rounded-2xl border border-line p-5">
+          <div class="text-xs uppercase tracking-widest text-muted">Orders</div>
+          <div class="text-2xl font-bold mt-2" id="kOrd">0</div>
+          <div class="text-xs text-muted mt-1">+6 this week • Avg. ₹4,290</div>
+          <div class="mt-3 h-1.5 bg-paper rounded-full overflow-hidden"><div class="h-full bg-accent w-[58%]"></div></div>
+        </div>
+        <div class="bg-accent/10 border border-accent/20 rounded-2xl p-5">
+          <div class="text-xs uppercase tracking-widest text-muted">Custom Quotes</div>
+          <div class="text-2xl font-bold mt-2" id="kCus">0</div>
+          <div class="text-xs text-accent mt-1">2 pending proofs • high value</div>
+          <div class="mt-3 h-1.5 bg-white rounded-full overflow-hidden"><div class="h-full bg-accent w-[45%]"></div></div>
+        </div>
+        <div class="bg-white rounded-2xl border border-line p-5">
+          <div class="text-xs uppercase tracking-widest text-muted">SKUs</div>
+          <div class="text-2xl font-bold mt-2" id="kProd">0</div>
+          <div class="text-xs text-accent mt-1">3 on promo • 1 low stock</div>
+          <div class="mt-3 h-1.5 bg-paper rounded-full overflow-hidden"><div class="h-full bg-ink w-[80%]"></div></div>
+        </div>
+      </div>
+
+      <!-- Revenue + top -->
+      <div class="grid lg:grid-cols-3 gap-4">
+        <div class="lg:col-span-2 bg-white rounded-2xl border border-line p-6">
+          <div class="flex items-center justify-between">
+            <h3 class="font-semibold">Revenue — last 7 days</h3>
+            <span class="text-xs border border-line rounded-full px-3 py-1">INR • GST included</span>
+          </div>
+          <div class="mt-6 flex items-end gap-2 h-[140px]">
+            <div class="flex-1 flex flex-col items-center gap-2"><div class="w-full bg-paper rounded-t-xl relative" style="height:80px"><div class="absolute bottom-0 w-full bg-ink rounded-t-xl" style="height:62%"></div></div><span class="text-xs text-muted">Mon</span></div>
+            <div class="flex-1 flex flex-col items-center gap-2"><div class="w-full bg-paper rounded-t-xl relative" style="height:100px"><div class="absolute bottom-0 w-full bg-ink rounded-t-xl" style="height:76%"></div></div><span class="text-xs text-muted">Tue</span></div>
+            <div class="flex-1 flex flex-col items-center gap-2"><div class="w-full bg-paper rounded-t-xl relative" style="height:120px"><div class="absolute bottom-0 w-full bg-ink rounded-t-xl" style="height:88%"></div></div><span class="text-xs font-bold">Wed</span></div>
+            <div class="flex-1 flex flex-col items-center gap-2"><div class="w-full bg-paper rounded-t-xl relative" style="height:92px"><div class="absolute bottom-0 w-full bg-ink/60 rounded-t-xl" style="height:64%"></div></div><span class="text-xs text-muted">Thu</span></div>
+            <div class="flex-1 flex flex-col items-center gap-2"><div class="w-full bg-paper rounded-t-xl relative" style="height:108px"><div class="absolute bottom-0 w-full bg-ink rounded-t-xl" style="height:80%"></div></div><span class="text-xs text-muted">Fri</span></div>
+            <div class="flex-1 flex flex-col items-center gap-2"><div class="w-full bg-paper rounded-t-xl relative" style="height:130px"><div class="absolute bottom-0 w-full bg-accent rounded-t-xl" style="height:92%"></div></div><span class="text-xs text-muted">Sat</span></div>
+            <div class="flex-1 flex flex-col items-center gap-2"><div class="w-full bg-paper rounded-t-xl relative" style="height:72px"><div class="absolute bottom-0 w-full bg-ink/30 rounded-t-xl" style="height:48%"></div></div><span class="text-xs text-muted">Sun</span></div>
+          </div>
+          <div class="mt-4 flex gap-2 text-xs">
+            <span class="bg-paper border rounded-full px-3 py-1">Avg. order: ₹4,290</span>
+            <span class="bg-paper border rounded-full px-3 py-1">Reorder: 68%</span>
+            <span class="bg-paper border rounded-full px-3 py-1">Proof SLA: 4h <svg class="align-middle shrink-0 shrink-0" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></span>
+          </div>
+        </div>
+        <div class="bg-ink text-white rounded-2xl p-6">
+          <h3 class="font-semibold">Top reordered</h3>
+          <div id="top" class="mt-4 space-y-3"></div>
+          <a href="products.html" class="mt-6 block text-center bg-white text-ink py-2.5 rounded-full text-sm font-semibold">Manage Catalog <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12h14M12 5l7 7-7 7'/%3E%3C/svg%3E" alt="→" class="w-3.5 h-3.5 shrink-0 align-middle inline-block"></a>
+          <a href="custom-orders.html" class="mt-3 block text-center bg-accent text-white py-2.5 rounded-full text-sm font-semibold">Review Custom Quotes <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12h14M12 5l7 7-7 7'/%3E%3C/svg%3E" alt="→" class="w-3.5 h-3.5 shrink-0 align-middle inline-block"></a>
+          <div class="mt-4 text-xs text-white/50 text-center">All prices include proof + colour-match guarantee</div>
+        </div>
+      </div>
+
+      <!-- Recent + queue -->
+      <div class="grid lg:grid-cols-3 gap-4">
+        <div class="lg:col-span-2 bg-white rounded-2xl border border-line overflow-hidden">
+          <div class="px-6 py-4 border-b border-line flex items-center justify-between">
+            <h3 class="font-semibold">Recent Orders</h3>
+            <a href="orders.html" class="text-xs border border-line rounded-full px-3 py-1.5">View All <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12h14M12 5l7 7-7 7'/%3E%3C/svg%3E" alt="→" class="group-hover:invert group-hover:brightness-0 transition duration-200 w-3.5 h-3.5 shrink-0 align-middle inline-block"></a>
+          </div>
+          <div class="overflow-auto">
+            <table class="w-full text-sm">
+              <thead class="text-xs uppercase tracking-widest text-muted bg-paper"><tr><th class="text-left px-6 py-3">Order</th><th class="text-left px-6 py-3">Business</th><th class="text-left px-6 py-3">Total</th><th class="text-left px-6 py-3">Status</th></tr></thead>
+              <tbody id="recent" class="divide-y divide-line"></tbody>
+            </table>
+          </div>
+        </div>
+        <div class="bg-white rounded-2xl border border-line p-6">
+          <h3 class="font-semibold">Custom Queue</h3>
+          <div id="customQueue" class="mt-4 space-y-3 text-sm"></div>
+          <h3 class="font-semibold mt-6">At-risk SKUs</h3>
+          <div class="mt-3 space-y-2 text-sm">
+            <div class="flex justify-between bg-amber-50 border border-amber-200 rounded-xl px-4 py-3"><span>Chrome Mirror — Gold</span><span class="text-xs bg-amber-500 text-white px-2 py-1 rounded-full">Low: 12 rolls</span></div>
+            <div class="flex justify-between bg-white border border-line rounded-xl px-4 py-3"><span>Eggshell VOID — 2×4″</span><span class="text-xs border px-2 py-1 rounded-full">Reorder soon</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Trust bar -->
+      <div class="bg-white border border-line rounded-2xl p-5 flex flex-col lg:flex-row items-center justify-between gap-4">
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-full bg-ink text-white flex items-center justify-center"><svg class="align-middle shrink-0 shrink-0" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></div>
+          <div><div class="text-sm font-semibold">Business-trusted operations</div><div class="text-xs text-muted">GST invoice + e-way bill • Colour-matched reorders • 3M vinyl • 48h dispatch</div></div>
+        </div>
+        <div class="flex gap-2">
+          <a href="../shop.html" class="border border-line px-4 py-2 rounded-full text-sm font-semibold">View Storefront</a>
+          <a href="products.html" class="bg-ink text-white px-4 py-2 rounded-full text-sm font-semibold">Add New Sticker <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12h14M12 5l7 7-7 7'/%3E%3C/svg%3E" alt="→" class="w-3.5 h-3.5 shrink-0 align-middle inline-block"></a>
+        </div>
+      </div>
+    </main>
+  </div>
+</div>
+
+<script src="../app.js"></script>
+<script>
+const orders=getOrders();
+const customs=getCustomOrders();
+const prods=getProducts();
+document.getElementById('kRev').textContent=formatINR(orders.reduce((s,o)=>s+o.total,0)*1.4);
+document.getElementById('kOrd').textContent=orders.length*3;
+document.getElementById('kCus').textContent=customs.length;
+document.getElementById('kProd').textContent=prods.length;
+document.getElementById('recent').innerHTML=orders.slice(0,4).map(o=>{
+  const c=o.status==='Paid'?'bg-emerald-100 text-emerald-700 border-emerald-200':o.status==='Shipped'?'bg-blue-100 text-blue-700 border-blue-200':o.status==='Processing'?'bg-amber-100 text-amber-700 border-amber-200':'bg-paper text-muted';
+  return `<tr><td class="px-6 py-3 font-medium">${o.id}<div class="text-xs text-muted">${o.date}</div></td><td class="px-6 py-3"><div class="font-medium">${o.customer}</div><div class="text-xs text-muted">${o.email}</div><div class="text-xs text-muted">${o.item}</div></td><td class="px-6 py-3 font-semibold">${formatINR(o.total)}<div class="text-xs text-muted">${o.qty} pcs</div></td><td class="px-6 py-3"><span class="text-xs border px-2.5 py-1 rounded-full ${c}">${o.status}</span></td></tr>`;
+}).join('');
+document.getElementById('top').innerHTML=[...prods].sort((a,b)=>b.reviews-a.reviews).slice(0,2).map(p=>`
+  <div class="flex gap-3 bg-white/10 rounded-2xl p-3"><img src="${p.image}" class="w-14 h-14 rounded-xl object-cover"><div class="flex-1 min-w-0"><div class="text-sm font-medium truncate">${p.name}</div><div class="text-xs text-white/60">${p.category} • ${p.reviews} sold</div><div class="text-sm font-bold mt-1">${formatINR(p.price)}<span class="text-xs font-normal"> /100</span></div></div><span class="text-xs bg-white text-ink px-2 py-1 rounded-full self-start"><svg class="align-middle shrink-0 shrink-0" width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg> ${p.rating}</span></div>
+`).join('');
+document.getElementById('customQueue').innerHTML=customs.slice(0,3).map(c=>{
+  const col=c.status==='New'?'bg-amber-400 text-ink':c.status==='Quote Sent'?'bg-blue-100 text-blue-700 border border-blue-200':c.status==='In Production'?'bg-ink text-white':'bg-emerald-100 text-emerald-700';
+  return `<div class="border border-line rounded-2xl p-3"><div class="flex justify-between items-start"><div class="font-medium">${c.id}</div><span class="text-xs px-2 py-1 rounded-full ${col}">${c.status}</span></div><div class="text-sm mt-1">${c.customer}</div><div class="text-xs text-muted">${c.size} • ${c.material} • ${c.qty} pcs</div><div class="text-xs text-muted">File: ${c.file} • ${c.date}</div></div>`;
+}).join('');
+</script>
+
+<script>
+function toggleAdminMenu(){
+  const nav=document.getElementById('adminMobileNav');
+  const btn=document.getElementById('adminMenuBtn');
+  if(!nav) return;
+  const hidden=nav.classList.contains('hidden');
+  if(hidden){
+    nav.classList.remove('hidden');
+    btn?.setAttribute('aria-expanded','true');
+    btn?.querySelector('.menu-icon')?.classList.add('hidden');
+    btn?.querySelector('.close-icon')?.classList.remove('hidden');
+    document.body.style.overflow='hidden';
+  } else closeAdminMenu();
+}
+function closeAdminMenu(){
+  const nav=document.getElementById('adminMobileNav');
+  const btn=document.getElementById('adminMenuBtn');
+  nav?.classList.add('hidden');
+  btn?.setAttribute('aria-expanded','false');
+  btn?.querySelector('.menu-icon')?.classList.remove('hidden');
+  btn?.querySelector('.close-icon')?.classList.add('hidden');
+  document.body.style.overflow='';
+}
+document.getElementById('adminMenuBtn')?.addEventListener('click', toggleAdminMenu);
+document.querySelectorAll('#adminMobileNav a').forEach(a=>a.addEventListener('click', closeAdminMenu));
+</script>
+
+</body>
+</html>

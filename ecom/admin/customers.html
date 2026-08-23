@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Customers — PERNAL Admin</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+<script>tailwind.config={theme:{extend:{fontFamily:{sans:['Inter','sans-serif'],display:['Space Grotesk','sans-serif']},colors:{ink:'#0A0A0A',muted:'#6B7280',paper:'#F9F7F3',line:'#E7E5E4',accent:'#C8A96E'}}}}</script>
+</head>
+<body class="bg-paper text-ink antialiased">
+<div class="flex min-h-screen">
+  <aside class="hidden lg:flex w-[260px] bg-ink text-white flex-col sticky top-0 h-screen">
+    <div class="px-6 py-6 border-b border-white/10"><a href="../index.html" class="flex items-center gap-2"><div class="w-8 h-8 bg-white text-ink flex items-center justify-center font-display font-bold">P</div><span class="font-display font-bold">PERNAL</span><span class="text-xs bg-white/10 px-2 py-1 rounded-full ml-2">ADMIN</span></a></div>
+    <nav class="flex-1 px-3 py-4 space-y-1 text-sm">
+      <a href="index.html" class="flex items-center gap-3 text-white/70 px-3 py-2.5 rounded-xl hover:bg-white/10"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg> Dashboard</a>
+      <a href="products.html" class="flex items-center gap-3 text-white/70 px-3 py-2.5 rounded-xl hover:bg-white/10"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h12a3 3 0 0 1 3 3v12a3 3 0 0 1-3 3H6a3 3 0 0 1-3-3V6a3 3 0 0 1 3-3z"/><path d="M3 9h18"/><path d="M9 21V9"/></svg> Products</a>
+      <a href="orders.html" class="flex items-center gap-3 text-white/70 px-3 py-2.5 rounded-xl hover:bg-white/10"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6h16"/><path d="M4 12h16"/><path d="M4 18h16"/></svg> Orders</a>
+      <a href="customers.html" class="flex items-center gap-3 bg-white text-ink px-3 py-2.5 rounded-xl font-semibold"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M8 14a4 4 0 0 1 8 0"/><circle cx="12" cy="10" r="2.5"/></svg> Customers</a>
+      <div class="pt-4 mt-4 border-t border-white/10"><a href="../index.html" class="flex items-center gap-3 text-white/70 px-3 py-2.5">← View Store</a></div>
+    </nav>
+  </aside>
+  <div class="flex-1 min-w-0">
+    <header class="bg-white border-b border-line sticky top-0 z-10">
+      <div class="px-4 lg:px-8 h-[64px] flex items-center justify-between">
+        <h1 class="font-display font-bold text-lg">Customers <span id="count" class="text-muted font-normal text-sm"></span></h1>
+        <input id="search" placeholder="Search customers..." class="border border-line rounded-full px-4 py-2 text-sm w-64" oninput="renderCustomers()">
+      </div>
+    </header>
+    <main class="px-4 lg:px-8 py-6">
+      <div class="grid grid-cols-3 gap-3 mb-4">
+        <div class="bg-white rounded-2xl border border-line p-4 text-center"><div class="text-xs uppercase tracking-widest text-muted">Total Customers</div><div class="text-xl font-bold" id="kTotal">0</div></div>
+        <div class="bg-white rounded-2xl border border-line p-4 text-center"><div class="text-xs uppercase tracking-widest text-muted">Avg. Orders</div><div class="text-xl font-bold" id="kAvg">0</div></div>
+        <div class="bg-white rounded-2xl border border-line p-4 text-center"><div class="text-xs uppercase tracking-widest text-muted">Avg. Spent</div><div class="text-xl font-bold" id="kSpent">₹0</div></div>
+      </div>
+      <div class="bg-white rounded-2xl border border-line overflow-hidden overflow-x-auto">
+        <table class="w-full text-sm min-w-[640px]">
+          <thead class="text-xs uppercase tracking-widest text-muted bg-paper"><tr><th class="text-left px-4 py-3">Customer</th><th class="text-left px-4 py-3">Email</th><th class="text-left px-4 py-3">Orders</th><th class="text-left px-4 py-3">Total Spent</th><th class="text-left px-4 py-3">Joined</th></tr></thead>
+          <tbody id="tbody" class="divide-y divide-line"></tbody>
+        </table>
+      </div>
+      <div class="mt-6 bg-ink text-white rounded-2xl p-6">
+        <h3 class="font-semibold">Customer Insights (Demo)</h3>
+        <div class="mt-4 grid lg:grid-cols-3 gap-4 text-sm">
+          <div class="bg-white/10 rounded-xl p-4"><div class="text-white/60 text-xs uppercase tracking-widest">Repeat Rate</div><div class="text-2xl font-bold mt-1">68%</div><div class="text-xs text-white/60">Customers with 2+ orders</div></div>
+          <div class="bg-white/10 rounded-xl p-4"><div class="text-white/60 text-xs uppercase tracking-widest">Top City</div><div class="text-lg font-bold mt-1">Mumbai, Kolkata, Delhi</div><div class="text-xs text-white/60">65% of orders</div></div>
+          <div class="bg-white/10 rounded-xl p-4"><div class="text-white/60 text-xs uppercase tracking-widest">Avg. Retention</div><div class="text-2xl font-bold mt-1">42 days</div><div class="text-xs text-white/60">Between orders</div></div>
+        </div>
+      </div>
+    </main>
+  </div>
+</div>
+<script src="../app.js"></script>
+<script>
+function renderCustomers(){
+  const customers=getCustomers();
+  const q=document.getElementById('search').value.toLowerCase().trim();
+  let list=[...customers];
+  if(q) list=list.filter(c=> c.name.toLowerCase().includes(q) || c.email.toLowerCase().includes(q));
+  document.getElementById('count').textContent=`(${list.length})`;
+  document.getElementById('kTotal').textContent=list.length*214;
+  document.getElementById('kAvg').textContent=(list.reduce((s,c)=>s+c.orders,0)/list.length).toFixed(1);
+  document.getElementById('kSpent').textContent=formatINR(Math.round(list.reduce((s,c)=>s+c.spent,0)/list.length));
+  document.getElementById('tbody').innerHTML=list.map(c=>`
+    <tr>
+      <td class="px-4 py-3"><div class="flex gap-3 items-center"><div class="w-9 h-9 rounded-full bg-paper border flex items-center justify-center font-bold text-sm">${c.name[0]}</div><div class="font-medium">${c.name}</div></div></td>
+      <td class="px-4 py-3 text-muted">${c.email}</td>
+      <td class="px-4 py-3"><span class="bg-paper border border-line rounded-full px-2.5 py-1 text-xs">${c.orders} orders</span></td>
+      <td class="px-4 py-3 font-semibold">${formatINR(c.spent)}</td>
+      <td class="px-4 py-3 text-muted">${c.joined}</td>
+    </tr>
+  `).join('');
+}
+renderCustomers();
+</script>
+</body>
+</html>

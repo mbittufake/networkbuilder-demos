@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Custom Candle Builder — LUME</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script>tailwind.config={theme:{extend:{fontFamily:{sans:['Inter','sans-serif'],serif:['Instrument Serif','serif']},colors:{ink:'#1A1A1A',muted:'#6B6560',paper:'#FDF6EE',line:'#EDE6DA',amber:'#E8B86D',terracotta:'#C86B3C'}}}}</script>
+</head>
+<body class="bg-paper text-ink antialiased">
+<div class="bg-ink text-amber text-xs text-center py-2.5 tracking-widest uppercase"><span class="hidden sm:inline">Custom candles • </span>From 6 pcs • 3-day make time <a href="shop.html" class="underline ml-2 text-white">Or shop ready →</a></div>
+<header class="sticky top-0 z-40 bg-white/90 backdrop-blur border-b border-line">
+  <div class="max-w-[1280px] mx-auto px-4 lg:px-6">
+    <div class="flex items-center justify-between h-[64px] lg:h-[72px]">
+      <button id="mobileMenuBtn" class="lg:hidden w-10 h-10 flex items-center justify-center border border-line rounded-full"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+      <a href="index.html" class="flex items-center gap-3"><div class="w-9 h-9 bg-ink text-amber flex items-center justify-center font-serif text-lg rounded-full"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 3a9 9 0 0 1 0 18"/></svg></div><span class="font-serif text-xl tracking-tight">LUME</span><span class="hidden sm:inline text-[10px] tracking-[0.22em] text-muted uppercase font-semibold border-l border-line pl-3 ml-1">Candle Studio</span></a>
+      <nav class="hidden lg:flex items-center gap-7 text-sm font-medium">
+        <a href="shop.html" class="hover:text-terracotta">Shop</a>
+        <a href="shop.html?col=Woody" class="hover:text-terracotta">Woody</a>
+        <a href="shop.html?col=Floral" class="hover:text-terracotta">Floral</a>
+        <a href="shop.html?col=Fresh" class="hover:text-terracotta">Fresh</a>
+        <a href="custom.html" class="bg-ink text-white px-4 py-2 rounded-full">Custom <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2l2.4 7.2H22l-6.2 4.5 2.4 7.3L12 16.5 5.8 21l2.4-7.3L2 9.2h7.6z"/></svg></a>
+      </nav>
+      <div class="flex items-center gap-2">
+        <button onclick="openSearch()" class="w-10 h-10 rounded-full border border-line hover:border-ink flex items-center justify-center"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="7"/><path d="M20 20L16 16"/></svg></button>
+        <a href="cart.html" class="hidden sm:flex items-center gap-2 border border-line rounded-full px-3 py-2 hover:border-ink"><span class="w-6 h-6 rounded-full bg-ink text-white flex items-center justify-center text-xs"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 7c0-1.5 1-2.5 1-4 0 1.5-1 2.5-1 4z"/><path d="M9 21h6"/><path d="M10 21V11a2 2 0 0 1 4 0v10"/><path d="M8 11a2 2 0 0 0-2 2"/></svg></span><span class="text-sm font-semibold">Cart</span><span data-cart-count class="hidden bg-amber text-ink text-xs font-bold min-w-[20px] h-5 px-1.5 rounded-full flex items-center justify-center">0</span></a>
+        <button onclick="openCartDrawer()" class="sm:hidden relative w-10 h-10 rounded-full bg-ink text-white flex items-center justify-center"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 6h15l-1.5 9H7z"/><path d="M6 6L5 2H2"/><circle cx="9" cy="20" r="1.8"/><circle cx="18" cy="20" r="1.8"/></svg><span data-cart-count class="hidden absolute -top-1 -right-1 bg-amber text-ink text-[10px] min-w-[18px] h-[18px] px-1 rounded-full flex items-center justify-center font-bold">0</span></button>
+      </div>
+    </div>
+  </div>
+  <div id="mobileMenu" class="hidden lg:hidden border-t border-line bg-white px-4 py-4 space-y-3">
+    <a href="shop.html" class="block py-2 font-medium">Shop All</a><a href="custom.html" class="block py-2 font-semibold text-terracotta">Custom Builder</a>
+  </div>
+</header>
+
+<div class="max-w-[1280px] mx-auto px-4 lg:px-6 pt-6">
+  <div class="text-xs text-muted"><a href="index.html" class="hover:text-ink">Home</a> <span class="mx-2">/</span> <span class="text-ink font-medium">Custom Candle</span></div>
+  <div class="mt-4 bg-ink text-white rounded-[28px] p-6 lg:p-8 flex flex-col lg:flex-row lg:items-center justify-between gap-4">
+    <div>
+      <h1 class="font-serif text-3xl lg:text-4xl">Design your candle</h1>
+      <p class="text-white/60 text-sm mt-2 max-w-xl">For gifting, weddings, Diwali, or your brand. Pick vessel, scent, size, label & message. See live preview & instant price. Minimum 6 pieces.</p>
+    </div>
+    <div class="flex items-center gap-2 text-xs">
+      <span class="bg-white/10 border border-white/20 rounded-full px-3 py-1.5"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 13l4 4L19 7"/></svg> Preview live</span>
+      <span class="bg-white/10 border border-white/20 rounded-full px-3 py-1.5"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 13l4 4L19 7"/></svg> 3-day make</span>
+      <span class="bg-amber text-ink rounded-full px-3 py-1.5 font-bold">From ₹1,090</span>
+    </div>
+  </div>
+</div>
+
+<!-- Builder -->
+<div class="max-w-[1280px] mx-auto px-4 lg:px-6 mt-6 grid lg:grid-cols-12 gap-6">
+  <!-- Left: options -->
+  <div class="lg:col-span-7 space-y-4">
+    <!-- Step 1: Vessel -->
+    <div class="bg-white border border-line rounded-[24px] p-6">
+      <div class="flex items-center gap-3"><span class="w-7 h-7 rounded-full bg-ink text-white flex items-center justify-center text-xs font-bold">1</span><h3 class="font-semibold">Choose Vessel</h3><span class="ml-auto text-xs text-muted">The jar — reusable after burn</span></div>
+      <div class="grid grid-cols-2 lg:grid-cols-4 gap-3 mt-4" id="vesselGrid"></div>
+    </div>
+    <!-- Step 2: Size -->
+    <div class="bg-white border border-line rounded-[24px] p-6">
+      <div class="flex items-center gap-3"><span class="w-7 h-7 rounded-full bg-ink text-white flex items-center justify-center text-xs font-bold">2</span><h3 class="font-semibold">Size & Quantity</h3></div>
+      <div class="grid grid-cols-3 gap-3 mt-4" id="sizeGrid"></div>
+      <div class="mt-4 flex items-center gap-3">
+        <label class="text-sm font-medium">Quantity (min 6 for custom):</label>
+        <div class="flex items-center border border-line rounded-full overflow-hidden">
+          <button onclick="qty=Math.max(6,qty-1);updateBuilder()" class="w-9 h-9 flex items-center justify-center hover:bg-paper"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14"/></svg></button>
+          <span id="qtyVal" class="w-12 text-center font-semibold">6</span>
+          <button onclick="qty++;updateBuilder()" class="w-9 h-9 flex items-center justify-center hover:bg-paper"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></button>
+        </div>
+        <span class="text-xs text-muted">Bulk discounts auto-applied at 20+ & 50+</span>
+      </div>
+    </div>
+    <!-- Step 3: Scent -->
+    <div class="bg-white border border-line rounded-[24px] p-6">
+      <div class="flex items-center gap-3"><span class="w-7 h-7 rounded-full bg-ink text-white flex items-center justify-center text-xs font-bold">3</span><h3 class="font-semibold">Choose Scent</h3></div>
+      <div class="mt-2 flex gap-2 overflow-auto pb-2" id="scentFamily"></div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-4" id="scentGrid"></div>
+    </div>
+    <!-- Step 4: Wax -->
+    <div class="bg-white border border-line rounded-[24px] p-6">
+      <div class="flex items-center gap-3"><span class="w-7 h-7 rounded-full bg-ink text-white flex items-center justify-center text-xs font-bold">4</span><h3 class="font-semibold">Wax</h3></div>
+      <div class="grid grid-cols-3 gap-3 mt-4" id="waxGrid"></div>
+    </div>
+    <!-- Step 5: Label & Message -->
+    <div class="bg-white border border-line rounded-[24px] p-6">
+      <div class="flex items-center gap-3"><span class="w-7 h-7 rounded-full bg-ink text-white flex items-center justify-center text-xs font-bold">5</span><h3 class="font-semibold">Label & Personalisation</h3></div>
+      <div class="grid grid-cols-3 gap-3 mt-4" id="labelGrid"></div>
+      <div class="mt-4 grid gap-3">
+        <div><label class="text-xs font-bold uppercase tracking-widest">Label Text (max 22 chars)</label><input id="labelText" maxlength="22" placeholder="e.g. Riya & Arjun — 12.12.26" class="mt-1 w-full border border-line rounded-xl px-4 py-2.5 text-sm outline-none focus:border-ink" oninput="updateBuilder()"></div>
+        <div><label class="text-xs font-bold uppercase tracking-widest">Gift Note / Message</label><textarea id="giftNote" rows="2" placeholder="Handwritten note included free..." class="mt-1 w-full border border-line rounded-xl px-4 py-2.5 text-sm outline-none focus:border-ink" oninput="updateBuilder()"></textarea></div>
+        <div class="flex gap-2 text-xs">
+          <label class="flex items-center gap-2"><input type="checkbox" id="giftWrap" onchange="updateBuilder()"> Gift wrap (+₹80 per pc)</label>
+          <label class="flex items-center gap-2"><input type="checkbox" id="express" onchange="updateBuilder()"> Express 2-day (+₹200)</label>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Right: Preview + Summary -->
+  <div class="lg:col-span-5">
+    <div class="sticky top-[88px] space-y-4">
+      <!-- Preview -->
+      <div class="bg-white border border-line rounded-[24px] overflow-hidden">
+        <div class="bg-paper border-b border-line px-6 py-4 flex items-center justify-between"><h3 class="font-semibold">Live Preview</h3><span class="text-xs border border-line bg-white px-2.5 py-1 rounded-full">Updates as you choose</span></div>
+        <div class="p-6">
+          <div class="relative aspect-[4/5] rounded-[24px] overflow-hidden bg-[#FDF6EE] border border-line flex items-center justify-center" id="previewBox">
+            <!-- preview content injected -->
+          </div>
+          <div class="mt-4 bg-paper border border-line rounded-2xl p-4 text-sm space-y-2" id="previewText"></div>
+        </div>
+      </div>
+      <!-- Price -->
+      <div class="bg-ink text-white rounded-[24px] p-6">
+        <h3 class="font-semibold">Your Custom Candle</h3>
+        <div class="mt-4 space-y-2 text-sm">
+          <div class="flex justify-between"><span class="text-white/60">Base (per pc)</span><span id="basePrice" class="font-semibold">₹0</span></div>
+          <div class="flex justify-between"><span class="text-white/60">Quantity</span><span id="sumQty">6</span></div>
+          <div class="flex justify-between text-amber hidden" id="discRow"><span>Bulk discount</span><span id="discVal">-₹0</span></div>
+          <div class="flex justify-between text-white/60 hidden" id="wrapRow"><span>Gift wrap</span><span id="wrapVal">+₹0</span></div>
+          <div class="flex justify-between border-t border-white/20 pt-3 text-base"><span class="font-bold">Total</span><span id="totalPrice" class="font-bold text-xl">₹0</span></div>
+          <div class="text-xs text-white/60">Free shipping over ₹1,999 • 3-day making • COD available</div>
+        </div>
+        <button onclick="addCustomToCart()" class="w-full mt-6 bg-amber text-ink py-3.5 rounded-full font-bold hover:bg-white transition">Add Custom to Cart →</button>
+        <button onclick="saveQuote()" class="w-full mt-3 bg-white/10 border border-white/20 text-white py-3 rounded-full font-semibold hover:bg-white hover:text-ink transition">Save Quote / Share</button>
+        <p class="text-xs text-white/40 text-center mt-3">This sends request to admin panel (demo, stored locally).</p>
+      </div>
+      <div class="bg-white border border-line rounded-2xl p-4 text-xs space-y-2">
+        <div class="flex gap-2"><span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 13l4 4L19 7"/></svg></span> Need help? WhatsApp us — we’ll blend a scent from your description.</div>
+        <div class="flex gap-2"><span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 13l4 4L19 7"/></svg></span> For 50+ pcs, we send a physical sample before full batch.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer class="max-w-[1280px] mx-auto px-4 lg:px-6 mt-10 border-t border-line pt-10 pb-8">
+  <div class="grid lg:grid-cols-5 gap-8">
+    <div class="lg:col-span-2">
+      <div class="flex items-center gap-2"><div class="w-8 h-8 bg-ink text-amber flex items-center justify-center rounded-full font-serif"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 3a9 9 0 0 1 0 18"/></svg></div><span class="font-serif text-lg">LUME</span></div>
+      <p class="text-sm text-muted mt-3 max-w-sm">Small-batch soy candles hand-poured in Jaipur. One product, poured properly. Demo store by Network Builder.</p>
+    </div>
+    <div><div class="text-xs font-bold uppercase tracking-widest">Shop</div><ul class="mt-3 space-y-2 text-sm text-muted"><li><a href="shop.html" class="hover:text-ink">All Candles</a></li><li><a href="shop.html?col=Woody" class="hover:text-ink">Woody</a></li><li><a href="shop.html?col=Fresh" class="hover:text-ink">Fresh</a></li><li><a href="custom.html" class="hover:text-ink font-semibold text-terracotta">Custom →</a></li></ul></div>
+    <div><div class="text-xs font-bold uppercase tracking-widest">Help</div><ul class="mt-3 space-y-2 text-sm text-muted"><li><a href="#" class="hover:text-ink">Shipping & Care</a></li><li><a href="custom.html" class="hover:text-ink">Custom Guide</a></li><li><a href="cart.html" class="hover:text-ink">Cart</a></li></ul></div>
+    <div><div class="text-xs font-bold uppercase tracking-widest">Admin Demo</div><ul class="mt-3 space-y-2 text-sm text-muted"><li><a href="admin/index.html" class="hover:text-ink font-semibold">Dashboard →</a></li><li><a href="admin/products.html" class="hover:text-ink">Candles</a></li><li><a href="admin/custom-orders.html" class="hover:text-ink">Custom Orders</a></li></ul></div>
+  </div>
+  <div class="flex flex-col lg:flex-row items-center justify-between gap-3 text-xs text-muted border-t border-line mt-8 pt-6">
+    <span>© 2026 LUME Candle Studio. Demo by <a href="https://networkbuilder.in" class="underline">Network Builder</a></span>
+    <span class="flex items-center gap-2">Built with HTML + Tailwind <span class="w-2 h-2 bg-emerald-500 rounded-full animate-pulse"></span> Demo</span>
+  </div>
+</footer>
+
+<div id="searchOverlay" class="hidden fixed inset-0 z-[60] bg-white/95 backdrop-blur"><div class="max-w-2xl mx-auto px-4 pt-8"><div class="flex items-center gap-3"><div class="flex-1 flex items-center gap-3 border border-ink rounded-full px-5 py-3 bg-white"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="7"/><path d="M20 20L16 16"/></svg><input id="searchInput" type="text" placeholder="Search..." class="flex-1 outline-none text-sm" oninput="renderSearchResults(this.value)"></div><button onclick="closeSearch()" class="w-11 h-11 rounded-full bg-ink text-white flex items-center justify-center"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6L6 18M6 6l12 12"/></svg></button></div><div id="searchResults" class="mt-6 max-h-[60vh] overflow-auto divide-y divide-line border border-line rounded-2xl bg-white"></div></div></div>
+<div id="cartDrawer" class="hidden fixed inset-0 z-[60]"><div class="absolute inset-0 bg-black/40" onclick="closeCartDrawer()"></div><div class="absolute right-0 top-0 h-full w-full max-w-md bg-white flex flex-col"><div class="px-6 py-5 border-b border-line flex items-center justify-between"><div class="font-semibold">Your Cart <span id="cartDrawerCountLabel" class="text-muted font-normal"></span></div><button onclick="closeCartDrawer()" class="w-9 h-9 rounded-full border flex items-center justify-center"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6L6 18M6 6l12 12"/></svg></button></div><div id="cartDrawerItems" class="flex-1 overflow-auto px-6"></div><div id="cartDrawerFooter" class="hidden border-t border-line p-6 bg-paper"><div class="flex justify-between text-sm"><span class="text-muted">Subtotal</span><span id="cartDrawerSubtotal" class="font-semibold"></span></div><a href="cart.html" class="mt-4 block bg-ink text-white text-center py-3.5 rounded-full font-semibold">View Cart →</a></div></div></div>
+
+<script src="app.js"></script>
+<script>
+const vessels=[
+  { id:'cream', name:'Cream Ceramic', price:0, color:'#FDF6EE', desc:'Matte, reusable as planter' },
+  { id:'amber', name:'Amber Glass', price:0, color:'#C86B3C', desc:'Classic, warm glow' },
+  { id:'black', name:'Matte Black', price:80, color:'#1A1A1A', desc:'Modern, premium' },
+  { id:'terra', name:'Terracotta', price:100, color:'#B85C38', desc:'Earthy, handmade' },
+];
+const sizes=[
+  { id:'120g', name:'120g', burn:'25h', price:990, size:'Small — perfect favor' },
+  { id:'180g', name:'180g', burn:'45h', price:1290, size:'Most loved' },
+  { id:'220g', name:'220g', burn:'50h', price:1490, size:'Statement' },
+  { id:'300g', name:'300g', burn:'60h', price:1690, size:'Heirloom' },
+];
+const waxes=[
+  { id:'soy', name:'Soy Wax', price:0, desc:'Clean, vegan' },
+  { id:'coconut', name:'Coconut Soy', price:60, desc:'Creamier throw' },
+  { id:'bees', name:'Beeswax', price:120, desc:'Honeyed, natural' },
+];
+const labels=[
+  { id:'minimal', name:'Minimal', price:0, desc:'LUME typography' },
+  { id:'hand', name:'Handwritten', price:40, desc:'Ink on kraft' },
+  { id:'none', name:'No Label', price:0, desc:'Naked vessel' },
+];
+const scents=[
+  { name:'Fig & Cedar', family:'Woody', price:0 },
+  { name:'Vanilla Ember', family:'Warm', price:0 },
+  { name:'Eucalyptus Rain', family:'Fresh', price:0 },
+  { name:'Rosewood & Oud', family:'Woody', price:80 },
+  { name:'Citrus Bloom', family:'Citrus', price:0 },
+  { name:'Lavender Dusk', family:'Floral', price:0 },
+  { name:'Tobacco & Honey', family:'Warm', price:80 },
+  { name:'Sea Salt & Sage', family:'Fresh', price:0 },
+  { name:'Amber Noir', family:'Woody', price:100 },
+  { name:'Neroli Sun', family:'Citrus', price:0 },
+];
+
+let vessel='cream', size='180g', wax='soy', label='minimal', scent='Fig & Cedar', qty=6;
+
+function renderVessels(){
+  document.getElementById('vesselGrid').innerHTML=vessels.map(v=>`
+    <button onclick="vessel='${v.id}';updateBuilder()" class="text-left border rounded-2xl p-4 ${vessel===v.id?'border-ink bg-paper ring-1 ring-ink':'border-line bg-white hover:border-ink'}">
+      <div class="w-12 h-12 rounded-xl border border-line" style="background:${v.color}"></div>
+      <div class="font-semibold text-sm mt-2">${v.name} ${v.price?`+₹${v.price}`:''}</div>
+      <div class="text-xs text-muted">${v.desc}</div>
+    </button>
+  `).join('');
+}
+function renderSizes(){
+  document.getElementById('sizeGrid').innerHTML=sizes.map(s=>`
+    <button onclick="size='${s.id}';updateBuilder()" class="text-left border rounded-2xl p-4 ${size===s.id?'border-ink bg-ink text-white':'border-line bg-white hover:border-ink'}">
+      <div class="font-bold">${s.name}</div><div class="text-xs ${size===s.id?'text-white/60':'text-muted'}">${s.burn} • ${s.size}</div><div class="text-sm font-semibold mt-1">${formatINR(s.price)}</div>
+    </button>
+  `).join('');
+}
+function renderWaxes(){
+  document.getElementById('waxGrid').innerHTML=waxes.map(w=>`
+    <button onclick="wax='${w.id}';updateBuilder()" class="text-left border rounded-2xl p-3 ${wax===w.id?'border-ink bg-paper':'border-line bg-white hover:border-ink'}">
+      <div class="font-semibold text-sm">${w.name} ${w.price?`+₹${w.price}`:''}</div><div class="text-xs text-muted">${w.desc}</div>
+    </button>
+  `).join('');
+}
+function renderLabels(){
+  document.getElementById('labelGrid').innerHTML=labels.map(l=>`
+    <button onclick="label='${l.id}';updateBuilder()" class="text-left border rounded-2xl p-3 ${label===l.id?'border-ink bg-paper':'border-line bg-white hover:border-ink'}">
+      <div class="font-semibold text-sm">${l.name} ${l.price?`+₹${l.price}`:''}</div><div class="text-xs text-muted">${l.desc}</div>
+    </button>
+  `).join('');
+}
+function renderScentFamily(){
+  const fams=['All','Woody','Warm','Fresh','Floral','Citrus'];
+  document.getElementById('scentFamily').innerHTML=fams.map(f=>`<button onclick="filterScentFamily='${f}';renderScents()" class="px-4 py-1.5 rounded-full border text-xs font-semibold ${filterScentFamily===f?'bg-ink text-white border-ink':'border-line bg-white'}">${f}</button>`).join('');
+}
+let filterScentFamily='All';
+function renderScents(){
+  let list=scents;
+  if(filterScentFamily!=='All') list=list.filter(s=>s.family===filterScentFamily);
+  document.getElementById('scentGrid').innerHTML=list.map(s=>`
+    <button onclick="scent='${s.name}';updateBuilder()" class="text-left border rounded-2xl p-3 flex items-center justify-between ${scent===s.name?'border-ink bg-paper':'border-line bg-white hover:border-ink'}">
+      <div><div class="font-medium text-sm">${s.name} ${s.price?`+₹${s.price}`:''}</div><div class="text-xs text-muted">${s.family}</div></div><span class="w-6 h-6 rounded-full border flex items-center justify-center text-xs">${scent===s.name?'<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 13l4 4L19 7"/></svg>':''}</span>
+    </button>
+  `).join('');
+  renderScentFamily();
+}
+
+function updateBuilder(){
+  renderVessels(); renderSizes(); renderWaxes(); renderLabels(); renderScents();
+  document.getElementById('qtyVal').textContent=qty;
+  // preview
+  const v=vessels.find(x=>x.id===vessel);
+  const s=sizes.find(x=>x.id===size);
+  const sc=scents.find(x=>x.name===scent);
+  const l=labels.find(x=>x.id===label);
+  const labelText=document.getElementById('labelText').value || 'Your text here';
+  const vesselColor=v.color;
+  const isDark = vessel==='black';
+  document.getElementById('previewBox').innerHTML=`
+    <div class="w-[160px] h-[200px] rounded-t-[24px] rounded-b-[16px] border border-black/10 flex flex-col items-center justify-center relative shadow-xl" style="background:${vesselColor}">
+      <div class="absolute -top-2 w-10 h-3 bg-black/20 rounded-full blur-sm"></div>
+      <div class="w-[100px] h-[100px] rounded-full bg-white/90 flex items-center justify-center text-3xl border border-black/5"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 7c0-1.5 1-2.5 1-4 0 1.5-1 2.5-1 4z"/><path d="M9 21h6"/><path d="M10 21V11a2 2 0 0 1 4 0v10"/><path d="M8 11a2 2 0 0 0-2 2"/></svg></div>
+      <div class="mt-3 bg-white/95 backdrop-blur px-3 py-1.5 rounded-full border border-black/5 text-center">
+        <div class="text-[10px] uppercase tracking-widest text-muted">${s.id} • LUME</div>
+        <div class="text-xs font-serif font-bold ${isDark?'text-black':''}">${labelText.slice(0,22) || 'LUME'}</div>
+      </div>
+      <div class="absolute bottom-2 text-[10px] px-2 py-1 rounded-full ${isDark?'bg-white text-ink':'bg-ink text-white'}">${scent}</div>
+    </div>
+  `;
+  document.getElementById('previewText').innerHTML=`
+    <div class="flex justify-between"><span class="text-muted">Vessel</span><span class="font-medium">${v.name}</span></div>
+    <div class="flex justify-between"><span class="text-muted">Scent</span><span class="font-medium">${scent} • ${sc.family}</span></div>
+    <div class="flex justify-between"><span class="text-muted">Wax</span><span class="font-medium">${waxes.find(x=>x.id===wax).name}</span></div>
+    <div class="flex justify-between"><span class="text-muted">Label</span><span class="font-medium">${l.name}${labelText?` — “${labelText}”`:''}</span></div>
+    ${document.getElementById('giftNote').value?`<div class="text-xs text-muted pt-2 border-t border-line">Note: “${document.getElementById('giftNote').value}”</div>`:''}
+  `;
+  // pricing
+  const base = s.price + v.price + sc.price + waxes.find(x=>x.id===wax).price + l.price;
+  let subtotal = base * qty;
+  let disc=0;
+  if(qty>=50) disc=Math.round(subtotal*0.15);
+  else if(qty>=20) disc=Math.round(subtotal*0.10);
+  let wrapCost = document.getElementById('giftWrap').checked ? 80*qty : 0;
+  let expressCost = document.getElementById('express').checked ? 200 : 0;
+  const total = subtotal - disc + wrapCost + expressCost;
+  document.getElementById('basePrice').textContent = formatINR(base);
+  document.getElementById('sumQty').textContent = qty;
+  document.getElementById('totalPrice').textContent = formatINR(total);
+  document.getElementById('discRow').classList.toggle('hidden', disc===0);
+  document.getElementById('discVal').textContent = '-'+formatINR(disc);
+  document.getElementById('wrapRow').classList.toggle('hidden', wrapCost===0 && expressCost===0);
+  document.getElementById('wrapVal').textContent = '+'+formatINR(wrapCost+expressCost);
+  // store for cart
+  window._customPrice = base;
+  window._customTotal = total;
+  window._customMeta = `${v.name} • ${s.id} • ${scent} • ${waxes.find(x=>x.id===wax).name} • ${l.name}`;
+}
+
+function addCustomToCart(){
+  if(qty<6){ showToast('Minimum 6 pcs for custom'); return; }
+  const key = `custom-${Date.now()}`;
+  const img = 'https://images.pexels.com/photos/5200254/pexels-photo-5200254.jpeg?auto=compress&cs=tinysrgb&w=600';
+  const name = `Custom — ${document.getElementById('labelText').value || scent}`;
+  addToCart({ id: 999, name, price: window._customPrice, image: img, collection: 'Custom' }, { qty, price: window._customPrice, key, meta: window._customMeta + (document.getElementById('giftNote').value?` • Note: ${document.getElementById('giftNote').value}`:'') });
+  // also save to custom orders for admin
+  const list=getCustomOrders();
+  const v=vessels.find(x=>x.id===vessel);
+  const s=sizes.find(x=>x.id===size);
+  list.unshift({ id:'CU-'+(4000+Math.floor(Math.random()*900)), name: (document.getElementById('labelText').value||'Custom')+` • ${qty} pcs`, vessel: v.name, size: s.id, scent, qty, total: window._customTotal, status:'Pending', date: new Date().toISOString().slice(0,10), note: document.getElementById('giftNote').value || window._customMeta });
+  saveCustomOrders(list);
+  showToast('Custom candle added to cart <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 13l4 4L19 7"/></svg>');
+}
+
+function saveQuote(){
+  const text = `LUME Custom Quote — ${window._customMeta} • Qty ${qty} • Total ${formatINR(window._customTotal)}`;
+  if(navigator.clipboard) navigator.clipboard.writeText(text);
+  showToast('Quote copied — share with client');
+}
+
+updateBuilder();
+</script>
+</body>
+</html>

@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Products — PERNAL Admin</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+<script>tailwind.config={theme:{extend:{fontFamily:{sans:['Inter','sans-serif'],display:['Space Grotesk','sans-serif']},colors:{ink:'#0A0A0A',muted:'#6B7280',paper:'#F9F7F3',line:'#E7E5E4',accent:'#C8A96E'}}}}</script>
+</head>
+<body class="bg-paper text-ink antialiased">
+<div class="flex min-h-screen">
+  <aside class="hidden lg:flex w-[260px] bg-ink text-white flex-col sticky top-0 h-screen">
+    <div class="px-6 py-6 border-b border-white/10"><a href="../index.html" class="flex items-center gap-2"><div class="w-8 h-8 bg-white text-ink flex items-center justify-center font-display font-bold">P</div><span class="font-display font-bold">PERNAL</span><span class="text-xs bg-white/10 px-2 py-1 rounded-full ml-2">ADMIN</span></a></div>
+    <nav class="flex-1 px-3 py-4 space-y-1 text-sm">
+      <a href="index.html" class="flex items-center gap-3 text-white/70 hover:text-white px-3 py-2.5 rounded-xl hover:bg-white/10"><span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg></span> Dashboard</a>
+      <a href="products.html" class="flex items-center gap-3 bg-white text-ink px-3 py-2.5 rounded-xl font-semibold"><span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h12a3 3 0 0 1 3 3v12a3 3 0 0 1-3 3H6a3 3 0 0 1-3-3V6a3 3 0 0 1 3-3z"/><path d="M3 9h18"/><path d="M9 21V9"/></svg></span> Products</a>
+      <a href="orders.html" class="flex items-center gap-3 text-white/70 hover:text-white px-3 py-2.5 rounded-xl hover:bg-white/10"><span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6h16"/><path d="M4 12h16"/><path d="M4 18h16"/></svg></span> Orders</a>
+      <a href="customers.html" class="flex items-center gap-3 text-white/70 hover:text-white px-3 py-2.5 rounded-xl hover:bg-white/10"><span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M8 14a4 4 0 0 1 8 0"/><circle cx="12" cy="10" r="2.5"/></svg></span> Customers</a>
+      <div class="pt-4 mt-4 border-t border-white/10"><a href="../index.html" class="flex items-center gap-3 text-white/70 px-3 py-2.5">← View Store</a></div>
+    </nav>
+  </aside>
+  <div class="flex-1 min-w-0">
+    <header class="bg-white border-b border-line sticky top-0 z-10">
+      <div class="px-4 lg:px-8 h-[64px] flex items-center justify-between">
+        <h1 class="font-display font-bold text-lg">Products <span id="count" class="text-muted font-normal text-sm"></span></h1>
+        <div class="flex gap-2">
+          <button onclick="resetProducts(); renderProducts(); showToast('Reset to default products')" class="hidden sm:inline-flex border border-line px-4 py-2 rounded-full text-sm font-semibold">Reset</button>
+          <button onclick="openModal()" class="bg-ink text-white px-5 py-2 rounded-full text-sm font-semibold">+ Add Product</button>
+        </div>
+      </div>
+    </header>
+
+    <main class="px-4 lg:px-8 py-6">
+      <!-- Filters -->
+      <div class="bg-white rounded-2xl border border-line p-4 flex flex-col lg:flex-row gap-3">
+        <div class="flex-1 flex items-center gap-2 border border-line rounded-full px-4 py-2.5">
+          <span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20L16 16"/></svg></span><input id="search" type="text" placeholder="Search by name or category..." class="flex-1 outline-none text-sm" oninput="renderProducts()">
+        </div>
+        <select id="cat" class="border border-line rounded-full px-4 py-2.5 text-sm bg-white" onchange="renderProducts()">
+          <option value="All">All categories</option><option>Apparel</option><option>Footwear</option><option>Accessories</option><option>Beauty</option><option>Home</option>
+        </select>
+        <select id="sort" class="border border-line rounded-full px-4 py-2.5 text-sm bg-white" onchange="renderProducts()">
+          <option value="newest">Newest</option><option value="price-asc">Price Low</option><option value="price-desc">Price High</option><option value="name">Name A-Z</option>
+        </select>
+      </div>
+
+      <!-- Table -->
+      <div class="mt-4 bg-white rounded-2xl border border-line overflow-hidden overflow-x-auto">
+        <table class="w-full text-sm min-w-[720px]">
+          <thead class="text-xs uppercase tracking-widest text-muted bg-paper">
+            <tr><th class="text-left px-4 py-3">Product</th><th class="text-left px-4 py-3">Category</th><th class="text-left px-4 py-3">Price</th><th class="text-left px-4 py-3">Stock</th><th class="text-left px-4 py-3">Rating</th><th class="text-right px-4 py-3">Actions</th></tr>
+          </thead>
+          <tbody id="tbody" class="divide-y divide-line"></tbody>
+        </table>
+      </div>
+      <div id="empty" class="hidden text-center py-16 bg-white rounded-2xl border border-line mt-4">
+        <div class="text-muted">No products match your filters</div>
+        <button onclick="document.getElementById('search').value=''; document.getElementById('cat').value='All'; renderProducts()" class="mt-3 border px-4 py-2 rounded-full text-sm">Clear</button>
+      </div>
+    </main>
+  </div>
+</div>
+
+<!-- Modal -->
+<div id="modal" class="hidden fixed inset-0 z-50 bg-black/40 flex items-center justify-center p-4">
+  <div class="bg-white rounded-[24px] max-w-lg w-full p-6 max-h-[90vh] overflow-auto">
+    <div class="flex justify-between items-center">
+      <h3 id="modalTitle" class="font-semibold text-lg">Add Product</h3>
+      <button onclick="closeModal()" class="w-9 h-9 rounded-full border flex items-center justify-center"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6L6 18M6 6l12 12"/></svg></button>
+    </div>
+    <form id="form" class="mt-4 space-y-4" onsubmit="saveProduct(event)">
+      <input type="hidden" id="editId">
+      <div><label class="text-xs font-bold uppercase tracking-widest">Name</label><input id="fName" required class="mt-1 w-full border border-line rounded-xl px-3 py-2.5 text-sm outline-none focus:border-ink"></div>
+      <div class="grid grid-cols-2 gap-3">
+        <div><label class="text-xs font-bold uppercase tracking-widest">Category</label><select id="fCat" class="mt-1 w-full border border-line rounded-xl px-3 py-2.5 text-sm bg-white"><option>Apparel</option><option>Footwear</option><option>Accessories</option><option>Beauty</option><option>Home</option></select></div>
+        <div><label class="text-xs font-bold uppercase tracking-widest">Price (₹)</label><input id="fPrice" type="number" required class="mt-1 w-full border border-line rounded-xl px-3 py-2.5 text-sm outline-none focus:border-ink"></div>
+      </div>
+      <div class="grid grid-cols-2 gap-3">
+        <div><label class="text-xs font-bold uppercase tracking-widest">MRP (₹)</label><input id="fMrp" type="number" required class="mt-1 w-full border border-line rounded-xl px-3 py-2.5 text-sm"></div>
+        <div><label class="text-xs font-bold uppercase tracking-widest">Rating</label><input id="fRating" type="number" step="0.1" min="1" max="5" value="4.7" class="mt-1 w-full border border-line rounded-xl px-3 py-2.5 text-sm"></div>
+      </div>
+      <div><label class="text-xs font-bold uppercase tracking-widest">Image URL</label><input id="fImage" required placeholder="https://images.unsplash.com/..." class="mt-1 w-full border border-line rounded-xl px-3 py-2.5 text-sm"></div>
+      <div><label class="text-xs font-bold uppercase tracking-widest">Badge (optional)</label><input id="fBadge" placeholder="Bestseller, New In..." class="mt-1 w-full border border-line rounded-xl px-3 py-2.5 text-sm"></div>
+      <div><label class="text-xs font-bold uppercase tracking-widest">Description</label><textarea id="fDesc" rows="3" class="mt-1 w-full border border-line rounded-xl px-3 py-2.5 text-sm"></textarea></div>
+      <div class="flex gap-3 pt-2">
+        <button type="submit" class="flex-1 bg-ink text-white py-3 rounded-full font-semibold">Save Product</button>
+        <button type="button" onclick="closeModal()" class="flex-1 border border-line py-3 rounded-full font-semibold">Cancel</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<script src="../app.js"></script>
+<script>
+let products = getProducts();
+function renderProducts(){
+  products = getProducts();
+  const q = document.getElementById('search').value.toLowerCase().trim();
+  const cat = document.getElementById('cat').value;
+  const sort = document.getElementById('sort').value;
+  let list = [...products];
+  if(q) list = list.filter(p=> p.name.toLowerCase().includes(q) || p.category.toLowerCase().includes(q));
+  if(cat!=='All') list = list.filter(p=>p.category===cat);
+  if(sort==='price-asc') list.sort((a,b)=>a.price-b.price);
+  if(sort==='price-desc') list.sort((a,b)=>b.price-a.price);
+  if(sort==='name') list.sort((a,b)=>a.name.localeCompare(b.name));
+  if(sort==='newest') list.reverse();
+  document.getElementById('count').textContent = `(${list.length})`;
+  const tbody=document.getElementById('tbody');
+  const empty=document.getElementById('empty');
+  if(!list.length){ tbody.innerHTML=''; empty.classList.remove('hidden'); return; }
+  empty.classList.add('hidden');
+  tbody.innerHTML = list.map(p=>`
+    <tr>
+      <td class="px-4 py-3"><div class="flex gap-3 items-center"><img src="${p.image}" class="w-12 h-12 rounded-xl object-cover border"><div><div class="font-medium leading-tight">${p.name}</div><div class="text-xs text-muted">ID #${p.id} • ${p.badge||'—'}</div></div></div></td>
+      <td class="px-4 py-3"><span class="border border-line rounded-full px-2.5 py-1 text-xs">${p.category}</span></td>
+      <td class="px-4 py-3"><div class="font-semibold">${formatINR(p.price)}</div><div class="text-xs line-through text-muted">${formatINR(p.mrp)}</div></td>
+      <td class="px-4 py-3">${p.id%3===0?'<span class="text-xs bg-amber-100 text-amber-700 border border-amber-200 px-2 py-1 rounded-full">Low: 4</span>':'<span class="text-xs bg-emerald-100 text-emerald-700 border border-emerald-200 px-2 py-1 rounded-full">In stock</span>'}</td>
+      <td class="px-4 py-3"><svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg> ${p.rating}</td>
+      <td class="px-4 py-3 text-right">
+        <button onclick="editProduct(${p.id})" class="text-xs border border-line rounded-full px-3 py-1.5 hover:bg-ink hover:text-white">Edit</button>
+        <button onclick="deleteProduct(${p.id})" class="text-xs border border-red-200 text-red-600 rounded-full px-3 py-1.5 hover:bg-red-600 hover:text-white ml-1">Delete</button>
+      </td>
+    </tr>
+  `).join('');
+}
+function openModal(id=null){
+  document.getElementById('modal').classList.remove('hidden');
+  if(id){
+    const p=getProducts().find(x=>x.id===id);
+    document.getElementById('modalTitle').textContent='Edit Product';
+    document.getElementById('editId').value=p.id;
+    document.getElementById('fName').value=p.name;
+    document.getElementById('fCat').value=p.category;
+    document.getElementById('fPrice').value=p.price;
+    document.getElementById('fMrp').value=p.mrp;
+    document.getElementById('fRating').value=p.rating;
+    document.getElementById('fImage').value=p.image;
+    document.getElementById('fBadge').value=p.badge||'';
+    document.getElementById('fDesc').value=p.desc||'';
+  } else {
+    document.getElementById('modalTitle').textContent='Add Product';
+    document.getElementById('form').reset();
+    document.getElementById('editId').value='';
+    document.getElementById('fRating').value=4.7;
+  }
+}
+function closeModal(){ document.getElementById('modal').classList.add('hidden'); }
+function editProduct(id){ openModal(id); }
+function deleteProduct(id){
+  if(!confirm('Delete this product?')) return;
+  let list=getProducts().filter(p=>p.id!==id);
+  saveProducts(list);
+  renderProducts();
+  showToast('Product deleted');
+}
+function saveProduct(e){
+  e.preventDefault();
+  const idVal=document.getElementById('editId').value;
+  const data={
+    name: document.getElementById('fName').value.trim(),
+    category: document.getElementById('fCat').value,
+    price: Number(document.getElementById('fPrice').value),
+    mrp: Number(document.getElementById('fMrp').value),
+    rating: Number(document.getElementById('fRating').value),
+    image: document.getElementById('fImage').value.trim(),
+    badge: document.getElementById('fBadge').value.trim()||null,
+    desc: document.getElementById('fDesc').value.trim()||'Curated piece from PERNAL essentials.',
+    reviews: Math.floor(40+Math.random()*200),
+    colors: ['Black'], sizes:['One Size']
+  };
+  let list=getProducts();
+  if(idVal){
+    const idx=list.findIndex(p=>p.id===Number(idVal));
+    list[idx]={...list[idx],...data};
+    showToast('Product updated');
+  } else {
+    const newId=Math.max(...list.map(p=>p.id))+1;
+    list.push({id:newId, ...data});
+    showToast('Product added');
+  }
+  saveProducts(list);
+  closeModal();
+  renderProducts();
+}
+renderProducts();
+</script>
+</body>
+</html>

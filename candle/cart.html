@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cart — LUME</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script>tailwind.config={theme:{extend:{fontFamily:{sans:['Inter','sans-serif'],serif:['Instrument Serif','serif']},colors:{ink:'#1A1A1A',muted:'#6B6560',paper:'#FDF6EE',line:'#EDE6DA',amber:'#E8B86D',terracotta:'#C86B3C'}}}}</script>
+</head>
+<body class="bg-paper text-ink antialiased">
+<div class="bg-ink text-amber text-xs text-center py-2.5 tracking-widest uppercase">Free shipping over ₹1,999 • Custom from 6 pcs</div>
+<header class="sticky top-0 z-40 bg-white/90 backdrop-blur border-b border-line">
+  <div class="max-w-[1280px] mx-auto px-4 lg:px-6">
+    <div class="flex items-center justify-between h-[64px] lg:h-[72px]">
+      <button id="mobileMenuBtn" class="lg:hidden w-10 h-10 flex items-center justify-center border border-line rounded-full"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+      <a href="index.html" class="flex items-center gap-3"><div class="w-9 h-9 bg-ink text-amber flex items-center justify-center font-serif text-lg rounded-full"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 3a9 9 0 0 1 0 18"/></svg></div><span class="font-serif text-xl tracking-tight">LUME</span><span class="hidden sm:inline text-[10px] tracking-[0.22em] text-muted uppercase font-semibold border-l border-line pl-3 ml-1">Candle Studio</span></a>
+      <nav class="hidden lg:flex items-center gap-7 text-sm font-medium">
+        <a href="shop.html" class="hover:text-terracotta">Shop</a>
+        <a href="shop.html?col=Woody" class="hover:text-terracotta">Woody</a>
+        <a href="shop.html?col=Floral" class="hover:text-terracotta">Floral</a>
+        <a href="shop.html?col=Fresh" class="hover:text-terracotta">Fresh</a>
+        <a href="custom.html" class="bg-ink text-white px-4 py-2 rounded-full">Custom <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2l2.4 7.2H22l-6.2 4.5 2.4 7.3L12 16.5 5.8 21l2.4-7.3L2 9.2h7.6z"/></svg></a>
+      </nav>
+      <div class="flex items-center gap-2">
+        <button onclick="openSearch()" class="w-10 h-10 rounded-full border border-line hover:border-ink flex items-center justify-center"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="7"/><path d="M20 20L16 16"/></svg></button>
+        <span class="hidden sm:flex items-center gap-2 border border-line rounded-full px-3 py-2 bg-white"><span class="w-6 h-6 rounded-full bg-ink text-white flex items-center justify-center text-xs"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 7c0-1.5 1-2.5 1-4 0 1.5-1 2.5-1 4z"/><path d="M9 21h6"/><path d="M10 21V11a2 2 0 0 1 4 0v10"/><path d="M8 11a2 2 0 0 0-2 2"/></svg></span><span class="text-sm font-semibold">Cart</span><span data-cart-count class="hidden bg-amber text-ink text-xs font-bold min-w-[20px] h-5 px-1.5 rounded-full flex items-center justify-center">0</span></span>
+      </div>
+    </div>
+  </div>
+  <div id="mobileMenu" class="hidden lg:hidden border-t border-line bg-white px-4 py-4 space-y-3"><a href="shop.html" class="block py-2 font-medium">Shop All</a><a href="custom.html" class="block py-2 font-semibold text-terracotta">Custom Builder →</a></div>
+</header>
+
+<div class="max-w-[1280px] mx-auto px-4 lg:px-6 pt-8">
+  <h1 class="font-serif text-4xl">Your Cart</h1>
+  <div id="empty" class="hidden text-center py-20 bg-white rounded-[28px] border border-line mt-6">
+    <div class="w-20 h-20 rounded-full bg-paper border border-line flex items-center justify-center mx-auto text-2xl"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 7c0-1.5 1-2.5 1-4 0 1.5-1 2.5-1 4z"/><path d="M9 21h6"/><path d="M10 21V11a2 2 0 0 1 4 0v10"/><path d="M8 11a2 2 0 0 0-2 2"/></svg></div>
+    <div class="font-serif text-2xl mt-4">Your cart is empty</div>
+    <p class="text-sm text-muted">Light it up.</p>
+    <a href="shop.html" class="inline-flex mt-6 bg-ink text-white px-7 py-3 rounded-full font-semibold">Shop Candles →</a>
+    <a href="custom.html" class="inline-flex mt-3 ml-2 border border-line px-7 py-3 rounded-full font-semibold">Build Custom →</a>
+  </div>
+
+  <div id="layout" class="grid lg:grid-cols-12 gap-6 mt-6">
+    <div class="lg:col-span-8">
+      <div id="items" class="bg-white rounded-[24px] border border-line divide-y divide-line"></div>
+      <div class="mt-4 bg-white rounded-2xl border border-line p-4 flex gap-3">
+        <input id="coupon" placeholder="Coupon (WELCOME10, LUMELOVE)" class="flex-1 border border-line rounded-full px-4 py-2.5 text-sm outline-none focus:border-ink">
+        <button onclick="applyCoupon()" class="bg-ink text-white px-6 py-2.5 rounded-full text-sm font-semibold">Apply</button>
+      </div>
+    </div>
+    <div class="lg:col-span-4">
+      <div class="bg-white rounded-[24px] border border-line p-6 lg:sticky lg:top-[88px]">
+        <h3 class="font-semibold">Order Summary</h3>
+        <div class="mt-4 space-y-3 text-sm">
+          <div class="flex justify-between"><span class="text-muted">Subtotal</span><span id="sub" class="font-semibold">₹0</span></div>
+          <div class="flex justify-between"><span class="text-muted">Shipping</span><span id="ship" class="font-semibold">Free</span></div>
+          <div class="flex justify-between text-emerald-600 hidden" id="discRow"><span>Discount</span><span id="disc">-₹0</span></div>
+          <div class="flex justify-between border-t border-line pt-3 text-base"><span class="font-bold">Total</span><span id="total" class="font-bold text-lg">₹0</span></div>
+          <div id="shipMsg" class="text-xs bg-paper border border-line rounded-full px-3 py-2 text-center"></div>
+        </div>
+        <button onclick="checkout()" class="w-full mt-6 bg-ink text-white py-3.5 rounded-full font-semibold hover:bg-black transition">Checkout — <span id="checkoutTotal">₹0</span></button>
+        <div class="flex items-center justify-center gap-2 mt-3 text-xs text-muted"><span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg> Secure</span><span>•</span><span>UPI / Card / COD</span></div>
+        <a href="shop.html" class="block text-center mt-4 text-sm font-semibold underline">Continue Shopping</a>
+        <a href="custom.html" class="block text-center mt-2 text-sm font-semibold text-terracotta underline">Or build a custom →</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="mt-12">
+    <h3 class="font-serif text-2xl">Complete the ritual</h3>
+    <div id="rec" class="grid grid-cols-2 lg:grid-cols-4 gap-4 mt-4"></div>
+  </div>
+</div>
+
+<footer class="max-w-[1280px] mx-auto px-4 lg:px-6 mt-10 border-t border-line pt-10 pb-8">
+  <div class="grid lg:grid-cols-5 gap-8">
+    <div class="lg:col-span-2">
+      <div class="flex items-center gap-2"><div class="w-8 h-8 bg-ink text-amber flex items-center justify-center rounded-full font-serif"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 3a9 9 0 0 1 0 18"/></svg></div><span class="font-serif text-lg">LUME</span></div>
+      <p class="text-sm text-muted mt-3 max-w-sm">Small-batch soy candles hand-poured in Jaipur. One product, poured properly. Demo store by Network Builder.</p>
+    </div>
+    <div><div class="text-xs font-bold uppercase tracking-widest">Shop</div><ul class="mt-3 space-y-2 text-sm text-muted"><li><a href="shop.html" class="hover:text-ink">All Candles</a></li><li><a href="shop.html?col=Woody" class="hover:text-ink">Woody</a></li><li><a href="shop.html?col=Fresh" class="hover:text-ink">Fresh</a></li><li><a href="custom.html" class="hover:text-ink font-semibold text-terracotta">Custom →</a></li></ul></div>
+    <div><div class="text-xs font-bold uppercase tracking-widest">Help</div><ul class="mt-3 space-y-2 text-sm text-muted"><li><a href="#" class="hover:text-ink">Shipping & Care</a></li><li><a href="custom.html" class="hover:text-ink">Custom Guide</a></li><li><a href="cart.html" class="hover:text-ink">Cart</a></li></ul></div>
+    <div><div class="text-xs font-bold uppercase tracking-widest">Admin Demo</div><ul class="mt-3 space-y-2 text-sm text-muted"><li><a href="admin/index.html" class="hover:text-ink font-semibold">Dashboard →</a></li><li><a href="admin/products.html" class="hover:text-ink">Candles</a></li><li><a href="admin/custom-orders.html" class="hover:text-ink">Custom Orders</a></li></ul></div>
+  </div>
+  <div class="flex flex-col lg:flex-row items-center justify-between gap-3 text-xs text-muted border-t border-line mt-8 pt-6">
+    <span>© 2026 LUME Candle Studio. Demo by <a href="https://networkbuilder.in" class="underline">Network Builder</a></span>
+    <span class="flex items-center gap-2">Built with HTML + Tailwind <span class="w-2 h-2 bg-emerald-500 rounded-full animate-pulse"></span> Demo</span>
+  </div>
+</footer>
+
+<div id="successModal" class="hidden fixed inset-0 z-[70] bg-black/40 flex items-center justify-center p-4"><div class="bg-white rounded-[24px] max-w-md w-full p-8 text-center"><div class="w-16 h-16 rounded-full bg-emerald-500 text-white flex items-center justify-center mx-auto text-2xl"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 13l4 4L19 7"/></svg></div><h3 class="font-serif text-2xl mt-4">Order placed!</h3><p class="text-sm text-muted mt-2">Order <span id="orderId" class="font-semibold text-ink"></span> confirmed. Demo — no payment taken.</p><div class="mt-6 flex gap-3"><a href="shop.html" class="flex-1 bg-ink text-white py-3 rounded-full font-semibold">Continue</a><button onclick="document.getElementById('successModal').classList.add('hidden')" class="flex-1 border border-line py-3 rounded-full font-semibold">Close</button></div></div></div>
+<div id="searchOverlay" class="hidden fixed inset-0 z-[60] bg-white/95 backdrop-blur"><div class="max-w-2xl mx-auto px-4 pt-8"><div class="flex items-center gap-3"><div class="flex-1 flex items-center gap-3 border border-ink rounded-full px-5 py-3 bg-white"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="7"/><path d="M20 20L16 16"/></svg><input id="searchInput" type="text" placeholder="Search..." class="flex-1 outline-none text-sm" oninput="renderSearchResults(this.value)"></div><button onclick="closeSearch()" class="w-11 h-11 rounded-full bg-ink text-white flex items-center justify-center"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6L6 18M6 6l12 12"/></svg></button></div><div id="searchResults" class="mt-6 max-h-[60vh] overflow-auto divide-y divide-line border border-line rounded-2xl bg-white"></div></div></div>
+<div id="cartDrawer" class="hidden fixed inset-0 z-[60]"><div class="absolute inset-0 bg-black/40" onclick="closeCartDrawer()"></div><div class="absolute right-0 top-0 h-full w-full max-w-md bg-white flex flex-col"><div class="px-6 py-5 border-b border-line flex items-center justify-between"><div class="font-semibold">Your Cart <span id="cartDrawerCountLabel" class="text-muted font-normal"></span></div><button onclick="closeCartDrawer()" class="w-9 h-9 rounded-full border flex items-center justify-center"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6L6 18M6 6l12 12"/></svg></button></div><div id="cartDrawerItems" class="flex-1 overflow-auto px-6"></div><div id="cartDrawerFooter" class="hidden border-t border-line p-6 bg-paper"><div class="flex justify-between text-sm"><span class="text-muted">Subtotal</span><span id="cartDrawerSubtotal" class="font-semibold"></span></div><a href="cart.html" class="mt-4 block bg-ink text-white text-center py-3.5 rounded-full font-semibold">View Cart →</a></div></div></div>
+
+<script src="app.js"></script>
+<script>
+let discount=0, applied=false;
+function renderCart(){
+  const cart=getCart();
+  const empty=document.getElementById('empty');
+  const layout=document.getElementById('layout');
+  const wrap=document.getElementById('items');
+  if(!cart.length){ empty.classList.remove('hidden'); layout.classList.add('hidden'); return; }
+  empty.classList.add('hidden'); layout.classList.remove('hidden');
+  wrap.innerHTML=cart.map(i=>`
+    <div class="flex gap-4 p-4">
+      <a href="product.html?id=${i.id}"><img src="${i.image}" class="w-24 h-24 rounded-xl object-cover border border-line"></a>
+      <div class="flex-1 min-w-0">
+        <div class="text-xs uppercase tracking-widest text-muted">${i.collection}</div>
+        <a href="product.html?id=${i.id}" class="font-medium leading-tight hover:underline">${i.name}</a>
+        ${i.meta?`<div class="text-xs text-muted mt-1">${i.meta}</div>`:''}
+        <div class="text-xs text-muted mt-1">${formatINR(i.price)} each</div>
+        <div class="flex items-center justify-between mt-3">
+          <div class="flex items-center border border-line rounded-full overflow-hidden"><button onclick="updateQty('${i.key}',-1);renderCart()" class="w-8 h-8 flex items-center justify-center hover:bg-paper"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14"/></svg></button><span class="w-8 text-center text-sm font-semibold">${i.qty}</span><button onclick="updateQty('${i.key}',1);renderCart()" class="w-8 h-8 flex items-center justify-center hover:bg-paper"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></button></div>
+          <div class="font-semibold">${formatINR(i.price*i.qty)}</div>
+        </div>
+      </div>
+      <button onclick="removeFromCart('${i.key}');renderCart();showToast('Removed')" class="self-start w-8 h-8 rounded-full border border-line flex items-center justify-center hover:border-ink"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6L6 18M6 6l12 12"/></svg></button>
+    </div>
+  `).join('');
+  const sub=cartSubtotal();
+  const ship=sub>=1999||sub===0?0:99;
+  const total=Math.max(0, sub+ship-discount);
+  document.getElementById('sub').textContent=formatINR(sub);
+  document.getElementById('ship').textContent=ship===0?'Free':formatINR(ship);
+  document.getElementById('total').textContent=formatINR(total);
+  document.getElementById('checkoutTotal').textContent=formatINR(total);
+  document.getElementById('discRow').classList.toggle('hidden', discount===0);
+  document.getElementById('disc').textContent='-'+formatINR(discount);
+  const shipMsgEl = document.getElementById('shipMsg');
+  if(sub>=1999){ shipMsgEl.innerHTML = '<span class="inline-flex items-center gap-1"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 13l4 4L19 7"/></svg> Free shipping unlocked!</span>'; } else { shipMsgEl.textContent = `Add ${formatINR(1999-sub)} more for free shipping`; }
+}
+function applyCoupon(){
+  const code=document.getElementById('coupon').value.trim().toUpperCase();
+  if(applied){ showToast('Already applied'); return; }
+  if(code==='WELCOME10'){ discount=Math.round(cartSubtotal()*0.10); applied=true; renderCart(); showToast('10% off'); }
+  else if(code==='LUMELOVE'){ discount=300; applied=true; renderCart(); showToast('₹300 off'); }
+  else showToast('Invalid code');
+}
+function checkout(){
+  if(!getCart().length) return;
+  const orders=getOrders();
+  const sub=cartSubtotal();
+  const ship=sub>=1999?0:99;
+  const total=Math.max(0, sub+ship-discount);
+  const nid='#L-'+(1843+Math.floor(Math.random()*900));
+  orders.unshift({ id:nid, customer:'Demo Customer', email:'demo@lume.com', total, items: cartCount(), status:'Paid', date: new Date().toISOString().slice(0,10) });
+  saveOrders(orders);
+  saveCart([]); discount=0; applied=false;
+  document.getElementById('orderId').textContent=nid;
+  document.getElementById('successModal').classList.remove('hidden');
+  renderCart();
+}
+document.getElementById('rec').innerHTML=getCandles().slice(0,4).map(p=>`
+  <a href="product.html?id=${p.id}" class="group block bg-white border border-line rounded-2xl overflow-hidden"><img src="${p.image}" class="w-full aspect-[4/5] object-cover group-hover:scale-105 transition duration-700"><div class="p-3"><div class="text-xs uppercase tracking-widest text-muted">${p.collection}</div><div class="text-sm font-medium">${p.name}</div><div class="font-semibold text-sm">${formatINR(p.price)}</div></div></a>
+`).join('');
+renderCart();
+</script>
+</body>
+</html>

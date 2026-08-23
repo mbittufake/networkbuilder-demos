@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LUME — Hand-Poured Soy Candles | Small-Batch Studio</title>
+<meta name="description" content="LUME — small-batch soy candles hand-poured in Jaipur. Single-type focus, custom label & scent design. Demo candle ecom by Network Builder.">
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700&display=swap" rel="stylesheet">
+<script>
+tailwind.config={
+  theme:{
+    extend:{
+      fontFamily:{ sans:['Inter','sans-serif'], serif:['Instrument Serif','serif'], display:['Plus Jakarta Sans','sans-serif'] },
+      colors:{ ink:'#1A1A1A', muted:'#6B6560', paper:'#FDF6EE', line:'#EDE6DA', sand:'#FDF6EE', amber:'#E8B86D', terracotta:'#C86B3C', moss:'#7A8A7A' }
+    }
+  }
+}
+</script>
+<style>
+  .paper-bg{ background-color:#FDF6EE; background-image: radial-gradient(circle at 1px 1px, rgba(26,26,26,0.06) 1px, transparent 0); background-size:22px 22px; }
+</style>
+</head>
+<body class="bg-white text-ink antialiased">
+
+<!-- Announcement -->
+<div class="bg-ink text-[#E8B86D] text-xs text-center py-2.5 tracking-widest uppercase">
+  <span class="hidden sm:inline">Hand-poured in Jaipur • Soy + coconut wax • Free shipping over ₹1,999 • </span> Custom candles from 6 pcs
+  <a href="custom.html" class="underline underline-offset-4 ml-2 text-white">Design Yours →</a>
+</div>
+
+<!-- Header -->
+<header class="sticky top-0 z-40 bg-white/90 backdrop-blur border-b border-line">
+  <div class="max-w-[1280px] mx-auto px-4 lg:px-6">
+    <div class="flex items-center justify-between h-[64px] lg:h-[72px]">
+      <button id="mobileMenuBtn" class="lg:hidden w-10 h-10 flex items-center justify-center border border-line rounded-full"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+      <a href="index.html" class="flex items-center gap-3">
+        <div class="w-9 h-9 bg-ink text-amber flex items-center justify-center font-serif text-lg rounded-full"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 3a9 9 0 0 1 0 18"/></svg></div>
+        <span class="font-serif text-xl tracking-tight">LUME</span>
+        <span class="hidden sm:inline text-[10px] tracking-[0.22em] text-muted uppercase font-semibold border-l border-line pl-3 ml-1">Candle Studio</span>
+      </a>
+      <nav class="hidden lg:flex items-center gap-7 text-sm font-medium">
+        <a href="shop.html" class="hover:text-terracotta">Shop</a>
+        <a href="shop.html?col=Woody" class="hover:text-terracotta">Woody</a>
+        <a href="shop.html?col=Floral" class="hover:text-terracotta">Floral</a>
+        <a href="shop.html?col=Fresh" class="hover:text-terracotta">Fresh</a>
+        <a href="custom.html" class="bg-ink text-white px-4 py-2 rounded-full hover:bg-black transition">Custom <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2l2.4 7.2H22l-6.2 4.5 2.4 7.3L12 16.5 5.8 21l2.4-7.3L2 9.2h7.6z"/></svg></a>
+      </nav>
+      <div class="flex items-center gap-2">
+        <button onclick="openSearch()" class="w-10 h-10 rounded-full border border-line hover:border-ink flex items-center justify-center" aria-label="Search">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="7"/><path d="M20 20L16 16"/></svg>
+        </button>
+        <a href="cart.html" class="hidden sm:flex items-center gap-2 border border-line rounded-full px-3 py-2 hover:border-ink">
+          <span class="w-6 h-6 rounded-full bg-ink text-white flex items-center justify-center text-xs"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 7c0-1.5 1-2.5 1-4 0 1.5-1 2.5-1 4z"/><path d="M9 21h6"/><path d="M10 21V11a2 2 0 0 1 4 0v10"/><path d="M8 11a2 2 0 0 0-2 2"/></svg></span>
+          <span class="text-sm font-semibold">Cart</span>
+          <span data-cart-count class="hidden bg-amber text-ink text-xs font-bold min-w-[20px] h-5 px-1.5 rounded-full flex items-center justify-center">0</span>
+        </a>
+        <button onclick="openCartDrawer()" class="sm:hidden relative w-10 h-10 rounded-full bg-ink text-white flex items-center justify-center" aria-label="Cart">
+          <span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 6h15l-1.5 9H7z"/><path d="M6 6L5 2H2"/><circle cx="9" cy="20" r="1.8"/><circle cx="18" cy="20" r="1.8"/></svg></span><span data-cart-count class="hidden absolute -top-1 -right-1 bg-amber text-ink text-[10px] min-w-[18px] h-[18px] px-1 rounded-full flex items-center justify-center font-bold">0</span>
+        </button>
+        <a href="admin/index.html" class="hidden lg:inline-flex text-xs font-bold uppercase tracking-widest border border-line px-3 py-2 rounded-full hover:bg-ink hover:text-white transition">Admin</a>
+      </div>
+    </div>
+  </div>
+  <div id="mobileMenu" class="hidden lg:hidden border-t border-line bg-white px-4 py-4 space-y-3">
+    <a href="shop.html" class="block py-2 font-medium">Shop All Candles</a>
+    <a href="shop.html?col=Woody" class="block py-2">Woody • Cedar, Oud, Amber</a>
+    <a href="shop.html?col=Floral" class="block py-2">Floral • Lavender, Rose, Sakura</a>
+    <a href="shop.html?col=Fresh" class="block py-2">Fresh • Eucalyptus, Sea Salt</a>
+    <a href="shop.html?col=Citrus" class="block py-2">Citrus • Bergamot, Neroli</a>
+    <a href="custom.html" class="block py-2 font-semibold text-terracotta">Custom Candle Builder →</a>
+    <a href="admin/index.html" class="block py-2 text-muted border-t border-line pt-3 mt-2">Admin Panel →</a>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="max-w-[1280px] mx-auto px-4 lg:px-6 pt-6">
+  <div class="grid lg:grid-cols-12 gap-4">
+    <div class="lg:col-span-7 relative rounded-[28px] overflow-hidden bg-ink min-h-[560px] flex">
+      <img src="https://images.unsplash.com/photo-1603006905003-be475563bc59?w=1000&h=1200&fit=crop&q=80" class="absolute inset-0 w-full h-full object-cover opacity-70" alt="">
+      <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"></div>
+      <div class="relative mt-auto p-7 lg:p-10 text-white w-full">
+        <div class="inline-flex items-center gap-2 bg-white/10 backdrop-blur border border-white/20 text-xs font-bold uppercase tracking-widest px-3 py-1.5 rounded-full">Small-Batch • Hand-Poured • Jaipur</div>
+        <h1 class="font-serif text-5xl lg:text-6xl leading-[0.9] mt-4">One thing,<br><span class="italic font-light text-amber">done</span> beautifully.</h1>
+        <p class="text-white/80 mt-4 max-w-md leading-relaxed">We make only candles. Soy + coconut wax, cotton wicks, phthalate-free oils — poured to order in our studio.</p>
+        <div class="flex flex-wrap gap-3 mt-6">
+          <a href="shop.html" class="bg-white text-ink px-7 py-3.5 rounded-full font-semibold hover:bg-paper transition">Shop Collection</a>
+          <a href="custom.html" class="bg-amber text-ink px-7 py-3.5 rounded-full font-semibold hover:bg-white transition">Design Custom →</a>
+        </div>
+        <div class="flex items-center gap-3 mt-8 text-xs">
+          <span class="flex -space-x-2"><img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=64&h=64&fit=crop" class="w-7 h-7 rounded-full border-2 border-white object-cover"><img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=64&h=64&fit=crop" class="w-7 h-7 rounded-full border-2 border-white object-cover"><img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=64&h=64&fit=crop" class="w-7 h-7 rounded-full border-2 border-white object-cover"></span>
+          <span class="text-white/80"><span class="font-bold text-white">4.9/5</span> from 1,200+ homes</span>
+        </div>
+      </div>
+    </div>
+    <div class="lg:col-span-5 grid grid-rows-2 gap-4">
+      <a href="custom.html" class="relative rounded-[28px] overflow-hidden bg-paper p-7 flex flex-col justify-between min-h-[270px] border border-line group">
+        <div>
+          <div class="w-10 h-10 rounded-full bg-ink text-amber flex items-center justify-center"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2l2.4 7.2H22l-6.2 4.5 2.4 7.3L12 16.5 5.8 21l2.4-7.3L2 9.2h7.6z"/></svg></div>
+          <h3 class="font-serif text-3xl leading-none mt-4">Make it<br>yours.</h3>
+          <p class="text-sm text-muted mt-2 max-w-[260px]">Pick vessel, scent, label & message. From 6 pcs for gifts or events. Visual preview live.</p>
+        </div>
+        <div class="mt-6 flex items-center gap-3">
+          <span class="bg-ink text-white px-5 py-2.5 rounded-full text-sm font-semibold group-hover:bg-black transition">Start Building →</span>
+          <span class="text-xs text-muted">From ₹1,290</span>
+        </div>
+        <img src="https://images.pexels.com/photos/5200254/pexels-photo-5200254.jpeg?auto=compress&cs=tinysrgb&w=400" class="absolute right-0 bottom-0 w-1/2 h-full object-cover opacity-20 pointer-events-none">
+      </a>
+      <div class="grid grid-cols-2 gap-4">
+        <div class="rounded-[28px] bg-[#EDE6DA] p-5 flex flex-col justify-between">
+          <div class="text-xs uppercase tracking-widest text-muted">Burn Time</div>
+          <div class="font-serif text-4xl">45h</div>
+          <div class="text-sm text-muted">Avg. per 180g • clean, even burn, cotton wick</div>
+        </div>
+        <div class="rounded-[28px] bg-ink text-white p-5 flex flex-col justify-between">
+          <div class="text-xs uppercase tracking-widest text-amber">Bestseller</div>
+          <div class="font-serif text-xl leading-tight">Fig &<br>Cedar</div>
+          <a href="product.html?id=1" class="mt-3 text-sm underline underline-offset-4">Shop now →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- trust -->
+  <div class="grid grid-cols-2 lg:grid-cols-4 gap-3 mt-4">
+    <div class="bg-paper border border-line rounded-2xl px-4 py-3 flex items-center gap-3"><span class="w-8 h-8 rounded-full bg-white border border-line flex items-center justify-center text-sm"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 19a5 5 0 0 1-2-9.5"/><path d="M17 5a5 5 0 0 1 2 9.5"/><path d="M7 19l-2-2 2-2"/><path d="M17 5l2 2-2 2"/></svg></span><div><div class="text-sm font-semibold">Soy + Coconut Wax</div><div class="text-xs text-muted">Vegan, cruelty-free</div></div></div>
+    <div class="bg-paper border border-line rounded-2xl px-4 py-3 flex items-center gap-3"><span class="w-8 h-8 rounded-full bg-white border border-line flex items-center justify-center text-sm"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 20a4 4 0 0 0 4-4c0-3-4-8-4-8s-4 5-4 8a4 4 0 0 0 4 4z"/><path d="M11 20v-9"/></svg></span><div><div class="text-sm font-semibold">Phthalate-Free Oils</div><div class="text-xs text-muted">IFRA certified</div></div></div>
+    <div class="bg-paper border border-line rounded-2xl px-4 py-3 flex items-center gap-3"><span class="w-8 h-8 rounded-full bg-white border border-line flex items-center justify-center text-sm"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3c-1 2-4 5-4 9a4 4 0 0 0 8 0c0-4-3-7-4-9z"/><path d="M12 14a2 2 0 0 0 0 4 2 2 0 0 0 0-4z"/></svg></span><div><div class="text-sm font-semibold">Cotton Wick</div><div class="text-xs text-muted">No soot, clean burn</div></div></div>
+    <div class="bg-paper border border-line rounded-2xl px-4 py-3 flex items-center gap-3"><span class="w-8 h-8 rounded-full bg-white border border-line flex items-center justify-center text-sm"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="8" width="18" height="12" rx="1"/><path d="M12 8v12"/><path d="M3 12h18"/><path d="M7 8a3 3 0 0 0 5 0"/><path d="M17 8a3 3 0 0 1-5 0"/></svg></span><div><div class="text-sm font-semibold">Gift Ready</div><div class="text-xs text-muted">Free gift note</div></div></div>
+  </div>
+</section>
+
+<!-- COLLECTIONS -->
+<section class="max-w-[1280px] mx-auto px-4 lg:px-6 mt-14">
+  <div class="flex items-end justify-between">
+    <h2 class="font-serif text-3xl lg:text-4xl">Shop by scent</h2>
+    <a href="shop.html" class="hidden lg:inline-flex border border-ink px-5 py-2 rounded-full text-sm font-semibold hover:bg-ink hover:text-white transition">View All →</a>
+  </div>
+  <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 mt-6">
+    <a href="shop.html?col=Woody" class="group relative rounded-[24px] overflow-hidden aspect-[4/5] bg-[#2A1F1A]">
+      <img src="https://images.pexels.com/photos/286145/pexels-photo-286145.jpeg?auto=compress&cs=tinysrgb&w=600" class="absolute inset-0 w-full h-full object-cover opacity-70 group-hover:scale-105 transition duration-700">
+      <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+      <div class="absolute bottom-0 p-5 text-white"><div class="text-xs uppercase tracking-widest text-amber">04 scents</div><div class="font-serif text-2xl">Woody</div><div class="text-xs text-white/70 mt-1">Cedar, Oud, Amber</div></div>
+    </a>
+    <a href="shop.html?col=Floral" class="group relative rounded-[24px] overflow-hidden aspect-[4/5] bg-[#3A2A2A]">
+      <img src="https://images.pexels.com/photos/1809347/pexels-photo-1809347.jpeg?auto=compress&cs=tinysrgb&w=600" class="absolute inset-0 w-full h-full object-cover opacity-70 group-hover:scale-105 transition duration-700">
+      <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+      <div class="absolute bottom-0 p-5 text-white"><div class="text-xs uppercase tracking-widest text-amber">02 scents</div><div class="font-serif text-2xl">Floral</div><div class="text-xs text-white/70 mt-1">Lavender, Sakura</div></div>
+    </a>
+    <a href="shop.html?col=Fresh" class="group relative rounded-[24px] overflow-hidden aspect-[4/5] bg-[#1E2A2A]">
+      <img src="https://images.unsplash.com/photo-1572726729207-a78d6feb18d7?w=600&h=700&fit=crop&q=80" class="absolute inset-0 w-full h-full object-cover opacity-70 group-hover:scale-105 transition duration-700">
+      <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+      <div class="absolute bottom-0 p-5 text-white"><div class="text-xs uppercase tracking-widest text-amber">02 scents</div><div class="font-serif text-2xl">Fresh</div><div class="text-xs text-white/70 mt-1">Eucalyptus, Sea Salt</div></div>
+    </a>
+    <a href="shop.html?col=Citrus" class="group relative rounded-[24px] overflow-hidden aspect-[4/5] bg-[#3A2E1F]">
+      <img src="https://images.pexels.com/photos/1652109/pexels-photo-1652109.jpeg?auto=compress&cs=tinysrgb&w=600" class="absolute inset-0 w-full h-full object-cover opacity-70 group-hover:scale-105 transition duration-700">
+      <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+      <div class="absolute bottom-0 p-5 text-white"><div class="text-xs uppercase tracking-widest text-amber">02 scents</div><div class="font-serif text-2xl">Citrus</div><div class="text-xs text-white/70 mt-1">Bergamot, Neroli</div></div>
+    </a>
+  </div>
+</section>
+
+<!-- BESTSELLERS -->
+<section class="max-w-[1280px] mx-auto px-4 lg:px-6 mt-14">
+  <div class="flex items-baseline justify-between">
+    <div><div class="text-xs font-bold uppercase tracking-widest text-terracotta">Most Loved</div><h2 class="font-serif text-3xl mt-1">Bestsellers</h2></div>
+    <a href="shop.html" class="text-sm font-semibold underline underline-offset-4">See all</a>
+  </div>
+  <div id="bestsellers" class="grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6 mt-6"></div>
+</section>
+
+<!-- STORY -->
+<section class="max-w-[1280px] mx-auto px-4 lg:px-6 mt-14">
+  <div class="grid lg:grid-cols-2 gap-0 rounded-[28px] overflow-hidden border border-line">
+    <div class="bg-paper p-8 lg:p-12">
+      <div class="text-xs font-bold uppercase tracking-widest text-terracotta">Our Studio</div>
+      <h3 class="font-serif text-3xl lg:text-4xl leading-tight mt-3">A tiny studio,<br><span class="italic">obsessed</span> with one thing.</h3>
+      <p class="text-muted leading-relaxed mt-4">LUME started on a kitchen table in 2021 — Riya melting wax in a steel pot, testing wicks at midnight. Three years later we still pour in 40-jar batches, test every scent for 3 weeks, and write a thank-you note with each order. We don’t do 100 products. We do one, properly.</p>
+      <ul class="mt-6 space-y-2 text-sm">
+        <li class="flex gap-2"><span class="text-terracotta">—</span> 40-jar batches, hand-poured & cured 72h</li>
+        <li class="flex gap-2"><span class="text-terracotta">—</span> Soy + coconut, cotton wicks, phthalate-free</li>
+        <li class="flex gap-2"><span class="text-terracotta">—</span> Jaipur studio, ships pan-India in 2-4 days</li>
+      </ul>
+      <a href="shop.html" class="inline-flex mt-8 bg-ink text-white px-6 py-3 rounded-full font-semibold hover:bg-black transition">Meet the Candles →</a>
+    </div>
+    <div class="relative min-h-[420px] bg-ink">
+      <img src="https://images.pexels.com/photos/5200254/pexels-photo-5200254.jpeg?auto=compress&cs=tinysrgb&w=900" class="absolute inset-0 w-full h-full object-cover opacity-90">
+      <div class="absolute bottom-4 left-4 right-4 bg-white/90 backdrop-blur rounded-2xl p-4 flex items-center justify-between">
+        <div><div class="font-semibold text-sm">Poured today — Fig & Cedar</div><div class="text-xs text-muted">Batch #184 • 32 jars • Curing now</div></div>
+        <span class="w-10 h-10 rounded-full bg-ink text-white flex items-center justify-center">→</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CUSTOM CTA -->
+<section class="max-w-[1280px] mx-auto px-4 lg:px-6 mt-14">
+  <div class="rounded-[28px] bg-ink text-white p-8 lg:p-10 flex flex-col lg:flex-row items-center justify-between gap-6">
+    <div>
+      <h3 class="font-serif text-3xl">Your scent, your label.</h3>
+      <p class="text-white/60 mt-2 max-w-lg">Custom candles for gifts, weddings, Diwali or brand gifting. Choose vessel, scent, size and we print your label — from 6 pieces. Visual preview included.</p>
+      <ul class="mt-4 flex flex-wrap gap-2 text-xs">
+        <li class="bg-white/10 border border-white/20 rounded-full px-3 py-1.5">Wedding favors • 40 pcs</li>
+        <li class="bg-white/10 border border-white/20 rounded-full px-3 py-1.5">Corporate • 80 pcs</li>
+        <li class="bg-white/10 border border-white/20 rounded-full px-3 py-1.5">Diwali • 12 pcs</li>
+      </ul>
+    </div>
+    <div class="flex flex-col items-center gap-3 bg-white rounded-[20px] p-4 text-ink min-w-[260px]">
+      <div class="w-24 h-24 rounded-2xl bg-paper border border-line flex items-center justify-center text-3xl"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 7c0-1.5 1-2.5 1-4 0 1.5-1 2.5-1 4z"/><path d="M9 21h6"/><path d="M10 21V11a2 2 0 0 1 4 0v10"/><path d="M8 11a2 2 0 0 0-2 2"/></svg></div>
+      <div class="text-center"><div class="font-semibold">Build in 2 minutes</div><div class="text-xs text-muted">Live preview + instant quote</div></div>
+      <a href="custom.html" class="w-full bg-ink text-white text-center py-3 rounded-full font-semibold hover:bg-black transition">Start Custom Order →</a>
+      <div class="text-xs text-muted">Avg. 3-day making time</div>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section class="max-w-[1280px] mx-auto px-4 lg:px-6 mt-14">
+  <div class="flex items-center justify-between">
+    <h2 class="font-serif text-3xl">Walls talk. Softly.</h2>
+    <span class="text-sm text-muted hidden sm:inline">4.9 <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg> • 1,200+ reviews</span>
+  </div>
+  <div class="grid lg:grid-cols-3 gap-4 mt-6">
+    <div class="bg-paper border border-line rounded-2xl p-6"><div class="text-amber"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div><p class="mt-3 text-sm leading-relaxed">“Fig & Cedar filled our living room without being overpowering. Burns so evenly — and the vessel is now a pen stand.”</p><div class="mt-4 flex items-center gap-3"><img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=80&h=80&fit=crop" class="w-8 h-8 rounded-full object-cover"><div class="text-sm font-semibold">Nisha Verma</div><span class="text-xs text-muted">• Fig & Cedar</span></div></div>
+    <div class="bg-paper border border-line rounded-2xl p-6"><div class="text-amber"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div><p class="mt-3 text-sm leading-relaxed">“Ordered 40 custom for my sister’s wedding. Ivory labels with gold foil — guests are still asking where they’re from.”</p><div class="mt-4 flex items-center gap-3"><img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=80&h=80&fit=crop" class="w-8 h-8 rounded-full object-cover"><div class="text-sm font-semibold">Ananya R.</div><span class="text-xs text-muted">• Custom — 40 pcs</span></div></div>
+    <div class="bg-paper border border-line rounded-2xl p-6"><div class="text-amber"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div><p class="mt-3 text-sm leading-relaxed">“Tobacco & Honey is my permanent night scent. Worth every rupee. Packaging is so gift-ready too.”</p><div class="mt-4 flex items-center gap-3"><img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=80&h=80&fit=crop" class="w-8 h-8 rounded-full object-cover"><div class="text-sm font-semibold">Kabir S.</div><span class="text-xs text-muted">• Tobacco & Honey</span></div></div>
+  </div>
+</section>
+
+<!-- NEWSLETTER -->
+<section class="max-w-[1280px] mx-auto px-4 lg:px-6 mt-14">
+  <div class="rounded-[28px] border border-line bg-paper p-8 lg:p-10 flex flex-col lg:flex-row items-center justify-between gap-6">
+    <div><h3 class="font-serif text-2xl">Light mail only.</h3><p class="text-sm text-muted mt-1">New scents first, 10% off your first order. No spam.</p></div>
+    <form onsubmit="event.preventDefault(); showToast('Welcome to LUME — code WELCOME10'); this.reset();" class="flex gap-2 w-full lg:w-auto">
+      <input type="email" required placeholder="Your email" class="flex-1 lg:w-72 bg-white border border-line rounded-full px-5 py-3 text-sm outline-none focus:border-ink">
+      <button type="submit" class="bg-ink text-white px-6 py-3 rounded-full text-sm font-semibold whitespace-nowrap hover:bg-black transition">Get 10% off →</button>
+    </form>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="max-w-[1280px] mx-auto px-4 lg:px-6 mt-10 border-t border-line pt-10 pb-8">
+  <div class="grid lg:grid-cols-5 gap-8">
+    <div class="lg:col-span-2">
+      <div class="flex items-center gap-2"><div class="w-8 h-8 bg-ink text-amber flex items-center justify-center rounded-full font-serif"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 3a9 9 0 0 1 0 18"/></svg></div><span class="font-serif text-lg">LUME</span></div>
+      <p class="text-sm text-muted mt-3 max-w-sm">Small-batch soy candles hand-poured in Jaipur. One product, poured properly. Demo store by Network Builder.</p>
+    </div>
+    <div><div class="text-xs font-bold uppercase tracking-widest">Shop</div><ul class="mt-3 space-y-2 text-sm text-muted"><li><a href="shop.html" class="hover:text-ink">All Candles</a></li><li><a href="shop.html?col=Woody" class="hover:text-ink">Woody</a></li><li><a href="shop.html?col=Fresh" class="hover:text-ink">Fresh</a></li><li><a href="custom.html" class="hover:text-ink font-semibold text-terracotta">Custom →</a></li></ul></div>
+    <div><div class="text-xs font-bold uppercase tracking-widest">Help</div><ul class="mt-3 space-y-2 text-sm text-muted"><li><a href="#" class="hover:text-ink">Shipping & Care</a></li><li><a href="custom.html" class="hover:text-ink">Custom Guide</a></li><li><a href="cart.html" class="hover:text-ink">Cart</a></li></ul></div>
+    <div><div class="text-xs font-bold uppercase tracking-widest">Admin Demo</div><ul class="mt-3 space-y-2 text-sm text-muted"><li><a href="admin/index.html" class="hover:text-ink font-semibold">Dashboard →</a></li><li><a href="admin/products.html" class="hover:text-ink">Candles</a></li><li><a href="admin/custom-orders.html" class="hover:text-ink">Custom Orders</a></li></ul></div>
+  </div>
+  <div class="flex flex-col lg:flex-row items-center justify-between gap-3 text-xs text-muted border-t border-line mt-8 pt-6">
+    <span>© 2026 LUME Candle Studio. Demo by <a href="https://networkbuilder.in" class="underline">Network Builder</a></span>
+    <span class="flex items-center gap-2">Built with HTML + Tailwind <span class="w-2 h-2 bg-emerald-500 rounded-full animate-pulse"></span> Demo</span>
+  </div>
+</footer>
+
+<!-- Search Overlay -->
+<div id="searchOverlay" class="hidden fixed inset-0 z-[60] bg-white/95 backdrop-blur">
+  <div class="max-w-2xl mx-auto px-4 pt-8">
+    <div class="flex items-center gap-3">
+      <div class="flex-1 flex items-center gap-3 border border-ink rounded-full px-5 py-3 bg-white">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="7"/><path d="M20 20L16 16"/></svg>
+        <input id="searchInput" type="text" placeholder="Search Fig, Woody, Fresh..." class="flex-1 outline-none text-sm" oninput="renderSearchResults(this.value)">
+      </div>
+      <button onclick="closeSearch()" class="w-11 h-11 rounded-full bg-ink text-white flex items-center justify-center"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6L6 18M6 6l12 12"/></svg></button>
+    </div>
+    <div class="mt-4 flex flex-wrap gap-2 text-xs"><span class="text-muted">Try:</span><button onclick="document.getElementById('searchInput').value='Woody';renderSearchResults('Woody')" class="border rounded-full px-3 py-1 hover:bg-ink hover:text-white">Woody</button><button onclick="document.getElementById('searchInput').value='Floral';renderSearchResults('Floral')" class="border rounded-full px-3 py-1 hover:bg-ink hover:text-white">Floral</button><button onclick="document.getElementById('searchInput').value='Citrus';renderSearchResults('Citrus')" class="border rounded-full px-3 py-1 hover:bg-ink hover:text-white">Citrus</button></div>
+    <div id="searchResults" class="mt-6 max-h-[60vh] overflow-auto divide-y divide-line border border-line rounded-2xl bg-white"></div>
+  </div>
+</div>
+
+<!-- Cart Drawer -->
+<div id="cartDrawer" class="hidden fixed inset-0 z-[60]">
+  <div class="absolute inset-0 bg-black/40" onclick="closeCartDrawer()"></div>
+  <div class="absolute right-0 top-0 h-full w-full max-w-md bg-white flex flex-col">
+    <div class="px-6 py-5 border-b border-line flex items-center justify-between">
+      <div class="font-semibold">Your Cart <span id="cartDrawerCountLabel" class="text-muted font-normal"></span></div>
+      <button onclick="closeCartDrawer()" class="w-9 h-9 rounded-full border flex items-center justify-center"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6L6 18M6 6l12 12"/></svg></button>
+    </div>
+    <div id="cartDrawerItems" class="flex-1 overflow-auto px-6"></div>
+    <div id="cartDrawerFooter" class="hidden border-t border-line p-6 bg-paper">
+      <div class="flex justify-between text-sm"><span class="text-muted">Subtotal</span><span id="cartDrawerSubtotal" class="font-semibold"></span></div>
+      <a href="cart.html" class="mt-4 block bg-ink text-white text-center py-3.5 rounded-full font-semibold">View Cart & Checkout →</a>
+    </div>
+  </div>
+</div>
+
+<script src="app.js"></script>
+<script>
+function card(p){
+  const disc = p.mrp>p.price?`-${discountPct(p.mrp,p.price)}%`:'';
+  return `
+  <a href="product.html?id=${p.id}" class="group block">
+    <div class="relative aspect-[4/5] rounded-[24px] overflow-hidden bg-paper border border-line">
+      <img src="${p.image}" class="w-full h-full object-cover group-hover:scale-105 transition duration-700" alt="${p.name}">
+      ${p.badge?`<span class="absolute top-3 left-3 bg-white text-xs font-bold uppercase tracking-widest px-2.5 py-1 rounded-full border border-line">${p.badge}</span>`:''}
+      ${disc?`<span class="absolute top-3 right-3 bg-ink text-white text-xs font-bold px-2.5 py-1 rounded-full">${disc}</span>`:''}
+      <button onclick="event.preventDefault(); toggleWishlist(${p.id}); showToast(isWishlisted(${p.id})?'Added to wishlist':'Removed'); renderHome()" class="absolute bottom-3 right-3 w-8 h-8 rounded-full bg-white border border-line flex items-center justify-center text-sm">${isWishlisted(p.id)?'<svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-6-4.5-8.5-8.2A5 5 0 0 1 12 5a5 5 0 0 1 8.5 7.8C18 16.5 12 21 12 21z"/></svg>':'<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-6-4.5-8.5-8.2A5 5 0 0 1 12 5a5 5 0 0 1 8.5 7.8C18 16.5 12 21 12 21z"/></svg>'}</button>
+    </div>
+    <div class="pt-3">
+      <div class="text-xs uppercase tracking-widest text-muted">${p.collection} • ${p.burn}</div>
+      <div class="font-medium">${p.name}</div>
+      <div class="text-xs text-muted truncate">${p.scent}</div>
+      <div class="flex items-center gap-2 mt-1"><span class="font-semibold">${formatINR(p.price)}</span><span class="text-xs line-through text-muted">${formatINR(p.mrp)}</span></div>
+      <div class="text-xs text-muted mt-1"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg> ${p.rating} (${p.reviews})</div>
+    </div>
+  </a>
+  `;
+}
+function renderHome(){
+  const list=getCandles();
+  document.getElementById('bestsellers').innerHTML = list.slice(0,4).map(card).join('');
+}
+renderHome();
+</script>
+</body>
+</html>

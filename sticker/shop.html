@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Catalog — STICKCRAFT</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+<script>tailwind.config={theme:{extend:{fontFamily:{sans:['Inter','sans-serif'],serif:['Instrument Serif','serif'],display:['Space Grotesk','sans-serif']},colors:{ink:'#0F1A1C',muted:'#6B7280',paper:'#F8F7F5',line:'#E5E7EB',accent:'#0E7490'}}}}</script>
+<style>.sticker-shadow{box-shadow:0 8px 24px rgba(0,0,0,0.16),0 2px 6px rgba(0,0,0,0.1)}</style>
+</head>
+<body class="overflow-x-hidden bg-white text-ink antialiased">
+<div class="bg-ink text-white text-xs text-center py-2 px-4 tracking-widest leading-tight break-words uppercase">Free proof in 4 hours • Any shape, any colour • Bulk from 50 pcs • <a href="custom.html" class="underline">Custom Builder <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12h14M12 5l7 7-7 7'/%3E%3C/svg%3E" alt="→" class="w-3.5 h-3.5 shrink-0 align-middle inline-block"></a></div>
+
+<header class="sticky top-0 z-40 bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/80 border-b border-line">
+  <div class="max-w-[1440px] mx-auto px-4 lg:px-6">
+    <div class="flex items-center justify-between h-[56px] sm:h-[64px] lg:h-[72px] gap-2 sm:gap-4">
+      <!-- Left: hamburger + logo -->
+      <div class="flex items-center gap-2 sm:gap-3 min-w-0 flex-1 sm:flex-none">
+        <button id="mobileMenuBtn" aria-label="Toggle menu" aria-expanded="false" aria-controls="mobileMenu" class="lg:hidden w-9 h-9 sm:w-10 sm:h-10 flex items-center justify-center border border-line rounded-full bg-white shrink-0 hover:border-ink hover:bg-paper transition">
+          <svg class="align-middle shrink-0 shrink-0 menu-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+          <svg class="align-middle shrink-0 shrink-0 close-icon hidden" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6L6 18M6 6l12 12"/></svg>
+        </button>
+        <a href="index.html" class="flex items-center gap-2 sm:gap-3 min-w-0">
+          <div class="w-8 h-8 sm:w-9 sm:h-9 bg-ink text-white flex items-center justify-center font-bold text-[10px] sm:text-[11px] shrink-0 rounded-[8px] sm:rounded-none">SC</div>
+          <div class="leading-none min-w-0 hidden sm:block">
+            <div class="font-bold text-xl tracking-tight leading-none truncate">STICKCRAFT</div>
+            <div class="text-[10px] tracking-[0.18em] text-muted uppercase font-semibold">Business Labels Studio • Est. 2018</div>
+          </div>
+          <div class="leading-none min-w-0 sm:hidden">
+            <div class="font-bold text-[16px] tracking-tight leading-none">STICKCRAFT</div>
+            <div class="text-[9px] tracking-wide text-muted uppercase font-semibold leading-none">Labels Studio</div>
+          </div>
+        </a>
+      </div>
+      <!-- Center: desktop nav -->
+      <nav class="hidden lg:flex items-center gap-6 text-sm font-medium">
+        <a data-nav href="index.html" class="hover:text-accent transition">Home</a>
+        <a data-nav href="shop.html" class="hover:text-accent transition">Catalog</a>
+        <a data-nav href="shop.html?cat=Custom%20Die-Cut" class="hover:text-accent transition">Shapes</a>
+        <a data-nav href="custom.html" class="group bg-ink text-white px-4 py-2 rounded-full hover:bg-black transition">Custom Builder</a>
+      </nav>
+      <!-- Right: actions -->
+      <div class="flex items-center gap-1.5 sm:gap-2 shrink-0">
+        <button onclick="openSearch()" class="w-9 h-9 sm:w-10 sm:h-10 rounded-full border border-line bg-white hover:border-ink flex items-center justify-center transition" aria-label="Search"><svg class="align-middle shrink-0 shrink-0" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="7"/><path d="M20 20L16 16"/></svg></button>
+        <button onclick="openCartDrawer()" class="group relative w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-ink text-white flex items-center justify-center shrink-0 hover:bg-black transition" aria-label="Cart"><svg class="align-middle shrink-0 shrink-0" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 6h15l-1.5 9H7z"/><path d="M6 6L5 2H2"/><circle cx="9" cy="20" r="1.8"/><circle cx="18" cy="20" r="1.8"/></svg><span data-cart-count class="hidden absolute -top-1 -right-1 bg-accent text-white text-[10px] min-w-[18px] h-[18px] px-1 rounded-full flex items-center justify-center font-bold">0</span></button>
+        <a href="admin/index.html" class="group hidden lg:inline-flex text-xs font-bold uppercase tracking-widest border border-line px-3 py-2 rounded-full hover:bg-ink hover:text-white transition">Admin</a>
+      </div>
+    </div>
+  </div>
+  <!-- Mobile menu panel -->
+  <div id="mobileMenu" class="hidden lg:hidden absolute top-full left-0 right-0 bg-white border-t border-line shadow-xl max-h-[calc(100vh-56px)] sm:max-h-[calc(100vh-64px)] overflow-y-auto">
+    <div class="px-4 py-4 space-y-1 max-w-[1440px] mx-auto">
+      <a href="index.html" class="flex items-center justify-between py-3 px-3 rounded-xl hover:bg-paper font-medium">Home <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12h14M12 5l7 7-7 7'/%3E%3C/svg%3E" alt="→" class="w-3.5 h-3.5 shrink-0 align-middle inline-block"></a>
+      <a href="shop.html" class="flex items-center justify-between py-3 px-3 rounded-xl hover:bg-paper font-medium bg-paper border border-line">Catalog — All Stickers <span class="text-xs bg-ink text-white px-2 py-1 rounded-full">22</span></a>
+      <div class="grid grid-cols-2 gap-2 py-2">
+        <a href="shop.html?cat=Business%20Branding" class="py-2.5 px-3 rounded-xl bg-paper border border-line text-sm font-medium text-center">Branding</a>
+        <a href="shop.html?cat=Product%20Labels" class="py-2.5 px-3 rounded-xl bg-paper border border-line text-sm font-medium text-center">Labels</a>
+        <a href="shop.html?cat=Packaging" class="py-2.5 px-3 rounded-xl bg-paper border border-line text-sm font-medium text-center">Packaging</a>
+        <a href="shop.html?cat=Promo%20&%20Safety" class="py-2.5 px-3 rounded-xl bg-paper border border-line text-sm font-medium text-center">Promo</a>
+      </div>
+      <a href="custom.html" class="flex items-center justify-between py-3 px-3 rounded-xl bg-ink text-white font-semibold mt-2">Custom Builder — Any Shape <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12h14M12 5l7 7-7 7'/%3E%3C/svg%3E" alt="→" class="w-3.5 h-3.5 shrink-0 align-middle inline-block"></a>
+      <a href="admin/index.html" class="flex items-center justify-between py-3 px-3 rounded-xl hover:bg-paper text-muted border-t border-line mt-3 pt-4">Admin Panel <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12h14M12 5l7 7-7 7'/%3E%3C/svg%3E" alt="→" class="w-3.5 h-3.5 shrink-0 align-middle inline-block"></a>
+      <div class="grid grid-cols-2 gap-2 pt-3">
+        <a href="tel:+919999999999" class="bg-ink text-white text-center py-3 rounded-full text-sm font-semibold">Call Us</a>
+        <a href="custom.html" class="border border-ink text-center py-3 rounded-full text-sm font-semibold">Get Quote</a>
+      </div>
+    </div>
+  </div>
+</header>
+<div id="mobileBackdrop" class="hidden lg:hidden fixed inset-0 top-[56px] sm:top-[64px] bg-black/30 backdrop-blur-sm z-30" onclick="closeMobileMenu()"></div>
+
+<div class="max-w-[1440px] mx-auto px-4 lg:px-6 pt-6">
+  <div class="text-xs text-muted"><a href="index.html" class="hover:text-ink">Home</a> <span class="mx-2">/</span> <span class="text-ink font-medium">Catalog</span></div>
+  <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-4 mt-3">
+    <h1 class="font-serif text-4xl lg:text-5xl">Catalog <span id="catLabel" class="italic text-muted font-light"></span></h1>
+    <div class="flex items-center gap-3">
+      <span id="resultCount" class="text-sm text-muted">0 products</span>
+      <a href="custom.html" class="hidden sm:inline-flex items-center gap-2 bg-ink text-white px-4 py-2 rounded-full text-sm font-semibold">Need any shape? Build Custom <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12h14M12 5l7 7-7 7'/%3E%3C/svg%3E" alt="→" class="w-3.5 h-3.5 shrink-0 align-middle inline-block"></a>
+    </div>
+  </div>
+  <div class="mt-3 flex flex-wrap gap-2 text-xs break-words">
+    <span class="bg-paper border px-3 py-1.5 rounded-full">Circle • Square • Rectangle</span>
+    <span class="bg-paper border px-3 py-1.5 rounded-full">Text Cut-Out • Hex • Star</span>
+    <span class="bg-paper border px-3 py-1.5 rounded-full">Die-Cut • Kiss-Cut • Roll</span>
+    <span class="bg-paper border px-3 py-1.5 rounded-full">Any colour & pattern</span>
+  </div>
+</div>
+
+<div class="max-w-[1440px] mx-auto px-4 lg:px-6 mt-6 flex flex-col lg:flex-row gap-6">
+  <button id="filterToggle" class="lg:hidden w-full border border-line rounded-full py-3 font-semibold">Filters & Sort ▾</button>
+  <aside id="filterPanel" class="hidden lg:block w-full lg:w-[310px] flex-shrink-0">
+    <div class="lg:sticky lg:top-[88px] space-y-6 bg-paper lg:bg-transparent rounded-2xl p-5 lg:p-0 border lg:border-0">
+      <div>
+        <label class="text-xs font-bold uppercase tracking-widest">Search</label>
+        <div class="mt-2 flex items-center gap-2 border bg-white rounded-full px-4 py-2.5"><svg class="align-middle shrink-0 shrink-0" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="7"/><path d="M20 20L16 16"/></svg><input id="shopSearch" type="text" placeholder="Search circle, text cut, holo..." class="flex-1 outline-none text-sm bg-transparent"></div>
+      </div>
+      <div>
+        <div class="text-xs font-bold uppercase tracking-widest">Category</div>
+        <div id="catFilters" class="mt-3 space-y-2"></div>
+      </div>
+      <div>
+        <div class="text-xs font-bold uppercase tracking-widest">Material & Pattern</div>
+        <div id="materialFilters" class="mt-3 flex flex-wrap gap-2"></div>
+      </div>
+      <div>
+        <div class="text-xs font-bold uppercase tracking-widest">Shape — what you see on product</div>
+        <div id="shapeFilters" class="mt-3 flex flex-wrap gap-2"></div>
+        <div class="mt-2 text-xs text-muted">Tip: real business photos — click shape to filter</div>
+      </div>
+      <div>
+        <div class="text-xs font-bold uppercase tracking-widest">Price (per 100 pcs)</div>
+        <div class="mt-3 space-y-2 text-sm">
+          <label class="flex items-center gap-2"><input type="radio" name="price" value="all" checked> All</label>
+          <label class="flex items-center gap-2"><input type="radio" name="price" value="0-600"> Under ₹600</label>
+          <label class="flex items-center gap-2"><input type="radio" name="price" value="600-1200"> ₹600 – ₹1,200</label>
+          <label class="flex items-center gap-2"><input type="radio" name="price" value="1200-2000"> ₹1,200 – ₹2,000</label>
+          <label class="flex items-center gap-2"><input type="radio" name="price" value="2000-99999"> Over ₹2,000</label>
+        </div>
+      </div>
+      <div><label class="flex items-center gap-2 text-sm"><input type="checkbox" id="rating4"> 4.8<svg class="align-middle shrink-0 shrink-0" width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg> & above</label></div>
+      <div>
+        <div class="text-xs font-bold uppercase tracking-widest">Tag</div>
+        <div class="mt-3 flex flex-wrap gap-2">
+          <button data-badge="Bestseller" class="badgeBtn border rounded-full px-3 py-1 text-xs bg-white">Bestseller</button>
+          <button data-badge="New In" class="badgeBtn border rounded-full px-3 py-1 text-xs bg-white">New In</button>
+          <button data-badge="Premium" class="badgeBtn border rounded-full px-3 py-1 text-xs bg-white">Premium</button>
+        </div>
+      </div>
+      <button onclick="clearFilters()" class="w-full border bg-white rounded-full py-2.5 text-sm font-semibold">Clear all</button>
+      <div class="bg-ink text-white rounded-2xl p-4">
+        <div class="text-sm font-semibold">Real business stickers</div>
+        <div class="text-xs text-white/60 mt-1">Photos from actual shops, D2C & kraft packs — not mockups.</div>
+        <a href="custom.html" class="flex items-center justify-center gap-2 mt-3 bg-white text-ink text-center py-2 rounded-full text-sm font-semibold">Build Custom <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12h14M12 5l7 7-7 7'/%3E%3C/svg%3E" alt="→" class="w-3.5 h-3.5 shrink-0 align-middle inline-block"></a>
+      </div>
+    </div>
+  </aside>
+
+  <div class="flex-1 min-w-0 break-words">
+    <div class="flex flex-wrap items-center justify-between gap-3 bg-paper rounded-2xl px-4 py-3">
+      <div class="flex items-center gap-2">
+        <span class="text-xs font-bold uppercase tracking-widest hidden sm:inline">Sort:</span>
+        <select id="sortSelect" class="bg-white border border-line rounded-full px-4 py-2 text-sm outline-none">
+          <option value="featured">Featured</option>
+          <option value="price-asc">Price: Low to High</option>
+          <option value="price-desc">Price: High to Low</option>
+          <option value="rating">Highest Rated</option>
+          <option value="newest">Newest</option>
+        </select>
+      </div>
+      <div class="flex items-center gap-2">
+        <span class="text-xs text-muted hidden sm:inline">View:</span>
+        <button id="gridBtn" class="w-9 h-9 rounded-full bg-ink text-white flex items-center justify-center"><svg class="align-middle shrink-0 shrink-0" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg></button>
+        <button id="listBtn" class="w-9 h-9 rounded-full border bg-white flex items-center justify-center"><svg class="align-middle shrink-0 shrink-0" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+      </div>
+    </div>
+
+    <div id="productGrid" class="grid grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-6 mt-6"></div>
+    <div id="emptyState" class="hidden text-center py-20">
+      <div class="w-20 h-20 rounded-full bg-paper flex items-center justify-center mx-auto"><svg class="align-middle shrink-0 shrink-0" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="7"/><path d="M20 20L16 16"/></svg></div>
+      <div class="font-serif text-2xl mt-4">No stickers found</div>
+      <p class="text-sm text-muted mt-1">Try another shape or material.</p>
+      <button onclick="clearFilters()" class="mt-6 bg-ink text-white px-6 py-3 rounded-full font-semibold">Clear Filters</button>
+    </div>
+  </div>
+</div>
+
+<footer class="max-w-[1440px] mx-auto px-4 lg:px-6 mt-12 border-t border-line pt-8 pb-8 text-center text-xs text-muted">© 2026 STICKCRAFT • Any shape, any colour • Demo by <a href="https://networkbuilder.in" class="underline">Network Builder</a></footer>
+
+<div id="searchOverlay" class="hidden fixed inset-0 z-[60] bg-white/95 backdrop-blur">
+  <div class="max-w-2xl mx-auto px-4 pt-8">
+    <div class="flex items-center gap-3"><div class="flex-1 flex items-center gap-3 border border-ink rounded-full px-5 py-3 bg-white"><svg class="align-middle shrink-0 shrink-0" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="7"/><path d="M20 20L16 16"/></svg><input id="searchInput" type="text" placeholder="Search circle, text cut, holo..." class="flex-1 outline-none text-sm" oninput="renderSearchResults(this.value)"></div><button onclick="closeSearch()" class="w-11 h-11 rounded-full bg-ink text-white flex items-center justify-center"><svg class="align-middle shrink-0 shrink-0" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg></button></div>
+    <div id="searchResults" class="mt-6 max-h-[60vh] overflow-auto divide-y divide-line border border-line rounded-2xl bg-white"></div>
+  </div>
+</div>
+
+<div id="cartDrawer" class="hidden fixed inset-0 z-[60]">
+  <div class="absolute inset-0 bg-black/40" onclick="closeCartDrawer()"></div>
+  <div class="absolute right-0 top-0 h-full w-full max-w-md bg-white flex flex-col">
+    <div class="px-6 py-5 border-b border-line flex items-center justify-between"><div class="font-semibold">Your Cart <span id="cartDrawerCountLabel" class="text-muted font-normal"></span></div><button onclick="closeCartDrawer()" class="w-9 h-9 rounded-full border flex items-center justify-center"><svg class="align-middle shrink-0 shrink-0" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg></button></div>
+    <div id="cartDrawerItems" class="flex-1 overflow-auto px-6"></div>
+    <div id="cartDrawerFooter" class="hidden border-t border-line p-6 bg-paper"><div class="flex justify-between text-sm"><span class="text-muted">Subtotal</span><span id="cartDrawerSubtotal" class="font-semibold"></span></div><a href="cart.html" class="mt-4 block bg-ink text-white text-center py-3.5 rounded-full font-semibold">View Cart & Checkout <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12h14M12 5l7 7-7 7'/%3E%3C/svg%3E" alt="→" class="w-3.5 h-3.5 shrink-0 align-middle inline-block"></a></div>
+  </div>
+</div>
+
+<script src="app.js"></script>
+<script>
+const params=new URLSearchParams(location.search);
+let activeCat=params.get('cat')||'All';
+let activeMaterial=null;
+let activeShape=null;
+let activeBadge=null;
+let gridMode='grid';
+const categories=['All','Business Branding','Product Labels','Packaging','Promo & Safety','Custom Die-Cut'];
+const materials=['Vinyl Gloss','Vinyl Matte','Transparent','Holographic','Kraft Paper','Chrome','Paper Matte'];
+const shapes=['Circle','Square','Rectangle','Text Cut','Hexagon','Star','Die-Cut','Kiss-Cut Sheet','Roll'];
+
+const catContainer=document.getElementById('catFilters');
+catContainer.innerHTML=categories.map(c=>`
+  <label class="flex items-center justify-between text-sm cursor-pointer">
+    <span class="flex items-center gap-2"><input type="radio" name="cat" value="${c}" ${c===activeCat?'checked':''}> ${c}</span>
+    <span class="text-xs text-muted">${c==='All'? getProducts().length : getProducts().filter(p=>p.category===c).length}</span>
+  </label>
+`).join('');
+const matContainer=document.getElementById('materialFilters');
+matContainer.innerHTML=materials.map(m=>`<button data-mat="${m}" class="matBtn border bg-white rounded-full px-3 py-1.5 text-xs">${m}</button>`).join('');
+const shapeContainer=document.getElementById('shapeFilters');
+shapeContainer.innerHTML=shapes.map(s=>`<button data-shape="${s}" class="shapeBtn border bg-white rounded-full px-3 py-1.5 text-xs">${s}</button>`).join('');
+
+function realImage(p){
+  // fallback to REAL_IMAGES if image fails — handled by app.js error listener
+  return p.image;
+}
+
+function getFiltered(){
+  let list=getProducts();
+  const q=document.getElementById('shopSearch').value.toLowerCase().trim() || (params.get('q')||'').toLowerCase();
+  const urlQ=params.get('q'); if(urlQ) document.getElementById('shopSearch').value=urlQ;
+  if(activeCat!=='All') list=list.filter(p=>p.category===activeCat);
+  if(q) list=list.filter(p=> p.name.toLowerCase().includes(q) || p.category.toLowerCase().includes(q) || p.material.toLowerCase().includes(q) || p.shape.toLowerCase().includes(q) || p.desc.toLowerCase().includes(q));
+  const priceVal=document.querySelector('input[name="price"]:checked').value;
+  if(priceVal!=='all'){ const [min,max]=priceVal.split('-').map(Number); list=list.filter(p=>p.price>=min && p.price<=max); }
+  if(document.getElementById('rating4').checked) list=list.filter(p=>p.rating>=4.8);
+  if(activeBadge) list=list.filter(p=>p.badge===activeBadge);
+  if(activeMaterial) list=list.filter(p=>p.material===activeMaterial);
+  if(activeShape) list=list.filter(p=>p.shape===activeShape);
+  const sort=document.getElementById('sortSelect').value;
+  if(sort==='price-asc') list=[...list].sort((a,b)=>a.price-b.price);
+  if(sort==='price-desc') list=[...list].sort((a,b)=>b.price-a.price);
+  if(sort==='rating') list=[...list].sort((a,b)=>b.rating-a.rating);
+  if(sort==='newest') list=[...list].reverse();
+  return list;
+}
+
+function render(){
+  const list=getFiltered();
+  document.getElementById('resultCount').textContent=`${list.length} products`;
+  document.getElementById('catLabel').textContent=activeCat!=='All'?`— ${activeCat}`:'';
+  const grid=document.getElementById('productGrid');
+  const empty=document.getElementById('emptyState');
+  if(!list.length){ grid.innerHTML=''; empty.classList.remove('hidden'); return; }
+  empty.classList.add('hidden');
+  grid.className = gridMode==='grid' ? 'grid grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-6 mt-6' : 'grid grid-cols-1 gap-4 mt-6';
+  grid.innerHTML=list.map(p=>{
+    const disc=p.mrp>p.price?`<span class="text-xs bg-ink text-white px-2 py-1 rounded-full">-${discountPercent(p.mrp,p.price)}%</span>`:'';
+    const badge=p.badge?`<span class="absolute top-3 left-3 bg-white text-xs font-bold uppercase tracking-widest px-2.5 py-1 rounded-full border">${p.badge}</span>`:'';
+    const dots=(p.colors||[]).slice(0,3).map(c=>{
+      if(c==="transparent") return `<span class="w-3 h-3 rounded-full border border-dashed bg-white/60"></span>`;
+      if(c==="holo") return `<span class="w-3 h-3 rounded-full border" style="background: linear-gradient(135deg,#a5b4fc,#f0abfc,#fde68a)"></span>`;
+      return `<span class="w-3 h-3 rounded-full border border-white shadow" style="background:${c}"></span>`;
+    }).join('');
+    if(gridMode==='list'){
+      return `<a href="product.html?id=${p.id}" class="flex gap-4 bg-paper rounded-2xl p-3 group border border-line">
+        <img src="${realImage(p)}" class="w-32 h-32 rounded-xl object-cover flex-shrink-0 bg-white border" loading="lazy" alt="${p.name}">
+        <div class="flex-1 min-w-0 break-words py-1">
+          <div class="text-xs uppercase tracking-widest text-muted">${p.category} • ${p.material} • ${p.shape}</div>
+          <div class="font-medium">${p.name}</div>
+          <div class="text-xs text-muted line-clamp-2 mt-1">${p.desc}</div>
+          <div class="flex items-center gap-2 mt-2"><span class="font-semibold">${formatINR(p.price)}<span class="text-xs font-normal text-muted"> /100</span></span><span class="text-xs line-through text-muted">${formatINR(p.mrp)}</span>${disc}</div>
+          <div class="flex gap-1.5 mt-2">${dots}</div>
+        </div>
+        <span class="self-center w-9 h-9 rounded-full bg-white border flex items-center justify-center group-hover:bg-ink group-hover:text-white"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12h14M12 5l7 7-7 7'/%3E%3C/svg%3E" alt="→" class="w-3.5 h-3.5 shrink-0 align-middle inline-block"></span>
+      </a>`;
+    }
+    return `<a href="product.html?id=${p.id}" class="group block">
+      <div class="relative aspect-[4/3] rounded-[20px] overflow-hidden bg-white border border-line">
+        <img src="${realImage(p)}" class="w-full h-full object-cover group-hover:scale-105 transition duration-700" alt="${p.name}" loading="lazy">
+        ${badge}
+        <button onclick="event.preventDefault(); toggleWishlist(${p.id}); showToast(isWishlisted(${p.id})?'Saved':'Removed'); render()" class="absolute top-3 right-3 w-8 h-8 rounded-full bg-white border flex items-center justify-center text-sm shadow">${isWishlisted(p.id)?'<svg class="align-middle shrink-0 shrink-0" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1.8"><path d="M12 21s-6-4.5-8.5-8.2A5 5 0 0 1 12 5a5 5 0 0 1 8.5 7.8C18 16.5 12 21 12 21z"/></svg>':'<svg class="align-middle shrink-0 shrink-0" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21s-6-4.5-8.5-8.2A5 5 0 0 1 12 5a5 5 0 0 1 8.5 7.8C18 16.5 12 21 12 21z"/></svg>'}</button>
+        <div class="absolute bottom-3 left-3 flex gap-1">${dots}</div>
+        <div class="absolute bottom-3 right-3 bg-white/95 backdrop-blur text-xs font-bold px-2.5 py-1 rounded-full border shadow">${p.shape}</div>
+      </div>
+      <div class="pt-3">
+        <div class="text-xs uppercase tracking-widest text-muted">${p.category} • ${p.material}</div>
+        <div class="font-medium leading-tight">${p.name}</div>
+        <div class="flex items-center gap-2 mt-1"><span class="font-semibold">${formatINR(p.price)}<span class="text-xs font-normal text-muted"> /100 pcs</span></span><span class="text-xs line-through text-muted">${formatINR(p.mrp)}</span>${disc}</div>
+        <div class="text-xs text-muted mt-1"><svg class="align-middle shrink-0 shrink-0" width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg> ${p.rating} (${p.reviews}) • ${p.finish}</div>
+      </div>
+    </a>`;
+  }).join('');
+}
+
+document.getElementById('shopSearch').addEventListener('input', render);
+document.querySelectorAll('input[name="cat"]').forEach(el=> el.addEventListener('change', e=>{ activeCat=e.target.value; history.replaceState(null,'', activeCat==='All'?'shop.html':`shop.html?cat=${encodeURIComponent(activeCat)}`); render(); }));
+document.querySelectorAll('input[name="price"]').forEach(el=> el.addEventListener('change', render));
+document.getElementById('rating4').addEventListener('change', render);
+document.getElementById('sortSelect').addEventListener('change', render);
+document.querySelectorAll('.badgeBtn').forEach(btn=>{
+  btn.addEventListener('click', ()=>{
+    const b=btn.dataset.badge;
+    if(activeBadge===b){ activeBadge=null; btn.classList.remove('bg-ink','text-white'); btn.classList.add('bg-white'); }
+    else { document.querySelectorAll('.badgeBtn').forEach(x=>{x.classList.remove('bg-ink','text-white'); x.classList.add('bg-white')}); activeBadge=b; btn.classList.add('bg-ink','text-white'); btn.classList.remove('bg-white'); }
+    render();
+  });
+});
+document.querySelectorAll('.matBtn').forEach(btn=>{
+  btn.addEventListener('click', ()=>{
+    const m=btn.dataset.mat;
+    if(activeMaterial===m){ activeMaterial=null; btn.classList.remove('bg-ink','text-white'); }
+    else { document.querySelectorAll('.matBtn').forEach(x=>x.classList.remove('bg-ink','text-white')); activeMaterial=m; btn.classList.add('bg-ink','text-white'); }
+    render();
+  });
+});
+document.querySelectorAll('.shapeBtn').forEach(btn=>{
+  btn.addEventListener('click', ()=>{
+    const s=btn.dataset.shape;
+    if(activeShape===s){ activeShape=null; btn.classList.remove('bg-ink','text-white'); }
+    else { document.querySelectorAll('.shapeBtn').forEach(x=>x.classList.remove('bg-ink','text-white')); activeShape=s; btn.classList.add('bg-ink','text-white'); }
+    render();
+  });
+});
+document.getElementById('filterToggle').addEventListener('click', ()=> document.getElementById('filterPanel').classList.toggle('hidden'));
+document.getElementById('gridBtn').addEventListener('click', ()=>{ gridMode='grid'; document.getElementById('gridBtn').className='w-9 h-9 rounded-full bg-ink text-white flex items-center justify-center'; document.getElementById('listBtn').className='w-9 h-9 rounded-full border bg-white flex items-center justify-center'; render(); });
+document.getElementById('listBtn').addEventListener('click', ()=>{ gridMode='list'; document.getElementById('listBtn').className='w-9 h-9 rounded-full bg-ink text-white flex items-center justify-center'; document.getElementById('gridBtn').className='w-9 h-9 rounded-full border bg-white flex items-center justify-center'; render(); });
+function clearFilters(){
+  activeCat='All'; activeBadge=null; activeMaterial=null; activeShape=null;
+  document.querySelectorAll('input[name="cat"]').forEach((el,i)=> el.checked=i===0);
+  document.querySelector('input[name="price"][value="all"]').checked=true;
+  document.getElementById('rating4').checked=false;
+  document.getElementById('shopSearch').value='';
+  document.querySelectorAll('.badgeBtn,.matBtn,.shapeBtn').forEach(x=>x.classList.remove('bg-ink','text-white'));
+  history.replaceState(null,'','shop.html'); params.delete('q'); render();
+}
+if(params.get('cat')) activeCat=params.get('cat');
+render();
+</script>
+</body>
+</html>
