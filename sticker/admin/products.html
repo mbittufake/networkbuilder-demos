@@ -87,7 +87,7 @@
         <select id="catFilter" class="border rounded-full px-4 py-2.5 text-sm bg-white" onchange="render()"><option value="All">All categories</option><option>Business Branding</option><option>Product Labels</option><option>Packaging</option><option>Promo & Safety</option><option>Custom Die-Cut</option></select>
         <button onclick="resetCatalog()" class="border border-line px-4 py-2.5 rounded-full text-sm font-semibold">Reset to Default</button>
       </div>
-      <div id="grid" class="grid grid-cols-1 lg:grid-cols-2 gap-4 mt-6"></div>
+      <div id="grid" class="grid grid-cols-1 lg:grid-cols-2 gap-4 mt-6 min-h-[200px]"></div>
     </main>
   </div>
 </div>
@@ -110,6 +110,8 @@ function render(){
   let filtered=list;
   if(q) filtered=filtered.filter(p=> p.name.toLowerCase().includes(q) || p.material.toLowerCase().includes(q) || p.category.toLowerCase().includes(q));
   if(cat!=='All') filtered=filtered.filter(p=>p.category===cat);
+  // Ensure all 22 show by default (no filter) - if filtered empty due to stale filter, fallback to all
+  if(!filtered.length && !q && cat==='All' && list.length) filtered=list;
   document.getElementById('countEl').textContent=filtered.length;
   document.getElementById('grid').innerHTML=filtered.map(p=>`
     <div class="bg-white border border-line rounded-2xl overflow-hidden flex flex-col sm:flex-row">
@@ -178,8 +180,9 @@ document.getElementById('form').addEventListener('submit', e=>{
   }
   saveProducts(list); closeModal(); render();
 });
-function resetCatalog(){ if(confirm('Reset to original 20 stickers?')){ localStorage.removeItem('stickcraft_products'); render(); } }
+function resetCatalog(){ if(confirm('Reset to original 22 stickers?')){ localStorage.removeItem('stickcraft_products'); render(); } }
 render();
+document.addEventListener('DOMContentLoaded', render);
 </script>
 
 <script>
