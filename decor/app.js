@@ -86,7 +86,7 @@ function showToast(msg){
     t.className='fixed bottom-6 left-1/2 -translate-x-1/2 z-[99] bg-[#1E1A16] text-[#FFFCF5] text-sm font-medium px-5 py-3 rounded-full shadow-2xl flex items-center gap-3 opacity-0 translate-y-4 transition-all duration-300 pointer-events-none';
     document.body.appendChild(t);
   }
-  t.innerHTML = `<span class="w-6 h-6 rounded-full bg-[#D87A4A] text-white flex items-center justify-center font-bold">✓</span> ${msg}`;
+  t.innerHTML = `<span class="w-6 h-6 rounded-full bg-[#D87A4A] text-white flex items-center justify-center font-bold"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 13l4 4L19 7"/></svg></span> ${msg}`;
   t.classList.remove('opacity-0','translate-y-4');
   t.classList.add('opacity-100','translate-y-0');
   clearTimeout(t._t);
@@ -155,7 +155,7 @@ function renderCartDrawer(){
   const foot=document.getElementById('cartDrawerFooter');
   if(!wrap) return;
   if(!cart.length){
-    wrap.innerHTML=`<div class="text-center py-16"><div class="w-20 h-20 rounded-full bg-[#FFF6EC] border border-[#EADBC8] flex items-center justify-center mx-auto text-2xl">🧶</div><div class="font-serif text-xl mt-3 text-[#1E1A16]">Your studio is empty</div><p class="text-sm text-[#6B5E55] mt-1">Pick a kit — make it this weekend.</p><a href="shop.html" class="inline-flex mt-6 bg-[#1E1A16] text-white px-6 py-3 rounded-full text-sm font-semibold">Browse Kits</a></div>`;
+    wrap.innerHTML=`<div class="text-center py-16"><div class="w-20 h-20 rounded-full bg-[#FFF6EC] border border-[#EADBC8] flex items-center justify-center mx-auto text-2xl"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M12 3a9 9 0 0 1 5.5 16.5"/><path d="M12 3a9 9 0 0 0-5.5 16.5"/><path d="M3 12a9 9 0 0 1 16.5-5.5"/><path d="M3 12a9 9 0 0 0 16.5 5.5"/></svg></div><div class="font-serif text-xl mt-3 text-[#1E1A16]">Your studio is empty</div><p class="text-sm text-[#6B5E55] mt-1">Pick a kit — make it this weekend.</p><a href="shop.html" class="inline-flex mt-6 bg-[#1E1A16] text-white px-6 py-3 rounded-full text-sm font-semibold">Browse Kits</a></div>`;
     foot?.classList.add('hidden'); return;
   }
   foot?.classList.remove('hidden');
@@ -175,7 +175,7 @@ function renderCartDrawer(){
           <div class="font-semibold text-sm">${formatINR(i.price*i.qty)}</div>
         </div>
       </div>
-      <button onclick="removeFromCart('${i.key}');renderCartDrawer();showToast('Removed')" class="self-start text-[#9C8E84] hover:text-[#1E1A16]">✕</button>
+      <button onclick="removeFromCart('${i.key}');renderCartDrawer();showToast('Removed')" class="self-start text-[#9C8E84] hover:text-[#1E1A16]"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6L6 18M6 6l12 12"/></svg></button>
     </div>
   `).join('');
   document.getElementById('cartDrawerSubtotal').textContent=formatINR(cartSubtotal());
