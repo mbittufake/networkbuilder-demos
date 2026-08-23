@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Workshops — FOLKFORM Admin</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Space+Grotesk:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700&display=swap" rel="stylesheet">
+<script>tailwind.config={theme:{extend:{fontFamily:{sans:['Space Grotesk','sans-serif'],serif:['Instrument Serif','serif'],display:['Plus Jakarta Sans','sans-serif']},colors:{ink:'#1E1A16',paper:'#FFFCF5',line:'#EADBC8',clay:'#D87A4A',moss:'#6B7B5E',mustard:'#D9A441',stone:'#F5EBDC',sand:'#FFF6EC'}}}}</script>
+</head>
+<body class="bg-[#F7F0E6] text-ink antialiased">
+<div class="flex min-h-screen">
+  <aside class="hidden lg:flex w-[280px] bg-ink text-paper flex-col sticky top-0 h-screen">
+    <div class="px-6 py-6 border-b border-white/10">
+      <div class="flex items-center gap-3">
+        <div class="w-10 h-10 bg-white text-ink flex items-center justify-center rounded-xl font-display font-extrabold">FF</div>
+        <div><div class="font-display font-extrabold leading-none">FOLKFORM</div><div class="text-[11px] tracking-widest text-mustard font-bold">ADMIN • ATELIER</div></div>
+      </div>
+      <div class="mt-4 bg-white/10 border border-white/10 rounded-2xl px-3 py-2 flex items-center justify-between text-xs">
+        <span class="text-paper/60">Demo Store</span><span class="bg-mustard text-ink px-2 py-1 rounded-full font-bold text-[10px]">LIVE DEMO</span>
+      </div>
+    </div>
+    <nav class="flex-1 px-3 py-4 space-y-4 text-sm overflow-auto">
+      <div class="space-y-1">
+        <div class="text-[10px] tracking-widest font-bold text-paper/40 px-3 py-1">ATELIER</div>
+        <a href="index.html" class="flex items-center gap-3 text-paper/70 hover:text-white hover:bg-white/10 px-3 py-2.5 rounded-xl"><span>◎</span> Dashboard</a>
+        <a href="products.html" class="flex items-center gap-3 text-paper/70 hover:text-white hover:bg-white/10 px-3 py-2.5 rounded-xl"><span>▦</span> Kits & Inventory <span class="ml-auto bg-white/10 px-2 py-0.5 rounded-full text-xs">12</span></a>
+        <a href="orders.html" class="flex items-center gap-3 text-paper/70 hover:text-white hover:bg-white/10 px-3 py-2.5 rounded-xl"><span>◫</span> Orders <span class="ml-auto bg-clay text-white px-2 py-0.5 rounded-full text-xs">5 new</span></a>
+        <a href="workshops-admin.html" class="flex items-center gap-3 bg-white text-ink px-3 py-2.5 rounded-xl font-bold"><span>◐</span> Workshops <span class="ml-auto bg-clay text-white px-2 py-0.5 rounded-full text-xs">3</span></a>
+      </div>
+      <div class="space-y-1 pt-3 border-t border-white/10">
+        <div class="text-[10px] tracking-widest font-bold text-paper/40 px-3 py-1">STORE PAGES — LIVE</div>
+        <a href="../index.html" class="flex items-center gap-3 text-paper/70 hover:text-white hover:bg-white/10 px-3 py-2 rounded-xl"><span>⌂</span> Home <span class="ml-auto text-[10px] bg-white/10 px-1.5 py-0.5 rounded">→</span></a>
+        <a href="../shop.html" class="flex items-center gap-3 text-paper/70 hover:text-white hover:bg-white/10 px-3 py-2 rounded-xl"><span>▦</span> Shop — All Kits <span class="ml-auto text-[10px] bg-white/10 px-1.5 py-0.5 rounded">→</span></a>
+        <a href="../shop.html?cat=Bottle" class="flex items-center gap-3 text-paper/70 hover:text-white hover:bg-white/10 px-3 py-2 rounded-xl text-xs"><span>○</span> Bottle</a>
+        <a href="../shop.html?cat=Light" class="flex items-center gap-3 text-paper/70 hover:text-white hover:bg-white/10 px-3 py-2 rounded-xl text-xs"><span>○</span> Light</a>
+        <a href="../shop.html?cat=Flowerpot" class="flex items-center gap-3 text-paper/70 hover:text-white hover:bg-white/10 px-3 py-2 rounded-xl text-xs"><span>○</span> Flowerpot</a>
+        <a href="../shop.html?cat=Vase" class="flex items-center gap-3 text-paper/70 hover:text-white hover:bg-white/10 px-3 py-2 rounded-xl text-xs"><span>○</span> Vase</a>
+        <a href="../product.html?id=1" class="flex items-center gap-3 text-paper/70 hover:text-white hover:bg-white/10 px-3 py-2 rounded-xl"><span>◈</span> Product — Demo <span class="ml-auto text-[10px] bg-white/10 px-1.5 py-0.5 rounded">→</span></a>
+        <a href="../cart.html" class="flex items-center gap-3 text-paper/70 hover:text-white hover:bg-white/10 px-3 py-2 rounded-xl"><span>⬢</span> Cart <span class="ml-auto text-[10px] bg-white/10 px-1.5 py-0.5 rounded">→</span></a>
+        <a href="../workshops.html" class="flex items-center gap-3 text-paper/70 hover:text-white hover:bg-white/10 px-3 py-2 rounded-xl"><span>◐</span> Workshops Page <span class="ml-auto text-[10px] bg-white/10 px-1.5 py-0.5 rounded">→</span></a>
+      </div>
+    </nav>
+    <div class="p-4 border-t border-white/10">
+      <div class="bg-white text-ink rounded-2xl p-4">
+        <div class="text-xs font-bold">Visit store</div>
+        <div class="text-xs text-[#6B5E55] mt-1">See how shoppers see it</div>
+        <a href="../index.html" class="mt-3 block bg-ink text-white text-center py-2 rounded-full text-sm font-bold">Open Store →</a>
+      </div>
+      <div class="flex items-center gap-3 mt-4">
+        <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=80&h=80&fit=crop" class="w-8 h-8 rounded-full object-cover">
+        <div><div class="text-sm font-bold">Priya — Studio Lead</div><div class="text-xs text-paper/60">Jaipur • Admin</div></div>
+      </div>
+    </div>
+  </aside>
+
+  <main class="flex-1 min-w-0">
+    <div class="sticky top-0 z-20 bg-[#F7F0E6]/90 backdrop-blur border-b border-line">
+      <div class="px-4 lg:px-8 h-[64px] flex items-center justify-between">
+        <div class="flex items-center gap-3">
+          <button class="lg:hidden w-10 h-10 rounded-full bg-white border border-line flex items-center justify-center" onclick="openAdminDrawer()" aria-label="Open menu">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+          </button>
+          <div>
+            <h1 class="font-serif text-2xl leading-none">Workshops</h1>
+            <p class="text-xs text-[#6B5E55] hidden sm:block">Manage studio & online sessions — Jaipur + Zoom.</p>
+          </div>
+        </div>
+        <div class="flex items-center gap-2">
+          <span class="hidden sm:inline-flex items-center gap-2 bg-white border border-line rounded-full px-3 py-1.5 text-xs font-bold">3 upcoming • 78% filled</span>
+          <button onclick="showToast('New workshop — demo')" class="bg-ink text-white px-4 py-2 rounded-full text-sm font-bold">+ New Workshop</button>
+        </div>
+      </div>
+    </div>
+
+        <!-- Mobile left drawer overlay -->
+    <div id="mobileOverlay" class="fixed inset-0 bg-black/40 backdrop-blur-sm z-40 hidden opacity-0 transition-opacity duration-300 lg:hidden" onclick="closeAdminDrawer()"></div>
+    <!-- Mobile left drawer -->
+    <div id="mobileDrawer" class="fixed inset-y-0 left-0 z-50 w-[300px] max-w-[85vw] bg-ink text-paper flex flex-col transform -translate-x-full transition-transform duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] lg:hidden shadow-2xl">
+      <div class="px-6 py-6 border-b border-white/10 flex items-center justify-between">
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 bg-white text-ink flex items-center justify-center rounded-xl font-display font-extrabold">FF</div>
+          <div><div class="font-display font-extrabold leading-none">FOLKFORM</div><div class="text-[11px] tracking-widest text-mustard font-bold">ADMIN • ATELIER</div></div>
+        </div>
+        <button onclick="closeAdminDrawer()" class="w-9 h-9 rounded-full bg-white/10 hover:bg-white text-paper hover:text-ink flex items-center justify-center transition" aria-label="Close menu">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+        </button>
+      </div>
+      <nav class="flex-1 px-3 py-4 space-y-4 text-sm overflow-auto">
+        <div class="space-y-1">
+          <div class="text-[10px] tracking-widest font-bold text-paper/40 px-3 py-1">ATELIER</div>
+          <a href="index.html" class="flex items-center gap-3 text-paper/70 hover:text-white hover:bg-white/10 px-3 py-2.5 rounded-xl"><span>◎</span> Dashboard</a>
+          <a href="products.html" class="flex items-center gap-3 text-paper/70 hover:text-white hover:bg-white/10 px-3 py-2.5 rounded-xl"><span>▦</span> Kits & Inventory</a>
+          <a href="orders.html" class="flex items-center gap-3 text-paper/70 hover:text-white hover:bg-white/10 px-3 py-2.5 rounded-xl"><span>◫</span> Orders</a>
+          <a href="workshops-admin.html" class="flex items-center gap-3 bg-white text-ink px-3 py-2.5 rounded-xl font-bold"><span>◐</span> Workshops</a>
+        </div>
+        <div class="space-y-1 pt-3 border-t border-white/10">
+          <div class="text-[10px] tracking-widest font-bold text-paper/40 px-3 py-1">STORE PAGES — LIVE</div>
+          <a href="../index.html" class="flex items-center gap-3 text-paper/70 hover:text-white hover:bg-white/10 px-3 py-2 rounded-xl"><span>⌂</span> Home</a>
+          <a href="../shop.html" class="flex items-center gap-3 text-paper/70 hover:text-white hover:bg-white/10 px-3 py-2 rounded-xl"><span>▦</span> Shop — All Kits</a>
+          <a href="../shop.html?cat=Bottle" class="flex items-center gap-3 text-paper/60 hover:text-white px-3 py-2 rounded-xl text-xs"><span>○</span> Bottle</a>
+          <a href="../shop.html?cat=Light" class="flex items-center gap-3 text-paper/60 hover:text-white px-3 py-2 rounded-xl text-xs"><span>○</span> Light</a>
+          <a href="../shop.html?cat=Flowerpot" class="flex items-center gap-3 text-paper/60 hover:text-white px-3 py-2 rounded-xl text-xs"><span>○</span> Flowerpot</a>
+          <a href="../product.html?id=1" class="flex items-center gap-3 text-paper/70 hover:text-white hover:bg-white/10 px-3 py-2 rounded-xl"><span>◈</span> Product</a>
+          <a href="../cart.html" class="flex items-center gap-3 text-paper/70 hover:text-white hover:bg-white/10 px-3 py-2 rounded-xl"><span>⬢</span> Cart</a>
+          <a href="../workshops.html" class="flex items-center gap-3 text-paper/70 hover:text-white hover:bg-white/10 px-3 py-2 rounded-xl"><span>◐</span> Workshops Page</a>
+        </div>
+      </nav>
+      <div class="p-4 border-t border-white/10">
+        <div class="bg-white text-ink rounded-2xl p-4">
+          <div class="text-xs font-bold">Visit store</div>
+          <a href="../index.html" class="mt-3 block bg-ink text-white text-center py-2 rounded-full text-sm font-bold">Open Store →</a>
+        </div>
+        <div class="flex items-center gap-3 mt-4">
+          <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=80&h=80&fit=crop" class="w-8 h-8 rounded-full object-cover">
+          <div><div class="text-sm font-bold">Priya — Studio Lead</div><div class="text-xs text-paper/60">Jaipur • Admin</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="px-4 lg:px-8 py-6 space-y-6">
+      <div class="grid lg:grid-cols-3 gap-4" id="wsGrid"></div>
+
+      <div class="bg-white border border-line rounded-[28px] p-6">
+        <h3 class="font-bold">Detailed List</h3>
+        <div id="wsAdmin" class="mt-4 space-y-3"></div>
+        <div class="mt-6 bg-sand border border-line rounded-2xl p-4 flex items-center gap-3">
+          <div class="w-10 h-10 rounded-full bg-white border border-line flex items-center justify-center">◐</div>
+          <div class="flex-1"><div class="text-sm font-bold">Next: Macramé Arch — Live</div><div class="text-xs text-[#6B5E55]">30 Aug · Jaipur Studio · 12/16 seats · ₹1,800</div></div>
+          <a href="../workshops.html" class="hidden sm:inline-flex bg-ink text-white px-4 py-2 rounded-full text-sm font-bold">View Page →</a>
+        </div>
+      </div>
+
+      <div class="bg-ink text-paper rounded-[28px] p-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div>
+          <div class="font-bold">Private workshops for corporate?</div>
+          <div class="text-sm text-paper/60">12–60 people • Jaipur + online pan-India • kit included</div>
+        </div>
+        <a href="../workshops.html" class="bg-white text-ink px-5 py-2.5 rounded-full font-bold">Open Workshops Page →</a>
+      </div>
+
+      <div class="text-xs text-[#9C8E84] text-center pb-4">Demo admin — <a href="index.html" class="underline font-bold">Back to Dashboard</a></div>
+    </div>
+  </main>
+</div>
+
+<script src="../app.js"></script>
+<script>
+function renderWSAdmin(){
+  const list=getWorkshops();
+  document.getElementById('wsAdmin').innerHTML = list.map(w=>`
+    <div class="flex items-center justify-between border border-line rounded-xl px-3 py-2 bg-sand"><div><div class="font-bold text-xs">${w.title}</div><div class="text-xs text-[#6B5E55]">${w.date} • ${w.seats}</div></div><span class="text-xs bg-white border border-line px-2 py-1 rounded-full font-bold">${w.status}</span></div>
+  `).join('');
+  document.getElementById('wsGrid').innerHTML = list.map(w=>`
+    <div class="bg-white border border-line rounded-[28px] p-6 flex flex-col">
+      <div class="flex items-center justify-between"><span class="text-[11px] font-bold uppercase tracking-widest bg-sand border border-line px-2.5 py-1 rounded-full">${w.id} • ${w.status}</span><span class="text-xs font-bold">${w.seats} seats</span></div>
+      <h3 class="font-serif text-2xl leading-tight mt-3">${w.title}</h3>
+      <div class="text-sm text-[#6B5E55] mt-1">${w.date}</div>
+      <div class="mt-4 flex items-end justify-between">
+        <div><div class="font-extrabold text-xl">${formatINR(w.price)}</div><div class="text-xs text-[#6B5E55]">kit included</div></div>
+        <button onclick="showToast('Seat reserved — demo')" class="bg-ink text-white px-5 py-2.5 rounded-full text-sm font-bold hover:bg-black">Manage →</button>
+      </div>
+    </div>
+  `).join('');
+}
+renderWSAdmin();
+
+function openAdminDrawer(){
+  const d=document.getElementById('mobileDrawer');
+  const o=document.getElementById('mobileOverlay');
+  if(!d||!o) return;
+  o.classList.remove('hidden');
+  requestAnimationFrame(()=>{ o.classList.remove('opacity-0'); d.classList.remove('-translate-x-full'); });
+  document.body.style.overflow='hidden';
+}
+function closeAdminDrawer(){
+  const d=document.getElementById('mobileDrawer');
+  const o=document.getElementById('mobileOverlay');
+  if(!d||!o) return;
+  d.classList.add('-translate-x-full');
+  o.classList.add('opacity-0');
+  setTimeout(()=>o.classList.add('hidden'),300);
+  document.body.style.overflow='';
+}
+document.addEventListener('keydown',e=>{ if(e.key==='Escape') closeAdminDrawer(); });
+</script>
+</body>
+</html>

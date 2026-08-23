@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shop Kits — FOLKFORM DIY Atelier</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600&family=Instrument+Serif:ital@0;1&family=Space+Grotesk:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+<script>
+tailwind.config={
+  theme:{ extend:{ fontFamily:{ sans:['Space Grotesk','sans-serif'], serif:['Instrument Serif','serif'], display:['Plus Jakarta Sans','sans-serif'], hand:['Caveat','cursive'] }, colors:{ ink:'#1E1A16', paper:'#FFFCF5', line:'#EADBC8', clay:'#D87A4A', moss:'#6B7B5E', mustard:'#D9A441', stone:'#F5EBDC', sand:'#FFF6EC' } } }
+}
+</script>
+</head>
+<body class="bg-paper text-ink antialiased">
+<!-- Header same -->
+<header class="sticky top-0 z-40 bg-paper/90 backdrop-blur border-b border-line">
+  <div class="max-w-[1780px] mx-auto px-3 lg:px-6">
+    <div class="flex items-center justify-between h-[68px] lg:h-[76px]">
+      <div class="flex items-center gap-3">
+        <button id="mobileMenuBtn" class="lg:hidden w-10 h-10 rounded-full border border-line flex items-center justify-center"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+        <a href="index.html" class="flex items-center gap-3">
+          <div class="w-10 h-10 bg-ink text-paper flex items-center justify-center rounded-xl font-display font-extrabold text-sm leading-none"><span class="tracking-tight">FF</span></div>
+          <div class="leading-none"><div class="font-display font-extrabold tracking-tight text-[18px]">FOLKFORM</div><div class="text-[10px] tracking-[0.24em] font-semibold text-clay -mt-0.5">DIY ATELIER • JAIPUR</div></div>
+        </a>
+        <span class="hidden xl:inline-flex ml-4 text-[11px] tracking-widest font-bold border border-line rounded-full px-3 py-1.5 bg-sand">EST. 2019 • 45K MAKERS</span>
+      </div>
+      <nav class="hidden lg:flex items-center gap-1 p-1 bg-sand border border-line rounded-full">
+        <a href="shop.html" class="px-4 py-2 rounded-full bg-ink text-white text-sm font-bold shadow-sm">All Kits</a>
+        <a href="shop.html?cat=Bottle" class="px-3 py-2 rounded-full text-sm font-bold hover:bg-white border border-transparent hover:border-line transition">Bottle</a>
+        <a href="shop.html?cat=Light" class="px-3 py-2 rounded-full text-sm font-bold hover:bg-white border border-transparent hover:border-line transition">Light</a>
+        <a href="shop.html?cat=Flowerpot" class="px-3 py-2 rounded-full text-sm font-bold hover:bg-white border border-transparent hover:border-line transition">Flowerpot</a>
+        <a href="shop.html?cat=Wall%20Hanging" class="px-3 py-2 rounded-full text-sm font-bold hover:bg-white border border-transparent hover:border-line transition hidden xl:inline">Wall Hanging</a>
+        <a href="shop.html?cat=Vase" class="px-3 py-2 rounded-full text-sm font-bold hover:bg-white border border-transparent hover:border-line transition">Vase</a>
+        <a href="shop.html?cat=Planter" class="px-3 py-2 rounded-full text-sm font-bold hover:bg-white border border-transparent hover:border-line transition hidden xl:inline">Planter</a>
+        <a href="workshops.html" class="px-3 py-2 rounded-full text-sm font-bold hover:bg-white border border-transparent hover:border-line transition flex items-center gap-1.5"><span class="w-1.5 h-1.5 bg-clay rounded-full"></span> Workshops</a>
+      </nav>
+      <div class="flex items-center gap-2">
+        <button onclick="openSearch()" class="w-10 h-10 rounded-full border border-line hover:border-ink flex items-center justify-center" aria-label="Search"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="7"/><path d="M20 20L16 16"/></svg></button>
+        <button onclick="showToast('Wishlist — demo')" class="hidden sm:flex relative w-10 h-10 rounded-full border border-line hover:border-ink items-center justify-center" aria-label="Wishlist">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21s-6-4.5-8.5-8.2A5 5 0 0 1 12 5a5 5 0 0 1 8.5 7.8C18 16.5 12 21 12 21z"/></svg>
+          <span data-wishlist-count class="hidden absolute -top-1 -right-1 bg-clay text-white text-[10px] min-w-[18px] h-[18px] px-1 rounded-full flex items-center justify-center font-bold">0</span>
+        </button>
+        <button onclick="openCartDrawer()" class="relative hidden sm:flex items-center gap-2 border border-ink rounded-full pl-1 pr-3 py-1 hover:bg-ink hover:text-white transition group">
+          <span class="w-8 h-8 rounded-full bg-ink text-white group-hover:bg-white group-hover:text-ink flex items-center justify-center"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 6h15l-1.5 9H7z"/><path d="M6 6L5 2H2"/></svg></span>
+          <span class="text-sm font-semibold">Cart</span>
+          <span data-cart-count class="hidden bg-clay text-white text-xs min-w-[20px] h-5 px-1.5 rounded-full flex items-center justify-center font-bold">0</span>
+        </button>
+        <button onclick="openCartDrawer()" class="sm:hidden relative w-10 h-10 rounded-full bg-ink text-white flex items-center justify-center"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 6h15l-1.5 9H7z"/></svg><span data-cart-count class="hidden absolute -top-1 -right-1 bg-mustard text-ink text-[10px] min-w-[18px] h-[18px] px-1 rounded-full flex items-center justify-center font-bold">0</span></button>
+        <a href="admin/index.html" class="hidden lg:inline-flex text-xs font-bold uppercase tracking-widest border border-line px-3 py-2 rounded-full hover:bg-ink hover:text-white transition">Admin</a>
+      </div>
+    </div>
+  </div>
+  <div id="mobileMenu" class="hidden lg:hidden border-t border-line bg-paper px-4 py-5 space-y-1">
+    <a href="shop.html" class="flex justify-between py-2.5 font-semibold border-b border-line">Shop All Kits <span>→</span></a>
+    <a href="shop.html?cat=Bottle" class="block py-2">Bottle • Painted & Lamp</a>
+    <a href="shop.html?cat=Light" class="block py-2">Light • Rattan Glow</a>
+    <a href="shop.html?cat=Flowerpot" class="block py-2">Flowerpot • Hangers & Planters</a>
+    <a href="shop.html?cat=Wall%20Hanging" class="block py-2">Wall Hanging • Macramé & Loom</a>
+    <a href="shop.html?cat=Vase" class="block py-2">Vase • Terracotta & Sculpt</a>
+    <a href="shop.html?cat=Planter" class="block py-2">Planter • Seagrass Basket</a>
+    <a href="workshops.html" class="block py-2 font-semibold text-clay">Workshops →</a>
+    <a href="admin/index.html" class="block py-2 text-sm text-[#6B5E55] border-t border-line mt-2 pt-3">Admin Panel →</a>
+  </div>
+</header>
+
+<!-- breadcrumb + title -->
+<section class="max-w-[1780px] mx-auto px-3 lg:px-6 pt-6">
+  <div class="flex flex-wrap items-center gap-2 text-xs">
+    <a href="index.html" class="text-[#6B5E55] hover:text-ink">Home</a><span class="text-[#9C8E84]">/</span><span class="font-bold">Shop All Kits</span>
+    <span class="ml-auto hidden sm:inline-flex items-center gap-2 bg-sand border border-line rounded-full px-3 py-1.5 text-[11px] font-bold">12 kits • All materials in box <span class="w-2 h-2 bg-emerald-500 rounded-full animate-pulse"></span></span>
+  </div>
+  <div class="mt-4 flex flex-wrap items-end justify-between gap-4">
+    <div>
+      <h1 class="font-serif text-4xl lg:text-5xl leading-none">All DIY Kits</h1>
+      <p class="text-sm text-[#6B5E55] mt-2 max-w-xl">Natural fibres, pre-cut & colour-tested. Pick a weekend, we send the box. Video guide + support.</p>
+    </div>
+    <div class="flex items-center gap-2">
+      <select id="sortSelect" onchange="renderShop()" class="bg-white border border-line rounded-full px-4 py-2.5 text-sm font-semibold outline-none">
+        <option value="popular">Most loved</option>
+        <option value="price-low">Price: low to high</option>
+        <option value="price-high">Price: high to low</option>
+        <option value="new">Newest</option>
+      </select>
+    </div>
+  </div>
+</section>
+
+<!-- Filters + grid -->
+<section class="max-w-[1780px] mx-auto px-3 lg:px-6 mt-6 grid lg:grid-cols-12 gap-6">
+  <!-- Sidebar -->
+  <aside class="lg:col-span-3 lg:sticky lg:top-[84px] h-fit space-y-4">
+    <div class="bg-sand border border-line rounded-[24px] p-5">
+      <div class="font-bold text-sm">Filter</div>
+      <div class="mt-4">
+        <div class="text-[11px] font-bold uppercase tracking-widest text-clay">Material</div>
+        <div id="catFilters" class="flex flex-wrap gap-2 mt-2"></div>
+      </div>
+      <div class="mt-5">
+        <div class="text-[11px] font-bold uppercase tracking-widest text-clay">Difficulty</div>
+        <div class="flex gap-2 mt-2">
+          <button onclick="toggleDiff('Beginner')" data-diff="Beginner" class="diff-btn border border-line px-3 py-1.5 rounded-full text-xs font-bold bg-white">Beginner</button>
+          <button onclick="toggleDiff('Intermediate')" data-diff="Intermediate" class="diff-btn border border-line px-3 py-1.5 rounded-full text-xs font-bold bg-white">Weekend</button>
+        </div>
+      </div>
+      <div class="mt-5">
+        <div class="text-[11px] font-bold uppercase tracking-widest text-clay">Price</div>
+        <div class="flex gap-2 mt-2">
+          <button onclick="setPrice('all')" data-price="all" class="price-btn bg-ink text-white px-3 py-1.5 rounded-full text-xs font-bold">All</button>
+          <button onclick="setPrice('under1500')" data-price="under1500" class="price-btn border border-line bg-white px-3 py-1.5 rounded-full text-xs font-bold">Under ₹1,500</button>
+          <button onclick="setPrice('over1500')" data-price="over1500" class="price-btn border border-line bg-white px-3 py-1.5 rounded-full text-xs font-bold">Over ₹1,500</button>
+        </div>
+      </div>
+      <button onclick="clearFilters()" class="mt-5 w-full border border-ink rounded-full py-2.5 text-sm font-bold hover:bg-ink hover:text-white transition">Clear all</button>
+      <div class="mt-4 bg-white border border-line rounded-2xl p-3 flex gap-3 items-center">
+        <div class="w-10 h-10 rounded-full bg-mustard flex items-center justify-center">🎥</div>
+        <div><div class="text-xs font-bold">Not sure? Start here</div><div class="text-xs text-[#6B5E55]">Arch + Plant Hangers = perfect first</div></div>
+      </div>
+    </div>
+
+    <div class="bg-ink text-paper rounded-[24px] p-5">
+      <div class="text-[11px] uppercase tracking-widest text-mustard font-bold">Need help picking?</div>
+      <div class="font-serif text-xl leading-tight mt-2">Chat with a maker — 10am–7pm</div>
+      <a href="#" onclick="showToast('WhatsApp: +91 90000 00000 — demo'); return false;" class="mt-4 block bg-white text-ink text-center py-3 rounded-full font-bold">WhatsApp us →</a>
+      <div class="text-xs text-paper/60 mt-2">Avg. reply 4 min</div>
+    </div>
+  </aside>
+
+  <!-- Grid -->
+  <div class="lg:col-span-9">
+    <div id="activeChips" class="flex flex-wrap gap-2 mb-4"></div>
+    <div id="shopGrid" class="grid grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-6"></div>
+    <div id="emptyState" class="hidden text-center py-16 bg-white border border-line rounded-[24px] mt-6">
+      <div class="text-4xl">🧶</div>
+      <div class="font-serif text-2xl mt-2">No kits match that</div>
+      <p class="text-sm text-[#6B5E55] mt-1">Try clearing filters — or peek at our bestseller.</p>
+      <button onclick="clearFilters()" class="mt-4 bg-ink text-white px-5 py-2.5 rounded-full text-sm font-bold">Clear filters</button>
+    </div>
+
+    <!-- bottom CTA -->
+    <div class="mt-8 rounded-[28px] bg-stone border border-line p-6 lg:p-8 flex flex-col lg:flex-row items-center justify-between gap-4">
+      <div>
+        <div class="font-serif text-2xl">Not finding your vibe?</div>
+        <p class="text-sm text-[#6B5E55] mt-1">We design custom kits for brands & weddings too — from 20 boxes.</p>
+      </div>
+      <a href="workshops.html" class="bg-ink text-white px-6 py-3 rounded-full font-bold">Enquire for custom →</a>
+    </div>
+  </div>
+</section>
+
+<footer class="max-w-[1780px] mx-auto px-3 lg:px-6 mt-10 border-t border-line pt-8 pb-8 flex flex-col lg:flex-row justify-between gap-3 text-xs text-[#9C8E84]">
+  <span>© 2026 FOLKFORM Atelier</span><a href="index.html" class="underline font-bold text-ink">← Back to home</a>
+</footer>
+
+<!-- Search / Cart drawer same as index -->
+<div id="searchOverlay" class="hidden fixed inset-0 z-[60] bg-paper/95 backdrop-blur">
+  <div class="max-w-2xl mx-auto px-4 pt-8">
+    <div class="flex items-center gap-3">
+      <div class="flex-1 flex items-center gap-3 border border-ink rounded-full px-5 py-3 bg-white">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="7"/><path d="M20 20L16 16"/></svg>
+        <input id="searchInput" type="text" placeholder="Try Bottle, Light, Flowerpot, Vase..." class="flex-1 outline-none text-sm" oninput="renderSearchResults(this.value)">
+      </div>
+      <button onclick="closeSearch()" class="w-11 h-11 rounded-full bg-ink text-white flex items-center justify-center">✕</button>
+    </div>
+    <div id="searchResults" class="mt-6 max-h-[60vh] overflow-auto divide-y divide-line border border-line rounded-2xl bg-white"></div>
+  </div>
+</div>
+
+<div id="cartDrawer" class="hidden fixed inset-0 z-[60]">
+  <div class="absolute inset-0 bg-black/40" onclick="closeCartDrawer()"></div>
+  <div class="absolute right-0 top-0 h-full w-full max-w-md bg-paper flex flex-col">
+    <div class="px-6 py-5 border-b border-line flex items-center justify-between bg-white">
+      <div class="font-bold">Your Studio <span id="cartDrawerCountLabel" class="text-[#6B5E55] font-normal"></span></div>
+      <button onclick="closeCartDrawer()" class="w-9 h-9 rounded-full border flex items-center justify-center">✕</button>
+    </div>
+    <div id="cartDrawerItems" class="flex-1 overflow-auto px-6 bg-paper"></div>
+    <div id="cartDrawerFooter" class="hidden border-t border-line p-6 bg-sand">
+      <div class="flex justify-between text-sm"><span class="text-[#6B5E55]">Subtotal</span><span id="cartDrawerSubtotal" class="font-bold"></span></div>
+      <a href="cart.html" class="mt-4 block bg-ink text-white text-center py-3.5 rounded-full font-bold">View Cart & Checkout →</a>
+    </div>
+  </div>
+</div>
+
+<script src="app.js"></script>
+<script>
+const CATS = ["Bottle","Light","Flowerpot","Wall Hanging","Vase","Planter"];
+let activeCat = new URLSearchParams(location.search).get('cat') || 'all';
+let activeDiff = null;
+let priceFilter = 'all';
+
+function buildCatFilters(){
+  const wrap=document.getElementById('catFilters');
+  const all = [`<button onclick="setCat('all')" class="${activeCat==='all'?'bg-ink text-white':'bg-white border border-line'} px-3 py-1.5 rounded-full text-xs font-bold">All</button>`];
+  const buttons = CATS.map(c=>`<button onclick="setCat('${c}')" class="${activeCat===c?'bg-ink text-white':'bg-white border border-line'} px-3 py-1.5 rounded-full text-xs font-bold">${c.split(' ')[0]}</button>`).join('');
+  wrap.innerHTML = all + buttons;
+}
+function setCat(c){ activeCat=c; buildCatFilters(); renderShop(); }
+function toggleDiff(d){
+  activeDiff = activeDiff===d ? null : d;
+  document.querySelectorAll('.diff-btn').forEach(b=>{
+    b.className = b.dataset.diff===activeDiff ? 'diff-btn bg-ink text-white px-3 py-1.5 rounded-full text-xs font-bold' : 'diff-btn border border-line bg-white px-3 py-1.5 rounded-full text-xs font-bold';
+  });
+  renderShop();
+}
+function setPrice(p){
+  priceFilter=p;
+  document.querySelectorAll('.price-btn').forEach(b=>{
+    b.className = b.dataset.price===p ? 'price-btn bg-ink text-white px-3 py-1.5 rounded-full text-xs font-bold' : 'price-btn border border-line bg-white px-3 py-1.5 rounded-full text-xs font-bold';
+  });
+  renderShop();
+}
+function clearFilters(){ activeCat='all'; activeDiff=null; priceFilter='all'; document.getElementById('sortSelect').value='popular'; buildCatFilters(); document.querySelectorAll('.diff-btn').forEach(b=>b.className='diff-btn border border-line bg-white px-3 py-1.5 rounded-full text-xs font-bold'); document.querySelectorAll('.price-btn').forEach(b=>b.className=b.dataset.price==='all'?'price-btn bg-ink text-white px-3 py-1.5 rounded-full text-xs font-bold':'price-btn border border-line bg-white px-3 py-1.5 rounded-full text-xs font-bold'); renderShop(); }
+
+function renderShop(){
+  let list=getProducts();
+  // filter
+  if(activeCat!=='all') list = list.filter(p=>p.cat===activeCat);
+  if(activeDiff) list = list.filter(p=>p.difficulty===activeDiff);
+  if(priceFilter==='under1500') list=list.filter(p=>p.price<1500);
+  if(priceFilter==='over1500') list=list.filter(p=>p.price>=1500);
+  // sort
+  const s=document.getElementById('sortSelect').value;
+  if(s==='price-low') list=[...list].sort((a,b)=>a.price-b.price);
+  if(s==='price-high') list=[...list].sort((a,b)=>b.price-a.price);
+  if(s==='new') list=[...list].reverse();
+  // chips
+  const chips=[];
+  if(activeCat!=='all') chips.push(`<span class="inline-flex items-center gap-1 bg-ink text-white px-3 py-1 rounded-full text-xs font-bold">${activeCat} <button onclick="setCat('all')">✕</button></span>`);
+  if(activeDiff) chips.push(`<span class="inline-flex items-center gap-1 bg-mustard text-ink px-3 py-1 rounded-full text-xs font-bold">${activeDiff} <button onclick="toggleDiff('${activeDiff}')">✕</button></span>`);
+  if(priceFilter!=='all') chips.push(`<span class="inline-flex items-center gap-1 bg-sand border border-line px-3 py-1 rounded-full text-xs font-bold">${priceFilter} <button onclick="setPrice('all')">✕</button></span>`);
+  document.getElementById('activeChips').innerHTML = chips.join('') + (chips.length?`<span class="text-xs text-[#9C8E84] self-center">${list.length} kits</span>`:`<span class="text-xs text-[#9C8E84] self-center">${list.length} kits</span>`);
+  const grid=document.getElementById('shopGrid');
+  const empty=document.getElementById('emptyState');
+  if(!list.length){ grid.innerHTML=''; empty.classList.remove('hidden'); return; }
+  empty.classList.add('hidden');
+  grid.innerHTML = list.map(p=>{
+    const disc = p.mrp>p.price?`-${discountPct(p.mrp,p.price)}%`:'';
+    const wish=isWishlisted(p.id);
+    return `
+    <a href="product.html?id=${p.id}" class="group block">
+      <div class="relative aspect-[4/4.6] rounded-[28px] overflow-hidden bg-sand border border-line">
+        <img src="${p.image}" class="w-full h-full object-cover group-hover:scale-105 transition duration-700" alt="${p.name}">
+        ${p.badge?`<span class="absolute top-3 left-3 bg-white text-[11px] font-bold uppercase tracking-widest px-2.5 py-1 rounded-full border border-line">${p.badge}</span>`:''}
+        ${disc?`<span class="absolute top-3 right-3 bg-ink text-white text-xs font-bold px-2.5 py-1 rounded-full">${disc}</span>`:''}
+        <button onclick="event.preventDefault(); toggleWishlist(${p.id}); showToast(isWishlisted(${p.id})?'Added ♡':'Removed'); renderShop();" class="absolute bottom-3 right-3 w-9 h-9 rounded-full bg-white border border-line flex items-center justify-center text-sm ${wish?'text-clay':''}">${wish?'♥':'♡'}</button>
+      </div>
+      <div class="pt-3">
+        <div class="text-[11px] uppercase tracking-widest text-[#9C8E84]">${p.cat} • ${p.difficulty} • ${p.time}</div>
+        <div class="font-bold leading-tight line-clamp-1">${p.name}</div>
+        <div class="text-xs text-[#6B5E55] truncate">${p.includes}</div>
+        <div class="flex items-center gap-2 mt-2"><span class="font-extrabold">${formatINR(p.price)}</span><span class="text-xs line-through text-[#9C8E84]">${formatINR(p.mrp)}</span><span class="ml-auto text-xs">★ ${p.rating}</span></div>
+      </div>
+    </a>`;
+  }).join('');
+}
+buildCatFilters();
+renderShop();
+</script>
+</body>
+</html>

@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Workshops — FOLKFORM</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Space+Grotesk:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+<script>tailwind.config={theme:{extend:{fontFamily:{sans:['Space Grotesk','sans-serif'],serif:['Instrument Serif','serif'],display:['Plus Jakarta Sans','sans-serif']},colors:{ink:'#1E1A16',paper:'#FFFCF5',line:'#EADBC8',clay:'#D87A4A',moss:'#6B7B5E',mustard:'#D9A441',stone:'#F5EBDC',sand:'#FFF6EC'}}}}</script>
+</head>
+<body class="bg-paper text-ink antialiased">
+<header class="sticky top-0 z-40 bg-paper/90 backdrop-blur border-b border-line">
+  <div class="max-w-[1780px] mx-auto px-3 lg:px-6">
+    <div class="flex items-center justify-between h-[68px] lg:h-[76px]">
+      <div class="flex items-center gap-3">
+        <button id="mobileMenuBtn" class="lg:hidden w-10 h-10 rounded-full border border-line flex items-center justify-center"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+        <a href="index.html" class="flex items-center gap-3">
+          <div class="w-10 h-10 bg-ink text-paper flex items-center justify-center rounded-xl font-display font-extrabold text-sm leading-none"><span class="tracking-tight">FF</span></div>
+          <div class="leading-none"><div class="font-display font-extrabold tracking-tight text-[18px]">FOLKFORM</div><div class="text-[10px] tracking-[0.24em] font-semibold text-clay -mt-0.5">DIY ATELIER • JAIPUR</div></div>
+        </a>
+        <span class="hidden xl:inline-flex ml-4 text-[11px] tracking-widest font-bold border border-line rounded-full px-3 py-1.5 bg-sand">EST. 2019 • 45K MAKERS</span>
+      </div>
+            <nav class="hidden lg:flex items-center gap-1 p-1 bg-sand border border-line rounded-full">
+        <a href="shop.html" class="px-4 py-2 rounded-full text-sm font-bold hover:bg-white border border-transparent hover:border-line transition">All Kits</a>
+        <a href="shop.html?cat=Bottle" class="px-3 py-2 rounded-full text-sm font-bold hover:bg-white border border-transparent hover:border-line transition">Bottle</a>
+        <a href="shop.html?cat=Light" class="px-3 py-2 rounded-full text-sm font-bold hover:bg-white border border-transparent hover:border-line transition">Light</a>
+        <a href="shop.html?cat=Flowerpot" class="px-3 py-2 rounded-full text-sm font-bold hover:bg-white border border-transparent hover:border-line transition">Flowerpot</a>
+        <a href="shop.html?cat=Wall%20Hanging" class="px-3 py-2 rounded-full text-sm font-bold hover:bg-white border border-transparent hover:border-line transition hidden xl:inline">Wall Hanging</a>
+        <a href="shop.html?cat=Vase" class="px-3 py-2 rounded-full text-sm font-bold hover:bg-white border border-transparent hover:border-line transition">Vase</a>
+        <a href="shop.html?cat=Planter" class="px-3 py-2 rounded-full text-sm font-bold hover:bg-white border border-transparent hover:border-line transition hidden xl:inline">Planter</a>
+        <a href="workshops.html" class="px-4 py-2 rounded-full bg-ink text-white text-sm font-bold shadow-sm flex items-center gap-1.5"><span class="w-1.5 h-1.5 bg-mustard rounded-full"></span> Workshops</a>
+      </nav>
+      <div class="flex items-center gap-2">
+        <button onclick="openSearch()" class="w-10 h-10 rounded-full border border-line hover:border-ink flex items-center justify-center" aria-label="Search"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="7"/><path d="M20 20L16 16"/></svg></button>
+        <button onclick="showToast('Wishlist — demo')" class="hidden sm:flex relative w-10 h-10 rounded-full border border-line hover:border-ink items-center justify-center" aria-label="Wishlist">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21s-6-4.5-8.5-8.2A5 5 0 0 1 12 5a5 5 0 0 1 8.5 7.8C18 16.5 12 21 12 21z"/></svg>
+          <span data-wishlist-count class="hidden absolute -top-1 -right-1 bg-clay text-white text-[10px] min-w-[18px] h-[18px] px-1 rounded-full flex items-center justify-center font-bold">0</span>
+        </button>
+        <button onclick="openCartDrawer()" class="relative hidden sm:flex items-center gap-2 border border-ink rounded-full pl-1 pr-3 py-1 hover:bg-ink hover:text-white transition group">
+          <span class="w-8 h-8 rounded-full bg-ink text-white group-hover:bg-white group-hover:text-ink flex items-center justify-center"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 6h15l-1.5 9H7z"/><path d="M6 6L5 2H2"/><circle cx="9" cy="20" r="1.6"/><circle cx="18" cy="20" r="1.6"/></svg></span>
+          <span class="text-sm font-semibold">Cart</span>
+          <span data-cart-count class="hidden bg-clay text-white text-xs min-w-[20px] h-5 px-1.5 rounded-full flex items-center justify-center font-bold">0</span>
+        </button>
+        <button onclick="openCartDrawer()" class="sm:hidden relative w-10 h-10 rounded-full bg-ink text-white flex items-center justify-center"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 6h15l-1.5 9H7z"/><path d="M6 6L5 2H2"/></svg><span data-cart-count class="hidden absolute -top-1 -right-1 bg-mustard text-ink text-[10px] min-w-[18px] h-[18px] px-1 rounded-full flex items-center justify-center font-bold">0</span></button>
+        <a href="admin/index.html" class="hidden lg:inline-flex text-xs font-bold uppercase tracking-widest border border-line px-3 py-2 rounded-full hover:bg-ink hover:text-white transition">Admin</a>
+      </div>
+    </div>
+  </div>
+    <div id="mobileMenu" class="hidden lg:hidden border-t border-line bg-paper px-4 py-5 space-y-1">
+    <a href="shop.html" class="flex justify-between py-2.5 font-semibold border-b border-line">Shop All Kits <span>→</span></a>
+    <a href="shop.html?cat=Bottle" class="block py-2">Bottle • Painted & Lamp</a>
+    <a href="shop.html?cat=Light" class="block py-2">Light • Rattan Glow</a>
+    <a href="shop.html?cat=Flowerpot" class="block py-2">Flowerpot • Hangers & Planters</a>
+    <a href="shop.html?cat=Wall%20Hanging" class="block py-2">Wall Hanging • Macramé & Loom</a>
+    <a href="shop.html?cat=Vase" class="block py-2">Vase • Terracotta & Sculpt</a>
+    <a href="shop.html?cat=Planter" class="block py-2">Planter • Seagrass Basket</a>
+    <a href="workshops.html" class="block py-2 font-semibold text-clay">Workshops →</a>
+    <a href="admin/index.html" class="block py-2 text-sm text-[#6B5E55] border-t border-line mt-2 pt-3">Admin Panel →</a>
+  </div>
+</header>
+<div class="max-w-[1780px] mx-auto px-3 lg:px-6 py-8">
+  <div class="rounded-[32px] overflow-hidden bg-ink text-white p-8 lg:p-10 flex flex-col lg:flex-row gap-6">
+    <div class="flex-1">
+      <div class="inline-flex bg-white/10 border border-white/20 rounded-full px-3 py-1 text-xs font-bold uppercase tracking-widest">Jaipur Studio • Online + Kits</div>
+      <h1 class="font-serif text-4xl lg:text-5xl leading-none mt-3">Come knot<br><span class="italic text-mustard">with us.</span></h1>
+      <p class="text-white/70 mt-3 max-w-xl text-sm leading-relaxed">Small groups, big tables, chai that never ends. Bring a friend, leave with something you hung the same night. Or join online — kit shipped to your door.</p>
+    </div>
+    <img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=500&h=500&fit=crop&q=80" class="w-full lg:w-[380px] h-[260px] rounded-[28px] object-cover border border-white/20">
+  </div>
+
+  <div class="grid lg:grid-cols-3 gap-4 mt-6" id="wsGrid"></div>
+
+  <!-- Search Overlay -->
+<div id="searchOverlay" class="hidden fixed inset-0 z-[60] bg-paper/95 backdrop-blur">
+  <div class="max-w-2xl mx-auto px-4 pt-8">
+    <div class="flex items-center gap-3">
+      <div class="flex-1 flex items-center gap-3 border border-ink rounded-full px-5 py-3 bg-white">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="7"/><path d="M20 20L16 16"/></svg>
+        <input id="searchInput" type="text" placeholder="Try Bottle, Light, Flowerpot, Vase..." class="flex-1 outline-none text-sm" oninput="renderSearchResults(this.value)">
+      </div>
+      <button onclick="closeSearch()" class="w-11 h-11 rounded-full bg-ink text-white flex items-center justify-center">✕</button>
+    </div>
+    <div id="searchResults" class="mt-6 max-h-[60vh] overflow-auto divide-y divide-line border border-line rounded-2xl bg-white"></div>
+  </div>
+</div>
+
+<!-- Cart Drawer -->
+<div id="cartDrawer" class="hidden fixed inset-0 z-[60]">
+  <div class="absolute inset-0 bg-black/40" onclick="closeCartDrawer()"></div>
+  <div class="absolute right-0 top-0 h-full w-full max-w-md bg-paper flex flex-col">
+    <div class="px-6 py-5 border-b border-line flex items-center justify-between bg-white">
+      <div class="font-bold">Your Studio <span id="cartDrawerCountLabel" class="text-[#6B5E55] font-normal"></span></div>
+      <button onclick="closeCartDrawer()" class="w-9 h-9 rounded-full border flex items-center justify-center">✕</button>
+    </div>
+    <div id="cartDrawerItems" class="flex-1 overflow-auto px-6 bg-paper"></div>
+    <div id="cartDrawerFooter" class="hidden border-t border-line p-6 bg-sand">
+      <div class="flex justify-between text-sm"><span class="text-[#6B5E55]">Subtotal</span><span id="cartDrawerSubtotal" class="font-bold"></span></div>
+      <a href="cart.html" class="mt-4 block bg-ink text-white text-center py-3.5 rounded-full font-bold">View Cart & Checkout →</a>
+    </div>
+  </div>
+</div>
+
+  <div class="mt-8 bg-white border border-line rounded-[28px] p-6">
+    <h3 class="font-serif text-2xl">Private & Corporate</h3>
+    <p class="text-sm text-[#6B5E55] mt-1 max-w-2xl">Team offsites, housewarming clubs, or 20 friends in your living room — we bring the kits + teacher. 12–60 people. Jaipur & Delhi NCR, or online pan-India.</p>
+    <form onsubmit="event.preventDefault(); showToast('Enquiry sent — demo'); this.reset();" class="grid sm:grid-cols-3 gap-3 mt-4">
+      <input required placeholder="Your name" class="border border-line rounded-full px-4 py-3 text-sm outline-none focus:border-ink">
+      <input required type="email" placeholder="Email" class="border border-line rounded-full px-4 py-3 text-sm outline-none focus:border-ink">
+      <input required placeholder="Group size • e.g. 24" class="border border-line rounded-full px-4 py-3 text-sm outline-none focus:border-ink">
+      <button class="sm:col-span-3 bg-ink text-white rounded-full py-3 font-bold hover:bg-black">Request Private Workshop →</button>
+    </form>
+  </div>
+</div>
+<script src="app.js"></script>
+<script>
+function renderWS(){
+  const list=getWorkshops();
+  document.getElementById('wsGrid').innerHTML = list.map(w=>`
+    <div class="bg-sand border border-line rounded-[28px] p-6 flex flex-col">
+      <div class="flex items-center justify-between"><span class="text-[11px] font-bold uppercase tracking-widest bg-white border border-line px-2.5 py-1 rounded-full">${w.id} • ${w.status}</span><span class="text-xs font-bold">${w.seats} seats</span></div>
+      <h3 class="font-serif text-2xl leading-tight mt-3">${w.title}</h3>
+      <div class="text-sm text-[#6B5E55] mt-1">${w.date}</div>
+      <div class="mt-4 flex items-end justify-between">
+        <div><div class="font-extrabold text-xl">${formatINR(w.price)}</div><div class="text-xs text-[#6B5E55]">kit included</div></div>
+        <button onclick="showToast('Seat reserved for ${w.title} — demo')" class="bg-ink text-white px-5 py-2.5 rounded-full text-sm font-bold hover:bg-black">Reserve →</button>
+      </div>
+    </div>
+  `).join('');
+}
+renderWS();
+</script>
+</body>
+</html>
