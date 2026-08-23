@@ -87,22 +87,134 @@
         <select id="catFilter" class="border rounded-full px-4 py-2.5 text-sm bg-white" onchange="render()"><option value="All">All categories</option><option>Business Branding</option><option>Product Labels</option><option>Packaging</option><option>Promo & Safety</option><option>Custom Die-Cut</option></select>
         <button onclick="resetCatalog()" class="border border-line px-4 py-2.5 rounded-full text-sm font-semibold">Reset to Default</button>
       </div>
-      <div id="grid" class="grid grid-cols-1 lg:grid-cols-2 gap-4 mt-6 min-h-[200px]"></div>
+      <div id="grid" class="grid grid-cols-1 lg:grid-cols-2 gap-4 mt-6"></div>
     </main>
   </div>
 </div>
+
+<!-- Add / Edit Sticker Modal -->
+<div id="modal" class="hidden fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/40 backdrop-blur-sm">
+  <div class="bg-white rounded-2xl w-full max-w-lg max-h-[90vh] overflow-y-auto shadow-2xl">
+    <div class="flex items-center justify-between px-6 py-4 border-b border-line sticky top-0 bg-white">
+      <h2 id="modalTitle" class="font-bold text-lg">Add Sticker</h2>
+      <button onclick="closeModal()" class="w-9 h-9 rounded-full bg-paper flex items-center justify-center"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg></button>
+    </div>
+    <form id="form" class="px-6 py-5 space-y-4">
+      <input type="hidden" id="fId">
+      <div>
+        <label class="block text-xs font-semibold text-muted mb-1">Name</label>
+        <input id="fName" type="text" required class="w-full border border-line rounded-xl px-3 py-2.5 text-sm outline-none focus:border-ink">
+      </div>
+      <div class="grid grid-cols-2 gap-4">
+        <div>
+          <label class="block text-xs font-semibold text-muted mb-1">Category</label>
+          <select id="fCat" class="w-full border border-line rounded-xl px-3 py-2.5 text-sm bg-white">
+            <option>Business Branding</option><option>Product Labels</option><option>Packaging</option><option>Promo & Safety</option><option>Custom Die-Cut</option>
+          </select>
+        </div>
+        <div>
+          <label class="block text-xs font-semibold text-muted mb-1">Material</label>
+          <input id="fMat" type="text" class="w-full border border-line rounded-xl px-3 py-2.5 text-sm outline-none focus:border-ink">
+        </div>
+        <div>
+          <label class="block text-xs font-semibold text-muted mb-1">Shape</label>
+          <input id="fShape" type="text" class="w-full border border-line rounded-xl px-3 py-2.5 text-sm outline-none focus:border-ink">
+        </div>
+        <div>
+          <label class="block text-xs font-semibold text-muted mb-1">Finish</label>
+          <input id="fFinish" type="text" class="w-full border border-line rounded-xl px-3 py-2.5 text-sm outline-none focus:border-ink">
+        </div>
+        <div>
+          <label class="block text-xs font-semibold text-muted mb-1">Price (₹/100)</label>
+          <input id="fPrice" type="number" class="w-full border border-line rounded-xl px-3 py-2.5 text-sm outline-none focus:border-ink">
+        </div>
+        <div>
+          <label class="block text-xs font-semibold text-muted mb-1">MRP (₹/100)</label>
+          <input id="fMrp" type="number" class="w-full border border-line rounded-xl px-3 py-2.5 text-sm outline-none focus:border-ink">
+        </div>
+        <div>
+          <label class="block text-xs font-semibold text-muted mb-1">Badge</label>
+          <select id="fBadge" class="w-full border border-line rounded-xl px-3 py-2.5 text-sm bg-white">
+            <option value="">None</option><option>Bestseller</option><option>Trending</option><option>Premium</option><option>New In</option><option>Security</option><option>Creator Pack</option>
+          </select>
+        </div>
+        <div>
+          <label class="block text-xs font-semibold text-muted mb-1">Image URL</label>
+          <input id="fImage" type="text" class="w-full border border-line rounded-xl px-3 py-2.5 text-sm outline-none focus:border-ink">
+        </div>
+      </div>
+      <div>
+        <label class="block text-xs font-semibold text-muted mb-1">Description</label>
+        <textarea id="fDesc" rows="2" class="w-full border border-line rounded-xl px-3 py-2.5 text-sm outline-none focus:border-ink"></textarea>
+      </div>
+      <div class="flex gap-3 pt-2">
+        <button type="submit" class="flex-1 bg-ink text-white py-2.5 rounded-full text-sm font-semibold hover:bg-black">Save Sticker</button>
+        <button type="button" onclick="closeModal()" class="px-5 py-2.5 border border-line rounded-full text-sm font-semibold">Cancel</button>
+      </div>
+    </form>
+  </div>
+</div>
+
 <script src="../app.js"></script>
 <script>
+// Fallback for file:// or demo cache where app.js may be old/failed
+if(typeof DEFAULT_PRODUCTS === 'undefined'){
+  var DEMO_IMAGES = [
+    "https://m.media-amazon.com/images/I/81M0LS1gY9L._AC_UF894,1000_QL80_.jpg",
+    "https://stickerme.in/wp-content/uploads/2023/04/Hand-made-with-love-yourcompany.com-Kraft-1_.webp",
+    "https://5.imimg.com/data5/SELLER/Default/2024/3/398641516/VC/TU/CQ/3047910/business-stickers.jpg",
+    "https://encrypted-tbn0.gstatic.com/images?q=tbn:Anh9GcTqCoH3whZJkbi_zk4EX_mPuQ-hQ7A3VDi_6fSTcsfNLQ",
+    "https://encrypted-tbn0.gstatic.com/images?q=tbn:Anh9GcRsIWgCdItHe5X0q35Xdo7EWzphAPcUj52bU7GDvQGqvg",
+    "https://encrypted-tbn0.gstatic.com/images?q=tbn:Anh9GcQ4P5IkT_EBdj1Vn3JZ25teN_zz1XM3gdwp3AjYPNtpzA",
+    "https://encrypted-tbn0.gstatic.com/images?q=tbn:Anh9GcRTs8kKP70SL0Z_eN_z0ejagp4rKB9yS2lQLC6nN-RfCw",
+    "https://encrypted-tbn0.gstatic.com/images?q=tbn:Anh9GcSQSGhH8Wiqprocx0UZCiTikdxy54vsfKzCiGffBPAfPw",
+    "https://encrypted-tbn0.gstatic.com/images?q=tbn:Anh9GcT-znCAk7xbFpqAZGasZDARsXTI3Xsv2vIB3NP7g81mtg",
+    "https://encrypted-tbn0.gstatic.com/images?q=tbn:Anh9GcSuKA-dUdxu0eEWWGFDV4Z1LHbtyTqV2nj_F4XCIs6qFA",
+    "https://encrypted-tbn0.gstatic.com/images?q=tbn:Anh9GcQI9dlyKEyJ7lsAuYSTDr5G4bo0-nDSNo0rrOMNIvsaIQ"
+  ];
+  window.DEMO_PRODUCTS = [
+    {id:1,name:"Thank You Stickers — Business Pack",category:"Packaging",material:"Paper Gloss",shape:"Circle",finish:"Gloss",pattern:"Solid",colors:["#FFFFFF","#FECACA","#0F1A1C"],price:490,mrp:690,rating:4.9,reviews:423,badge:"Bestseller",image:DEMO_IMAGES[0],desc:"Printtoo-style thank-you & logo stickers for D2C parcels — 1.5″ circle, 500 per roll, vivid print."},
+    {id:2,name:"Kraft Handmade With Love — Eco",category:"Packaging",material:"Kraft Paper",shape:"Circle",finish:"Kraft",pattern:"Kraft",colors:["#EDE6DA","#92400E"],price:540,mrp:790,rating:4.8,reviews:198,badge:"Bestseller",image:DEMO_IMAGES[1],desc:"StickerMe kraft 'Handmade with love • yourcompany.com' — compostable, rubber adhesive for organic & bakery."},
+    {id:3,name:"Business Stickers — Logo Sheet Mix",category:"Business Branding",material:"Vinyl Gloss",shape:"Die-Cut",finish:"Gloss",pattern:"Mixed",colors:["#0F1A1C","#E85D3F","#FACC15"],price:890,mrp:1290,rating:4.9,reviews:312,badge:"Bestseller",image:DEMO_IMAGES[2],desc:"IndiaMART-style business logo sheets — mixed sizes, waterproof vinyl, crisp contour cut for shutters & packaging."},
+    {id:4,name:"Custom Business Stickers — Small Shop Pack",category:"Business Branding",material:"Vinyl Gloss",shape:"Circle",finish:"Gloss",pattern:"Solid",colors:["#0F1A1C","#0E7490"],price:690,mrp:990,rating:4.8,reviews:167,image:DEMO_IMAGES[3],desc:"Round logo stickers for cafés, salons & Kirana — waterproof, strong adhesive, 2″–4″."},
+    {id:5,name:"Holographic Logo Stickers — Prism",category:"Promo & Safety",material:"Holographic",shape:"Star",finish:"Holo",pattern:"Prism",colors:["holo"],price:1290,mrp:1790,rating:4.9,reviews:298,badge:"Trending",image:DEMO_IMAGES[4],desc:"Rainbow prism effect for drops & events — eye-catching, thick vinyl, outdoor durable."},
+    {id:6,name:"Rectangle Product Labels — BOPP Clear",category:"Product Labels",material:"Vinyl Gloss",shape:"Rectangle",finish:"Gloss",pattern:"Solid",colors:["#FFF7ED","#0F1A1C"],price:890,mrp:1190,rating:4.8,reviews:187,image:DEMO_IMAGES[5],desc:"2×3″ & 3×4″ rectangles for jars & pouches — oil & water resistant, freezer-safe."},
+    {id:7,name:"Chrome Mirror Stickers — Gold/Silver",category:"Business Branding",material:"Chrome",shape:"Hexagon",finish:"Mirror",pattern:"Mirror",colors:["#FDE68A","#E5E7EB"],price:1490,mrp:1990,rating:4.8,reviews:89,badge:"Premium",image:DEMO_IMAGES[6],desc:"Luxury mirror chrome for premium unboxing — gold & silver, scratch-resistant."},
+    {id:8,name:"Kiss-Cut Sheet — Thank You Mix",category:"Packaging",material:"Paper Matte",shape:"Kiss-Cut Sheet",finish:"Matte",pattern:"Grid",colors:["#FFFFFF","#FDE68A"],price:590,mrp:790,rating:4.8,reviews:203,badge:"New In",image:DEMO_IMAGES[7],desc:"A4 kiss-cut sheets — 20 stickers per sheet, easy peel for thank-you seals & branding."},
+    {id:9,name:"Kraft Eco Seals — Handmade",category:"Packaging",material:"Kraft Paper",shape:"Square",finish:"Kraft",pattern:"Kraft",colors:["#EDE6DA"],price:540,mrp:790,rating:4.7,reviews:156,image:DEMO_IMAGES[1],desc:"Same kraft handmade look — square seals for bakery & organic, compostable."},
+    {id:10,name:"Mascot Die-Cut — Any Outline",category:"Custom Die-Cut",material:"Vinyl Gloss",shape:"Die-Cut",finish:"Gloss",pattern:"Illustrated",colors:["#0E7490","#FACC15"],price:1590,mrp:2190,rating:4.8,reviews:134,image:DEMO_IMAGES[8],desc:"Send any mascot — we contour cut it with white border, precise Roland cut."},
+    {id:11,name:"Roll Labels — 500 on Roll",category:"Packaging",material:"Vinyl Matte",shape:"Roll",finish:"Matte",pattern:"Solid",colors:["#FFFFFF","#0F1A1C"],price:1890,mrp:2590,rating:4.7,reviews:134,image:DEMO_IMAGES[0],desc:"Dispenser-ready rolls — 500 per roll for bakeries, D2C & FMCG, strong adhesive."},
+    {id:12,name:"Square Business Labels — Minimal",category:"Product Labels",material:"Paper Matte",shape:"Square",finish:"Matte",pattern:"Minimal",colors:["#FFFFFF","#0F1A1C"],price:590,mrp:850,rating:4.8,reviews:198,image:DEMO_IMAGES[9],desc:"Clean square labels with 6mm radius — writable, food-grade adhesive for glass & kraft."},
+    {id:13,name:"Transparent Clear Stickers",category:"Product Labels",material:"Transparent",shape:"Circle",finish:"Clear",pattern:"Clear",colors:["transparent"],price:990,mrp:1450,rating:4.8,reviews:167,image:DEMO_IMAGES[10],desc:"No-label look on glass — crystal BOPP with white-ink backing, premium."},
+    {id:14,name:"Text Cut-Out — Brand Name",category:"Custom Die-Cut",material:"Vinyl Gloss",shape:"Text Cut",finish:"Gloss",pattern:"Typography",colors:["#0F1A1C","#FACC15"],price:890,mrp:1290,rating:4.9,reviews:245,badge:"Trending",image:DEMO_IMAGES[3],desc:"Contour cut around your wordmark — no border, letter-by-letter precision."},
+    {id:15,name:"Warning Labels — Fragile & Safety",category:"Promo & Safety",material:"Vinyl Gloss",shape:"Rectangle",finish:"Gloss",pattern:"Warning",colors:["#FEF3C7","#DC2626"],price:790,mrp:1090,rating:4.7,reviews:112,image:DEMO_IMAGES[4],desc:"Industrial fragile/handle-with-care, high-contrast, weatherproof."},
+    {id:16,name:"QR UPI Stickers — Scan & Pay",category:"Business Branding",material:"Vinyl Matte",shape:"Square",finish:"Matte",pattern:"QR",colors:["#FFFFFF","#0F1A1C"],price:690,mrp:990,rating:4.8,reviews:203,badge:"Bestseller",image:DEMO_IMAGES[5],desc:"Scannable QR for menu/UPI/reviews — tested contrast, free QR generation."},
+    {id:17,name:"Eggshell VOID — Security",category:"Promo & Safety",material:"Eggshell",shape:"Rectangle",finish:"Matte",pattern:"Security",colors:["#FFFFFF","#DC2626"],price:1390,mrp:1890,rating:4.7,reviews:67,badge:"Security",image:DEMO_IMAGES[6],desc:"Destructible VOID tamper seal — fragments on removal for parcels & warranty."},
+    {id:18,name:"Floor Graphics — Giant Circle",category:"Promo & Safety",material:"Vinyl Matte",shape:"Circle",finish:"Matte Laminated",pattern:"Floor",colors:["#0E7490"],price:2490,mrp:3290,rating:4.6,reviews:54,image:DEMO_IMAGES[7],desc:"Anti-slip floor decals for retail wayfinding — walk-on durable."},
+    {id:19,name:"Window Decals — Inside Glass",category:"Business Branding",material:"Transparent",shape:"Text Cut",finish:"Clear",pattern:"Typography",colors:["transparent"],price:1890,mrp:2490,rating:4.8,reviews:76,badge:"New In",image:DEMO_IMAGES[8],desc:"Inside-glass reverse print for timings/offers — no residue."},
+    {id:20,name:"Glow in Dark — Star Pack",category:"Promo & Safety",material:"Vinyl Gloss",shape:"Star",finish:"Glow",pattern:"Glow",colors:["#FEF3C7"],price:1690,mrp:2290,rating:4.7,reviews:58,badge:"New In",image:DEMO_IMAGES[9],desc:"Photoluminescent stars — charges in light, glows for hours."},
+    {id:21,name:"Die-Cut Vinyl — Mixed Pack 40",category:"Business Branding",material:"Vinyl Matte",shape:"Die-Cut",finish:"Matte",pattern:"Mixed",colors:["#0F1A1C","#E85D3F","#FACC15"],price:890,mrp:1290,rating:4.9,reviews:298,badge:"Creator Pack",image:DEMO_IMAGES[10],desc:"40 mixed die-cut merch stickers — teams & giveaways, mixed sizes."},
+    {id:22,name:"Thermal Labels — 100×150",category:"Product Labels",material:"Paper Thermal",shape:"Rectangle",finish:"Matte",pattern:"Minimal",colors:["#FFFFFF"],price:390,mrp:590,rating:4.7,reviews:221,image:DEMO_IMAGES[0],desc:"Thermal for Shiprocket/Delhivery — 1000 per roll, crisp barcode."}
+  ];
+}
+if(typeof formatINR === 'undefined'){ window.formatINR = n => '₹'+Number(n).toLocaleString('en-IN'); }
+if(typeof getProducts === 'undefined'){ window.getProducts = () => (typeof DEMO_PRODUCTS !== 'undefined' ? DEMO_PRODUCTS : []); window.saveProducts = (l)=>{ try{ localStorage.setItem('stickcraft_products', JSON.stringify(l)); }catch(e){} }; }
 let editId=null;
 function render(){
   let list=getProducts();
-  // Ensure demo stickers are seeded if empty (user pages demo)
+  // Always show demo stickers on open - no need to press Reset
+  // If list is empty/corrupted (e.g. demo site first visit, file:// isolated, or stale []), seed directly from DEFAULT_PRODUCTS
   if(!list || !list.length){
-    try{ localStorage.removeItem('stickcraft_products'); }catch(e){}
-    list=getProducts();
-    // Fallback to DEFAULT_PRODUCTS if still empty (file:// localStorage isolated)
-    if(!list || !list.length){
-      try{ const fallback = typeof DEFAULT_PRODUCTS !== 'undefined' ? DEFAULT_PRODUCTS : []; if(fallback.length){ saveProducts(fallback); list=fallback; } }catch(e){}
+    try{
+      if(typeof DEMO_PRODUCTS !== 'undefined' && DEMO_PRODUCTS.length){
+        list = DEMO_PRODUCTS;
+        try{ saveProducts(list); }catch(e){}
+      } else {
+        localStorage.removeItem('stickcraft_products');
+        list = getProducts();
+      }
+    }catch(e){
+      try{ list = DEMO_PRODUCTS; }catch(e2){ list = []; }
     }
   }
   const q=document.getElementById('search').value.toLowerCase().trim();
