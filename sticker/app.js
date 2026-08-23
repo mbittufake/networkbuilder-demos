@@ -43,6 +43,10 @@ function getProducts(){
     const s=localStorage.getItem('stickcraft_products');
     if(s) {
       const parsed=JSON.parse(s);
+      if(!parsed || !parsed.length){
+        localStorage.removeItem('stickcraft_products');
+        return DEFAULT_PRODUCTS;
+      }
       // force refresh if old unsplash data or missing real images
       if(parsed.length && parsed[0].image && parsed[0].image.includes('unsplash.com')) {
         localStorage.removeItem('stickcraft_products');
