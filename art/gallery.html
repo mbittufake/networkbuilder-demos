@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gallery — TAAR Atelier | Handcrafted Works</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=Cormorant+Garamond:ital,wght@0,300;1,400&family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<script>tailwind.config={theme:{extend:{fontFamily:{sans:['Inter','sans-serif'],serif:['Instrument Serif','serif'],corm:['Cormorant Garamond','serif'],hand:['Caveat','cursive'],mono:['Space Mono','monospace']},colors:{ink:'#1E1915',paper:'#FFF8EC',line:'#E8DDD3',terracotta:'#B84A2F',amber:'#C9A86A',muted:'#9C8E84'}}}}</script>
+<style>body{background:#FFF8EC; background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence baseFrequency='0.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E")}</style>
+</head>
+<body class="text-ink overflow-x-hidden antialiased">
+<div class="h-[3px] bg-gradient-to-r from-terracotta via-amber to-teal"></div>
+<header class="sticky top-0 z-40 bg-paper/85 backdrop-blur-md border-b border-line">
+  <div class="max-w-[1360px] mx-auto px-4 lg:px-6">
+    <div class="h-[64px] lg:h-[68px] flex items-center justify-between gap-6">
+      <a href="index.html" class="flex items-center gap-3.5">
+        <div class="relative w-10 h-10 rounded-full bg-ink flex items-center justify-center">
+          <span class="font-serif text-paper text-[11px] tracking-[0.18em]">TAAR</span>
+          <span class="absolute -top-1 -right-1 w-3 h-3 bg-terracotta rounded-full border-2 border-paper"></span>
+        </div>
+        <div class="leading-none">
+          <div class="font-serif text-[20px] tracking-tight">TAAR <span class="font-corm italic font-light text-[14px]">by Nidhi</span></div>
+          <div class="font-mono text-[10px] sm:text-[9px] tracking-[0.16em] uppercase text-muted -mt-0.5">Thread • Pour • Hand</div>
+        </div>
+        <span class="hidden xl:inline-flex ml-2 font-mono text-[10px] leading-none border border-line rounded-full px-3 py-1.5 text-muted">PUNE • SINCE 2020 • DM TO ORDER</span>
+      </a>
+
+      <nav class="hidden lg:flex items-center gap-6 text-[13px] font-medium">
+        <a href="gallery.html" class="group flex items-center gap-1.5 text-terracotta font-semibold"><span class="w-1 h-1 bg-terracotta rounded-full"></span> Gallery <span class="font-mono text-[11px] text-muted">12</span></a>
+        <a href="custom.html" class="hover:text-terracotta">Custom Order</a>
+        <a href="about.html" class="hover:text-terracotta">About</a>
+        <span class="w-px h-4 bg-line"></span>
+        <a href="https://instagram.com" target="_blank" class="font-mono text-[11px] tracking-widest uppercase border border-line px-3 py-1.5 rounded-full hover:bg-ink hover:text-paper transition">Instagram 18.4k ↗</a>
+      </nav>
+
+      <div class="flex items-center gap-2">
+        <button onclick="openSearch()" class="hidden sm:flex w-10 h-10 rounded-full border border-line items-center justify-center hover:border-ink transition" aria-label="Search">⌕</button>
+        <!-- Enquiry not cart -->
+        <button onclick="openCartDrawer()" class="hidden sm:flex items-center gap-2 bg-ink text-paper pl-1 pr-3 sm:pr-4 py-1 rounded-full hover:bg-black transition">
+          <span class="w-8 h-8 rounded-full bg-amber text-ink flex items-center justify-center text-xs font-mono">◐</span>
+          <span class="text-[13px] font-medium">Shortlist</span>
+          <span data-cart-count class="hidden bg-paper text-ink text-xs font-bold min-w-[18px] h-[18px] px-1 rounded-full flex items-center justify-center">0</span>
+        </button>
+        <a href="admin/index.html" class="inline-flex items-center gap-1.5 sm:gap-2 bg-terracotta text-white px-2.5 sm:px-3.5 py-1.5 sm:py-2 rounded-full text-[11px] sm:text-xs font-semibold uppercase tracking-[0.08em] hover:bg-ink transition shadow-sm">
+          <span class="w-1.5 h-1.5 bg-emerald-300 rounded-full animate-pulse"></span> <span class="hidden sm:inline">Admin Panel</span><span class="sm:hidden">Admin</span>
+        </a>
+        <button id="mobileMenuBtn" class="lg:hidden w-10 h-10 rounded-full border border-line flex items-center justify-center active:scale-95 transition">☰</button>
+      </div>
+    </div>
+    <!-- thread underline nav -->
+    <div class="h-px w-full bg-gradient-to-r from-transparent via-line to-transparent relative">
+      <div class="absolute left-1/2 -translate-x-1/2 -top-1 w-2 h-2 bg-paper border border-line rounded-full"></div>
+      <div class="absolute left-[48%] -top-1 w-1.5 h-1.5 bg-amber rounded-full"></div>
+      <div class="absolute left-[52%] -top-1 w-1.5 h-1.5 bg-terracotta rounded-full"></div>
+    </div>
+  </div>
+    <div id="mobileOverlay" onclick="closeMobileMenu()" class="fixed inset-0 z-40 bg-ink/40 backdrop-blur-sm hidden opacity-0 transition-opacity duration-300 lg:hidden"></div>
+  <div id="mobileMenu" class="fixed top-0 left-0 z-50 h-[100dvh] w-[84vw] max-w-[320px] bg-paper border-r border-line transform -translate-x-full transition-transform duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] lg:hidden flex flex-col shadow-2xl">
+    <div class="h-[64px] px-5 flex items-center justify-between border-b border-line shrink-0">
+      <a href="index.html" class="flex items-center gap-2.5">
+        <div class="w-9 h-9 rounded-full bg-ink text-amber flex items-center justify-center font-serif text-xs">TA</div>
+        <span class="font-serif">TAAR <span class="font-corm italic text-sm">by Nidhi</span></span>
+      </a>
+      <button onclick="closeMobileMenu()" class="w-8 h-8 rounded-full bg-ink text-paper flex items-center justify-center">✕</button>
+    </div>
+    <nav class="flex-1 overflow-y-auto px-5 py-6 space-y-1">
+      <a href="gallery.html" class="flex items-center justify-between py-3 border-b border-dashed border-line font-semibold text-terracotta bg-amber/10 px-3 -mx-3 rounded-lg">Gallery <span class="font-mono text-xs bg-ink text-paper px-2 py-0.5 rounded-full">12</span></a>
+      <a href="gallery.html?cat=String%20Art" class="block py-2.5 text-sm text-muted hover:text-ink">— String Art</a>
+      <a href="gallery.html?cat=Resin%20Art" class="block py-2.5 text-sm text-muted hover:text-ink">— Resin & Acrylic</a>
+      <a href="gallery.html?cat=Nameboard" class="block py-2.5 text-sm text-muted hover:text-ink">— Nameboards</a>
+      <a href="custom.html" class="flex items-center gap-2 mt-4 bg-terracotta text-white px-4 py-3 rounded-full font-semibold text-sm">Custom Order →</a>
+      <a href="about.html" class="block py-3 text-sm">Process & Studio</a>
+      <a href="admin/index.html" class="flex items-center gap-2 mt-6 bg-ink text-amber px-3 py-2.5 rounded-lg font-mono text-[11px] font-semibold uppercase tracking-[0.08em]"><span class="w-2 h-2 bg-emerald-400 rounded-full animate-pulse"></span> Admin Panel — Manage atelier →</a>
+      <div class="pt-6 mt-6 border-t border-line">
+        <div class="font-mono text-xs text-muted">DM is fastest</div>
+        <a href="https://instagram.com" target="_blank" class="mt-2 inline-flex border border-ink px-4 py-2 rounded-full text-sm font-medium">Instagram 18.4k ↗</a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<section class="max-w-[1360px] mx-auto px-4 lg:px-6 pt-8">
+  <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-4 sm:gap-6">
+    <div>
+      <div class="font-mono text-xs tracking-[0.16em] uppercase text-terracotta">Gallery • 12 works • each for one wall</div>
+      <h1 class="font-serif text-3xl sm:text-4xl lg:text-5xl leading-none mt-2">Gallery <span class="font-corm italic font-light">journal</span></h1>
+      <p class="font-corm text-lg leading-relaxed text-[#4A3E36] mt-3 max-w-xl">No catalogue. These are 12 homes I was invited into. Click any to commission <em>similar</em> — same craft, your name, your colours.</p>
+    </div>
+    <div class="bg-white border border-line rounded-2xl p-3 flex flex-col sm:flex-row items-start sm:items-center gap-2 font-mono text-xs w-full sm:w-auto">
+      <span class="text-muted hidden sm:inline">Sort journal:</span>
+      <select id="sortSelect" onchange="renderGallery()" class="bg-paper border border-line rounded-full px-3 py-1.5 outline-none"><option value="featured">As made</option><option value="price-low">Price low</option><option value="price-high">Price high</option></select>
+    </div>
+  </div>
+
+  <!-- Craft nav — editorial underline, not pills -->
+  <div class="mt-6 sm:mt-8 border-y border-dashed border-line py-3 sm:py-4 flex flex-wrap gap-3 sm:gap-6 font-serif text-base sm:text-lg">
+    <button onclick="setCat('All')" data-cat="All" class="cat-btn underline decoration-2 decoration-ink underline-offset-4">All — 12</button>
+    <button onclick="setCat('String Art')" data-cat="String Art" class="cat-btn text-muted hover:text-ink">String Art — 5</button>
+    <button onclick="setCat('Resin Art')" data-cat="Resin Art" class="cat-btn text-muted hover:text-ink">Resin — 3</button>
+    <button onclick="setCat('Acrylic')" data-cat="Acrylic" class="cat-btn text-muted hover:text-ink">Acrylic — 2</button>
+    <button onclick="setCat('Nameboard')" data-cat="Nameboard" class="cat-btn text-muted hover:text-ink">Nameboards — 3</button>
+    <span class="ml-auto font-mono text-xs text-muted hidden lg:inline self-center">Torn-paper • tape • thread count on hover</span>
+  </div>
+
+  <div id="galleryGrid" class="columns-1 sm:columns-2 lg:columns-3 gap-5 mt-8 space-y-5"></div>
+
+  <div class="mt-12 rounded-[28px] bg-ink text-paper p-7 flex flex-col lg:flex-row items-center gap-6">
+    <div><h3 class="font-serif text-2xl">Don’t see your wall?</h3><p class="font-corm text-paper/60">70% is custom — tell me your name/photo. Sketch in 24h, no advance until you approve.</p></div>
+    <a href="custom.html" class="ml-auto bg-amber text-ink px-7 py-3 rounded-full font-bold whitespace-nowrap">Start commission →</a>
+  </div>
+</section>
+
+<footer class="max-w-[1360px] mx-auto px-4 lg:px-6 mt-10 border-t border-dashed border-line pt-6 pb-8 text-center font-mono text-xs text-muted">© 2026 TAAR Atelier • <a href="admin/index.html" class="underline">Admin Panel</a></footer>
+
+<div id="searchOverlay" class="hidden fixed inset-0 z-50 bg-paper/95 backdrop-blur"><div class="max-w-2xl mx-auto px-4 pt-8"><div class="flex gap-3"><div class="flex-1 border border-ink rounded-full px-5 py-3 bg-white flex items-center gap-3"><span>⌕</span><input id="searchInput" placeholder="Search..." class="flex-1 outline-none bg-transparent" oninput="renderSearchResults(this.value)"></div><button onclick="closeSearch()" class="w-11 h-11 rounded-full bg-ink text-paper">✕</button></div><div id="searchResults" class="mt-6 border border-line rounded-2xl bg-white divide-y max-h-[60vh] overflow-auto"></div></div></div>
+<div id="cartDrawer" class="hidden fixed inset-0 z-50"><div class="absolute inset-0 bg-ink/40" onclick="closeCartDrawer()"></div><div class="absolute right-0 top-0 h-full w-full max-w-md bg-paper border-l border-line flex flex-col"><div class="px-6 py-5 border-b bg-white flex justify-between"><div class="font-serif">Shortlist</div><button onclick="closeCartDrawer()" class="w-9 h-9 border rounded-full">✕</button></div><div id="cartDrawerItems" class="flex-1 overflow-auto px-6"></div><div id="cartDrawerFooter" class="hidden border-t p-6 bg-white"><div class="flex justify-between font-mono text-sm"><span class="text-muted">Est. total</span><span id="cartDrawerSubtotal" class="font-bold"></span></div><button onclick="showToast('DM shortlist on Instagram');closeCartDrawer()" class="mt-4 w-full bg-terracotta text-white py-3 rounded-full font-bold">DM Shortlist →</button><div id="cartDrawerCountLabel" class="hidden"></div></div></div></div>
+
+<script src="app.js"></script>
+<script>
+let activeCat='All';
+function setCat(cat){
+  activeCat=cat;
+  document.querySelectorAll('.cat-btn').forEach(b=>{
+    if(b.dataset.cat===cat) b.className='cat-btn underline decoration-2 decoration-terracotta underline-offset-4 text-ink';
+    else b.className='cat-btn text-muted hover:text-ink';
+  });
+  renderGallery();
+}
+function journalCard(p){
+  const rot = p.id%2 ? 'rotate-[-0.6deg]' : 'rotate-[0.5deg]';
+  return `<a href="product.html?id=${p.id}" class="break-inside-avoid block bg-white p-3 pb-8 rounded-[2px] shadow-md border border-line ${rot} hover:rotate-[0deg] hover:shadow-xl transition">
+    <img src="${p.image}" class="w-full object-cover">
+    <div class="pt-4">
+      <div class="font-hand text-lg leading-none">${p.name}</div>
+      <div class="font-mono text-xs text-muted">${p.category} • ${p.size} • ${p.material}</div>
+      <div class="font-mono text-xs mt-2 flex justify-between"><span>From <b>${formatINR(p.price)}</b></span><span class="border border-line px-2 py-0.5 rounded-full">Commission similar →</span></div>
+    </div>
+  </a>`;
+}
+function renderGallery(){
+  let list=getWorks();
+  if(activeCat!=='All') list=list.filter(p=>p.category===activeCat);
+  const sort=document.getElementById('sortSelect').value;
+  if(sort==='price-low') list=[...list].sort((a,b)=>a.price-b.price);
+  if(sort==='price-high') list=[...list].sort((a,b)=>b.price-a.price);
+  document.getElementById('galleryGrid').innerHTML=list.map(journalCard).join('');
+  const params=new URLSearchParams(location.search);
+  if(activeCat!=='All') params.set('cat',activeCat); else params.delete('cat');
+  history.replaceState({},'',`${location.pathname}?${params.toString()}`);
+}
+(function(){
+  const p=new URLSearchParams(location.search).get('cat');
+  if(p) activeCat=p;
+  setCat(activeCat);
+  renderGallery();
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TAAR — Thread & Pour Atelier • String Art, Resin & Acrylic</title>
+<meta name="description" content="TAAR by Nidhi — not a store, an atelier. String art hammered nail by nail, resin poured layer by layer. Custom nameboards & portraits. DM to commission.">
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<script>
+tailwind.config={
+  theme:{
+    extend:{
+      fontFamily:{ sans:['Inter','sans-serif'], serif:['Instrument Serif','serif'], corm:['Cormorant Garamond','serif'], hand:['Caveat','cursive'], mono:['Space Mono','monospace']},
+      colors:{ ink:'#1E1915', paper:'#FFF8EC', parchment:'#FDF6EE', line:'#E8DDD3', terracotta:'#B84A2F', amber:'#C9A86A', teal:'#2A6B6B', muted:'#9C8E84', moss:'#2E3A2F'}
+    }
+  }
+}
+</script>
+<style>
+  body{ background:#FFF8EC; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.04'/%3E%3C/svg%3E"); }
+  .washi{ background: repeating-linear-gradient(90deg, rgba(201,168,106,0.15) 0 12px, rgba(201,168,106,0.08) 12px 24px); }
+  .tape{ box-shadow: 0 1px 3px rgba(0,0,0,0.12); }
+  .thread-line{ stroke-dasharray: 6 8; }
+  .torn{ clip-path: polygon(0 0, 100% 0, 100% 92%, 97% 100%, 85% 94%, 70% 100%, 55% 93%, 40% 100%, 25% 94%, 10% 100%, 0 94%); }
+</style>
+</head>
+<body class="text-ink antialiased overflow-x-hidden">
+
+<!-- Top thread bar -->
+<div class="w-full h-[3px] bg-gradient-to-r from-terracotta via-amber to-teal"></div>
+<div class="bg-ink text-paper text-[11px] sm:text-xs py-2.5 px-3 sm:px-4 flex flex-wrap items-center justify-center gap-2 sm:gap-3 tracking-wide text-center">
+  <span class="hidden sm:inline-flex items-center gap-2"><span class="w-1.5 h-1.5 bg-amber rounded-full animate-pulse"></span> Atelier open for August commissions</span>
+  <span class="opacity-40 hidden sm:inline">—</span>
+  <span class="hidden sm:inline">70% of what I make is <u>never listed</u> — it's made for one home only</span>
+  <a href="custom.html" class="ml-2 bg-paper text-ink px-3 py-1 rounded-full shrink-0 font-bold text-xs hover:bg-amber transition">Commission →</a>
+</div>
+
+<!-- Nav — not ecom, atelier -->
+<header class="sticky top-0 z-40 bg-paper/85 backdrop-blur-md border-b border-line">
+  <div class="max-w-[1360px] mx-auto px-4 lg:px-6">
+    <div class="h-[64px] lg:h-[68px] flex items-center justify-between gap-6">
+      <a href="index.html" class="flex items-center gap-3.5">
+        <div class="relative w-10 h-10 rounded-full bg-ink flex items-center justify-center">
+          <span class="font-serif text-paper text-[11px] tracking-[0.18em]">TAAR</span>
+          <span class="absolute -top-1 -right-1 w-3 h-3 bg-terracotta rounded-full border-2 border-paper"></span>
+        </div>
+        <div class="leading-none">
+          <div class="font-serif text-[20px] tracking-tight">TAAR <span class="font-corm italic font-light text-[14px]">by Nidhi</span></div>
+          <div class="font-mono text-[10px] sm:text-[9px] tracking-[0.16em] uppercase text-muted -mt-0.5">Thread • Pour • Hand</div>
+        </div>
+        <span class="hidden xl:inline-flex ml-2 font-mono text-[10px] leading-none border border-line rounded-full px-3 py-1.5 text-muted">PUNE • SINCE 2020 • DM TO ORDER</span>
+      </a>
+
+      <nav class="hidden lg:flex items-center gap-6 text-[13px] font-medium">
+        <a href="gallery.html" class="group flex items-center gap-1.5 hover:text-terracotta transition"><span class="w-1 h-1 bg-ink rounded-full group-hover:bg-terracotta"></span> Gallery <span class="font-mono text-[11px] text-muted">12</span></a>
+        <a href="custom.html" class="hover:text-terracotta">Custom Order</a>
+        <a href="about.html" class="hover:text-terracotta">About</a>
+        <span class="w-px h-4 bg-line"></span>
+        <a href="https://instagram.com" target="_blank" class="font-mono text-[11px] tracking-widest uppercase border border-line px-3 py-1.5 rounded-full hover:bg-ink hover:text-paper transition">Instagram 18.4k ↗</a>
+      </nav>
+
+      <div class="flex items-center gap-2">
+        <button onclick="openSearch()" class="hidden sm:flex w-10 h-10 rounded-full border border-line items-center justify-center hover:border-ink transition" aria-label="Search">⌕</button>
+        <!-- Enquiry not cart -->
+        <button onclick="openCartDrawer()" class="hidden sm:flex items-center gap-2 bg-ink text-paper pl-1 pr-3 sm:pr-4 py-1 rounded-full hover:bg-black transition">
+          <span class="w-8 h-8 rounded-full bg-amber text-ink flex items-center justify-center text-xs font-mono">◐</span>
+          <span class="text-[13px] font-medium">Shortlist</span>
+          <span data-cart-count class="hidden bg-paper text-ink text-xs font-bold min-w-[18px] h-[18px] px-1 rounded-full flex items-center justify-center">0</span>
+        </button>
+        <a href="admin/index.html" class="inline-flex items-center gap-1.5 sm:gap-2 bg-terracotta text-white px-2.5 sm:px-3.5 py-1.5 sm:py-2 rounded-full text-[11px] sm:text-xs font-semibold uppercase tracking-[0.08em] hover:bg-ink transition shadow-sm">
+          <span class="w-1.5 h-1.5 bg-emerald-300 rounded-full animate-pulse"></span> <span class="hidden sm:inline">Admin Panel</span><span class="sm:hidden">Admin</span>
+        </a>
+        <button id="mobileMenuBtn" class="lg:hidden w-10 h-10 rounded-full border border-line flex items-center justify-center active:scale-95 transition">☰</button>
+      </div>
+    </div>
+    <!-- thread underline nav -->
+    <div class="h-px w-full bg-gradient-to-r from-transparent via-line to-transparent relative">
+      <div class="absolute left-1/2 -translate-x-1/2 -top-1 w-2 h-2 bg-paper border border-line rounded-full"></div>
+      <div class="absolute left-[48%] -top-1 w-1.5 h-1.5 bg-amber rounded-full"></div>
+      <div class="absolute left-[52%] -top-1 w-1.5 h-1.5 bg-terracotta rounded-full"></div>
+    </div>
+  </div>
+    <div id="mobileOverlay" onclick="closeMobileMenu()" class="fixed inset-0 z-40 bg-ink/40 backdrop-blur-sm hidden opacity-0 transition-opacity duration-300 lg:hidden"></div>
+  <div id="mobileMenu" class="fixed top-0 left-0 z-50 h-[100dvh] w-[84vw] max-w-[320px] bg-paper border-r border-line transform -translate-x-full transition-transform duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] lg:hidden flex flex-col shadow-2xl">
+    <div class="h-[64px] px-5 flex items-center justify-between border-b border-line shrink-0">
+      <a href="index.html" class="flex items-center gap-2.5">
+        <div class="w-9 h-9 rounded-full bg-ink text-amber flex items-center justify-center font-serif text-xs">TA</div>
+        <span class="font-serif">TAAR <span class="font-corm italic text-sm">by Nidhi</span></span>
+      </a>
+      <button onclick="closeMobileMenu()" class="w-8 h-8 rounded-full bg-ink text-paper flex items-center justify-center">✕</button>
+    </div>
+    <nav class="flex-1 overflow-y-auto px-5 py-6 space-y-1">
+      <a href="gallery.html" class="flex items-center justify-between py-3 border-b border-dashed border-line font-medium">Gallery <span class="font-mono text-xs bg-ink text-paper px-2 py-0.5 rounded-full">12</span></a>
+      <a href="gallery.html?cat=String%20Art" class="block py-2.5 text-sm text-muted hover:text-ink">— String Art</a>
+      <a href="gallery.html?cat=Resin%20Art" class="block py-2.5 text-sm text-muted hover:text-ink">— Resin & Acrylic</a>
+      <a href="gallery.html?cat=Nameboard" class="block py-2.5 text-sm text-muted hover:text-ink">— Nameboards</a>
+      <a href="custom.html" class="flex items-center gap-2 mt-4 bg-terracotta text-white px-4 py-3 rounded-full font-semibold text-sm">Custom Order →</a>
+      <a href="about.html" class="block py-3 text-sm">Process & Studio</a>
+      <a href="admin/index.html" class="flex items-center gap-2 mt-6 bg-ink text-amber px-3 py-2.5 rounded-lg font-mono text-[11px] font-semibold uppercase tracking-[0.08em]"><span class="w-2 h-2 bg-emerald-400 rounded-full animate-pulse"></span> Admin Panel — Manage atelier →</a>
+      <div class="pt-6 mt-6 border-t border-line">
+        <div class="font-mono text-xs text-muted">DM is fastest</div>
+        <a href="https://instagram.com" target="_blank" class="mt-2 inline-flex border border-ink px-4 py-2 rounded-full text-sm font-medium">Instagram 18.4k ↗</a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<!-- HERO — Atelier not store -->
+<section class="max-w-[1360px] mx-auto px-4 lg:px-6 pt-8 lg:pt-10">
+  <div class="grid lg:grid-cols-12 gap-6 lg:gap-8">
+    <!-- Left: editorial -->
+    <div class="lg:col-span-5 flex flex-col w-full min-w-0">
+      <div class="flex flex-wrap items-center gap-2 font-mono text-[10px] sm:text-[11px] tracking-[0.12em] sm:tracking-[0.14em] uppercase">
+        <span class="w-5 sm:w-6 h-px bg-terracotta shrink-0"></span> <span class="shrink-0">Not a catalogue. An atelier.</span>
+        <span class="bg-ink text-amber px-2 sm:px-2.5 py-1 rounded-full font-medium normal-case tracking-normal text-[10px] sm:text-[11px] leading-none whitespace-nowrap shrink-0">4.9★ • 1200 homes</span>
+      </div>
+
+      <h1 class="font-serif text-[32px] sm:text-[42px] lg:text-[64px] leading-[0.88] tracking-tight mt-5">
+        Threads <br>
+        <span class="relative inline-block">
+          <span class="italic font-corm font-light text-terracotta">hold</span>
+          <!-- thread underline svg -->
+          <svg class="absolute left-0 -bottom-1 w-full h-3" viewBox="0 0 120 12" fill="none" preserveAspectRatio="none"><path d="M2 8 C 20 2, 40 12, 60 6 C 80 0, 100 10, 118 4" stroke="#C9A86A" stroke-width="1.6" stroke-linecap="round" fill="none" class="thread-line"/></svg>
+        </span> stories.<br>
+        <span class="font-corm italic font-light">Pour keeps</span> them.
+      </h1>
+
+      <p class="font-corm text-[18px] leading-relaxed text-[#4A3E36] mt-5 max-w-[38ch]">
+        I don’t stock shelves. I hammer <span class="underline decoration-amber/30 decoration-4 underline-offset-2">300–600 nails</span> and pour resin layer by layer — for <em>your</em> name, your photo, your wall.
+      </p>
+
+      <div class="mt-6 flex flex-wrap gap-2 font-mono text-[11px] tracking-wide">
+        <span class="border border-ink bg-ink text-paper px-3 py-1.5 rounded-full">String Art • nails + thread</span>
+        <span class="border border-line bg-white px-3 py-1.5 rounded-full">Resin Pour • ocean & gold</span>
+        <span class="border border-line bg-white px-3 py-1.5 rounded-full">Acrylic Geode</span>
+        <span class="bg-amber text-ink px-3 py-1.5 rounded-full font-bold">Custom nameboards</span>
+      </div>
+
+      <div class="mt-7 flex flex-col sm:flex-row gap-3">
+        <a href="custom.html" class="flex-1 bg-terracotta text-white text-center py-4 rounded-full font-semibold hover:bg-ink transition flex items-center justify-center gap-2">Commission Yours — 7 Days <span>→</span></a>
+        <a href="gallery.html" class="hidden sm:flex items-center gap-2 border border-ink px-6 rounded-full font-medium hover:bg-paper transition">See 12 works <span class="w-7 h-7 rounded-full bg-ink text-paper flex items-center justify-center text-xs">↗</span></a>
+      </div>
+
+      <div class="mt-6 grid grid-cols-3 gap-3 font-mono text-xs">
+        <div class="bg-white border border-line rounded-2xl p-3"><div class="font-bold text-ink">340m</div><div class="text-muted leading-none">avg. thread<br>per string piece</div></div>
+        <div class="bg-white border border-line rounded-2xl p-3"><div class="font-bold text-ink">12 hrs</div><div class="text-muted leading-none">hand-winding<br>no machine</div></div>
+        <div class="bg-amber border border-amber rounded-2xl p-3"><div class="font-bold">70%</div><div class="text-ink/70 leading-none">orders are<br>custom-made</div></div>
+      </div>
+
+      <div class="mt-auto pt-6 flex items-center gap-3 border-t border-dashed border-line">
+        <div class="flex -space-x-2"><img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=64&h=64&fit=crop" class="w-8 h-8 rounded-full border-2 border-paper object-cover"><img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=64&h=64&fit=crop" class="w-8 h-8 rounded-full border-2 border-paper object-cover"><img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=64&h=64&fit=crop" class="w-8 h-8 rounded-full border-2 border-paper object-cover"></div>
+        <div class="font-mono text-xs leading-tight"><div class="font-bold">Pune studio • replies in 24h</div><div class="text-muted">DM @taar.by.nidhi — sketch before you pay</div></div>
+      </div>
+    </div>
+
+    <!-- Right: layered polaroids, not ecom card -->
+    <div class="lg:col-span-7 relative min-h-[420px] sm:min-h-[480px] lg:min-h-[640px] flex items-center justify-center">
+      <!-- blob -->
+      <div class="absolute inset-0 flex items-center justify-center opacity-40 pointer-events-none">
+        <div class="w-[92vw] max-w-[520px] h-[300px] sm:h-[420px] bg-gradient-to-br from-amber/30 via-terracotta/20 to-teal/30 blur-[40px] rounded-[60%_40%_50%_60%]"></div>
+      </div>
+      <!-- central board -->
+      <div class="relative w-full max-w-[560px]">
+        <!-- main polaroid -->
+        <div class="relative bg-white p-3 pb-12 rounded-[2px] shadow-[0_12px_40px_rgba(0,0,0,0.18)] rotate-[-1.2deg] border border-line">
+          <div class="absolute -top-3 left-1/2 -translate-x-1/2 w-20 h-6 washi rounded-sm tape rotate-[-1deg] opacity-70"></div>
+          <img src="https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?w=900&h=700&fit=crop&q=80" class="w-full aspect-[4/3] object-cover" alt="Ganesha string">
+          <div class="absolute bottom-3 left-3 right-3 flex items-end justify-between">
+            <div>
+              <div class="font-hand text-[20px] leading-none">Ganesha — 340m • 12 hrs</div>
+              <div class="font-mono text-[10px] tracking-widest uppercase text-muted">Teak • gold + ivory • 18″ • housewarming</div>
+            </div>
+            <span class="font-mono text-xs bg-ink text-paper px-2.5 py-1 rounded-full">₹4,200</span>
+          </div>
+          <!-- nail dots -->
+          <div class="absolute top-4 right-4 w-2 h-2 bg-ink rounded-full border border-white shadow"></div>
+          <div class="absolute top-4 left-4 w-2 h-2 bg-ink rounded-full border border-white shadow"></div>
+        </div>
+        <!-- second -->
+        <div class="absolute -right-2 lg:-right-6 -bottom-6 w-[48%] bg-white p-2.5 pb-8 rounded-[2px] shadow-xl rotate-[2deg] border border-line hidden sm:block">
+          <div class="absolute -top-2 left-4 w-12 h-4 bg-amber/60 tape rotate-[3deg]"></div>
+          <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=400&h=400&fit=crop&q=80" class="w-full aspect-square object-cover">
+          <div class="pt-2 px-1"><div class="font-hand text-base leading-none">Nilaya • Acacia + ocean resin</div><div class="font-mono text-[10px] text-muted">Outdoor safe • brass letters</div></div>
+        </div>
+        <!-- third -->
+        <div class="absolute -left-4 lg:-left-6 top-10 w-[38%] bg-white p-2 pb-7 rounded-[2px] shadow-lg rotate-[-3deg] border border-line hidden lg:block">
+          <div class="absolute -top-2 right-6 w-14 h-4 bg-teal/30 tape rotate-[-2deg]"></div>
+          <img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=400&h=500&fit=crop&q=80" class="w-full aspect-[3/4] object-cover">
+          <div class="pt-2 text-center"><div class="font-hand text-sm">Ocean clock • 3 pours</div><div class="font-mono text-[9px] text-muted">Real sand edge</div></div>
+        </div>
+
+        <!-- thread svg connecting -->
+        <svg class="absolute inset-0 w-full h-full pointer-events-none hidden lg:block" viewBox="0 0 560 500" fill="none"><path d="M 120 40 C 200 80, 300 20, 480 60" stroke="#C9A86A" stroke-width="1" stroke-dasharray="5 7" opacity="0.5"/></svg>
+      </div>
+
+      <!-- floating spec -->
+      <div class="absolute bottom-2 left-2 lg:left-0 bg-ink text-paper rounded-full px-4 py-2 flex items-center gap-3 text-xs font-mono shadow-lg">
+        <span class="w-2 h-2 bg-emerald-400 rounded-full animate-pulse"></span> Winding now: Couple Heart — 500 nails
+        <span class="hidden sm:inline opacity-50">•</span><span class="hidden sm:inline text-amber">Live</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Crafts — not shop cards, atelier shelves -->
+<section class="max-w-[1360px] mx-auto px-4 lg:px-6 mt-14">
+  <div class="flex items-end justify-between gap-4">
+    <div>
+      <div class="font-mono text-xs tracking-[0.16em] uppercase text-terracotta flex items-center gap-2"><span class="w-8 h-px bg-terracotta"></span> Three crafts • One hand</div>
+      <h2 class="font-serif text-3xl lg:text-[38px] leading-none mt-2">What I <span class="italic font-corm font-light">pull & pour</span></h2>
+    </div>
+    <div class="hidden lg:block font-hand text-xl text-muted rotate-[-1deg]">all can be your name, your photo →</div>
+  </div>
+
+  <div class="grid lg:grid-cols-12 gap-4 mt-8">
+    <!-- String -->
+    <div class="lg:col-span-5 relative bg-[#1E1915] text-paper rounded-[28px] overflow-hidden p-5 sm:p-7 lg:p-8 flex flex-col min-h-[420px]">
+      <div class="absolute inset-0 opacity-[0.08]" style="background-image: radial-gradient(circle, #fff 1px, transparent 1px); background-size: 14px 14px;"></div>
+      <!-- nail grid deco -->
+      <div class="absolute top-6 right-6 w-20 h-20 opacity-20"><div class="w-full h-full border border-paper/40 rounded-full relative"><span class="absolute w-1.5 h-1.5 bg-paper rounded-full top-0 left-1/2 -translate-x-1/2"></span><span class="absolute w-1.5 h-1.5 bg-paper rounded-full bottom-0 left-1/2 -translate-x-1/2"></span><span class="absolute w-1.5 h-1.5 bg-paper rounded-full left-0 top-1/2 -translate-y-1/2"></span><span class="absolute w-1.5 h-1.5 bg-paper rounded-full right-0 top-1/2 -translate-y-1/2"></span></div></div>
+      <div class="relative">
+        <div class="inline-flex items-center gap-2 font-mono text-[11px] tracking-widest uppercase"><span class="w-2 h-2 bg-amber rounded-full"></span> String Art • Nails + Thread</div>
+        <h3 class="font-serif text-[26px] sm:text-[28px] lg:text-[32px] leading-none mt-3">Hammer.<br><span class="italic font-corm font-light text-amber">Wind. Repeat.</span></h3>
+        <p class="font-corm text-[16px] leading-relaxed text-paper/70 mt-3 max-w-[32ch]">400 nails hammered by hand. 300m silk pulled one line at a time. Ganesha, portraits, evil-eye, couple hearts — no print can mimic the shadow of real thread.</p>
+        <div class="mt-5 flex flex-wrap gap-2 font-mono text-[11px]"><span class="bg-paper text-ink px-3 py-1.5 rounded-full">300–600 nails</span><span class="bg-white/10 border border-white/15 text-paper px-3 py-1.5 rounded-full">Teak / MDF • 12–24″</span><span class="bg-amber text-ink px-3 py-1.5 rounded-full font-bold">From ₹2,800</span></div>
+        <a href="gallery.html?cat=String%20Art" class="inline-flex items-center gap-2 mt-6 border border-paper/20 px-5 py-2.5 rounded-full text-sm hover:bg-paper hover:text-ink transition">See 5 string works <span>↗</span></a>
+      </div>
+      <div class="relative mt-auto pt-6 flex gap-3">
+        <img src="https://images.unsplash.com/photo-1515405295579-ba7b45403062?w=200&h=200&fit=crop&q=80" class="w-20 h-20 rounded-full object-cover border-2 border-paper/20">
+        <img src="https://images.unsplash.com/photo-1578301978693-85fa9c0320b9?w=200&h=200&fit=crop&q=80" class="w-20 h-20 rounded-full object-cover border-2 border-paper/20 -ml-2">
+        <div class="ml-auto font-hand text-sm text-amber rotate-[2deg]">photo → thread<br><span class="font-mono text-xs text-paper/60">portrait custom</span></div>
+      </div>
+    </div>
+
+    <!-- Resin + Acrylic stack -->
+    <div class="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-4">
+      <div class="relative rounded-[28px] overflow-hidden bg-gradient-to-br from-teal to-[#1A3A3A] text-white p-7 flex flex-col min-h-[420px]">
+        <img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=600&h=700&fit=crop&q=80" class="absolute inset-0 w-full h-full object-cover opacity-40 mix-blend-overlay">
+        <div class="relative">
+          <div class="font-mono text-[11px] tracking-widest uppercase text-amber">Resin Art • Poured</div>
+          <h3 class="font-serif text-2xl leading-none mt-2">Ocean in<br><span class="italic font-corm font-light">three pours</span></h3>
+          <p class="text-sm text-white/70 mt-3 leading-relaxed">Epoxy layered — deep blue, foam white, sand. Clocks that tick, trays that serve, mantra frames that glow.</p>
+          <div class="mt-4 font-mono text-xs flex gap-2"><span class="bg-white text-ink px-2.5 py-1 rounded-full">Food-safe</span><span class="bg-white/15 border border-white/20 px-2.5 py-1 rounded-full">UV-proof</span></div>
+        </div>
+        <div class="relative mt-auto">
+          <div class="bg-white text-ink rounded-2xl p-3 flex items-center gap-3"><img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=80&h=80&fit=crop&q=80" class="w-12 h-12 rounded-xl object-cover"><div><div class="font-medium text-sm leading-none">Ocean Clock • 18″</div><div class="font-mono text-xs text-muted">From ₹6,800 • real sand</div></div></div>
+          <a href="gallery.html?cat=Resin%20Art" class="inline-flex mt-3 bg-amber text-ink px-4 py-2 rounded-full text-xs font-bold">Explore Resin →</a>
+        </div>
+      </div>
+
+      <div class="relative rounded-[28px] bg-[#F2E8DC] border border-line p-7 flex flex-col min-h-[420px] overflow-hidden">
+        <div class="absolute top-0 right-0 w-40 h-40 bg-gradient-to-br from-amber/20 to-terracotta/20 blur-2xl rounded-full"></div>
+        <div class="relative">
+          <div class="font-mono text-[11px] tracking-widest uppercase text-terracotta">Acrylic • Geode & Dots</div>
+          <h3 class="font-serif text-2xl leading-none mt-2">Gold veins.<br><span class="italic font-corm font-light">Cell by cell.</span></h3>
+          <p class="text-sm text-[#5A4E45] mt-3 leading-relaxed">Fluid cells + gold leaf. Dot mandala by dot — 16 hours, steady hand.</p>
+        </div>
+        <div class="relative flex-1 flex items-center justify-center my-4">
+          <div class="w-48 h-48 rounded-full overflow-hidden border-[6px] border-white shadow-lg rotate-[-2deg]"><img src="https://images.unsplash.com/photo-1541961017774-22349e4a1262?w=400&h=400&fit=crop&q=80" class="w-full h-full object-cover"></div>
+          <div class="absolute bottom-2 right-2 bg-ink text-paper font-mono text-xs px-3 py-1.5 rounded-full">Acrylic • 24×18″</div>
+        </div>
+        <a href="gallery.html?cat=Acrylic" class="relative self-start border border-ink px-5 py-2 rounded-full text-sm font-medium hover:bg-ink hover:text-paper transition">See acrylic →</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Nameboard banner — hero of business -->
+  <a href="custom.html" class="mt-4 group relative rounded-[28px] overflow-hidden bg-ink text-paper p-5 sm:p-6 lg:p-8 flex flex-col lg:flex-row items-center gap-6 border border-ink hover:bg-[#241E19] transition">
+    <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=500&h=300&fit=crop&q=80" class="absolute inset-0 w-full h-full object-cover opacity-20 group-hover:opacity-30 transition">
+    <div class="absolute inset-0 bg-gradient-to-r from-ink via-ink/80 to-transparent"></div>
+    <div class="relative flex-1">
+      <div class="inline-flex bg-amber text-ink font-mono text-xs font-bold px-3 py-1 rounded-full">MOST LOVED • CUSTOM NAMEBOARDS</div>
+      <h3 class="font-serif text-2xl lg:text-3xl leading-none mt-3">Your house name, <span class="italic font-corm font-light text-amber">not a catalogue font.</span></h3>
+      <p class="text-sm text-paper/60 mt-2 max-w-xl">Acacia + resin pour + brass letters. Outdoor safe, monsoon tested. Baby cloud boards with LED. House, office, gift.</p>
+      <div class="mt-3 flex gap-2 font-mono text-xs"><span class="bg-white text-ink px-3 py-1 rounded-full">12×18″ • From ₹2,400</span><span class="bg-white/10 border border-white/20 px-3 py-1 rounded-full">Sketch in 24h</span></div>
+    </div>
+    <div class="relative bg-paper text-ink rounded-2xl p-4 flex items-center gap-4 w-full lg:min-w-[280px] lg:w-auto">
+      <div class="w-16 h-16 rounded-xl bg-gradient-to-br from-teal to-amber flex items-center justify-center font-serif text-white text-xl">ॐ</div>
+      <div><div class="font-serif">Nilaya • House</div><div class="font-mono text-xs text-muted">Resin + brass • Outdoor</div><div class="font-hand text-sm text-terracotta">Made for Mehta family →</div></div>
+    </div>
+  </a>
+</section>
+
+<!-- Portfolio — journal, not shop grid -->
+<section class="max-w-[1360px] mx-auto px-4 lg:px-6 mt-16">
+  <div class="flex items-baseline justify-between flex-wrap gap-4">
+    <h2 class="font-serif text-3xl lg:text-4xl">Recent threads <span class="font-corm italic font-light text-muted">— journal</span></h2>
+    <div class="flex items-center gap-2 font-mono text-xs">
+      <span class="text-muted hidden sm:inline">Filter journal:</span>
+      <button onclick="filterHome('All')" data-filter="All" class="filter-btn bg-ink text-paper px-4 py-2 rounded-full font-bold">All</button>
+      <button onclick="filterHome('String Art')" data-filter="String Art" class="filter-btn border border-line px-4 py-2 rounded-full hover:border-ink bg-white">String</button>
+      <button onclick="filterHome('Nameboard')" data-filter="Nameboard" class="filter-btn border border-line px-4 py-2 rounded-full hover:border-ink bg-white">Nameboards</button>
+      <button onclick="filterHome('Resin Art')" data-filter="Resin Art" class="filter-btn border border-line px-4 py-2 rounded-full hover:border-ink bg-white">Resin</button>
+    </div>
+  </div>
+  <div class="font-hand text-lg text-terracotta mt-1 rotate-[-0.5deg]">Each one has a home, a story — hover for thread count →</div>
+
+  <div id="featuredGrid" class="columns-1 sm:columns-2 lg:columns-3 gap-4 sm:gap-5 mt-8 space-y-4 sm:space-y-5"></div>
+
+  <div class="text-center mt-10">
+    <a href="gallery.html" class="inline-flex items-center gap-2 bg-ink text-paper px-7 py-3 rounded-full font-medium hover:bg-black transition">Open full journal — 12 works <span class="w-6 h-6 rounded-full bg-paper text-ink flex items-center justify-center text-xs">↗</span></a>
+    <div class="font-mono text-xs text-muted mt-2">Or <a href="custom.html" class="underline decoration-amber">start your custom</a> — sketch in 24h</div>
+  </div>
+</section>
+
+<!-- Commission — thread timeline, not ecom card -->
+<section class="max-w-[1360px] mx-auto px-4 lg:px-6 mt-16">
+  <div class="rounded-[32px] bg-ink text-paper overflow-hidden border border-ink">
+    <div class="grid lg:grid-cols-12 gap-0">
+      <div class="lg:col-span-7 p-5 sm:p-7 lg:p-10">
+        <div class="inline-flex items-center gap-2 font-mono text-[11px] tracking-widest uppercase"><span class="w-8 h-px bg-amber"></span> 70% is custom • No stock pressure</div>
+        <h3 class="font-serif text-3xl lg:text-[40px] leading-[0.95] mt-3">Your idea.<br><span class="italic font-corm font-light text-amber">My hands.</span></h3>
+        <p class="font-corm text-lg leading-relaxed text-paper/60 mt-3 max-w-xl">Tell me on DM — a name, a photo, a wall size. I draw the nail-map, you say yes, then I hammer. No advance until you love the sketch.</p>
+
+        <!-- timeline with thread -->
+        <div class="relative mt-8 pl-8 border-l border-dashed border-paper/20 space-y-7">
+          <!-- thread dots -->
+          <div class="absolute -left-[5px] top-0 w-2.5 h-2.5 bg-amber rounded-full"></div>
+          <div class="absolute -left-[5px] bottom-0 w-2.5 h-2.5 bg-terracotta rounded-full"></div>
+
+          <div class="relative">
+            <div class="absolute -left-[38px] w-7 h-7 rounded-full bg-amber text-ink flex items-center justify-center font-mono text-xs font-bold">1</div>
+            <div class="font-semibold">Whisper the idea</div>
+            <div class="font-corm text-sm text-paper/60">Instagram DM / WhatsApp — photo, name, size, budget. I reply in 24h with nail-map PDF + price.</div>
+            <div class="font-mono text-xs text-amber mt-1">No fee for sketch →</div>
+          </div>
+          <div class="relative">
+            <div class="absolute -left-[38px] w-7 h-7 rounded-full bg-paper text-ink flex items-center justify-center font-mono text-xs font-bold">2</div>
+            <div class="font-semibold">Approve the drawing</div>
+            <div class="font-corm text-sm text-paper/60">2 free revisions. 50% advance only after you say “perfect”.</div>
+          </div>
+          <div class="relative bg-amber text-ink rounded-2xl p-4 -ml-2">
+            <div class="absolute -left-[38px] w-7 h-7 rounded-full bg-paper text-ink flex items-center justify-center font-mono text-xs font-bold border border-ink">3</div>
+            <div class="font-bold">I hammer & wind — 7 days</div>
+            <div class="text-sm text-ink/70">Video of final piece before packing. Wood crate, pan-India. Balance on approval.</div>
+            <div class="font-mono text-xs font-bold mt-1">Delivered in ~10 days total</div>
+          </div>
+        </div>
+
+        <!-- estimator — now as atelier quote, not shop -->
+        <div class="mt-8 bg-paper text-ink rounded-[24px] p-5 border border-line">
+          <div class="flex items-center justify-between"><div class="font-serif text-lg">Quick atelier quote</div><span class="font-mono text-xs bg-white border border-line px-3 py-1 rounded-full">No login</span></div>
+          <div class="grid sm:grid-cols-3 gap-3 mt-4 font-mono text-xs">
+            <label class="border border-line rounded-2xl p-3 bg-white">CRAFT<br><select id="estCraft" onchange="updateEstimator()" class="w-full font-bold bg-transparent outline-none font-sans text-sm"><option>String Art</option><option>Resin Art</option><option>Nameboard</option><option>Acrylic</option></select></label>
+            <label class="border border-line rounded-2xl p-3 bg-white">SIZE<br><select id="estSize" onchange="updateEstimator()" class="w-full font-bold bg-transparent outline-none font-sans text-sm"><option>12 inch</option><option selected>18 inch</option><option>24 inch</option><option>Custom wall</option></select></label>
+            <label class="border border-line rounded-2xl p-3 bg-white">TOUCH<br><select id="estAdd" onchange="updateEstimator()" class="w-full font-bold bg-transparent outline-none font-sans text-sm"><option>None</option><option>LED +₹400</option><option>Brass letters +₹600</option><option>Photo portrait +₹1200</option></select></label>
+          </div>
+          <div class="flex items-center justify-between mt-4 pt-4 border-t border-dashed border-line">
+            <div><div class="font-mono text-xs text-muted">Atelier estimate</div><div id="estPrice" class="font-serif text-2xl">₹4,200</div><div class="font-mono text-xs text-muted">Final after sketch</div></div>
+            <a href="custom.html" class="bg-ink text-paper px-6 py-3 rounded-full font-semibold hover:bg-black transition">Get sketch & exact price →</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- visual side -->
+      <div class="lg:col-span-5 relative min-h-[360px] sm:min-h-[420px] lg:min-h-[520px] bg-[#0F0A08] flex items-center justify-center p-6">
+        <img src="https://images.unsplash.com/photo-1452860606245-08befc0ff44b?w=900&h=900&fit=crop&q=80" class="absolute inset-0 w-full h-full object-cover opacity-50">
+        <div class="absolute inset-0 bg-gradient-to-t from-ink via-transparent to-transparent"></div>
+        <div class="relative w-full max-w-[360px] space-y-4">
+          <div class="bg-paper rounded-2xl p-4 shadow-xl rotate-[-0.5deg] border border-line">
+            <div class="font-mono text-[11px] tracking-widest uppercase text-muted">Sketch → Thread</div>
+            <div class="mt-2 grid grid-cols-2 gap-2">
+              <div class="bg-white border border-line rounded-xl p-2"><div class="aspect-square bg-[radial-gradient(circle,_#1E1915_1.5px,_transparent_1.5px)] bg-[length:14px_14px] rounded-lg relative"><div class="absolute inset-2 border border-dashed border-amber rounded-full"></div><div class="absolute inset-0 flex items-center justify-center font-hand text-xs">nail-map</div></div><div class="font-mono text-[10px] text-center mt-1">PDF sent in 24h</div></div>
+              <img src="https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?w=200&h=200&fit=crop&q=80" class="w-full aspect-square object-cover rounded-xl border border-line">
+            </div>
+            <div class="mt-3 font-hand text-sm text-center">You approve before I hammer →</div>
+          </div>
+          <div class="bg-ink text-paper rounded-2xl p-5 border border-white/10">
+            <div class="flex items-center gap-3"><span class="w-9 h-9 rounded-full bg-amber text-ink flex items-center justify-center font-serif">N</span><div><div class="font-medium">Nidhi • Atelier</div><div class="font-mono text-xs text-paper/60">Pune • 4 yrs • replies herself</div></div></div>
+            <p class="font-corm italic text-sm leading-relaxed mt-3">“I don’t keep stock. Every thread is pulled for your name. That’s why it feels like yours.”</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Testimonials — pinned notes -->
+<section class="max-w-[1360px] mx-auto px-4 lg:px-6 mt-16">
+  <h2 class="font-serif text-3xl">Notes from homes <span class="font-hand text-2xl text-terracotta">pinned on my wall</span></h2>
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 mt-6">
+    <div class="bg-[#FFFDF0] border border-amber/20 rounded-[4px] p-6 shadow-md rotate-[-0.6deg] relative">
+      <div class="absolute -top-3 left-1/2 -translate-x-1/2 w-16 h-5 bg-amber/40 tape rotate-[1deg]"></div>
+      <div class="font-mono text-xs text-muted">Anjali • Delhi • Ganesha 18″</div>
+      <p class="font-corm text-[16px] leading-relaxed mt-2">“Thread work is insane up close — even the back is neat. Came in a wooden box, no crack. My mom touched it and said ‘yeh haath ka kaam hai.’”</p>
+      <div class="font-hand text-sm mt-3">— thank you Nidhi ♡</div>
+    </div>
+    <div class="bg-white border border-line rounded-[4px] p-6 shadow-md rotate-[0.7deg] relative">
+      <div class="absolute -top-3 left-6 w-12 h-5 bg-teal/20 tape rotate-[-2deg]"></div>
+      <div class="font-mono text-xs text-muted">Rohit Family • House board • 1 yr outdoor</div>
+      <p class="font-corm text-[16px] leading-relaxed mt-2">“Monsoon came and went. Resin still shines, brass not faded. Nidhi sent sketch 3 times till I said yes. Patient.”</p>
+      <div class="font-mono text-xs mt-3">★ ★ ★ ★ ★</div>
+    </div>
+    <div class="bg-[#FFF0F0] border border-terracotta/15 rounded-[4px] p-6 shadow-md rotate-[-0.4deg] relative">
+      <div class="absolute -top-3 right-8 w-14 h-5 bg-terracotta/20 tape rotate-[2deg]"></div>
+      <div class="font-mono text-xs text-muted">Sakshi • Portrait gift</div>
+      <p class="font-corm text-[16px] leading-relaxed mt-2">“Custom portrait of my parents from wedding photo — they cried. 600 nails. From far it looks printed, up close it’s all thread.”</p>
+      <div class="font-hand text-sm mt-3">worth ₹7,500 and more</div>
+    </div>
+  </div>
+</section>
+
+<!-- Instagram — film strip -->
+<section class="max-w-[1360px] mx-auto px-4 lg:px-6 mt-16">
+  <div class="flex items-end justify-between">
+    <div><div class="font-mono text-[11px] tracking-widest uppercase text-muted">DM is fastest • @taar.by.nidhi</div><h3 class="font-serif text-2xl">The atelier diary</h3></div>
+    <a href="https://instagram.com" target="_blank" class="font-mono text-xs border border-ink px-4 py-2 rounded-full hover:bg-ink hover:text-paper transition">Follow 18.4k →</a>
+  </div>
+  <div class="mt-4 flex gap-3 overflow-auto pb-2 snap-x">
+    <div class="shrink-0 w-[200px] aspect-[4/5] rounded-[4px] overflow-hidden border border-line snap-center rotate-[-1deg]"><img src="https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?w=300&h=400&fit=crop&q=80" class="w-full h-full object-cover"></div>
+    <div class="shrink-0 w-[200px] aspect-[4/5] rounded-[4px] overflow-hidden border border-line snap-center rotate-[0.5deg]"><img src="https://images.unsplash.com/photo-1513364776144-60967b0f800f?w=300&h=400&fit=crop&q=80" class="w-full h-full object-cover"></div>
+    <div class="shrink-0 w-[200px] aspect-[4/5] rounded-[4px] overflow-hidden border border-line snap-center rotate-[-0.7deg]"><img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=300&h=400&fit=crop&q=80" class="w-full h-full object-cover"></div>
+    <div class="shrink-0 w-[200px] aspect-[4/5] rounded-[4px] overflow-hidden border border-line snap-center rotate-[1deg] hidden sm:block"><img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=300&h=400&fit=crop&q=80" class="w-full h-full object-cover"></div>
+    <div class="shrink-0 w-[200px] aspect-[4/5] rounded-[4px] overflow-hidden border border-line snap-center rotate-[-0.4deg] hidden sm:block"><img src="https://images.unsplash.com/photo-1541961017774-22349e4a1262?w=300&h=400&fit=crop&q=80" class="w-full h-full object-cover"></div>
+    <div class="shrink-0 w-[200px] aspect-[4/5] rounded-[4px] overflow-hidden border border-line snap-center rotate-[0.8deg] hidden lg:block"><img src="https://images.unsplash.com/photo-1515405295579-ba7b45403062?w=300&h=400&fit=crop&q=80" class="w-full h-full object-cover"></div>
+  </div>
+</section>
+
+<!-- Footer — letter -->
+<footer class="max-w-[1360px] mx-auto px-4 lg:px-6 mt-14">
+  <div class="border-t border-dashed border-line pt-8">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6 sm:gap-8">
+      <div class="lg:col-span-2">
+        <div class="font-serif text-lg">TAAR <span class="font-corm italic">by Nidhi</span> <span class="font-mono text-xs text-muted">— Pune</span></div>
+        <p class="font-corm text-sm leading-relaxed text-muted mt-2 max-w-sm">Not a store. An atelier. One pair of hands, one thread at a time. Mainly custom — DM your wall, I’ll sketch.</p>
+        <div class="mt-4 flex gap-2 font-mono text-xs"><a href="custom.html" class="bg-ink text-paper px-4 py-2 rounded-full">Custom Order</a><a href="https://instagram.com" class="border border-line px-4 py-2 rounded-full bg-white">Instagram</a></div>
+      </div>
+      <div class="font-mono text-xs"><div class="font-bold uppercase tracking-widest">Atelier</div><ul class="mt-3 space-y-1.5 text-muted"><li><a href="gallery.html" class="hover:text-ink">Works journal</a></li><li><a href="gallery.html?cat=String%20Art" class="hover:text-ink">String Art</a></li><li><a href="custom.html" class="hover:text-ink">Resin & Acrylic</a></li><li><a href="custom.html" class="hover:text-ink">Nameboards</a></li></ul></div>
+      <div class="font-mono text-xs"><div class="font-bold uppercase tracking-widest">Commission</div><ul class="mt-3 space-y-1.5 text-muted"><li><a href="custom.html" class="hover:text-ink">How it works</a></li><li><a href="about.html" class="hover:text-ink">Process & Shipping</a></li><li><a href="gallery.html" class="hover:text-ink">Ready pieces</a></li></ul></div>
+      <div class="font-mono text-xs">
+        <div class="font-bold uppercase tracking-widest flex items-center gap-2"><span class="w-2 h-2 bg-emerald-500 rounded-full animate-pulse"></span> Admin Demo</div>
+        <ul class="mt-3 space-y-1.5 text-muted"><li><a href="admin/index.html" class="hover:text-ink font-bold">Dashboard →</a></li><li><a href="admin/index.html#custom" class="hover:text-ink">Custom Queue</a></li><li><a href="admin/index.html#works" class="hover:text-ink">Manage Works</a></li></ul>
+        <div class="mt-4 bg-amber/10 border border-amber/20 rounded-xl p-3 font-sans text-xs normal-case"><div class="font-bold">Admin visible in Nav</div><div class="text-muted">Every page shows the pill — proof of panel quality.</div></div>
+      </div>
+    </div>
+    <div class="flex flex-col lg:flex-row justify-between gap-2 font-mono text-xs text-muted border-t border-line mt-8 pt-4">
+      <span>© 2026 TAAR Atelier • Demo by <a href="https://networkbuilder.in" class="underline">Network Builder</a> • HTML + Tailwind</span>
+      <span class="font-hand text-sm text-ink">made thread by thread ♡</span>
+    </div>
+  </div>
+</footer>
+
+<!-- Search -->
+<div id="searchOverlay" class="hidden fixed inset-0 z-[60] bg-paper/95 backdrop-blur">
+  <div class="max-w-2xl mx-auto px-4 pt-8">
+    <div class="flex gap-3"><div class="flex-1 flex items-center gap-3 border border-ink rounded-full px-5 py-3 bg-white"><span>⌕</span><input id="searchInput" type="text" placeholder="Search Ganesha, resin, nameboard..." class="flex-1 outline-none text-sm bg-transparent" oninput="renderSearchResults(this.value)"></div><button onclick="closeSearch()" class="w-11 h-11 rounded-full bg-ink text-paper">✕</button></div>
+    <div id="searchResults" class="mt-6 max-h-[60vh] overflow-auto divide-y divide-line border border-line rounded-2xl bg-white"></div>
+  </div>
+</div>
+
+<!-- Enquiry Drawer (was cart) -->
+<div id="cartDrawer" class="hidden fixed inset-0 z-[60]">
+  <div class="absolute inset-0 bg-ink/40 backdrop-blur-sm" onclick="closeCartDrawer()"></div>
+  <div class="absolute right-0 top-0 h-full w-full max-w-md bg-paper flex flex-col border-l border-line">
+    <div class="px-6 py-5 border-b border-line flex items-center justify-between bg-white">
+      <div><div class="font-serif text-lg leading-none">Shortlist</div><div class="font-mono text-xs text-muted">Save styles to commission</div></div>
+      <button onclick="closeCartDrawer()" class="w-9 h-9 rounded-full border flex items-center justify-center bg-white">✕</button>
+    </div>
+    <div id="cartDrawerItems" class="flex-1 overflow-auto px-6 bg-paper"></div>
+    <div id="cartDrawerFooter" class="hidden border-t border-line p-6 bg-white">
+      <div class="flex justify-between font-mono text-sm"><span class="text-muted">Enquiry total (est.)</span><span id="cartDrawerSubtotal" class="font-bold"></span></div>
+      <div class="font-mono text-xs text-muted mt-1">Final after sketch • 50% advance</div>
+      <button onclick="showToast('Demo: DM @taar.by.nidhi with shortlist — we reply with sketches'); closeCartDrawer();" class="mt-4 w-full bg-terracotta text-white py-3.5 rounded-full font-semibold">DM Shortlist on Instagram →</button>
+      <div id="cartDrawerCountLabel" class="hidden"></div>
+    </div>
+  </div>
+</div>
+
+<script src="app.js"></script>
+<script>
+function journalCard(p){
+  const rotation = p.id%2===0 ? 'rotate-[0.6deg]' : 'rotate-[-0.7deg]';
+  return `
+  <a href="product.html?id=${p.id}" class="break-inside-avoid block group bg-white p-3 pb-10 rounded-[2px] shadow-[0_6px_20px_rgba(0,0,0,0.08)] border border-line ${rotation} hover:shadow-xl hover:rotate-[0deg] transition duration-300">
+    <div class="relative overflow-hidden">
+      <img src="${p.image}" class="w-full h-auto object-cover group-hover:scale-[1.02] transition duration-700" alt="${p.name}">
+      <div class="absolute top-2 left-2 font-mono text-[10px] bg-white/90 backdrop-blur border border-line px-2 py-1 rounded-full">${p.category} • ${p.size}</div>
+      ${p.custom?`<div class="absolute top-2 right-2 w-6 h-6 rounded-full bg-amber border border-white flex items-center justify-center text-xs">✦</div>`:''}
+    </div>
+    <div class="pt-4 px-1">
+      <div class="font-hand text-[18px] leading-none">${p.name}</div>
+      <div class="font-mono text-[11px] tracking-wide text-muted mt-1">${p.material} • ${p.badge||'Handmade'}</div>
+      <div class="font-corm text-sm leading-relaxed mt-2 text-[#4A3E36]">${p.desc.slice(0,90)}...</div>
+      <div class="mt-3 flex items-center justify-between border-t border-dashed border-line pt-3">
+        <span class="font-mono text-xs">From <span class="font-bold text-ink">${formatINR(p.price)}</span></span>
+        <span class="font-mono text-xs border border-line px-3 py-1 rounded-full group-hover:bg-ink group-hover:text-paper transition">Commission similar →</span>
+      </div>
+      <div class="font-mono text-[10px] text-muted mt-2 flex items-center gap-2"><span>★ ${p.rating} • ${p.reviews} homes</span><span class="ml-auto washi px-2 py-0.5 rounded-full">📎 tape</span></div>
+    </div>
+  </a>`;
+}
+let currentFilter='All';
+function filterHome(cat){
+  currentFilter=cat;
+  document.querySelectorAll('.filter-btn').forEach(b=>{
+    if(b.dataset.filter===cat){ b.className='filter-btn bg-ink text-paper px-4 py-2 rounded-full font-bold'; }
+    else { b.className='filter-btn border border-line px-4 py-2 rounded-full hover:border-ink bg-white'; }
+  });
+  renderFeatured();
+}
+function renderFeatured(){
+  const list=getWorks();
+  const filtered = currentFilter==='All' ? list : list.filter(p=>p.category===currentFilter);
+  document.getElementById('featuredGrid').innerHTML = filtered.slice(0,6).map(journalCard).join('');
+}
+function updateEstimator(){
+  const craft=document.getElementById('estCraft').value;
+  const size=document.getElementById('estSize').value;
+  const add=document.getElementById('estAdd').value;
+  let base = craft==='String Art'?3800 : craft==='Resin Art'?4200 : craft==='Nameboard'?3200 : 3600;
+  if(size==='18 inch') base+=400;
+  if(size==='24 inch') base+=1200;
+  if(add.includes('LED')) base+=400;
+  if(add.includes('Brass')) base+=600;
+  if(add.includes('Photo')) base+=1200;
+  document.getElementById('estPrice').textContent=formatINR(base);
+}
+renderFeatured();
+updateEstimator();
+</script>
+</body>
+</html>

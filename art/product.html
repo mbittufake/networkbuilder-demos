@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Artwork — TAAR Atelier</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<script>tailwind.config={theme:{extend:{fontFamily:{sans:['Inter','sans-serif'],serif:['Instrument Serif','serif'],hand:['Caveat','cursive'],mono:['Space Mono','monospace']},colors:{ink:'#1E1915',paper:'#FFF8EC',line:'#E8DDD3',terracotta:'#B84A2F',amber:'#C9A86A',muted:'#9C8E84'}}}}</script>
+<style>body{background:#FFF8EC}</style>
+</head>
+<body class="text-ink overflow-x-hidden antialiased">
+<header class="sticky top-0 z-40 bg-paper/85 backdrop-blur-md border-b border-line">
+  <div class="max-w-[1360px] mx-auto px-4 lg:px-6">
+    <div class="h-[64px] lg:h-[68px] flex items-center justify-between gap-6">
+      <a href="index.html" class="flex items-center gap-3.5">
+        <div class="relative w-10 h-10 rounded-full bg-ink flex items-center justify-center">
+          <span class="font-serif text-paper text-[11px] tracking-[0.18em]">TAAR</span>
+          <span class="absolute -top-1 -right-1 w-3 h-3 bg-terracotta rounded-full border-2 border-paper"></span>
+        </div>
+        <div class="leading-none">
+          <div class="font-serif text-[20px] tracking-tight">TAAR <span class="font-corm italic font-light text-[14px]">by Nidhi</span></div>
+          <div class="font-mono text-[10px] sm:text-[9px] tracking-[0.16em] uppercase text-muted -mt-0.5">Thread • Pour • Hand</div>
+        </div>
+        <span class="hidden xl:inline-flex ml-2 font-mono text-[10px] leading-none border border-line rounded-full px-3 py-1.5 text-muted">PUNE • SINCE 2020 • DM TO ORDER</span>
+      </a>
+
+      <nav class="hidden lg:flex items-center gap-6 text-[13px] font-medium">
+        <a href="gallery.html" class="group flex items-center gap-1.5 text-terracotta font-semibold"><span class="w-1 h-1 bg-terracotta rounded-full"></span> Gallery <span class="font-mono text-[11px] text-muted">12</span></a>
+        <a href="custom.html" class="hover:text-terracotta">Custom Order</a>
+        <a href="about.html" class="hover:text-terracotta">About</a>
+        <span class="w-px h-4 bg-line"></span>
+        <a href="https://instagram.com" target="_blank" class="font-mono text-[11px] tracking-widest uppercase border border-line px-3 py-1.5 rounded-full hover:bg-ink hover:text-paper transition">Instagram 18.4k ↗</a>
+      </nav>
+
+      <div class="flex items-center gap-2">
+        <button onclick="openSearch()" class="hidden sm:flex w-10 h-10 rounded-full border border-line items-center justify-center hover:border-ink transition" aria-label="Search">⌕</button>
+        <!-- Enquiry not cart -->
+        <button onclick="openCartDrawer()" class="hidden sm:flex items-center gap-2 bg-ink text-paper pl-1 pr-3 sm:pr-4 py-1 rounded-full hover:bg-black transition">
+          <span class="w-8 h-8 rounded-full bg-amber text-ink flex items-center justify-center text-xs font-mono">◐</span>
+          <span class="text-[13px] font-medium">Shortlist</span>
+          <span data-cart-count class="hidden bg-paper text-ink text-xs font-bold min-w-[18px] h-[18px] px-1 rounded-full flex items-center justify-center">0</span>
+        </button>
+        <a href="admin/index.html" class="inline-flex items-center gap-1.5 sm:gap-2 bg-terracotta text-white px-2.5 sm:px-3.5 py-1.5 sm:py-2 rounded-full text-[11px] sm:text-xs font-semibold uppercase tracking-[0.08em] hover:bg-ink transition shadow-sm">
+          <span class="w-1.5 h-1.5 bg-emerald-300 rounded-full animate-pulse"></span> <span class="hidden sm:inline">Admin Panel</span><span class="sm:hidden">Admin</span>
+        </a>
+        <button id="mobileMenuBtn" class="lg:hidden w-10 h-10 rounded-full border border-line flex items-center justify-center active:scale-95 transition">☰</button>
+      </div>
+    </div>
+    <!-- thread underline nav -->
+    <div class="h-px w-full bg-gradient-to-r from-transparent via-line to-transparent relative">
+      <div class="absolute left-1/2 -translate-x-1/2 -top-1 w-2 h-2 bg-paper border border-line rounded-full"></div>
+      <div class="absolute left-[48%] -top-1 w-1.5 h-1.5 bg-amber rounded-full"></div>
+      <div class="absolute left-[52%] -top-1 w-1.5 h-1.5 bg-terracotta rounded-full"></div>
+    </div>
+  </div>
+    <div id="mobileOverlay" onclick="closeMobileMenu()" class="fixed inset-0 z-40 bg-ink/40 backdrop-blur-sm hidden opacity-0 transition-opacity duration-300 lg:hidden"></div>
+  <div id="mobileMenu" class="fixed top-0 left-0 z-50 h-[100dvh] w-[84vw] max-w-[320px] bg-paper border-r border-line transform -translate-x-full transition-transform duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] lg:hidden flex flex-col shadow-2xl">
+    <div class="h-[64px] px-5 flex items-center justify-between border-b border-line shrink-0">
+      <a href="index.html" class="flex items-center gap-2.5">
+        <div class="w-9 h-9 rounded-full bg-ink text-amber flex items-center justify-center font-serif text-xs">TA</div>
+        <span class="font-serif">TAAR <span class="font-corm italic text-sm">by Nidhi</span></span>
+      </a>
+      <button onclick="closeMobileMenu()" class="w-8 h-8 rounded-full bg-ink text-paper flex items-center justify-center">✕</button>
+    </div>
+    <nav class="flex-1 overflow-y-auto px-5 py-6 space-y-1">
+      <a href="gallery.html" class="flex items-center justify-between py-3 border-b border-dashed border-line font-semibold text-terracotta bg-amber/10 px-3 -mx-3 rounded-lg">Gallery <span class="font-mono text-xs bg-ink text-paper px-2 py-0.5 rounded-full">12</span></a>
+      <a href="gallery.html?cat=String%20Art" class="block py-2.5 text-sm text-muted hover:text-ink">— String Art</a>
+      <a href="gallery.html?cat=Resin%20Art" class="block py-2.5 text-sm text-muted hover:text-ink">— Resin & Acrylic</a>
+      <a href="gallery.html?cat=Nameboard" class="block py-2.5 text-sm text-muted hover:text-ink">— Nameboards</a>
+      <a href="custom.html" class="flex items-center gap-2 mt-4 bg-terracotta text-white px-4 py-3 rounded-full font-semibold text-sm">Custom Order →</a>
+      <a href="about.html" class="block py-3 text-sm">Process & Studio</a>
+      <a href="admin/index.html" class="flex items-center gap-2 mt-6 bg-ink text-amber px-3 py-2.5 rounded-lg font-mono text-[11px] font-semibold uppercase tracking-[0.08em]"><span class="w-2 h-2 bg-emerald-400 rounded-full animate-pulse"></span> Admin Panel — Manage atelier →</a>
+      <div class="pt-6 mt-6 border-t border-line">
+        <div class="font-mono text-xs text-muted">DM is fastest</div>
+        <a href="https://instagram.com" target="_blank" class="mt-2 inline-flex border border-ink px-4 py-2 rounded-full text-sm font-medium">Instagram 18.4k ↗</a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<main class="max-w-[1360px] mx-auto px-4 lg:px-6 pt-6">
+  <a href="gallery.html" class="font-mono text-[11px] tracking-widest uppercase text-muted hover:text-ink">← Back to journal</a>
+  <div id="productWrap" class="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 mt-4"></div>
+  <section class="mt-14">
+    <h3 class="font-serif text-2xl">More from same craft</h3>
+    <div id="related" class="grid grid-cols-2 lg:grid-cols-4 gap-4 mt-4"></div>
+  </section>
+</main>
+
+<footer class="max-w-[1360px] mx-auto px-4 lg:px-6 mt-10 border-t border-dashed border-line pt-6 pb-8 text-center font-mono text-xs text-muted">© 2026 TAAR • <a href="admin/index.html" class="underline">Admin</a></footer>
+
+<div id="cartDrawer" class="hidden fixed inset-0 z-50"><div class="absolute inset-0 bg-ink/40" onclick="closeCartDrawer()"></div><div class="absolute right-0 top-0 h-full w-full max-w-md bg-paper border-l border-line flex flex-col"><div class="px-6 py-5 border-b bg-white flex justify-between"><div class="font-serif">Shortlist</div><button onclick="closeCartDrawer()" class="w-9 h-9 border rounded-full">✕</button></div><div id="cartDrawerItems" class="flex-1 overflow-auto px-6"></div><div id="cartDrawerFooter" class="hidden border-t p-6 bg-white"><div class="flex justify-between font-mono text-sm"><span class="text-muted">Est. total</span><span id="cartDrawerSubtotal" class="font-bold"></span></div><button onclick="showToast('DM on Instagram');closeCartDrawer()" class="mt-4 w-full bg-terracotta text-white py-3 rounded-full font-bold">DM to Commission →</button><div id="cartDrawerCountLabel" class="hidden"></div></div></div></div>
+<div id="searchOverlay" class="hidden fixed inset-0 z-50 bg-paper/95"><div class="max-w-2xl mx-auto px-4 pt-8"><div class="flex gap-3"><div class="flex-1 border border-ink rounded-full px-5 py-3 bg-white flex items-center gap-3"><span>⌕</span><input id="searchInput" placeholder="Search" class="flex-1 outline-none bg-transparent" oninput="renderSearchResults(this.value)"></div><button onclick="closeSearch()" class="w-11 h-11 rounded-full bg-ink text-paper">✕</button></div><div id="searchResults" class="mt-6 border border-line rounded-2xl bg-white divide-y max-h-[60vh] overflow-auto"></div></div></div>
+
+<script src="app.js"></script>
+<script>
+function getId(){ return Number(new URLSearchParams(location.search).get('id')||1); }
+function render(){
+  const id=getId();
+  const p=getWorks().find(x=>x.id===id) || getWorks()[0];
+  document.title = p.name + ' — TAAR';
+  document.getElementById('productWrap').innerHTML = `
+    <div class="lg:col-span-7">
+      <div class="bg-white p-3 rounded-[2px] border border-line shadow-lg rotate-[-0.4deg]">
+        <img src="${p.image}" class="w-full aspect-[4/3] object-cover">
+        <div class="grid grid-cols-3 gap-2 mt-3">
+          <img src="${p.image}" class="rounded-lg aspect-square object-cover border border-line">
+          <div class="rounded-lg aspect-square bg-paper border border-dashed border-line flex flex-col items-center justify-center p-2 text-center"><div class="font-mono text-xs font-bold">Nail-map</div><div class="font-hand text-xs">PDF preview</div><div class="font-mono text-[10px] text-muted">sent in 24h</div></div>
+          <div class="rounded-lg aspect-square bg-ink text-paper flex flex-col items-center justify-center p-2"><div class="font-mono text-xs">12 hrs</div><div class="font-hand text-sm">timelapse</div></div>
+        </div>
+        <div class="mt-3 font-mono text-xs text-muted text-center">Tape • thread shadow • no filter — shot in Pune studio</div>
+      </div>
+    </div>
+    <div class="lg:col-span-5">
+      <div class="font-mono text-[11px] tracking-widest uppercase flex gap-2"><span class="bg-white border border-line px-3 py-1 rounded-full">${p.category}</span><span class="bg-ink text-paper px-3 py-1 rounded-full">${p.badge||'Handmade'}</span>${p.custom?`<span class="bg-amber text-ink px-3 py-1 rounded-full font-bold">Commission this style</span>`:''}</div>
+      <h1 class="font-serif text-3xl leading-none mt-3">${p.name}</h1>
+      <div class="font-mono text-xs uppercase tracking-widest text-muted mt-2">${p.material} • ${p.size} • ${p.custom?'Your name/photo': 'As shown'}</div>
+      <div class="font-hand text-xl text-terracotta mt-3">“${p.desc.slice(0,70)}...”</div>
+      <p class="font-corm text-[15px] leading-relaxed mt-3 text-[#4A3E36]">${p.desc} ${p.custom?'I can remake this with your name, colours, size — you approve the nail-map before I hammer.':''}</p>
+
+      <div class="mt-5 bg-white border border-line rounded-2xl p-4">
+        <div class="flex items-baseline gap-3"><span class="font-serif text-2xl">${formatINR(p.price)}</span><span class="font-mono text-xs text-muted">starts at • final after sketch</span></div>
+        <div class="font-mono text-xs text-muted">★ ${p.rating} • ${p.reviews} homes • 7-day making • Wood crate • Pan-India</div>
+        <div class="mt-4 flex gap-3">
+          <button onclick="addToCart(getWorks().find(x=>x.id===${p.id})); showToast('Added to shortlist — DM to commission')" class="flex-1 bg-ink text-paper py-3.5 rounded-full font-semibold">Add to Shortlist</button>
+          <button onclick="toggleWishlist(${p.id}); showToast(isWishlisted(${p.id})?'Saved':'Removed')" class="w-12 h-12 rounded-full border bg-white flex items-center justify-center">${isWishlisted(p.id)?'♥':'♡'}</button>
+        </div>
+        <a href="custom.html" class="mt-3 block text-center bg-amber text-ink py-3 rounded-full font-bold">Commission similar with your name/photo →</a>
+        <div class="font-mono text-xs text-center text-muted mt-2">DM <b class="text-ink">@taar.by.nidhi</b> — sketch in 24h, no advance until you approve</div>
+      </div>
+
+      <div class="mt-4 bg-paper border border-dashed border-line rounded-2xl p-4 font-mono text-xs">
+        <div class="font-bold">What you get</div>
+        <ul class="mt-2 space-y-1 text-muted"><li>• ${p.material} • ${p.size}</li><li>• Nail-map PDF + 2 revisions • 7 days making</li><li>• Video approval • Wood crate • 3-5 day shipping</li></ul>
+      </div>
+    </div>
+  `;
+  const rel=getWorks().filter(x=>x.category===p.category && x.id!==p.id).slice(0,4);
+  document.getElementById('related').innerHTML = rel.map(x=>`
+    <a href="product.html?id=${x.id}" class="block bg-white p-2 rounded-[2px] border border-line rotate-[0.3deg] hover:rotate-0 transition">
+      <img src="${x.image}" class="w-full aspect-[4/3] object-cover">
+      <div class="font-hand text-sm mt-2">${x.name}</div>
+      <div class="font-mono text-xs text-muted">From ${formatINR(x.price)}</div>
+    </a>
+  `).join('');
+}
+render();
+</script>
+</body>
+</html>

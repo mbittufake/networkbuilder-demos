@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Custom Order — TAAR Atelier | Commission Your Piece</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<script>tailwind.config={theme:{extend:{fontFamily:{sans:['Inter','sans-serif'],serif:['Instrument Serif','serif'],hand:['Caveat','cursive'],mono:['Space Mono','monospace']},colors:{ink:'#1E1915',paper:'#FFF8EC',line:'#E8DDD3',terracotta:'#B84A2F',amber:'#C9A86A',muted:'#9C8E84'}}}}</script>
+<style>body{background:#FFF8EC}</style>
+</head>
+<body class="text-ink overflow-x-hidden antialiased">
+<div class="h-[3px] bg-gradient-to-r from-terracotta via-amber to-teal"></div>
+<div class="bg-amber text-ink font-mono text-[11px] tracking-widest uppercase py-2.5 text-center">Commission open for August • Sketch in 24h • DM @taar.by.nidhi is fastest</div>
+<header class="sticky top-0 z-40 bg-paper/85 backdrop-blur-md border-b border-line">
+  <div class="max-w-[1360px] mx-auto px-4 lg:px-6">
+    <div class="h-[64px] lg:h-[68px] flex items-center justify-between gap-6">
+      <a href="index.html" class="flex items-center gap-3.5">
+        <div class="relative w-10 h-10 rounded-full bg-ink flex items-center justify-center">
+          <span class="font-serif text-paper text-[11px] tracking-[0.18em]">TAAR</span>
+          <span class="absolute -top-1 -right-1 w-3 h-3 bg-terracotta rounded-full border-2 border-paper"></span>
+        </div>
+        <div class="leading-none">
+          <div class="font-serif text-[20px] tracking-tight">TAAR <span class="font-corm italic font-light text-[14px]">by Nidhi</span></div>
+          <div class="font-mono text-[10px] sm:text-[9px] tracking-[0.16em] uppercase text-muted -mt-0.5">Thread • Pour • Hand</div>
+        </div>
+        <span class="hidden xl:inline-flex ml-2 font-mono text-[10px] leading-none border border-line rounded-full px-3 py-1.5 text-muted">PUNE • SINCE 2020 • DM TO ORDER</span>
+      </a>
+
+      <nav class="hidden lg:flex items-center gap-6 text-[13px] font-medium">
+        <a href="gallery.html" class="group flex items-center gap-1.5 hover:text-terracotta transition"><span class="w-1 h-1 bg-ink rounded-full group-hover:bg-terracotta"></span> Gallery <span class="font-mono text-[11px] text-muted">12</span></a>
+        <a href="custom.html" class="text-terracotta font-semibold underline decoration-amber decoration-2 underline-offset-4">Custom Order</a>
+        <a href="about.html" class="hover:text-terracotta">About</a>
+        <span class="w-px h-4 bg-line"></span>
+        <a href="https://instagram.com" target="_blank" class="font-mono text-[11px] tracking-widest uppercase border border-line px-3 py-1.5 rounded-full hover:bg-ink hover:text-paper transition">Instagram 18.4k ↗</a>
+      </nav>
+
+      <div class="flex items-center gap-2">
+        <button onclick="openSearch()" class="hidden sm:flex w-10 h-10 rounded-full border border-line items-center justify-center hover:border-ink transition" aria-label="Search">⌕</button>
+        <!-- Enquiry not cart -->
+        <button onclick="openCartDrawer()" class="hidden sm:flex items-center gap-2 bg-ink text-paper pl-1 pr-3 sm:pr-4 py-1 rounded-full hover:bg-black transition">
+          <span class="w-8 h-8 rounded-full bg-amber text-ink flex items-center justify-center text-xs font-mono">◐</span>
+          <span class="text-[13px] font-medium">Shortlist</span>
+          <span data-cart-count class="hidden bg-paper text-ink text-xs font-bold min-w-[18px] h-[18px] px-1 rounded-full flex items-center justify-center">0</span>
+        </button>
+        <a href="admin/index.html" class="inline-flex items-center gap-1.5 sm:gap-2 bg-terracotta text-white px-2.5 sm:px-3.5 py-1.5 sm:py-2 rounded-full text-[11px] sm:text-xs font-semibold uppercase tracking-[0.08em] hover:bg-ink transition shadow-sm">
+          <span class="w-1.5 h-1.5 bg-emerald-300 rounded-full animate-pulse"></span> <span class="hidden sm:inline">Admin Panel</span><span class="sm:hidden">Admin</span>
+        </a>
+        <button id="mobileMenuBtn" class="lg:hidden w-10 h-10 rounded-full border border-line flex items-center justify-center active:scale-95 transition">☰</button>
+      </div>
+    </div>
+    <!-- thread underline nav -->
+    <div class="h-px w-full bg-gradient-to-r from-transparent via-line to-transparent relative">
+      <div class="absolute left-1/2 -translate-x-1/2 -top-1 w-2 h-2 bg-paper border border-line rounded-full"></div>
+      <div class="absolute left-[48%] -top-1 w-1.5 h-1.5 bg-amber rounded-full"></div>
+      <div class="absolute left-[52%] -top-1 w-1.5 h-1.5 bg-terracotta rounded-full"></div>
+    </div>
+  </div>
+    <div id="mobileOverlay" onclick="closeMobileMenu()" class="fixed inset-0 z-40 bg-ink/40 backdrop-blur-sm hidden opacity-0 transition-opacity duration-300 lg:hidden"></div>
+  <div id="mobileMenu" class="fixed top-0 left-0 z-50 h-[100dvh] w-[84vw] max-w-[320px] bg-paper border-r border-line transform -translate-x-full transition-transform duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] lg:hidden flex flex-col shadow-2xl">
+    <div class="h-[64px] px-5 flex items-center justify-between border-b border-line shrink-0">
+      <a href="index.html" class="flex items-center gap-2.5">
+        <div class="w-9 h-9 rounded-full bg-ink text-amber flex items-center justify-center font-serif text-xs">TA</div>
+        <span class="font-serif">TAAR <span class="font-corm italic text-sm">by Nidhi</span></span>
+      </a>
+      <button onclick="closeMobileMenu()" class="w-8 h-8 rounded-full bg-ink text-paper flex items-center justify-center">✕</button>
+    </div>
+    <nav class="flex-1 overflow-y-auto px-5 py-6 space-y-1">
+      <a href="gallery.html" class="flex items-center justify-between py-3 border-b border-dashed border-line font-medium">Gallery <span class="font-mono text-xs bg-ink text-paper px-2 py-0.5 rounded-full">12</span></a>
+      <a href="gallery.html?cat=String%20Art" class="block py-2.5 text-sm text-muted hover:text-ink">— String Art</a>
+      <a href="gallery.html?cat=Resin%20Art" class="block py-2.5 text-sm text-muted hover:text-ink">— Resin & Acrylic</a>
+      <a href="gallery.html?cat=Nameboard" class="block py-2.5 text-sm text-muted hover:text-ink">— Nameboards</a>
+      <a href="custom.html" class="flex items-center gap-2 mt-4 bg-ink text-amber px-4 py-3 rounded-full font-semibold text-sm border border-amber">Custom Order — Active →</a>
+      <a href="about.html" class="block py-3 text-sm">Process & Studio</a>
+      <a href="admin/index.html" class="flex items-center gap-2 mt-6 bg-ink text-amber px-3 py-2.5 rounded-lg font-mono text-[11px] font-semibold uppercase tracking-[0.08em]"><span class="w-2 h-2 bg-emerald-400 rounded-full animate-pulse"></span> Admin Panel — Manage atelier →</a>
+      <div class="pt-6 mt-6 border-t border-line">
+        <div class="font-mono text-xs text-muted">DM is fastest</div>
+        <a href="https://instagram.com" target="_blank" class="mt-2 inline-flex border border-ink px-4 py-2 rounded-full text-sm font-medium">Instagram 18.4k ↗</a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<section class="max-w-[1360px] mx-auto px-4 lg:px-6 pt-8">
+  <div class="grid lg:grid-cols-12 gap-8">
+    <div class="lg:col-span-7">
+      <div class="inline-flex bg-ink text-amber font-mono text-xs px-3 py-1 rounded-full">70% of atelier is custom • not a shop</div>
+      <h1 class="font-serif text-3xl sm:text-4xl leading-none mt-3">Custom Order<br><span class="font-corm italic font-light text-terracotta">— made for your wall.</span></h1>
+      <p class="font-corm text-lg leading-relaxed text-[#4A3E36] mt-3 max-w-xl">Name, photo, house number — DM budget + idea, I draw the nail-map and you approve before I hammer. No catalogue clone.</p>
+
+      <form id="customForm" onsubmit="submitCustom(event)" class="mt-6 bg-white border border-line rounded-[24px] p-4 sm:p-6 space-y-4 shadow-sm">
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <label class="font-mono text-xs">YOUR NAME<input required id="cName" placeholder="Ananya Sharma" class="mt-1 w-full border border-line rounded-xl px-4 py-3 font-sans text-sm outline-none focus:border-ink"></label>
+          <label class="font-mono text-xs">WHATSAPP / INSTA<input required id="cContact" placeholder="98xxxxxx10 / @ananya" class="mt-1 w-full border border-line rounded-xl px-4 py-3 font-sans text-sm"></label>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <label class="font-mono text-xs">CRAFT<select id="cCraft" onchange="updatePreview()" class="mt-1 w-full border border-line rounded-xl px-4 py-3 bg-white"><option>String Art</option><option>Nameboard (Wood+Resin)</option><option>Resin Art</option><option>Acrylic Pour</option></select></label>
+          <label class="font-mono text-xs">SIZE<select id="cSize" onchange="updatePreview()" class="mt-1 w-full border border-line rounded-xl px-4 py-3 bg-white"><option>12 inch</option><option selected>18 inch (popular)</option><option>24 inch</option><option>Custom wall</option></select></label>
+        </div>
+        <label class="font-mono text-xs">IDEA — name / photo / message<textarea id="cIdea" required rows="3" placeholder="Ex: House name 'Nilaya' in brass on acacia + ocean resin, outdoor. Or portrait from photo — couple heart red+ivory..." class="mt-1 w-full border border-line rounded-xl px-4 py-3 font-sans text-sm"></textarea></label>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 font-mono text-xs">
+          <div>COLOUR<div class="mt-1 flex gap-2"><button type="button" onclick="pickColor('Ocean')" class="color-btn flex-1 border-2 border-ink bg-[#0E4A5A] text-white rounded-full py-2">Ocean</button><button type="button" onclick="pickColor('Teal Gold')" class="color-btn flex-1 border border-line bg-white rounded-full py-2">Teal Gold</button><button type="button" onclick="pickColor('Warm')" class="color-btn flex-1 border border-line bg-white rounded-full py-2">Warm</button></div></div>
+          <div>TOUCH<div class="mt-1 flex flex-wrap gap-2"><label class="border border-line bg-white rounded-full px-3 py-2 flex items-center gap-1"><input type="checkbox" value="LED" onchange="updatePreview()"> LED +₹400</label><label class="border border-line bg-white rounded-full px-3 py-2 flex items-center gap-1"><input type="checkbox" value="Frame" onchange="updatePreview()"> Frame +₹600</label></div></div>
+        </div>
+        <button type="submit" class="w-full bg-terracotta text-white py-4 rounded-full font-bold hover:bg-ink transition">Send for sketch & quote →</button>
+        <div class="font-mono text-xs text-muted text-center">By sending, 50% advance only after you approve sketch. Balance before ship.</div>
+      </form>
+
+      <div class="mt-6 grid grid-cols-3 gap-3 font-mono text-xs">
+        <div class="bg-paper border border-line rounded-2xl p-3 text-center"><div class="font-bold">Free sketch</div><div class="text-muted">nail-map PDF</div></div>
+        <div class="bg-paper border border-line rounded-2xl p-3 text-center"><div class="font-bold">2 revisions</div><div class="text-muted">till you love</div></div>
+        <div class="bg-amber border border-amber rounded-2xl p-3 text-center"><div class="font-bold">Video OK</div><div class="text-ink/70">before packing</div></div>
+      </div>
+    </div>
+
+    <div class="lg:col-span-5">
+      <div class="lg:sticky lg:top-[84px] space-y-4">
+        <div class="rounded-[28px] overflow-hidden border border-line bg-ink text-paper">
+          <div class="p-6"><div class="font-mono text-[11px] tracking-widest uppercase text-amber">Live atelier preview</div><h3 id="previewTitle" class="font-serif text-2xl mt-1">String Art • 18 inch</h3><p id="previewDesc" class="font-corm text-paper/60 mt-1">Gold + ivory on teak — sketch in 24h</p></div>
+          <div class="mx-4 mb-4 rounded-2xl overflow-hidden bg-[#1E160F] relative aspect-[4/3]">
+            <img id="previewImg" src="https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?w=800&h=600&fit=crop&q=80" class="w-full h-full object-cover opacity-90">
+            <div class="absolute inset-0 flex items-center justify-center p-6"><div class="bg-paper rounded-2xl px-5 py-4 text-ink text-center border"><div id="previewCraftLabel" class="font-mono text-xs text-muted">String Art</div><div id="previewName" class="font-hand text-xl">Your Name Here</div><div id="previewSizeLabel" class="font-mono text-xs text-muted">18 inch • Teak • Gold thread</div></div></div>
+          </div>
+          <div class="px-6 pb-6 flex gap-2 font-mono text-xs"><span class="bg-white/10 border border-white/10 px-3 py-1 rounded-full">24h sketch</span><span class="bg-amber text-ink px-3 py-1 rounded-full font-bold">Est. <span id="previewPrice">₹4,200</span></span></div>
+        </div>
+
+        <div class="bg-white border border-line rounded-[24px] p-6">
+          <h4 class="font-serif">Recent commissions</h4>
+          <div class="mt-3 space-y-2 font-mono text-xs text-muted"><div>• Neha & Raj — heart 20×14 — <b class="text-ink">₹5,200</b></div><div>• Aarav Cloud — LED — <b class="text-ink">₹2,800</b></div><div>• Nilaya — acacia + resin — <b class="text-ink">₹3,500</b></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="max-w-[1360px] mx-auto px-4 lg:px-6 mt-10 border-t border-dashed border-line pt-6 pb-8 text-center font-mono text-xs text-muted">© 2026 TAAR Atelier • <a href="admin/index.html" class="underline">Admin Panel</a></footer>
+
+<div id="searchOverlay" class="hidden fixed inset-0 z-50 bg-paper/95"><div class="max-w-2xl mx-auto px-4 pt-8"><div class="flex gap-3"><div class="flex-1 border border-ink rounded-full px-5 py-3 bg-white flex items-center gap-3"><span>⌕</span><input id="searchInput" placeholder="Search" class="flex-1 outline-none bg-transparent" oninput="renderSearchResults(this.value)"></div><button onclick="closeSearch()" class="w-11 h-11 rounded-full bg-ink text-paper">✕</button></div><div id="searchResults" class="mt-6 border border-line rounded-2xl bg-white divide-y max-h-[60vh] overflow-auto"></div></div></div>
+<div id="cartDrawer" class="hidden fixed inset-0 z-50"><div class="absolute inset-0 bg-ink/40" onclick="closeCartDrawer()"></div><div class="absolute right-0 top-0 h-full w-full max-w-md bg-paper border-l flex flex-col"><div class="px-6 py-5 border-b bg-white flex justify-between"><div class="font-serif">Shortlist</div><button onclick="closeCartDrawer()" class="w-9 h-9 border rounded-full">✕</button></div><div id="cartDrawerItems" class="flex-1 overflow-auto px-6"></div><div id="cartDrawerFooter" class="hidden border-t p-6 bg-white"><div class="flex justify-between font-mono text-sm"><span class="text-muted">Est. total</span><span id="cartDrawerSubtotal" class="font-bold"></span></div><button onclick="showToast('DM shortlist');closeCartDrawer()" class="mt-4 w-full bg-terracotta text-white py-3 rounded-full font-bold">DM Shortlist →</button><div id="cartDrawerCountLabel" class="hidden"></div></div></div></div>
+
+<script src="app.js"></script>
+<script>
+let picked='Ocean';
+function pickColor(c){picked=c; document.querySelectorAll('.color-btn').forEach(b=>{b.className = b.textContent.trim()===c ? 'color-btn flex-1 border-2 border-ink bg-ink text-white rounded-full py-2' : 'color-btn flex-1 border border-line bg-white rounded-full py-2';}); updatePreview();}
+function updatePreview(){
+  const craft=document.getElementById('cCraft').value;
+  const size=document.getElementById('cSize').value;
+  const idea=document.getElementById('cIdea').value.trim();
+  let price=4200; if(document.querySelector('input[value=\"LED\"]:checked')) price+=400; if(document.querySelector('input[value=\"Frame\"]:checked')) price+=600;
+  document.getElementById('previewPrice').textContent=formatINR(price);
+  document.getElementById('previewTitle').textContent=craft+' • '+size;
+  document.getElementById('previewCraftLabel').textContent=craft;
+  document.getElementById('previewSizeLabel').textContent=size+' • '+picked;
+  document.getElementById('previewName').textContent= idea ? idea.split(' ').slice(0,4).join(' ') : 'Your Name Here';
+  let img='https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?w=800&h=600&fit=crop&q=80';
+  if(craft.includes('Resin')) img='https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=800&h=600&fit=crop&q=80';
+  if(craft.includes('Acrylic')) img='https://images.unsplash.com/photo-1541961017774-22349e4a1262?w=800&h=600&fit=crop&q=80';
+  if(craft.includes('Nameboard')) img='https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&h=600&fit=crop&q=80';
+  document.getElementById('previewImg').src=img;
+}
+function submitCustom(e){
+  e.preventDefault();
+  const q=getCustomQueue();
+  const name=document.getElementById('cName').value;
+  const craft=document.getElementById('cCraft').value;
+  const size=document.getElementById('cSize').value;
+  const price=document.getElementById('previewPrice').textContent;
+  const idea=document.getElementById('cIdea').value;
+  q.unshift({ id:'TAAR-'+(2085+q.length), name: name+' • '+craft, type: craft+' • '+size, qty:1, budget:price, status:'Pending Review', date: new Date().toISOString().slice(0,10), note: idea.slice(0,80) });
+  saveCustomQueue(q);
+  showToast('Commission sent! Sketch in 24h — ID '+q[0].id);
+  setTimeout(()=> location.href='gallery.html', 900);
+}
+document.getElementById('cIdea')?.addEventListener('input', updatePreview);
+updatePreview();
+document.getElementById('mobileMenuBtn')?.addEventListener('click',()=>document.getElementById('mobileMenu').classList.toggle('hidden'));
+</script>
+</body>
+</html>
