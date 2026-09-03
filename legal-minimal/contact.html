@@ -1,115 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Consultation | The Advocate</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        paper: '#faf9f6',
-                        ink: '#1e293b',
-                        accent: '#cd5c5c',
-                        border: '#e2e8f0'
-                    },
-                    fontFamily: {
-                        serif: ['Crimson Pro', 'serif'],
-                        sans: ['Manrope', 'sans-serif']
-                    }
-                }
-            }
-        }
-    </script>
-    <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,400&family=Manrope:wght@300;400;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        body { font-family: 'Manrope', sans-serif; background-color: #faf9f6; color: #1e293b; }
-        h1, h2, h3, h4, blockquote { font-family: 'Crimson Pro', serif; }
-    </style>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Consultation | The Advocate</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script>tailwind.config={theme:{extend:{colors:{paper:'#FAF9F6',ink:'#1A1A1A',brick:'#9A3B26',line:'#E7E5E4'},fontFamily:{serif:['Newsreader','serif'],sans:['"DM Sans"','sans-serif']}}}}</script>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;1,6..72,300;1,6..72,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>body{font-family:'DM Sans',sans-serif;background:#FAF9F6;color:#1A1A1A;}h1,h2{font-family:'Newsreader',serif;}.vol-badge{display:inline-flex;align-items:center;gap:.6rem;border:1px solid #E7E5E4;border-radius:9999px;padding:.45rem 1.1rem;font-size:11px;letter-spacing:.18em;text-transform:uppercase;background:#fff;}.vol-badge i{width:7px;height:7px;border-radius:99px;background:#9A3B26;display:inline-block;}.field{width:100%;background:transparent;border:0;border-bottom:1px solid #E7E5E4;padding:.7rem 0;font-size:15px;color:#1A1A1A;transition:border .3s;}.field:focus{outline:none;border-color:#9A3B26;}.field::placeholder{color:#b8b3af;}</style>
 </head>
-<body class="pt-20">
+<body class="pt-[101px]">
+<div class="fixed top-0 w-full z-50">
+<div class="border-b border-[#E7E5E4] bg-[#FAF9F6]"><div class="container mx-auto px-6 py-2 flex justify-between text-[11px] tracking-[0.18em] uppercase text-[#1A1A1A]/50"><span>Confidential Inquiry</span><span class="hidden sm:inline">Response within 24 hours — ¹</span><span>Vol. 24</span></div></div>
+<nav class="bg-[#FAF9F6]/95 backdrop-blur-sm border-b border-[#E7E5E4] h-[72px] flex items-center relative">
+<div class="container mx-auto px-6 flex justify-between items-center">
+<a href="index.html" class="font-serif text-[26px]">The Advocate<span class="text-[#9A3B26]">.</span></a>
+<div class="hidden md:flex items-center space-x-9 text-[13px]"><a href="index.html" class="text-[#1A1A1A]/55 hover:text-[#1A1A1A] pb-1">Journal</a><a href="about.html" class="text-[#1A1A1A]/55 hover:text-[#1A1A1A] pb-1">Firm Profile</a><a href="services.html" class="text-[#1A1A1A]/55 hover:text-[#1A1A1A] pb-1">Practice Areas</a><a href="contact.html" class="font-medium border-b border-[#1A1A1A] pb-1">Consultation</a></div>
+<button class="md:hidden text-xl" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')"><i class="fa-solid fa-bars"></i></button>
+</div>
+<div id="mobile-menu" class="hidden absolute top-[72px] left-0 w-full bg-[#FAF9F6] border-b border-[#E7E5E4] p-8 flex flex-col space-y-5 md:hidden shadow-lg"><a href="index.html" class="font-serif text-xl text-[#1A1A1A]/60">Journal</a><a href="about.html" class="font-serif text-xl text-[#1A1A1A]/60">Firm Profile</a><a href="services.html" class="font-serif text-xl text-[#1A1A1A]/60">Practice Areas</a><a href="contact.html" class="font-serif text-xl">Consultation</a></div>
+</nav>
+</div>
 
-    <!-- Navbar -->
-    <nav class="fixed top-0 w-full z-50 bg-paper/95 backdrop-blur-sm border-b border-gray-200 h-20 flex items-center">
-        <div class="container mx-auto px-6 flex justify-between items-center">
-            <a href="index.html" class="text-2xl font-serif font-bold tracking-tight text-ink">The Advocate.</a>
-            <div class="hidden md:flex space-x-10">
-                <a href="index.html" class="text-sm font-medium text-gray-500 hover:text-ink transition pb-1">Journal</a>
-                <a href="about.html" class="text-sm font-medium text-gray-500 hover:text-ink transition pb-1">Firm Profile</a>
-                <a href="services.html" class="text-sm font-medium text-gray-500 hover:text-ink transition pb-1">Practice Areas</a>
-                <a href="contact.html" class="text-sm font-medium text-ink border-b-2 border-ink pb-1 transition">Consultation</a>
-            </div>
-        </div>
-    </nav>
+<section class="py-16">
+<div class="container mx-auto px-6 grid md:grid-cols-2 gap-14 items-start max-w-6xl">
+<div>
+<span class="vol-badge mb-7"><i></i> Confidential Inquiry</span>
+<h1 class="font-light leading-[1.05] tracking-tight" style="font-size:clamp(2.6rem,5vw,3.9rem)">Begin the<br><em class="text-[#9A3B26]">Conversation.</em></h1>
+<div class="w-16 h-px bg-[#9A3B26] my-8"></div>
+<p class="text-[18px] text-[#1A1A1A]/60 leading-relaxed mb-10 font-light">To schedule an initial consultation, please complete the form. All information is privileged and will be treated with strict confidentiality.</p>
+<div class="space-y-0 border-t border-[#E7E5E4]">
+<div class="py-6 border-b border-[#E7E5E4]"><p class="font-serif italic text-[#9A3B26]">i. — Office</p><p class="text-[#1A1A1A]/60 mt-1">402 Justice Plaza, Shivajinagar<br>Pune, Maharashtra 411005</p></div>
+<div class="py-6 border-b border-[#E7E5E4]"><p class="font-serif italic text-[#9A3B26]">ii. — Direct Line</p><p class="font-serif text-2xl mt-1">+91 98765 43210</p></div>
+<div class="py-6 border-b border-[#E7E5E4]"><p class="font-serif italic text-[#9A3B26]">iii. — Email</p><p class="text-[#1A1A1A]/60 mt-1">consult@theadvocate.in</p></div>
+</div>
+<p class="text-[12px] text-[#1A1A1A]/45 mt-6">¹ Consultations Tuesday–Saturday, 10am–6pm. Urgent matters flagged same-day.</p>
+</div>
+<div class="bg-white p-8 md:p-10 border border-[#E7E5E4] rounded-[4px]">
+<p class="text-[11px] uppercase tracking-[0.2em] text-[#1A1A1A]/50 border-b border-[#E7E5E4] pb-4 mb-8">Form № 01 — Privileged</p>
+<form class="space-y-7" onsubmit="return false;">
+<div class="grid md:grid-cols-2 gap-7"><div><label class="block text-[11px] uppercase tracking-[0.18em] text-[#1A1A1A]/50 font-medium mb-1">Full Name</label><input type="text" class="field" placeholder="e.g. Rajesh Kumar"></div><div><label class="block text-[11px] uppercase tracking-[0.18em] text-[#1A1A1A]/50 font-medium mb-1">Phone</label><input type="tel" class="field" placeholder="+91 ..."></div></div>
+<div><label class="block text-[11px] uppercase tracking-[0.18em] text-[#1A1A1A]/50 font-medium mb-1">Email Address</label><input type="email" class="field" placeholder="name@example.com"></div>
+<div><label class="block text-[11px] uppercase tracking-[0.18em] text-[#1A1A1A]/50 font-medium mb-1">Nature of Inquiry</label><input type="text" class="field" placeholder="e.g. Divorce Proceeding"></div>
+<div><label class="block text-[11px] uppercase tracking-[0.18em] text-[#1A1A1A]/50 font-medium mb-1">Message</label><textarea rows="4" class="field" placeholder="Briefly describe your situation..."></textarea></div>
+<button type="submit" class="w-full bg-[#1A1A1A] text-white text-[13px] font-medium uppercase tracking-[0.18em] py-4 rounded-full hover:bg-[#9A3B26] transition">Submit Inquiry →</button>
+<p class="text-center text-[12px] text-[#1A1A1A]/45 font-serif italic">Sealed &amp; confidential — as all good letters are.</p>
+</form>
+</div>
+</div>
+</section>
 
-    <!-- Consultation Section -->
-    <section class="py-24 bg-paper min-h-screen">
-        <div class="container mx-auto px-6 grid md:grid-cols-2 gap-20 items-start">
-            
-            <!-- Text Side -->
-            <div>
-                <span class="text-accent text-xs font-bold uppercase tracking-widest mb-4 block">Confidential Inquiry</span>
-                <h1 class="text-5xl md:text-6xl font-serif text-ink mb-8 leading-tight">Begin the<br>Conversation.</h1>
-                <p class="text-xl text-gray-600 leading-relaxed mb-12 font-light">
-                    To schedule an initial consultation, please complete the form. All information is privileged and will be treated with strict confidentiality.
-                </p>
-
-                <div class="space-y-10 border-t border-gray-200 pt-10">
-                    <div>
-                        <h4 class="text-lg font-serif font-bold mb-2">Office</h4>
-                        <p class="text-gray-500">402 Justice Plaza, Shivajinagar<br>Pune, Maharashtra 411005</p>
-                    </div>
-                    <div>
-                        <h4 class="text-lg font-serif font-bold mb-2">Direct Line</h4>
-                        <p class="text-accent text-xl font-medium">+91 98765 43210</p>
-                    </div>
-                    <div>
-                        <h4 class="text-lg font-serif font-bold mb-2">Email</h4>
-                        <p class="text-gray-500">consult@theadvocate.in</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Form Side -->
-            <div class="bg-white p-10 shadow-xl border border-gray-100 rounded-lg">
-                <form class="space-y-8">
-                    <div class="grid md:grid-cols-2 gap-8">
-                        <div>
-                            <label class="block text-xs uppercase tracking-widest text-gray-400 font-bold mb-2">Full Name</label>
-                            <input type="text" class="w-full border-b border-gray-300 py-2 focus:outline-none focus:border-ink transition placeholder-gray-300" placeholder="e.g. Rajesh Kumar">
-                        </div>
-                        <div>
-                            <label class="block text-xs uppercase tracking-widest text-gray-400 font-bold mb-2">Phone</label>
-                            <input type="tel" class="w-full border-b border-gray-300 py-2 focus:outline-none focus:border-ink transition placeholder-gray-300" placeholder="+91 ...">
-                        </div>
-                    </div>
-
-                    <div>
-                        <label class="block text-xs uppercase tracking-widest text-gray-400 font-bold mb-2">Email Address</label>
-                        <input type="email" class="w-full border-b border-gray-300 py-2 focus:outline-none focus:border-ink transition placeholder-gray-300" placeholder="name@example.com">
-                    </div>
-
-                    <div>
-                        <label class="block text-xs uppercase tracking-widest text-gray-400 font-bold mb-2">Nature of Inquiry</label>
-                        <input type="text" class="w-full border-b border-gray-300 py-2 focus:outline-none focus:border-ink transition placeholder-gray-300" placeholder="e.g. Divorce Proceeding">
-                    </div>
-
-                    <div>
-                        <label class="block text-xs uppercase tracking-widest text-gray-400 font-bold mb-2">Message</label>
-                        <textarea rows="4" class="w-full border-b border-gray-300 py-2 focus:outline-none focus:border-ink transition placeholder-gray-300" placeholder="Briefly describe your situation..."></textarea>
-                    </div>
-
-                    <button type="submit" class="w-full bg-ink text-white font-bold uppercase tracking-widest py-4 mt-4 hover:bg-accent transition transform hover:-translate-y-1 shadow-lg">
-                        Submit Inquiry
-                    </button>
-                </form>
-            </div>
-
-        </div>
-    </section>
-
+<footer class="py-12 border-t border-[#E7E5E4] bg-white text-center"><div class="container mx-auto px-6"><span class="font-serif text-[24px] block mb-4">The Advocate<span class="text-[#9A3B26]">.</span></span><p class="text-[11px] uppercase tracking-[0.18em] text-[#1A1A1A]/40">&copy; 2024 Legal Insights. All Rights Reserved.</p></div></footer>
 </body>
 </html>

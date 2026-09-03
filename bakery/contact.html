@@ -8,7 +8,7 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://unpkg.com/htmx.org@2.0.3" defer></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,700;1,500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fraunces:ital,wght@0,500;0,700;1,500&display=swap" rel="stylesheet">
 <!-- ============ CART DRAWER ============ -->
   <div id="cartDrawer" class="fixed inset-0 z-[60] hidden">
     <div id="cartBackdrop" class="absolute inset-0 bg-black/50 backdrop-blur-sm opacity-0 transition-opacity duration-300" onclick="closeCart()"></div>
@@ -49,8 +49,8 @@
     tailwind.config = {
       theme: {
         extend: {
-          fontFamily: { sans:['Inter','sans-serif'], serif:['Playfair Display','serif'] },
-          colors: { cocoa:'#3E2723', brown:'#8B5A3C', caramel:'#D4A574', cream:'#FAF3E7', parchment:'#FFF8EE', gold:'#C8964F' },
+          fontFamily: { sans:['Inter','sans-serif'], serif:['Fraunces','serif'], hand:['Caveat','cursive'] },
+          colors: { cocoa:'#3E2723', brown:'#8B5A3C', caramel:'#D4A574', cream:'#FAF3E7', parchment:'#FFF8EE', cherry:'#9D2C2C', gold:'#C8964F' },
           boxShadow: { warm:'0 10px 40px -10px rgba(139,90,60,0.35)', soft:'0 6px 24px -6px rgba(62,39,35,0.12)' }
         }
       }
@@ -175,8 +175,12 @@
     document.addEventListener('keydown', e => { if (e.key === 'Escape' && !cartDrawer.classList.contains('hidden')) closeCart(); });
   </script>
   <style>
+    .hand-price{font-family:'Caveat',cursive;font-size:1.7rem;font-weight:700;color:#9D2C2C;transform:rotate(-2deg);display:inline-block;line-height:1}
+    .wavy-divider{display:block;width:100%;height:22px}
+    .paper-bg{background-color:#FFF8EE;background-image:radial-gradient(circle at 1px 1px, rgba(139,90,60,.10) 1.2px, transparent 0);background-size:22px 22px}
+    .bake-note{font-family:'Caveat',cursive;font-size:1.35rem;color:#8B5A3C}
     body { font-family:'Inter',sans-serif; }
-    h1,h2,h3,h4 { font-family:'Playfair Display',serif; }
+    h1,h2,h3,h4 { font-family:'Fraunces',serif; }
     .crumb-divider { display:inline-block; width:64px; height:1px; background:#8B5A3C; vertical-align:middle; }
     [data-aos]{ opacity:0; transform:translateY(20px); transition:opacity .6s ease, transform .6s ease; }
     [data-aos].aos-in{ opacity:1; transform:translateY(0); }
@@ -257,10 +261,11 @@
   <header class="pt-32 lg:pt-40 pb-12 bg-gradient-to-br from-cream to-parchment">
     <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
       <div class="inline-flex items-center gap-2 bg-white border border-brown/20 text-brown text-xs font-bold px-3 py-1.5 rounded-full uppercase tracking-widest mb-5">
-        <span class="w-1.5 h-1.5 bg-brown rounded-full animate-pulse"></span>
+        <span class="w-1.5 h-1.5 bg-cherry rounded-full animate-pulse"></span>
         3 bakeries · 1 obsession
       </div>
       <h1 class="font-serif text-5xl lg:text-7xl font-black text-cocoa leading-tight mb-5">Come say <span class="italic text-brown">hello.</span></h1>
+      <p class="font-hand text-3xl text-cherry mt-2 -rotate-1">made slow, served warm!</p>
       <p class="text-cocoa/70 text-lg max-w-2xl mx-auto">Three Malda locations, all freshly baked on the same morning. Find the one closest to you, or send us a note — we answer every message.</p>
     </div>
   </header>

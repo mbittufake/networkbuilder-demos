@@ -1,75 +1,80 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Book Appointment | City Care Clinic</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;1,9..144,500;1,9..144,600&display=swap" rel="stylesheet">
     <script>
         tailwind.config = {
             theme: {
                 extend: {
-                    fontFamily: { sans: ['Inter', 'sans-serif'] },
-                    colors: {
-                        primary: '#2E7D9A',    // Calm Blue/Teal
-                        accent: '#5FB3A2',     // Muted Green (CTAs)
-                        surface: '#F8FAFC',    // Warm off-white
-                        text: '#1F2937',       // Dark Gray (Readability)
-                        muted: '#6B7280',      // Secondary Text
-                        border: '#E5E7EB',     // Soft Border
-                    },
-                    boxShadow: {
-                        'soft': '0 4px 20px -2px rgba(0, 0, 0, 0.05)',
-                        'card': '0 1px 3px 0 rgba(0, 0, 0, 0.05), 0 1px 2px 0 rgba(0, 0, 0, 0.03)',
-                    }
+                    fontFamily: { sans: ['Plus Jakarta Sans','sans-serif'], serif: ['Fraunces','serif'] },
+                    colors: { mist:'#F0FAF8', teal:{DEFAULT:'#0E9F8A',dark:'#0B7E6E',soft:'#D9F2EC'}, deep:'#0B3B36', lime:'#D8F3DC', primary:'#0E9F8A', muted:'#5F6E6A', border:'#DCEBE6' },
+                    boxShadow: { soft:'0 20px 60px -20px rgba(11,59,54,.18)', card:'0 8px 30px -10px rgba(11,59,54,.12)', float:'0 24px 60px -16px rgba(11,59,54,.28)' }
                 }
             }
         }
     </script>
+    <style>
+        @keyframes floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+        .floaty{animation:floaty 5s ease-in-out infinite}
+        .field{transition:border-color .25s, box-shadow .25s, background .25s}
+        .field:focus{outline:none;border-color:#0E9F8A;box-shadow:0 0 0 4px rgba(14,159,138,.15);background:#fff}
+        ::selection{background:#0E9F8A;color:#fff}
+    </style>
 </head>
-<body class="bg-surface text-text font-sans antialiased">
+<body class="bg-mist/60 text-[#10201D] font-sans antialiased overflow-x-hidden min-h-screen flex flex-col">
 
-    <!-- Navbar -->
-    <nav class="bg-white border-b border-border sticky top-0 z-50">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 h-20 flex items-center justify-between">
-            <a href="index.html" class="flex items-center gap-2">
-                <div class="w-8 h-8 bg-primary/10 text-primary rounded-lg flex items-center justify-center">
-                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg>
-                </div>
-                <span class="text-xl font-bold tracking-tight text-primary">City Care Clinic</span>
+    <div class="bg-deep text-white/90 text-[12px] sm:text-[13px]">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 py-2.5 flex items-center justify-center gap-2">
+            <span class="w-1.5 h-1.5 rounded-full bg-lime inline-block"></span> Free rescheduling · No advance payment · SMS + WhatsApp reminders
+        </div>
+    </div>
+
+    <nav class="bg-white/85 backdrop-blur-xl border-b border-border/70 sticky top-0 z-50">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 h-[76px] flex items-center justify-between gap-4">
+            <a href="index.html" class="flex items-center gap-3">
+                <div class="w-11 h-11 rounded-2xl bg-gradient-to-br from-teal to-deep text-white flex items-center justify-center shadow-card"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg></div>
+                <span class="leading-none"><span class="block text-[17px] font-extrabold tracking-tight text-deep">City Care Clinic</span><span class="block text-[11px] font-semibold tracking-[.18em] uppercase text-teal mt-1">Care · Clarity · Calm</span></span>
             </a>
-            
-            <div class="hidden md:flex items-center space-x-8 text-sm font-medium text-gray-600">
-                <a href="doctors.html" class="hover:text-primary transition">Doctors</a>
-                <a href="services.html" class="hover:text-primary transition">Services</a>
-                <a href="index.html#contact" class="hover:text-primary transition">Location</a>
+            <div class="hidden md:flex items-center gap-8 text-[14px] font-semibold text-[#334744]">
+                <a href="doctors.html" class="hover:text-teal transition">Doctors</a>
+                <a href="services.html" class="hover:text-teal transition">Services</a>
+                <a href="index.html#contact" class="hover:text-teal transition">Location</a>
             </div>
-
-            <div class="flex items-center gap-4">
-                <a href="booking.html" class="bg-primary text-white text-sm font-medium px-5 py-2.5 rounded-lg hover:bg-[#25667e] transition shadow-sm">
-                    Book Appointment
-                </a>
-            </div>
+            <a href="booking.html" class="bg-deep text-white text-sm font-bold px-5 sm:px-6 py-3 rounded-full hover:bg-teal transition-all shadow-card">Book Appointment</a>
         </div>
     </nav>
 
-    <!-- Booking Form Section -->
-    <section class="py-16 md:py-24">
-        <div class="max-w-2xl mx-auto px-4 sm:px-6">
-            
-            <div class="text-center mb-12">
-                <h1 class="text-3xl font-bold text-gray-900 mb-4">Schedule Your Visit</h1>
-                <p class="text-muted text-lg">Quick, simple booking. No payment required online.</p>
+    <section class="flex-1 py-12 md:py-16 relative overflow-hidden">
+        <div class="absolute -top-24 left-1/2 -translate-x-1/2 w-[640px] h-[320px] bg-gradient-to-r from-teal-soft via-lime to-mist blur-3xl opacity-70 rounded-full pointer-events-none"></div>
+        <div class="max-w-2xl mx-auto px-4 sm:px-6 relative">
+            <div class="text-center mb-8">
+                <span class="inline-flex items-center gap-2 text-[11px] font-extrabold uppercase tracking-[.16em] text-deep bg-white border border-border px-4 py-2 rounded-full shadow-card mb-4">◷ Takes ~60 seconds</span>
+                <h1 class="font-serif text-4xl md:text-[48px] leading-[1.05] text-deep tracking-tight mb-3">Schedule your <em class="italic text-teal">visit.</em></h1>
+                <p class="text-muted text-[16px] md:text-lg">Quick, simple booking. No payment required online.</p>
+                <div class="flex items-center justify-center gap-2 mt-5 text-[13px] font-bold">
+                    <span class="flex items-center gap-1.5 bg-deep text-white px-4 py-2 rounded-full"><span class="w-5 h-5 rounded-full bg-teal text-white text-[11px] flex items-center justify-center font-extrabold">1</span> Details</span>
+                    <span class="w-6 h-px bg-border"></span>
+                    <span class="flex items-center gap-1.5 bg-white border border-border text-muted px-4 py-2 rounded-full"><span class="w-5 h-5 rounded-full bg-mist text-deep text-[11px] flex items-center justify-center font-extrabold">2</span> Confirm</span>
+                    <span class="w-6 h-px bg-border"></span>
+                    <span class="flex items-center gap-1.5 bg-white border border-border text-muted px-4 py-2 rounded-full"><span class="w-5 h-5 rounded-full bg-mist text-deep text-[11px] flex items-center justify-center font-extrabold">3</span> Visit</span>
+                </div>
             </div>
 
-            <div class="bg-white rounded-2xl shadow-soft border border-border p-8 md:p-10">
-                <form class="space-y-6">
-                    
-                    <!-- Service Selection -->
+            <div class="bg-white rounded-[28px] shadow-float border border-border overflow-hidden">
+                <div class="bg-gradient-to-r from-deep to-teal-dark px-8 py-5 flex items-center justify-between">
+                    <p class="text-white font-bold text-[15px] flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-lime animate-pulse"></span> 6 slots left today</p>
+                    <a href="tel:03324567890" class="text-lime text-sm font-bold hover:text-white transition">Need help? Call →</a>
+                </div>
+                <form class="p-7 md:p-10 space-y-6">
                     <div>
-                        <label class="block text-sm font-semibold text-gray-700 mb-2">Select Service</label>
-                        <select class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-primary/20 focus:border-primary transition bg-white">
+                        <label class="block text-sm font-extrabold text-deep mb-2">Select Service</label>
+                        <select class="field w-full px-4 py-3.5 rounded-2xl border border-border bg-mist/60 font-semibold text-deep">
                             <option>General Consultation</option>
                             <option>Pediatrics</option>
                             <option>Cardiology</option>
@@ -78,11 +83,9 @@
                             <option>Diagnostics / Lab Test</option>
                         </select>
                     </div>
-
-                    <!-- Doctor Selection (Optional) -->
                     <div>
-                        <label class="block text-sm font-semibold text-gray-700 mb-2">Select Doctor (Optional)</label>
-                        <select class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-primary/20 focus:border-primary transition bg-white">
+                        <label class="block text-sm font-extrabold text-deep mb-2">Select Doctor <span class="font-semibold text-muted">(Optional)</span></label>
+                        <select class="field w-full px-4 py-3.5 rounded-2xl border border-border bg-mist/60 font-semibold text-deep">
                             <option>Any Available Doctor</option>
                             <option>Dr. Anjali Sharma (Cardiology)</option>
                             <option>Dr. Rajesh Roy (General)</option>
@@ -90,62 +93,61 @@
                             <option>Dr. Amir Khan (Neurology)</option>
                         </select>
                     </div>
-
-                    <!-- Date & Time Grid -->
-                    <div class="grid md:grid-cols-2 gap-6">
+                    <div class="grid sm:grid-cols-2 gap-5">
                         <div>
-                            <label class="block text-sm font-semibold text-gray-700 mb-2">Preferred Date</label>
-                            <input type="date" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-primary/20 focus:border-primary transition">
+                            <label class="block text-sm font-extrabold text-deep mb-2">Preferred Date</label>
+                            <input type="date" class="field w-full px-4 py-3.5 rounded-2xl border border-border bg-mist/60 font-semibold text-deep">
                         </div>
                         <div>
-                            <label class="block text-sm font-semibold text-gray-700 mb-2">Preferred Time</label>
-                            <select class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-primary/20 focus:border-primary transition bg-white">
+                            <label class="block text-sm font-extrabold text-deep mb-2">Preferred Time</label>
+                            <select class="field w-full px-4 py-3.5 rounded-2xl border border-border bg-mist/60 font-semibold text-deep">
                                 <option>Morning (9 AM - 12 PM)</option>
                                 <option>Afternoon (12 PM - 4 PM)</option>
                                 <option>Evening (4 PM - 8 PM)</option>
                             </select>
                         </div>
                     </div>
-
-                    <!-- Divider -->
-                    <div class="border-t border-gray-100 my-6"></div>
-
-                    <!-- Patient Details -->
-                    <div>
-                        <label class="block text-sm font-semibold text-gray-700 mb-2">Full Name</label>
-                        <input type="text" placeholder="e.g. Rahul Sen" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-primary/20 focus:border-primary transition">
+                    <div class="flex gap-2.5 flex-wrap">
+                        <span class="text-[12px] font-bold bg-lime text-deep px-3.5 py-1.5 rounded-full border border-teal/20">Today 4:30 PM ✓</span>
+                        <span class="text-[12px] font-bold bg-white text-muted px-3.5 py-1.5 rounded-full border border-border">Tomorrow 10 AM</span>
+                        <span class="text-[12px] font-bold bg-white text-muted px-3.5 py-1.5 rounded-full border border-border">Tomorrow 6 PM</span>
                     </div>
-
+                    <div class="border-t border-dashed border-border"></div>
                     <div>
-                        <label class="block text-sm font-semibold text-gray-700 mb-2">Phone Number</label>
-                        <input type="tel" placeholder="e.g. 98765 43210" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-primary/20 focus:border-primary transition">
+                        <label class="block text-sm font-extrabold text-deep mb-2">Full Name</label>
+                        <input type="text" placeholder="e.g. Rahul Sen" class="field w-full px-4 py-3.5 rounded-2xl border border-border bg-mist/60 placeholder:text-muted/60 font-medium">
                     </div>
-
-                    <!-- Submit -->
-                    <button type="button" class="w-full bg-primary text-white font-bold py-4 rounded-xl hover:bg-[#25667e] transition shadow-lg shadow-primary/20 mt-4">
-                        Confirm Appointment
+                    <div>
+                        <label class="block text-sm font-extrabold text-deep mb-2">Phone Number</label>
+                        <input type="tel" placeholder="e.g. 98765 43210" class="field w-full px-4 py-3.5 rounded-2xl border border-border bg-mist/60 placeholder:text-muted/60 font-medium">
+                    </div>
+                    <button type="button" class="w-full bg-teal text-white font-extrabold text-[16px] py-4 rounded-full hover:bg-deep transition-all shadow-float hover:-translate-y-0.5">
+                        Confirm Appointment →
                     </button>
-                    
-                    <p class="text-center text-xs text-muted mt-4">
-                        By booking, you agree to our privacy policy. Payment is collected at the clinic.
-                    </p>
-
+                    <p class="text-center text-xs text-muted leading-relaxed">By booking, you agree to our privacy policy.<br>Payment is collected at the clinic. Free cancellation up to 2 hrs before.</p>
                 </form>
             </div>
 
-            <!-- Help Text -->
-            <div class="text-center mt-8">
-                <p class="text-gray-600">Need help booking?</p>
-                <a href="tel:03324567890" class="text-primary font-bold hover:underline">Call us at 033-2456-7890</a>
+            <div class="grid sm:grid-cols-2 gap-4 mt-6">
+                <a href="tel:03324567890" class="floaty flex items-center gap-3 bg-white border border-border rounded-3xl p-4 shadow-card hover:shadow-float hover:-translate-y-0.5 transition-all">
+                    <span class="w-11 h-11 rounded-2xl bg-deep text-lime flex items-center justify-center shrink-0 font-bold">✆</span>
+                    <span><span class="block text-[11px] font-extrabold uppercase tracking-wider text-muted">Prefer to talk?</span><span class="block font-extrabold text-deep">033-2456-7890</span></span>
+                </a>
+                <a href="doctors.html" class="flex items-center gap-3 bg-deep border border-deep rounded-3xl p-4 shadow-card hover:shadow-float hover:-translate-y-0.5 transition-all">
+                    <span class="w-11 h-11 rounded-2xl bg-white/10 text-lime flex items-center justify-center shrink-0 font-bold">♥</span>
+                    <span><span class="block text-[11px] font-extrabold uppercase tracking-wider text-lime">Not sure who?</span><span class="block font-extrabold text-white">Meet our doctors →</span></span>
+                </a>
             </div>
-
+            <div class="text-center mt-6">
+                <p class="text-muted text-sm">Need help booking? <a href="tel:03324567890" class="text-teal font-extrabold hover:underline">Call us at 033-2456-7890</a></p>
+            </div>
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="bg-gray-50 border-t border-border pt-12 pb-8 mt-12">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 text-center text-xs text-muted">
+    <footer class="bg-white border-t border-border py-8">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 flex flex-col sm:flex-row items-center justify-between gap-2 text-xs text-muted font-medium">
             <p>&copy; 2026 City Care Clinic. All rights reserved.</p>
+            <p><a href="index.html" class="hover:text-teal font-bold">← Back to home</a> · <a href="services.html" class="hover:text-teal font-bold">Services</a> · <a href="doctors.html" class="hover:text-teal font-bold">Doctors</a></p>
         </div>
     </footer>
 

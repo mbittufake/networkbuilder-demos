@@ -1,90 +1,85 @@
 <!DOCTYPE html>
-<html lang="en" class="bg-[#050505] text-[#e0e0e0] antialiased selection:bg-[#c9a96e] selection:text-black">
+<html lang="en" class="bg-[#050505] text-[#F5F0E8] antialiased selection:bg-[#C9A96E] selection:text-black">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About The Firm | VANTAGE LEGAL</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Italiana&family=Space+Grotesk:wght@300;400;500;600&display=swap" rel="stylesheet">
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: { serif: ['Italiana', 'serif'], sans: ['Space Grotesk', 'sans-serif'] },
-                    colors: { gold: '#c9a96e', dark: '#050505', subtle: '#333' }
-                }
-            }
-        }
-    </script>
-    <style>
-        .menu-overlay { clip-path: circle(0% at 100% 0); transition: clip-path 0.8s cubic-bezier(0.77, 0, 0.175, 1); }
-        .menu-overlay.open { clip-path: circle(150% at 100% 0); }
-    </style>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About The Firm | VANTAGE LEGAL</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Italiana&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<script>tailwind.config={theme:{extend:{fontFamily:{serif:['Italiana','serif'],sans:['Inter','sans-serif']},colors:{gold:'#C9A96E',cream:'#F5F0E8',void:'#050505',coal:'#0E0E0E'}}}}</script>
+<style>
+body{font-family:'Inter',sans-serif;background:#050505;}.font-serif{font-family:'Italiana',serif!important;}
+.hairline{border-color:rgba(201,169,110,.18);}.gold-rule{height:1px;background:linear-gradient(90deg,#C9A96E,rgba(201,169,110,0));}
+.menu-overlay{clip-path:circle(0% at 100% 0);transition:clip-path .8s cubic-bezier(.77,0,.175,1);}.menu-overlay.open{clip-path:circle(150% at 100% 0);}
+.img-luxe{filter:grayscale(1) contrast(1.05) brightness(.88);transition:filter .8s ease,transform 1.1s cubic-bezier(.16,1,.3,1);}
+.group:hover .img-luxe{filter:grayscale(0) brightness(1);transform:scale(1.04);}
+.text-fluid{font-size:clamp(3.2rem,8vw,7rem);line-height:.9;}
+</style>
 </head>
-<body class="font-sans">
+<body class="font-sans bg-[#050505] text-[#F5F0E8]">
+<div class="fixed top-0 w-full z-[60] bg-[#050505]/85 backdrop-blur-md border-b hairline">
+  <div class="max-w-7xl mx-auto px-6 h-[68px] flex items-center justify-between">
+    <a href="index.html" class="flex items-baseline gap-3"><span class="font-serif text-[24px] tracking-[0.22em]">VANTAGE</span><span class="hidden sm:inline text-[10px] uppercase tracking-[0.3em] text-[#C9A96E]">The Firm — 02</span></a>
+    <button onclick="document.getElementById('menu').classList.toggle('open')" class="flex items-center gap-3 text-[12px] uppercase tracking-[0.25em] hover:text-[#C9A96E] transition">Menu<span class="flex flex-col gap-[5px] w-7"><span class="h-px bg-current w-full"></span><span class="h-px bg-current w-2/3 ml-auto"></span></span></button>
+  </div>
+</div>
+<div id="menu" class="menu-overlay fixed inset-0 bg-[#C9A96E] z-[55] flex items-center justify-center">
+  <div class="flex flex-col space-y-6 text-center">
+    <a href="index.html" class="text-[#050505] text-5xl md:text-6xl font-serif hover:italic transition-all">Index</a>
+    <a href="about.html" class="text-[#050505] text-5xl md:text-6xl font-serif italic transition-all">The Firm</a>
+    <a href="practice.html" class="text-[#050505] text-5xl md:text-6xl font-serif hover:italic transition-all">Expertise</a>
+    <a href="contact.html" class="text-[#050505] text-5xl md:text-6xl font-serif hover:italic transition-all">Contact</a>
+  </div>
+</div>
 
-    <!-- Nav -->
-    <nav class="fixed top-0 w-full z-50 px-6 py-6 mix-blend-difference text-white flex justify-between items-center bg-black/20 backdrop-blur-sm">
-        <a href="index.html" class="text-2xl font-serif tracking-widest z-50 relative group">VANTAGE</a>
-        <button onclick="document.getElementById('menu').classList.toggle('open')" class="z-50 text-sm uppercase tracking-[0.2em] hover:text-gold transition">Menu</button>
-    </nav>
-    <div id="menu" class="menu-overlay fixed inset-0 bg-gold z-40 flex items-center justify-center">
-        <div class="flex flex-col space-y-8 text-center">
-            <a href="index.html" class="text-dark text-6xl font-serif hover:italic transition-all">Index</a>
-            <a href="about.html" class="text-dark text-6xl font-serif italic transition-all">The Firm</a>
-            <a href="practice.html" class="text-dark text-6xl font-serif hover:italic transition-all">Expertise</a>
-            <a href="contact.html" class="text-dark text-6xl font-serif hover:italic transition-all">Contact</a>
+<header class="pt-[150px] pb-16 px-6 max-w-7xl mx-auto">
+  <div class="flex items-center gap-4 mb-6"><span class="h-px w-14 bg-[#C9A96E]"></span><p class="text-[#C9A96E] uppercase tracking-[0.32em] text-[11px]">02 — The Firm</p></div>
+  <h1 class="text-fluid font-serif mb-10">THE VANTAGE<br><span class="italic text-[#F5F0E8]/30">standard</span></h1>
+  <div class="gold-rule w-40 mb-12"></div>
+  <div class="grid md:grid-cols-2 gap-10 text-[17px] font-light leading-[1.85] text-[#F5F0E8]/60">
+    <p><span class="font-serif text-5xl text-[#F5F0E8] float-left mr-3 leading-[0.9]">W</span>e founded Vantage Legal in 2026 to answer a specific need in the market: pure, undiluted advocacy. No bloated teams, no unnecessary billing hours, just elite legal minds solving impossible problems.</p>
+    <p>Our partners come from the highest echelons of Indian law—former High Court prosecutors, top-tier corporate advisors, and constitutional experts. We combine the aggression of criminal defense with the precision of corporate law.</p>
+  </div>
+  <div class="grid grid-cols-3 gap-6 mt-14 border-y hairline py-8 text-center md:text-left">
+    <div><p class="font-serif text-4xl text-[#C9A96E]">2009</p><p class="text-[11px] uppercase tracking-[0.25em] text-[#F5F0E8]/40 mt-1">Founded</p></div>
+    <div class="border-l hairline pl-6"><p class="font-serif text-4xl">12</p><p class="text-[11px] uppercase tracking-[0.25em] text-[#F5F0E8]/40 mt-1">Partners</p></div>
+    <div class="border-l hairline pl-6"><p class="font-serif text-4xl text-[#C9A96E]">40+</p><p class="text-[11px] uppercase tracking-[0.25em] text-[#F5F0E8]/40 mt-1">Landmark Wins</p></div>
+  </div>
+</header>
+
+<section class="py-20 bg-[#0E0E0E] border-y hairline px-6">
+  <div class="max-w-7xl mx-auto">
+    <div class="flex items-center gap-4 mb-4 justify-center"><span class="h-px w-12 bg-[#C9A96E]/60"></span><span class="text-[#C9A96E] uppercase tracking-[0.3em] text-[11px]">The Partners</span><span class="h-px w-12 bg-[#C9A96E]/60"></span></div>
+    <h2 class="text-4xl md:text-5xl font-serif mb-14 text-center">COUNSEL, <span class="italic text-[#F5F0E8]/40">up close</span></h2>
+    <div class="grid md:grid-cols-2 gap-10">
+      <div class="group">
+        <div class="h-[500px] overflow-hidden border hairline"><img src="https://images.unsplash.com/photo-1556157382-97eda2d62296?q=80&w=800&auto=format&fit=crop" class="img-luxe w-full h-full object-cover" alt="Rajiv Malhotra"></div>
+        <div class="mt-8 border-l-2 border-[#C9A96E] pl-6">
+          <p class="text-[#C9A96E] font-serif italic">No. 01</p>
+          <h3 class="text-3xl font-serif mt-1">Rajiv Malhotra</h3>
+          <p class="text-[#C9A96E] uppercase tracking-[0.2em] text-[12px] mt-2">Managing Partner • Criminal Defense</p>
+          <p class="text-[#F5F0E8]/50 mt-4 max-w-md font-light leading-relaxed">20 years experience. Former Senior Prosecutor. Specializes in CBI/ED matters and white-collar crime.</p>
         </div>
+      </div>
+      <div class="group">
+        <div class="h-[500px] overflow-hidden border hairline"><img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=800&auto=format&fit=crop" class="img-luxe w-full h-full object-cover" alt="Priya Desai"></div>
+        <div class="mt-8 border-l-2 border-[#C9A96E] pl-6">
+          <p class="text-[#C9A96E] font-serif italic">No. 02</p>
+          <h3 class="text-3xl font-serif mt-1">Priya Desai</h3>
+          <p class="text-[#C9A96E] uppercase tracking-[0.2em] text-[12px] mt-2">Senior Partner • Corporate Law</p>
+          <p class="text-[#F5F0E8]/50 mt-4 max-w-md font-light leading-relaxed">Expert in M&amp;A and Insolvency. Led ₹2000Cr+ in restructuring deals. Advisor to Fortune 500 boards.</p>
+        </div>
+      </div>
     </div>
+    <div class="text-center mt-14"><a href="practice.html" class="inline-block px-10 py-4 border hairline text-[12px] uppercase tracking-[0.2em] hover:bg-[#C9A96E] hover:text-black hover:border-[#C9A96E] transition">Explore Expertise →</a></div>
+  </div>
+</section>
 
-    <!-- Header -->
-    <header class="pt-48 pb-24 px-6 max-w-7xl mx-auto">
-        <h1 class="text-6xl md:text-8xl font-serif text-white mb-12">THE VANTAGE <br> <span class="text-gray-600 italic">STANDARD</span></h1>
-        <div class="grid md:grid-cols-2 gap-16">
-            <p class="text-xl text-gray-400 font-light leading-relaxed">
-                We founded Vantage Legal in 2026 to answer a specific need in the market: pure, undiluted advocacy. No bloated teams, no unnecessary billing hours, just elite legal minds solving impossible problems.
-            </p>
-            <p class="text-xl text-gray-400 font-light leading-relaxed">
-                Our partners come from the highest echelons of Indian law—former High Court prosecutors, top-tier corporate advisors, and constitutional experts. We combine the aggression of criminal defense with the precision of corporate law.
-            </p>
-        </div>
-    </header>
-
-    <!-- Team Section -->
-    <section class="py-24 bg-[#0a0a0a] px-6">
-        <div class="max-w-7xl mx-auto">
-            <h2 class="text-4xl font-serif mb-16 text-center">THE PARTNERS</h2>
-            <div class="grid md:grid-cols-2 gap-12">
-                <!-- Partner 1 -->
-                <div class="group">
-                    <div class="h-[500px] overflow-hidden grayscale group-hover:grayscale-0 transition duration-700">
-                        <img src="https://images.unsplash.com/photo-1556157382-97eda2d62296?q=80&w=800&auto=format&fit=crop" class="w-full h-full object-cover" alt="Rajiv Malhotra">
-                    </div>
-                    <div class="mt-8">
-                        <h3 class="text-3xl font-serif text-white">Rajiv Malhotra</h3>
-                        <p class="text-gold uppercase tracking-widest text-sm mt-2">Managing Partner • Criminal Defense</p>
-                        <p class="text-gray-500 mt-4 max-w-md">20 years experience. Former Senior Prosecutor. Specializes in CBI/ED matters and white-collar crime.</p>
-                    </div>
-                </div>
-                <!-- Partner 2 -->
-                <div class="group">
-                    <div class="h-[500px] overflow-hidden grayscale group-hover:grayscale-0 transition duration-700">
-                        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=800&auto=format&fit=crop" class="w-full h-full object-cover" alt="Priya Desai">
-                    </div>
-                    <div class="mt-8">
-                        <h3 class="text-3xl font-serif text-white">Priya Desai</h3>
-                        <p class="text-gold uppercase tracking-widest text-sm mt-2">Senior Partner • Corporate Law</p>
-                        <p class="text-gray-500 mt-4 max-w-md">Expert in M&A and Insolvency. Led ₹2000Cr+ in restructuring deals. Advisor to Fortune 500 boards.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="bg-black border-t border-white/10 py-12 text-center text-gray-600 text-sm">
-        <p>&copy; 2026 Vantage Legal. New Delhi.</p>
-    </footer>
-
+<footer class="bg-black border-t hairline py-12 px-6">
+  <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between gap-6 text-[11px] uppercase tracking-[0.2em] text-[#F5F0E8]/35">
+    <p>&copy; 2026 Vantage Legal. New Delhi.</p>
+    <div class="flex gap-8"><a href="index.html" class="hover:text-[#C9A96E]">Index</a><a href="practice.html" class="hover:text-[#C9A96E]">Expertise</a><a href="contact.html" class="hover:text-[#C9A96E]">Contact</a></div>
+  </div>
+</footer>
 </body>
 </html>

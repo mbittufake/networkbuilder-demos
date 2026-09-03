@@ -48,16 +48,18 @@ function filterProperties(all, query) {
 
 function cardHTML(p) {
   const badge = p.badge
-    ? `<span class="bg-yellow-400 text-gray-900 text-xs font-bold px-2.5 py-1 rounded-full">${esc(p.badge)}</span>`
+    ? `<span class="text-[11px] font-extrabold tracking-wide px-2.5 py-1 rounded-full text-[#2A2111]" style="background:linear-gradient(135deg,#F3D9A4,#C9A86A);box-shadow:0 4px 14px rgba(201,168,106,.4)">◆ ${esc(p.badge)}</span>`
     : '';
   return `<a href="property.html?id=${p.id}" class="group bg-white border border-gray-100 rounded-2xl overflow-hidden card-hover">
-    <div class="relative">
-      <img src="${esc(p.images[0])}" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-500" alt="${esc(p.name)}">
-      <div class="absolute top-3 left-3 flex gap-1.5">
-        <span class="bg-accent text-white text-xs font-bold px-2.5 py-1 rounded-full">${statusLabel(p)}</span>
+    <div class="relative overflow-hidden bg-[#0A0F1E]">
+      <img src="${esc(p.images[0])}" class="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-700 ease-out" alt="${esc(p.name)}" loading="lazy">
+      <div class="absolute inset-0 bg-gradient-to-t from-[#0A0F1E]/45 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
+      <div class="absolute top-3 left-3 flex gap-1.5 flex-wrap">
+        <span class="bg-accent text-white text-xs font-bold px-2.5 py-1 rounded-full shadow-lg">${statusLabel(p)}</span>
         ${badge}
       </div>
-      <button class="fav-btn absolute top-3 right-3 w-8 h-8 bg-white rounded-full shadow flex items-center justify-center" onclick="event.preventDefault();this.classList.toggle('active')">${HEART}</button>
+      <span class="absolute bottom-3 left-3 text-[10px] font-extrabold tracking-[0.08em] px-2.5 py-1 rounded-full text-[#F3D9A4] bg-[#0A0F1E]/75 border border-[#C9A86A]/60 backdrop-blur">◆ RERA VERIFIED</span>
+      <button class="fav-btn absolute top-3 right-3 w-8 h-8 bg-white/95 backdrop-blur rounded-full shadow-lg flex items-center justify-center border border-white/60 hover:scale-110 transition-transform" onclick="event.preventDefault();this.classList.toggle('active')">${HEART}</button>
     </div>
     <div class="p-4">
       <div class="text-accent text-lg font-black font-head">${priceLabel(p)}</div>
@@ -76,7 +78,7 @@ function cardHTML(p) {
 
 function miniCardHTML(p) {
   return `<a href="property.html?id=${p.id}" class="group bg-white border border-gray-100 rounded-2xl overflow-hidden card-hover">
-    <div class="relative"><img src="${esc(p.images[0])}" class="w-full h-44 object-cover group-hover:scale-105 transition-transform duration-500" alt="${esc(p.name)}"><span class="absolute top-3 left-3 bg-accent text-white text-xs font-bold px-2.5 py-1 rounded-full">${statusLabel(p)}</span></div>
+    <div class="relative overflow-hidden bg-[#0A0F1E]"><img src="${esc(p.images[0])}" class="w-full h-44 object-cover group-hover:scale-110 transition-transform duration-700 ease-out" alt="${esc(p.name)}" loading="lazy"><div class="absolute inset-0 bg-gradient-to-t from-[#0A0F1E]/45 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div><span class="absolute top-3 left-3 bg-accent text-white text-xs font-bold px-2.5 py-1 rounded-full shadow-lg">${statusLabel(p)}</span><span class="absolute bottom-3 left-3 text-[10px] font-extrabold tracking-[0.08em] px-2.5 py-1 rounded-full text-[#F3D9A4] bg-[#0A0F1E]/75 border border-[#C9A86A]/60 backdrop-blur">◆ RERA</span></div>
     <div class="p-4"><div class="text-accent text-lg font-black font-head">${priceLabel(p)}</div><div class="font-bold text-sm text-gray-900 mt-0.5">${esc(p.name)}</div><div class="text-xs text-gray-400 mt-1 mb-3">${esc(p.location)}, ${esc(p.city)}</div><div class="flex gap-4 text-xs text-gray-500 border-t border-gray-100 pt-3"><span>🛏 ${bedLabel(p)}</span><span>📐 ${formatINR(p.area)} sq.ft</span></div><div class="mt-3 flex justify-end"><span class="text-xs bg-accent text-white font-bold px-3 py-1 rounded-full">View Details</span></div></div>
   </a>`;
 }
@@ -181,11 +183,11 @@ function propertyPartial(all, id) {
     .join('');
 
   const gallery = `
-    <div class="grid grid-cols-1 sm:grid-cols-3 gap-2 rounded-2xl overflow-hidden h-64 sm:h-96">
-      <div class="sm:col-span-2 relative"><img src="${esc(p.images[0])}" class="w-full h-full object-cover" alt="${esc(p.name)} main"></div>
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-2 rounded-[1.75rem] overflow-hidden h-64 sm:h-96 ring-1 ring-[#C9A86A]/30 shadow-2xl shadow-[#0A0F1E]/20">
+      <div class="sm:col-span-2 relative overflow-hidden group"><img src="${esc(p.images[0])}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" alt="${esc(p.name)} main"><div class="absolute inset-0 bg-gradient-to-t from-[#0A0F1E]/50 via-transparent to-transparent"></div><span class="absolute bottom-4 left-4 text-[10px] font-extrabold tracking-[0.1em] px-3 py-1.5 rounded-full text-[#F3D9A4] bg-[#0A0F1E]/75 border border-[#C9A86A]/60 backdrop-blur">◆ RERA APPROVED · ${esc(p.rera || 'VERIFIED')}</span></div>
       <div class="hidden sm:grid grid-rows-2 gap-2">
-        <img src="${esc(p.images[1] || p.images[0])}" class="w-full h-full object-cover" alt="">
-        <div class="relative"><img src="${esc(p.images[2] || p.images[0])}" class="w-full h-full object-cover" alt=""><div class="absolute inset-0 bg-black/50 flex items-center justify-center"><button class="text-white text-sm font-bold flex items-center gap-2">📷 ${p.images.length + 6} Photos</button></div></div>
+        <div class="overflow-hidden"><img src="${esc(p.images[1] || p.images[0])}" class="w-full h-full object-cover hover:scale-105 transition-transform duration-700" alt=""></div>
+        <div class="relative overflow-hidden"><img src="${esc(p.images[2] || p.images[0])}" class="w-full h-full object-cover" alt=""><div class="absolute inset-0 bg-[#0A0F1E]/60 backdrop-blur-[1px] flex items-center justify-center"><button class="text-white text-sm font-bold flex items-center gap-2 bg-white/10 border border-white/25 px-4 py-2 rounded-full backdrop-blur hover:bg-white/20 transition-all">📷 ${p.images.length + 6} Photos</button></div></div>
       </div>
     </div>`;
 

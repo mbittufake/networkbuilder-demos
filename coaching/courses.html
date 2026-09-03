@@ -7,215 +7,242 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;500;600;700&family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700;12..96,800&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=Caveat:wght@600;700&display=swap" rel="stylesheet">
     <script>
         tailwind.config = {
             theme: {
                 extend: {
-                    fontFamily: { sans: ['DM Sans', 'sans-serif'], serif: ['Playfair Display', 'serif'] },
-                    colors: { brand: { 50: '#fef7ee', 100: '#fdedd6', 500: '#f97316', 600: '#ea580c', 700: '#c2410c' } }
+                    fontFamily: { sans: ['DM Sans', 'sans-serif'], display: ['Bricolage Grotesque', 'sans-serif'], serif: ['Bricolage Grotesque', 'serif'], hand: ['Caveat','cursive'] },
+                    colors: { cream: '#FFFBEB', brand: { 50:'#FFF7ED',100:'#FFEDD5',500:'#F97316',600:'#EA580C',700:'#C2410c' }, cocoa: '#451A03', leaf: '#16A34A' },
+                    boxShadow: { sticker: '3px 4px 0 0 #451A03' }
                 }
             }
         }
     </script>
+    <style>
+      body{font-family:'DM Sans',sans-serif} h1,h2,h3{font-family:'Bricolage Grotesque',sans-serif}
+      .doodle-bg{background-color:#FFFBEB;background-image:radial-gradient(rgba(69,26,3,.09) 1.5px,transparent 1.5px);background-size:22px 22px}
+      .paper-grid{background-image:linear-gradient(rgba(234,88,12,.07) 1px,transparent 1px),linear-gradient(90deg,rgba(234,88,12,.07) 1px,transparent 1px);background-size:28px 28px}
+      .sticker{border:2px solid #451A03;box-shadow:3px 4px 0 0 #451A03}
+      .marker{background:linear-gradient(transparent 55%,#FED7AA 55%,#FED7AA 92%,transparent 92%);padding:0 .15em}
+      .timetable-row{transition:all .25s ease}.timetable-row:hover{transform:translateY(-3px);box-shadow:0 16px 40px -12px rgba(69,26,3,.25)}
+    </style>
 </head>
-<body class="bg-stone-50 text-stone-800 font-sans antialiased">
+<body class="bg-cream text-cocoa font-sans antialiased">
 
-    <!-- Mobile Menu -->
     <div id="mobile-menu" class="fixed inset-0 z-50 hidden">
-        <div class="absolute inset-0 bg-black/50" onclick="document.getElementById('mobile-menu').classList.add('hidden')"></div>
-        <div class="absolute right-0 top-0 bottom-0 w-72 bg-white shadow-2xl p-6">
+        <div class="absolute inset-0 bg-cocoa/50" onclick="document.getElementById('mobile-menu').classList.add('hidden')"></div>
+        <div class="absolute right-0 top-0 bottom-0 w-72 bg-cream shadow-2xl p-6 border-l-2 border-cocoa">
             <div class="flex justify-end mb-6">
-                <button onclick="document.getElementById('mobile-menu').classList.add('hidden')" class="p-2">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                <button onclick="document.getElementById('mobile-menu').classList.add('hidden')" class="w-10 h-10 rounded-full bg-white border-2 border-cocoa flex items-center justify-center" style="box-shadow:2px 3px 0 0 #451A03">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 18L18 6M6 6l12 12"></path></svg>
                 </button>
             </div>
-            <nav class="flex flex-col gap-4">
-                <a href="index.html" class="text-lg font-medium text-stone-600 hover:text-stone-900">Home</a>
-                <a href="courses.html" class="text-lg font-medium text-stone-900">Courses</a>
-                <a href="contact.html" class="text-lg font-medium text-stone-600 hover:text-stone-900">Contact</a>
-                <hr class="border-stone-200">
-                <a href="admin/dashboard.html" class="text-sm font-medium text-stone-500">Admin Panel</a>
-                <hr class="border-stone-200">
-                <a href="contact.html" class="bg-brand-500 text-white text-center px-4 py-3 rounded-lg font-medium">Enroll Now</a>
+            <nav class="flex flex-col gap-3">
+                <a href="index.html" class="text-lg font-medium text-cocoa/70 bg-white/60 rounded-2xl px-4 py-3">🏠 Home</a>
+                <a href="courses.html" class="text-lg font-bold text-cocoa bg-white rounded-2xl px-4 py-3 border-2 border-cocoa" style="box-shadow:3px 4px 0 0 #451A03">📚 Courses</a>
+                <a href="contact.html" class="text-lg font-medium text-cocoa/70 bg-white/60 rounded-2xl px-4 py-3">💬 Contact</a>
+                <hr class="border-cocoa/15">
+                <a href="admin/dashboard.html" class="text-sm font-medium text-cocoa/50 px-4">🔒 Admin Panel</a>
+                <hr class="border-cocoa/15">
+                <a href="contact.html" class="bg-brand-600 text-cream text-center px-4 py-3 rounded-2xl font-bold border-2 border-cocoa" style="box-shadow:3px 4px 0 0 #451A03">Enroll Now ✨</a>
             </nav>
         </div>
     </div>
 
-    <header class="bg-white border-b border-stone-200 sticky top-0 z-40">
+    <header class="bg-cream/90 backdrop-blur border-b-2 border-cocoa/10 sticky top-0 z-40">
         <div class="max-w-6xl mx-auto px-4 md:px-6">
-            <div class="flex items-center justify-between h-16">
-                <a href="index.html" class="flex items-center gap-2">
-                    <div class="w-8 h-8 bg-brand-500 rounded-lg flex items-center justify-center">
-                        <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
+            <div class="flex items-center justify-between h-[72px]">
+                <a href="index.html" class="flex items-center gap-2.5">
+                    <div class="w-10 h-10 bg-brand-600 rounded-2xl flex items-center justify-center border-2 border-cocoa rotate-[-4deg]" style="box-shadow:2px 3px 0 0 #451A03">
+                        <svg class="w-5 h-5 text-cream" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
                     </div>
-                    <span class="text-lg font-semibold tracking-tight">ClassDesk</span>
+                    <span class="text-xl font-extrabold tracking-tight">ClassDesk</span>
                 </a>
-                <nav class="hidden lg:flex items-center gap-8 text-sm font-medium text-stone-600">
-                    <a href="index.html" class="hover:text-stone-900 transition">Home</a>
-                    <a href="courses.html" class="text-stone-900">Courses</a>
-                    <a href="contact.html" class="hover:text-stone-900 transition">Contact</a>
-                    <a href="admin/dashboard.html" class="text-xs px-3 py-1.5 bg-stone-100 rounded-full hover:bg-stone-200 transition">Admin Panel</a>
+                <nav class="hidden lg:flex items-center gap-2 text-sm font-semibold">
+                    <a href="index.html" class="px-4 py-2 rounded-full hover:bg-white border-2 border-transparent hover:border-cocoa/15 transition">Home</a>
+                    <a href="courses.html" class="px-4 py-2 rounded-full bg-cocoa text-cream">Courses</a>
+                    <a href="contact.html" class="px-4 py-2 rounded-full hover:bg-white border-2 border-transparent hover:border-cocoa/15 transition">Contact</a>
+                    <a href="admin/dashboard.html" class="text-xs px-3 py-1.5 bg-white rounded-full border-2 border-cocoa/15 hover:border-cocoa transition">🔒 Admin</a>
                 </nav>
                 <div class="flex items-center gap-3">
-                    <a href="contact.html" class="hidden lg:block bg-stone-900 text-white px-5 py-2 rounded-lg text-sm font-medium hover:bg-stone-800 transition">Enroll Now</a>
-                    <button onclick="document.getElementById('mobile-menu').classList.remove('hidden')" class="lg:hidden p-2 text-stone-600 hover:text-stone-900">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+                    <a href="contact.html" class="hidden lg:inline-block bg-brand-600 text-cream px-5 py-2.5 rounded-full text-sm font-bold border-2 border-cocoa" style="box-shadow:3px 4px 0 0 #451A03">Enroll Now ✨</a>
+                    <button onclick="document.getElementById('mobile-menu').classList.remove('hidden')" class="lg:hidden w-10 h-10 rounded-full bg-white border-2 border-cocoa flex items-center justify-center" style="box-shadow:2px 3px 0 0 #451A03">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M4 6h16M4 12h16M4 18h16"></path></svg>
                     </button>
                 </div>
             </div>
         </div>
     </header>
 
-    <section class="bg-white py-12">
-        <div class="max-w-6xl mx-auto px-4 md:px-6">
-            <h1 class="text-3xl md:text-4xl font-serif text-stone-900 mb-2">Our Courses</h1>
-            <p class="text-stone-600">Comprehensive programs for every stage</p>
+    <section class="doodle-bg py-12 relative overflow-hidden">
+        <div class="max-w-6xl mx-auto px-4 md:px-6 relative">
+            <span class="inline-block text-[11px] font-extrabold uppercase tracking-widest bg-white px-3 py-1.5 rounded-full sticker mb-4">🗓️ 2026 batches · timetable inside</span>
+            <h1 class="text-4xl md:text-5xl font-extrabold tracking-tight mb-2">Our <span class="marker">Courses</span> 📚</h1>
+            <p class="text-cocoa/60 text-lg">Like a school timetable — but way more fun. <span class="font-hand text-2xl text-brand-600">pick your period!</span></p>
+            <div class="mt-5 flex flex-wrap gap-2 text-xs font-bold">
+                <span class="bg-cocoa text-cream px-3 py-1.5 rounded-full">📘 Foundation</span>
+                <span class="bg-brand-600 text-cream px-3 py-1.5 rounded-full border-2 border-cocoa">🔬 Class 11–12</span>
+                <span class="bg-leaf text-white px-3 py-1.5 rounded-full border-2 border-cocoa">⚡ Competitive</span>
+                <span class="bg-white px-3 py-1.5 rounded-full sticker">🕓 All timings below</span>
+            </div>
         </div>
     </section>
 
-    <section class="py-12">
-        <div class="max-w-6xl mx-auto px-4 md:px-6">
-            <div class="space-y-4">
-                <div class="bg-white rounded-2xl p-6 md:p-8 border border-stone-200 hover:border-stone-300 hover:shadow-lg transition duration-300">
+    <section class="py-10 bg-white border-y-2 border-cocoa/10 relative">
+        <div class="absolute inset-0 paper-grid opacity-50"></div>
+        <div class="max-w-6xl mx-auto px-4 md:px-6 relative">
+            <div class="space-y-5">
+                <!-- Row template repeated -->
+                <div class="timetable-row bg-cream rounded-[1.75rem] p-6 md:p-7 border-2 border-cocoa" style="box-shadow:4px 5px 0 0 #451A03">
                     <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
                         <div class="flex-1">
-                            <div class="flex items-center gap-3 mb-3">
-                                <span class="text-xs font-semibold tracking-wider uppercase text-brand-600 bg-brand-50 px-2 py-1 rounded">Foundation</span>
-                                <span class="text-xs text-stone-500">Class 9-10</span>
+                            <div class="flex flex-wrap items-center gap-2 mb-3">
+                                <span class="text-[10px] font-extrabold uppercase tracking-widest text-brand-600 bg-white px-2.5 py-1 rounded-full border-2 border-cocoa -rotate-1">📘 Foundation</span>
+                                <span class="text-xs font-bold text-cocoa/60">Class 9–10 · 🕓 4–7 PM</span>
+                                <span class="text-[10px] font-extrabold bg-leaf text-white px-2 py-1 rounded-full">✓ Seats open</span>
                             </div>
-                            <h2 class="text-xl font-semibold text-stone-900 mb-1">CBSE Foundation Course</h2>
-                            <p class="text-stone-600 text-sm">Complete syllabus coverage for Class 9 & 10 with regular tests, doubt clearing, and exam preparation.</p>
+                            <h2 class="text-2xl font-extrabold mb-1">CBSE Foundation Course</h2>
+                            <p class="text-cocoa/60 text-sm">Complete syllabus + weekly tests, doubt marathons & exam hacks.</p>
                         </div>
-                        <div class="text-left md:text-right">
-                            <div class="text-2xl font-bold text-stone-900">₹12,000</div>
-                            <div class="text-xs text-stone-500 mt-1">6 months</div>
+                        <div class="text-left md:text-right bg-white rounded-2xl px-5 py-3 border-2 border-dashed border-cocoa/20 rotate-1">
+                            <div class="text-2xl font-extrabold">₹12,000</div>
+                            <div class="text-xs text-cocoa/50 font-bold">6 months · EMI available 💳</div>
                         </div>
                     </div>
-                    <div class="mt-6 pt-6 border-t border-stone-100">
-                        <div class="grid md:grid-cols-4 gap-4 text-sm">
-                            <div><span class="text-stone-500">Duration</span><div class="font-medium">6 Months</div></div>
-                            <div><span class="text-stone-500">Batch Size</span><div class="font-medium">25 Students</div></div>
-                            <div><span class="text-stone-500">Timing</span><div class="font-medium">4:00 - 7:00 PM</div></div>
-                            <div><span class="text-stone-500">Subjects</span><div class="font-medium">Science, Math</div></div>
+                    <div class="mt-5 pt-5 border-t-2 border-dashed border-cocoa/15">
+                        <div class="grid grid-cols-2 md:grid-cols-4 gap-3 text-sm">
+                            <div class="bg-white rounded-2xl px-4 py-3 border border-cocoa/15"><span class="text-cocoa/50 text-xs font-bold uppercase">⏱️ Duration</span><div class="font-bold">6 Months</div></div>
+                            <div class="bg-white rounded-2xl px-4 py-3 border border-cocoa/15"><span class="text-cocoa/50 text-xs font-bold uppercase">👥 Batch</span><div class="font-bold">25 Students</div></div>
+                            <div class="bg-white rounded-2xl px-4 py-3 border border-cocoa/15"><span class="text-cocoa/50 text-xs font-bold uppercase">🕓 Timing</span><div class="font-bold">4–7 PM</div></div>
+                            <div class="bg-white rounded-2xl px-4 py-3 border border-cocoa/15"><span class="text-cocoa/50 text-xs font-bold uppercase">📖 Subjects</span><div class="font-bold">Science, Math</div></div>
                         </div>
+                        <a href="contact.html" class="mt-4 inline-flex bg-cocoa text-cream text-sm font-bold px-5 py-2.5 rounded-full hover:bg-brand-600 transition">Enroll in this batch →</a>
                     </div>
                 </div>
 
-                <div class="bg-white rounded-2xl p-6 md:p-8 border border-stone-200 hover:border-stone-300 hover:shadow-lg transition duration-300">
+                <div class="timetable-row bg-cocoa text-cream rounded-[1.75rem] p-6 md:p-7 border-2 border-cocoa" style="box-shadow:4px 5px 0 0 #EA580C">
                     <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
                         <div class="flex-1">
-                            <div class="flex items-center gap-3 mb-3">
-                                <span class="text-xs font-semibold tracking-wider uppercase text-brand-600 bg-brand-50 px-2 py-1 rounded">Class 11-12</span>
-                                <span class="text-xs text-stone-500">Science Stream</span>
+                            <div class="flex flex-wrap items-center gap-2 mb-3">
+                                <span class="text-[10px] font-extrabold uppercase tracking-widest bg-brand-500 text-white px-2.5 py-1 rounded-full rotate-1">🔬 Class 11–12 · PCM</span>
+                                <span class="text-xs font-bold text-cream/60">🕘 9–12 PM · + Sat mock 🧪</span>
+                                <span class="text-[10px] font-extrabold bg-yellow-400 text-cocoa px-2 py-1 rounded-full border border-cocoa">★ Bestseller</span>
                             </div>
-                            <h2 class="text-xl font-semibold text-stone-900 mb-1">Science (PCM) - Class 11-12</h2>
-                            <p class="text-stone-600 text-sm">Physics, Chemistry, Mathematics for JEE Mains & CBSE Board exam preparation.</p>
+                            <h2 class="text-2xl font-extrabold mb-1">Science (PCM) — Class 11–12</h2>
+                            <p class="text-cream/60 text-sm">Physics, Chemistry, Maths for JEE Mains + Boards.</p>
                         </div>
-                        <div class="text-left md:text-right">
-                            <div class="text-2xl font-bold text-stone-900">₹18,000</div>
-                            <div class="text-xs text-stone-500 mt-1">1 year</div>
+                        <div class="text-left md:text-right bg-white/10 rounded-2xl px-5 py-3 border border-white/20 rotate-1">
+                            <div class="text-2xl font-extrabold">₹18,000</div>
+                            <div class="text-xs text-cream/60 font-bold">1 year · EMI available 💳</div>
                         </div>
                     </div>
-                    <div class="mt-6 pt-6 border-t border-stone-100">
-                        <div class="grid md:grid-cols-4 gap-4 text-sm">
-                            <div><span class="text-stone-500">Duration</span><div class="font-medium">1 Year</div></div>
-                            <div><span class="text-stone-500">Batch Size</span><div class="font-medium">30 Students</div></div>
-                            <div><span class="text-stone-500">Timing</span><div class="font-medium">9:00 - 12:00 PM</div></div>
-                            <div><span class="text-stone-500">Subjects</span><div class="font-medium">PCM</div></div>
+                    <div class="mt-5 pt-5 border-t border-white/15">
+                        <div class="grid grid-cols-2 md:grid-cols-4 gap-3 text-sm">
+                            <div class="bg-white/10 rounded-2xl px-4 py-3 border border-white/15"><span class="text-cream/50 text-xs font-bold uppercase">⏱️ Duration</span><div class="font-bold">1 Year</div></div>
+                            <div class="bg-white/10 rounded-2xl px-4 py-3 border border-white/15"><span class="text-cream/50 text-xs font-bold uppercase">👥 Batch</span><div class="font-bold">30 Students</div></div>
+                            <div class="bg-white/10 rounded-2xl px-4 py-3 border border-white/15"><span class="text-cream/50 text-xs font-bold uppercase">🕘 Timing</span><div class="font-bold">9–12 PM</div></div>
+                            <div class="bg-white/10 rounded-2xl px-4 py-3 border border-white/15"><span class="text-cream/50 text-xs font-bold uppercase">📖 Subjects</span><div class="font-bold">PCM</div></div>
                         </div>
+                        <a href="contact.html" class="mt-4 inline-flex bg-brand-600 text-cream text-sm font-bold px-5 py-2.5 rounded-full border border-cream/20 hover:bg-brand-500 transition">Enroll in this batch →</a>
                     </div>
                 </div>
 
-                <div class="bg-white rounded-2xl p-6 md:p-8 border border-stone-200 hover:border-stone-300 hover:shadow-lg transition duration-300">
+                <div class="timetable-row bg-cream rounded-[1.75rem] p-6 md:p-7 border-2 border-cocoa" style="box-shadow:4px 5px 0 0 #451A03">
                     <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
                         <div class="flex-1">
-                            <div class="flex items-center gap-3 mb-3">
-                                <span class="text-xs font-semibold tracking-wider uppercase text-brand-600 bg-brand-50 px-2 py-1 rounded">Class 11-12</span>
-                                <span class="text-xs text-stone-500">Biology Stream</span>
+                            <div class="flex flex-wrap items-center gap-2 mb-3">
+                                <span class="text-[10px] font-extrabold uppercase tracking-widest bg-leaf text-white px-2.5 py-1 rounded-full border-2 border-cocoa -rotate-1">🧬 Class 11–12 · PCB</span>
+                                <span class="text-xs font-bold text-cocoa/60">🕑 2–5 PM</span>
                             </div>
-                            <h2 class="text-xl font-semibold text-stone-900 mb-1">Science (PCB) - Class 11-12</h2>
-                            <p class="text-stone-600 text-sm">Physics, Chemistry, Biology for NEET & CBSE Board exam preparation.</p>
+                            <h2 class="text-2xl font-extrabold mb-1">Science (PCB) — Class 11–12</h2>
+                            <p class="text-cocoa/60 text-sm">Physics, Chemistry, Biology for NEET + Boards.</p>
                         </div>
-                        <div class="text-left md:text-right">
-                            <div class="text-2xl font-bold text-stone-900">₹18,000</div>
-                            <div class="text-xs text-stone-500 mt-1">1 year</div>
+                        <div class="text-left md:text-right bg-white rounded-2xl px-5 py-3 border-2 border-dashed border-cocoa/20 rotate-1">
+                            <div class="text-2xl font-extrabold">₹18,000</div>
+                            <div class="text-xs text-cocoa/50 font-bold">1 year</div>
                         </div>
                     </div>
-                    <div class="mt-6 pt-6 border-t border-stone-100">
-                        <div class="grid md:grid-cols-4 gap-4 text-sm">
-                            <div><span class="text-stone-500">Duration</span><div class="font-medium">1 Year</div></div>
-                            <div><span class="text-stone-500">Batch Size</span><div class="font-medium">30 Students</div></div>
-                            <div><span class="text-stone-500">Timing</span><div class="font-medium">2:00 - 5:00 PM</div></div>
-                            <div><span class="text-stone-500">Subjects</span><div class="font-medium">PCB</div></div>
+                    <div class="mt-5 pt-5 border-t-2 border-dashed border-cocoa/15">
+                        <div class="grid grid-cols-2 md:grid-cols-4 gap-3 text-sm">
+                            <div class="bg-white rounded-2xl px-4 py-3 border border-cocoa/15"><span class="text-cocoa/50 text-xs font-bold uppercase">⏱️ Duration</span><div class="font-bold">1 Year</div></div>
+                            <div class="bg-white rounded-2xl px-4 py-3 border border-cocoa/15"><span class="text-cocoa/50 text-xs font-bold uppercase">👥 Batch</span><div class="font-bold">30 Students</div></div>
+                            <div class="bg-white rounded-2xl px-4 py-3 border border-cocoa/15"><span class="text-cocoa/50 text-xs font-bold uppercase">🕑 Timing</span><div class="font-bold">2–5 PM</div></div>
+                            <div class="bg-white rounded-2xl px-4 py-3 border border-cocoa/15"><span class="text-cocoa/50 text-xs font-bold uppercase">📖 Subjects</span><div class="font-bold">PCB</div></div>
                         </div>
+                        <a href="contact.html" class="mt-4 inline-flex bg-cocoa text-cream text-sm font-bold px-5 py-2.5 rounded-full hover:bg-brand-600 transition">Enroll in this batch →</a>
                     </div>
                 </div>
 
-                <div class="bg-white rounded-2xl p-6 md:p-8 border border-stone-200 hover:border-stone-300 hover:shadow-lg transition duration-300">
+                <div class="timetable-row bg-cream rounded-[1.75rem] p-6 md:p-7 border-2 border-cocoa" style="box-shadow:4px 5px 0 0 #451A03">
                     <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
                         <div class="flex-1">
-                            <div class="flex items-center gap-3 mb-3">
-                                <span class="text-xs font-semibold tracking-wider uppercase text-brand-600 bg-brand-50 px-2 py-1 rounded">Competitive</span>
-                                <span class="text-xs text-stone-500">Engineering</span>
+                            <div class="flex flex-wrap items-center gap-2 mb-3">
+                                <span class="text-[10px] font-extrabold uppercase tracking-widest bg-cocoa text-cream px-2.5 py-1 rounded-full">⚡ Competitive · Engg</span>
+                                <span class="text-xs font-bold text-cocoa/60">🕗 8–11 AM daily</span>
+                                <span class="text-[10px] font-extrabold bg-brand-600 text-cream px-2 py-1 rounded-full">🔥 Filling fast</span>
                             </div>
-                            <h2 class="text-xl font-semibold text-stone-900 mb-1">JEE Mains Crash Course</h2>
-                            <p class="text-stone-600 text-sm">Intensive JEE preparation with mock tests, PYQs, and rank improvement strategy.</p>
+                            <h2 class="text-2xl font-extrabold mb-1">JEE Mains Crash Course</h2>
+                            <p class="text-cocoa/60 text-sm">Intensive prep · mocks, PYQs, rank strategy.</p>
                         </div>
-                        <div class="text-left md:text-right">
-                            <div class="text-2xl font-bold text-stone-900">₹25,000</div>
-                            <div class="text-xs text-stone-500 mt-1">6 months</div>
+                        <div class="text-left md:text-right bg-white rounded-2xl px-5 py-3 border-2 border-dashed border-cocoa/20 rotate-1">
+                            <div class="text-2xl font-extrabold">₹25,000</div>
+                            <div class="text-xs text-cocoa/50 font-bold">6 months · test series incl. 📝</div>
                         </div>
                     </div>
-                    <div class="mt-6 pt-6 border-t border-stone-100">
-                        <div class="grid md:grid-cols-4 gap-4 text-sm">
-                            <div><span class="text-stone-500">Duration</span><div class="font-medium">6 Months</div></div>
-                            <div><span class="text-stone-500">Batch Size</span><div class="font-medium">35 Students</div></div>
-                            <div><span class="text-stone-500">Timing</span><div class="font-medium">8:00 - 11:00 AM</div></div>
-                            <div><span class="text-stone-500">Includes</span><div class="font-medium">Test Series</div></div>
+                    <div class="mt-5 pt-5 border-t-2 border-dashed border-cocoa/15">
+                        <div class="grid grid-cols-2 md:grid-cols-4 gap-3 text-sm">
+                            <div class="bg-white rounded-2xl px-4 py-3 border border-cocoa/15"><span class="text-cocoa/50 text-xs font-bold uppercase">⏱️ Duration</span><div class="font-bold">6 Months</div></div>
+                            <div class="bg-white rounded-2xl px-4 py-3 border border-cocoa/15"><span class="text-cocoa/50 text-xs font-bold uppercase">👥 Batch</span><div class="font-bold">35 Students</div></div>
+                            <div class="bg-white rounded-2xl px-4 py-3 border border-cocoa/15"><span class="text-cocoa/50 text-xs font-bold uppercase">🕗 Timing</span><div class="font-bold">8–11 AM</div></div>
+                            <div class="bg-white rounded-2xl px-4 py-3 border border-cocoa/15"><span class="text-cocoa/50 text-xs font-bold uppercase">🎁 Includes</span><div class="font-bold">Test Series</div></div>
                         </div>
+                        <a href="contact.html" class="mt-4 inline-flex bg-brand-600 text-cream text-sm font-bold px-5 py-2.5 rounded-full border-2 border-cocoa" style="box-shadow:2px 3px 0 0 #451A03">Enroll in this batch →</a>
                     </div>
                 </div>
 
-                <div class="bg-white rounded-2xl p-6 md:p-8 border border-stone-200 hover:border-stone-300 hover:shadow-lg transition duration-300">
+                <div class="timetable-row bg-cream rounded-[1.75rem] p-6 md:p-7 border-2 border-cocoa" style="box-shadow:4px 5px 0 0 #451A03">
                     <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
                         <div class="flex-1">
-                            <div class="flex items-center gap-3 mb-3">
-                                <span class="text-xs font-semibold tracking-wider uppercase text-brand-600 bg-brand-50 px-2 py-1 rounded">Competitive</span>
-                                <span class="text-xs text-stone-500">Medical</span>
+                            <div class="flex flex-wrap items-center gap-2 mb-3">
+                                <span class="text-[10px] font-extrabold uppercase tracking-widest bg-leaf text-white px-2.5 py-1 rounded-full border-2 border-cocoa">⚡ Competitive · Medical</span>
+                                <span class="text-xs font-bold text-cocoa/60">🕗 8–11 AM daily</span>
                             </div>
-                            <h2 class="text-xl font-semibold text-stone-900 mb-1">NEET Crash Course</h2>
-                            <p class="text-stone-600 text-sm">Complete NEET preparation with PYQs, mock tests, and expert guidance.</p>
+                            <h2 class="text-2xl font-extrabold mb-1">NEET Crash Course</h2>
+                            <p class="text-cocoa/60 text-sm">Complete NEET prep · PYQs, mocks, expert guidance.</p>
                         </div>
-                        <div class="text-left md:text-right">
-                            <div class="text-2xl font-bold text-stone-900">₹25,000</div>
-                            <div class="text-xs text-stone-500 mt-1">6 months</div>
+                        <div class="text-left md:text-right bg-white rounded-2xl px-5 py-3 border-2 border-dashed border-cocoa/20 rotate-1">
+                            <div class="text-2xl font-extrabold">₹25,000</div>
+                            <div class="text-xs text-cocoa/50 font-bold">6 months · test series incl. 📝</div>
                         </div>
                     </div>
-                    <div class="mt-6 pt-6 border-t border-stone-100">
-                        <div class="grid md:grid-cols-4 gap-4 text-sm">
-                            <div><span class="text-stone-500">Duration</span><div class="font-medium">6 Months</div></div>
-                            <div><span class="text-stone-500">Batch Size</span><div class="font-medium">35 Students</div></div>
-                            <div><span class="text-stone-500">Timing</span><div class="font-medium">8:00 - 11:00 AM</div></div>
-                            <div><span class="text-stone-500">Includes</span><div class="font-medium">Test Series</div></div>
+                    <div class="mt-5 pt-5 border-t-2 border-dashed border-cocoa/15">
+                        <div class="grid grid-cols-2 md:grid-cols-4 gap-3 text-sm">
+                            <div class="bg-white rounded-2xl px-4 py-3 border border-cocoa/15"><span class="text-cocoa/50 text-xs font-bold uppercase">⏱️ Duration</span><div class="font-bold">6 Months</div></div>
+                            <div class="bg-white rounded-2xl px-4 py-3 border border-cocoa/15"><span class="text-cocoa/50 text-xs font-bold uppercase">👥 Batch</span><div class="font-bold">35 Students</div></div>
+                            <div class="bg-white rounded-2xl px-4 py-3 border border-cocoa/15"><span class="text-cocoa/50 text-xs font-bold uppercase">🕗 Timing</span><div class="font-bold">8–11 AM</div></div>
+                            <div class="bg-white rounded-2xl px-4 py-3 border border-cocoa/15"><span class="text-cocoa/50 text-xs font-bold uppercase">🎁 Includes</span><div class="font-bold">Test Series</div></div>
                         </div>
+                        <a href="contact.html" class="mt-4 inline-flex bg-cocoa text-cream text-sm font-bold px-5 py-2.5 rounded-full hover:bg-brand-600 transition">Enroll in this batch →</a>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="bg-stone-900 py-12">
-        <div class="max-w-4xl mx-auto px-4 md:px-6 text-center">
-            <h2 class="text-xl font-semibold text-white mb-2">Confused about which course?</h2>
-            <p class="text-stone-400 mb-6">Our counselors are here to help you choose the right path.</p>
-            <a href="contact.html" class="inline-block bg-brand-500 text-white px-6 py-3 rounded-lg font-medium hover:bg-brand-600 transition">Talk to Counselor</a>
+    <section class="bg-cocoa py-12 relative overflow-hidden">
+        <div class="absolute inset-0 paper-grid opacity-30"></div>
+        <div class="max-w-4xl mx-auto px-4 md:px-6 text-center relative">
+            <p class="font-hand text-3xl text-brand-500 mb-2">confused? totally normal! 🤗</p>
+            <h2 class="text-2xl md:text-3xl font-extrabold text-cream mb-2">Which course is right for you?</h2>
+            <p class="text-cream/60 mb-6">Our counselors help you pick — free, friendly, zero pressure.</p>
+            <a href="contact.html" class="inline-block bg-brand-600 text-cream px-8 py-3.5 rounded-full font-bold border-2 border-cream/20 hover:bg-brand-500 transition">Talk to Counselor 💬</a>
         </div>
     </section>
 
-    <footer class="bg-stone-950 text-stone-400 py-8">
+    <footer class="bg-[#2A0E02] text-cream/60 py-8 border-t-2 border-cocoa">
         <div class="max-w-6xl mx-auto px-4 md:px-6 text-center text-sm">
-            <p>© 2026 ClassDesk. All rights reserved.</p>
+            <p>© 2026 ClassDesk · Made with 💛 in Siliguri · <a href="index.html" class="hover:text-cream">Home</a> · <a href="courses.html" class="hover:text-cream">Courses</a> · <a href="contact.html" class="hover:text-cream">Contact</a> · <a href="admin/dashboard.html" class="opacity-60">Admin</a></p>
         </div>
     </footer>
 

@@ -5,7 +5,15 @@
 <title>Custom Orders — LUME Admin</title>
 <script src="https://cdn.tailwindcss.com"></script>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-<script>tailwind.config={theme:{extend:{fontFamily:{sans:['Inter','sans-serif']},colors:{ink:'#1A1A1A',muted:'#6B6560',paper:'#FDF6EE',line:'#EDE6DA',amber:'#E8B86D',terracotta:'#C86B3C'}}}}</script>
+<script>tailwind.config={theme:{extend:{fontFamily:{sans:['Inter','sans-serif']},colors:{ink:'#1C1410',muted:'#6B6560',paper:'#FDF6EE',line:'#EDE6DA',amber:'#E8B86D',terracotta:'#C86B3C'}}}}</script>
+<style>
+  /* LUME Glow Craft — candlelit warmth */
+  ::selection{background:#E8B86D;color:#1C1410}
+  .glow-ember{background:radial-gradient(60% 50% at 50% 30%, rgba(232,184,109,.35), transparent 70%), radial-gradient(40% 35% at 80% 80%, rgba(200,107,60,.22), transparent 70%)}
+  .scent-tile{transition:all .4s cubic-bezier(.16,1,.3,1)}
+  .scent-tile:hover{transform:translateY(-4px);box-shadow:0 20px 45px -18px rgba(200,107,60,.5)}
+  .batch-stamp{display:inline-flex;align-items:center;gap:.5rem;border:1.5px dashed rgba(200,107,60,.7);color:#C86B3C;border-radius:9999px;padding:.4rem .9rem;font-size:11px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;transform:rotate(-2deg);background:rgba(232,184,109,.12)}
+  .paper-bg{background-color:#FDF6EE;background-image:radial-gradient(circle at 1px 1px, rgba(28,20,16,0.06) 1px, transparent 0), radial-gradient(50% 35% at 50% 0%, rgba(232,184,109,.18), transparent 70%);background-size:22px 22px, 100% 100%}</style>
 </head>
 <body class="bg-paper text-ink antialiased">
 <div class="flex min-h-screen">

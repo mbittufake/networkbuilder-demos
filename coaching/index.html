@@ -4,59 +4,98 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ClassDesk | Best Coaching Institute in Siliguri</title>
+    <meta name="description" content="Join 500+ successful students. Expert faculty, proven results, personal attention for Class 9-12, JEE & NEET.">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;500;600;700&family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700;12..96,800&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=Caveat:wght@600;700&display=swap" rel="stylesheet">
     <script>
         tailwind.config = {
             theme: {
                 extend: {
-                    fontFamily: { sans: ['DM Sans', 'sans-serif'], serif: ['Playfair Display', 'serif'] },
-                    colors: { brand: { 50: '#fef7ee', 100: '#fdedd6', 500: '#f97316', 600: '#ea580c', 700: '#c2410c' } }
+                    fontFamily: { sans: ['DM Sans', 'sans-serif'], display: ['Bricolage Grotesque', 'sans-serif'], serif: ['Bricolage Grotesque', 'serif'], hand: ['Caveat','cursive'] },
+                    colors: {
+                        cream: '#FFFBEB',
+                        brand: { 50: '#FFF7ED', 100: '#FFEDD5', 200:'#FED7AA', 500: '#F97316', 600: '#EA580C', 700: '#C2410C' },
+                        cocoa: '#451A03',
+                        leaf: '#16A34A',
+                    },
+                    boxShadow: {
+                        sticker: '3px 4px 0 0 #451A03',
+                        pop: '0 16px 40px -12px rgba(69,26,3,.25)',
+                        warm: '0 10px 32px -10px rgba(234,88,12,.4)',
+                    }
                 }
             }
         }
     </script>
+    <style>
+      body { font-family: 'DM Sans', sans-serif; }
+      h1,h2,h3,.font-display { font-family: 'Bricolage Grotesque', sans-serif; }
+      .doodle-bg { background-color:#FFFBEB; background-image: radial-gradient(rgba(69,26,3,.09) 1.5px, transparent 1.5px); background-size: 22px 22px; }
+      .paper-grid { background-image: linear-gradient(rgba(234,88,12,.07) 1px, transparent 1px), linear-gradient(90deg, rgba(234,88,12,.07) 1px, transparent 1px); background-size: 28px 28px; }
+      .marker { background: linear-gradient(transparent 55%, #FED7AA 55%, #FED7AA 92%, transparent 92%); padding: 0 .15em; }
+      .marker-green { background: linear-gradient(transparent 55%, #BBF7D0 55%, #BBF7D0 92%, transparent 92%); padding: 0 .15em; }
+      .sticker { border: 2px solid #451A03; box-shadow: 3px 4px 0 0 #451A03; }
+      .sticker-orange { background:#EA580C; color:#FFFBEB; border:2px solid #451A03; box-shadow:3px 4px 0 0 #451A03; }
+      .sticker-cream { background:#fff; color:#451A03; border:2px solid #451A03; box-shadow:3px 4px 0 0 #451A03; }
+      .sticker-leaf { background:#16A34A; color:#fff; border:2px solid #451A03; box-shadow:3px 4px 0 0 #451A03; }
+      .bubble { position:relative; }
+      .bubble::after { content:''; position:absolute; bottom:-10px; left:36px; width:20px; height:20px; background:inherit; border-right:2px solid rgba(69,26,3,.12); border-bottom:2px solid rgba(69,26,3,.12); transform: rotate(45deg); border-bottom-right-radius:6px; }
+      .tape::before, .tape::after { content:''; position:absolute; top:-12px; width:88px; height:26px; background:rgba(234,88,12,.22); border:1px solid rgba(234,88,12,.3); transform: rotate(-6deg); border-radius:2px; }
+      .tape::before { left:18px; } .tape::after { right:18px; transform: rotate(6deg); }
+      .timetable-row { transition: all .25s ease; }
+      .timetable-row:hover { transform: translateY(-3px); box-shadow: 0 16px 40px -12px rgba(69,26,3,.25); }
+      @keyframes floaty { 0%,100%{transform:translateY(0) rotate(var(--r,0deg));} 50%{transform:translateY(-10px) rotate(var(--r,0deg));} }
+      .floaty { animation: floaty 5s ease-in-out infinite; }
+      @keyframes wiggle { 0%,100%{transform:rotate(-3deg);} 50%{transform:rotate(3deg);} }
+      .wiggle-hover:hover { animation: wiggle .4s ease-in-out; }
+    </style>
 </head>
-<body class="bg-stone-50 text-stone-800 font-sans antialiased">
+<body class="bg-cream text-cocoa font-sans antialiased">
 
     <!-- Mobile Menu Overlay -->
     <div id="mobile-menu" class="fixed inset-0 z-50 hidden">
-        <div class="absolute inset-0 bg-black/50" onclick="document.getElementById('mobile-menu').classList.add('hidden')"></div>
-        <div class="absolute right-0 top-0 bottom-0 w-72 bg-white shadow-2xl p-6">
+        <div class="absolute inset-0 bg-cocoa/50" onclick="document.getElementById('mobile-menu').classList.add('hidden')"></div>
+        <div class="absolute right-0 top-0 bottom-0 w-72 bg-cream shadow-2xl p-6 border-l-2 border-cocoa">
             <div class="flex justify-end mb-6">
-                <button onclick="document.getElementById('mobile-menu').classList.add('hidden')" class="p-2">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                <button onclick="document.getElementById('mobile-menu').classList.add('hidden')" class="w-10 h-10 rounded-full sticker-cream flex items-center justify-center">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 18L18 6M6 6l12 12"></path></svg>
                 </button>
             </div>
-            <nav class="flex flex-col gap-4">                <a href="index.html" class="text-lg font-medium text-stone-900">Home</a>
-                <a href="courses.html" class="text-lg font-medium text-stone-600 hover:text-stone-900">Courses</a>                <a href="contact.html" class="text-lg font-medium text-stone-600 hover:text-stone-900">Contact</a>
-                <hr class="border-stone-200">
-                <a href="admin/dashboard.html" class="text-sm font-medium text-stone-500">Admin Panel</a>                <hr class="border-stone-200">
-                <a href="contact.html" class="bg-brand-500 text-white text-center px-4 py-3 rounded-lg font-medium">Enroll Now</a>
+            <nav class="flex flex-col gap-3">
+                <a href="index.html" class="text-lg font-bold text-cocoa bg-white rounded-2xl px-4 py-3 border-2 border-cocoa" style="box-shadow:3px 4px 0 0 #451A03">🏠 Home</a>
+                <a href="courses.html" class="text-lg font-medium text-cocoa/70 hover:text-cocoa bg-white/60 rounded-2xl px-4 py-3 border-2 border-transparent hover:border-cocoa/20">📚 Courses</a>
+                <a href="contact.html" class="text-lg font-medium text-cocoa/70 hover:text-cocoa bg-white/60 rounded-2xl px-4 py-3 border-2 border-transparent hover:border-cocoa/20">💬 Contact</a>
+                <hr class="border-cocoa/15">
+                <a href="admin/dashboard.html" class="text-sm font-medium text-cocoa/50 px-4">🔒 Admin Panel</a>
+                <hr class="border-cocoa/15">
+                <a href="contact.html" class="bg-brand-600 text-cream text-center px-4 py-3 rounded-2xl font-bold sticker-orange">Enroll Now ✨</a>
             </nav>
-        </div>    </div>
+        </div>
+    </div>
 
     <!-- Header -->
-    <header class="bg-white border-b border-stone-200 sticky top-0 z-40">
+    <header class="bg-cream/90 backdrop-blur border-b-2 border-cocoa/10 sticky top-0 z-40">
         <div class="max-w-6xl mx-auto px-4 md:px-6">
-            <div class="flex items-center justify-between h-16">
-                <a href="index.html" class="flex items-center gap-2">
-                    <div class="w-8 h-8 bg-brand-500 rounded-lg flex items-center justify-center">
-                        <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>                    </div>
-                    <span class="text-lg font-semibold tracking-tight">ClassDesk</span>
+            <div class="flex items-center justify-between h-[72px]">
+                <a href="index.html" class="flex items-center gap-2.5">
+                    <div class="w-10 h-10 bg-brand-600 rounded-2xl flex items-center justify-center border-2 border-cocoa rotate-[-4deg]" style="box-shadow:2px 3px 0 0 #451A03">
+                        <svg class="w-5 h-5 text-cream" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
+                    </div>
+                    <span class="text-xl font-extrabold tracking-tight font-display">ClassDesk</span>
+                    <span class="hidden sm:inline-block text-[10px] font-bold uppercase tracking-wider bg-leaf text-white px-2 py-1 rounded-full rotate-3 border border-cocoa">Admissions open!</span>
                 </a>
-                <nav class="hidden lg:flex items-center gap-8 text-sm font-medium text-stone-600">
-                    <a href="index.html" class="text-stone-900">Home</a>
-                    <a href="courses.html" class="hover:text-stone-900 transition">Courses</a>
-                    <a href="contact.html" class="hover:text-stone-900 transition">Contact</a>
-                    <a href="admin/dashboard.html" class="text-xs px-3 py-1.5 bg-stone-100 rounded-full hover:bg-stone-200 transition">Admin Panel</a>
+                <nav class="hidden lg:flex items-center gap-2 text-sm font-semibold">
+                    <a href="index.html" class="px-4 py-2 rounded-full bg-cocoa text-cream">Home</a>
+                    <a href="courses.html" class="px-4 py-2 rounded-full hover:bg-white border-2 border-transparent hover:border-cocoa/15 transition">Courses</a>
+                    <a href="contact.html" class="px-4 py-2 rounded-full hover:bg-white border-2 border-transparent hover:border-cocoa/15 transition">Contact</a>
+                    <a href="admin/dashboard.html" class="text-xs px-3 py-1.5 bg-white rounded-full border-2 border-cocoa/15 hover:border-cocoa transition">🔒 Admin</a>
                 </nav>
                 <div class="flex items-center gap-3">
-                    <a href="contact.html" class="hidden lg:block bg-stone-900 text-white px-5 py-2 rounded-lg text-sm font-medium hover:bg-stone-800 transition">Enroll Now</a>
-                    <button onclick="document.getElementById('mobile-menu').classList.remove('hidden')" class="lg:hidden p-2 text-stone-600 hover:text-stone-900">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+                    <a href="contact.html" class="hidden lg:inline-block bg-brand-600 text-cream px-5 py-2.5 rounded-full text-sm font-bold sticker-orange wiggle-hover">Enroll Now ✨</a>
+                    <button onclick="document.getElementById('mobile-menu').classList.remove('hidden')" class="lg:hidden w-10 h-10 rounded-full bg-white border-2 border-cocoa flex items-center justify-center" style="box-shadow:2px 3px 0 0 #451A03">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M4 6h16M4 12h16M4 18h16"></path></svg>
                     </button>
                 </div>
             </div>
@@ -64,39 +103,76 @@
     </header>
 
     <!-- Hero -->
-    <section class="bg-white py-16 md:py-24">
-        <div class="max-w-6xl mx-auto px-4 md:px-6">
-            <div class="max-w-3xl">
-                <span class="inline-block text-xs font-semibold tracking-wider uppercase text-stone-500 mb-4">Since 2014 • Siliguri's Trusted Name</span>
-                <h1 class="text-4xl md:text-5xl lg:text-6xl font-serif text-stone-900 leading-tight mb-6">Every student deserves the <span class="text-brand-500">best guidance</span></h1>
-                <p class="text-lg text-stone-600 mb-8 leading-relaxed max-w-xl">Join 500+ successful students. Expert faculty, proven results, and personal attention for Class 9-12, JEE & NEET preparation.</p>
-                <div class="flex flex-wrap gap-4">
-                    <a href="courses.html" class="bg-brand-500 text-white px-6 py-3 rounded-lg font-medium hover:bg-brand-600 transition">View Courses</a>
-                    <a href="contact.html" class="border border-stone-300 px-6 py-3 rounded-lg font-medium hover:bg-stone-50 transition">Talk to Counselor</a>
+    <section class="doodle-bg py-12 md:py-20 relative overflow-hidden">
+        <div class="absolute top-8 left-[8%] font-hand text-2xl text-brand-600/60 rotate-[-8deg] hidden md:block">you can do it! ✏️</div>
+        <div class="absolute bottom-10 right-[6%] font-hand text-2xl text-leaf/70 rotate-[6deg] hidden md:block">AIR 452!! 🎉</div>
+        <div class="max-w-6xl mx-auto px-4 md:px-6 relative">
+            <div class="grid lg:grid-cols-2 gap-10 items-center">
+                <div class="max-w-xl">
+                    <div class="flex flex-wrap items-center gap-2 mb-5">
+                        <span class="inline-flex items-center gap-1.5 text-[11px] font-extrabold uppercase tracking-widest bg-white px-3 py-1.5 rounded-full sticker">📚 Since 2014 · Siliguri</span>
+                        <span class="inline-flex items-center gap-1 text-[11px] font-extrabold uppercase tracking-widest bg-leaf text-white px-3 py-1.5 rounded-full rotate-2 sticker">★ 4.9 loved by parents</span>
+                    </div>
+                    <h1 class="text-4xl md:text-5xl lg:text-[3.6rem] font-extrabold leading-[1.05] tracking-tight mb-5">Every student deserves the <span class="marker">best guidance</span> <span class="inline-block rotate-6">🎒</span></h1>
+                    <p class="text-lg text-cocoa/70 mb-7 leading-relaxed">Join <strong class="text-cocoa">500+ successful students</strong>. Expert faculty, proven results, and personal attention for Class 9–12, JEE & NEET. <span class="font-hand text-2xl text-brand-600">no boring lectures, promise!</span></p>
+                    <div class="flex flex-wrap gap-3">
+                        <a href="courses.html" class="bg-brand-600 text-cream px-7 py-3.5 rounded-full font-bold sticker-orange wiggle-hover inline-flex items-center gap-2">View Courses 📚</a>
+                        <a href="contact.html" class="bg-white px-7 py-3.5 rounded-full font-bold sticker wiggle-hover inline-flex items-center gap-2">Talk to Counselor 💬</a>
+                    </div>
+                    <div class="flex items-center gap-3 mt-7 text-sm">
+                        <div class="flex -space-x-2">
+                            <div class="w-9 h-9 rounded-full bg-brand-100 border-2 border-cocoa flex items-center justify-center text-xs font-bold">RS</div>
+                            <div class="w-9 h-9 rounded-full bg-green-100 border-2 border-cocoa flex items-center justify-center text-xs font-bold">PS</div>
+                            <div class="w-9 h-9 rounded-full bg-yellow-100 border-2 border-cocoa flex items-center justify-center text-xs font-bold">AK</div>
+                            <div class="w-9 h-9 rounded-full bg-cocoa text-cream border-2 border-cocoa flex items-center justify-center text-[10px] font-bold">500+</div>
+                        </div>
+                        <p class="text-cocoa/70"><strong class="text-cocoa">150+ JEE/NEET selections</strong> in 2025 🎉</p>
+                    </div>
+                </div>
+                <div class="relative">
+                    <div class="relative bg-white rounded-[2rem] p-3 border-2 border-cocoa tape rotate-1" style="box-shadow:6px 8px 0 0 #451A03">
+                        <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=800&h=600&fit=crop&q=85" alt="Students in classroom" class="rounded-[1.5rem] w-full h-80 object-cover">
+                        <div class="absolute -left-4 top-8 bg-white rounded-2xl px-4 py-3 sticker floaty" style="--r:-4deg">
+                            <div class="text-[10px] font-extrabold uppercase tracking-widest text-brand-600">JEE 2025</div>
+                            <div class="font-extrabold text-lg leading-none">AIR 452 🏆</div>
+                            <div class="text-xs text-cocoa/60">Rahul Sharma</div>
+                        </div>
+                        <div class="absolute -right-3 bottom-8 bg-leaf text-white rounded-2xl px-4 py-3 sticker floaty" style="--r:3deg; animation-delay:1.2s">
+                            <div class="font-extrabold text-lg leading-none">95% pass ✓</div>
+                            <div class="text-xs opacity-90">small batches, big wins</div>
+                        </div>
+                    </div>
+                    <div class="mt-4 flex flex-wrap gap-2 justify-center">
+                        <span class="text-xs font-bold bg-white px-3 py-1.5 rounded-full sticker rotate-[-2deg]">📝 Weekly tests</span>
+                        <span class="text-xs font-bold bg-white px-3 py-1.5 rounded-full sticker rotate-[2deg]">👩‍🏫 IIT faculty</span>
+                        <span class="text-xs font-bold bg-brand-600 text-cream px-3 py-1.5 rounded-full sticker-orange rotate-[-1deg]">🎯 Max 25/batch</span>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Stats Bar -->
-    <section class="bg-stone-900 py-8">
-        <div class="max-w-6xl mx-auto px-4 md:px-6">
+    <!-- Stats Band -->
+    <section class="bg-cocoa py-8 relative overflow-hidden">
+        <div class="absolute inset-0 paper-grid opacity-40"></div>
+        <div class="absolute top-0 left-10 right-10 h-0.5 bg-gradient-to-r from-transparent via-brand-500 to-transparent"></div>
+        <div class="max-w-6xl mx-auto px-4 md:px-6 relative">
             <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
-                <div class="text-center md:text-left">
-                    <div class="text-2xl md:text-3xl font-semibold text-white">500+</div>
-                    <div class="text-stone-400 text-sm">Students Taught</div>
+                <div class="text-center md:text-left bg-white/5 rounded-3xl p-4 border border-white/10">
+                    <div class="text-3xl font-extrabold text-cream font-display">500<span class="text-brand-500">+</span></div>
+                    <div class="text-cream/60 text-sm">Students Taught 🎓</div>
                 </div>
-                <div class="text-center md:text-left">
-                    <div class="text-2xl md:text-3xl font-semibold text-white">95%</div>
-                    <div class="text-stone-400 text-sm">Pass Rate</div>
+                <div class="text-center md:text-left bg-white/5 rounded-3xl p-4 border border-white/10">
+                    <div class="text-3xl font-extrabold text-cream font-display">95<span class="text-brand-500">%</span></div>
+                    <div class="text-cream/60 text-sm">Pass Rate ✓</div>
                 </div>
-                <div class="text-center md:text-left">
-                    <div class="text-2xl md:text-3xl font-semibold text-white">150+</div>
-                    <div class="text-stone-400 text-sm">JEE/NEET Selected</div>
+                <div class="text-center md:text-left bg-white/5 rounded-3xl p-4 border border-white/10">
+                    <div class="text-3xl font-extrabold text-cream font-display">150<span class="text-brand-500">+</span></div>
+                    <div class="text-cream/60 text-sm">JEE/NEET Selected 🏆</div>
                 </div>
-                <div class="text-center md:text-left">
-                    <div class="text-2xl md:text-3xl font-semibold text-white">10+</div>
-                    <div class="text-stone-400 text-sm">Years Experience</div>
+                <div class="text-center md:text-left bg-white/5 rounded-3xl p-4 border border-white/10">
+                    <div class="text-3xl font-extrabold text-cream font-display">10<span class="text-brand-500">+</span></div>
+                    <div class="text-cream/60 text-sm">Years Experience 📚</div>
                 </div>
             </div>
         </div>
@@ -105,238 +181,258 @@
     <!-- About -->
     <section class="py-16 md:py-20">
         <div class="max-w-6xl mx-auto px-4 md:px-6">
-            <div class="grid md:grid-cols-2 gap-12 items-center">
-                <div>
-                    <h2 class="text-2xl md:text-3xl font-serif text-stone-900 mb-4">Building Futures Since 2014</h2>
-                    <p class="text-stone-600 mb-4">ClassDesk started with a simple mission: provide quality education to every student in Siliguri who dreams of cracking JEE or NEET but lacks access to proper guidance.</p>
-                    <p class="text-stone-600 mb-6">Over the years, we've helped 500+ students achieve their goals. Our students have secured admissions in IITs, NITs, AIIMS, and top medical colleges across India.</p>
-                    <div class="grid grid-cols-2 gap-4">
-                        <div class="bg-white p-4 rounded-xl border border-stone-200">
-                            <div class="text-2xl font-bold text-brand-600">₹2Cr+</div>
-                            <div class="text-sm text-stone-600">Scholarship Given</div>
+            <div class="grid md:grid-cols-2 gap-10 items-center">
+                <div class="bg-white rounded-[2rem] p-7 border-2 border-cocoa" style="box-shadow:5px 6px 0 0 #451A03">
+                    <span class="inline-block text-[11px] font-extrabold uppercase tracking-widest text-brand-600 bg-brand-100 px-3 py-1 rounded-full mb-3 rotate-[-1deg]">💛 Our story</span>
+                    <h2 class="text-3xl font-extrabold mb-4 tracking-tight">Building Futures <span class="marker">Since 2014</span></h2>
+                    <p class="text-cocoa/70 mb-4 leading-relaxed">ClassDesk started with a simple mission: quality education for every Siliguri student dreaming of JEE or NEET — without leaving home.</p>
+                    <p class="text-cocoa/70 mb-6 leading-relaxed">500+ students, IITs, NITs, AIIMS admits. Small batches, handwritten notes, teachers who actually care.</p>
+                    <div class="grid grid-cols-2 gap-3">
+                        <div class="bg-cream p-4 rounded-3xl border-2 border-dashed border-brand-600/40 text-center rotate-[-1deg]">
+                            <div class="text-2xl font-extrabold text-brand-600 font-display">₹2Cr+</div>
+                            <div class="text-sm text-cocoa/70">Scholarship Given 🎁</div>
                         </div>
-                        <div class="bg-white p-4 rounded-xl border border-stone-200">
-                            <div class="text-2xl font-bold text-brand-600">50+</div>
-                            <div class="text-sm text-stone-600">Top Rankers</div>
+                        <div class="bg-cream p-4 rounded-3xl border-2 border-dashed border-leaf/40 text-center rotate-[1deg]">
+                            <div class="text-2xl font-extrabold text-leaf font-display">50+</div>
+                            <div class="text-sm text-cocoa/70">Top Rankers 🏅</div>
                         </div>
                     </div>
                 </div>
                 <div class="relative">
-                    <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=800&h=600&fit=crop&q=85" alt="Students in classroom" class="rounded-2xl w-full h-80 object-cover">
+                    <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=800&h=600&fit=crop&q=85" alt="Students in classroom" class="rounded-[2rem] w-full h-80 object-cover border-2 border-cocoa rotate-1" style="box-shadow:5px 6px 0 0 #451A03">
+                    <div class="absolute -bottom-4 left-6 right-6 bg-cocoa text-cream rounded-2xl px-5 py-3 flex items-center gap-3 sticker">
+                        <span class="text-2xl">💬</span>
+                        <p class="text-sm font-hand text-xl leading-tight">"Beta, concept clear hai na?" — every teacher, every class</p>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Courses -->
-    <section class="py-16 md:py-20 bg-white">
-        <div class="max-w-6xl mx-auto px-4 md:px-6">
-            <div class="flex items-end justify-between mb-12">
+    <!-- Courses — timetable vibe -->
+    <section class="py-16 md:py-20 bg-white border-y-2 border-cocoa/10 relative overflow-hidden">
+        <div class="absolute inset-0 paper-grid opacity-60"></div>
+        <div class="max-w-6xl mx-auto px-4 md:px-6 relative">
+            <div class="flex flex-wrap items-end justify-between gap-4 mb-8">
                 <div>
-                    <h2 class="text-2xl md:text-3xl font-serif text-stone-900 mb-2">Our Courses</h2>
-                    <p class="text-stone-600">Choose the right path for your career</p>
+                    <span class="inline-block text-[11px] font-extrabold uppercase tracking-widest bg-cocoa text-cream px-3 py-1 rounded-full mb-3">🗓️ Timetable · pick your batch</span>
+                    <h2 class="text-3xl md:text-4xl font-extrabold tracking-tight">Our Courses</h2>
+                    <p class="text-cocoa/60 mt-1">Choose the right path — <span class="font-hand text-xl text-brand-600">counselor-approved!</span></p>
                 </div>
-                <a href="courses.html" class="hidden md:block text-brand-600 font-medium hover:underline">See all courses →</a>
+                <a href="courses.html" class="hidden md:inline-flex bg-cream font-bold px-5 py-2.5 rounded-full sticker wiggle-hover">See all courses →</a>
             </div>
-            <div class="grid md:grid-cols-3 gap-6">
-                <div class="bg-stone-50 rounded-2xl p-6 border border-stone-200 hover:border-stone-300 hover:shadow-lg transition duration-300">
-                    <div class="w-10 h-10 bg-brand-50 rounded-xl flex items-center justify-center mb-4">
-                        <svg class="w-5 h-5 text-brand-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
+            <div class="grid md:grid-cols-3 gap-5">
+                <a href="courses.html" class="timetable-row bg-cream rounded-[1.75rem] p-6 border-2 border-cocoa block" style="box-shadow:4px 5px 0 0 #451A03">
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="text-[10px] font-extrabold uppercase tracking-widest bg-brand-600 text-cream px-2.5 py-1 rounded-full -rotate-2">Foundation</span>
+                        <span class="text-[11px] font-bold bg-white px-2.5 py-1 rounded-full border border-cocoa/20">🕓 4–7 PM · Mon–Fri</span>
                     </div>
-                    <h3 class="font-semibold text-lg mb-1">CBSE Foundation</h3>
-                    <p class="text-stone-600 text-sm mb-4">Class 9-10 complete preparation</p>
-                    <div class="flex items-center justify-between">
-                        <span class="text-xl font-bold">₹12,000</span>
-                        <span class="text-xs text-stone-500 bg-stone-200 px-2 py-1 rounded">6 months</span>
+                    <div class="w-12 h-12 bg-white rounded-2xl border-2 border-cocoa flex items-center justify-center mb-4 text-2xl">📘</div>
+                    <h3 class="font-extrabold text-xl mb-1">CBSE Foundation</h3>
+                    <p class="text-cocoa/60 text-sm mb-4">Class 9–10 complete prep · tests + doubts</p>
+                    <div class="flex items-center gap-1.5 text-xs font-bold mb-4">
+                        <span class="w-6 h-6 rounded-full bg-leaf text-white flex items-center justify-center">M</span>
+                        <span class="w-6 h-6 rounded-full bg-leaf text-white flex items-center justify-center">T</span>
+                        <span class="w-6 h-6 rounded-full bg-leaf text-white flex items-center justify-center">W</span>
+                        <span class="w-6 h-6 rounded-full bg-leaf text-white flex items-center justify-center">T</span>
+                        <span class="w-6 h-6 rounded-full bg-leaf text-white flex items-center justify-center">F</span>
+                        <span class="w-6 h-6 rounded-full bg-cocoa/15 text-cocoa/50 flex items-center justify-center">S</span>
+                        <span class="w-6 h-6 rounded-full bg-cocoa/15 text-cocoa/50 flex items-center justify-center">S</span>
                     </div>
-                </div>
-                <div class="bg-stone-50 rounded-2xl p-6 border border-stone-200 hover:border-stone-300 hover:shadow-lg transition duration-300">
-                    <div class="w-10 h-10 bg-brand-50 rounded-xl flex items-center justify-center mb-4">
-                        <svg class="w-5 h-5 text-brand-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.293 3.414-1.414 3.414H12.828a2 2 0 00-1.414.586l-1.414 1.414a2 2 0 01-1.414.586l-1.414-1.414a2 2 0 00-2 0l-1.414 1.414a2 2 0 01-2.828 0"></path></svg>
+                    <div class="flex items-center justify-between bg-white rounded-2xl px-4 py-3 border-2 border-dashed border-cocoa/20">
+                        <span class="text-xl font-extrabold font-display">₹12,000</span>
+                        <span class="text-xs font-bold text-cocoa/60 bg-cream px-2 py-1 rounded-full">6 months</span>
                     </div>
-                    <h3 class="font-semibold text-lg mb-1">Science (PCM/PCB)</h3>
-                    <p class="text-stone-600 text-sm mb-4">Class 11-12 with JEE/NEET focus</p>
-                    <div class="flex items-center justify-between">
-                        <span class="text-xl font-bold">₹18,000</span>
-                        <span class="text-xs text-stone-500 bg-stone-200 px-2 py-1 rounded">1 year</span>
+                </a>
+                <a href="courses.html" class="timetable-row bg-cocoa text-cream rounded-[1.75rem] p-6 border-2 border-cocoa block rotate-[.5deg]" style="box-shadow:4px 5px 0 0 #EA580C">
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="text-[10px] font-extrabold uppercase tracking-widest bg-brand-500 text-white px-2.5 py-1 rounded-full rotate-2">★ Most loved</span>
+                        <span class="text-[11px] font-bold bg-white/10 px-2.5 py-1 rounded-full border border-white/20">🕘 9–12 PM · PCM/PCB</span>
                     </div>
-                </div>
-                <div class="bg-stone-50 rounded-2xl p-6 border border-stone-200 hover:border-stone-300 hover:shadow-lg transition duration-300">
-                    <div class="w-10 h-10 bg-brand-50 rounded-xl flex items-center justify-center mb-4">
-                        <svg class="w-5 h-5 text-brand-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path></svg>
+                    <div class="w-12 h-12 bg-brand-600 rounded-2xl flex items-center justify-center mb-4 text-2xl border border-white/20">🔬</div>
+                    <h3 class="font-extrabold text-xl mb-1">Science (PCM/PCB)</h3>
+                    <p class="text-cream/70 text-sm mb-4">Class 11–12 with JEE/NEET focus</p>
+                    <div class="flex items-center gap-1.5 text-xs font-bold mb-4">
+                        <span class="w-6 h-6 rounded-full bg-brand-500 text-white flex items-center justify-center">M</span>
+                        <span class="w-6 h-6 rounded-full bg-brand-500 text-white flex items-center justify-center">T</span>
+                        <span class="w-6 h-6 rounded-full bg-brand-500 text-white flex items-center justify-center">W</span>
+                        <span class="w-6 h-6 rounded-full bg-brand-500 text-white flex items-center justify-center">T</span>
+                        <span class="w-6 h-6 rounded-full bg-white/15 text-cream/60 flex items-center justify-center">F</span>
+                        <span class="w-6 h-6 rounded-full bg-leaf text-white flex items-center justify-center">S</span>
+                        <span class="text-[11px] text-cream/60 ml-1">+ Sat test 🧪</span>
                     </div>
-                    <h3 class="font-semibold text-lg mb-1">JEE/NEET Crash</h3>
-                    <p class="text-stone-600 text-sm mb-4">Intensive exam preparation</p>
-                    <div class="flex items-center justify-between">
-                        <span class="text-xl font-bold">₹25,000</span>
-                        <span class="text-xs text-stone-500 bg-stone-200 px-2 py-1 rounded">6 months</span>
+                    <div class="flex items-center justify-between bg-white/10 rounded-2xl px-4 py-3 border border-white/15">
+                        <span class="text-xl font-extrabold font-display">₹18,000</span>
+                        <span class="text-xs font-bold text-cream/70 bg-white/10 px-2 py-1 rounded-full">1 year</span>
                     </div>
-                </div>
+                </a>
+                <a href="courses.html" class="timetable-row bg-cream rounded-[1.75rem] p-6 border-2 border-cocoa block" style="box-shadow:4px 5px 0 0 #451A03">
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="text-[10px] font-extrabold uppercase tracking-widest bg-leaf text-white px-2.5 py-1 rounded-full rotate-2">⚡ Crash</span>
+                        <span class="text-[11px] font-bold bg-white px-2.5 py-1 rounded-full border border-cocoa/20">🕗 8–11 AM · Daily</span>
+                    </div>
+                    <div class="w-12 h-12 bg-white rounded-2xl border-2 border-cocoa flex items-center justify-center mb-4 text-2xl">🚀</div>
+                    <h3 class="font-extrabold text-xl mb-1">JEE/NEET Crash</h3>
+                    <p class="text-cocoa/60 text-sm mb-4">Intensive prep · mocks + PYQs</p>
+                    <div class="flex items-center gap-1.5 text-xs font-bold mb-4">
+                        <span class="w-6 h-6 rounded-full bg-cocoa text-cream flex items-center justify-center">M</span>
+                        <span class="w-6 h-6 rounded-full bg-cocoa text-cream flex items-center justify-center">T</span>
+                        <span class="w-6 h-6 rounded-full bg-cocoa text-cream flex items-center justify-center">W</span>
+                        <span class="w-6 h-6 rounded-full bg-cocoa text-cream flex items-center justify-center">T</span>
+                        <span class="w-6 h-6 rounded-full bg-cocoa text-cream flex items-center justify-center">F</span>
+                        <span class="w-6 h-6 rounded-full bg-cocoa text-cream flex items-center justify-center">S</span>
+                        <span class="text-[11px] text-leaf font-extrabold ml-1">✓ Mock Sun</span>
+                    </div>
+                    <div class="flex items-center justify-between bg-white rounded-2xl px-4 py-3 border-2 border-dashed border-cocoa/20">
+                        <span class="text-xl font-extrabold font-display">₹25,000</span>
+                        <span class="text-xs font-bold text-cocoa/60 bg-cream px-2 py-1 rounded-full">6 months</span>
+                    </div>
+                </a>
             </div>
-            <a href="courses.html" class="md:hidden mt-6 block text-brand-600 font-medium hover:underline">See all courses →</a>
+            <a href="courses.html" class="md:hidden mt-6 inline-block text-brand-600 font-bold hover:underline">See all courses →</a>
         </div>
     </section>
 
     <!-- Faculty -->
     <section class="py-16 md:py-20">
         <div class="max-w-6xl mx-auto px-4 md:px-6">
-            <div class="text-center mb-12">
-                <h2 class="text-2xl md:text-3xl font-serif text-stone-900 mb-2">Meet Our Faculty</h2>
-                <p class="text-stone-600">Experienced educators dedicated to your success</p>
+            <div class="text-center mb-10">
+                <span class="inline-block text-[11px] font-extrabold uppercase tracking-widest bg-white px-3 py-1.5 rounded-full sticker mb-3">👩‍🏫 Friendly humans, not robots</span>
+                <h2 class="text-3xl md:text-4xl font-extrabold tracking-tight">Meet Our Faculty</h2>
+                <p class="text-cocoa/60 mt-1">Educators who remember your name <span class="font-hand text-xl text-brand-600">and your weak chapter!</span></p>
             </div>
-            <div class="grid md:grid-cols-4 gap-6">
-                <div class="bg-white rounded-2xl p-6 border border-stone-200 text-center">
-                    <div class="w-20 h-20 bg-brand-100 rounded-full mx-auto mb-4 flex items-center justify-center">
-                        <span class="text-2xl font-bold text-brand-600">RK</span>
-                    </div>
-                    <h3 class="font-semibold">Rajesh Kumar</h3>
-                    <p class="text-sm text-stone-500 mb-2">Physics</p>
-                    <p class="text-xs text-stone-600">IIT Kharagpur<br>12+ years exp.</p>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <div class="bg-white rounded-[1.75rem] p-6 border-2 border-cocoa text-center rotate-[-1deg] hover:rotate-0 transition-transform" style="box-shadow:4px 5px 0 0 #451A03">
+                    <div class="w-20 h-20 bg-brand-100 rounded-full mx-auto mb-4 flex items-center justify-center border-2 border-cocoa"><span class="text-2xl font-extrabold text-brand-600 font-display">RK</span></div>
+                    <h3 class="font-extrabold">Rajesh Kumar</h3>
+                    <span class="inline-block text-[11px] font-bold bg-cream px-2 py-0.5 rounded-full border border-cocoa/20 mt-1 mb-2">⚛️ Physics</span>
+                    <p class="text-xs text-cocoa/60">IIT Kharagpur<br>12+ years exp.</p>
                 </div>
-                <div class="bg-white rounded-2xl p-6 border border-stone-200 text-center">
-                    <div class="w-20 h-20 bg-brand-100 rounded-full mx-auto mb-4 flex items-center justify-center">
-                        <span class="text-2xl font-bold text-brand-600">SS</span>
-                    </div>
-                    <h3 class="font-semibold">Sarita Sharma</h3>
-                    <p class="text-sm text-stone-500 mb-2">Chemistry</p>
-                    <p class="text-xs text-stone-600">IIT Bombay<br>10+ years exp.</p>
+                <div class="bg-white rounded-[1.75rem] p-6 border-2 border-cocoa text-center rotate-[1deg] hover:rotate-0 transition-transform" style="box-shadow:4px 5px 0 0 #451A03">
+                    <div class="w-20 h-20 bg-green-100 rounded-full mx-auto mb-4 flex items-center justify-center border-2 border-cocoa"><span class="text-2xl font-extrabold text-leaf font-display">SS</span></div>
+                    <h3 class="font-extrabold">Sarita Sharma</h3>
+                    <span class="inline-block text-[11px] font-bold bg-cream px-2 py-0.5 rounded-full border border-cocoa/20 mt-1 mb-2">🧪 Chemistry</span>
+                    <p class="text-xs text-cocoa/60">IIT Bombay<br>10+ years exp.</p>
                 </div>
-                <div class="bg-white rounded-2xl p-6 border border-stone-200 text-center">
-                    <div class="w-20 h-20 bg-brand-100 rounded-full mx-auto mb-4 flex items-center justify-center">
-                        <span class="text-2xl font-bold text-brand-600">AS</span>
-                    </div>
-                    <h3 class="font-semibold">Amitabh Singh</h3>
-                    <p class="text-sm text-stone-500 mb-2">Mathematics</p>
-                    <p class="text-xs text-stone-600">NIT Siliguri<br>8+ years exp.</p>
+                <div class="bg-white rounded-[1.75rem] p-6 border-2 border-cocoa text-center rotate-[-1deg] hover:rotate-0 transition-transform" style="box-shadow:4px 5px 0 0 #451A03">
+                    <div class="w-20 h-20 bg-yellow-100 rounded-full mx-auto mb-4 flex items-center justify-center border-2 border-cocoa"><span class="text-2xl font-extrabold text-brand-600 font-display">AS</span></div>
+                    <h3 class="font-extrabold">Amitabh Singh</h3>
+                    <span class="inline-block text-[11px] font-bold bg-cream px-2 py-0.5 rounded-full border border-cocoa/20 mt-1 mb-2">📐 Maths</span>
+                    <p class="text-xs text-cocoa/60">NIT Siliguri<br>8+ years exp.</p>
                 </div>
-                <div class="bg-white rounded-2xl p-6 border border-stone-200 text-center">
-                    <div class="w-20 h-20 bg-brand-100 rounded-full mx-auto mb-4 flex items-center justify-center">
-                        <span class="text-2xl font-bold text-brand-600">PD</span>
-                    </div>
-                    <h3 class="font-semibold">Priya Das</h3>
-                    <p class="text-sm text-stone-500 mb-2">Biology</p>
-                    <p class="text-xs text-stone-600">AIIMS Delhi<br>7+ years exp.</p>
+                <div class="bg-white rounded-[1.75rem] p-6 border-2 border-cocoa text-center rotate-[1deg] hover:rotate-0 transition-transform" style="box-shadow:4px 5px 0 0 #451A03">
+                    <div class="w-20 h-20 bg-orange-100 rounded-full mx-auto mb-4 flex items-center justify-center border-2 border-cocoa"><span class="text-2xl font-extrabold text-brand-600 font-display">PD</span></div>
+                    <h3 class="font-extrabold">Priya Das</h3>
+                    <span class="inline-block text-[11px] font-bold bg-cream px-2 py-0.5 rounded-full border border-cocoa/20 mt-1 mb-2">🧬 Biology</span>
+                    <p class="text-xs text-cocoa/60">AIIMS Delhi<br>7+ years exp.</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Why Choose -->
-    <section class="py-16 md:py-20 bg-white">
-        <div class="max-w-6xl mx-auto px-4 md:px-6">
-            <div class="text-center mb-12">
-                <h2 class="text-2xl md:text-3xl font-serif text-stone-900 mb-2">Why Parents Trust Us</h2>
-                <p class="text-stone-600">We've helped hundreds achieve their dreams</p>
+    <section class="py-16 md:py-20 bg-cocoa relative overflow-hidden">
+        <div class="absolute inset-0 paper-grid opacity-30"></div>
+        <div class="max-w-6xl mx-auto px-4 md:px-6 relative">
+            <div class="text-center mb-10">
+                <span class="inline-block text-[11px] font-extrabold uppercase tracking-widest bg-brand-600 text-cream px-3 py-1.5 rounded-full sticker-orange mb-3">💛 Why parents trust us</span>
+                <h2 class="text-3xl md:text-4xl font-extrabold text-cream tracking-tight">Not a factory. A <span class="text-brand-500">classroom.</span></h2>
+                <p class="text-cream/60 mt-1">Small batches, big attention</p>
             </div>
-            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-                <div class="text-center">
-                    <div class="w-14 h-14 bg-brand-100 rounded-2xl flex items-center justify-center mx-auto mb-4">
-                        <svg class="w-7 h-7 text-brand-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
-                    </div>
-                    <h3 class="font-semibold mb-1">Expert Faculty</h3>
-                    <p class="text-sm text-stone-600">IITians & NITians with 10+ years experience</p>
+            <div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
+                <div class="bg-cream rounded-[1.75rem] p-6 text-center rotate-[-1deg] border-2 border-cream">
+                    <div class="w-14 h-14 bg-brand-600 rounded-2xl flex items-center justify-center mx-auto mb-4 text-2xl border-2 border-cocoa" style="box-shadow:2px 3px 0 0 #451A03">🎓</div>
+                    <h3 class="font-extrabold mb-1">Expert Faculty</h3>
+                    <p class="text-sm text-cocoa/60">IITians & NITians, 10+ yrs</p>
                 </div>
-                <div class="text-center">
-                    <div class="w-14 h-14 bg-brand-100 rounded-2xl flex items-center justify-center mx-auto mb-4">
-                        <svg class="w-7 h-7 text-brand-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
-                    </div>
-                    <h3 class="font-semibold mb-1">Study Material</h3>
-                    <p class="text-sm text-stone-600">Complete notes, PYQs & mock tests</p>
+                <div class="bg-cream rounded-[1.75rem] p-6 text-center rotate-[1deg] border-2 border-cream">
+                    <div class="w-14 h-14 bg-leaf rounded-2xl flex items-center justify-center mx-auto mb-4 text-2xl border-2 border-cocoa" style="box-shadow:2px 3px 0 0 #451A03">📝</div>
+                    <h3 class="font-extrabold mb-1">Study Material</h3>
+                    <p class="text-sm text-cocoa/60">Notes, PYQs & mocks ✓</p>
                 </div>
-                <div class="text-center">
-                    <div class="w-14 h-14 bg-brand-100 rounded-2xl flex items-center justify-center mx-auto mb-4">
-                        <svg class="w-7 h-7 text-brand-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
-                    </div>
-                    <h3 class="font-semibold mb-1">Small Batches</h3>
-                    <p class="text-sm text-stone-600">Max 25 students per batch</p>
+                <div class="bg-cream rounded-[1.75rem] p-6 text-center rotate-[-1deg] border-2 border-cream">
+                    <div class="w-14 h-14 bg-yellow-400 rounded-2xl flex items-center justify-center mx-auto mb-4 text-2xl border-2 border-cocoa" style="box-shadow:2px 3px 0 0 #451A03">👥</div>
+                    <h3 class="font-extrabold mb-1">Small Batches</h3>
+                    <p class="text-sm text-cocoa/60">Max 25 students/batch</p>
                 </div>
-                <div class="text-center">
-                    <div class="w-14 h-14 bg-brand-100 rounded-2xl flex items-center justify-center mx-auto mb-4">
-                        <svg class="w-7 h-7 text-brand-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path></svg>
-                    </div>
-                    <h3 class="font-semibold mb-1">Regular Tests</h3>
-                    <p class="text-sm text-stone-600">Weekly CTs & monthly exams</p>
+                <div class="bg-cream rounded-[1.75rem] p-6 text-center rotate-[1deg] border-2 border-cream">
+                    <div class="w-14 h-14 bg-white rounded-2xl flex items-center justify-center mx-auto mb-4 text-2xl border-2 border-cocoa" style="box-shadow:2px 3px 0 0 #451A03">📊</div>
+                    <h3 class="font-extrabold mb-1">Regular Tests</h3>
+                    <p class="text-sm text-cocoa/60">Weekly + monthly 📈</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Testimonials -->
-    <section class="py-16 md:py-20">
+    <!-- Testimonials — bubbles -->
+    <section class="py-16 md:py-20 doodle-bg">
         <div class="max-w-6xl mx-auto px-4 md:px-6">
-            <div class="text-center mb-12">
-                <h2 class="text-2xl md:text-3xl font-serif text-stone-900 mb-2">What Parents Say</h2>
-                <p class="text-stone-600">Real feedback from real parents</p>
+            <div class="text-center mb-10">
+                <span class="inline-block text-[11px] font-extrabold uppercase tracking-widest bg-white px-3 py-1.5 rounded-full sticker mb-3">💬 Wall of love</span>
+                <h2 class="text-3xl md:text-4xl font-extrabold tracking-tight">What Parents Say</h2>
+                <p class="text-cocoa/60">Real feedback, pinned with love 📌</p>
             </div>
             <div class="grid md:grid-cols-3 gap-6">
-                <div class="bg-white rounded-2xl p-6 border border-stone-200">
-                    <div class="flex items-center gap-3 mb-4">
-                        <div class="w-12 h-12 bg-brand-100 rounded-full flex items-center justify-center">
-                            <span class="text-lg font-bold text-brand-600">SA</span>
-                        </div>
-                        <div>
-                            <p class="font-medium text-sm">— Mrs. S. Agarwal</p>
-                        </div>
+                <div>
+                    <div class="bubble bg-white rounded-[1.75rem] p-6 border-2 border-cocoa rotate-[-1deg]" style="box-shadow:4px 5px 0 0 #451A03">
+                        <div class="flex gap-0.5 mb-3 text-yellow-500 text-lg">★★★★★</div>
+                        <p class="text-cocoa/80 leading-relaxed">"My daughter scored <strong>95% in Class 10</strong> thanks to ClassDesk teachers. Highly recommended!"</p>
                     </div>
-                    <div class="flex gap-1 mb-2">
-                        <svg class="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l.07.704a1.5 1.5 0 001.19 1.21l.723.113c.956.149 1.234 1.385.459 2.018l-.52.653a1.5 1.5 0 01-.651.451l-.723.113a1.5 1.5 0 00-1.19 1.21l-.07.704c-.921.3-.921 1.603 0 1.902l.704.07a1.5 1.5 0 001.19-1.19l.113-.723c.149-.956-1.385-1.234-2.018-.459l-.653.52a1.5 1.5 0 01-.451.651l-.113.723a1.5 1.5 0 00-1.21 1.19l-.704.07c-.3.921-1.603.921-1.902 0l-.07-.704a1.5 1.5 0 00-1.19-1.21l-.723-.113c-.956-.149-1.234-1.385-.459-2.018l.52-.653a1.5 1.5 0 01.651-.451l.723-.113a1.5 1.5 0 001.19-1.21l.07-.704zM12 15a3 3 0 100-6 3 3 0 000 6z"/></svg>
+                    <div class="flex items-center gap-3 mt-5 ml-4">
+                        <div class="w-12 h-12 bg-brand-600 text-cream rounded-full flex items-center justify-center border-2 border-cocoa font-bold">SA</div>
+                        <div><p class="font-bold text-sm">Mrs. S. Agarwal</p><p class="text-xs text-cocoa/50">Parent · Class 10 🎓</p></div>
                     </div>
-                    <p class="text-stone-600">"My daughter scored 95% in Class 10 thanks to ClassDesk teachers. Highly recommended!"</p>
                 </div>
-                <div class="bg-white rounded-2xl p-6 border border-stone-200">
-                    <div class="flex items-center gap-3 mb-4">
-                        <div class="w-12 h-12 bg-brand-100 rounded-full flex items-center justify-center">
-                            <span class="text-lg font-bold text-brand-600">RG</span>
-                        </div>
-                        <div>
-                            <p class="font-medium text-sm">— Mr. R. Gupta</p>
-                        </div>
+                <div>
+                    <div class="bubble bg-cocoa text-cream rounded-[1.75rem] p-6 border-2 border-cocoa rotate-[1deg]" style="box-shadow:4px 5px 0 0 #EA580C">
+                        <div class="flex gap-0.5 mb-3 text-yellow-400 text-lg">★★★★★</div>
+                        <p class="text-cream/90 leading-relaxed">"Great faculty and material. My son got into <strong>NIT</strong> with their help. Worth every rupee!"</p>
                     </div>
-                    <div class="flex gap-1 mb-2">
-                        <svg class="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l.07.704a1.5 1.5 0 001.19 1.21l.723.113c.956.149 1.234 1.385.459 2.018l-.52.653a1.5 1.5 0 01-.651.451l-.723.113a1.5 1.5 0 00-1.19 1.21l-.07.704c-.921.3-.921 1.603 0 1.902l.704.07a1.5 1.5 0 001.19-1.19l.113-.723c.149-.956-1.385-1.234-2.018-.459l-.653.52a1.5 1.5 0 01-.451.651l-.113.723a1.5 1.5 0 00-1.21 1.19l-.704.07c-.3.921-1.603.921-1.902 0l-.07-.704a1.5 1.5 0 00-1.19-1.21l-.723-.113c-.956-.149-1.234-1.385-.459-2.018l.52-.653a1.5 1.5 0 01.651-.451l.723-.113a1.5 1.5 0 001.19-1.21l.07-.704zM12 15a3 3 0 100-6 3 3 0 000 6z"/></svg>
+                    <div class="flex items-center gap-3 mt-5 ml-4">
+                        <div class="w-12 h-12 bg-leaf text-white rounded-full flex items-center justify-center border-2 border-cocoa font-bold">RG</div>
+                        <div><p class="font-bold text-sm">Mr. R. Gupta</p><p class="text-xs text-cocoa/50">Parent · JEE 🏆</p></div>
                     </div>
-                    <p class="text-stone-600">"Great faculty and study material. My son got into NIT with their help."</p>
                 </div>
-                <div class="bg-white rounded-2xl p-6 border border-stone-200">
-                    <div class="flex items-center gap-3 mb-4">
-                        <div class="w-12 h-12 bg-brand-100 rounded-full flex items-center justify-center">
-                            <span class="text-lg font-bold text-brand-600">PS</span>
-                        </div>
-                        <div>
-                            <p class="font-medium text-sm">— Mr. P. Saha</p>
-                        </div>
+                <div>
+                    <div class="bubble bg-white rounded-[1.75rem] p-6 border-2 border-cocoa rotate-[-1deg]" style="box-shadow:4px 5px 0 0 #451A03">
+                        <div class="flex gap-0.5 mb-3 text-yellow-500 text-lg">★★★★★</div>
+                        <p class="text-cocoa/80 leading-relaxed">"Best coaching in Siliguri. My daughter cleared <strong>JEE Mains in first attempt!</strong> 🎉"</p>
                     </div>
-                    <div class="flex gap-1 mb-2">
-                        <svg class="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l.07.704a1.5 1.5 0 001.19 1.21l.723.113c.956.149 1.234 1.385.459 2.018l-.52.653a1.5 1.5 0 01-.651.451l-.723.113a1.5 1.5 0 00-1.19 1.21l-.07.704c-.921.3-.921 1.603 0 1.902l.704.07a1.5 1.5 0 001.19-1.19l.113-.723c.149-.956-1.385-1.234-2.018-.459l-.653.52a1.5 1.5 0 01-.451.651l-.113.723a1.5 1.5 0 00-1.21 1.19l-.704.07c-.3.921-1.603.921-1.902 0l-.07-.704a1.5 1.5 0 00-1.19-1.21l-.723-.113c-.956-.149-1.234-1.385-.459-2.018l.52-.653a1.5 1.5 0 01.651-.451l.723-.113a1.5 1.5 0 001.19-1.21l.07-.704zM12 15a3 3 0 100-6 3 3 0 000 6z"/></svg>
+                    <div class="flex items-center gap-3 mt-5 ml-4">
+                        <div class="w-12 h-12 bg-yellow-400 text-cocoa rounded-full flex items-center justify-center border-2 border-cocoa font-bold">PS</div>
+                        <div><p class="font-bold text-sm">Mr. P. Saha</p><p class="text-xs text-cocoa/50">Parent · JEE Mains ⚡</p></div>
                     </div>
-                    <p class="text-stone-600">"Best coaching in Siliguri. My daughter cleared JEE Mains in first attempt."</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Success Stories -->
-    <section class="py-16 md:py-20 bg-white">
+    <!-- Success Stories — sticker ranks -->
+    <section class="py-16 md:py-20 bg-white border-y-2 border-cocoa/10">
         <div class="max-w-6xl mx-auto px-4 md:px-6">
-            <div class="text-center mb-12">
-                <h2 class="text-2xl md:text-3xl font-serif text-stone-900 mb-2">Success Stories</h2>
-                <p class="text-stone-600">Our students made it to top institutions</p>
+            <div class="text-center mb-10">
+                <span class="inline-block text-[11px] font-extrabold uppercase tracking-widest bg-leaf text-white px-3 py-1.5 rounded-full sticker mb-3">🏆 Hall of fame 2025</span>
+                <h2 class="text-3xl md:text-4xl font-extrabold tracking-tight">Success Stories</h2>
+                <p class="text-cocoa/60">Our students made it to top institutions!</p>
             </div>
-            <div class="grid md:grid-cols-3 gap-6">
-                <div class="bg-stone-900 text-white rounded-2xl p-6">
-                    <div class="text-3xl font-bold text-brand-500 mb-2">IIT Bombay</div>
-                    <p class="text-stone-300 mb-4">Rahul Sharma secured AIR 452 in JEE Mains</p>
-                    <p class="text-sm text-stone-400">JEE Crash Course 2025</p>
+            <div class="grid md:grid-cols-3 gap-5">
+                <div class="bg-cocoa text-cream rounded-[1.75rem] p-6 border-2 border-cocoa relative rotate-[-1deg]" style="box-shadow:4px 5px 0 0 #EA580C">
+                    <span class="absolute -top-3 -right-2 bg-yellow-400 text-cocoa text-xs font-extrabold px-3 py-1.5 rounded-full rotate-6 border-2 border-cocoa" style="box-shadow:2px 2px 0 0 #451A03">★ AIR 452</span>
+                    <div class="text-3xl font-extrabold text-brand-500 font-display mb-2">IIT Bombay</div>
+                    <p class="text-cream/80 mb-3">Rahul Sharma cracked JEE Mains with daily mocks + 1:1 doubts.</p>
+                    <p class="text-xs text-cream/50 bg-white/10 inline-block px-3 py-1 rounded-full">JEE Crash · 2025</p>
                 </div>
-                <div class="bg-stone-900 text-white rounded-2xl p-6">
-                    <div class="text-3xl font-bold text-brand-500 mb-2">AIIMS Delhi</div>
-                    <p class="text-stone-300 mb-4">Priya Singh secured AIR 892 in NEET</p>
-                    <p class="text-sm text-stone-400">NEET Crash Course 2025</p>
+                <div class="bg-brand-600 text-cream rounded-[1.75rem] p-6 border-2 border-cocoa relative rotate-[1deg]" style="box-shadow:4px 5px 0 0 #451A03">
+                    <span class="absolute -top-3 -right-2 bg-white text-cocoa text-xs font-extrabold px-3 py-1.5 rounded-full -rotate-3 border-2 border-cocoa" style="box-shadow:2px 2px 0 0 #451A03">★ AIR 892</span>
+                    <div class="text-3xl font-extrabold font-display mb-2">AIIMS Delhi</div>
+                    <p class="text-cream/90 mb-3">Priya Singh · NCERT-first method + weekly NEET mocks.</p>
+                    <p class="text-xs text-cream/70 bg-white/15 inline-block px-3 py-1 rounded-full">NEET Crash · 2025</p>
                 </div>
-                <div class="bg-stone-900 text-white rounded-2xl p-6">
-                    <div class="text-3xl font-bold text-brand-500 mb-2">NIT Warangal</div>
-                    <p class="text-stone-300 mb-4">Amit Kumar secured AIR 1245 in JEE Mains</p>
-                    <p class="text-sm text-stone-400">PCM Class 12 - 2025</p>
+                <div class="bg-leaf text-white rounded-[1.75rem] p-6 border-2 border-cocoa relative rotate-[-1deg]" style="box-shadow:4px 5px 0 0 #451A03">
+                    <span class="absolute -top-3 -right-2 bg-cocoa text-cream text-xs font-extrabold px-3 py-1.5 rounded-full rotate-3 border-2 border-cream">★ AIR 1245</span>
+                    <div class="text-3xl font-extrabold font-display mb-2">NIT Warangal</div>
+                    <p class="text-white/90 mb-3">Amit Kumar · PCM Class 12 + crash revision sprint.</p>
+                    <p class="text-xs text-white/70 bg-white/15 inline-block px-3 py-1 rounded-full">PCM · 2025</p>
                 </div>
             </div>
         </div>
@@ -345,71 +441,79 @@
     <!-- FAQ -->
     <section class="py-16 md:py-20">
         <div class="max-w-3xl mx-auto px-4 md:px-6">
-            <div class="text-center mb-12">
-                <h2 class="text-2xl md:text-3xl font-serif text-stone-900 mb-2">Frequently Asked Questions</h2>
+            <div class="text-center mb-8">
+                <span class="inline-block text-[11px] font-extrabold uppercase tracking-widest bg-white px-3 py-1.5 rounded-full sticker mb-3">❓ Doubts? cleared!</span>
+                <h2 class="text-3xl font-extrabold tracking-tight">Frequently Asked Questions</h2>
             </div>
-            <div class="space-y-4">
-                <div class="bg-white rounded-xl border border-stone-200 p-5">
-                    <h3 class="font-semibold mb-2">What is the batch size?</h3>
-                    <p class="text-stone-600 text-sm">We limit batches to 25-35 students to ensure personal attention for every student.</p>
+            <div class="space-y-3">
+                <div class="bg-white rounded-[1.5rem] border-2 border-cocoa p-5 rotate-[-.3deg]">
+                    <h3 class="font-extrabold mb-1 flex items-center gap-2">👥 What is the batch size?</h3>
+                    <p class="text-cocoa/60 text-sm">25–35 students max. Every child gets personal attention — no back-benchers here!</p>
                 </div>
-                <div class="bg-white rounded-xl border border-stone-200 p-5">
-                    <h3 class="font-semibold mb-2">Do you provide study material?</h3>
-                    <p class="text-stone-600 text-sm">Yes, comprehensive notes, PYQs, and mock test papers are included in the course fee.</p>
+                <div class="bg-white rounded-[1.5rem] border-2 border-cocoa p-5 rotate-[.3deg]">
+                    <h3 class="font-extrabold mb-1 flex items-center gap-2">📚 Study material included?</h3>
+                    <p class="text-cocoa/60 text-sm">Yes! Notes, PYQs, mock papers — all included in the fee. No hidden costs.</p>
                 </div>
-                <div class="bg-white rounded-xl border border-stone-200 p-5">
-                    <h3 class="font-semibold mb-2">Can I pay fees in installments?</h3>
-                    <p class="text-stone-600 text-sm">Yes, we offer flexible payment plans. Contact our counselor for details.</p>
+                <div class="bg-white rounded-[1.5rem] border-2 border-cocoa p-5 rotate-[-.3deg]">
+                    <h3 class="font-extrabold mb-1 flex items-center gap-2">💰 Installments?</h3>
+                    <p class="text-cocoa/60 text-sm">Flexible plans available. Talk to our counselor — we make it work. <span class="inline-block bg-green-100 text-leaf text-xs font-bold px-2 py-0.5 rounded-full ml-1">✓ scholarships too</span></p>
                 </div>
-                <div class="bg-white rounded-xl border border-stone-200 p-5">
-                    <h3 class="font-semibold mb-2">What if my child misses a class?</h3>
-                    <p class="text-stone-600 text-sm">Recorded sessions are available. You can also attend the same class in another batch.</p>
+                <div class="bg-white rounded-[1.5rem] border-2 border-cocoa p-5 rotate-[.3deg]">
+                    <h3 class="font-extrabold mb-1 flex items-center gap-2">🎥 Missed a class?</h3>
+                    <p class="text-cocoa/60 text-sm">Recordings + repeat in another batch. You'll never fall behind.</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- CTA -->
-    <section class="bg-stone-900 py-16">
-        <div class="max-w-4xl mx-auto px-4 md:px-6 text-center">
-            <h2 class="text-2xl md:text-3xl font-serif text-white mb-4">Ready to ace your exams?</h2>
-            <p class="text-stone-400 mb-8">Book a free counseling session today. No commitment, just guidance.</p>
-            <a href="contact.html" class="inline-block bg-brand-500 text-white px-8 py-4 rounded-lg font-medium hover:bg-brand-600 transition">Book Free Counseling</a>
+    <section class="bg-cocoa py-16 relative overflow-hidden">
+        <div class="absolute inset-0 paper-grid opacity-30"></div>
+        <div class="absolute top-6 left-[12%] font-hand text-3xl text-brand-500/70 rotate-[-6deg]">free demo class! 👇</div>
+        <div class="max-w-4xl mx-auto px-4 md:px-6 text-center relative">
+            <span class="inline-block bg-leaf text-white text-xs font-extrabold uppercase tracking-widest px-3 py-1.5 rounded-full sticker mb-4">🎉 Free counseling · no pressure</span>
+            <h2 class="text-3xl md:text-5xl font-extrabold text-cream tracking-tight mb-4">Ready to ace your exams?</h2>
+            <p class="text-cream/60 mb-8 text-lg">Book a free counseling session. Chai's on us. ☕</p>
+            <a href="contact.html" class="inline-block bg-brand-600 text-cream px-9 py-4 rounded-full font-bold text-lg sticker-orange wiggle-hover">Book Free Counseling ✨</a>
+            <p class="font-hand text-2xl text-cream/50 mt-4">500+ parents already said yes!</p>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="bg-stone-950 text-stone-400 py-12">
+    <footer class="bg-[#2A0E02] text-cream/70 py-12 border-t-2 border-cocoa">
         <div class="max-w-6xl mx-auto px-4 md:px-6">
             <div class="grid md:grid-cols-4 gap-8 mb-8">
                 <div class="md:col-span-2">
                     <div class="flex items-center gap-2 mb-4">
-                        <div class="w-8 h-8 bg-brand-500 rounded-lg flex items-center justify-center">
-                            <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
+                        <div class="w-10 h-10 bg-brand-600 rounded-2xl flex items-center justify-center border-2 border-cream/20 rotate-[-4deg]">
+                            <svg class="w-5 h-5 text-cream" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
                         </div>
-                        <span class="text-lg font-semibold text-white">ClassDesk</span>
+                        <span class="text-lg font-extrabold text-cream font-display">ClassDesk</span>
+                        <span class="text-[10px] font-bold bg-leaf text-white px-2 py-0.5 rounded-full">since 2014 🎓</span>
                     </div>
-                    <p class="text-sm max-w-xs">Siliguri's most trusted coaching institute for Class 9-12, JEE & NEET preparation since 2014.</p>
+                    <p class="text-sm max-w-xs leading-relaxed">Siliguri's most loved coaching for Class 9–12, JEE & NEET. Small batches, big results, warm hearts.</p>
+                    <p class="font-hand text-2xl text-brand-500 mt-3">padhai + pyaar = selection! 💛</p>
                 </div>
                 <div>
-                    <h4 class="text-white font-semibold mb-4">Quick Links</h4>
+                    <h4 class="text-cream font-extrabold mb-4 text-sm uppercase tracking-widest">Quick Links</h4>
                     <div class="flex flex-col gap-2 text-sm">
-                        <a href="index.html" class="hover:text-white transition">Home</a>
-                        <a href="courses.html" class="hover:text-white transition">Courses</a>
-                        <a href="contact.html" class="hover:text-white transition">Contact</a>
+                        <a href="index.html" class="hover:text-cream transition">🏠 Home</a>
+                        <a href="courses.html" class="hover:text-cream transition">📚 Courses</a>
+                        <a href="contact.html" class="hover:text-cream transition">💬 Contact</a>
+                        <a href="admin/dashboard.html" class="text-xs opacity-60 hover:opacity-100">🔒 Admin Panel</a>
                     </div>
                 </div>
                 <div>
-                    <h4 class="text-white font-semibold mb-4">Contact</h4>
+                    <h4 class="text-cream font-extrabold mb-4 text-sm uppercase tracking-widest">Say hello 👋</h4>
                     <div class="flex flex-col gap-2 text-sm">
                         <p>📍 Siliguri, West Bengal</p>
-                        <a href="tel:+919876543210" class="hover:text-white transition">📞 +91 98765 43210</a>
-                        <a href="mailto:info@classdesk.in" class="hover:text-white transition">✉️ info@classdesk.in</a>
+                        <a href="tel:+919876543210" class="hover:text-cream transition">📞 +91 98765 43210</a>
+                        <a href="mailto:info@classdesk.in" class="hover:text-cream transition">✉️ info@classdesk.in</a>
                     </div>
                 </div>
             </div>
-            <div class="border-t border-stone-800 pt-8 text-sm text-center">
-                © 2026 ClassDesk. All rights reserved.
+            <div class="border-t border-cream/10 pt-6 text-sm text-center">
+                © 2026 ClassDesk · Made with 💛 in Siliguri
             </div>
         </div>
     </footer>

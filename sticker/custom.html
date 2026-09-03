@@ -4,8 +4,25 @@
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Custom Sticker Builder — STICKCRAFT</title>
 <script src="https://cdn.tailwindcss.com"></script>
-<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
-<script>tailwind.config={theme:{extend:{fontFamily:{sans:['Inter','sans-serif'],serif:['Instrument Serif','serif'],display:['Space Grotesk','sans-serif']},colors:{ink:'#0F1A1C',muted:'#6B7280',paper:'#F8F7F5',line:'#E5E7EB',accent:'#0E7490'}}}}</script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<script>tailwind.config={theme:{extend:{fontFamily:{sans:['Inter','sans-serif'],display:['Space Grotesk','sans-serif'],serif:['Space Grotesk','sans-serif']},colors:{ink:'#0F1A1C',muted:'#5B6366',paper:'#FFFBF7',line:'#D9DEDF',accent:'#0E7490',lime:'#A3E635'}}}}</script>
+
+<style>
+  body{ font-family:'Inter',sans-serif; background:#FFFBF7; }
+  .font-display,.font-serif{ font-family:'Space Grotesk',sans-serif !important; }
+  .precision-grid{ background-image: linear-gradient(to right, rgba(15,26,28,.06) 1px, transparent 1px), linear-gradient(to bottom, rgba(15,26,28,.06) 1px, transparent 1px); background-size:28px 28px; }
+  .precision-dots{ background-image: radial-gradient(circle at 1px 1px, rgba(14,116,144,.18) 1px, transparent 0); background-size:18px 18px; }
+  .spec-label{ font-family:'Space Grotesk',sans-serif; font-size:11px; letter-spacing:.14em; text-transform:uppercase; font-weight:700; }
+  .proof-badge{ background:#A3E635; color:#0F1A1C; border:1.5px solid #0F1A1C; box-shadow:2px 2px 0 #0F1A1C; font-weight:700; }
+  .proof-badge-cyan{ background:#0E7490; color:white; border:1.5px solid #0F1A1C; }
+  .sharp{ border-radius:10px !important; }
+  .bulk-table{ border:1.5px solid #0F1A1C; } .bulk-table > div:nth-child(even){ background:#F2F7F8; }
+  .ruler{ height:10px; background:repeating-linear-gradient(90deg, #0F1A1C 0 1px, transparent 1px 8px); opacity:.25; }
+  .shape-ring{ border:2px solid #0F1A1C; box-shadow:0 0 0 4px white, 0 0 0 5.5px #0F1A1C; }
+  .step-num{ width:32px; height:32px; border-radius:9999px; background:#0F1A1C; color:white; display:flex; align-items:center; justify-content:center; font-family:'Space Grotesk'; font-weight:700; font-size:14px; }
+  .step-num-lime{ background:#A3E635; color:#0F1A1C; border:1.5px solid #0F1A1C; }
+  ::selection{ background:#0E7490; color:white; }
+</style>
 </head>
 <body class="overflow-x-hidden bg-paper text-ink antialiased">
 <header class="sticky top-0 z-40 bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/80 border-b border-line">
@@ -354,7 +371,7 @@ function updatePreview(){
   const sz= state.size==='1.5' ? 120 : state.size==='2' ? 160 : state.size==='3' ? 190 : state.size==='4' ? 220 : 180;
   box.style.width=sz+'px'; box.style.height=sz+'px';
   if(state.shape==='Circle') box.style.borderRadius='50%'; else if(state.shape==='Roll' || state.shape==='Kiss-Cut') box.style.borderRadius='12px'; else box.style.borderRadius='16px';
-  if(state.material==='Transparent') box.style.background='#F8F7F5'; else if(state.material==='Holographic') box.style.background='linear-gradient(135deg,#a5b4fc,#f0abfc,#fde68a)'; else if(state.material==='Kraft Paper') box.style.background='#EDE6DA'; else if(state.material==='Chrome') box.style.background='linear-gradient(135deg,#e5e7eb,#f9fafb)'; else box.style.background='white';
+  if(state.material==='Transparent') box.style.background='#FFFBF7'; else if(state.material==='Holographic') box.style.background='linear-gradient(135deg,#a5b4fc,#f0abfc,#fde68a)'; else if(state.material==='Kraft Paper') box.style.background='#EDE6DA'; else if(state.material==='Chrome') box.style.background='linear-gradient(135deg,#e5e7eb,#f9fafb)'; else box.style.background='white';
 }
 function updatePrice(){
   // custom qty

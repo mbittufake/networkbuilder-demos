@@ -1,97 +1,120 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Custom Candle Builder — LUME</title>
 <script src="https://cdn.tailwindcss.com"></script>
-<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-<script>tailwind.config={theme:{extend:{fontFamily:{sans:['Inter','sans-serif'],serif:['Instrument Serif','serif']},colors:{ink:'#1A1A1A',muted:'#6B6560',paper:'#FDF6EE',line:'#EDE6DA',amber:'#E8B86D',terracotta:'#C86B3C'}}}}</script>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;1,9..144,300;1,9..144,400&family=Plus+Jakarta+Sans:wght@500;600;700&display=swap" rel="stylesheet">
+<script>
+tailwind.config={ theme:{ extend:{ fontFamily:{ serif:['Fraunces','serif'], sans:['Plus Jakarta Sans','sans-serif'] }, colors:{ ember:'#120C08', coal:'#1E1510', cream:'#F7EDE1', sand:'#EADDCB', amber:'#E8B86D', flame:'#C86B3C', smoke:'#A89888' } } } }
+</script>
+<style>
+body{background:#120C08}
+::selection{background:#E8B86D;color:#120C08}
+.glow{position:absolute;border-radius:9999px;filter:blur(90px);pointer-events:none}
+.arch{border-radius:999px 999px 28px 28px}
+.no-scrollbar::-webkit-scrollbar{display:none}.no-scrollbar{scrollbar-width:none}
+.lume-card{transition:transform .5s cubic-bezier(.16,1,.3,1)}.lume-card:hover{transform:translateY(-6px)}
+#searchResults a{color:#F7EDE1 !important}
+#searchResults a:hover{background:rgba(232,184,109,.12) !important}
+#searchResults .text-\[\#6B6560\],#searchResults .text-\[\#9C8E84\],#cartDrawerItems .text-\[\#6B6560\],#cartDrawerItems .text-\[\#9C8E84\]{color:#A89888 !important}
+#cartDrawerItems{color:#F7EDE1;color-scheme:dark}
+#cartDrawerItems .border-\[\#EDE6DA\]{border-color:rgba(255,255,255,.1) !important}
+#cartDrawerItems .bg-\[\#FDF6EE\]{background:rgba(255,255,255,.06) !important}
+#cartDrawerItems button:hover{background:rgba(232,184,109,.12) !important}
+#cartDrawerItems a{color:#F7EDE1}
+.text-muted{color:#A89888 !important}
+input,textarea{color-scheme:dark}
+#previewBox{color-scheme:light}
+</style>
 </head>
-<body class="bg-paper text-ink antialiased">
-<div class="bg-ink text-amber text-xs text-center py-2.5 tracking-widest uppercase"><span class="hidden sm:inline">Custom candles • </span>From 6 pcs • 3-day make time <a href="shop.html" class="underline ml-2 text-white">Or shop ready →</a></div>
-<header class="sticky top-0 z-40 bg-white/90 backdrop-blur border-b border-line">
-  <div class="max-w-[1280px] mx-auto px-4 lg:px-6">
-    <div class="flex items-center justify-between h-[64px] lg:h-[72px]">
-      <button id="mobileMenuBtn" class="lg:hidden w-10 h-10 flex items-center justify-center border border-line rounded-full"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
-      <a href="index.html" class="flex items-center gap-3"><div class="w-9 h-9 bg-ink text-amber flex items-center justify-center font-serif text-lg rounded-full"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 3a9 9 0 0 1 0 18"/></svg></div><span class="font-serif text-xl tracking-tight">LUME</span><span class="hidden sm:inline text-[10px] tracking-[0.22em] text-muted uppercase font-semibold border-l border-line pl-3 ml-1">Candle Studio</span></a>
-      <nav class="hidden lg:flex items-center gap-7 text-sm font-medium">
-        <a href="shop.html" class="hover:text-terracotta">Shop</a>
-        <a href="shop.html?col=Woody" class="hover:text-terracotta">Woody</a>
-        <a href="shop.html?col=Floral" class="hover:text-terracotta">Floral</a>
-        <a href="shop.html?col=Fresh" class="hover:text-terracotta">Fresh</a>
-        <a href="custom.html" class="bg-ink text-white px-4 py-2 rounded-full">Custom <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2l2.4 7.2H22l-6.2 4.5 2.4 7.3L12 16.5 5.8 21l2.4-7.3L2 9.2h7.6z"/></svg></a>
-      </nav>
-      <div class="flex items-center gap-2">
-        <button onclick="openSearch()" class="w-10 h-10 rounded-full border border-line hover:border-ink flex items-center justify-center"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="7"/><path d="M20 20L16 16"/></svg></button>
-        <a href="cart.html" class="hidden sm:flex items-center gap-2 border border-line rounded-full px-3 py-2 hover:border-ink"><span class="w-6 h-6 rounded-full bg-ink text-white flex items-center justify-center text-xs"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 7c0-1.5 1-2.5 1-4 0 1.5-1 2.5-1 4z"/><path d="M9 21h6"/><path d="M10 21V11a2 2 0 0 1 4 0v10"/><path d="M8 11a2 2 0 0 0-2 2"/></svg></span><span class="text-sm font-semibold">Cart</span><span data-cart-count class="hidden bg-amber text-ink text-xs font-bold min-w-[20px] h-5 px-1.5 rounded-full flex items-center justify-center">0</span></a>
-        <button onclick="openCartDrawer()" class="sm:hidden relative w-10 h-10 rounded-full bg-ink text-white flex items-center justify-center"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 6h15l-1.5 9H7z"/><path d="M6 6L5 2H2"/><circle cx="9" cy="20" r="1.8"/><circle cx="18" cy="20" r="1.8"/></svg><span data-cart-count class="hidden absolute -top-1 -right-1 bg-amber text-ink text-[10px] min-w-[18px] h-[18px] px-1 rounded-full flex items-center justify-center font-bold">0</span></button>
-      </div>
-    </div>
-  </div>
-  <div id="mobileMenu" class="hidden lg:hidden border-t border-line bg-white px-4 py-4 space-y-3">
-    <a href="shop.html" class="block py-2 font-medium">Shop All</a><a href="custom.html" class="block py-2 font-semibold text-terracotta">Custom Builder</a>
-  </div>
-</header>
+<body class="bg-ember text-cream antialiased overflow-x-clip">
 
-<div class="max-w-[1280px] mx-auto px-4 lg:px-6 pt-6">
-  <div class="text-xs text-muted"><a href="index.html" class="hover:text-ink">Home</a> <span class="mx-2">/</span> <span class="text-ink font-medium">Custom Candle</span></div>
-  <div class="mt-4 bg-ink text-white rounded-[28px] p-6 lg:p-8 flex flex-col lg:flex-row lg:items-center justify-between gap-4">
-    <div>
-      <h1 class="font-serif text-3xl lg:text-4xl">Design your candle</h1>
-      <p class="text-white/60 text-sm mt-2 max-w-xl">For gifting, weddings, Diwali, or your brand. Pick vessel, scent, size, label & message. See live preview & instant price. Minimum 6 pieces.</p>
+<div class="fixed inset-0 z-0 pointer-events-none overflow-hidden" aria-hidden="true"><div class="glow w-[600px] h-[600px] bg-amber/15 -top-40 left-1/2 -translate-x-1/2"></div><div class="glow w-[400px] h-[400px] bg-flame/20 bottom-0 -left-40"></div></div>
+
+<div class="relative z-10 text-center text-[11px] tracking-[0.3em] uppercase py-3 text-amber border-b border-white/10">Custom candles · From 6 pcs · 3-day make time · <a href="shop.html" class="underline underline-offset-4 text-cream">Or shop ready →</a></div>
+
+<div class="sticky top-4 z-40 px-4">
+  <header class="max-w-3xl mx-auto bg-coal/90 backdrop-blur border border-white/10 rounded-full pl-6 pr-2 py-2 flex items-center justify-between shadow-2xl">
+    <a href="index.html" class="font-serif text-xl tracking-tight">Lume<span class="text-amber">.</span></a>
+    <nav class="hidden md:flex items-center gap-6 text-[13px] text-cream/80">
+      <a href="shop.html" class="hover:text-cream">Shop</a>
+      <a href="shop.html?col=Woody" class="hover:text-cream">Woody</a>
+      <a href="shop.html?col=Floral" class="hover:text-cream">Floral</a>
+      <a href="custom.html" class="text-amber">Custom</a>
+    </nav>
+    <div class="flex items-center gap-2">
+      <button onclick="openSearch()" class="w-10 h-10 rounded-full border border-white/15 flex items-center justify-center hover:border-amber" aria-label="Search">⌕</button>
+      <button onclick="openCartDrawer()" class="bg-cream text-ember rounded-full px-5 py-2.5 text-sm font-semibold hover:bg-amber">Cart · <span id="hdrCart">0</span></button>
+      <button id="mobileMenuBtn" class="md:hidden w-10 h-10 rounded-full border border-white/15">≡</button>
     </div>
-    <div class="flex items-center gap-2 text-xs">
-      <span class="bg-white/10 border border-white/20 rounded-full px-3 py-1.5"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 13l4 4L19 7"/></svg> Preview live</span>
-      <span class="bg-white/10 border border-white/20 rounded-full px-3 py-1.5"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 13l4 4L19 7"/></svg> 3-day make</span>
-      <span class="bg-amber text-ink rounded-full px-3 py-1.5 font-bold">From ₹1,090</span>
+  </header>
+  <span data-cart-count class="hidden" aria-hidden="true" style="display:none">0</span>
+  <span data-wishlist-count class="hidden" aria-hidden="true" style="display:none">0</span>
+  <div id="mobileMenu" class="hidden max-w-3xl mx-auto mt-2 bg-coal border border-white/10 rounded-3xl p-5 space-y-3 text-sm">
+    <a href="shop.html" class="block">Shop all</a><a href="shop.html?col=Woody" class="block">Woody</a><a href="shop.html?col=Floral" class="block">Floral</a><a href="shop.html?col=Fresh" class="block">Fresh</a><a href="custom.html" class="block text-amber">Custom builder →</a><a href="admin/index.html" class="block text-smoke pt-2 border-t border-white/10">Admin →</a>
+  </div>
+</div>
+
+<div class="relative z-10 max-w-5xl mx-auto px-5 pt-8">
+  <div class="text-xs text-smoke"><a href="index.html" class="hover:text-cream">Home</a> <span class="mx-2">/</span> <span class="text-cream font-medium">Custom Candle</span></div>
+  <div class="mt-4 bg-coal border border-white/10 text-cream rounded-[28px] p-6 lg:p-8 flex flex-col lg:flex-row lg:items-center justify-between gap-4">
+    <div>
+      <h1 class="font-serif font-light text-3xl lg:text-4xl">Design your candle</h1>
+      <p class="text-cream/60 text-sm mt-2 max-w-xl">For gifting, weddings, Diwali, or your brand. Pick vessel, scent, size, label &amp; message. See live preview &amp; instant price. Minimum 6 pieces.</p>
+    </div>
+    <div class="flex flex-wrap items-center gap-2 text-xs">
+      <span class="bg-white/5 border border-white/15 rounded-full px-3 py-1.5">✓ Preview live</span>
+      <span class="bg-white/5 border border-white/15 rounded-full px-3 py-1.5">✓ 3-day make</span>
+      <span class="bg-amber text-ember rounded-full px-3 py-1.5 font-bold">From ₹1,090</span>
     </div>
   </div>
 </div>
 
 <!-- Builder -->
-<div class="max-w-[1280px] mx-auto px-4 lg:px-6 mt-6 grid lg:grid-cols-12 gap-6">
+<div class="relative z-10 max-w-5xl mx-auto px-5 mt-6 grid lg:grid-cols-12 gap-6">
   <!-- Left: options -->
   <div class="lg:col-span-7 space-y-4">
     <!-- Step 1: Vessel -->
-    <div class="bg-white border border-line rounded-[24px] p-6">
-      <div class="flex items-center gap-3"><span class="w-7 h-7 rounded-full bg-ink text-white flex items-center justify-center text-xs font-bold">1</span><h3 class="font-semibold">Choose Vessel</h3><span class="ml-auto text-xs text-muted">The jar — reusable after burn</span></div>
+    <div class="bg-coal border border-white/10 rounded-[24px] p-6">
+      <div class="flex items-center gap-3"><span class="w-7 h-7 rounded-full bg-amber text-ember flex items-center justify-center text-xs font-bold">1</span><h3 class="font-semibold">Choose Vessel</h3><span class="ml-auto text-xs text-smoke">The jar — reusable after burn</span></div>
       <div class="grid grid-cols-2 lg:grid-cols-4 gap-3 mt-4" id="vesselGrid"></div>
     </div>
     <!-- Step 2: Size -->
-    <div class="bg-white border border-line rounded-[24px] p-6">
-      <div class="flex items-center gap-3"><span class="w-7 h-7 rounded-full bg-ink text-white flex items-center justify-center text-xs font-bold">2</span><h3 class="font-semibold">Size & Quantity</h3></div>
+    <div class="bg-coal border border-white/10 rounded-[24px] p-6">
+      <div class="flex items-center gap-3"><span class="w-7 h-7 rounded-full bg-amber text-ember flex items-center justify-center text-xs font-bold">2</span><h3 class="font-semibold">Size &amp; Quantity</h3></div>
       <div class="grid grid-cols-3 gap-3 mt-4" id="sizeGrid"></div>
-      <div class="mt-4 flex items-center gap-3">
+      <div class="mt-4 flex flex-wrap items-center gap-3">
         <label class="text-sm font-medium">Quantity (min 6 for custom):</label>
-        <div class="flex items-center border border-line rounded-full overflow-hidden">
-          <button onclick="qty=Math.max(6,qty-1);updateBuilder()" class="w-9 h-9 flex items-center justify-center hover:bg-paper"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14"/></svg></button>
+        <div class="flex items-center border border-white/15 rounded-full overflow-hidden">
+          <button onclick="qty=Math.max(6,qty-1);updateBuilder()" class="w-9 h-9 flex items-center justify-center hover:bg-white/5">−</button>
           <span id="qtyVal" class="w-12 text-center font-semibold">6</span>
-          <button onclick="qty++;updateBuilder()" class="w-9 h-9 flex items-center justify-center hover:bg-paper"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></button>
+          <button onclick="qty++;updateBuilder()" class="w-9 h-9 flex items-center justify-center hover:bg-white/5">+</button>
         </div>
-        <span class="text-xs text-muted">Bulk discounts auto-applied at 20+ & 50+</span>
+        <span class="text-xs text-smoke">Bulk discounts auto-applied at 20+ &amp; 50+</span>
       </div>
     </div>
     <!-- Step 3: Scent -->
-    <div class="bg-white border border-line rounded-[24px] p-6">
-      <div class="flex items-center gap-3"><span class="w-7 h-7 rounded-full bg-ink text-white flex items-center justify-center text-xs font-bold">3</span><h3 class="font-semibold">Choose Scent</h3></div>
-      <div class="mt-2 flex gap-2 overflow-auto pb-2" id="scentFamily"></div>
+    <div class="bg-coal border border-white/10 rounded-[24px] p-6">
+      <div class="flex items-center gap-3"><span class="w-7 h-7 rounded-full bg-amber text-ember flex items-center justify-center text-xs font-bold">3</span><h3 class="font-semibold">Choose Scent</h3></div>
+      <div class="mt-3 flex gap-2 overflow-auto no-scrollbar pb-2" id="scentFamily"></div>
       <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-4" id="scentGrid"></div>
     </div>
     <!-- Step 4: Wax -->
-    <div class="bg-white border border-line rounded-[24px] p-6">
-      <div class="flex items-center gap-3"><span class="w-7 h-7 rounded-full bg-ink text-white flex items-center justify-center text-xs font-bold">4</span><h3 class="font-semibold">Wax</h3></div>
+    <div class="bg-coal border border-white/10 rounded-[24px] p-6">
+      <div class="flex items-center gap-3"><span class="w-7 h-7 rounded-full bg-amber text-ember flex items-center justify-center text-xs font-bold">4</span><h3 class="font-semibold">Wax</h3></div>
       <div class="grid grid-cols-3 gap-3 mt-4" id="waxGrid"></div>
     </div>
     <!-- Step 5: Label & Message -->
-    <div class="bg-white border border-line rounded-[24px] p-6">
-      <div class="flex items-center gap-3"><span class="w-7 h-7 rounded-full bg-ink text-white flex items-center justify-center text-xs font-bold">5</span><h3 class="font-semibold">Label & Personalisation</h3></div>
+    <div class="bg-coal border border-white/10 rounded-[24px] p-6">
+      <div class="flex items-center gap-3"><span class="w-7 h-7 rounded-full bg-amber text-ember flex items-center justify-center text-xs font-bold">5</span><h3 class="font-semibold">Label &amp; Personalisation</h3></div>
       <div class="grid grid-cols-3 gap-3 mt-4" id="labelGrid"></div>
       <div class="mt-4 grid gap-3">
-        <div><label class="text-xs font-bold uppercase tracking-widest">Label Text (max 22 chars)</label><input id="labelText" maxlength="22" placeholder="e.g. Riya & Arjun — 12.12.26" class="mt-1 w-full border border-line rounded-xl px-4 py-2.5 text-sm outline-none focus:border-ink" oninput="updateBuilder()"></div>
-        <div><label class="text-xs font-bold uppercase tracking-widest">Gift Note / Message</label><textarea id="giftNote" rows="2" placeholder="Handwritten note included free..." class="mt-1 w-full border border-line rounded-xl px-4 py-2.5 text-sm outline-none focus:border-ink" oninput="updateBuilder()"></textarea></div>
-        <div class="flex gap-2 text-xs">
-          <label class="flex items-center gap-2"><input type="checkbox" id="giftWrap" onchange="updateBuilder()"> Gift wrap (+₹80 per pc)</label>
-          <label class="flex items-center gap-2"><input type="checkbox" id="express" onchange="updateBuilder()"> Express 2-day (+₹200)</label>
+        <div><label class="text-xs font-bold uppercase tracking-widest text-smoke">Label Text (max 22 chars)</label><input id="labelText" maxlength="22" placeholder="e.g. Riya & Arjun — 12.12.26" class="mt-1 w-full bg-ember border border-white/15 rounded-xl px-4 py-2.5 text-sm outline-none focus:border-amber text-cream placeholder:text-smoke" oninput="updateBuilder()"></div>
+        <div><label class="text-xs font-bold uppercase tracking-widest text-smoke">Gift Note / Message</label><textarea id="giftNote" rows="2" placeholder="Handwritten note included free..." class="mt-1 w-full bg-ember border border-white/15 rounded-xl px-4 py-2.5 text-sm outline-none focus:border-amber text-cream placeholder:text-smoke" oninput="updateBuilder()"></textarea></div>
+        <div class="flex flex-wrap gap-4 text-xs text-cream/80">
+          <label class="flex items-center gap-2"><input type="checkbox" id="giftWrap" onchange="updateBuilder()" class="accent-[#E8B86D]"> Gift wrap (+₹80 per pc)</label>
+          <label class="flex items-center gap-2"><input type="checkbox" id="express" onchange="updateBuilder()" class="accent-[#E8B86D]"> Express 2-day (+₹200)</label>
         </div>
       </div>
     </div>
@@ -99,65 +122,87 @@
 
   <!-- Right: Preview + Summary -->
   <div class="lg:col-span-5">
-    <div class="sticky top-[88px] space-y-4">
+    <div class="sticky top-24 space-y-4">
       <!-- Preview -->
-      <div class="bg-white border border-line rounded-[24px] overflow-hidden">
-        <div class="bg-paper border-b border-line px-6 py-4 flex items-center justify-between"><h3 class="font-semibold">Live Preview</h3><span class="text-xs border border-line bg-white px-2.5 py-1 rounded-full">Updates as you choose</span></div>
+      <div class="bg-coal border border-white/10 rounded-[24px] overflow-hidden">
+        <div class="bg-ember border-b border-white/10 px-6 py-4 flex items-center justify-between"><h3 class="font-semibold">Live Preview</h3><span class="text-xs border border-white/15 bg-coal text-smoke px-2.5 py-1 rounded-full">Updates as you choose</span></div>
         <div class="p-6">
-          <div class="relative aspect-[4/5] rounded-[24px] overflow-hidden bg-[#FDF6EE] border border-line flex items-center justify-center" id="previewBox">
+          <div class="relative aspect-[4/5] rounded-[24px] overflow-hidden bg-[#FDF6EE] border border-white/10 flex items-center justify-center" id="previewBox">
             <!-- preview content injected -->
           </div>
-          <div class="mt-4 bg-paper border border-line rounded-2xl p-4 text-sm space-y-2" id="previewText"></div>
+          <div class="mt-4 bg-ember border border-white/10 rounded-2xl p-4 text-sm space-y-2" id="previewText"></div>
         </div>
       </div>
       <!-- Price -->
-      <div class="bg-ink text-white rounded-[24px] p-6">
+      <div class="bg-coal border border-white/10 rounded-[24px] p-6">
         <h3 class="font-semibold">Your Custom Candle</h3>
         <div class="mt-4 space-y-2 text-sm">
-          <div class="flex justify-between"><span class="text-white/60">Base (per pc)</span><span id="basePrice" class="font-semibold">₹0</span></div>
-          <div class="flex justify-between"><span class="text-white/60">Quantity</span><span id="sumQty">6</span></div>
+          <div class="flex justify-between"><span class="text-cream/60">Base (per pc)</span><span id="basePrice" class="font-semibold">₹0</span></div>
+          <div class="flex justify-between"><span class="text-cream/60">Quantity</span><span id="sumQty">6</span></div>
           <div class="flex justify-between text-amber hidden" id="discRow"><span>Bulk discount</span><span id="discVal">-₹0</span></div>
-          <div class="flex justify-between text-white/60 hidden" id="wrapRow"><span>Gift wrap</span><span id="wrapVal">+₹0</span></div>
-          <div class="flex justify-between border-t border-white/20 pt-3 text-base"><span class="font-bold">Total</span><span id="totalPrice" class="font-bold text-xl">₹0</span></div>
-          <div class="text-xs text-white/60">Free shipping over ₹1,999 • 3-day making • COD available</div>
+          <div class="flex justify-between text-cream/60 hidden" id="wrapRow"><span>Gift wrap</span><span id="wrapVal">+₹0</span></div>
+          <div class="flex justify-between border-t border-white/10 pt-3 text-base"><span class="font-bold">Total</span><span id="totalPrice" class="font-bold text-xl text-amber">₹0</span></div>
+          <div class="text-xs text-cream/50">Free shipping over ₹1,999 • 3-day making • COD available</div>
         </div>
-        <button onclick="addCustomToCart()" class="w-full mt-6 bg-amber text-ink py-3.5 rounded-full font-bold hover:bg-white transition">Add Custom to Cart →</button>
-        <button onclick="saveQuote()" class="w-full mt-3 bg-white/10 border border-white/20 text-white py-3 rounded-full font-semibold hover:bg-white hover:text-ink transition">Save Quote / Share</button>
-        <p class="text-xs text-white/40 text-center mt-3">This sends request to admin panel (demo, stored locally).</p>
+        <button onclick="addCustomToCart()" class="w-full mt-6 bg-amber text-ember py-3.5 rounded-full font-bold hover:bg-cream transition">Add Custom to Cart →</button>
+        <button onclick="saveQuote()" class="w-full mt-3 bg-white/5 border border-white/15 text-cream py-3 rounded-full font-semibold hover:bg-cream hover:text-ember transition">Save Quote / Share</button>
+        <p class="text-xs text-smoke text-center mt-3">This sends request to admin panel (demo, stored locally).</p>
       </div>
-      <div class="bg-white border border-line rounded-2xl p-4 text-xs space-y-2">
-        <div class="flex gap-2"><span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 13l4 4L19 7"/></svg></span> Need help? WhatsApp us — we’ll blend a scent from your description.</div>
-        <div class="flex gap-2"><span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 13l4 4L19 7"/></svg></span> For 50+ pcs, we send a physical sample before full batch.</div>
+      <div class="bg-coal border border-white/10 rounded-2xl p-4 text-xs space-y-2 text-cream/70">
+        <div class="flex gap-2"><span class="text-amber">✓</span> Need help? WhatsApp us — we’ll blend a scent from your description.</div>
+        <div class="flex gap-2"><span class="text-amber">✓</span> For 50+ pcs, we send a physical sample before full batch.</div>
       </div>
     </div>
   </div>
 </div>
 
-<footer class="max-w-[1280px] mx-auto px-4 lg:px-6 mt-10 border-t border-line pt-10 pb-8">
-  <div class="grid lg:grid-cols-5 gap-8">
-    <div class="lg:col-span-2">
-      <div class="flex items-center gap-2"><div class="w-8 h-8 bg-ink text-amber flex items-center justify-center rounded-full font-serif"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 3a9 9 0 0 1 0 18"/></svg></div><span class="font-serif text-lg">LUME</span></div>
-      <p class="text-sm text-muted mt-3 max-w-sm">Small-batch soy candles hand-poured in Jaipur. One product, poured properly. Demo store by Network Builder.</p>
-    </div>
-    <div><div class="text-xs font-bold uppercase tracking-widest">Shop</div><ul class="mt-3 space-y-2 text-sm text-muted"><li><a href="shop.html" class="hover:text-ink">All Candles</a></li><li><a href="shop.html?col=Woody" class="hover:text-ink">Woody</a></li><li><a href="shop.html?col=Fresh" class="hover:text-ink">Fresh</a></li><li><a href="custom.html" class="hover:text-ink font-semibold text-terracotta">Custom →</a></li></ul></div>
-    <div><div class="text-xs font-bold uppercase tracking-widest">Help</div><ul class="mt-3 space-y-2 text-sm text-muted"><li><a href="#" class="hover:text-ink">Shipping & Care</a></li><li><a href="custom.html" class="hover:text-ink">Custom Guide</a></li><li><a href="cart.html" class="hover:text-ink">Cart</a></li></ul></div>
-    <div><div class="text-xs font-bold uppercase tracking-widest">Admin Demo</div><ul class="mt-3 space-y-2 text-sm text-muted"><li><a href="admin/index.html" class="hover:text-ink font-semibold">Dashboard →</a></li><li><a href="admin/products.html" class="hover:text-ink">Candles</a></li><li><a href="admin/custom-orders.html" class="hover:text-ink">Custom Orders</a></li></ul></div>
+<footer class="relative z-10 border-t border-white/10 mt-14">
+  <div class="max-w-5xl mx-auto px-5 py-12 grid md:grid-cols-4 gap-8 text-sm">
+    <div><div class="font-serif text-2xl">Lume.</div><p class="text-smoke mt-2 text-[13px]">One thing, done beautifully. Jaipur studio.</p></div>
+    <div class="text-[13px] space-y-2"><div class="text-[11px] uppercase tracking-widest text-smoke">Shop</div><a href="shop.html" class="block">All</a><a href="shop.html?col=Woody" class="block">Woody</a><a href="custom.html" class="block text-amber">Custom →</a></div>
+    <div class="text-[13px] space-y-2"><div class="text-[11px] uppercase tracking-widest text-smoke">Help</div><a href="cart.html" class="block">Cart</a><a href="#" class="block">Care guide</a></div>
+    <div class="text-[13px] space-y-2"><div class="text-[11px] uppercase tracking-widest text-smoke">Admin</div><a href="admin/index.html" class="block">Dashboard →</a><a href="admin/products.html" class="block">Candles</a></div>
   </div>
-  <div class="flex flex-col lg:flex-row items-center justify-between gap-3 text-xs text-muted border-t border-line mt-8 pt-6">
-    <span>© 2026 LUME Candle Studio. Demo by <a href="https://networkbuilder.in" class="underline">Network Builder</a></span>
-    <span class="flex items-center gap-2">Built with HTML + Tailwind <span class="w-2 h-2 bg-emerald-500 rounded-full animate-pulse"></span> Demo</span>
-  </div>
+  <div class="font-serif font-light text-[22vw] leading-[0.75] text-center text-white/[0.06] select-none">LUME</div>
+  <p class="text-center text-xs text-smoke pb-8">© 2026 Lume · Demo by Network Builder</p>
 </footer>
 
-<div id="searchOverlay" class="hidden fixed inset-0 z-[60] bg-white/95 backdrop-blur"><div class="max-w-2xl mx-auto px-4 pt-8"><div class="flex items-center gap-3"><div class="flex-1 flex items-center gap-3 border border-ink rounded-full px-5 py-3 bg-white"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="7"/><path d="M20 20L16 16"/></svg><input id="searchInput" type="text" placeholder="Search..." class="flex-1 outline-none text-sm" oninput="renderSearchResults(this.value)"></div><button onclick="closeSearch()" class="w-11 h-11 rounded-full bg-ink text-white flex items-center justify-center"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6L6 18M6 6l12 12"/></svg></button></div><div id="searchResults" class="mt-6 max-h-[60vh] overflow-auto divide-y divide-line border border-line rounded-2xl bg-white"></div></div></div>
-<div id="cartDrawer" class="hidden fixed inset-0 z-[60]"><div class="absolute inset-0 bg-black/40" onclick="closeCartDrawer()"></div><div class="absolute right-0 top-0 h-full w-full max-w-md bg-white flex flex-col"><div class="px-6 py-5 border-b border-line flex items-center justify-between"><div class="font-semibold">Your Cart <span id="cartDrawerCountLabel" class="text-muted font-normal"></span></div><button onclick="closeCartDrawer()" class="w-9 h-9 rounded-full border flex items-center justify-center"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6L6 18M6 6l12 12"/></svg></button></div><div id="cartDrawerItems" class="flex-1 overflow-auto px-6"></div><div id="cartDrawerFooter" class="hidden border-t border-line p-6 bg-paper"><div class="flex justify-between text-sm"><span class="text-muted">Subtotal</span><span id="cartDrawerSubtotal" class="font-semibold"></span></div><a href="cart.html" class="mt-4 block bg-ink text-white text-center py-3.5 rounded-full font-semibold">View Cart →</a></div></div></div>
+<div id="searchOverlay" class="hidden fixed inset-0 z-[60] bg-ember/95 backdrop-blur">
+  <div class="max-w-xl mx-auto px-5 pt-16">
+    <div class="flex justify-between items-center"><span class="text-[11px] tracking-[0.35em] uppercase text-amber">Find your scent</span><button onclick="closeSearch()" class="w-10 h-10 rounded-full border border-white/20">×</button></div>
+    <input id="searchInput" oninput="renderSearchResults(this.value)" placeholder="Fig, oud, fresh…" class="w-full mt-6 bg-transparent border-b border-amber/50 py-4 font-serif text-3xl outline-none placeholder:text-cream/20 text-cream">
+    <div id="searchResults" class="mt-8 space-y-2 max-h-[60vh] overflow-auto"></div>
+  </div>
+</div>
+<div id="cartDrawer" class="hidden fixed inset-0 z-[60]">
+  <div class="absolute inset-0 bg-black/60" onclick="closeCartDrawer()"></div>
+  <div class="absolute bottom-0 md:right-0 md:top-0 w-full md:max-w-md bg-coal border-t md:border-t-0 md:border-l border-white/10 rounded-t-[28px] md:rounded-none flex flex-col max-h-[92vh]">
+    <div class="px-6 py-5 border-b border-white/10 flex justify-between"><span class="font-serif text-xl">Your ritual <span id="cartDrawerCountLabel" class="text-sm text-smoke"></span></span><button onclick="closeCartDrawer()">×</button></div>
+    <div id="cartDrawerItems" class="flex-1 overflow-auto px-6"></div>
+    <div id="cartDrawerFooter" class="hidden border-t border-white/10 p-6"><div class="flex justify-between text-sm"><span class="text-smoke">Subtotal</span><span id="cartDrawerSubtotal" class="font-semibold text-amber"></span></div><a href="cart.html" class="mt-4 block bg-amber text-ember text-center py-4 rounded-full font-bold">Checkout →</a></div>
+  </div>
+</div>
 
 <script src="app.js"></script>
 <script>
+(function(){
+  function syncHdr(){ try{ var el=document.getElementById('hdrCart'); if(el && typeof cartCount==='function') el.textContent=cartCount(); }catch(e){} }
+  function hook(){
+    if(typeof window.updateCartCount==='function' && !window.__hdrHooked){
+      window.__hdrHooked=true;
+      var orig=window.updateCartCount;
+      window.updateCartCount=function(){ orig(); syncHdr(); };
+      syncHdr();
+    }
+  }
+  document.addEventListener('DOMContentLoaded', function(){ hook(); syncHdr(); });
+  window.addEventListener('storage', syncHdr);
+  setTimeout(hook,0); setTimeout(syncHdr,150);
+})();
 const vessels=[
   { id:'cream', name:'Cream Ceramic', price:0, color:'#FDF6EE', desc:'Matte, reusable as planter' },
   { id:'amber', name:'Amber Glass', price:0, color:'#C86B3C', desc:'Classic, warm glow' },
-  { id:'black', name:'Matte Black', price:80, color:'#1A1A1A', desc:'Modern, premium' },
+  { id:'black', name:'Matte Black', price:80, color:'#1C1410', desc:'Modern, premium' },
   { id:'terra', name:'Terracotta', price:100, color:'#B85C38', desc:'Earthy, handmade' },
 ];
 const sizes=[
@@ -193,45 +238,45 @@ let vessel='cream', size='180g', wax='soy', label='minimal', scent='Fig & Cedar'
 
 function renderVessels(){
   document.getElementById('vesselGrid').innerHTML=vessels.map(v=>`
-    <button onclick="vessel='${v.id}';updateBuilder()" class="text-left border rounded-2xl p-4 ${vessel===v.id?'border-ink bg-paper ring-1 ring-ink':'border-line bg-white hover:border-ink'}">
-      <div class="w-12 h-12 rounded-xl border border-line" style="background:${v.color}"></div>
+    <button onclick="vessel='${v.id}';updateBuilder()" class="text-left border rounded-2xl p-4 ${vessel===v.id?'border-amber bg-amber/10 ring-1 ring-amber':'border-white/10 bg-ember hover:border-amber/60'}">
+      <div class="w-12 h-12 rounded-xl border border-white/15" style="background:${v.color}"></div>
       <div class="font-semibold text-sm mt-2">${v.name} ${v.price?`+₹${v.price}`:''}</div>
-      <div class="text-xs text-muted">${v.desc}</div>
+      <div class="text-xs text-smoke">${v.desc}</div>
     </button>
   `).join('');
 }
 function renderSizes(){
   document.getElementById('sizeGrid').innerHTML=sizes.map(s=>`
-    <button onclick="size='${s.id}';updateBuilder()" class="text-left border rounded-2xl p-4 ${size===s.id?'border-ink bg-ink text-white':'border-line bg-white hover:border-ink'}">
-      <div class="font-bold">${s.name}</div><div class="text-xs ${size===s.id?'text-white/60':'text-muted'}">${s.burn} • ${s.size}</div><div class="text-sm font-semibold mt-1">${formatINR(s.price)}</div>
+    <button onclick="size='${s.id}';updateBuilder()" class="text-left border rounded-2xl p-4 ${size===s.id?'border-cream bg-cream text-ember':'border-white/10 bg-ember text-cream hover:border-amber/60'}">
+      <div class="font-bold">${s.name}</div><div class="text-xs ${size===s.id?'text-ember/60':'text-smoke'}">${s.burn} • ${s.size}</div><div class="text-sm font-semibold mt-1">${formatINR(s.price)}</div>
     </button>
   `).join('');
 }
 function renderWaxes(){
   document.getElementById('waxGrid').innerHTML=waxes.map(w=>`
-    <button onclick="wax='${w.id}';updateBuilder()" class="text-left border rounded-2xl p-3 ${wax===w.id?'border-ink bg-paper':'border-line bg-white hover:border-ink'}">
-      <div class="font-semibold text-sm">${w.name} ${w.price?`+₹${w.price}`:''}</div><div class="text-xs text-muted">${w.desc}</div>
+    <button onclick="wax='${w.id}';updateBuilder()" class="text-left border rounded-2xl p-3 ${wax===w.id?'border-amber bg-amber/10':'border-white/10 bg-ember hover:border-amber/60'}">
+      <div class="font-semibold text-sm">${w.name} ${w.price?`+₹${w.price}`:''}</div><div class="text-xs text-smoke">${w.desc}</div>
     </button>
   `).join('');
 }
 function renderLabels(){
   document.getElementById('labelGrid').innerHTML=labels.map(l=>`
-    <button onclick="label='${l.id}';updateBuilder()" class="text-left border rounded-2xl p-3 ${label===l.id?'border-ink bg-paper':'border-line bg-white hover:border-ink'}">
-      <div class="font-semibold text-sm">${l.name} ${l.price?`+₹${l.price}`:''}</div><div class="text-xs text-muted">${l.desc}</div>
+    <button onclick="label='${l.id}';updateBuilder()" class="text-left border rounded-2xl p-3 ${label===l.id?'border-amber bg-amber/10':'border-white/10 bg-ember hover:border-amber/60'}">
+      <div class="font-semibold text-sm">${l.name} ${l.price?`+₹${l.price}`:''}</div><div class="text-xs text-smoke">${l.desc}</div>
     </button>
   `).join('');
 }
 function renderScentFamily(){
   const fams=['All','Woody','Warm','Fresh','Floral','Citrus'];
-  document.getElementById('scentFamily').innerHTML=fams.map(f=>`<button onclick="filterScentFamily='${f}';renderScents()" class="px-4 py-1.5 rounded-full border text-xs font-semibold ${filterScentFamily===f?'bg-ink text-white border-ink':'border-line bg-white'}">${f}</button>`).join('');
+  document.getElementById('scentFamily').innerHTML=fams.map(f=>`<button onclick="filterScentFamily='${f}';renderScents()" class="px-4 py-1.5 rounded-full border text-xs font-semibold whitespace-nowrap ${filterScentFamily===f?'bg-cream text-ember border-cream':'border-white/15 text-cream/70 hover:border-amber'}">${f}</button>`).join('');
 }
 let filterScentFamily='All';
 function renderScents(){
   let list=scents;
   if(filterScentFamily!=='All') list=list.filter(s=>s.family===filterScentFamily);
   document.getElementById('scentGrid').innerHTML=list.map(s=>`
-    <button onclick="scent='${s.name}';updateBuilder()" class="text-left border rounded-2xl p-3 flex items-center justify-between ${scent===s.name?'border-ink bg-paper':'border-line bg-white hover:border-ink'}">
-      <div><div class="font-medium text-sm">${s.name} ${s.price?`+₹${s.price}`:''}</div><div class="text-xs text-muted">${s.family}</div></div><span class="w-6 h-6 rounded-full border flex items-center justify-center text-xs">${scent===s.name?'<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 13l4 4L19 7"/></svg>':''}</span>
+    <button onclick="scent='${s.name}';updateBuilder()" class="text-left border rounded-2xl p-3 flex items-center justify-between ${scent===s.name?'border-amber bg-amber/10':'border-white/10 bg-ember hover:border-amber/60'}">
+      <div><div class="font-medium text-sm">${s.name} ${s.price?`+₹${s.price}`:''}</div><div class="text-xs text-smoke">${s.family}</div></div><span class="w-6 h-6 rounded-full border border-white/15 flex items-center justify-center text-xs text-amber">${scent===s.name?'✓':''}</span>
     </button>
   `).join('');
   renderScentFamily();
@@ -251,20 +296,20 @@ function updateBuilder(){
   document.getElementById('previewBox').innerHTML=`
     <div class="w-[160px] h-[200px] rounded-t-[24px] rounded-b-[16px] border border-black/10 flex flex-col items-center justify-center relative shadow-xl" style="background:${vesselColor}">
       <div class="absolute -top-2 w-10 h-3 bg-black/20 rounded-full blur-sm"></div>
-      <div class="w-[100px] h-[100px] rounded-full bg-white/90 flex items-center justify-center text-3xl border border-black/5"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 7c0-1.5 1-2.5 1-4 0 1.5-1 2.5-1 4z"/><path d="M9 21h6"/><path d="M10 21V11a2 2 0 0 1 4 0v10"/><path d="M8 11a2 2 0 0 0-2 2"/></svg></div>
+      <div class="w-[100px] h-[100px] rounded-full bg-white/90 flex items-center justify-center text-3xl border border-black/5 text-[#1C1410]">✦</div>
       <div class="mt-3 bg-white/95 backdrop-blur px-3 py-1.5 rounded-full border border-black/5 text-center">
-        <div class="text-[10px] uppercase tracking-widest text-muted">${s.id} • LUME</div>
-        <div class="text-xs font-serif font-bold ${isDark?'text-black':''}">${labelText.slice(0,22) || 'LUME'}</div>
+        <div class="text-[10px] uppercase tracking-widest text-[#6B6560]">${s.id} • LUME</div>
+        <div class="text-xs font-serif font-bold text-black">${labelText.slice(0,22) || 'LUME'}</div>
       </div>
-      <div class="absolute bottom-2 text-[10px] px-2 py-1 rounded-full ${isDark?'bg-white text-ink':'bg-ink text-white'}">${scent}</div>
+      <div class="absolute bottom-2 text-[10px] px-2 py-1 rounded-full ${isDark?'bg-white text-[#1C1410]':'bg-[#1C1410] text-white'}">${scent}</div>
     </div>
   `;
   document.getElementById('previewText').innerHTML=`
-    <div class="flex justify-between"><span class="text-muted">Vessel</span><span class="font-medium">${v.name}</span></div>
-    <div class="flex justify-between"><span class="text-muted">Scent</span><span class="font-medium">${scent} • ${sc.family}</span></div>
-    <div class="flex justify-between"><span class="text-muted">Wax</span><span class="font-medium">${waxes.find(x=>x.id===wax).name}</span></div>
-    <div class="flex justify-between"><span class="text-muted">Label</span><span class="font-medium">${l.name}${labelText?` — “${labelText}”`:''}</span></div>
-    ${document.getElementById('giftNote').value?`<div class="text-xs text-muted pt-2 border-t border-line">Note: “${document.getElementById('giftNote').value}”</div>`:''}
+    <div class="flex justify-between"><span class="text-smoke">Vessel</span><span class="font-medium">${v.name}</span></div>
+    <div class="flex justify-between"><span class="text-smoke">Scent</span><span class="font-medium">${scent} • ${sc.family}</span></div>
+    <div class="flex justify-between"><span class="text-smoke">Wax</span><span class="font-medium">${waxes.find(x=>x.id===wax).name}</span></div>
+    <div class="flex justify-between"><span class="text-smoke">Label</span><span class="font-medium">${l.name}${labelText?` — “${labelText}”`:''}</span></div>
+    ${document.getElementById('giftNote').value?`<div class="text-xs text-smoke pt-2 border-t border-white/10">Note: “${document.getElementById('giftNote').value}”</div>`:''}
   `;
   // pricing
   const base = s.price + v.price + sc.price + waxes.find(x=>x.id===wax).price + l.price;
@@ -300,7 +345,7 @@ function addCustomToCart(){
   const s=sizes.find(x=>x.id===size);
   list.unshift({ id:'CU-'+(4000+Math.floor(Math.random()*900)), name: (document.getElementById('labelText').value||'Custom')+` • ${qty} pcs`, vessel: v.name, size: s.id, scent, qty, total: window._customTotal, status:'Pending', date: new Date().toISOString().slice(0,10), note: document.getElementById('giftNote').value || window._customMeta });
   saveCustomOrders(list);
-  showToast('Custom candle added to cart <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 13l4 4L19 7"/></svg>');
+  showToast('Custom candle added to cart ✓');
 }
 
 function saveQuote(){

@@ -4,8 +4,25 @@
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Orders — FOLKFORM Admin</title>
 <script src="https://cdn.tailwindcss.com"></script>
-<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Space+Grotesk:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700&display=swap" rel="stylesheet">
-<script>tailwind.config={theme:{extend:{fontFamily:{sans:['Space Grotesk','sans-serif'],serif:['Instrument Serif','serif'],display:['Plus Jakarta Sans','sans-serif']},colors:{ink:'#1E1A16',paper:'#FFFCF5',line:'#EADBC8',clay:'#D87A4A',moss:'#6B7B5E',mustard:'#D9A441',stone:'#F5EBDC',sand:'#FFF6EC'}}}}</script>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,600&family=Caveat:wght@600;700&display=swap" rel="stylesheet">
+<script>tailwind.config={theme:{extend:{fontFamily:{sans:['Fraunces','serif'],serif:['Fraunces','serif'],display:['Fraunces','serif'],hand:['Caveat','cursive']},colors:{ink:'#1E1A16',paper:'#FFFCF5',line:'#EADBC8',clay:'#C96F4A',moss:'#6B7B5E',mustard:'#D9A441',stone:'#F5EBDC',sand:'#FFF6EC'}}}}</script>
+
+<style>
+  body{ font-family:'Fraunces',serif; background:#FFFCF5; }
+  .font-display,.font-sans{ font-family:'Fraunces',serif !important; }
+  .font-serif{ font-family:'Fraunces',serif !important; }
+  .font-hand{ font-family:'Caveat',cursive !important; }
+  .paper-grain{ background-color:#FFFCF5; background-image: radial-gradient(circle at 1px 1px, rgba(201,111,74,.08) 1px, transparent 0); background-size:22px 22px; }
+  .washi{ position:absolute; width:92px; height:24px; background:rgba(217,164,65,.55); opacity:.92; transform:rotate(-5deg); box-shadow:0 2px 6px rgba(0,0,0,.08); backdrop-filter:blur(1px); }
+  .washi-clay{ background:rgba(201,111,74,.45); } .washi-moss{ background:rgba(107,123,94,.45); }
+  .torn{ position:relative; } .torn:after{ content:""; position:absolute; inset:0; border:1.6px dashed rgba(30,26,22,.22); border-radius:26px; pointer-events:none; }
+  .torn-sm:after{ border-radius:16px; }
+  .deckle{ border:1.5px solid #EADBC8; box-shadow:0 1px 0 #EADBC8, 0 8px 24px rgba(30,26,22,.06); }
+  .bento{ border:1.5px solid #EADBC8; border-radius:28px; overflow:hidden; }
+  .combo-dark{ background:#1E1A16; color:#FFFCF5; border:1.5px solid #1E1A16; }
+  .stitch{ background-image: linear-gradient(90deg, #C96F4A 55%, transparent 45%); background-size:10px 1.5px; background-repeat:repeat-x; height:1.5px; }
+  ::selection{ background:#C96F4A; color:#FFFCF5; }
+</style>
 </head>
 <body class="bg-[#F7F0E6] text-ink antialiased">
 <div class="flex min-h-screen">

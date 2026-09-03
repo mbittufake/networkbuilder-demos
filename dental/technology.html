@@ -1,90 +1,119 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Technology | Lumina Dental</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <script>
         tailwind.config = {
             theme: {
                 extend: {
-                    fontFamily: { sans: ['Inter', 'sans-serif'], serif: ['Playfair Display', 'serif'] },
-                    colors: { primary: '#0F766E', dark: '#111827' }
+                    fontFamily: { sans: ['Outfit','sans-serif'], serif: ['Cormorant Garamond','serif'] },
+                    colors: { ivory:'#FFFBF5', sand:'#F5EFE6', teal:{DEFAULT:'#0F766E',deep:'#0C5E58'}, gold:{DEFAULT:'#C9A86A',light:'#EAD9B8',pale:'#FAF3E6'}, ink:'#1C1917' },
+                    boxShadow: { soft:'0 24px 60px -24px rgba(28,25,23,.22)', card:'0 10px 34px -14px rgba(28,25,23,.18)' }
                 }
             }
         }
     </script>
-    <style>.glass-nav { background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(8px); border-bottom: 1px solid #F3F4F6; }</style>
+    <style>
+        .gold-rule{height:1px;background:linear-gradient(90deg,transparent,#C9A86A 20%,#C9A86A 80%,transparent)}
+        .glass{background:rgba(255,255,255,.72);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px)}
+        .serif-i{font-style:italic;font-weight:500}
+        .lift{transition:transform .5s cubic-bezier(.16,1,.3,1),box-shadow .5s,border-color .3s}
+        .lift:hover{transform:translateY(-6px)}
+        ::selection{background:#C9A86A;color:#1C1917}
+    </style>
 </head>
-<body class="bg-white text-gray-900 font-sans">
+<body class="bg-ivory text-ink font-sans antialiased overflow-x-hidden">
 
-    <!-- Navbar -->
-    <nav class="fixed w-full z-50 glass-nav h-20 flex items-center transition-all">
-        <div class="max-w-7xl mx-auto px-6 w-full flex justify-between items-center">
-            <a href="index.html" class="flex items-center gap-2 group">
-                <div class="w-8 h-8 bg-primary rounded-lg flex items-center justify-center text-white font-serif italic text-lg shadow-md">L</div>
-                <span class="font-serif text-2xl font-semibold tracking-tight text-gray-900">Lumina</span>
+    <div class="bg-ink text-[#EAD9B8] text-[12px] tracking-[.14em] uppercase">
+        <div class="max-w-7xl mx-auto px-6 py-2.5 text-center">Precision instruments · Painless by design</div>
+    </div>
+
+    <nav class="sticky top-0 z-50 glass border-b border-[#E8DDC9]">
+        <div class="max-w-7xl mx-auto px-6 h-[84px] flex justify-between items-center">
+            <a href="index.html" class="flex items-center gap-3">
+                <div class="w-11 h-11 rounded-full bg-ink text-gold-light flex items-center justify-center font-serif italic text-2xl border border-gold/50">L</div>
+                <span class="leading-none"><span class="block font-serif text-[28px] font-medium tracking-tight">Lumina</span><span class="block text-[10px] tracking-[.32em] uppercase text-gold font-semibold mt-0.5">Aesthetic Dentistry</span></span>
             </a>
-            <div class="hidden md:flex items-center space-x-8 text-sm font-medium text-gray-600">
-                <a href="services.html" class="hover:text-primary transition">Treatments</a>
-                <a href="technology.html" class="text-primary">Technology</a>
-                <a href="smile-gallery.html" class="hover:text-primary transition">Smile Gallery</a>
+            <div class="hidden md:flex items-center gap-9 text-[13px] font-medium tracking-[.12em] uppercase text-ink/70">
+                <a href="services.html" class="hover:text-teal-deep transition">Treatments</a>
+                <a href="technology.html" class="text-teal-deep">Technology</a>
+                <a href="smile-gallery.html" class="hover:text-teal-deep transition">Smile Gallery</a>
             </div>
-            <a href="visit.html" class="bg-primary text-white px-6 py-2.5 rounded-full text-sm font-medium hover:bg-teal-800 transition shadow-lg shadow-teal-900/20">Book Visit</a>
+            <a href="visit.html" class="bg-ink text-ivory px-7 py-3 rounded-full text-[13px] font-semibold tracking-[.1em] uppercase hover:bg-teal-deep transition-all shadow-card">Book Visit</a>
         </div>
     </nav>
 
-    <!-- Header -->
-    <header class="pt-32 pb-16 px-6 text-center max-w-3xl mx-auto">
-        <h1 class="font-serif text-5xl text-gray-900 mb-6">Future Dentistry</h1>
-        <p class="text-lg text-gray-500 leading-relaxed">We invest in the latest technology to ensure your visit is precise, painless, and efficient.</p>
+    <header class="pt-16 md:pt-24 pb-12 px-6 text-center max-w-3xl mx-auto">
+        <p class="text-gold text-[11px] font-semibold tracking-[.3em] uppercase mb-5">— Instruments of Calm —</p>
+        <h1 class="font-serif text-[52px] md:text-[68px] leading-[1] mb-5">Future <span class="serif-i text-teal-deep">Dentistry</span></h1>
+        <div class="gold-rule w-32 mx-auto mb-6"></div>
+        <p class="text-[17px] text-ink/55 leading-relaxed font-light">We invest in the latest technology to ensure your visit is precise, painless, and efficient — most treatments finished in a single sitting.</p>
     </header>
 
-    <!-- Content -->
-    <main class="max-w-6xl mx-auto px-6 pb-24 grid md:grid-cols-2 gap-12">
-        
-        <!-- Tech 1 -->
-        <div class="bg-white p-8 rounded-2xl border border-gray-100 shadow-sm hover:shadow-xl transition duration-500">
-            <div class="h-64 rounded-xl overflow-hidden mb-8 bg-blue-50">
-                <img src="https://images.unsplash.com/photo-1516549655169-df83a0929519?q=80&w=800&auto=format&fit=crop" class="w-full h-full object-cover mix-blend-multiply" alt="Scanner">
+    <main class="max-w-6xl mx-auto px-6 pb-24 grid sm:grid-cols-2 gap-6">
+        <div class="bg-white/70 border border-[#E8DDC9] p-7 rounded-[1.8rem] shadow-card lift hover:shadow-soft hover:border-gold/60 group">
+            <div class="relative h-60 rounded-[1.3rem] overflow-hidden mb-7">
+                <img src="https://images.unsplash.com/photo-1516549655169-df83a0929519?q=80&w=800&auto=format&fit=crop" class="w-full h-full object-cover group-hover:scale-105 transition duration-700" alt="Scanner">
+                <span class="absolute top-3 left-3 glass px-3.5 py-1.5 rounded-full text-[11px] font-semibold tracking-[.16em] uppercase border border-white/60">01 · Scan</span>
             </div>
-            <h3 class="font-serif text-3xl text-gray-900 mb-4">iTero 3D Scanner</h3>
-            <p class="text-gray-500 leading-relaxed">No more gooey impressions. We scan your teeth in 60 seconds to create a perfect digital 3D model for Invisalign or Crowns.</p>
+            <p class="font-serif italic text-gold text-lg">Sixty seconds, zero goo</p>
+            <h3 class="font-serif text-[34px] mb-3">iTero 3D Scanner</h3>
+            <div class="gold-rule w-16 mb-4"></div>
+            <p class="text-ink/55 leading-relaxed font-light">No more gooey impressions. We scan your teeth in 60 seconds to create a perfect digital 3D model for Invisalign or Crowns.</p>
         </div>
-
-        <!-- Tech 2 -->
-        <div class="bg-white p-8 rounded-2xl border border-gray-100 shadow-sm hover:shadow-xl transition duration-500">
-            <div class="h-64 rounded-xl overflow-hidden mb-8 bg-purple-50">
-                <img src="https://images.unsplash.com/photo-1551076805-e1869033e561?q=80&w=800&auto=format&fit=crop" class="w-full h-full object-cover mix-blend-multiply" alt="Laser">
+        <div class="bg-ink text-ivory p-7 rounded-[1.8rem] shadow-soft lift hover:shadow-soft group relative overflow-hidden">
+            <div class="absolute -top-16 -right-16 w-56 h-56 bg-gold/20 blur-[70px] rounded-full"></div>
+            <div class="relative h-60 rounded-[1.3rem] overflow-hidden mb-7">
+                <img src="https://images.unsplash.com/photo-1551076805-e1869033e561?q=80&w=800&auto=format&fit=crop" class="w-full h-full object-cover group-hover:scale-105 transition duration-700" alt="Laser">
+                <span class="absolute top-3 left-3 bg-ink/80 backdrop-blur px-3.5 py-1.5 rounded-full text-[11px] font-semibold tracking-[.16em] uppercase text-gold-light border border-gold/30">02 · Laser</span>
             </div>
-            <h3 class="font-serif text-3xl text-gray-900 mb-4">Soft Tissue Laser</h3>
-            <p class="text-gray-500 leading-relaxed">Precise gum contouring with zero bleeding and faster healing time. Perfect for smile makeovers.</p>
+            <p class="font-serif italic text-gold-light text-lg relative">Zero bleeding, faster healing</p>
+            <h3 class="font-serif text-[34px] mb-3 relative">Soft Tissue Laser</h3>
+            <div class="gold-rule w-16 mb-4 relative opacity-60"></div>
+            <p class="text-ivory/60 leading-relaxed font-light relative">Precise gum contouring with zero bleeding and faster healing time. Perfect for smile makeovers.</p>
         </div>
-
-        <!-- Tech 3 -->
-        <div class="bg-white p-8 rounded-2xl border border-gray-100 shadow-sm hover:shadow-xl transition duration-500">
-            <div class="h-64 rounded-xl overflow-hidden mb-8 bg-green-50">
-                <img src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?q=80&w=800&auto=format&fit=crop" class="w-full h-full object-cover mix-blend-multiply" alt="CBCT">
+        <div class="bg-white/70 border border-[#E8DDC9] p-7 rounded-[1.8rem] shadow-card lift hover:shadow-soft hover:border-gold/60 group">
+            <div class="relative h-60 rounded-[1.3rem] overflow-hidden mb-7">
+                <img src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?q=80&w=800&auto=format&fit=crop" class="w-full h-full object-cover group-hover:scale-105 transition duration-700" alt="CBCT">
+                <span class="absolute top-3 left-3 glass px-3.5 py-1.5 rounded-full text-[11px] font-semibold tracking-[.16em] uppercase border border-white/60">03 · 3D X-Ray</span>
             </div>
-            <h3 class="font-serif text-3xl text-gray-900 mb-4">CBCT (3D X-Ray)</h3>
-            <p class="text-gray-500 leading-relaxed">We see what others miss. Our low-radiation 3D imaging allows us to plan implants with sub-millimeter accuracy.</p>
+            <p class="font-serif italic text-gold text-lg">See what others miss</p>
+            <h3 class="font-serif text-[34px] mb-3">CBCT (3D X-Ray)</h3>
+            <div class="gold-rule w-16 mb-4"></div>
+            <p class="text-ink/55 leading-relaxed font-light">We see what others miss. Our low-radiation 3D imaging allows us to plan implants with sub-millimeter accuracy.</p>
         </div>
-
-        <!-- Tech 4 -->
-        <div class="bg-white p-8 rounded-2xl border border-gray-100 shadow-sm hover:shadow-xl transition duration-500">
-            <div class="h-64 rounded-xl overflow-hidden mb-8 bg-yellow-50">
-                <img src="https://images.unsplash.com/photo-1537368910025-700350fe46c7?q=80&w=800&auto=format&fit=crop" class="w-full h-full object-cover mix-blend-multiply" alt="AI">
+        <div class="bg-white/70 border border-[#E8DDC9] p-7 rounded-[1.8rem] shadow-card lift hover:shadow-soft hover:border-gold/60 group">
+            <div class="relative h-60 rounded-[1.3rem] overflow-hidden mb-7">
+                <img src="https://images.unsplash.com/photo-1537368910025-700350fe46c7?q=80&w=800&auto=format&fit=crop" class="w-full h-full object-cover group-hover:scale-105 transition duration-700" alt="AI">
+                <span class="absolute top-3 left-3 glass px-3.5 py-1.5 rounded-full text-[11px] font-semibold tracking-[.16em] uppercase border border-white/60">04 · AI Vision</span>
             </div>
-            <h3 class="font-serif text-3xl text-gray-900 mb-4">AI Caries Detection</h3>
-            <p class="text-gray-500 leading-relaxed">Artificial Intelligence analyzes your X-rays to detect cavities years before they become painful.</p>
+            <p class="font-serif italic text-gold text-lg">Cavities, years early</p>
+            <h3 class="font-serif text-[34px] mb-3">AI Caries Detection</h3>
+            <div class="gold-rule w-16 mb-4"></div>
+            <p class="text-ink/55 leading-relaxed font-light">Artificial Intelligence analyzes your X-rays to detect cavities years before they become painful.</p>
         </div>
-
     </main>
 
-    <footer class="text-center py-12 border-t border-gray-100 text-gray-400 text-sm">
-        © 2026 Lumina Dental
+    <section class="max-w-6xl mx-auto px-6 pb-24">
+        <div class="bg-sand border border-[#E8DDC9] rounded-[2rem] p-8 md:p-12 text-center">
+            <p class="font-serif text-3xl md:text-4xl mb-3">Experience it <span class="serif-i text-teal-deep">in person.</span></p>
+            <p class="text-ink/55 font-light mb-7">Tour the studio, see the scanners, sip the herbal tea. No drills running.</p>
+            <div class="flex flex-col sm:flex-row justify-center gap-3">
+                <a href="visit.html" class="px-9 py-4 bg-ink text-ivory rounded-full text-[13px] font-semibold tracking-[.12em] uppercase hover:bg-teal-deep transition">Book a tour</a>
+                <a href="smile-gallery.html" class="px-9 py-4 border border-ink/20 rounded-full text-[13px] font-semibold tracking-[.12em] uppercase hover:border-gold hover:text-gold transition">See results</a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-ink text-ivory/60 py-10 text-center text-sm font-light">
+        <div class="gold-rule max-w-4xl mx-auto mb-8 opacity-40"></div>
+        © 2026 Lumina Dental · <a href="index.html" class="text-gold-light hover:underline">Back to atelier</a>
     </footer>
 
 </body>

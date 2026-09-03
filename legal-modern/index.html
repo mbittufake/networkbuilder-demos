@@ -1,330 +1,153 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Midnight Counsel | Elite Defense</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        midnight: '#1a1a2e',
-                        gold: '#c5a059',
-                        surface: '#16213e'
-                    },
-                    fontFamily: {
-                        serif: ['Playfair Display', 'serif'],
-                        sans: ['Inter', 'sans-serif']
-                    }
-                }
-            }
-        }
-    </script>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;600&display=swap"
-        rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: #1a1a2e;
-            color: #fff;
-        }
-
-        h1,
-        h2,
-        h3 {
-            font-family: 'Playfair Display', serif;
-        }
-    </style>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Midnight Counsel | Elite Defense</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config={theme:{extend:{colors:{midnight:'#0F172A',royal:'#1E3A8A',egold:'#EAB308',mist:'#F1F5F9'},fontFamily:{sans:['Sora','sans-serif'],serif:['"IBM Plex Serif"','serif']},boxShadow:{tile:'0 12px 32px -12px rgba(15,23,42,.25)'}}}}
+</script>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=IBM+Plex+Serif:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+body{font-family:'Sora',sans-serif;background:#F1F5F9;color:#0F172A;}
+.font-serif{font-family:'IBM Plex Serif',serif!important;}
+.hero-grid-bg{background-image:linear-gradient(rgba(255,255,255,.07) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.07) 1px,transparent 1px);background-size:44px 44px;mask-image:radial-gradient(ellipse 90% 90% at 30% 40%,black 40%,transparent 100%);}
+.geo-cut{clip-path:polygon(0 0,100% 0,100% calc(100% - 48px),0 100%);}
+.stat-tile{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14);backdrop-filter:blur(8px);}
+.pill{border-radius:9999px;}
+</style>
 </head>
+<body class="pt-[104px]">
+<!-- Utility bar -->
+<div class="fixed top-0 w-full z-[60] bg-[#1E3A8A] text-white text-[12px]">
+  <div class="container mx-auto px-6 h-10 flex items-center justify-between">
+    <p class="flex items-center gap-2 font-semibold tracking-wide"><span class="w-2 h-2 rounded-full bg-[#EAB308] inline-block"></span> ISO 27001 CERTIFIED &nbsp;•&nbsp; 25+ YEARS IN PRACTICE</p>
+    <div class="flex items-center gap-5"><span class="hidden sm:inline opacity-80">+91 98765 43210</span><a href="contact.html" class="font-bold underline decoration-[#EAB308] decoration-2 underline-offset-4">Client Login</a></div>
+  </div>
+</div>
+<!-- Navbar -->
+<nav class="fixed top-10 w-full z-50 bg-white/95 backdrop-blur-md border-b border-slate-200 h-16 flex items-center">
+  <div class="container mx-auto px-6 flex justify-between items-center">
+    <a href="index.html" class="flex items-center gap-3"><span class="w-9 h-9 bg-[#1E3A8A] text-white font-extrabold flex items-center justify-center rounded-lg text-lg">M</span><span class="leading-none"><span class="block font-extrabold tracking-[0.14em] text-[#0F172A]">MIDNIGHT</span><span class="block text-[10px] font-semibold tracking-[0.3em] text-[#1E3A8A]">COUNSEL</span></span></a>
+    <div class="hidden md:flex items-center space-x-7">
+      <a href="index.html" class="text-[13px] font-bold text-[#1E3A8A] border-b-[3px] border-[#EAB308] pb-1">HOME</a>
+      <a href="about.html" class="text-[13px] font-semibold text-slate-500 hover:text-[#1E3A8A] transition">ABOUT</a>
+      <a href="practice.html" class="text-[13px] font-semibold text-slate-500 hover:text-[#1E3A8A] transition">EXPERTISE</a>
+      <a href="results.html" class="text-[13px] font-semibold text-slate-500 hover:text-[#1E3A8A] transition">RESULTS</a>
+      <a href="contact.html" class="text-[13px] font-semibold text-slate-500 hover:text-[#1E3A8A] transition">CONTACT</a>
+      <a href="contact.html" class="pill bg-[#EAB308] text-[#0F172A] text-[13px] font-bold px-6 py-2.5 hover:bg-[#0F172A] hover:text-white transition">Book Consultation →</a>
+    </div>
+    <button class="md:hidden text-[#0F172A] text-2xl" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')"><i class="fa-solid fa-bars"></i></button>
+  </div>
+  <div id="mobile-menu" class="hidden absolute top-16 left-0 w-full bg-white border-b-2 border-[#EAB308] p-6 flex flex-col space-y-4 md:hidden shadow-xl">
+    <a href="index.html" class="font-bold text-[#1E3A8A]">HOME</a>
+    <a href="about.html" class="font-semibold text-slate-500">ABOUT</a>
+    <a href="practice.html" class="font-semibold text-slate-500">EXPERTISE</a>
+    <a href="results.html" class="font-semibold text-slate-500">RESULTS</a>
+    <a href="contact.html" class="font-semibold text-slate-500">CONTACT</a>
+    <a href="contact.html" class="pill bg-[#EAB308] text-center font-bold py-3">Book Consultation →</a>
+  </div>
+</nav>
 
-<body class="pt-16"> <!-- Padding top for fixed header -->
+<!-- Hero -->
+<header class="relative overflow-hidden bg-gradient-to-br from-[#0F172A] via-[#1E3A8A] to-[#1e40af] geo-cut">
+  <div class="absolute inset-0 hero-grid-bg"></div>
+  <div class="absolute -right-24 -top-24 w-[420px] h-[420px] bg-[#EAB308]/20 rotate-12 rounded-[32px]"></div>
+  <div class="absolute right-40 bottom-10 w-24 h-24 bg-white/10 rounded-2xl rotate-12 hidden lg:block"></div>
+  <div class="container mx-auto px-6 relative z-10 grid lg:grid-cols-12 gap-12 items-center py-20 lg:py-28">
+    <div class="lg:col-span-7">
+      <span class="pill inline-flex items-center gap-2 bg-white/10 border border-white/20 text-white text-[12px] font-bold tracking-[0.14em] px-5 py-2"><span class="w-2 h-2 rounded-full bg-[#EAB308]"></span> DEFENDING HIGH-STAKES INTERESTS</span>
+      <h1 class="text-white font-extrabold leading-[0.95] mt-6" style="font-size:clamp(2.8rem,6vw,4.8rem)">Victory Is The<br><span class="text-[#EAB308]">Only Verdict.</span></h1>
+      <div class="h-[6px] w-24 bg-[#EAB308] rounded-full mt-6"></div>
+      <p class="text-slate-300 text-lg max-w-lg leading-relaxed mt-6">We represent corporations, executives, and public figures in their most critical moments. When the outcome is non-negotiable.</p>
+      <div class="flex flex-col sm:flex-row gap-4 pt-8">
+        <a href="contact.html" class="pill px-8 py-4 bg-[#EAB308] text-[#0F172A] font-bold text-sm tracking-wide hover:bg-white transition text-center shadow-tile">Book Consultation →</a>
+        <a href="practice.html" class="pill px-8 py-4 border-2 border-white/40 text-white font-bold text-sm tracking-wide hover:bg-white hover:text-[#0F172A] transition text-center">View Results</a>
+      </div>
+      <div class="flex items-center gap-3 mt-8 text-slate-300 text-[13px]"><i class="fa-solid fa-shield-halved text-[#EAB308]"></i> Trusted by 500+ corporates &amp; executives <span class="hidden sm:inline">•</span> <span class="font-serif italic hidden sm:inline">Privileged &amp; confidential</span></div>
+    </div>
+    <div class="lg:col-span-5">
+      <div class="grid grid-cols-2 gap-4">
+        <div class="stat-tile rounded-2xl p-6"><h3 class="text-4xl font-extrabold text-[#EAB308]">500+</h3><p class="text-white/70 font-bold text-[11px] tracking-[0.18em] mt-1">CASES WON</p><div class="h-1 bg-white/10 rounded-full mt-4"><div class="h-1 w-[92%] bg-[#EAB308] rounded-full"></div></div></div>
+        <div class="stat-tile rounded-2xl p-6 mt-6"><h3 class="text-4xl font-extrabold text-white">₹50Cr</h3><p class="text-white/70 font-bold text-[11px] tracking-[0.18em] mt-1">RECOVERED</p><div class="h-1 bg-white/10 rounded-full mt-4"><div class="h-1 w-[78%] bg-white rounded-full"></div></div></div>
+        <div class="stat-tile rounded-2xl p-6"><h3 class="text-4xl font-extrabold text-white">25+</h3><p class="text-white/70 font-bold text-[11px] tracking-[0.18em] mt-1">YEARS</p></div>
+        <div class="stat-tile rounded-2xl p-6 mt-6 bg-[#EAB308] !border-[#EAB308]"><h3 class="text-4xl font-extrabold text-[#0F172A]">24/7</h3><p class="text-[#0F172A]/70 font-bold text-[11px] tracking-[0.18em] mt-1">RESPONSE</p></div>
+      </div>
+    </div>
+  </div>
+</header>
 
-    <!-- Navbar -->
-    <nav
-        class="fixed top-0 w-full z-50 bg-midnight/90 backdrop-blur-md border-b border-white/10 h-16 flex items-center">
-        <div class="container mx-auto px-6 flex justify-between items-center">
-            <a href="index.html" class="text-xl font-bold tracking-widest text-gold uppercase">Midnight</a>
+<!-- Trust strip -->
+<div class="bg-white border-b border-slate-200">
+  <div class="container mx-auto px-6 py-6 flex flex-wrap items-center justify-between gap-4 text-slate-400 font-extrabold tracking-[0.18em] text-[12px]">
+    <span>TRUSTED BY LEADING TEAMS</span>
+    <span class="flex gap-8 flex-wrap"><span>◼ VERTEX</span><span>◼ TECHINFRA</span><span>◼ NOVAPAY</span><span>◼ DELTA LOGISTICS</span></span>
+  </div>
+</div>
 
-            <!-- Desktop Menu -->
-            <div class="hidden md:flex space-x-8">
-                <a href="index.html" class="text-sm uppercase tracking-wider text-gold font-semibold">Home</a>
-                <a href="about.html"
-                    class="text-sm uppercase tracking-wider text-gray-400 hover:text-gold transition">About</a>
-                <a href="practice.html"
-                    class="text-sm uppercase tracking-wider text-gray-400 hover:text-gold transition">Expertise</a>
-                <a href="results.html"
-                    class="text-sm uppercase tracking-wider text-gray-400 hover:text-gold transition">Results</a>
-                <a href="contact.html"
-                    class="text-sm uppercase tracking-wider text-gray-400 hover:text-gold transition">Contact</a>
-            </div>
+<!-- Why Choose Us -->
+<section class="py-20 bg-[#F1F5F9]">
+  <div class="container mx-auto px-6 grid lg:grid-cols-2 gap-14 items-center">
+    <div class="relative">
+      <div class="absolute -left-4 -top-4 w-full h-full bg-[#1E3A8A] rounded-2xl"></div>
+      <img src="https://images.unsplash.com/photo-1589829085413-56de8ae18c73?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80" alt="Legal Strategy" class="relative w-full h-[440px] object-cover rounded-2xl shadow-tile">
+      <div class="absolute -bottom-6 -right-4 md:right-8 bg-[#0F172A] text-white rounded-2xl px-7 py-5 shadow-tile flex items-center gap-4"><span class="w-12 h-12 rounded-xl bg-[#EAB308] text-[#0F172A] flex items-center justify-center text-xl font-extrabold">25</span><span class="text-sm font-bold leading-tight">Years of<br>courtroom wins</span></div>
+    </div>
+    <div>
+      <span class="pill bg-[#1E3A8A]/10 text-[#1E3A8A] text-[12px] font-bold tracking-[0.16em] px-4 py-1.5">THE MIDNIGHT STANDARD</span>
+      <h2 class="text-4xl font-extrabold leading-tight mt-4 text-[#0F172A]">We Don't Manage Crises.<br>We End Them.</h2>
+      <div class="mt-8 space-y-4">
+        <div class="flex gap-4 bg-white rounded-2xl p-5 border border-slate-200 shadow-sm"><span class="w-12 h-12 shrink-0 rounded-xl bg-[#1E3A8A] text-white flex items-center justify-center"><i class="fa-solid fa-chess-queen"></i></span><div><h4 class="font-bold">Strategic Domination</h4><p class="text-slate-500 text-sm mt-1 leading-relaxed">We anticipate prosecution moves before they make them. Our preparation is exhaustive, our execution is clinical.</p></div></div>
+        <div class="flex gap-4 bg-white rounded-2xl p-5 border border-slate-200 shadow-sm"><span class="w-12 h-12 shrink-0 rounded-xl bg-[#EAB308] text-[#0F172A] flex items-center justify-center"><i class="fa-solid fa-shield-halved"></i></span><div><h4 class="font-bold">Absolute Discretion</h4><p class="text-slate-500 text-sm mt-1 leading-relaxed">Your reputation is as valuable as your freedom. We operate in the shadows to protect your public image.</p></div></div>
+        <div class="flex gap-4 bg-white rounded-2xl p-5 border border-slate-200 shadow-sm"><span class="w-12 h-12 shrink-0 rounded-xl bg-[#0F172A] text-white flex items-center justify-center"><i class="fa-solid fa-scale-unbalanced-flip"></i></span><div><h4 class="font-bold">Unapologetic Advocacy</h4><p class="text-slate-500 text-sm mt-1 leading-relaxed">We are not here to make friends. We are here to win. We fight for you when no one else will.</p></div></div>
+      </div>
+    </div>
+  </div>
+</section>
 
-            <!-- Mobile Hamburger -->
-            <button class="md:hidden text-gold text-2xl"
-                onclick="document.getElementById('mobile-menu').classList.toggle('hidden')">
-                <i class="fa-solid fa-bars"></i>
-            </button>
-        </div>
+<!-- Expertise Preview -->
+<section class="py-20 bg-white">
+  <div class="container mx-auto px-6">
+    <div class="flex flex-col md:flex-row justify-between md:items-center mb-12 gap-6">
+      <div><span class="pill bg-[#EAB308]/15 text-[#926e00] text-[12px] font-bold tracking-[0.16em] px-4 py-1.5">OUR EXPERTISE</span><h2 class="text-4xl font-extrabold mt-3">Strategic Counsel<span class="text-[#EAB308]">.</span></h2><p class="font-serif italic text-slate-500 mt-2">Corporate-grade process, courtroom-grade aggression.</p></div>
+      <a href="practice.html" class="pill border-2 border-[#0F172A] px-6 py-3 text-sm font-bold hover:bg-[#0F172A] hover:text-white transition">View All Areas →</a>
+    </div>
+    <div class="grid md:grid-cols-3 gap-6">
+      <div class="group rounded-2xl border-2 border-slate-100 hover:border-[#1E3A8A] bg-[#F1F5F9] hover:bg-white hover:-translate-y-2 transition duration-300 p-8 border-t-8 !border-t-[#1E3A8A]"><span class="w-14 h-14 rounded-2xl bg-[#1E3A8A] text-white flex items-center justify-center text-2xl mb-6"><i class="fa-solid fa-gavel"></i></span><h3 class="text-xl font-extrabold mb-3">Criminal Defense</h3><p class="text-slate-500 text-sm mb-6 leading-relaxed">Aggressive representation for white-collar crimes and fraud. We dismantle the prosecution's case before trial.</p><a href="practice.html" class="text-[#1E3A8A] font-bold text-[13px] tracking-wide">LEARN MORE →</a></div>
+      <div class="group rounded-2xl border-2 border-slate-100 hover:border-[#EAB308] bg-[#0F172A] text-white hover:-translate-y-2 transition duration-300 p-8 border-t-8 !border-t-[#EAB308]"><span class="w-14 h-14 rounded-2xl bg-[#EAB308] text-[#0F172A] flex items-center justify-center text-2xl mb-6"><i class="fa-solid fa-building-columns"></i></span><h3 class="text-xl font-extrabold mb-3">Corporate Litigation</h3><p class="text-slate-300 text-sm mb-6 leading-relaxed">Protecting shareholder value and executive reputation in complex commercial disputes.</p><a href="practice.html" class="text-[#EAB308] font-bold text-[13px] tracking-wide">LEARN MORE →</a></div>
+      <div class="group rounded-2xl border-2 border-slate-100 hover:border-[#1E3A8A] bg-[#F1F5F9] hover:bg-white hover:-translate-y-2 transition duration-300 p-8 border-t-8 !border-t-[#1E3A8A]"><span class="w-14 h-14 rounded-2xl bg-[#1E3A8A] text-white flex items-center justify-center text-2xl mb-6"><i class="fa-solid fa-scale-balanced"></i></span><h3 class="text-xl font-extrabold mb-3">High-Net Divorce</h3><p class="text-slate-500 text-sm mb-6 leading-relaxed">Discreet settlements for substantial estates. Ensuring assets and privacy remain intact.</p><a href="practice.html" class="text-[#1E3A8A] font-bold text-[13px] tracking-wide">LEARN MORE →</a></div>
+    </div>
+  </div>
+</section>
 
-        <!-- Mobile Menu -->
-        <div id="mobile-menu"
-            class="hidden absolute top-16 left-0 w-full bg-midnight border-b border-gold p-6 flex flex-col space-y-4 md:hidden">
-            <a href="index.html" class="text-gold uppercase tracking-wider">Home</a>
-            <a href="about.html" class="text-gray-400 uppercase tracking-wider">About</a>
-            <a href="practice.html" class="text-gray-400 uppercase tracking-wider">Expertise</a>
-            <a href="results.html" class="text-gray-400 uppercase tracking-wider">Results</a>
-            <a href="contact.html" class="text-gray-400 uppercase tracking-wider">Contact</a>
-        </div>
-    </nav>
+<!-- Testimonials -->
+<section class="py-20 bg-[#0F172A] relative overflow-hidden">
+  <div class="absolute inset-0 hero-grid-bg opacity-60"></div>
+  <div class="container mx-auto px-6 relative">
+    <div class="text-center mb-12"><span class="pill bg-[#EAB308] text-[#0F172A] text-[12px] font-bold tracking-[0.16em] px-4 py-1.5">CLIENT PROOF</span><h2 class="text-3xl md:text-4xl font-extrabold text-white mt-4">What Our Clients Say</h2></div>
+    <div class="grid md:grid-cols-2 gap-6 text-left max-w-5xl mx-auto">
+      <div class="rounded-2xl bg-white p-8 border-l-8 border-[#EAB308]"><div class="flex gap-1 text-[#EAB308] mb-4">★★★★★</div><p class="text-[#0F172A] font-medium mb-6">"Midnight Counsel didn't just defend me; they went on the offensive. The result speaks for itself."</p><p class="font-bold text-[12px] tracking-[0.14em] text-[#1E3A8A]">— CEO, FINANCIAL SERVICES</p></div>
+      <div class="rounded-2xl bg-white p-8 border-l-8 border-[#1E3A8A]"><div class="flex gap-1 text-[#EAB308] mb-4">★★★★★</div><p class="text-[#0F172A] font-medium mb-6">"Discreet, powerful, and absolutely effective. Worth every rupee."</p><p class="font-bold text-[12px] tracking-[0.14em] text-[#1E3A8A]">— PRIVATE CLIENT</p></div>
+    </div>
+    <div class="text-center"><a href="results.html" class="pill inline-block mt-10 bg-white/10 border border-white/20 text-white text-sm font-bold px-8 py-3 hover:bg-[#EAB308] hover:text-[#0F172A] hover:border-[#EAB308] transition">Read More Success Stories →</a></div>
+  </div>
+</section>
 
-    <!-- Hero -->
-    <header class="relative h-screen flex items-center overflow-hidden">
-        <!-- Background Image -->
-        <div class="absolute inset-0 z-0">
-            <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80"
-                class="w-full h-full object-cover opacity-40">
-            <div class="absolute inset-0 bg-gradient-to-r from-midnight via-midnight/80 to-transparent"></div>
-        </div>
+<!-- CTA band -->
+<section class="bg-[#EAB308]"><div class="container mx-auto px-6 py-12 flex flex-col md:flex-row items-center justify-between gap-6"><h2 class="text-2xl md:text-3xl font-extrabold text-[#0F172A]">Facing a high-stakes matter? Talk to us today.</h2><a href="contact.html" class="pill bg-[#0F172A] text-white font-bold px-8 py-4 text-sm hover:bg-[#1E3A8A] transition shrink-0">Secure Consultation →</a></div></section>
 
-        <div class="container mx-auto px-6 relative z-10 grid md:grid-cols-2 gap-12 items-center">
-            <div class="space-y-6">
-                <span class="text-gold uppercase tracking-[0.2em] text-sm font-semibold">Defending High-Stakes
-                    Interests</span>
-                <h1 class="text-5xl md:text-7xl leading-tight font-bold">
-                    Victory Is The<br><span class="text-gold">Only Verdict.</span>
-                </h1>
-                <p class="text-gray-400 text-lg max-w-lg leading-relaxed">
-                    We represent corporations, executives, and public figures in their most critical moments. When the
-                    outcome is non-negotiable.
-                </p>
-                <div class="flex flex-col sm:flex-row gap-4 pt-4">
-                    <a href="contact.html"
-                        class="px-8 py-3 bg-gold text-midnight font-bold uppercase tracking-wider rounded-full hover:bg-white transition text-center">
-                        Book Consultation
-                    </a>
-                    <a href="practice.html"
-                        class="px-8 py-3 border border-gold text-gold font-bold uppercase tracking-wider rounded-full hover:bg-gold hover:text-midnight transition text-center">
-                        View Results
-                    </a>
-                </div>
-            </div>
-
-            <!-- Stats -->
-            <div class="grid grid-cols-2 gap-8 md:pl-20 border-t border-white/10 pt-8 md:border-t-0 md:pt-0">
-                <div>
-                    <h3 class="text-4xl md:text-5xl font-light text-gold mb-1">500+</h3>
-                    <p class="text-gray-500 uppercase text-xs tracking-widest">Cases Won</p>
-                </div>
-                <div>
-                    <h3 class="text-4xl md:text-5xl font-light text-gold mb-1">₹50Cr</h3>
-                    <p class="text-gray-500 uppercase text-xs tracking-widest">Recovered</p>
-                </div>
-            </div>
-        </div>
-    </header>
-
-    <!-- Why Choose Us -->
-    <section class="py-24 bg-surface">
-        <div class="container mx-auto px-6 grid md:grid-cols-2 gap-16 items-center">
-            <div class="relative">
-                <div class="absolute -inset-4 border-2 border-gold/20 -z-10 translate-x-4 translate-y-4"></div>
-                <img src="https://images.unsplash.com/photo-1589829085413-56de8ae18c73?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80"
-                    alt="Legal Strategy"
-                    class="w-full h-auto shadow-2xl grayscale hover:grayscale-0 transition duration-700">
-            </div>
-            <div class="space-y-8">
-                <div>
-                    <span class="text-gold uppercase tracking-widest text-xs font-bold mb-2 block">The Midnight
-                        Standard</span>
-                    <h2 class="text-4xl font-bold leading-tight">We Don't Manage Crises.<br>We End Them.</h2>
-                </div>
-                <div class="space-y-6">
-                    <div class="flex gap-4">
-                        <i class="fa-solid fa-chess-queen text-gold text-2xl mt-1"></i>
-                        <div>
-                            <h4 class="text-xl font-bold text-white">Strategic Domination</h4>
-                            <p class="text-gray-400 text-sm leading-relaxed mt-2">We anticipate prosecution moves before
-                                they make them. Our preparation is exhaustive, our execution is clinical.</p>
-                        </div>
-                    </div>
-                    <div class="flex gap-4">
-                        <i class="fa-solid fa-shield-halved text-gold text-2xl mt-1"></i>
-                        <div>
-                            <h4 class="text-xl font-bold text-white">Absolute Discretion</h4>
-                            <p class="text-gray-400 text-sm leading-relaxed mt-2">Your reputation is as valuable as your
-                                freedom. We operate in the shadows to protect your public image.</p>
-                        </div>
-                    </div>
-                    <div class="flex gap-4">
-                        <i class="fa-solid fa-scale-unbalanced-flip text-gold text-2xl mt-1"></i>
-                        <div>
-                            <h4 class="text-xl font-bold text-white">Unapologetic Advocacy</h4>
-                            <p class="text-gray-400 text-sm leading-relaxed mt-2">We are not here to make friends. We
-                                are here to win. We fight for you when no one else will.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Expertise Preview -->
-    <section class="py-24 bg-midnight">
-        <div class="container mx-auto px-6">
-            <div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
-                <div>
-                    <span class="text-gold uppercase tracking-widest text-xs font-bold mb-2 block">Our Expertise</span>
-                    <h2 class="text-4xl md:text-5xl font-bold">Strategic Counsel.</h2>
-                </div>
-                <a href="practice.html"
-                    class="text-gold uppercase text-sm font-bold tracking-wider hover:text-white transition">View All
-                    Areas →</a>
-            </div>
-
-            <div class="grid md:grid-cols-3 gap-8">
-                <!-- Card 1 -->
-                <div
-                    class="group p-8 border border-white/5 bg-white/5 hover:border-gold hover:-translate-y-2 transition duration-300">
-                    <i class="fa-solid fa-gavel text-3xl text-gold mb-6"></i>
-                    <h3 class="text-2xl font-bold mb-4 group-hover:text-gold transition">Criminal Defense</h3>
-                    <p class="text-gray-400 mb-6 leading-relaxed">Aggressive representation for white-collar crimes and
-                        fraud. We dismantle the prosecution's case before trial.</p>
-                    <a href="practice.html" class="text-gold uppercase text-xs font-bold tracking-wider">Learn More</a>
-                </div>
-
-                <!-- Card 2 -->
-                <div
-                    class="group p-8 border border-white/5 bg-white/5 hover:border-gold hover:-translate-y-2 transition duration-300">
-                    <i class="fa-solid fa-building-columns text-3xl text-gold mb-6"></i>
-                    <h3 class="text-2xl font-bold mb-4 group-hover:text-gold transition">Corporate Litigation</h3>
-                    <p class="text-gray-400 mb-6 leading-relaxed">Protecting shareholder value and executive reputation
-                        in complex commercial disputes.</p>
-                    <a href="practice.html" class="text-gold uppercase text-xs font-bold tracking-wider">Learn More</a>
-                </div>
-
-                <!-- Card 3 -->
-                <div
-                    class="group p-8 border border-white/5 bg-white/5 hover:border-gold hover:-translate-y-2 transition duration-300">
-                    <i class="fa-solid fa-scale-balanced text-3xl text-gold mb-6"></i>
-                    <h3 class="text-2xl font-bold mb-4 group-hover:text-gold transition">High-Net Divorce</h3>
-                    <p class="text-gray-400 mb-6 leading-relaxed">Discreet settlements for substantial estates. Ensuring
-                        assets and privacy remain intact.</p>
-                    <a href="practice.html" class="text-gold uppercase text-xs font-bold tracking-wider">Learn More</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Testimonials Preview -->
-    <section class="py-24 bg-surface border-t border-white/5">
-        <div class="container mx-auto px-6 text-center">
-            <h2 class="text-3xl font-bold mb-12">What Our Clients Say</h2>
-            <div class="grid md:grid-cols-2 gap-8 text-left">
-                <div class="p-8 border-l-2 border-gold bg-black/20">
-                    <p class="text-gray-300 italic mb-6">"Midnight Counsel didn't just defend me; they went on the
-                        offensive. The result speaks for itself."</p>
-                    <p class="text-gold font-bold uppercase text-xs tracking-widest">- CEO, Financial Services</p>
-                </div>
-                <div class="p-8 border-l-2 border-gold bg-black/20">
-                    <p class="text-gray-300 italic mb-6">"Discreet, powerful, and absolutely effective. Worth every
-                        rupee."</p>
-                    <p class="text-gold font-bold uppercase text-xs tracking-widest">- Private Client</p>
-                </div>
-            </div>
-            <a href="results.html"
-                class="inline-block mt-12 text-gold uppercase text-sm font-bold tracking-wider hover:text-white transition">Read
-                More Success Stories →</a>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <!-- Footer -->
-    <footer class="bg-black/40 pt-16 pb-8 border-t border-white/5">
-        <div class="container mx-auto px-6">
-            <div class="grid md:grid-cols-4 gap-12 mb-12">
-                <!-- Brand -->
-                <div class="space-y-4">
-                    <a href="index.html"
-                        class="text-2xl font-bold text-gold uppercase tracking-widest block">Midnight</a>
-                    <p class="text-gray-400 text-sm leading-relaxed">
-                        Victory is the only verdict. We provide aggressive, strategic representation for high-stakes
-                        legal matters.
-                    </p>
-                    <div class="flex space-x-4">
-                        <a href="#" class="text-gray-400 hover:text-gold transition"><i
-                                class="fa-brands fa-linkedin text-xl"></i></a>
-                        <a href="#" class="text-gray-400 hover:text-gold transition"><i
-                                class="fa-brands fa-twitter text-xl"></i></a>
-                    </div>
-                </div>
-
-                <!-- Quick Links -->
-                <div>
-                    <h4 class="text-white font-bold uppercase tracking-widest text-xs mb-6">Quick Links</h4>
-                    <ul class="space-y-3">
-                        <li><a href="index.html" class="text-gray-400 hover:text-gold text-sm transition">Home</a></li>
-                        <li><a href="about.html" class="text-gray-400 hover:text-gold text-sm transition">About Us</a>
-                        </li>
-                        <li><a href="practice.html"
-                                class="text-gray-400 hover:text-gold text-sm transition">Expertise</a></li>
-                        <li><a href="results.html" class="text-gray-400 hover:text-gold text-sm transition">Results</a>
-                        </li>
-                        <li><a href="contact.html" class="text-gray-400 hover:text-gold text-sm transition">Contact</a>
-                        </li>
-                    </ul>
-                </div>
-
-                <!-- Expertise -->
-                <div>
-                    <h4 class="text-white font-bold uppercase tracking-widest text-xs mb-6">Expertise</h4>
-                    <ul class="space-y-3">
-                        <li><a href="practice.html" class="text-gray-400 hover:text-gold text-sm transition">Criminal
-                                Defense</a></li>
-                        <li><a href="practice.html" class="text-gray-400 hover:text-gold text-sm transition">Corporate
-                                Litigation</a></li>
-                        <li><a href="practice.html" class="text-gray-400 hover:text-gold text-sm transition">Family
-                                Law</a></li>
-                        <li><a href="practice.html" class="text-gray-400 hover:text-gold text-sm transition">Property
-                                Disputes</a></li>
-                        <li><a href="practice.html" class="text-gray-400 hover:text-gold text-sm transition">White
-                                Collar Crime</a></li>
-                    </ul>
-                </div>
-
-                <!-- Contact -->
-                <div>
-                    <h4 class="text-white font-bold uppercase tracking-widest text-xs mb-6">Connect</h4>
-                    <ul class="space-y-4">
-                        <li class="flex items-start gap-3 text-gray-400 text-sm">
-                            <i class="fa-solid fa-location-dot mt-1 text-gold"></i>
-                            <span>Shivajinagar, Pune 411005<br>Maharashtra, India</span>
-                        </li>
-                        <li class="flex items-center gap-3 text-gray-400 text-sm">
-                            <i class="fa-solid fa-phone text-gold"></i>
-                            <span>+91 98765 43210</span>
-                        </li>
-                        <li class="flex items-center gap-3 text-gray-400 text-sm">
-                            <i class="fa-solid fa-envelope text-gold"></i>
-                            <span>counsel@midnightlegal.com</span>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-
-            <!-- Bottom Bar -->
-            <div
-                class="border-t border-white/5 pt-8 flex flex-col md:flex-row justify-between items-center bg-transparent">
-                <p class="text-gray-600 text-xs">&copy; 2024 Midnight Counsel. Confidential & Privileged.</p>
-                <p class="text-gray-600 text-xs mt-2 md:mt-0">Attorney Advertisement. Past results do not guarantee
-                    future outcomes.</p>
-            </div>
-        </div>
-    </footer>
-
+<!-- Footer -->
+<footer class="bg-[#0F172A] pt-14 pb-8 border-t-4 border-[#EAB308]">
+  <div class="container mx-auto px-6">
+    <div class="grid md:grid-cols-4 gap-10 mb-10">
+      <div class="space-y-4"><a href="index.html" class="flex items-center gap-3"><span class="w-9 h-9 bg-[#EAB308] text-[#0F172A] font-extrabold flex items-center justify-center rounded-lg">M</span><span class="font-extrabold text-white tracking-[0.14em]">MIDNIGHT</span></a><p class="text-slate-400 text-sm leading-relaxed">Victory is the only verdict. We provide aggressive, strategic representation for high-stakes legal matters.</p><div class="flex space-x-3"><a href="#" class="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center text-slate-300 hover:bg-[#EAB308] hover:text-[#0F172A] transition"><i class="fa-brands fa-linkedin"></i></a><a href="#" class="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center text-slate-300 hover:bg-[#EAB308] hover:text-[#0F172A] transition"><i class="fa-brands fa-twitter"></i></a></div></div>
+      <div><h4 class="text-white font-bold text-[12px] tracking-[0.18em] mb-5">QUICK LINKS</h4><ul class="space-y-3 text-sm"><li><a href="index.html" class="text-slate-400 hover:text-[#EAB308]">Home</a></li><li><a href="about.html" class="text-slate-400 hover:text-[#EAB308]">About Us</a></li><li><a href="practice.html" class="text-slate-400 hover:text-[#EAB308]">Expertise</a></li><li><a href="results.html" class="text-slate-400 hover:text-[#EAB308]">Results</a></li><li><a href="contact.html" class="text-slate-400 hover:text-[#EAB308]">Contact</a></li></ul></div>
+      <div><h4 class="text-white font-bold text-[12px] tracking-[0.18em] mb-5">EXPERTISE</h4><ul class="space-y-3 text-sm"><li><a href="practice.html" class="text-slate-400 hover:text-[#EAB308]">Criminal Defense</a></li><li><a href="practice.html" class="text-slate-400 hover:text-[#EAB308]">Corporate Litigation</a></li><li><a href="practice.html" class="text-slate-400 hover:text-[#EAB308]">Family Law</a></li><li><a href="practice.html" class="text-slate-400 hover:text-[#EAB308]">Property Disputes</a></li><li><a href="practice.html" class="text-slate-400 hover:text-[#EAB308]">White Collar Crime</a></li></ul></div>
+      <div><h4 class="text-white font-bold text-[12px] tracking-[0.18em] mb-5">CONNECT</h4><ul class="space-y-3 text-sm text-slate-400"><li class="flex gap-3"><i class="fa-solid fa-location-dot mt-1 text-[#EAB308]"></i><span>Shivajinagar, Pune 411005<br>Maharashtra, India</span></li><li class="flex gap-3"><i class="fa-solid fa-phone text-[#EAB308]"></i><span>+91 98765 43210</span></li><li class="flex gap-3"><i class="fa-solid fa-envelope text-[#EAB308]"></i><span>counsel@midnightlegal.com</span></li></ul></div>
+    </div>
+    <div class="border-t border-white/10 pt-6 flex flex-col md:flex-row justify-between text-[12px] text-slate-500"><p>&copy; 2024 Midnight Counsel. Confidential &amp; Privileged.</p><p class="mt-2 md:mt-0">Attorney Advertisement. Past results do not guarantee future outcomes.</p></div>
+  </div>
+</footer>
 </body>
-
 </html>

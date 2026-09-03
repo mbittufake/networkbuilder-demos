@@ -1,178 +1,125 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Doctors | City Care Clinic</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;1,9..144,500;1,9..144,600&display=swap" rel="stylesheet">
     <script>
         tailwind.config = {
             theme: {
                 extend: {
-                    fontFamily: { sans: ['Inter', 'sans-serif'] },
-                    colors: {
-                        primary: '#2E7D9A',    // Calm Blue/Teal
-                        accent: '#5FB3A2',     // Muted Green (CTAs)
-                        surface: '#F8FAFC',    // Warm off-white
-                        text: '#1F2937',       // Dark Gray (Readability)
-                        muted: '#6B7280',      // Secondary Text
-                        border: '#E5E7EB',     // Soft Border
-                    },
-                    boxShadow: {
-                        'soft': '0 4px 20px -2px rgba(0, 0, 0, 0.05)',
-                        'card': '0 1px 3px 0 rgba(0, 0, 0, 0.05), 0 1px 2px 0 rgba(0, 0, 0, 0.03)',
-                    }
+                    fontFamily: { sans: ['Plus Jakarta Sans','sans-serif'], serif: ['Fraunces','serif'] },
+                    colors: { mist:'#F0FAF8', teal:{DEFAULT:'#0E9F8A',dark:'#0B7E6E',soft:'#D9F2EC'}, deep:'#0B3B36', lime:'#D8F3DC', primary:'#0E9F8A', muted:'#5F6E6A', border:'#DCEBE6' },
+                    boxShadow: { soft:'0 20px 60px -20px rgba(11,59,54,.18)', card:'0 8px 30px -10px rgba(11,59,54,.12)', float:'0 24px 60px -16px rgba(11,59,54,.28)' }
                 }
             }
         }
     </script>
+    <style>
+        .card-lift{transition:transform .4s cubic-bezier(.16,1,.3,1),box-shadow .4s,border-color .3s}
+        .card-lift:hover{transform:translateY(-6px)}
+        ::selection{background:#0E9F8A;color:#fff}
+    </style>
 </head>
-<body class="bg-surface text-text font-sans antialiased">
+<body class="bg-mist/50 text-[#10201D] font-sans antialiased overflow-x-hidden">
 
-    <!-- Navbar -->
-    <nav class="bg-white border-b border-border sticky top-0 z-50">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 h-20 flex items-center justify-between">
-            <a href="index.html" class="flex items-center gap-2">
-                <div class="w-8 h-8 bg-primary/10 text-primary rounded-lg flex items-center justify-center">
-                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg>
-                </div>
-                <span class="text-xl font-bold tracking-tight text-primary">City Care Clinic</span>
+    <div class="bg-deep text-white/90 text-[12px] sm:text-[13px]">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 py-2.5 text-center">All doctors verified · Same-week availability · <a href="booking.html" class="text-lime font-bold hover:text-white transition">Book in 60 seconds →</a></div>
+    </div>
+
+    <nav class="bg-white/85 backdrop-blur-xl border-b border-border/70 sticky top-0 z-50">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 h-[76px] flex items-center justify-between gap-4">
+            <a href="index.html" class="flex items-center gap-3">
+                <div class="w-11 h-11 rounded-2xl bg-gradient-to-br from-teal to-deep text-white flex items-center justify-center shadow-card"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg></div>
+                <span class="leading-none"><span class="block text-[17px] font-extrabold tracking-tight text-deep">City Care Clinic</span><span class="block text-[11px] font-semibold tracking-[.18em] uppercase text-teal mt-1">Care · Clarity · Calm</span></span>
             </a>
-            
-            <div class="hidden md:flex items-center space-x-8 text-sm font-medium text-gray-600">
-                <a href="doctors.html" class="text-primary font-semibold">Doctors</a>
-                <a href="services.html" class="hover:text-primary transition">Services</a>
-                <a href="index.html#contact" class="hover:text-primary transition">Location</a>
+            <div class="hidden md:flex items-center gap-8 text-[14px] font-semibold text-[#334744]">
+                <a href="doctors.html" class="text-teal font-extrabold bg-mist px-4 py-2 rounded-full border border-teal/20">Doctors</a>
+                <a href="services.html" class="hover:text-teal transition">Services</a>
+                <a href="index.html#contact" class="hover:text-teal transition">Location</a>
             </div>
-
-            <div class="flex items-center gap-4">
-                <a href="booking.html" class="bg-primary text-white text-sm font-medium px-5 py-2.5 rounded-lg hover:bg-[#25667e] transition shadow-sm">
-                    Book Appointment
-                </a>
-            </div>
+            <a href="booking.html" class="bg-deep text-white text-sm font-bold px-5 sm:px-6 py-3 rounded-full hover:bg-teal transition-all shadow-card">Book Appointment</a>
         </div>
     </nav>
 
-    <!-- Header -->
-    <header class="bg-white py-16 md:py-20 border-b border-border">
-        <div class="max-w-4xl mx-auto px-4 text-center">
-            <span class="inline-block py-1 px-3 rounded-full bg-blue-50 text-primary text-xs font-semibold mb-6">
-                Our Specialists
-            </span>
-            <h1 class="text-3xl md:text-4xl font-bold mb-6 text-gray-900">Expert Doctors You Can Trust</h1>
-            <p class="text-lg text-muted max-w-2xl mx-auto leading-relaxed">
-                Our team of licensed, experienced medical professionals is dedicated to providing you with the best possible care.
-            </p>
+    <header class="bg-gradient-to-b from-mist via-white to-mist/40 py-14 md:py-20 border-b border-border/60 relative overflow-hidden">
+        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[560px] h-[240px] bg-lime/60 blur-3xl rounded-full pointer-events-none"></div>
+        <div class="max-w-3xl mx-auto px-4 text-center relative">
+            <span class="inline-flex items-center gap-2 py-1.5 px-4 rounded-full bg-white border border-border shadow-card text-teal text-[11px] font-extrabold uppercase tracking-[.16em] mb-5">♥ Our Specialists</span>
+            <h1 class="font-serif text-4xl md:text-[52px] leading-[1.05] text-deep tracking-tight mb-4">Expert doctors <em class="italic text-teal">you can trust.</em></h1>
+            <p class="text-[16px] md:text-lg text-muted max-w-2xl mx-auto leading-relaxed">Our team of licensed, experienced medical professionals is dedicated to providing you with the best possible care.</p>
+            <div class="flex flex-wrap justify-center gap-2 mt-7">
+                <span class="text-[12px] font-extrabold bg-deep text-white px-4 py-2 rounded-full">All specialities</span>
+                <span class="text-[12px] font-bold bg-white border border-border text-muted px-4 py-2 rounded-full">Cardiology</span>
+                <span class="text-[12px] font-bold bg-white border border-border text-muted px-4 py-2 rounded-full">Pediatrics</span>
+                <span class="text-[12px] font-bold bg-white border border-border text-muted px-4 py-2 rounded-full">Ortho</span>
+                <span class="text-[12px] font-bold bg-white border border-border text-muted px-4 py-2 rounded-full">Neuro</span>
+            </div>
         </div>
     </header>
 
-    <!-- Doctors Grid -->
-    <section class="py-16 md:py-24 bg-surface">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 grid gap-8 md:grid-cols-2 lg:grid-cols-4">
-
-            <!-- Doctor 1 -->
-            <div class="bg-white rounded-xl overflow-hidden border border-border shadow-card hover:shadow-lg transition duration-300">
-                <img src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?q=80&w=400&auto=format&fit=crop" class="w-full h-64 object-cover object-top" alt="Dr. Sharma">
-                <div class="p-6">
-                    <h3 class="text-lg font-bold text-gray-900">Dr. Anjali Sharma</h3>
-                    <p class="text-primary text-xs font-semibold uppercase tracking-wide mb-2">Cardiologist</p>
-                    <p class="text-muted text-xs mb-4">MBBS, MD • 12 Years Exp.</p>
-                    <a href="booking.html" class="block text-center w-full py-2.5 rounded-lg border border-gray-200 text-sm font-medium hover:bg-primary hover:text-white hover:border-transparent transition">Book Appointment</a>
-                </div>
+    <section class="py-14 md:py-20">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+            <div class="bg-white rounded-[24px] overflow-hidden border border-border shadow-card card-lift hover:shadow-float group">
+                <div class="relative overflow-hidden"><img src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?q=80&w=400&auto=format&fit=crop" class="w-full h-64 object-cover object-top group-hover:scale-105 transition duration-700" alt="Dr. Sharma"><span class="absolute top-3 left-3 bg-white/90 backdrop-blur text-deep text-[11px] font-extrabold px-3 py-1.5 rounded-full">★ 4.9 · 2k visits</span><span class="absolute bottom-3 left-3 bg-deep/90 backdrop-blur text-lime text-[11px] font-extrabold px-3 py-1.5 rounded-full">● Available today</span></div>
+                <div class="p-6"><h3 class="text-lg font-extrabold text-deep">Dr. Anjali Sharma</h3><p class="text-teal text-[11px] font-extrabold uppercase tracking-[.12em] mt-1 mb-1.5">Cardiologist</p><p class="text-muted text-xs mb-1.5 font-semibold">MBBS, MD • 12 Years Exp.</p><p class="text-muted text-[13px] mb-4">Heart health, ECG & preventive screening.</p><a href="booking.html" class="block text-center w-full py-3 rounded-full bg-deep text-white text-sm font-bold hover:bg-teal transition">Book Appointment →</a></div>
             </div>
-
-            <!-- Doctor 2 -->
-            <div class="bg-white rounded-xl overflow-hidden border border-border shadow-card hover:shadow-lg transition duration-300">
-                <img src="https://images.unsplash.com/photo-1537368910025-700350fe46c7?q=80&w=400&auto=format&fit=crop" class="w-full h-64 object-cover object-top" alt="Dr. Roy">
-                <div class="p-6">
-                    <h3 class="text-lg font-bold text-gray-900">Dr. Rajesh Roy</h3>
-                    <p class="text-primary text-xs font-semibold uppercase tracking-wide mb-2">General Physician</p>
-                    <p class="text-muted text-xs mb-4">MBBS • 15 Years Exp.</p>
-                    <a href="booking.html" class="block text-center w-full py-2.5 rounded-lg border border-gray-200 text-sm font-medium hover:bg-primary hover:text-white hover:border-transparent transition">Book Appointment</a>
-                </div>
+            <div class="bg-white rounded-[24px] overflow-hidden border border-border shadow-card card-lift hover:shadow-float group">
+                <div class="relative overflow-hidden"><img src="https://images.unsplash.com/photo-1537368910025-700350fe46c7?q=80&w=400&auto=format&fit=crop" class="w-full h-64 object-cover object-top group-hover:scale-105 transition duration-700" alt="Dr. Roy"><span class="absolute top-3 left-3 bg-white/90 backdrop-blur text-deep text-[11px] font-extrabold px-3 py-1.5 rounded-full">★ 4.8 · 5k visits</span><span class="absolute bottom-3 left-3 bg-deep/90 backdrop-blur text-lime text-[11px] font-extrabold px-3 py-1.5 rounded-full">● Available today</span></div>
+                <div class="p-6"><h3 class="text-lg font-extrabold text-deep">Dr. Rajesh Roy</h3><p class="text-teal text-[11px] font-extrabold uppercase tracking-[.12em] mt-1 mb-1.5">General Physician</p><p class="text-muted text-xs mb-1.5 font-semibold">MBBS • 15 Years Exp.</p><p class="text-muted text-[13px] mb-4">Fever, diabetes, hypertension & check-ups.</p><a href="booking.html" class="block text-center w-full py-3 rounded-full bg-mist border border-border text-sm font-bold text-deep hover:bg-deep hover:text-white hover:border-deep transition">Book Appointment →</a></div>
             </div>
-
-            <!-- Doctor 3 -->
-            <div class="bg-white rounded-xl overflow-hidden border border-border shadow-card hover:shadow-lg transition duration-300">
-                <img src="https://images.unsplash.com/photo-1594824476967-48c8b964273f?q=80&w=400&auto=format&fit=crop" class="w-full h-64 object-cover object-top" alt="Dr. Das">
-                <div class="p-6">
-                    <h3 class="text-lg font-bold text-gray-900">Dr. Sneha Das</h3>
-                    <p class="text-primary text-xs font-semibold uppercase tracking-wide mb-2">Pediatrician</p>
-                    <p class="text-muted text-xs mb-4">MBBS, DCH • 8 Years Exp.</p>
-                    <a href="booking.html" class="block text-center w-full py-2.5 rounded-lg border border-gray-200 text-sm font-medium hover:bg-primary hover:text-white hover:border-transparent transition">Book Appointment</a>
-                </div>
+            <div class="bg-white rounded-[24px] overflow-hidden border border-border shadow-card card-lift hover:shadow-float group">
+                <div class="relative overflow-hidden"><img src="https://images.unsplash.com/photo-1594824476967-48c8b964273f?q=80&w=400&auto=format&fit=crop" class="w-full h-64 object-cover object-top group-hover:scale-105 transition duration-700" alt="Dr. Das"><span class="absolute top-3 left-3 bg-lime text-deep text-[11px] font-extrabold px-3 py-1.5 rounded-full">♥ Kids favourite</span></div>
+                <div class="p-6"><h3 class="text-lg font-extrabold text-deep">Dr. Sneha Das</h3><p class="text-teal text-[11px] font-extrabold uppercase tracking-[.12em] mt-1 mb-1.5">Pediatrician</p><p class="text-muted text-xs mb-1.5 font-semibold">MBBS, DCH • 8 Years Exp.</p><p class="text-muted text-[13px] mb-4">Newborn care, vaccines & growth tracking.</p><a href="booking.html" class="block text-center w-full py-3 rounded-full bg-mist border border-border text-sm font-bold text-deep hover:bg-deep hover:text-white hover:border-deep transition">Book Appointment →</a></div>
             </div>
-
-            <!-- Doctor 4 -->
-            <div class="bg-white rounded-xl overflow-hidden border border-border shadow-card hover:shadow-lg transition duration-300">
-                <img src="https://images.unsplash.com/photo-1622253692010-333f2da6031d?q=80&w=400&auto=format&fit=crop" class="w-full h-64 object-cover object-top" alt="Dr. Khan">
-                <div class="p-6">
-                    <h3 class="text-lg font-bold text-gray-900">Dr. Amir Khan</h3>
-                    <p class="text-primary text-xs font-semibold uppercase tracking-wide mb-2">Neurologist</p>
-                    <p class="text-muted text-xs mb-4">MBBS, DM • 10 Years Exp.</p>
-                    <a href="booking.html" class="block text-center w-full py-2.5 rounded-lg border border-gray-200 text-sm font-medium hover:bg-primary hover:text-white hover:border-transparent transition">Book Appointment</a>
-                </div>
+            <div class="bg-white rounded-[24px] overflow-hidden border border-border shadow-card card-lift hover:shadow-float group">
+                <div class="relative overflow-hidden"><img src="https://images.unsplash.com/photo-1622253692010-333f2da6031d?q=80&w=400&auto=format&fit=crop" class="w-full h-64 object-cover object-top group-hover:scale-105 transition duration-700" alt="Dr. Khan"><span class="absolute top-3 left-3 bg-white/90 backdrop-blur text-deep text-[11px] font-extrabold px-3 py-1.5 rounded-full">★ 4.9 · Neuro</span></div>
+                <div class="p-6"><h3 class="text-lg font-extrabold text-deep">Dr. Amir Khan</h3><p class="text-teal text-[11px] font-extrabold uppercase tracking-[.12em] mt-1 mb-1.5">Neurologist</p><p class="text-muted text-xs mb-1.5 font-semibold">MBBS, DM • 10 Years Exp.</p><p class="text-muted text-[13px] mb-4">Headache, migraine, nerve & sleep issues.</p><a href="booking.html" class="block text-center w-full py-3 rounded-full bg-mist border border-border text-sm font-bold text-deep hover:bg-deep hover:text-white hover:border-deep transition">Book Appointment →</a></div>
             </div>
-
-            <!-- Doctor 5 -->
-            <div class="bg-white rounded-xl overflow-hidden border border-border shadow-card hover:shadow-lg transition duration-300">
-                <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?q=80&w=400&auto=format&fit=crop" class="w-full h-64 object-cover object-top" alt="Dr. Patel">
-                <div class="p-6">
-                    <h3 class="text-lg font-bold text-gray-900">Dr. Vikram Patel</h3>
-                    <p class="text-primary text-xs font-semibold uppercase tracking-wide mb-2">Orthopedic</p>
-                    <p class="text-muted text-xs mb-4">MBBS, MS • 18 Years Exp.</p>
-                    <a href="booking.html" class="block text-center w-full py-2.5 rounded-lg border border-gray-200 text-sm font-medium hover:bg-primary hover:text-white hover:border-transparent transition">Book Appointment</a>
-                </div>
+            <div class="bg-white rounded-[24px] overflow-hidden border border-border shadow-card card-lift hover:shadow-float group">
+                <div class="relative overflow-hidden"><img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?q=80&w=400&auto=format&fit=crop" class="w-full h-64 object-cover object-top group-hover:scale-105 transition duration-700" alt="Dr. Patel"><span class="absolute top-3 left-3 bg-white/90 backdrop-blur text-deep text-[11px] font-extrabold px-3 py-1.5 rounded-full">★ 4.8 · Ortho</span></div>
+                <div class="p-6"><h3 class="text-lg font-extrabold text-deep">Dr. Vikram Patel</h3><p class="text-teal text-[11px] font-extrabold uppercase tracking-[.12em] mt-1 mb-1.5">Orthopedic</p><p class="text-muted text-xs mb-1.5 font-semibold">MBBS, MS • 18 Years Exp.</p><p class="text-muted text-[13px] mb-4">Fractures, joint pain & physiotherapy.</p><a href="booking.html" class="block text-center w-full py-3 rounded-full bg-mist border border-border text-sm font-bold text-deep hover:bg-deep hover:text-white hover:border-deep transition">Book Appointment →</a></div>
             </div>
-
-            <!-- Doctor 6 -->
-            <div class="bg-white rounded-xl overflow-hidden border border-border shadow-card hover:shadow-lg transition duration-300">
-                <img src="https://images.unsplash.com/photo-1527613426441-4da17471b66d?q=80&w=400&auto=format&fit=crop" class="w-full h-64 object-cover object-top" alt="Dr. Mehta">
-                <div class="p-6">
-                    <h3 class="text-lg font-bold text-gray-900">Dr. Aisha Mehta</h3>
-                    <p class="text-primary text-xs font-semibold uppercase tracking-wide mb-2">Dermatologist</p>
-                    <p class="text-muted text-xs mb-4">MBBS, MD • 6 Years Exp.</p>
-                    <a href="booking.html" class="block text-center w-full py-2.5 rounded-lg border border-gray-200 text-sm font-medium hover:bg-primary hover:text-white hover:border-transparent transition">Book Appointment</a>
-                </div>
+            <div class="bg-deep rounded-[24px] overflow-hidden border border-deep shadow-float card-lift hover:shadow-float p-7 flex flex-col justify-center relative overflow-hidden">
+                <div class="absolute -top-12 -right-12 w-48 h-48 bg-teal/40 blur-3xl rounded-full"></div>
+                <p class="text-[11px] font-extrabold uppercase tracking-[.16em] text-lime mb-3 relative">Not sure who to see?</p>
+                <h3 class="font-serif text-3xl text-white leading-tight mb-3 relative">Tell us your <em class="italic text-lime">symptom.</em></h3>
+                <p class="text-white/70 text-sm mb-6 relative">Our care team will match you to the right doctor within minutes.</p>
+                <a href="booking.html" class="relative block text-center bg-lime text-deep font-extrabold py-3.5 rounded-full hover:bg-white transition text-sm">Get matched →</a>
+                <a href="tel:03324567890" class="relative block text-center mt-3 text-lime text-sm font-bold hover:text-white transition">or call 033-2456-7890</a>
+                <div class="relative overflow-hidden rounded-2xl mt-6"><img src="https://images.unsplash.com/photo-1527613426441-4da17471b66d?q=80&w=400&auto=format&fit=crop" class="w-full h-40 object-cover object-top opacity-90" alt="Dr. Mehta"><div class="absolute inset-0 bg-gradient-to-t from-deep via-deep/40 to-transparent"></div><div class="absolute bottom-3 left-3 right-3"><p class="text-white font-extrabold text-sm">Dr. Aisha Mehta · Dermatologist</p><a href="booking.html" class="text-lime text-[13px] font-bold">Book skin consult →</a></div></div>
             </div>
-
+        </div>
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 mt-10">
+            <div class="bg-white border border-border rounded-[24px] p-6 md:p-8 flex flex-col md:flex-row items-center justify-between gap-5 shadow-card">
+                <div class="flex items-center gap-4"><span class="w-12 h-12 rounded-2xl bg-lime text-deep flex items-center justify-center font-extrabold text-xl shrink-0">✓</span><p class="text-deep font-bold">Every profile verified · Registration numbers checked · <span class="text-muted font-semibold">Transparent fees before you book.</span></p></div>
+                <a href="booking.html" class="shrink-0 bg-teal text-white font-bold px-7 py-3.5 rounded-full hover:bg-deep transition shadow-card">Book a visit →</a>
+            </div>
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="bg-gray-50 border-t border-border pt-16 pb-8">
+    <footer class="bg-mist border-t border-border pt-14 pb-8">
         <div class="max-w-6xl mx-auto px-4 sm:px-6">
-            <div class="grid md:grid-cols-3 gap-12 mb-12">
+            <div class="grid md:grid-cols-3 gap-10 mb-10">
                 <div>
-                    <div class="flex items-center gap-2 mb-6">
-                        <div class="w-6 h-6 bg-primary/10 text-primary rounded flex items-center justify-center">
-                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg>
-                        </div>
-                        <span class="text-lg font-bold text-gray-900">City Care Clinic</span>
-                    </div>
-                    <div class="space-y-4 text-sm text-gray-600">
-                        <p class="flex items-start gap-3">
-                            <svg class="w-5 h-5 text-primary mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path></svg>
-                            <span>12 Civil Lines, Malda<br>West Bengal, 732101</span>
-                        </p>
-                    </div>
+                    <div class="flex items-center gap-2.5 mb-5"><div class="w-9 h-9 bg-deep text-lime rounded-xl flex items-center justify-center"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg></div><span class="text-lg font-extrabold text-deep">City Care Clinic</span></div>
+                    <p class="flex items-start gap-3 text-sm text-[#3A4F4B] font-medium"><svg class="w-5 h-5 text-teal mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path></svg><span>12 Civil Lines, Malda<br>West Bengal, 732101</span></p>
                 </div>
                 <div>
-                    <h4 class="font-bold text-gray-900 mb-6">Patient Resources</h4>
-                    <ul class="space-y-3 text-sm text-gray-600">
-                        <li><a href="booking.html" class="hover:text-primary transition">Book Appointment</a></li>
-                        <li><a href="doctors.html" class="hover:text-primary transition">Our Doctors</a></li>
-                        <li><a href="services.html" class="hover:text-primary transition">Treatments</a></li>
+                    <h4 class="font-extrabold text-deep mb-5">Patient Resources</h4>
+                    <ul class="space-y-3 text-sm font-semibold text-[#3A4F4B]">
+                        <li><a href="booking.html" class="hover:text-teal transition">Book Appointment</a></li>
+                        <li><a href="doctors.html" class="hover:text-teal transition">Our Doctors</a></li>
+                        <li><a href="services.html" class="hover:text-teal transition">Treatments</a></li>
                     </ul>
                 </div>
-                <div class="h-48 bg-gray-200 rounded-lg flex items-center justify-center text-gray-500 text-sm">
-                    Map Integration
-                </div>
+                <div class="rounded-[24px] bg-white border border-border shadow-card p-6 text-center"><p class="font-extrabold text-deep mb-1">Same-day slots open</p><p class="text-muted text-sm mb-4">Today till 8 PM · Tomorrow from 9 AM</p><a href="booking.html" class="inline-block bg-deep text-white text-sm font-bold px-6 py-3 rounded-full hover:bg-teal transition">Book now →</a></div>
             </div>
-            <div class="border-t border-gray-200 pt-8 text-center text-xs text-muted">
-                <p>&copy; 2026 City Care Clinic. All rights reserved.</p>
-            </div>
+            <div class="border-t border-border pt-6 text-center text-xs text-muted font-medium"><p>&copy; 2026 City Care Clinic. All rights reserved.</p></div>
         </div>
     </footer>
 

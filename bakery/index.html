@@ -8,14 +8,14 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://unpkg.com/htmx.org@2.0.3" defer></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,700;1,500&family=Caveat:wght@600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;0,9..144,900;1,9..144,500;1,9..144,700&family=Caveat:wght@600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <script>
     tailwind.config = {
       theme: {
         extend: {
           fontFamily: {
             sans: ['Inter','sans-serif'],
-            serif: ['Playfair Display','serif'],
+            serif: ['Fraunces','serif'],
             hand: ['Caveat','cursive'],
           },
           colors: {
@@ -25,6 +25,7 @@
             cream:    '#FAF3E7',
             parchment:'#FFF8EE',
             gold:     '#C8964F',
+            cherry:   '#9D2C2C',
           },
           boxShadow: {
             warm: '0 10px 40px -10px rgba(139,90,60,0.35)',
@@ -154,11 +155,15 @@
   </script>
   <style>
     body { font-family: 'Inter', sans-serif; }
-    h1,h2,h3,h4 { font-family: 'Playfair Display', serif; }
-    .hero-serif { font-family: 'Playfair Display', serif; }
+    h1,h2,h3,h4 { font-family: 'Fraunces', serif; }
+    .hero-serif { font-family: 'Fraunces', serif; }
     .crumb-bg { background-image: radial-gradient(circle at 20% 10%, rgba(212,165,116,0.18), transparent 40%), radial-gradient(circle at 80% 80%, rgba(200,150,79,0.15), transparent 40%); }
-    .paper-bg { background-color: #FFF8EE; background-image: radial-gradient(circle at 1px 1px, rgba(139,90,60,0.07) 1px, transparent 0); background-size: 24px 24px; }
-    .paper-bg-dark { background-color: #3E2723; background-image: radial-gradient(circle at 1px 1px, rgba(212,165,116,0.10) 1px, transparent 0); background-size: 22px 22px; }
+    .paper-bg { background-color: #FFF8EE; background-image: radial-gradient(circle at 1px 1px, rgba(139,90,60,0.10) 1.2px, transparent 0); background-size: 22px 22px; }
+    .paper-bg-dark { background-color: #3E2723; background-image: radial-gradient(circle at 1px 1px, rgba(212,165,116,0.12) 1.2px, transparent 0); background-size: 20px 20px; }
+    .flour-dust { background-image: radial-gradient(rgba(255,255,255,.5) 1px, transparent 1px), radial-gradient(rgba(212,165,116,.25) 1px, transparent 1px); background-size: 26px 26px, 42px 42px; background-position: 0 0, 13px 13px; }
+    .hand-price { font-family: 'Caveat', cursive; font-size: 1.7rem; font-weight: 700; color: #9D2C2C; transform: rotate(-2deg); display: inline-block; }
+    .wavy-divider { display:block; width:100%; height:26px; }
+    .bake-stamp { border: 2px dashed rgba(157,44,44,.5); }
     .newsletter[disabled], .newsletter.htmx-disabled { opacity: .5; pointer-events: none; }
     .crumb-divider { display:inline-block; width:64px; height:1px; background:#8B5A3C; vertical-align: middle; }
     [data-aos] { opacity: 0; transform: translateY(20px); transition: opacity .6s ease, transform .6s ease; }
@@ -322,15 +327,17 @@
   </header>
 
   <!-- ============ DAILY BAKE MARQUEE ============ -->
-  <section class="bg-cocoa text-cream py-5 overflow-hidden">
-    <div class="flex items-center gap-10 whitespace-nowrap animate-[scroll_28s_linear_infinite]" style="animation: scroll 28s linear infinite;">
+  <section class="bg-cocoa text-cream py-5 overflow-hidden relative">
+    <div class="absolute top-0 left-0 right-0"><svg class="wavy-divider text-parchment" viewBox="0 0 1440 26" preserveAspectRatio="none" fill="currentColor"><path d="M0,0 C240,26 480,0 720,13 C960,26 1200,0 1440,13 L1440,0 L0,0 Z" opacity=".9"/></svg></div>
+    <div class="flex items-center gap-10 whitespace-nowrap" style="animation: scroll 28s linear infinite;">
       <span class="font-serif text-2xl flex items-center gap-10">
-        ✦ Sourdough Boule &nbsp;•&nbsp; Butter Croissants &nbsp;•&nbsp; Tiramisu Cake &nbsp;•&nbsp; Focaccia &nbsp;•&nbsp; Pain au Chocolat &nbsp;•&nbsp; Walnut Brownies &nbsp;•&nbsp; Cinnamon Rolls &nbsp;•&nbsp; Red Velvet &nbsp;•&nbsp; Pita Pockets &nbsp;•&nbsp;
+        ✦ Sourdough Boule &nbsp;•&nbsp; Butter Croissants &nbsp;•&nbsp; Tiramisu Cake &nbsp;•&nbsp; Focaccia &nbsp;•&nbsp; Pain au Chocolat &nbsp;•&nbsp; Walnut Brownies &nbsp;•&nbsp; Cinnamon Rolls &nbsp;•&nbsp; Red Velvet &nbsp;•&nbsp; Pita Pockets &nbsp;•&nbsp; <span class="font-hand text-3xl text-caramel">fresh at 7am!</span> &nbsp;•&nbsp;
       </span>
-      <span class="font-serif text-2xl flex items-center gap-10">
-        ✦ Sourdough Boule &nbsp;•&nbsp; Butter Croissants &nbsp;•&nbsp; Tiramisu Cake &nbsp;•&nbsp; Focaccia &nbsp;•&nbsp; Pain au Chocolat &nbsp;•&nbsp; Walnut Brownies &nbsp;•&nbsp; Cinnamon Rolls &nbsp;•&nbsp; Red Velvet &nbsp;•&nbsp; Pita Pockets &nbsp;•&nbsp;
+      <span class="font-serif text-2xl flex items-center gap-10" aria-hidden="true">
+        ✦ Sourdough Boule &nbsp;•&nbsp; Butter Croissants &nbsp;•&nbsp; Tiramisu Cake &nbsp;•&nbsp; Focaccia &nbsp;•&nbsp; Pain au Chocolat &nbsp;•&nbsp; Walnut Brownies &nbsp;•&nbsp; Cinnamon Rolls &nbsp;•&nbsp; Red Velvet &nbsp;•&nbsp; Pita Pockets &nbsp;•&nbsp; <span class="font-hand text-3xl text-caramel">fresh at 7am!</span> &nbsp;•&nbsp;
       </span>
     </div>
+    <div class="absolute bottom-0 left-0 right-0 rotate-180"><svg class="wavy-divider text-parchment" viewBox="0 0 1440 26" preserveAspectRatio="none" fill="currentColor"><path d="M0,0 C240,26 480,0 720,13 C960,26 1200,0 1440,13 L1440,0 L0,0 Z" opacity=".9"/></svg></div>
     <style>@keyframes scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }</style>
   </section>
 
@@ -361,9 +368,10 @@
           <div class="p-5">
             <div class="flex items-start justify-between gap-2 mb-1">
               <h3 class="font-serif text-lg font-bold text-cocoa">Sourdough Boule</h3>
-              <span class="font-bold text-brown whitespace-nowrap">₹280</span>
+              <span class="hand-price whitespace-nowrap">₹280</span>
             </div>
-            <p class="text-sm text-cocoa/60 mb-3">48-hour fermented · naturally leavened</p>
+            <p class="text-sm text-cocoa/60 mb-1">48-hour fermented · naturally leavened</p>
+            <p class="font-hand text-lg text-brown/70 leading-none mb-2">crackly crust, open crumb!</p>
             <div class="flex items-center gap-1 text-xs text-gold">★★★★★ <span class="text-cocoa/40 ml-1">(312)</span></div>
           </div>
         </article>
@@ -379,9 +387,10 @@
           <div class="p-5">
             <div class="flex items-start justify-between gap-2 mb-1">
               <h3 class="font-serif text-lg font-bold text-cocoa">Butter Croissant</h3>
-              <span class="font-bold text-brown whitespace-nowrap">₹120</span>
+              <span class="hand-price whitespace-nowrap">₹120</span>
             </div>
-            <p class="text-sm text-cocoa/60 mb-3">27 flaky layers · French AOP butter</p>
+            <p class="text-sm text-cocoa/60 mb-1">27 flaky layers · French AOP butter</p>
+            <p class="font-hand text-lg text-brown/70 leading-none mb-2">shatters when you bite!</p>
             <div class="flex items-center gap-1 text-xs text-gold">★★★★★ <span class="text-cocoa/40 ml-1">(485)</span></div>
           </div>
         </article>
@@ -397,9 +406,10 @@
           <div class="p-5">
             <div class="flex items-start justify-between gap-2 mb-1">
               <h3 class="font-serif text-lg font-bold text-cocoa">Classic Tiramisu</h3>
-              <span class="font-bold text-brown whitespace-nowrap">₹1,450</span>
+              <span class="hand-price whitespace-nowrap">₹1,450</span>
             </div>
-            <p class="text-sm text-cocoa/60 mb-3">Mascarpone · espresso-soaked savoiardi</p>
+            <p class="text-sm text-cocoa/60 mb-1">Mascarpone · espresso-soaked savoiardi</p>
+            <p class="font-hand text-lg text-brown/70 leading-none mb-2">nonna would approve!</p>
             <div class="flex items-center gap-1 text-xs text-gold">★★★★★ <span class="text-cocoa/40 ml-1">(208)</span></div>
           </div>
         </article>
@@ -415,9 +425,10 @@
           <div class="p-5">
             <div class="flex items-start justify-between gap-2 mb-1">
               <h3 class="font-serif text-lg font-bold text-cocoa">Cinnamon Rolls (4)</h3>
-              <span class="font-bold text-brown whitespace-nowrap">₹380</span>
+              <span class="hand-price whitespace-nowrap">₹380</span>
             </div>
-            <p class="text-sm text-cocoa/60 mb-3">Brown butter glaze · gooey centre</p>
+            <p class="text-sm text-cocoa/60 mb-1">Brown butter glaze · gooey centre</p>
+            <p class="font-hand text-lg text-brown/70 leading-none mb-2">weekend hug in a pan!</p>
             <div class="flex items-center gap-1 text-xs text-gold">★★★★☆ <span class="text-cocoa/40 ml-1">(176)</span></div>
           </div>
         </article>

@@ -5,69 +5,93 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Book Visit | Lumina Dental</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <script>
         tailwind.config = {
             theme: {
                 extend: {
-                    fontFamily: { sans: ['Inter', 'sans-serif'], serif: ['Playfair Display', 'serif'] },
-                    colors: { primary: '#0F766E', dark: '#111827' }
+                    fontFamily: { sans: ['Outfit','sans-serif'], serif: ['Cormorant Garamond','serif'] },
+                    colors: { ivory:'#FFFBF5', sand:'#F5EFE6', teal:{DEFAULT:'#0F766E',deep:'#0C5E58'}, gold:{DEFAULT:'#C9A86A',light:'#EAD9B8',pale:'#FAF3E6'}, ink:'#1C1917' },
+                    boxShadow: { soft:'0 24px 60px -24px rgba(28,25,23,.22)', card:'0 10px 34px -14px rgba(28,25,23,.18)' }
                 }
             }
         }
     </script>
+    <style>
+        .gold-rule{height:1px;background:linear-gradient(90deg,transparent,#C9A86A 20%,#C9A86A 80%,transparent)}
+        .field{transition:border-color .3s, box-shadow .3s, background .3s}
+        .field:focus{outline:none;border-color:#C9A86A;box-shadow:0 0 0 4px rgba(201,168,106,.18);background:#fff}
+        ::selection{background:#C9A86A;color:#1C1917}
+    </style>
 </head>
-<body class="bg-gray-50 text-gray-900 font-sans min-h-screen flex flex-col">
+<body class="bg-sand text-ink font-sans min-h-screen flex flex-col antialiased overflow-x-hidden">
 
-    <!-- Navbar -->
-    <nav class="fixed w-full z-50 bg-white/95 backdrop-blur-md border-b border-gray-100 h-20 flex items-center px-6 justify-between">
-        <a href="index.html" class="flex items-center gap-2 group">
-            <div class="w-8 h-8 bg-primary rounded-lg flex items-center justify-center text-white font-serif italic text-lg shadow-md">L</div>
-            <span class="font-serif text-2xl font-semibold tracking-tight text-gray-900">Lumina</span>
+    <nav class="sticky top-0 z-50 bg-ivory/85 backdrop-blur-xl border-b border-[#E8DDC9] h-[84px] flex items-center px-6 justify-between">
+        <a href="index.html" class="flex items-center gap-3">
+            <div class="w-11 h-11 rounded-full bg-ink text-gold-light flex items-center justify-center font-serif italic text-2xl border border-gold/50">L</div>
+            <span class="leading-none"><span class="block font-serif text-[28px] font-medium tracking-tight">Lumina</span><span class="block text-[10px] tracking-[.32em] uppercase text-gold font-semibold mt-0.5">Aesthetic Dentistry</span></span>
         </a>
-        <a href="index.html" class="text-sm font-semibold text-gray-500 hover:text-gray-900 transition">Close ✕</a>
+        <a href="index.html" class="text-[12px] font-semibold tracking-[.18em] uppercase text-ink/60 hover:text-ink transition border border-ink/15 hover:border-gold px-5 py-2.5 rounded-full">Close ✕</a>
     </nav>
 
-    <!-- Form Section -->
-    <main class="flex-grow flex items-center justify-center px-4 pt-32 pb-20">
-        <div class="bg-white p-8 md:p-12 rounded-[2rem] shadow-xl max-w-2xl w-full border border-gray-100 relative overflow-hidden">
-            
-            <div class="text-center mb-10 relative z-10">
-                <span class="text-primary font-bold uppercase tracking-wider text-xs mb-3 block">New Patients Welcome</span>
-                <h1 class="font-serif text-4xl text-gray-900 mb-3">Schedule Your Visit</h1>
-                <p class="text-gray-500">We usually respond within 15 minutes during business hours.</p>
+    <main class="flex-grow flex items-center justify-center px-4 pt-10 pb-16 relative">
+        <div class="absolute top-10 left-1/2 -translate-x-1/2 w-[560px] h-[240px] bg-[radial-gradient(ellipse,rgba(201,168,106,.22),transparent_65%)] pointer-events-none"></div>
+        <div class="grid lg:grid-cols-[.9fr_1.1fr] max-w-5xl w-full rounded-[2.2rem] overflow-hidden shadow-soft border border-[#E8DDC9] relative">
+            <div class="relative bg-ink text-ivory p-9 md:p-12 flex flex-col justify-between overflow-hidden min-h-[320px]">
+                <div class="absolute -top-20 -right-20 w-72 h-72 bg-gold/20 blur-[80px] rounded-full"></div>
+                <div class="absolute -bottom-24 -left-16 w-72 h-72 bg-teal/25 blur-[80px] rounded-full"></div>
+                <div class="relative">
+                    <p class="text-gold-light text-[11px] font-semibold tracking-[.3em] uppercase mb-5">Private Appointments</p>
+                    <p class="font-serif text-[40px] md:text-[48px] leading-[1.02] mb-4">Begin with<br><span class="italic text-gold-light">a conversation.</span></p>
+                    <div class="gold-rule opacity-50 my-6"></div>
+                    <ul class="space-y-4 text-[15px] font-light text-ivory/70">
+                        <li class="flex gap-3"><span class="text-gold">✦</span> Complimentary digital smile scan</li>
+                        <li class="flex gap-3"><span class="text-gold">✦</span> Reply within 15 minutes, 10 AM – 8 PM</li>
+                        <li class="flex gap-3"><span class="text-gold">✦</span> Herbal tea on arrival, zero waiting</li>
+                    </ul>
+                </div>
+                <div class="relative mt-10 flex items-center gap-4">
+                    <img src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?q=80&w=200&auto=format&fit=crop" class="w-14 h-14 rounded-full object-cover border border-gold/50" alt="Clinic">
+                    <div><p class="font-serif italic text-xl text-gold-light">"We never rush a smile."</p><p class="text-[12px] tracking-[.18em] uppercase text-ivory/50">Dr. Meera · Founder</p></div>
+                </div>
             </div>
-
-            <form class="space-y-6 relative z-10">
-                <div class="grid md:grid-cols-2 gap-6">
-                    <div>
-                        <label class="block text-sm font-semibold text-gray-700 mb-2">First Name</label>
-                        <input type="text" class="w-full px-4 py-3 rounded-xl bg-gray-50 border border-gray-200 focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none transition" placeholder="Rahul">
+            <div class="bg-ivory p-8 md:p-12">
+                <div class="text-center mb-8">
+                    <span class="text-teal-deep font-semibold uppercase tracking-[.24em] text-[11px] mb-3 block">New Guests Welcome</span>
+                    <h1 class="font-serif text-4xl mb-2">Schedule Your Visit</h1>
+                    <p class="text-ink/55 font-light text-[15px]">We usually respond within 15 minutes during studio hours.</p>
+                </div>
+                <form class="space-y-5">
+                    <div class="grid sm:grid-cols-2 gap-5">
+                        <div>
+                            <label class="block text-[13px] font-semibold tracking-wide text-ink/70 mb-2">First Name</label>
+                            <input type="text" class="field w-full px-4 py-3.5 rounded-2xl bg-white border border-[#E8DDC9] font-medium placeholder:text-ink/30" placeholder="Rahul">
+                        </div>
+                        <div>
+                            <label class="block text-[13px] font-semibold tracking-wide text-ink/70 mb-2">Last Name</label>
+                            <input type="text" class="field w-full px-4 py-3.5 rounded-2xl bg-white border border-[#E8DDC9] font-medium placeholder:text-ink/30" placeholder="Sharma">
+                        </div>
                     </div>
                     <div>
-                        <label class="block text-sm font-semibold text-gray-700 mb-2">Last Name</label>
-                        <input type="text" class="w-full px-4 py-3 rounded-xl bg-gray-50 border border-gray-200 focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none transition" placeholder="Sharma">
+                        <label class="block text-[13px] font-semibold tracking-wide text-ink/70 mb-2">Phone Number</label>
+                        <input type="tel" class="field w-full px-4 py-3.5 rounded-2xl bg-white border border-[#E8DDC9] font-medium placeholder:text-ink/30" placeholder="+91 98765 43210">
                     </div>
-                </div>
-
-                <div>
-                    <label class="block text-sm font-semibold text-gray-700 mb-2">Phone Number</label>
-                    <input type="tel" class="w-full px-4 py-3 rounded-xl bg-gray-50 border border-gray-200 focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none transition" placeholder="+91 98765 43210">
-                </div>
-
-                <div>
-                    <label class="block text-sm font-semibold text-gray-700 mb-2">Reason for Visit</label>
-                    <select class="w-full px-4 py-3 rounded-xl bg-gray-50 border border-gray-200 focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none transition">
-                        <option>General Checkup & Cleaning</option>
-                        <option>Tooth Pain / Emergency</option>
-                        <option>Cosmetic Consultation</option>
-                        <option>Invisalign / Braces</option>
-                        <option>Implants</option>
-                    </select>
-                </div>
-
-                <button class="w-full bg-primary text-white py-4 rounded-xl font-bold text-lg hover:bg-teal-800 shadow-lg shadow-teal-900/10 hover:shadow-xl transition-all hover:-translate-y-0.5 mt-4">Request Appointment</button>
-            </form>
+                    <div>
+                        <label class="block text-[13px] font-semibold tracking-wide text-ink/70 mb-2">Reason for Visit</label>
+                        <select class="field w-full px-4 py-3.5 rounded-2xl bg-white border border-[#E8DDC9] font-medium">
+                            <option>General Checkup & Cleaning</option>
+                            <option>Tooth Pain / Emergency</option>
+                            <option>Cosmetic Consultation</option>
+                            <option>Invisalign / Braces</option>
+                            <option>Implants</option>
+                        </select>
+                    </div>
+                    <button class="w-full bg-ink text-ivory py-4 rounded-full font-semibold tracking-[.1em] uppercase text-[13px] hover:bg-teal-deep transition-all hover:-translate-y-0.5 shadow-card mt-2">Request Appointment</button>
+                    <p class="text-center text-[12px] text-ink/45 font-light">Prefer to talk? Call <a href="tel:+919876543210" class="text-teal-deep font-semibold">+91 98765 43210</a></p>
+                </form>
+            </div>
         </div>
     </main>
 

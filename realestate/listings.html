@@ -11,7 +11,7 @@
       theme: {
         extend: {
           fontFamily: { sans: ['Inter','sans-serif'], head: ['Poppins','sans-serif'] },
-          colors: { accent: '#2563EB', 'accent-light': '#EFF6FF' }
+          colors: { accent: '#2563EB', 'accent-light': '#EFF6FF', ink: '#0A0F1E', gold: '#C9A86A', 'gold-soft': '#F7EDD8' }
         }
       }
     }
@@ -66,13 +66,15 @@
 </nav>
 
 <!-- PAGE HERO -->
-<div class="pt-16 lg:pt-[72px] bg-gradient-to-br from-blue-50 via-white to-gray-50 border-b border-gray-100">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 lg:py-14">
-    <div class="flex items-center gap-2 text-accent text-xs font-black uppercase tracking-widest mb-3">
-      <span class="w-8 h-0.5 bg-accent rounded"></span> Our Collection
+<div class="pt-16 lg:pt-[72px] border-b border-gold/20 relative overflow-hidden" style="background: linear-gradient(135deg, #0A0F1E 0%, #131B3A 60%, #1B2450 100%);">
+  <div class="absolute inset-0 opacity-40" style="background-image: linear-gradient(rgba(255,255,255,.05) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.05) 1px, transparent 1px); background-size: 44px 44px;"></div>
+  <div class="absolute top-0 left-10 right-10 h-px" style="background: linear-gradient(90deg, transparent, rgba(201,168,106,.5), transparent);"></div>
+  <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 lg:py-14">
+    <div class="flex items-center gap-2 text-gold text-xs font-black uppercase tracking-widest mb-3">
+      <span class="w-8 h-0.5 rounded" style="background:#C9A86A"></span> Our Collection · ◆ RERA Verified
     </div>
-    <h1 class="text-4xl lg:text-5xl font-black font-head text-gray-900 mb-3">Find Your Perfect<br>Property</h1>
-    <p class="text-gray-500 text-base mb-6 max-w-xl">Search, filter and sort 4,200+ verified listings in real time. Every keystroke is powered by HTMX — no page reloads.</p>
+    <h1 class="text-4xl lg:text-5xl font-black font-head text-white mb-3">Find Your Perfect<br>Property</h1>
+    <p class="text-white/60 text-base mb-6 max-w-xl">Search, filter and sort 4,200+ verified listings in real time. Every keystroke is powered by HTMX — no page reloads.</p>
     <!-- Quick filter chips (deep-link via URL params) -->
     <div class="flex flex-wrap gap-2">
       <a data-chip="all" href="listings.html" class="filter-chip active text-xs font-bold px-4 py-2 rounded-full border border-gray-200">All</a>

@@ -6,107 +6,69 @@
     <title>Reports | ClassDesk Admin</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;500;600;700&display=swap" rel="stylesheet">
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: { sans: ['DM Sans', 'sans-serif'] },
-                    colors: { brand: { 50: '#fef7ee', 100: '#fdedd6', 500: '#f97316', 600: '#ea580c', 700: '#c2410c' } }
-                }
-            }
-        }
-    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+    <script>tailwind.config={theme:{extend:{fontFamily:{sans:['DM Sans','sans-serif'],display:['Bricolage Grotesque','sans-serif']},colors:{cream:'#FFFBEB',brand:{500:'#F97316',600:'#EA580C'},cocoa:'#451A03',leaf:'#16A34A'}}}}</script>
+    <style>body{font-family:'DM Sans',sans-serif}h1,h3{font-family:'Bricolage Grotesque',sans-serif}.doodle{background-color:#FFFBEB;background-image:radial-gradient(rgba(69,26,3,.08) 1.5px,transparent 1.5px);background-size:20px 20px}</style>
 </head>
-<body class="bg-stone-100 text-stone-800 font-sans antialiased">
-
-    <div class="lg:hidden fixed top-0 left-0 right-0 bg-white border-b border-stone-200 z-40 px-4 h-14 flex items-center justify-between">
-        <a href="../index.html" class="flex items-center gap-2">
-            <div class="w-7 h-7 bg-brand-500 rounded-lg flex items-center justify-center">
-                <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
-            </div>
-            <span class="font-semibold text-sm">ClassDesk</span>
-        </a>
-        <button onclick="document.getElementById('sidebar').classList.toggle('-translate-x-full')" class="p-2 text-stone-600">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
-        </button>
+<body class="bg-cream text-cocoa font-sans antialiased">
+    <div class="lg:hidden fixed top-0 left-0 right-0 bg-cream border-b-2 border-cocoa/10 z-40 px-4 h-14 flex items-center justify-between">
+        <a href="../index.html" class="flex items-center gap-2"><div class="w-8 h-8 bg-brand-600 rounded-xl flex items-center justify-center border-2 border-cocoa"><span class="text-cream font-extrabold text-sm">C</span></div><span class="font-extrabold text-sm">ClassDesk 📚</span></a>
+        <button onclick="document.getElementById('sidebar').classList.toggle('-translate-x-full')" class="w-10 h-10 rounded-full bg-white border-2 border-cocoa flex items-center justify-center" style="box-shadow:2px 3px 0 0 #451A03"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M4 6h16M4 12h16M4 18h16"></path></svg></button>
     </div>
-
-    <aside id="sidebar" class="fixed inset-y-0 left-0 w-64 bg-white border-r border-stone-200 z-50 transform -translate-x-full lg:translate-x-0 transition-transform duration-300 top-14 lg:top-0">
-        <div class="p-4 border-b border-stone-200"><p class="text-xs text-stone-500">Admin Panel</p></div>
-        <nav class="p-3 space-y-1">
-            <a href="dashboard.html" class="flex items-center gap-3 px-3 py-2.5 text-stone-600 rounded-lg hover:bg-stone-50 text-sm"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"></path></svg><span class="text-sm font-medium">Dashboard</span></a>
-            <a href="students.html" class="flex items-center gap-3 px-3 py-2.5 text-stone-600 rounded-lg hover:bg-stone-50 text-sm"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"></path></svg><span class="text-sm font-medium">Students</span></a>
-            <a href="add-student.html" class="flex items-center gap-3 px-3 py-2.5 text-stone-600 rounded-lg hover:bg-stone-50 text-sm"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z"></path></svg><span class="text-sm font-medium">Add Student</span></a>
-            <a href="fees.html" class="flex items-center gap-3 px-3 py-2.5 text-stone-600 rounded-lg hover:bg-stone-50 text-sm"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z"></path></svg><span class="text-sm font-medium">Fee Tracking</span></a>
-            <a href="reports.html" class="flex items-center gap-3 px-3 py-2.5 bg-stone-900 text-white rounded-lg text-sm"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg><span class="text-sm font-medium">Reports</span></a>
+    <aside id="sidebar" class="fixed inset-y-0 left-0 w-64 bg-cocoa text-cream z-50 transform -translate-x-full lg:translate-x-0 transition-transform duration-300 top-14 lg:top-0 border-r-2 border-cocoa flex flex-col">
+        <div class="p-5 border-b border-cream/10"><div class="flex items-center gap-2"><div class="w-9 h-9 bg-brand-600 rounded-xl flex items-center justify-center border border-cream/20"><span class="font-extrabold">C</span></div><div><div class="font-extrabold">ClassDesk</div><p class="text-[11px] text-cream/50 uppercase tracking-widest">🏫 Staff room</p></div></div></div>
+        <nav class="p-3 space-y-1.5 flex-1">
+            <a href="dashboard.html" class="flex items-center gap-3 px-4 py-3 text-cream/70 rounded-2xl hover:bg-white/10 text-sm font-semibold">📊 Dashboard</a>
+            <a href="students.html" class="flex items-center gap-3 px-4 py-3 text-cream/70 rounded-2xl hover:bg-white/10 text-sm font-semibold">🎒 Students</a>
+            <a href="add-student.html" class="flex items-center gap-3 px-4 py-3 text-cream/70 rounded-2xl hover:bg-white/10 text-sm font-semibold">➕ Add Student</a>
+            <a href="fees.html" class="flex items-center gap-3 px-4 py-3 text-cream/70 rounded-2xl hover:bg-white/10 text-sm font-semibold">💰 Fee Tracking</a>
+            <a href="reports.html" class="flex items-center gap-3 px-4 py-3 bg-brand-600 text-cream rounded-2xl text-sm font-bold border-2 border-cream/20">📈 Reports</a>
         </nav>
-        <div class="absolute bottom-0 w-full p-3 border-t border-stone-200">
-            <a href="../index.html" class="flex items-center gap-3 px-3 py-2.5 text-stone-600 rounded-lg hover:bg-stone-50 text-sm"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg><span class="text-sm font-medium">Back to Website</span></a>
-        </div>
+        <div class="p-3 border-t border-cream/10"><a href="../index.html" class="flex items-center gap-3 px-4 py-3 text-cream/70 rounded-2xl hover:bg-white/10 text-sm font-semibold">← Back to Website 🏠</a></div>
     </aside>
-
-    <main class="lg:ml-64 pt-14 lg:pt-0 p-4 md:p-6">
-        <div class="mb-6"><h1 class="text-xl md:text-2xl font-semibold text-stone-900">Reports</h1><p class="text-stone-500 text-sm">Analytics & Insights</p></div>
-
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 mb-6">
-            <div class="bg-white rounded-xl border border-stone-200 p-5">
-                <h3 class="font-medium text-stone-900 mb-4">Students by Course</h3>
+    <main class="lg:ml-64 pt-14 lg:pt-0 p-4 md:p-8 doodle min-h-screen">
+        <div class="mb-6"><span class="inline-block text-[11px] font-extrabold uppercase tracking-widest bg-white px-3 py-1 rounded-full border-2 border-cocoa mb-2" style="box-shadow:2px 3px 0 0 #451A03">📈 Progress cards</span><h1 class="text-3xl font-extrabold tracking-tight">Reports</h1><p class="text-cocoa/60 text-sm">Analytics with sticker stars ⭐</p></div>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-6">
+            <div class="bg-white rounded-[1.75rem] border-2 border-cocoa p-6" style="box-shadow:4px 5px 0 0 #451A03">
+                <h3 class="font-extrabold mb-4">🎒 Students by Course</h3>
                 <div class="space-y-3">
-                    <div><div class="flex justify-between text-sm mb-1"><span>JEE Crash</span><span>52</span></div><div class="h-2 bg-stone-100 rounded-full"><div class="h-2 bg-brand-500 rounded-full" style="width: 21%"></div></div></div>
-                    <div><div class="flex justify-between text-sm mb-1"><span>NEET Crash</span><span>48</span></div><div class="h-2 bg-stone-100 rounded-full"><div class="h-2 bg-brand-500 rounded-full" style="width: 19%"></div></div></div>
-                    <div><div class="flex justify-between text-sm mb-1"><span>PCM Class 11</span><span>45</span></div><div class="h-2 bg-stone-100 rounded-full"><div class="h-2 bg-brand-500 rounded-full" style="width: 18%"></div></div></div>
-                    <div><div class="flex justify-between text-sm mb-1"><span>PCB Class 12</span><span>42</span></div><div class="h-2 bg-stone-100 rounded-full"><div class="h-2 bg-brand-500 rounded-full" style="width: 17%"></div></div></div>
-                    <div><div class="flex justify-between text-sm mb-1"><span>Foundation</span><span>61</span></div><div class="h-2 bg-stone-100 rounded-full"><div class="h-2 bg-brand-500 rounded-full" style="width: 25%"></div></div></div>
+                    <div><div class="flex justify-between text-sm font-bold mb-1"><span>JEE Crash 🚀</span><span>52</span></div><div class="h-3 bg-cream rounded-full border border-cocoa/15 overflow-hidden"><div class="h-full bg-brand-600 rounded-full" style="width: 42%"></div></div></div>
+                    <div><div class="flex justify-between text-sm font-bold mb-1"><span>NEET Crash 🧬</span><span>48</span></div><div class="h-3 bg-cream rounded-full border border-cocoa/15 overflow-hidden"><div class="h-full bg-leaf rounded-full" style="width: 39%"></div></div></div>
+                    <div><div class="flex justify-between text-sm font-bold mb-1"><span>PCM 11 📐</span><span>45</span></div><div class="h-3 bg-cream rounded-full border border-cocoa/15 overflow-hidden"><div class="h-full bg-yellow-400 rounded-full" style="width: 36%"></div></div></div>
+                    <div><div class="flex justify-between text-sm font-bold mb-1"><span>PCB 12 🧪</span><span>42</span></div><div class="h-3 bg-cream rounded-full border border-cocoa/15 overflow-hidden"><div class="h-full bg-brand-600 rounded-full" style="width: 34%"></div></div></div>
+                    <div><div class="flex justify-between text-sm font-bold mb-1"><span>Foundation 📘</span><span>61 ⭐</span></div><div class="h-3 bg-cream rounded-full border border-cocoa/15 overflow-hidden"><div class="h-full bg-cocoa rounded-full" style="width: 50%"></div></div></div>
                 </div>
             </div>
-            <div class="bg-white rounded-xl border border-stone-200 p-5">
-                <h3 class="font-medium text-stone-900 mb-4">Fee Collection (Monthly)</h3>
+            <div class="bg-white rounded-[1.75rem] border-2 border-cocoa p-6" style="box-shadow:4px 5px 0 0 #451A03">
+                <h3 class="font-extrabold mb-4">💰 Fee Collection</h3>
                 <div class="space-y-3">
-                    <div><div class="flex justify-between text-sm mb-1"><span>Jan</span><span>₹4.2L</span></div><div class="h-2 bg-stone-100 rounded-full"><div class="h-2 bg-green-500 rounded-full" style="width: 85%"></div></div></div>
-                    <div><div class="flex justify-between text-sm mb-1"><span>Feb</span><span>₹3.8L</span></div><div class="h-2 bg-stone-100 rounded-full"><div class="h-2 bg-green-500 rounded-full" style="width: 76%"></div></div></div>
-                    <div><div class="flex justify-between text-sm mb-1"><span>Mar</span><span>₹4.5L</span></div><div class="h-2 bg-stone-100 rounded-full"><div class="h-2 bg-green-500 rounded-full" style="width: 90%"></div></div></div>
-                    <div><div class="flex justify-between text-sm mb-1"><span>Apr</span><span>₹4.8L</span></div><div class="h-2 bg-stone-100 rounded-full"><div class="h-2 bg-green-500 rounded-full" style="width: 96%"></div></div></div>
+                    <div><div class="flex justify-between text-sm font-bold mb-1"><span>Jan</span><span>₹4.2L</span></div><div class="h-3 bg-cream rounded-full border border-cocoa/15 overflow-hidden"><div class="h-full bg-leaf rounded-full" style="width: 85%"></div></div></div>
+                    <div><div class="flex justify-between text-sm font-bold mb-1"><span>Feb</span><span>₹3.8L</span></div><div class="h-3 bg-cream rounded-full border border-cocoa/15 overflow-hidden"><div class="h-full bg-leaf rounded-full" style="width: 76%"></div></div></div>
+                    <div><div class="flex justify-between text-sm font-bold mb-1"><span>Mar</span><span>₹4.5L</span></div><div class="h-3 bg-cream rounded-full border border-cocoa/15 overflow-hidden"><div class="h-full bg-leaf rounded-full" style="width: 90%"></div></div></div>
+                    <div><div class="flex justify-between text-sm font-bold mb-1"><span>Apr 🎉</span><span>₹4.8L</span></div><div class="h-3 bg-cream rounded-full border border-cocoa/15 overflow-hidden"><div class="h-full bg-brand-600 rounded-full" style="width: 96%"></div></div></div>
                 </div>
+                <p class="mt-4 text-xs font-bold bg-green-100 text-leaf px-3 py-2 rounded-2xl">✓ Best month ever! Treat for staff? 🍰</p>
             </div>
-            <div class="bg-white rounded-xl border border-stone-200 p-5">
-                <h3 class="font-medium text-stone-900 mb-4">Top Performing</h3>
+            <div class="bg-cocoa text-cream rounded-[1.75rem] border-2 border-cocoa p-6" style="box-shadow:4px 5px 0 0 #EA580C">
+                <h3 class="font-extrabold mb-4">🏆 Top Rankers</h3>
                 <div class="space-y-3">
-                    <div class="flex items-center justify-between py-2 border-b border-stone-100">
-                        <div class="flex items-center gap-2"><span class="w-6 h-6 bg-yellow-400 rounded-full text-xs flex items-center justify-center text-white font-bold">1</span><span class="text-sm">Rahul Sharma</span></div><span class="text-sm font-medium">JEE</span>
-                    </div>
-                    <div class="flex items-center justify-between py-2 border-b border-stone-100">
-                        <div class="flex items-center gap-2"><span class="w-6 h-6 bg-stone-300 rounded-full text-xs flex items-center justify-center text-white font-bold">2</span><span class="text-sm">Priya Singh</span></div><span class="text-sm font-medium">NEET</span>
-                    </div>
-                    <div class="flex items-center justify-between py-2">
-                        <div class="flex items-center gap-2"><span class="w-6 h-6 bg-orange-300 rounded-full text-xs flex items-center justify-center text-white font-bold">3</span><span class="text-sm">Amit Kumar</span></div><span class="text-sm font-medium">PCM</span>
-                    </div>
+                    <div class="flex items-center justify-between py-2.5 px-3 bg-white/10 rounded-2xl border border-white/10"><div class="flex items-center gap-2"><span class="w-8 h-8 bg-yellow-400 text-cocoa rounded-full text-sm flex items-center justify-center font-extrabold border-2 border-cream">1</span><span class="text-sm font-bold">Rahul Sharma</span></div><span class="text-xs font-bold bg-brand-600 px-2 py-1 rounded-full">★ AIR 452</span></div>
+                    <div class="flex items-center justify-between py-2.5 px-3 bg-white/10 rounded-2xl border border-white/10"><div class="flex items-center gap-2"><span class="w-8 h-8 bg-white text-cocoa rounded-full text-sm flex items-center justify-center font-extrabold">2</span><span class="text-sm font-bold">Priya Singh</span></div><span class="text-xs font-bold bg-leaf px-2 py-1 rounded-full">★ AIR 892</span></div>
+                    <div class="flex items-center justify-between py-2.5 px-3 bg-white/10 rounded-2xl border border-white/10"><div class="flex items-center gap-2"><span class="w-8 h-8 bg-brand-600 text-cream rounded-full text-sm flex items-center justify-center font-extrabold">3</span><span class="text-sm font-bold">Amit Kumar</span></div><span class="text-xs font-bold bg-white/15 px-2 py-1 rounded-full">★ AIR 1245</span></div>
                 </div>
             </div>
         </div>
-
-        <div class="bg-white rounded-xl border border-stone-200 p-4 md:p-6">
+        <div class="bg-white rounded-[1.75rem] border-2 border-cocoa p-6" style="box-shadow:4px 5px 0 0 #451A03">
             <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-4 gap-3">
-                <h3 class="font-medium">Recent Activity</h3>
-                <select class="px-3 py-2 border border-stone-300 rounded-lg text-sm"><option>Last 30 Days</option><option>Last 7 Days</option><option>This Month</option></select>
+                <h3 class="font-extrabold text-lg">📌 Recent Activity</h3>
+                <select class="px-4 py-2.5 bg-cream border-2 border-cocoa/15 rounded-full text-sm font-semibold"><option>Last 30 Days</option><option>Last 7 Days</option><option>This Month</option></select>
             </div>
-            <div class="space-y-4">
-                <div class="flex items-start gap-4 p-3 bg-stone-50 rounded-lg">
-                    <div class="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center flex-shrink-0"><svg class="w-5 h-5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path></svg></div>
-                    <div class="flex-1 min-w-0"><p class="text-sm font-medium">New student enrolled</p><p class="text-xs text-stone-500">Rahul Sharma - JEE Crash Course</p></div><span class="text-xs text-stone-400">2 hrs ago</span>
-                </div>
-                <div class="flex items-start gap-4 p-3 bg-stone-50 rounded-lg">
-                    <div class="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center flex-shrink-0"><svg class="w-5 h-5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1h1m-1 0h-1"></path></svg></div>
-                    <div class="flex-1 min-w-0"><p class="text-sm font-medium">Payment received</p><p class="text-xs text-stone-500">₹25,000 from Priya Singh</p></div><span class="text-xs text-stone-400">5 hrs ago</span>
-                </div>
-                <div class="flex items-start gap-4 p-3 bg-stone-50 rounded-lg">
-                    <div class="w-10 h-10 bg-yellow-100 rounded-full flex items-center justify-center flex-shrink-0"><svg class="w-5 h-5 text-yellow-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg></div>
-                    <div class="flex-1 min-w-0"><p class="text-sm font-medium">Fee overdue reminder</p><p class="text-xs text-stone-500">Vikram Singh - ₹10,000 pending</p></div><span class="text-xs text-stone-400">1 day ago</span>
-                </div>
+            <div class="space-y-3">
+                <div class="flex items-start gap-4 p-4 bg-cream rounded-2xl border-2 border-dashed border-cocoa/20"><div class="w-11 h-11 bg-leaf text-white rounded-2xl flex items-center justify-center font-bold border-2 border-cocoa">🎉</div><div class="flex-1"><p class="text-sm font-bold">New student enrolled!</p><p class="text-xs text-cocoa/60">Rahul Sharma · JEE Crash</p></div><span class="text-xs text-cocoa/40 font-bold">2h ago</span></div>
+                <div class="flex items-start gap-4 p-4 bg-cream rounded-2xl border-2 border-dashed border-cocoa/20"><div class="w-11 h-11 bg-brand-600 text-cream rounded-2xl flex items-center justify-center font-bold border-2 border-cocoa">₹</div><div class="flex-1"><p class="text-sm font-bold">Payment received ✓</p><p class="text-xs text-cocoa/60">₹25,000 from Priya Singh</p></div><span class="text-xs text-cocoa/40 font-bold">5h ago</span></div>
+                <div class="flex items-start gap-4 p-4 bg-yellow-50 rounded-2xl border-2 border-dashed border-yellow-400"><div class="w-11 h-11 bg-yellow-400 text-cocoa rounded-2xl flex items-center justify-center font-bold border-2 border-cocoa">🔔</div><div class="flex-1"><p class="text-sm font-bold">Gentle reminder 👋</p><p class="text-xs text-cocoa/60">Vikram Singh · ₹10,000 pending</p></div><span class="text-xs text-cocoa/40 font-bold">1d ago</span></div>
             </div>
         </div>
     </main>
-
 </body>
 </html>

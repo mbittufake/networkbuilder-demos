@@ -1,247 +1,241 @@
 <!DOCTYPE html>
-<html lang="en" class="bg-[#050505] text-[#e0e0e0] antialiased selection:bg-[#c9a96e] selection:text-black">
+<html lang="en" class="bg-[#050505] text-[#F5F0E8] antialiased selection:bg-[#C9A96E] selection:text-black">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VANTAGE LEGAL | Elite Defense</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Italiana&family=Space+Grotesk:wght@300;400;500;600&display=swap" rel="stylesheet">
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        serif: ['Italiana', 'serif'],
-                        sans: ['Space Grotesk', 'sans-serif'],
-                    },
-                    colors: {
-                        gold: '#c9a96e',
-                        dark: '#050505',
-                        charcoal: '#0a0a0a',
-                        subtle: '#333333'
-                    },
-                    animation: {
-                        'reveal': 'reveal 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards',
-                        'slide-up': 'slideUp 0.8s ease-out forwards',
-                    },
-                    keyframes: {
-                        reveal: {
-                            '0%': { transform: 'translateY(100%)' },
-                            '100%': { transform: 'translateY(0)' },
-                        },
-                        slideUp: {
-                            '0%': { opacity: '0', transform: 'translateY(20px)' },
-                            '100%': { opacity: '1', transform: 'translateY(0)' },
-                        }
-                    }
-                }
-            }
-        }
-    </script>
-    <style>
-        body { cursor: default; }
-        ::-webkit-scrollbar { width: 6px; }
-        ::-webkit-scrollbar-track { bg: #050505; }
-        ::-webkit-scrollbar-thumb { background: #333; border-radius: 3px; }
-        ::-webkit-scrollbar-thumb:hover { background: #c9a96e; }
-        /* Increased minimum size from 3rem to 4rem for mobile impact */
-        .text-fluid-h1 { font-size: clamp(4rem, 10vw, 8rem); line-height: 0.9; }
-        .text-fluid-h2 { font-size: clamp(2.5rem, 5vw, 4rem); }
-        .reveal-img { clip-path: inset(0 0 100% 0); transition: clip-path 1.2s cubic-bezier(0.77, 0, 0.175, 1); }
-        .reveal-img.active { clip-path: inset(0 0 0 0); }
-        .menu-overlay { clip-path: circle(0% at 100% 0); transition: clip-path 0.8s cubic-bezier(0.77, 0, 0.175, 1); }
-        .menu-overlay.open { clip-path: circle(150% at 100% 0); }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VANTAGE LEGAL | Elite Defense</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Italiana&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<script>
+tailwind.config = {
+  theme: {
+    extend: {
+      fontFamily: { serif: ['Italiana','serif'], sans: ['Inter','sans-serif'] },
+      colors: { gold: '#C9A96E', cream: '#F5F0E8', void: '#050505', coal: '#0E0E0E' },
+      letterSpacing: { mega: '0.35em' }
+    }
+  }
+}
+</script>
+<style>
+  body{font-family:'Inter',sans-serif;background:#050505;}
+  .font-serif{font-family:'Italiana',serif !important;}
+  .text-fluid-h1{font-size:clamp(4rem,11vw,9.5rem);line-height:.88;letter-spacing:-.02em;}
+  .text-fluid-h2{font-size:clamp(2.6rem,5.5vw,4.5rem);line-height:.95;}
+  .hairline{border-color:rgba(201,169,110,.18);}
+  .gold-rule{height:1px;background:linear-gradient(90deg,#C9A96E,rgba(201,169,110,0));}
+  .reveal-img{clip-path:inset(0 0 100% 0);transition:clip-path 1.3s cubic-bezier(.77,0,.175,1);}
+  .reveal-img.active{clip-path:inset(0 0 0 0);}
+  .menu-overlay{clip-path:circle(0% at 100% 0);transition:clip-path .8s cubic-bezier(.77,0,.175,1);}
+  .menu-overlay.open{clip-path:circle(150% at 100% 0);}
+  .img-luxe{filter:grayscale(1) contrast(1.05) brightness(.9);transition:filter .8s ease,transform 1.2s cubic-bezier(.16,1,.3,1);}
+  .group:hover .img-luxe,.img-luxe:hover{filter:grayscale(0) contrast(1) brightness(1);}
+  .outline-word{color:transparent;-webkit-text-stroke:1px rgba(245,240,232,.35);}
+  .marquee{overflow:hidden;white-space:nowrap;}
+  .marquee-track{display:inline-flex;gap:3rem;animation:marq 28s linear infinite;}
+  @keyframes marq{to{transform:translateX(-50%);}}
+  @keyframes slideUp{0%{opacity:0;transform:translateY(24px);}100%{opacity:1;transform:translateY(0);}}
+  .animate-slide-up{animation:slideUp .9s cubic-bezier(.16,1,.3,1) both;}
+  .row-hover{transition:background .5s ease,padding .5s ease;}
+  .row-hover:hover{background:#0E0E0E;}
+  .row-hover:hover .row-title{transform:translateX(12px);color:#C9A96E;}
+  .row-title{transition:transform .5s cubic-bezier(.16,1,.3,1),color .4s;}
+  ::-webkit-scrollbar{width:6px;}::-webkit-scrollbar-track{background:#050505;}
+  ::-webkit-scrollbar-thumb{background:#2a2a2a;border-radius:3px;}::-webkit-scrollbar-thumb:hover{background:#C9A96E;}
+  .vert{writing-mode:vertical-rl;text-orientation:mixed;}
+</style>
 </head>
-<body class="overflow-x-hidden font-sans">
+<body class="overflow-x-hidden font-sans bg-[#050505] text-[#F5F0E8]">
 
-    <!-- Navigation -->
-    <nav class="fixed top-0 w-full z-50 px-6 py-6 mix-blend-difference text-white flex justify-between items-center backdrop-blur-sm bg-black/20">
-        <a href="index.html" class="text-2xl font-serif tracking-widest z-50 relative group">
-            VANTAGE
-            <span class="block h-[1px] w-0 bg-white transition-all group-hover:w-full"></span>
-        </a>
-        <button onclick="toggleMenu()" class="z-50 text-sm uppercase tracking-[0.2em] hover:text-gold transition">
-            Menu
-        </button>
-    </nav>
-
-    <!-- Menu -->
-    <div id="menu" class="menu-overlay fixed inset-0 bg-gold z-40 flex items-center justify-center">
-        <div class="flex flex-col space-y-8 text-center">
-            <a href="index.html" class="text-dark text-6xl font-serif hover:italic transition-all">Index</a>
-            <a href="about.html" class="text-dark text-6xl font-serif hover:italic transition-all">The Firm</a>
-            <a href="practice.html" class="text-dark text-6xl font-serif hover:italic transition-all">Expertise</a>
-            <a href="contact.html" class="text-dark text-6xl font-serif hover:italic transition-all">Contact</a>
-        </div>
+<!-- Top hairline meta -->
+<div class="fixed top-0 w-full z-[60] bg-[#050505]/85 backdrop-blur-md border-b hairline">
+  <div class="max-w-[1600px] mx-auto px-6 md:px-10 h-[68px] flex items-center justify-between">
+    <a href="index.html" class="flex items-baseline gap-3 group">
+      <span class="font-serif text-[26px] tracking-[0.22em] text-[#F5F0E8]">VANTAGE</span>
+      <span class="hidden sm:inline text-[10px] uppercase tracking-mega text-[#C9A96E]">Est. 2009 — NY</span>
+    </a>
+    <div class="flex items-center gap-8">
+      <span class="hidden lg:block text-[11px] uppercase tracking-[0.25em] text-[#F5F0E8]/40">Criminal Defense &bull; Corporate Litigation</span>
+      <button onclick="toggleMenu()" class="flex items-center gap-3 text-[12px] uppercase tracking-[0.25em] text-[#F5F0E8] hover:text-[#C9A96E] transition">
+        <span id="menu-label">Menu</span>
+        <span class="flex flex-col gap-[5px] w-7"><span class="h-px bg-current w-full"></span><span class="h-px bg-current w-2/3 ml-auto"></span></span>
+      </button>
     </div>
+  </div>
+</div>
 
-    <!-- HERO SECTION -->
-    <header class="min-h-screen pt-24 px-4 md:px-8 relative flex items-center">
-        <div class="max-w-[1600px] mx-auto w-full">
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-                <div class="lg:col-span-8 z-10">
-                    <p class="text-gold uppercase tracking-[0.3em] mb-4 text-xs animate-slide-up">Vantage Legal • New York</p>
-                    <h1 class="font-serif text-fluid-h1 text-white mb-6 animate-slide-up" style="animation-delay: 0.1s">
-                        SILENCE <br> <span class="text-subtle ml-12 md:ml-24 italic">THE NOISE.</span>
-                    </h1>
-                    <div class="h-px w-24 bg-gold mb-6 animate-slide-up" style="animation-delay: 0.2s"></div>
-                    <p class="max-w-xl text-gray-400 text-lg leading-relaxed animate-slide-up" style="animation-delay: 0.3s">
-                        When the stakes are absolute, conventional strategies fail. We provide relentless criminal defense and high-stakes corporate litigation across the tri-state area.
-                    </p>
-                    <div class="mt-8 flex gap-6 animate-slide-up" style="animation-delay: 0.4s">
-                        <a href="contact.html" class="px-8 py-4 bg-white text-black font-bold uppercase tracking-widest hover:bg-gold transition duration-300">Secure Counsel</a>
-                        <a href="practice.html" class="px-8 py-4 border border-white/20 text-white font-bold uppercase tracking-widest hover:bg-white/5 transition duration-300">Our Expertise</a>
-                    </div>
-                </div>
-                <!-- Hero Image (Visible on Mobile now) -->
-                <div class="lg:col-span-4 lg:h-[70vh] h-[40vh] relative mt-8 lg:mt-0">
-                    <div class="reveal-img active w-full h-full bg-subtle overflow-hidden relative grayscale hover:grayscale-0 transition duration-700">
-                        <img src="https://images.unsplash.com/photo-1589829085413-56de8ae18c73?q=80&w=1600&auto=format&fit=crop" class="object-cover w-full h-full opacity-80" alt="Law Office Architecture">
-                    </div>
-                </div>
-            </div>
+<!-- Fullscreen menu -->
+<div id="menu" class="menu-overlay fixed inset-0 bg-[#C9A96E] z-[55] flex flex-col justify-center px-8 md:px-20">
+  <p class="text-[#050505]/60 text-xs uppercase tracking-[0.35em] mb-10">Navigation — Vantage Legal</p>
+  <div class="flex flex-col">
+    <a href="index.html" onclick="toggleMenu()" class="group flex items-baseline gap-6 border-t border-black/15 py-5"><span class="text-sm font-sans text-black/50">01</span><span class="font-serif text-5xl md:text-7xl text-[#050505] group-hover:italic transition-all">Index</span></a>
+    <a href="about.html" onclick="toggleMenu()" class="group flex items-baseline gap-6 border-t border-black/15 py-5"><span class="text-sm font-sans text-black/50">02</span><span class="font-serif text-5xl md:text-7xl text-[#050505] group-hover:italic transition-all">The Firm</span></a>
+    <a href="practice.html" onclick="toggleMenu()" class="group flex items-baseline gap-6 border-t border-black/15 py-5"><span class="text-sm font-sans text-black/50">03</span><span class="font-serif text-5xl md:text-7xl text-[#050505] group-hover:italic transition-all">Expertise</span></a>
+    <a href="contact.html" onclick="toggleMenu()" class="group flex items-baseline gap-6 border-y border-black/15 py-5"><span class="text-sm font-sans text-black/50">04</span><span class="font-serif text-5xl md:text-7xl text-[#050505] group-hover:italic transition-all">Contact</span></a>
+  </div>
+  <p class="mt-10 text-[#050505]/60 text-xs uppercase tracking-[0.25em]">secure@vantage.legal — +1 (212) 555-0199</p>
+</div>
+
+<!-- HERO -->
+<header class="min-h-screen pt-[130px] pb-16 px-6 md:px-10 relative flex items-center">
+  <span class="vert hidden xl:block absolute left-6 top-1/2 -translate-y-1/2 text-[10px] uppercase tracking-[0.4em] text-[#F5F0E8]/30">Ultra-Luxe Defense — Vol. I</span>
+  <span class="vert hidden xl:block absolute right-6 top-1/2 -translate-y-1/2 text-[10px] uppercase tracking-[0.4em] text-[#C9A96E]/60">New York &bull; New Delhi</span>
+  <div class="max-w-[1600px] mx-auto w-full">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-end">
+      <div class="lg:col-span-8">
+        <div class="flex items-center gap-4 mb-6 animate-slide-up">
+          <span class="h-px w-14 bg-[#C9A96E]"></span>
+          <p class="text-[#C9A96E] uppercase tracking-[0.32em] text-[11px]">Vantage Legal • New York</p>
         </div>
-    </header>
-
-    <!-- STATISTICS STRIP -->
-    <section class="border-y border-white/10 py-16 bg-[#0a0a0a]">
-        <div class="max-w-[1600px] mx-auto px-4 md:px-12 grid grid-cols-2 md:grid-cols-4 gap-12">
-            <div class="text-center md:text-left">
-                <h3 class="text-5xl font-serif text-gold mb-2">$500M+</h3>
-                <p class="text-xs uppercase tracking-widest text-gray-500">Assets Protected</p>
-            </div>
-            <div class="text-center md:text-left">
-                <h3 class="text-5xl font-serif text-white mb-2">15+</h3>
-                <p class="text-xs uppercase tracking-widest text-gray-500">Years Experience</p>
-            </div>
-            <div class="text-center md:text-left">
-                <h3 class="text-5xl font-serif text-gold mb-2">98%</h3>
-                <p class="text-xs uppercase tracking-widest text-gray-500">Success Rate</p>
-            </div>
-            <div class="text-center md:text-left">
-                <h3 class="text-5xl font-serif text-white mb-2">24/7</h3>
-                <p class="text-xs uppercase tracking-widest text-gray-500">Crisis Response</p>
-            </div>
+        <h1 class="font-serif text-fluid-h1 text-[#F5F0E8] mb-8 animate-slide-up" style="animation-delay:.08s">
+          SILENCE<br><span class="italic font-serif text-[#C9A96E] ml-10 md:ml-24">the noise.</span>
+        </h1>
+        <div class="gold-rule w-40 mb-8 animate-slide-up" style="animation-delay:.16s"></div>
+        <p class="max-w-xl text-[#F5F0E8]/60 text-[17px] leading-[1.8] font-light animate-slide-up" style="animation-delay:.24s">
+          When the stakes are absolute, conventional strategies fail. We provide relentless criminal defense and high-stakes corporate litigation across the tri-state area.
+        </p>
+        <div class="mt-10 flex flex-wrap gap-4 animate-slide-up" style="animation-delay:.32s">
+          <a href="contact.html" class="px-9 py-4 bg-[#C9A96E] text-black text-[12px] font-semibold uppercase tracking-[0.2em] hover:bg-[#F5F0E8] transition duration-300">Secure Counsel</a>
+          <a href="practice.html" class="px-9 py-4 border hairline text-[#F5F0E8] text-[12px] font-semibold uppercase tracking-[0.2em] hover:border-[#C9A96E] hover:text-[#C9A96E] transition duration-300">Our Expertise</a>
         </div>
-    </section>
-
-    <!-- INTRO CONTENT -->
-    <section class="py-20 px-4 md:px-8 max-w-[1600px] mx-auto">
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-16">
-            <div>
-                <span class="text-gold uppercase tracking-[0.3em] text-xs">The Philosophy</span>
-                <h2 class="text-fluid-h2 font-serif mt-4 mb-6 leading-none">
-                    WE DON'T SETTLE.<br> <span class="text-subtle">WE DOMINATE.</span>
-                </h2>
-                <div class="reveal-img active w-full h-[350px] mt-8 grayscale">
-                    <img src="https://images.unsplash.com/photo-1589829085413-56de8ae18c73?q=80&w=1200&auto=format&fit=crop" class="w-full h-full object-cover" alt="Gavel on Sound Block">
-                </div>
-            </div>
-            <div class="space-y-6 text-lg font-light text-gray-400">
-                <p class="first-letter:text-5xl first-letter:font-serif first-letter:text-white first-letter:float-left first-letter:mr-3">
-                    The legal landscape is chaotic. You don't need a lawyer who just files paperwork; you need a strategist who understands the chessboard. At Vantage Legal, we treat every case as a war for your reputation, your assets, and your liberty.
-                </p>
-                <p>
-                    Founded by Senior Counsel <strong>Richard Sterling</strong> (Ex-Federal Prosecutor), our firm brings the aggression of criminal defense into the boardroom. Whether you are facing an SEC inquiry, a hostile takeover, or a high-profile divorce, we build a fortress around you.
-                </p>
-                <p>
-                    We limit our active caseload to ensure absolute focus. When you hire us, you don't get a junior associate. You get the full weight of the firm.
-                </p>
-                <a href="about.html" class="inline-block mt-4 text-white border-b border-gold pb-1 hover:text-gold transition">Read Our Full Story →</a>
-            </div>
+        <div class="mt-12 flex gap-10 text-[11px] uppercase tracking-[0.25em] text-[#F5F0E8]/40">
+          <span><strong class="font-serif text-2xl text-[#F5F0E8] block tracking-normal">$500M+</strong> Assets Protected</span>
+          <span class="border-l hairline pl-10"><strong class="font-serif text-2xl text-[#F5F0E8] block tracking-normal">98%</strong> Success Rate</span>
         </div>
-    </section>
-
-    <!-- PRACTICE AREAS PREVIEW -->
-    <section class="py-20 bg-[#0a0a0a]">
-        <div class="max-w-[1600px] mx-auto px-4 md:px-8">
-            <div class="flex justify-between items-end mb-16">
-                <h2 class="text-fluid-h2 font-serif">AREAS OF <br> <span class="italic text-gray-500">MASTERY</span></h2>
-                <a href="practice.html" class="hidden md:block px-8 py-4 border border-white/20 hover:bg-white hover:text-black transition">View All Services</a>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <!-- Card 1 -->
-                <div class="group border border-white/10 p-8 hover:bg-white/5 transition duration-500">
-                    <span class="text-gold text-4xl mb-4 block">01</span>
-                    <h3 class="text-2xl font-serif text-white mb-3">White Collar Defense</h3>
-                    <p class="text-gray-500 mb-6 text-sm">Defense against SEC, DOJ, and FBI investigations. Money laundering, fraud, and corporate espionage cases.</p>
-                    <a href="practice.html" class="text-xs uppercase tracking-widest text-white group-hover:text-gold transition">Explore →</a>
-                </div>
-                <!-- Card 2 -->
-                <div class="group border border-white/10 p-8 hover:bg-white/5 transition duration-500">
-                    <span class="text-gold text-4xl mb-4 block">02</span>
-                    <h3 class="text-2xl font-serif text-white mb-3">Corporate Litigation</h3>
-                    <p class="text-gray-500 mb-6 text-sm">Shareholder disputes, insolvency, and high-value arbitration. We protect your bottom line.</p>
-                    <a href="practice.html" class="text-xs uppercase tracking-widest text-white group-hover:text-gold transition">Explore →</a>
-                </div>
-                <!-- Card 3 -->
-                <div class="group border border-white/10 p-8 hover:bg-white/5 transition duration-500">
-                    <span class="text-gold text-4xl mb-4 block">03</span>
-                    <h3 class="text-2xl font-serif text-white mb-3">Private Client</h3>
-                    <p class="text-gray-500 mb-6 text-sm">Discreet resolution of family disputes, high-net-worth divorce, and legacy/estate planning.</p>
-                    <a href="practice.html" class="text-xs uppercase tracking-widest text-white group-hover:text-gold transition">Explore →</a>
-                </div>
-            </div>
+      </div>
+      <div class="lg:col-span-4">
+        <div class="group relative">
+          <div class="reveal-img active w-full h-[42vh] lg:h-[68vh] overflow-hidden border hairline">
+            <img src="https://images.unsplash.com/photo-1589829085413-56de8ae18c73?q=80&w=1600&auto=format&fit=crop" class="img-luxe object-cover w-full h-full" alt="Law Office Architecture">
+          </div>
+          <div class="flex justify-between mt-3 text-[10px] uppercase tracking-[0.25em] text-[#F5F0E8]/40"><span>Fig. 01 — Chambers</span><span class="text-[#C9A96E]">Grayscale / Color</span></div>
         </div>
-    </section>
+      </div>
+    </div>
+  </div>
+</header>
 
-    <!-- TESTIMONIALS -->
-    <section class="py-32 px-4 md:px-12 max-w-[1600px] mx-auto relative overflow-hidden">
-        <div class="text-center max-w-4xl mx-auto z-10 relative">
-            <span class="text-gold text-6xl font-serif">"</span>
-            <h3 class="text-3xl md:text-5xl font-serif leading-tight mb-8">
-                They didn't just win the case. They dismantled the opposition's entire argument before we even entered the courtroom.
-            </h3>
-            <div class="flex items-center justify-center gap-4">
-                <div class="h-px w-12 bg-gray-700"></div>
-                <p class="text-sm uppercase tracking-widest text-gray-400">Victor S., CEO of TechInfra Inc.</p>
-                <div class="h-px w-12 bg-gray-700"></div>
-            </div>
-        </div>
-    </section>
+<!-- Marquee hairline -->
+<div class="marquee border-y hairline py-4 bg-[#0E0E0E]">
+  <div class="marquee-track font-serif text-[15px] uppercase tracking-[0.3em] text-[#F5F0E8]/50">
+    <span>White Collar Defense &nbsp;—&nbsp; Corporate Litigation &nbsp;—&nbsp; Private Client &nbsp;—&nbsp; SEC / DOJ / ED &nbsp;—&nbsp;</span>
+    <span>White Collar Defense &nbsp;—&nbsp; Corporate Litigation &nbsp;—&nbsp; Private Client &nbsp;—&nbsp; SEC / DOJ / ED &nbsp;—&nbsp;</span>
+  </div>
+</div>
 
-    <!-- FOOTER -->
-    <footer class="bg-black border-t border-white/10 pt-24 pb-12 px-4 md:px-12">
-        <div class="max-w-[1600px] mx-auto grid grid-cols-1 md:grid-cols-4 gap-12 mb-24">
-            <div class="md:col-span-2">
-                <a href="#" class="text-3xl font-serif tracking-widest text-white">VANTAGE</a>
-                <p class="mt-8 text-gray-500 max-w-md">
-                    Elite legal counsel for those who demand excellence. Based in New York, serving clients globally.
-                </p>
-            </div>
-            <div>
-                <h4 class="text-white font-bold uppercase tracking-widest mb-8 text-sm">Offices</h4>
-                <p class="text-gray-500 mb-2">Rockefeller Center, Suite 1500</p>
-                <p class="text-gray-500 mb-2">New York, NY 10020</p>
-                <p class="text-gray-500">+1 (212) 555-0199</p>
-            </div>
-            <div>
-                <h4 class="text-white font-bold uppercase tracking-widest mb-8 text-sm">Links</h4>
-                <ul class="space-y-4 text-gray-500">
-                    <li><a href="about.html" class="hover:text-white transition">About Us</a></li>
-                    <li><a href="practice.html" class="hover:text-white transition">Expertise</a></li>
-                    <li><a href="contact.html" class="hover:text-white transition">Contact</a></li>
-                    <li><a href="#" class="hover:text-white transition">Privacy Policy</a></li>
-                </ul>
-            </div>
-        </div>
-        <div class="max-w-[1600px] mx-auto text-center md:text-left text-gray-800 text-xs uppercase tracking-widest">
-            © 2026 Vantage Legal. Design by Network Builder.
-        </div>
-    </footer>
+<!-- STATISTICS -->
+<section class="py-16 bg-[#050505]">
+  <div class="max-w-[1600px] mx-auto px-6 md:px-10 grid grid-cols-2 md:grid-cols-4">
+    <div class="py-8 pr-8 border-r hairline"><h3 class="text-5xl font-serif text-[#C9A96E] mb-2">$500M+</h3><p class="text-[11px] uppercase tracking-[0.25em] text-[#F5F0E8]/40">Assets Protected</p></div>
+    <div class="py-8 px-8 md:border-r hairline"><h3 class="text-5xl font-serif text-[#F5F0E8] mb-2">15+</h3><p class="text-[11px] uppercase tracking-[0.25em] text-[#F5F0E8]/40">Years Experience</p></div>
+    <div class="py-8 pr-8 md:px-8 border-r hairline border-t md:border-t-0"><h3 class="text-5xl font-serif text-[#C9A96E] mb-2">98%</h3><p class="text-[11px] uppercase tracking-[0.25em] text-[#F5F0E8]/40">Success Rate</p></div>
+    <div class="py-8 px-8 border-t md:border-t-0 hairline"><h3 class="text-5xl font-serif text-[#F5F0E8] mb-2">24/7</h3><p class="text-[11px] uppercase tracking-[0.25em] text-[#F5F0E8]/40">Crisis Response</p></div>
+  </div>
+</section>
 
-    <script>
-        function toggleMenu() { document.getElementById('menu').classList.toggle('open'); }
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) entry.target.classList.add('active');
-            });
-        }, { threshold: 0.1 });
-        document.querySelectorAll('.reveal-img').forEach(img => observer.observe(img));
-    </script>
+<!-- PHILOSOPHY -->
+<section class="py-24 px-6 md:px-10 max-w-[1600px] mx-auto border-t hairline">
+  <div class="grid grid-cols-1 lg:grid-cols-2 gap-16">
+    <div>
+      <div class="flex items-center gap-4 mb-6"><span class="text-[#C9A96E] font-serif italic text-xl">01</span><span class="h-px w-12 bg-[#C9A96E]/60"></span><span class="text-[#C9A96E] uppercase tracking-[0.3em] text-[11px]">The Philosophy</span></div>
+      <h2 class="text-fluid-h2 font-serif leading-[0.95]">WE DON'T<br>SETTLE.<br><span class="italic text-[#F5F0E8]/30">we dominate.</span></h2>
+      <div class="reveal-img active w-full h-[340px] mt-10 overflow-hidden border hairline group">
+        <img src="https://images.unsplash.com/photo-1589829085413-56de8ae18c73?q=80&w=1200&auto=format&fit=crop" class="img-luxe w-full h-full object-cover" alt="Gavel on Sound Block">
+      </div>
+      <p class="mt-3 text-[10px] uppercase tracking-[0.25em] text-[#F5F0E8]/35">Fig. 02 — The Gavel, at rest</p>
+    </div>
+    <div class="flex flex-col justify-end space-y-6 text-[17px] font-light leading-[1.85] text-[#F5F0E8]/60">
+      <p class="first-letter:text-6xl first-letter:font-serif first-letter:text-[#F5F0E8] first-letter:float-left first-letter:mr-4 first-letter:leading-[0.85]">
+        The legal landscape is chaotic. You don't need a lawyer who just files paperwork; you need a strategist who understands the chessboard. At Vantage Legal, we treat every case as a war for your reputation, your assets, and your liberty.
+      </p>
+      <p>Founded by Senior Counsel <strong class="text-[#F5F0E8] font-medium">Richard Sterling</strong> (Ex-Federal Prosecutor), our firm brings the aggression of criminal defense into the boardroom. Whether you are facing an SEC inquiry, a hostile takeover, or a high-profile divorce, we build a fortress around you.</p>
+      <p>We limit our active caseload to ensure absolute focus. When you hire us, you don't get a junior associate. You get the full weight of the firm.</p>
+      <a href="about.html" class="inline-flex items-center gap-3 mt-2 text-[#F5F0E8] border-b border-[#C9A96E] pb-1 w-fit hover:text-[#C9A96E] transition text-sm uppercase tracking-[0.2em]">Read Our Full Story <span>→</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- NUMBERED PRACTICE LIST -->
+<section class="py-24 bg-[#0E0E0E] border-y hairline">
+  <div class="max-w-[1600px] mx-auto px-6 md:px-10">
+    <div class="flex flex-col md:flex-row justify-between md:items-end mb-14 gap-6">
+      <div><div class="flex items-center gap-4 mb-4"><span class="text-[#C9A96E] font-serif italic text-xl">02</span><span class="h-px w-12 bg-[#C9A96E]/60"></span><span class="text-[#C9A96E] uppercase tracking-[0.3em] text-[11px]">Selected Expertise</span></div>
+      <h2 class="text-fluid-h2 font-serif">AREAS OF<br><span class="italic text-[#F5F0E8]/35">mastery</span></h2></div>
+      <a href="practice.html" class="px-8 py-4 border hairline hover:bg-[#F5F0E8] hover:text-black hover:border-[#F5F0E8] transition text-[12px] uppercase tracking-[0.2em] h-fit">View All Services</a>
+    </div>
+    <div class="border-b hairline">
+      <a href="practice.html" class="row-hover group grid md:grid-cols-12 gap-4 items-center border-t hairline py-10 px-2 md:px-6">
+        <span class="md:col-span-1 font-serif text-[#C9A96E] text-2xl">01</span>
+        <h3 class="row-title md:col-span-5 font-serif text-3xl md:text-5xl">White Collar Defense</h3>
+        <p class="md:col-span-5 text-sm text-[#F5F0E8]/50 font-light leading-relaxed">Defense against SEC, DOJ, and FBI investigations. Money laundering, fraud, and corporate espionage cases.</p>
+        <span class="md:col-span-1 text-right text-[#C9A96E] text-2xl group-hover:translate-x-2 transition-transform">→</span>
+      </a>
+      <a href="practice.html" class="row-hover group grid md:grid-cols-12 gap-4 items-center border-t hairline py-10 px-2 md:px-6">
+        <span class="md:col-span-1 font-serif text-[#C9A96E] text-2xl">02</span>
+        <h3 class="row-title md:col-span-5 font-serif text-3xl md:text-5xl">Corporate Litigation</h3>
+        <p class="md:col-span-5 text-sm text-[#F5F0E8]/50 font-light leading-relaxed">Shareholder disputes, insolvency, and high-value arbitration. We protect your bottom line.</p>
+        <span class="md:col-span-1 text-right text-[#C9A96E] text-2xl group-hover:translate-x-2 transition-transform">→</span>
+      </a>
+      <a href="practice.html" class="row-hover group grid md:grid-cols-12 gap-4 items-center border-t hairline py-10 px-2 md:px-6">
+        <span class="md:col-span-1 font-serif text-[#C9A96E] text-2xl">03</span>
+        <h3 class="row-title md:col-span-5 font-serif text-3xl md:text-5xl">Private Client</h3>
+        <p class="md:col-span-5 text-sm text-[#F5F0E8]/50 font-light leading-relaxed">Discreet resolution of family disputes, high-net-worth divorce, and legacy/estate planning.</p>
+        <span class="md:col-span-1 text-right text-[#C9A96E] text-2xl group-hover:translate-x-2 transition-transform">→</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIAL -->
+<section class="py-28 px-6 md:px-12 max-w-[1100px] mx-auto text-center">
+  <div class="flex items-center justify-center gap-4 mb-8"><span class="h-px w-16 bg-[#C9A96E]/50"></span><span class="font-serif italic text-[#C9A96E] text-6xl leading-none">“</span><span class="h-px w-16 bg-[#C9A96E]/50"></span></div>
+  <h3 class="text-3xl md:text-[44px] font-serif leading-[1.15] text-[#F5F0E8]">They didn't just win the case. They dismantled the opposition's entire argument before we even entered the courtroom.</h3>
+  <div class="flex items-center justify-center gap-4 mt-10">
+    <div class="h-px w-12 bg-[#C9A96E]/40"></div>
+    <p class="text-[11px] uppercase tracking-[0.25em] text-[#F5F0E8]/50">Victor S., CEO of TechInfra Inc.</p>
+    <div class="h-px w-12 bg-[#C9A96E]/40"></div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="bg-black border-t hairline pt-16 pb-10 px-6 md:px-10 overflow-hidden">
+  <div class="max-w-[1600px] mx-auto">
+    <div class="font-serif text-[16vw] lg:text-[11rem] leading-none text-center outline-word opacity-40 select-none pointer-events-none -mb-4">VANTAGE</div>
+    <div class="gold-rule mb-14 opacity-60"></div>
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
+      <div class="md:col-span-2">
+        <a href="index.html" class="font-serif text-3xl tracking-[0.18em] text-[#F5F0E8]">VANTAGE</a>
+        <p class="mt-6 text-[#F5F0E8]/45 max-w-md font-light leading-relaxed">Elite legal counsel for those who demand excellence. Based in New York, serving clients globally.</p>
+        <p class="mt-6 text-[11px] uppercase tracking-[0.25em] text-[#C9A96E]">secure@vantage.legal</p>
+      </div>
+      <div><h4 class="text-[#F5F0E8] font-medium uppercase tracking-[0.25em] mb-8 text-[12px]">Offices</h4><p class="text-[#F5F0E8]/45 mb-2 font-light">Rockefeller Center, Suite 1500</p><p class="text-[#F5F0E8]/45 mb-2 font-light">New York, NY 10020</p><p class="text-[#F5F0E8]/45 font-light">+1 (212) 555-0199</p></div>
+      <div><h4 class="text-[#F5F0E8] font-medium uppercase tracking-[0.25em] mb-8 text-[12px]">Links</h4>
+        <ul class="space-y-4 text-[#F5F0E8]/45 font-light">
+          <li><a href="about.html" class="hover:text-[#C9A96E] transition">About Us</a></li>
+          <li><a href="practice.html" class="hover:text-[#C9A96E] transition">Expertise</a></li>
+          <li><a href="contact.html" class="hover:text-[#C9A96E] transition">Contact</a></li>
+          <li><a href="#" class="hover:text-[#C9A96E] transition">Privacy Policy</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="flex flex-col md:flex-row justify-between border-t hairline pt-6 text-[#F5F0E8]/30 text-[11px] uppercase tracking-[0.2em]">
+      <span>© 2026 Vantage Legal. Design by Network Builder.</span><span class="mt-2 md:mt-0">Attorney Advertising — Prior results do not guarantee outcomes</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+function toggleMenu(){
+  const m=document.getElementById('menu');
+  m.classList.toggle('open');
+  const l=document.getElementById('menu-label');
+  if(l) l.textContent=m.classList.contains('open')?'Close':'Menu';
+  document.body.style.overflow=m.classList.contains('open')?'hidden':'';
+}
+const observer=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('active');});},{threshold:0.1});
+document.querySelectorAll('.reveal-img').forEach(el=>observer.observe(el));
+</script>
 </body>
 </html>

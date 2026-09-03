@@ -5,13 +5,13 @@
 <title>STICKCRAFT — Business Stickers & Labels | Print Studio for Brands</title>
 <meta name="description" content="STICKCRAFT — professional stickers & labels for businesses. Vinyl, transparent, holographic, kraft, roll labels. Any shape, any color, any pattern. Bulk from 50 pcs, free proof, GST invoice.">
 <script src="https://cdn.tailwindcss.com"></script>
-<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
 <script>
 tailwind.config={
   theme:{
     extend:{
-      fontFamily:{ sans:['Inter','sans-serif'], serif:['Instrument Serif','serif'], display:['Space Grotesk','sans-serif'] },
-      colors:{ ink:'#0F1A1C', muted:'#6B7280', paper:'#F8F7F5', line:'#E5E7EB', accent:'#0E7490', accent2:'#155E75' }
+      fontFamily:{sans:['Inter','sans-serif'],display:['Space Grotesk','sans-serif'],serif:['Space Grotesk','sans-serif']},
+      colors:{ ink:'#0F1A1C', muted:'#6B7280', paper:'#FFFBF7', line:'#E5E7EB', accent:'#0E7490', accent2:'#155E75' }
     }
   }
 }
@@ -20,6 +20,23 @@ tailwind.config={
   .hide-scrollbar::-webkit-scrollbar{display:none}
   .hide-scrollbar{scrollbar-width:none}
   .sticker-shadow{ box-shadow: 0 10px 30px rgba(0,0,0,0.18), 0 2px 8px rgba(0,0,0,0.12); }
+</style>
+
+<style>
+  body{ font-family:'Inter',sans-serif; background:#FFFBF7; }
+  .font-display,.font-serif{ font-family:'Space Grotesk',sans-serif !important; }
+  .precision-grid{ background-image: linear-gradient(to right, rgba(15,26,28,.06) 1px, transparent 1px), linear-gradient(to bottom, rgba(15,26,28,.06) 1px, transparent 1px); background-size:28px 28px; }
+  .precision-dots{ background-image: radial-gradient(circle at 1px 1px, rgba(14,116,144,.18) 1px, transparent 0); background-size:18px 18px; }
+  .spec-label{ font-family:'Space Grotesk',sans-serif; font-size:11px; letter-spacing:.14em; text-transform:uppercase; font-weight:700; }
+  .proof-badge{ background:#A3E635; color:#0F1A1C; border:1.5px solid #0F1A1C; box-shadow:2px 2px 0 #0F1A1C; font-weight:700; }
+  .proof-badge-cyan{ background:#0E7490; color:white; border:1.5px solid #0F1A1C; }
+  .sharp{ border-radius:10px !important; }
+  .bulk-table{ border:1.5px solid #0F1A1C; } .bulk-table > div:nth-child(even){ background:#F2F7F8; }
+  .ruler{ height:10px; background:repeating-linear-gradient(90deg, #0F1A1C 0 1px, transparent 1px 8px); opacity:.25; }
+  .shape-ring{ border:2px solid #0F1A1C; box-shadow:0 0 0 4px white, 0 0 0 5.5px #0F1A1C; }
+  .step-num{ width:32px; height:32px; border-radius:9999px; background:#0F1A1C; color:white; display:flex; align-items:center; justify-content:center; font-family:'Space Grotesk'; font-weight:700; font-size:14px; }
+  .step-num-lime{ background:#A3E635; color:#0F1A1C; border:1.5px solid #0F1A1C; }
+  ::selection{ background:#0E7490; color:white; }
 </style>
 </head>
 <body class="bg-white text-ink antialiased overflow-x-hidden">
@@ -101,7 +118,7 @@ tailwind.config={
 <div id="mobileBackdrop" class="hidden lg:hidden fixed inset-0 top-[56px] sm:top-[64px] bg-black/30 backdrop-blur-sm z-30" onclick="closeMobileMenu()"></div>
 
 <!-- HERO — light, image-rich, professional -->
-<section class="relative bg-[#FFFBF7] overflow-visible">
+<section class="relative bg-[#FFFBF7] overflow-visible precision-grid">
   <div class="absolute inset-0 pointer-events-none overflow-hidden">
     <div class="hidden lg:block absolute -top-28 -right-28 w-[640px] h-[640px] bg-accent/10 rounded-full blur-[80px]"></div>
     <div class="hidden lg:block absolute -bottom-32 -left-32 w-[520px] h-[520px] bg-orange-100 rounded-full blur-[70px]"></div>
@@ -113,7 +130,7 @@ tailwind.config={
       <!-- Left copy -->
       <div class="lg:col-span-6">
         <div class="inline-flex items-center gap-2 bg-white border border-line rounded-full px-3 py-1.5 text-xs font-semibold shadow-sm">
-          <span class="w-2 h-2 bg-emerald-500 rounded-full animate-pulse"></span> Jaipur studio • 48h dispatch • GST invoice
+          <span class="w-2 h-2 bg-lime rounded-full animate-pulse"></span> Jaipur studio • 48h dispatch • GST invoice
           <span class="hidden sm:inline-flex bg-ink text-white px-2 py-0.5 rounded-full text-[10px] tracking-widest">TRUSTED 1,200+</span>
         </div>
         <h1 class="font-serif text-[32px] sm:text-[38px] lg:text-[62px] leading-[0.9] mt-4 tracking-tight">Stickers that <span class="italic font-light">make products</span> look premium.</h1>
@@ -133,7 +150,7 @@ tailwind.config={
         <div class="flex items-center gap-4 mt-7 pt-6 border-t border-line">
           <div class="flex -space-x-2"><img src="https://images.unsplash.com/photo-1521119989659-a83eee488004?w=64&h=64&fit=crop" class="w-8 h-8 rounded-full border-2 border-white object-cover"><img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=64&h=64&fit=crop" class="w-8 h-8 rounded-full border-2 border-white object-cover"><img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=64&h=64&fit=crop" class="w-8 h-8 rounded-full border-2 border-white object-cover"><span class="w-8 h-8 rounded-full bg-ink text-white text-[11px] font-bold flex items-center justify-center border-2 border-white">+1k</span></div>
           <div class="text-sm"><span class="font-semibold">4.9 <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" class="align-middle shrink-0 shrink-0 inline -mt-0.5"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg> • 1,200+ businesses</span><span class="text-muted hidden sm:inline"> • Reorder rate 68%</span></div>
-          <div class="hidden sm:flex ml-auto items-center gap-2 text-xs bg-white border border-line rounded-full px-3 py-1.5"><span class="w-2 h-2 bg-emerald-500 rounded-full animate-pulse"></span> Proof desk online till 8pm</div>
+          <div class="hidden sm:flex ml-auto items-center gap-2 text-xs bg-white border border-line rounded-full px-3 py-1.5"><span class="w-2 h-2 bg-lime rounded-full animate-pulse"></span> Proof desk online till 8pm</div>
         </div>
       </div>
 
@@ -166,7 +183,7 @@ tailwind.config={
           </div>
           <!-- floating proof card -->
           <div class="absolute -left-2 top-6 bg-white rounded-2xl px-3 py-2 shadow-[0_10px_30px_rgba(0,0,0,0.12)] border border-line flex items-center gap-2">
-            <span class="w-7 h-7 rounded-full bg-emerald-500 text-white flex items-center justify-center"><svg class="align-middle shrink-0 shrink-0" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg></span>
+            <span class="w-7 h-7 rounded-full bg-lime text-white flex items-center justify-center"><svg class="align-middle shrink-0 shrink-0" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg></span>
             <div><div class="text-xs font-bold leading-none">Free proof in 4h</div><div class="text-[10px] text-muted">PDF with cutline</div></div>
           </div>
           <!-- price flag -->
@@ -351,8 +368,8 @@ tailwind.config={
         </div>
         <div class="mt-4 space-y-2 text-sm">
           <div class="flex justify-between"><span class="text-muted">50 pcs • 2″ circle</span><span class="font-semibold">₹890</span></div>
-          <div class="flex justify-between"><span class="text-muted">100 pcs • 3″ text cut</span><span class="font-semibold">₹1,590 <span class="text-xs text-emerald-600">save 16%</span></span></div>
-          <div class="flex justify-between"><span class="text-muted">500 pcs • hologram star</span><span class="font-semibold">₹4,490 <span class="text-xs text-emerald-600">save 32%</span></span></div>
+          <div class="flex justify-between"><span class="text-muted">100 pcs • 3″ text cut</span><span class="font-semibold">₹1,590 <span class="text-xs text-accent">save 16%</span></span></div>
+          <div class="flex justify-between"><span class="text-muted">500 pcs • hologram star</span><span class="font-semibold">₹4,490 <span class="text-xs text-accent">save 32%</span></span></div>
           <div class="flex justify-between font-bold border-t border-line pt-2 mt-2"><span>1000 pcs</span><span>₹7,900</span></div>
         </div>
         <a href="custom.html" class="block mt-4 bg-ink text-white text-center py-3 rounded-full font-semibold">Calculate My Price <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12h14M12 5l7 7-7 7'/%3E%3C/svg%3E" alt="→" class="w-3.5 h-3.5 shrink-0 align-middle inline-block"></a>
@@ -370,7 +387,7 @@ tailwind.config={
       <div class="bg-white rounded-2xl p-4 border border-line"><div class="w-7 h-7 rounded-full bg-ink text-white flex items-center justify-center text-xs font-bold">1</div><div class="font-semibold mt-2 text-sm">Upload any shape</div><div class="text-xs text-muted mt-1">PNG/PDF/AI — we auto-trace cutline, fix DPI</div></div>
       <div class="bg-white rounded-2xl p-4 border border-line"><div class="w-7 h-7 rounded-full bg-ink text-white flex items-center justify-center text-xs font-bold">2</div><div class="font-semibold mt-2 text-sm">Free proof in 4h</div><div class="text-xs text-muted mt-1">PDF with cutline & scale — unlimited edits</div></div>
       <div class="bg-white rounded-2xl p-4 border border-line"><div class="w-7 h-7 rounded-full bg-ink text-white flex items-center justify-center text-xs font-bold">3</div><div class="font-semibold mt-2 text-sm">Contour cut</div><div class="text-xs text-muted mt-1">Roland CMYK + white ink, precision cut</div></div>
-      <div class="bg-white rounded-2xl p-4 border border-line"><div class="w-7 h-7 rounded-full bg-accent text-white flex items-center justify-center text-xs font-bold">4</div><div class="font-semibold mt-2 text-sm">Delivered 3-4 days</div><div class="text-xs text-muted mt-1">Tracking + GST, colour-matched reorder</div></div>
+      <div class="bg-white rounded-2xl p-4 border border-line"><div class="w-7 h-7 rounded-full bg-lime text-ink border border-ink flex items-center justify-center text-xs font-bold">4</div><div class="font-semibold mt-2 text-sm">Delivered 3-4 days</div><div class="text-xs text-muted mt-1">Tracking + GST, colour-matched reorder</div></div>
     </div>
     <div class="mt-6 flex items-center gap-2 text-xs"><span class="bg-white border px-3 py-1 rounded-full"><svg class="align-middle shrink-0 shrink-0" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg> Free proof</span><span class="bg-white border px-3 py-1 rounded-full"><svg class="align-middle shrink-0 shrink-0" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg> Colour proof</span><span class="bg-white border px-3 py-1 rounded-full"><svg class="align-middle shrink-0 shrink-0" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg> Reorder in 1 click</span></div>
   </div>
@@ -426,7 +443,7 @@ tailwind.config={
   </div>
   <div class="max-w-[1440px] mx-auto px-4 lg:px-6 flex flex-col lg:flex-row items-center justify-between gap-3 text-xs text-muted border-t border-line mt-6 pt-6">
     <span>© 2026 STICKCRAFT • Demo by <a href="https://networkbuilder.in" class="underline">Network Builder</a></span>
-    <span class="flex items-center gap-2">Built with HTML + Tailwind <span class="w-2 h-2 bg-emerald-500 rounded-full animate-pulse"></span> Demo — No backend</span>
+    <span class="flex items-center gap-2">Built with HTML + Tailwind <span class="w-2 h-2 bg-lime rounded-full animate-pulse"></span> Demo — No backend</span>
   </div>
 </footer>
 

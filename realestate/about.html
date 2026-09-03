@@ -13,7 +13,7 @@
       theme: {
         extend: {
           fontFamily: { sans: ['Inter', 'sans-serif'], head: ['Poppins', 'sans-serif'], serif: ['Playfair Display', 'serif'] },
-          colors: { accent: '#2563EB', 'accent-light': '#EFF6FF' }
+          colors: { accent: '#2563EB', 'accent-light': '#EFF6FF', ink: '#0A0F1E', gold: '#C9A86A', 'gold-soft': '#F7EDD8' }
         }
       }
     }
@@ -99,14 +99,15 @@
   </nav>
 
   <!-- PAGE HERO -->
-  <div class="pt-16 lg:pt-[72px] bg-gradient-to-br from-blue-50 via-white to-gray-50 border-b border-gray-100">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14 lg:py-20 text-center">
-      <div class="flex items-center justify-center gap-2 text-accent text-xs font-black uppercase tracking-widest mb-4">
-        <span class="w-8 h-0.5 bg-accent rounded"></span> Our Story <span class="w-8 h-0.5 bg-accent rounded"></span>
+  <div class="pt-16 lg:pt-[72px] border-b border-gold/20 relative overflow-hidden" style="background: linear-gradient(135deg, #0A0F1E 0%, #131B3A 60%, #1B2450 100%);">
+    <div class="absolute inset-0 opacity-40" style="background-image: linear-gradient(rgba(255,255,255,.05) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.05) 1px, transparent 1px); background-size: 44px 44px;"></div>
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14 lg:py-20 text-center">
+      <div class="flex items-center justify-center gap-2 text-gold text-xs font-black uppercase tracking-widest mb-4">
+        <span class="w-8 h-0.5 rounded" style="background:#C9A86A"></span> Our Story · Since 2009 <span class="w-8 h-0.5 rounded" style="background:#C9A86A"></span>
       </div>
-      <h1 class="text-4xl lg:text-6xl font-black font-head text-gray-900 mb-4 max-w-3xl mx-auto">15 Years of
-        Connecting<br>Families to Dream Homes</h1>
-      <p class="text-gray-500 text-lg max-w-2xl mx-auto">Estate was founded in 2009 with a simple belief: buying or
+      <h1 class="text-4xl lg:text-6xl font-black font-head text-white mb-4 max-w-3xl mx-auto">15 Years of
+        Connecting<br>Families to <span class="italic font-serif" style="background: linear-gradient(100deg,#93C5FD,#C9A86A); -webkit-background-clip:text; background-clip:text; color:transparent;">Dream Homes</span></h1>
+      <p class="text-white/60 text-lg max-w-2xl mx-auto">Estate was founded in 2009 with a simple belief: buying or
         renting a home should be a joyful, transparent, and stress-free experience for every Indian family.</p>
     </div>
   </div>

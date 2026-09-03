@@ -1,98 +1,76 @@
 <!DOCTYPE html>
-<html lang="en" class="bg-[#050505] text-[#e0e0e0] antialiased selection:bg-[#c9a96e] selection:text-black">
+<html lang="en" class="bg-[#050505] text-[#F5F0E8] antialiased selection:bg-[#C9A96E] selection:text-black">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Practice Areas | VANTAGE LEGAL</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Italiana&family=Space+Grotesk:wght@300;400;500;600&display=swap" rel="stylesheet">
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: { serif: ['Italiana', 'serif'], sans: ['Space Grotesk', 'sans-serif'] },
-                    colors: { gold: '#c9a96e', dark: '#050505', subtle: '#333' }
-                }
-            }
-        }
-    </script>
-    <style>
-        .menu-overlay { clip-path: circle(0% at 100% 0); transition: clip-path 0.8s cubic-bezier(0.77, 0, 0.175, 1); }
-        .menu-overlay.open { clip-path: circle(150% at 100% 0); }
-    </style>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Practice Areas | VANTAGE LEGAL</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Italiana&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<script>tailwind.config={theme:{extend:{fontFamily:{serif:['Italiana','serif'],sans:['Inter','sans-serif']},colors:{gold:'#C9A96E',cream:'#F5F0E8',void:'#050505',coal:'#0E0E0E'}}}}</script>
+<style>
+body{font-family:'Inter',sans-serif;background:#050505;}.font-serif{font-family:'Italiana',serif!important;}
+.hairline{border-color:rgba(201,169,110,.18);}
+.menu-overlay{clip-path:circle(0% at 100% 0);transition:clip-path .8s cubic-bezier(.77,0,.175,1);}.menu-overlay.open{clip-path:circle(150% at 100% 0);}
+.num{font-family:'Italiana',serif;color:transparent;-webkit-text-stroke:1px rgba(201,169,110,.65);}
+.practice-row{transition:background .5s ease;}.practice-row:hover{background:#0E0E0E;}
+.practice-row:hover h2{color:#C9A96E;transform:translateX(10px);} .practice-row h2{transition:.5s cubic-bezier(.16,1,.3,1);}
+li::marker{color:#C9A96E;}
+</style>
 </head>
 <body class="font-sans">
+<div class="fixed top-0 w-full z-[60] bg-[#050505]/85 backdrop-blur-md border-b hairline">
+  <div class="max-w-7xl mx-auto px-6 h-[68px] flex items-center justify-between">
+    <a href="index.html" class="font-serif text-[24px] tracking-[0.22em]">VANTAGE</a>
+    <button onclick="document.getElementById('menu').classList.toggle('open')" class="flex items-center gap-3 text-[12px] uppercase tracking-[0.25em] hover:text-[#C9A96E] transition">Menu<span class="flex flex-col gap-[5px] w-7"><span class="h-px bg-current w-full"></span><span class="h-px bg-current w-2/3 ml-auto"></span></span></button>
+  </div>
+</div>
+<div id="menu" class="menu-overlay fixed inset-0 bg-[#C9A96E] z-[55] flex items-center justify-center">
+  <div class="flex flex-col space-y-6 text-center">
+    <a href="index.html" class="text-[#050505] text-5xl md:text-6xl font-serif hover:italic transition-all">Index</a>
+    <a href="about.html" class="text-[#050505] text-5xl md:text-6xl font-serif hover:italic transition-all">The Firm</a>
+    <a href="practice.html" class="text-[#050505] text-5xl md:text-6xl font-serif italic transition-all">Expertise</a>
+    <a href="contact.html" class="text-[#050505] text-5xl md:text-6xl font-serif hover:italic transition-all">Contact</a>
+  </div>
+</div>
 
-    <!-- Nav -->
-    <nav class="fixed top-0 w-full z-50 px-6 py-6 mix-blend-difference text-white flex justify-between items-center bg-black/20 backdrop-blur-sm">
-        <a href="index.html" class="text-2xl font-serif tracking-widest z-50 relative group">VANTAGE</a>
-        <button onclick="document.getElementById('menu').classList.toggle('open')" class="z-50 text-sm uppercase tracking-[0.2em] hover:text-gold transition">Menu</button>
-    </nav>
-    <div id="menu" class="menu-overlay fixed inset-0 bg-gold z-40 flex items-center justify-center">
-        <div class="flex flex-col space-y-8 text-center">
-            <a href="index.html" class="text-dark text-6xl font-serif hover:italic transition-all">Index</a>
-            <a href="about.html" class="text-dark text-6xl font-serif hover:italic transition-all">The Firm</a>
-            <a href="practice.html" class="text-dark text-6xl font-serif italic transition-all">Expertise</a>
-            <a href="contact.html" class="text-dark text-6xl font-serif hover:italic transition-all">Contact</a>
-        </div>
+<header class="pt-[150px] pb-14 px-6 max-w-7xl mx-auto text-center">
+  <div class="flex items-center justify-center gap-4 mb-6"><span class="h-px w-14 bg-[#C9A96E]"></span><p class="text-[#C9A96E] uppercase tracking-[0.32em] text-[11px]">03 — Our Focus</p><span class="h-px w-14 bg-[#C9A96E]"></span></div>
+  <h1 class="font-serif leading-[0.9]" style="font-size:clamp(3.5rem,9vw,7.5rem)">AREAS OF <span class="italic text-[#F5F0E8]/30">mastery</span></h1>
+  <p class="mt-6 text-[#F5F0E8]/50 font-light max-w-xl mx-auto">Three disciplines. One standard: absolute dominance. Hover each dossier to enter.</p>
+</header>
+
+<section class="max-w-7xl mx-auto px-6 pb-24">
+  <div class="border-b hairline">
+    <div class="practice-row grid md:grid-cols-12 gap-8 border-t hairline py-14 px-2 md:px-8 items-start">
+      <span class="num text-6xl md:text-7xl md:col-span-2">01</span>
+      <div class="md:col-span-4"><p class="text-[#C9A96E] text-[11px] uppercase tracking-[0.3em] mb-3">White Collar</p><h2 class="text-4xl md:text-5xl font-serif">White Collar Defense</h2><a href="contact.html" class="inline-block mt-6 text-[12px] uppercase tracking-[0.2em] border-b border-[#C9A96E] pb-1 hover:text-[#C9A96E]">Request Counsel →</a></div>
+      <div class="md:col-span-6 space-y-5 text-[#F5F0E8]/60 font-light leading-relaxed">
+        <p>In an era of aggressive enforcement, you need a shield. We represent individuals and corporations in investigations by the Enforcement Directorate (ED), CBI, SFIO, and Income Tax authorities.</p>
+        <ul class="list-disc pl-5 space-y-2 text-[#F5F0E8]/45 text-[15px]"><li>Money Laundering (PMLA) Defense</li><li>Corporate Fraud Investigations</li><li>Anticipatory Bail &amp; Quashing Petitions</li></ul>
+      </div>
     </div>
+    <div class="practice-row grid md:grid-cols-12 gap-8 border-t hairline py-14 px-2 md:px-8 items-start">
+      <span class="num text-6xl md:text-7xl md:col-span-2">02</span>
+      <div class="md:col-span-4"><p class="text-[#C9A96E] text-[11px] uppercase tracking-[0.3em] mb-3">Corporate</p><h2 class="text-4xl md:text-5xl font-serif">Corporate Litigation</h2><a href="contact.html" class="inline-block mt-6 text-[12px] uppercase tracking-[0.2em] border-b border-[#C9A96E] pb-1 hover:text-[#C9A96E]">Request Counsel →</a></div>
+      <div class="md:col-span-6 space-y-5 text-[#F5F0E8]/60 font-light leading-relaxed">
+        <p>Business disputes can bleed a company dry. We stop the bleeding. Our team handles complex commercial litigation, shareholder disputes, and insolvency proceedings (IBC) with ruthless efficiency.</p>
+        <ul class="list-disc pl-5 space-y-2 text-[#F5F0E8]/45 text-[15px]"><li>NCLT / NCLAT Representation</li><li>Commercial Arbitration</li><li>Intellectual Property Disputes</li></ul>
+      </div>
+    </div>
+    <div class="practice-row grid md:grid-cols-12 gap-8 border-t hairline py-14 px-2 md:px-8 items-start">
+      <span class="num text-6xl md:text-7xl md:col-span-2">03</span>
+      <div class="md:col-span-4"><p class="text-[#C9A96E] text-[11px] uppercase tracking-[0.3em] mb-3">Private</p><h2 class="text-4xl md:text-5xl font-serif">Private Client</h2><a href="contact.html" class="inline-block mt-6 text-[12px] uppercase tracking-[0.2em] border-b border-[#C9A96E] pb-1 hover:text-[#C9A96E]">Request Counsel →</a></div>
+      <div class="md:col-span-6 space-y-5 text-[#F5F0E8]/60 font-light leading-relaxed">
+        <p>For High Net Worth Individuals, privacy is paramount. We handle sensitive family matters, high-stakes divorce, and succession planning discreetly and effectively.</p>
+        <ul class="list-disc pl-5 space-y-2 text-[#F5F0E8]/45 text-[15px]"><li>High-Value Divorce Settlements</li><li>Child Custody Disputes</li><li>Estate &amp; Will Contests</li></ul>
+      </div>
+    </div>
+  </div>
+  <div class="mt-14 flex flex-col md:flex-row items-center justify-between gap-6 bg-[#0E0E0E] border hairline p-8 md:p-10">
+    <p class="font-serif text-2xl md:text-3xl italic text-[#F5F0E8]/80">Not sure where you stand? We assess in 30 minutes.</p>
+    <a href="contact.html" class="px-10 py-4 bg-[#C9A96E] text-black text-[12px] font-semibold uppercase tracking-[0.2em] hover:bg-[#F5F0E8] transition shrink-0">Secure Counsel</a>
+  </div>
+</section>
 
-    <!-- Header -->
-    <header class="pt-48 pb-24 px-6 max-w-7xl mx-auto text-center">
-        <p class="text-gold uppercase tracking-[0.3em] mb-4 text-sm">Our Focus</p>
-        <h1 class="text-6xl md:text-8xl font-serif text-white mb-8">AREAS OF <span class="italic text-gray-600">MASTERY</span></h1>
-    </header>
-
-    <!-- Services Grid -->
-    <section class="max-w-7xl mx-auto px-6 pb-24">
-        <div class="space-y-24">
-            
-            <!-- Service 1 -->
-            <div class="grid md:grid-cols-2 gap-12 border-t border-white/10 pt-12">
-                <h2 class="text-4xl font-serif text-white">01. White Collar Defense</h2>
-                <div class="space-y-6 text-gray-400 font-light">
-                    <p>In an era of aggressive enforcement, you need a shield. We represent individuals and corporations in investigations by the Enforcement Directorate (ED), CBI, SFIO, and Income Tax authorities.</p>
-                    <ul class="list-disc pl-5 space-y-2 text-gray-500">
-                        <li>Money Laundering (PMLA) Defense</li>
-                        <li>Corporate Fraud Investigations</li>
-                        <li>Anticipatory Bail & Quashing Petitions</li>
-                    </ul>
-                </div>
-            </div>
-
-            <!-- Service 2 -->
-            <div class="grid md:grid-cols-2 gap-12 border-t border-white/10 pt-12">
-                <h2 class="text-4xl font-serif text-white">02. Corporate Litigation</h2>
-                <div class="space-y-6 text-gray-400 font-light">
-                    <p>Business disputes can bleed a company dry. We stop the bleeding. Our team handles complex commercial litigation, shareholder disputes, and insolvency proceedings (IBC) with ruthless efficiency.</p>
-                    <ul class="list-disc pl-5 space-y-2 text-gray-500">
-                        <li>NCLT / NCLAT Representation</li>
-                        <li>Commercial Arbitration</li>
-                        <li>Intellectual Property Disputes</li>
-                    </ul>
-                </div>
-            </div>
-
-            <!-- Service 3 -->
-            <div class="grid md:grid-cols-2 gap-12 border-t border-white/10 pt-12">
-                <h2 class="text-4xl font-serif text-white">03. Private Client</h2>
-                <div class="space-y-6 text-gray-400 font-light">
-                    <p>For High Net Worth Individuals, privacy is paramount. We handle sensitive family matters, high-stakes divorce, and succession planning discreetly and effectively.</p>
-                    <ul class="list-disc pl-5 space-y-2 text-gray-500">
-                        <li>High-Value Divorce Settlements</li>
-                        <li>Child Custody Disputes</li>
-                        <li>Estate & Will Contests</li>
-                    </ul>
-                </div>
-            </div>
-
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="bg-black border-t border-white/10 py-12 text-center text-gray-600 text-sm">
-        <p>&copy; 2026 Vantage Legal. New Delhi.</p>
-    </footer>
-
+<footer class="bg-black border-t hairline py-12 text-center text-[#F5F0E8]/35 text-[11px] uppercase tracking-[0.2em]"><p>&copy; 2026 Vantage Legal. New Delhi.</p></footer>
 </body>
 </html>

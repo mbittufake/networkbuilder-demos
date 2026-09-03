@@ -1,88 +1,130 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Candle — LUME</title>
 <script src="https://cdn.tailwindcss.com"></script>
-<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-<script>tailwind.config={theme:{extend:{fontFamily:{sans:['Inter','sans-serif'],serif:['Instrument Serif','serif']},colors:{ink:'#1A1A1A',muted:'#6B6560',paper:'#FDF6EE',line:'#EDE6DA',amber:'#E8B86D',terracotta:'#C86B3C'}}}}</script>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;1,9..144,300;1,9..144,400&family=Plus+Jakarta+Sans:wght@500;600;700&display=swap" rel="stylesheet">
+<script>
+tailwind.config={ theme:{ extend:{ fontFamily:{ serif:['Fraunces','serif'], sans:['Plus Jakarta Sans','sans-serif'] }, colors:{ ember:'#120C08', coal:'#1E1510', cream:'#F7EDE1', sand:'#EADDCB', amber:'#E8B86D', flame:'#C86B3C', smoke:'#A89888' } } } }
+</script>
+<style>
+body{background:#120C08}
+::selection{background:#E8B86D;color:#120C08}
+.glow{position:absolute;border-radius:9999px;filter:blur(90px);pointer-events:none}
+.arch{border-radius:999px 999px 28px 28px}
+.no-scrollbar::-webkit-scrollbar{display:none}.no-scrollbar{scrollbar-width:none}
+.lume-card{transition:transform .5s cubic-bezier(.16,1,.3,1)}.lume-card:hover{transform:translateY(-6px)}
+#searchResults a{color:#F7EDE1 !important}
+#searchResults a:hover{background:rgba(232,184,109,.12) !important}
+#searchResults .text-\[\#6B6560\],#searchResults .text-\[\#9C8E84\],#cartDrawerItems .text-\[\#6B6560\],#cartDrawerItems .text-\[\#9C8E84\]{color:#A89888 !important}
+#cartDrawerItems{color:#F7EDE1;color-scheme:dark}
+#cartDrawerItems .border-\[\#EDE6DA\]{border-color:rgba(255,255,255,.1) !important}
+#cartDrawerItems .bg-\[\#FDF6EE\]{background:rgba(255,255,255,.06) !important}
+#cartDrawerItems button:hover{background:rgba(232,184,109,.12) !important}
+#cartDrawerItems a{color:#F7EDE1}
+.text-muted{color:#A89888 !important}
+</style>
 </head>
-<body class="bg-white text-ink antialiased">
-<div class="bg-ink text-amber text-xs text-center py-2.5 tracking-widest uppercase"><span class="hidden sm:inline">Free shipping over ₹1,999 • </span> Custom from 6 pcs <a href="custom.html" class="underline ml-2 text-white">Design Yours →</a></div>
-<header class="sticky top-0 z-40 bg-white/90 backdrop-blur border-b border-line">
-  <div class="max-w-[1280px] mx-auto px-4 lg:px-6">
-    <div class="flex items-center justify-between h-[64px] lg:h-[72px]">
-      <button id="mobileMenuBtn" class="lg:hidden w-10 h-10 flex items-center justify-center border border-line rounded-full"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
-      <a href="index.html" class="flex items-center gap-3"><div class="w-9 h-9 bg-ink text-amber flex items-center justify-center font-serif text-lg rounded-full"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 3a9 9 0 0 1 0 18"/></svg></div><span class="font-serif text-xl tracking-tight">LUME</span><span class="hidden sm:inline text-[10px] tracking-[0.22em] text-muted uppercase font-semibold border-l border-line pl-3 ml-1">Candle Studio</span></a>
-      <nav class="hidden lg:flex items-center gap-7 text-sm font-medium">
-        <a href="shop.html" class="hover:text-terracotta">Shop</a>
-        <a href="shop.html?col=Woody" class="hover:text-terracotta">Woody</a>
-        <a href="shop.html?col=Floral" class="hover:text-terracotta">Floral</a>
-        <a href="shop.html?col=Fresh" class="hover:text-terracotta">Fresh</a>
-        <a href="custom.html" class="bg-ink text-white px-4 py-2 rounded-full">Custom <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2l2.4 7.2H22l-6.2 4.5 2.4 7.3L12 16.5 5.8 21l2.4-7.3L2 9.2h7.6z"/></svg></a>
-      </nav>
-      <div class="flex items-center gap-2">
-        <button onclick="openSearch()" class="w-10 h-10 rounded-full border border-line hover:border-ink flex items-center justify-center"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="7"/><path d="M20 20L16 16"/></svg></button>
-        <a href="cart.html" class="hidden sm:flex items-center gap-2 border border-line rounded-full px-3 py-2 hover:border-ink"><span class="w-6 h-6 rounded-full bg-ink text-white flex items-center justify-center text-xs"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 7c0-1.5 1-2.5 1-4 0 1.5-1 2.5-1 4z"/><path d="M9 21h6"/><path d="M10 21V11a2 2 0 0 1 4 0v10"/><path d="M8 11a2 2 0 0 0-2 2"/></svg></span><span class="text-sm font-semibold">Cart</span><span data-cart-count class="hidden bg-amber text-ink text-xs font-bold min-w-[20px] h-5 px-1.5 rounded-full flex items-center justify-center">0</span></a>
-        <button onclick="openCartDrawer()" class="sm:hidden relative w-10 h-10 rounded-full bg-ink text-white flex items-center justify-center"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 6h15l-1.5 9H7z"/><path d="M6 6L5 2H2"/><circle cx="9" cy="20" r="1.8"/><circle cx="18" cy="20" r="1.8"/></svg><span data-cart-count class="hidden absolute -top-1 -right-1 bg-amber text-ink text-[10px] min-w-[18px] h-[18px] px-1 rounded-full flex items-center justify-center font-bold">0</span></button>
-        <a href="admin/index.html" class="hidden lg:inline-flex text-xs font-bold uppercase tracking-widest border border-line px-3 py-2 rounded-full hover:bg-ink hover:text-white transition">Admin</a>
-      </div>
-    </div>
-  </div>
-  <div id="mobileMenu" class="hidden lg:hidden border-t border-line bg-white px-4 py-4 space-y-3">
-    <a href="shop.html" class="block py-2 font-medium">Shop All</a><a href="shop.html?col=Woody" class="block py-2">Woody</a><a href="shop.html?col=Floral" class="block py-2">Floral</a><a href="shop.html?col=Fresh" class="block py-2">Fresh</a><a href="custom.html" class="block py-2 font-semibold text-terracotta">Custom Builder →</a>
-  </div>
-</header>
+<body class="bg-ember text-cream antialiased overflow-x-clip">
 
-<div class="max-w-[1280px] mx-auto px-4 lg:px-6 pt-6">
-  <div class="text-xs text-muted"><a href="index.html" class="hover:text-ink">Home</a> <span class="mx-2">/</span> <a href="shop.html" class="hover:text-ink">Shop</a> <span class="mx-2">/</span> <span id="bc" class="text-ink"></span></div>
+<div class="fixed inset-0 z-0 pointer-events-none overflow-hidden" aria-hidden="true"><div class="glow w-[600px] h-[600px] bg-amber/15 -top-40 left-1/2 -translate-x-1/2"></div><div class="glow w-[400px] h-[400px] bg-flame/20 bottom-0 -left-40"></div></div>
+
+<div class="relative z-10 text-center text-[11px] tracking-[0.3em] uppercase py-3 text-amber border-b border-white/10">Batch №184 curing now — ships in 2 days · <a href="custom.html" class="underline underline-offset-4 text-cream">Design yours →</a></div>
+
+<div class="sticky top-4 z-40 px-4">
+  <header class="max-w-3xl mx-auto bg-coal/90 backdrop-blur border border-white/10 rounded-full pl-6 pr-2 py-2 flex items-center justify-between shadow-2xl">
+    <a href="index.html" class="font-serif text-xl tracking-tight">Lume<span class="text-amber">.</span></a>
+    <nav class="hidden md:flex items-center gap-6 text-[13px] text-cream/80">
+      <a href="shop.html" class="hover:text-cream">Shop</a>
+      <a href="shop.html?col=Woody" class="hover:text-cream">Woody</a>
+      <a href="shop.html?col=Floral" class="hover:text-cream">Floral</a>
+      <a href="custom.html" class="text-amber">Custom</a>
+    </nav>
+    <div class="flex items-center gap-2">
+      <button onclick="openSearch()" class="w-10 h-10 rounded-full border border-white/15 flex items-center justify-center hover:border-amber" aria-label="Search">⌕</button>
+      <button onclick="openCartDrawer()" class="bg-cream text-ember rounded-full px-5 py-2.5 text-sm font-semibold hover:bg-amber">Cart · <span id="hdrCart">0</span></button>
+      <button id="mobileMenuBtn" class="md:hidden w-10 h-10 rounded-full border border-white/15">≡</button>
+    </div>
+  </header>
+  <span data-cart-count class="hidden" aria-hidden="true" style="display:none">0</span>
+  <span data-wishlist-count class="hidden" aria-hidden="true" style="display:none">0</span>
+  <div id="mobileMenu" class="hidden max-w-3xl mx-auto mt-2 bg-coal border border-white/10 rounded-3xl p-5 space-y-3 text-sm">
+    <a href="shop.html" class="block">Shop all</a><a href="shop.html?col=Woody" class="block">Woody</a><a href="shop.html?col=Floral" class="block">Floral</a><a href="shop.html?col=Fresh" class="block">Fresh</a><a href="custom.html" class="block text-amber">Custom builder →</a><a href="admin/index.html" class="block text-smoke pt-2 border-t border-white/10">Admin →</a>
+  </div>
 </div>
 
-<section class="max-w-[1280px] mx-auto px-4 lg:px-6 mt-6">
+<div class="relative z-10 max-w-5xl mx-auto px-5 pt-8">
+  <div class="text-xs text-smoke"><a href="index.html" class="hover:text-cream">Home</a> <span class="mx-2">/</span> <a href="shop.html" class="hover:text-cream">Shop</a> <span class="mx-2">/</span> <span id="bc" class="text-cream"></span></div>
+</div>
+
+<section class="relative z-10 max-w-5xl mx-auto px-5 mt-6">
   <div id="wrap" class="grid lg:grid-cols-2 gap-8 lg:gap-12"></div>
 </section>
 
-<section class="max-w-[1280px] mx-auto px-4 lg:px-6 mt-12">
-  <div class="border border-line rounded-[24px] overflow-hidden">
-    <div class="flex gap-1 p-1.5 bg-paper border-b border-line">
-      <button data-tab="details" class="tabBtn flex-1 py-2.5 rounded-full bg-ink text-white text-sm font-semibold">Details</button>
-      <button data-tab="care" class="tabBtn flex-1 py-2.5 rounded-full text-sm font-semibold">Care</button>
-      <button data-tab="reviews" class="tabBtn flex-1 py-2.5 rounded-full text-sm font-semibold">Reviews</button>
+<section class="relative z-10 max-w-5xl mx-auto px-5 mt-12">
+  <div class="border border-white/10 bg-coal rounded-[24px] overflow-hidden">
+    <div class="flex gap-1 p-1.5 bg-ember border-b border-white/10">
+      <button data-tab="details" class="tabBtn flex-1 py-2.5 rounded-full bg-cream text-ember text-sm font-semibold">Details</button>
+      <button data-tab="care" class="tabBtn flex-1 py-2.5 rounded-full text-sm font-semibold text-cream/70">Care</button>
+      <button data-tab="reviews" class="tabBtn flex-1 py-2.5 rounded-full text-sm font-semibold text-cream/70">Reviews</button>
     </div>
     <div class="p-6 lg:p-8">
-      <div id="tab-details" class="tabPanel"><p id="desc" class="text-muted leading-relaxed"></p><ul class="mt-4 grid sm:grid-cols-2 gap-2 text-sm"><li class="flex gap-2"><span class="text-terracotta">—</span> Soy + coconut wax, cotton wick</li><li class="flex gap-2"><span class="text-terracotta">—</span> Phthalate-free, IFRA certified oils</li><li class="flex gap-2"><span class="text-terracotta">—</span> Hand-poured in Jaipur, cured 72h</li><li class="flex gap-2"><span class="text-terracotta">—</span> Reusable vessel after burn</li></ul></div>
-      <div id="tab-care" class="tabPanel hidden"><div class="grid lg:grid-cols-3 gap-4 text-sm"><div class="bg-paper border border-line rounded-2xl p-5"><div class="font-semibold">First Burn</div><div class="text-muted mt-1">Let melt pool reach edge (2-3h). Prevents tunneling.</div></div><div class="bg-paper border border-line rounded-2xl p-5"><div class="font-semibold">Trim Wick</div><div class="text-muted mt-1">Trim to 5mm before each burn. No soot.</div></div><div class="bg-paper border border-line rounded-2xl p-5"><div class="font-semibold">Safety</div><div class="text-muted mt-1">Never leave unattended. Keep away from wind.</div></div></div></div>
-      <div id="tab-reviews" class="tabPanel hidden"><div class="flex items-center gap-4"><div id="rv" class="text-4xl font-bold"></div><div><div class="text-amber"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div><div id="rc" class="text-xs text-muted"></div></div></div><div class="mt-6 space-y-3 text-sm"><div class="border border-line rounded-2xl p-5"><div class="font-semibold"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg> <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg> <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg> <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg> <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg> Ananya — “Soothing, not overpowering”</div><p class="text-muted mt-1">Perfect throw for a 12x12 room. Will repurchase.</p></div><div class="border border-line rounded-2xl p-5"><div class="font-semibold"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg> <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg> <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg> <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg> <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg> Rahul — “Great gift”</div><p class="text-muted mt-1">Packaging is premium. Ready to gift.</p></div></div></div>
+      <div id="tab-details" class="tabPanel"><p id="desc" class="text-cream/70 leading-relaxed"></p><ul class="mt-4 grid sm:grid-cols-2 gap-2 text-sm text-cream/80"><li class="flex gap-2"><span class="text-amber">—</span> Soy + coconut wax, cotton wick</li><li class="flex gap-2"><span class="text-amber">—</span> Phthalate-free, IFRA certified oils</li><li class="flex gap-2"><span class="text-amber">—</span> Hand-poured in Jaipur, cured 72h</li><li class="flex gap-2"><span class="text-amber">—</span> Reusable vessel after burn</li></ul></div>
+      <div id="tab-care" class="tabPanel hidden"><div class="grid lg:grid-cols-3 gap-4 text-sm"><div class="bg-ember border border-white/10 rounded-2xl p-5"><div class="font-semibold">First Burn</div><div class="text-smoke mt-1">Let melt pool reach edge (2-3h). Prevents tunneling.</div></div><div class="bg-ember border border-white/10 rounded-2xl p-5"><div class="font-semibold">Trim Wick</div><div class="text-smoke mt-1">Trim to 5mm before each burn. No soot.</div></div><div class="bg-ember border border-white/10 rounded-2xl p-5"><div class="font-semibold">Safety</div><div class="text-smoke mt-1">Never leave unattended. Keep away from wind.</div></div></div></div>
+      <div id="tab-reviews" class="tabPanel hidden"><div class="flex items-center gap-4"><div id="rv" class="text-4xl font-bold"></div><div><div class="text-amber">★★★★★</div><div id="rc" class="text-xs text-smoke"></div></div></div><div class="mt-6 space-y-3 text-sm"><div class="border border-white/10 bg-ember rounded-2xl p-5"><div class="font-semibold">★★★★★ Burned clean till the end</div><p class="text-cream/60 mt-1">Fig &amp; Cedar filled the room without shouting. Vessel is now my pen stand. — Nisha V.</p></div><div class="border border-white/10 bg-ember rounded-2xl p-5"><div class="font-semibold">★★★★★ Worth every rupee</div><p class="text-cream/60 mt-1">Tobacco &amp; Honey is my permanent night scent. — Kabir S.</p></div></div></div>
     </div>
   </div>
 </section>
 
-<section class="max-w-[1280px] mx-auto px-4 lg:px-6 mt-14">
-  <h2 class="font-serif text-2xl">You may also like</h2>
+<section class="relative z-10 max-w-5xl mx-auto px-5 mt-14">
+  <h2 class="font-serif font-light text-3xl">You may also like</h2>
   <div id="related" class="grid grid-cols-2 lg:grid-cols-4 gap-4 mt-6"></div>
 </section>
 
-<footer class="max-w-[1280px] mx-auto px-4 lg:px-6 mt-10 border-t border-line pt-10 pb-8">
-  <div class="grid lg:grid-cols-5 gap-8">
-    <div class="lg:col-span-2">
-      <div class="flex items-center gap-2"><div class="w-8 h-8 bg-ink text-amber flex items-center justify-center rounded-full font-serif"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 3a9 9 0 0 1 0 18"/></svg></div><span class="font-serif text-lg">LUME</span></div>
-      <p class="text-sm text-muted mt-3 max-w-sm">Small-batch soy candles hand-poured in Jaipur. One product, poured properly. Demo store by Network Builder.</p>
-    </div>
-    <div><div class="text-xs font-bold uppercase tracking-widest">Shop</div><ul class="mt-3 space-y-2 text-sm text-muted"><li><a href="shop.html" class="hover:text-ink">All Candles</a></li><li><a href="shop.html?col=Woody" class="hover:text-ink">Woody</a></li><li><a href="shop.html?col=Fresh" class="hover:text-ink">Fresh</a></li><li><a href="custom.html" class="hover:text-ink font-semibold text-terracotta">Custom →</a></li></ul></div>
-    <div><div class="text-xs font-bold uppercase tracking-widest">Help</div><ul class="mt-3 space-y-2 text-sm text-muted"><li><a href="#" class="hover:text-ink">Shipping & Care</a></li><li><a href="custom.html" class="hover:text-ink">Custom Guide</a></li><li><a href="cart.html" class="hover:text-ink">Cart</a></li></ul></div>
-    <div><div class="text-xs font-bold uppercase tracking-widest">Admin Demo</div><ul class="mt-3 space-y-2 text-sm text-muted"><li><a href="admin/index.html" class="hover:text-ink font-semibold">Dashboard →</a></li><li><a href="admin/products.html" class="hover:text-ink">Candles</a></li><li><a href="admin/custom-orders.html" class="hover:text-ink">Custom Orders</a></li></ul></div>
+<footer class="relative z-10 border-t border-white/10 mt-14">
+  <div class="max-w-5xl mx-auto px-5 py-12 grid md:grid-cols-4 gap-8 text-sm">
+    <div><div class="font-serif text-2xl">Lume.</div><p class="text-smoke mt-2 text-[13px]">One thing, done beautifully. Jaipur studio.</p></div>
+    <div class="text-[13px] space-y-2"><div class="text-[11px] uppercase tracking-widest text-smoke">Shop</div><a href="shop.html" class="block">All</a><a href="shop.html?col=Woody" class="block">Woody</a><a href="custom.html" class="block text-amber">Custom →</a></div>
+    <div class="text-[13px] space-y-2"><div class="text-[11px] uppercase tracking-widest text-smoke">Help</div><a href="cart.html" class="block">Cart</a><a href="#" class="block">Care guide</a></div>
+    <div class="text-[13px] space-y-2"><div class="text-[11px] uppercase tracking-widest text-smoke">Admin</div><a href="admin/index.html" class="block">Dashboard →</a><a href="admin/products.html" class="block">Candles</a></div>
   </div>
-  <div class="flex flex-col lg:flex-row items-center justify-between gap-3 text-xs text-muted border-t border-line mt-8 pt-6">
-    <span>© 2026 LUME Candle Studio. Demo by <a href="https://networkbuilder.in" class="underline">Network Builder</a></span>
-    <span class="flex items-center gap-2">Built with HTML + Tailwind <span class="w-2 h-2 bg-emerald-500 rounded-full animate-pulse"></span> Demo</span>
-  </div>
+  <div class="font-serif font-light text-[22vw] leading-[0.75] text-center text-white/[0.06] select-none">LUME</div>
+  <p class="text-center text-xs text-smoke pb-8">© 2026 Lume · Demo by Network Builder</p>
 </footer>
 
-<div id="searchOverlay" class="hidden fixed inset-0 z-[60] bg-white/95 backdrop-blur"><div class="max-w-2xl mx-auto px-4 pt-8"><div class="flex items-center gap-3"><div class="flex-1 flex items-center gap-3 border border-ink rounded-full px-5 py-3 bg-white"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="7"/><path d="M20 20L16 16"/></svg><input id="searchInput" type="text" placeholder="Search..." class="flex-1 outline-none text-sm" oninput="renderSearchResults(this.value)"></div><button onclick="closeSearch()" class="w-11 h-11 rounded-full bg-ink text-white flex items-center justify-center"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6L6 18M6 6l12 12"/></svg></button></div><div id="searchResults" class="mt-6 max-h-[60vh] overflow-auto divide-y divide-line border border-line rounded-2xl bg-white"></div></div></div>
-<div id="cartDrawer" class="hidden fixed inset-0 z-[60]"><div class="absolute inset-0 bg-black/40" onclick="closeCartDrawer()"></div><div class="absolute right-0 top-0 h-full w-full max-w-md bg-white flex flex-col"><div class="px-6 py-5 border-b border-line flex items-center justify-between"><div class="font-semibold">Your Cart <span id="cartDrawerCountLabel" class="text-muted font-normal"></span></div><button onclick="closeCartDrawer()" class="w-9 h-9 rounded-full border flex items-center justify-center"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6L6 18M6 6l12 12"/></svg></button></div><div id="cartDrawerItems" class="flex-1 overflow-auto px-6"></div><div id="cartDrawerFooter" class="hidden border-t border-line p-6 bg-paper"><div class="flex justify-between text-sm"><span class="text-muted">Subtotal</span><span id="cartDrawerSubtotal" class="font-semibold"></span></div><a href="cart.html" class="mt-4 block bg-ink text-white text-center py-3.5 rounded-full font-semibold">View Cart →</a></div></div></div>
+<div id="searchOverlay" class="hidden fixed inset-0 z-[60] bg-ember/95 backdrop-blur">
+  <div class="max-w-xl mx-auto px-5 pt-16">
+    <div class="flex justify-between items-center"><span class="text-[11px] tracking-[0.35em] uppercase text-amber">Find your scent</span><button onclick="closeSearch()" class="w-10 h-10 rounded-full border border-white/20">×</button></div>
+    <input id="searchInput" oninput="renderSearchResults(this.value)" placeholder="Fig, oud, fresh…" class="w-full mt-6 bg-transparent border-b border-amber/50 py-4 font-serif text-3xl outline-none placeholder:text-cream/20 text-cream">
+    <div id="searchResults" class="mt-8 space-y-2 max-h-[60vh] overflow-auto"></div>
+  </div>
+</div>
+<div id="cartDrawer" class="hidden fixed inset-0 z-[60]">
+  <div class="absolute inset-0 bg-black/60" onclick="closeCartDrawer()"></div>
+  <div class="absolute bottom-0 md:right-0 md:top-0 w-full md:max-w-md bg-coal border-t md:border-t-0 md:border-l border-white/10 rounded-t-[28px] md:rounded-none flex flex-col max-h-[92vh]">
+    <div class="px-6 py-5 border-b border-white/10 flex justify-between"><span class="font-serif text-xl">Your ritual <span id="cartDrawerCountLabel" class="text-sm text-smoke"></span></span><button onclick="closeCartDrawer()">×</button></div>
+    <div id="cartDrawerItems" class="flex-1 overflow-auto px-6"></div>
+    <div id="cartDrawerFooter" class="hidden border-t border-white/10 p-6"><div class="flex justify-between text-sm"><span class="text-smoke">Subtotal</span><span id="cartDrawerSubtotal" class="font-semibold text-amber"></span></div><a href="cart.html" class="mt-4 block bg-amber text-ember text-center py-4 rounded-full font-bold">Checkout →</a></div>
+  </div>
+</div>
 
 <script src="app.js"></script>
 <script>
+(function(){
+  function syncHdr(){ try{ var el=document.getElementById('hdrCart'); if(el && typeof cartCount==='function') el.textContent=cartCount(); }catch(e){} }
+  function hook(){
+    if(typeof window.updateCartCount==='function' && !window.__hdrHooked){
+      window.__hdrHooked=true;
+      var orig=window.updateCartCount;
+      window.updateCartCount=function(){ orig(); syncHdr(); };
+      syncHdr();
+    }
+  }
+  document.addEventListener('DOMContentLoaded', function(){ hook(); syncHdr(); });
+  window.addEventListener('storage', syncHdr);
+  setTimeout(hook,0); setTimeout(syncHdr,150);
+})();
 const id=Number(new URLSearchParams(location.search).get('id')||1);
 const p=getCandles().find(x=>x.id===id) || getCandles()[0];
 document.title=`${p.name} — LUME`;
@@ -94,38 +136,40 @@ let qty=1;
 function render(){
   document.getElementById('wrap').innerHTML=`
     <div class="space-y-3">
-      <div class="relative aspect-[4/5] rounded-[28px] overflow-hidden bg-paper border border-line"><img src="${p.image}" class="w-full h-full object-cover"><span class="absolute top-4 left-4 bg-white border border-line text-xs font-bold uppercase tracking-widest px-3 py-1.5 rounded-full">${p.collection}</span>${p.badge?`<span class="absolute top-4 right-4 bg-ink text-white text-xs font-bold px-3 py-1.5 rounded-full">${p.badge}</span>`:''}</div>
-      <div class="grid grid-cols-4 gap-3">${[p.image,p.image,p.image,p.image].map((s,i)=>`<div class="aspect-square rounded-2xl overflow-hidden border ${i===0?'border-ink':'border-line'}"><img src="${s}" class="w-full h-full object-cover"></div>`).join('')}</div>
+      <div class="relative rounded-[28px] overflow-hidden bg-coal border border-white/10"><div class="p-3"><img src="${p.image}" alt="${p.name}" class="arch w-full aspect-[4/5] object-cover"></div><span class="absolute top-6 left-6 bg-cream text-ember text-xs font-bold uppercase tracking-widest px-3 py-1.5 rounded-full">${p.collection}</span>${p.badge?`<span class="absolute top-6 right-6 bg-amber text-ember text-xs font-bold px-3 py-1.5 rounded-full">${p.badge}</span>`:''}</div>
+      <div class="grid grid-cols-4 gap-3">${[p.image,p.image,p.image,p.image].map((s,i)=>`<div class="aspect-square rounded-2xl overflow-hidden border ${i===0?'border-amber':'border-white/10'}"><img src="${s}" class="w-full h-full object-cover"></div>`).join('')}</div>
     </div>
     <div>
-      <div class="text-xs uppercase tracking-widest text-muted">${p.collection} • ${p.burn} • ${p.size}</div>
-      <h1 class="font-serif text-4xl leading-tight mt-2">${p.name}</h1>
-      <div class="text-sm text-muted mt-1">${p.scent}</div>
-      <div class="flex items-center gap-3 mt-4"><span class="text-2xl font-bold">${formatINR(p.price)}</span><span class="text-sm line-through text-muted">${formatINR(p.mrp)}</span><span class="text-xs bg-amber/30 border border-amber/30 px-2.5 py-1 rounded-full font-semibold">Save ${formatINR(p.mrp-p.price)}</span></div>
-      <p class="text-sm text-muted leading-relaxed mt-4">${p.desc} Phthalate-free oils, soy + coconut wax, cotton wick. Hand-poured in Jaipur and cured 72 hours for the cleanest burn.</p>
+      <div class="text-xs uppercase tracking-widest text-smoke">${p.collection} • ${p.burn} • ${p.size}</div>
+      <h1 class="font-serif font-light text-4xl md:text-5xl leading-tight mt-2">${p.name}</h1>
+      <div class="text-sm text-smoke mt-1">${p.scent}</div>
+      <div class="flex items-center gap-3 mt-4"><span class="text-2xl font-bold">${formatINR(p.price)}</span><span class="text-sm line-through text-smoke">${formatINR(p.mrp)}</span><span class="text-xs bg-amber/15 border border-amber/40 text-amber px-2.5 py-1 rounded-full font-semibold">Save ${formatINR(p.mrp-p.price)}</span></div>
+      <p class="text-sm text-cream/60 leading-relaxed mt-4">${p.desc} Phthalate-free oils, soy + coconut wax, cotton wick. Hand-poured in Jaipur and cured 72 hours for the cleanest burn.</p>
       <div class="mt-6 flex gap-3">
-        <div class="flex items-center border border-line rounded-full overflow-hidden"><button onclick="qty=Math.max(1,qty-1);document.getElementById('qval').textContent=qty" class="w-11 h-11 flex items-center justify-center hover:bg-paper"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14"/></svg></button><span id="qval" class="w-10 text-center font-semibold">${qty}</span><button onclick="qty++;document.getElementById('qval').textContent=qty" class="w-11 h-11 flex items-center justify-center hover:bg-paper"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></button></div>
-        <button onclick="addToCart(p,{qty});showToast('Added to cart')" class="flex-1 bg-ink text-white rounded-full font-semibold hover:bg-black transition">Add to Cart — ${formatINR(p.price)}</button>
-        <button onclick="const a=toggleWishlist(p.id);showToast(a?'Wishlist added':'Removed')" class="w-12 h-12 rounded-full border border-line flex items-center justify-center">${isWishlisted(p.id)?'<svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-6-4.5-8.5-8.2A5 5 0 0 1 12 5a5 5 0 0 1 8.5 7.8C18 16.5 12 21 12 21z"/></svg>':'<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-6-4.5-8.5-8.2A5 5 0 0 1 12 5a5 5 0 0 1 8.5 7.8C18 16.5 12 21 12 21z"/></svg>'}</button>
+        <div class="flex items-center border border-white/15 rounded-full overflow-hidden"><button onclick="qty=Math.max(1,qty-1);document.getElementById('qval').textContent=qty" class="w-11 h-11 flex items-center justify-center hover:bg-white/5">−</button><span id="qval" class="w-10 text-center font-semibold">${qty}</span><button onclick="qty++;document.getElementById('qval').textContent=qty" class="w-11 h-11 flex items-center justify-center hover:bg-white/5">+</button></div>
+        <button onclick="addToCart(p,{qty});showToast('Added to cart')" class="flex-1 bg-cream text-ember rounded-full font-semibold hover:bg-amber transition">Add to Cart — ${formatINR(p.price)}</button>
+        <button onclick="const a=toggleWishlist(p.id);showToast(a?'Wishlist added':'Removed')" class="w-12 h-12 rounded-full border border-white/15 flex items-center justify-center hover:border-amber">${isWishlisted(p.id)?'♥':'♡'}</button>
       </div>
-      <button onclick="addToCart(p,{qty});location.href='cart.html'" class="w-full mt-3 bg-white border-2 border-ink text-ink rounded-full py-3.5 font-semibold hover:bg-ink hover:text-white transition">Buy Now →</button>
-      <div class="mt-6 grid grid-cols-3 gap-3 text-xs text-center"><div class="bg-paper border border-line rounded-2xl py-3"><div class="font-semibold">Free Shipping</div><div class="text-muted">Over ₹1,999</div></div><div class="bg-paper border border-line rounded-2xl py-3"><div class="font-semibold">Gift Note</div><div class="text-muted">Free</div></div><div class="bg-paper border border-line rounded-2xl py-3"><div class="font-semibold">Custom?</div><a href="custom.html" class="text-terracotta underline">Build →</a></div></div>
-      <div class="mt-6 text-xs text-muted flex items-center gap-2">SKU: LUME-${String(p.id).padStart(3,'0')} • In stock • <span class="w-2 h-2 bg-emerald-500 rounded-full"></span> Ready to ship</div>
+      <button onclick="addToCart(p,{qty});location.href='cart.html'" class="w-full mt-3 bg-transparent border border-cream/40 text-cream rounded-full py-3.5 font-semibold hover:bg-cream hover:text-ember transition">Buy Now →</button>
+      <div class="mt-6 grid grid-cols-3 gap-3 text-xs text-center"><div class="bg-coal border border-white/10 rounded-2xl py-3"><div class="font-semibold">Free Shipping</div><div class="text-smoke">Over ₹1,999</div></div><div class="bg-coal border border-white/10 rounded-2xl py-3"><div class="font-semibold">Gift Note</div><div class="text-smoke">Free</div></div><div class="bg-coal border border-white/10 rounded-2xl py-3"><div class="font-semibold">Custom?</div><a href="custom.html" class="text-amber underline">Build →</a></div></div>
+      <div class="mt-6 text-xs text-smoke flex items-center gap-2">SKU: LUME-${String(p.id).padStart(3,'0')} • In stock • <span class="w-2 h-2 bg-emerald-400 rounded-full"></span> Ready to ship</div>
     </div>
   `;
 }
 render();
 document.querySelectorAll('.tabBtn').forEach(btn=>{
   btn.addEventListener('click', ()=>{
-    document.querySelectorAll('.tabBtn').forEach(b=>{b.classList.remove('bg-ink','text-white'); b.classList.add('hover:bg-white')});
-    btn.classList.add('bg-ink','text-white');
-    document.querySelectorAll('.tabPanel').forEach(p=>p.classList.add('hidden'));
+    document.querySelectorAll('.tabBtn').forEach(b=>{b.classList.remove('bg-cream','text-ember'); b.classList.add('text-cream/70')});
+    btn.classList.add('bg-cream','text-ember'); btn.classList.remove('text-cream/70');
+    document.querySelectorAll('.tabPanel').forEach(x=>x.classList.add('hidden'));
     document.getElementById('tab-'+btn.dataset.tab).classList.remove('hidden');
   });
 });
 const rel=getCandles().filter(x=>x.collection===p.collection && x.id!==p.id).slice(0,4);
-document.getElementById('related').innerHTML=rel.map(x=>`
-  <a href="product.html?id=${x.id}" class="group block"><div class="relative aspect-[4/5] rounded-[24px] overflow-hidden bg-paper border border-line"><img src="${x.image}" class="w-full h-full object-cover group-hover:scale-105 transition duration-700"></div><div class="pt-3"><div class="text-xs uppercase tracking-widest text-muted">${x.collection}</div><div class="font-medium text-sm">${x.name}</div><div class="font-semibold text-sm">${formatINR(x.price)}</div></div></a>
+document.getElementById('related').innerHTML=rel.length?rel.map(x=>`
+  <a href="product.html?id=${x.id}" class="lume-card group block bg-coal border border-white/10 rounded-[24px] overflow-hidden text-center"><div class="p-2"><img src="${x.image}" alt="${x.name}" class="arch w-full aspect-[3/4] object-cover"></div><div class="px-4 pb-4"><div class="text-[10px] uppercase tracking-widest text-amber">${x.collection}</div><div class="font-serif text-base mt-0.5">${x.name}</div><div class="font-semibold text-sm mt-1">${formatINR(x.price)}</div></div></a>
+`).join(''):getCandles().slice(0,4).map(x=>`
+  <a href="product.html?id=${x.id}" class="lume-card group block bg-coal border border-white/10 rounded-[24px] overflow-hidden text-center"><div class="p-2"><img src="${x.image}" alt="${x.name}" class="arch w-full aspect-[3/4] object-cover"></div><div class="px-4 pb-4"><div class="text-[10px] uppercase tracking-widest text-amber">${x.collection}</div><div class="font-serif text-base mt-0.5">${x.name}</div><div class="font-semibold text-sm mt-1">${formatINR(x.price)}</div></div></a>
 `).join('');
 </script>
 </body>

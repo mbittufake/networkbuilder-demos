@@ -1,188 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Practice Areas | The Advocate</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        paper: '#faf9f6',
-                        ink: '#1e293b',
-                        accent: '#cd5c5c',
-                        border: '#e2e8f0'
-                    },
-                    fontFamily: {
-                        serif: ['Crimson Pro', 'serif'],
-                        sans: ['Manrope', 'sans-serif']
-                    }
-                }
-            }
-        }
-    </script>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,400&family=Manrope:wght@300;400;500;600&display=swap"
-        rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        body {
-            font-family: 'Manrope', sans-serif;
-            background-color: #faf9f6;
-            color: #1e293b;
-        }
-
-        h1,
-        h2,
-        h3,
-        h4,
-        blockquote {
-            font-family: 'Crimson Pro', serif;
-        }
-    </style>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Practice Areas | The Advocate</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script>tailwind.config={theme:{extend:{colors:{paper:'#FAF9F6',ink:'#1A1A1A',brick:'#9A3B26',line:'#E7E5E4'},fontFamily:{serif:['Newsreader','serif'],sans:['"DM Sans"','sans-serif']}}}}</script>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;1,6..72,300;1,6..72,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>body{font-family:'DM Sans',sans-serif;background:#FAF9F6;color:#1A1A1A;}h1,h2,h3{font-family:'Newsreader',serif;}.sepia-img{filter:sepia(.42) contrast(1.02);transition:.7s;}.group:hover .sepia-img{filter:sepia(.1);}.vol-badge{display:inline-flex;align-items:center;gap:.6rem;border:1px solid #E7E5E4;border-radius:9999px;padding:.45rem 1.1rem;font-size:11px;letter-spacing:.18em;text-transform:uppercase;background:#fff;}.vol-badge i{width:7px;height:7px;border-radius:99px;background:#9A3B26;display:inline-block;}</style>
 </head>
+<body class="pt-[101px]">
+<div class="fixed top-0 w-full z-50">
+<div class="border-b border-[#E7E5E4] bg-[#FAF9F6]"><div class="container mx-auto px-6 py-2 flex justify-between text-[11px] tracking-[0.18em] uppercase text-[#1A1A1A]/50"><span>Selected Domains</span><span class="hidden sm:inline">Practice Notes — pp. 12–19</span><span>Vol. 24</span></div></div>
+<nav class="bg-[#FAF9F6]/95 backdrop-blur-sm border-b border-[#E7E5E4] h-[72px] flex items-center relative">
+<div class="container mx-auto px-6 flex justify-between items-center">
+<a href="index.html" class="font-serif text-[26px]">The Advocate<span class="text-[#9A3B26]">.</span></a>
+<div class="hidden md:flex items-center space-x-9 text-[13px]"><a href="index.html" class="text-[#1A1A1A]/55 hover:text-[#1A1A1A] pb-1">Journal</a><a href="about.html" class="text-[#1A1A1A]/55 hover:text-[#1A1A1A] pb-1">Firm Profile</a><a href="services.html" class="font-medium border-b border-[#1A1A1A] pb-1">Practice Areas</a><a href="contact.html" class="border border-[#1A1A1A] rounded-full px-5 py-2 hover:bg-[#1A1A1A] hover:text-[#FAF9F6] transition">Consultation →</a></div>
+<button class="md:hidden text-xl" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')"><i class="fa-solid fa-bars"></i></button>
+</div>
+<div id="mobile-menu" class="hidden absolute top-[72px] left-0 w-full bg-[#FAF9F6] border-b border-[#E7E5E4] p-8 flex flex-col space-y-5 md:hidden shadow-lg"><a href="index.html" class="font-serif text-xl text-[#1A1A1A]/60">Journal</a><a href="about.html" class="font-serif text-xl text-[#1A1A1A]/60">Firm Profile</a><a href="services.html" class="font-serif text-xl">Practice Areas</a><a href="contact.html" class="font-serif text-xl text-[#9A3B26] italic">Consultation →</a></div>
+</nav>
+</div>
 
-<body class="pt-20">
+<section class="py-16">
+<div class="container mx-auto px-6 max-w-6xl">
+<div class="mb-14 border-b border-[#E7E5E4] pb-8 text-center"><span class="vol-badge mb-6"><i></i> Selected Domains</span><h2 class="font-light tracking-tight" style="font-size:clamp(2.4rem,5vw,3.6rem)">Expertise<span class="text-[#9A3B26]">.</span></h2><p class="text-[#1A1A1A]/55 font-light mt-4 max-w-xl mx-auto">Three notes from the journal — each matter footnoted, each strategy annotated.</p></div>
+<div class="space-y-0 border-t border-[#E7E5E4]">
+<div class="group grid md:grid-cols-2 gap-10 py-14 border-b border-[#E7E5E4] items-center">
+<div class="order-2 md:order-1"><span class="font-serif italic text-[#9A3B26] text-xl block mb-3">01. Family Law</span><h3 class="font-light text-3xl mb-5">Matrimonial Disputes <em>&amp; Custody</em></h3><p class="text-[#1A1A1A]/60 leading-relaxed mb-6 font-light">We handle divorce, child custody, and alimony matters with discretion and sensitivity. Our goal is to minimize conflict while protecting your rights and future.</p><ul class="space-y-2 text-sm text-[#1A1A1A]/60 border-l-2 border-[#9A3B26] pl-4"><li>Mutual Consent Divorce</li><li>Contested Divorce</li><li>Domestic Violence Defense</li></ul><p class="text-[12px] text-[#1A1A1A]/40 mt-5">¹ See Journal № 12, p. 12 for mediation checklist.</p></div>
+<div class="order-1 md:order-2 overflow-hidden border border-[#E7E5E4] bg-white p-2 rounded-[4px]"><img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" class="sepia-img w-full aspect-[4/3] object-cover" alt="Family Law"></div>
+</div>
+<div class="group grid md:grid-cols-2 gap-10 py-14 border-b border-[#E7E5E4] items-center">
+<div class="overflow-hidden border border-[#E7E5E4] bg-white p-2 rounded-[4px]"><img src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" class="sepia-img w-full aspect-[4/3] object-cover" alt="Civil Litigation"></div>
+<div><span class="font-serif italic text-[#9A3B26] text-xl block mb-3">02. Civil Litigation</span><h3 class="font-light text-3xl mb-5">Property <em>&amp; Contract</em> Disputes</h3><p class="text-[#1A1A1A]/60 leading-relaxed mb-6 font-light">From real estate title disputes to breach of contract claims, we provide robust representation in civil courts. We focus on strategic negotiation backed by readiness to litigate.</p><ul class="space-y-2 text-sm text-[#1A1A1A]/60 border-l-2 border-[#9A3B26] pl-4"><li>Property Title Verification</li><li>Landlord / Tenant Issues</li><li>Contract Enforcement</li></ul><p class="text-[12px] text-[#1A1A1A]/40 mt-5">² Title verification protocol, Journal № 13.</p></div>
+</div>
+<div class="group grid md:grid-cols-2 gap-10 py-14 border-b border-[#E7E5E4] items-center">
+<div class="order-2 md:order-1"><span class="font-serif italic text-[#9A3B26] text-xl block mb-3">03. Estate Planning</span><h3 class="font-light text-3xl mb-5">Wills, Trusts <em>&amp; Succession</em></h3><p class="text-[#1A1A1A]/60 leading-relaxed mb-6 font-light">Securing your legacy requires careful planning. We draft clear, legally sound wills and trusts to ensure your assets are distributed according to your wishes.</p><ul class="space-y-2 text-sm text-[#1A1A1A]/60 border-l-2 border-[#9A3B26] pl-4"><li>Will Drafting &amp; Registration</li><li>Probate Services</li><li>Succession Certificates</li></ul><p class="text-[12px] text-[#1A1A1A]/40 mt-5">³ Succession flowchart, Journal № 14.</p></div>
+<div class="order-1 md:order-2 overflow-hidden border border-[#E7E5E4] bg-white p-2 rounded-[4px]"><img src="https://images.unsplash.com/photo-1593115057322-e94b77572f20?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" class="sepia-img w-full aspect-[4/3] object-cover" alt="Estate Planning"></div>
+</div>
+</div>
+<div class="mt-16 text-center border border-[#E7E5E4] bg-white rounded-[4px] py-14 px-6"><span class="vol-badge mb-6"><i></i> Consultation</span><p class="font-serif font-light text-2xl md:text-3xl mb-8">Do you have a matter that requires<br><em class="text-[#9A3B26]">our attention?</em></p><a href="contact.html" class="inline-block bg-[#1A1A1A] text-white px-10 py-4 text-sm rounded-full hover:bg-[#9A3B26] transition">Book Consultation →</a></div>
+</div>
+</section>
 
-    <!-- Navbar -->
-    <nav
-        class="fixed top-0 w-full z-50 bg-paper/95 backdrop-blur-sm border-b border-gray-200 h-20 flex items-center transition-all duration-300">
-        <div class="container mx-auto px-6 flex justify-between items-center">
-            <a href="index.html" class="text-2xl font-serif font-bold tracking-tight text-ink">The Advocate.</a>
-
-            <div class="hidden md:flex space-x-10">
-                <a href="index.html"
-                    class="text-sm font-medium text-gray-500 hover:text-ink transition pb-1">Journal</a>
-                <a href="about.html" class="text-sm font-medium text-gray-500 hover:text-ink transition pb-1">Firm
-                    Profile</a>
-                <a href="services.html"
-                    class="text-sm font-medium text-ink border-b-2 border-ink pb-1 transition">Practice Areas</a>
-                <a href="contact.html"
-                    class="text-sm font-medium text-gray-500 hover:text-ink transition pb-1">Consultation</a>
-            </div>
-
-            <button class="md:hidden text-ink text-xl"
-                onclick="document.getElementById('mobile-menu').classList.toggle('hidden')">
-                <i class="fa-solid fa-bars"></i>
-            </button>
-        </div>
-
-        <!-- Mobile Menu -->
-        <div id="mobile-menu"
-            class="hidden absolute top-20 left-0 w-full bg-paper border-b border-gray-200 p-8 flex flex-col space-y-6 md:hidden shadow-lg">
-            <a href="index.html" class="text-gray-600 font-serif text-lg">Journal</a>
-            <a href="about.html" class="text-gray-600 font-serif text-lg">Firm Profile</a>
-            <a href="services.html" class="text-ink font-serif text-lg">Practice Areas</a>
-            <a href="contact.html" class="text-gray-600 font-serif text-lg">Consultation</a>
-        </div>
-    </nav>
-
-    <!-- Services Content -->
-    <section class="py-24">
-        <div class="container mx-auto px-6">
-            <div class="mb-20 border-b border-gray-200 pb-8">
-                <span class="text-accent text-xs font-bold uppercase tracking-widest mb-2 block">Selected Domains</span>
-                <h2 class="text-4xl md:text-5xl font-serif text-ink tracking-tight">Expertise</h2>
-            </div>
-
-            <!-- List Layout -->
-            <div class="space-y-0">
-                <!-- Item 1: Family Law -->
-                <div class="group grid md:grid-cols-2 gap-12 py-16 border-b border-gray-200 items-center">
-                    <div class="order-2 md:order-1">
-                        <span class="text-accent font-serif text-xl italic block mb-4">01. Family Law</span>
-                        <h3 class="text-3xl font-serif mb-6 text-ink">Matrimonial Disputes & Custody</h3>
-                        <p class="text-gray-600 leading-relaxed mb-6">
-                            We handle divorce, child custody, and alimony matters with discretion and sensitivity. Our
-                            goal is to minimize conflict while protecting your rights and future.
-                        </p>
-                        <ul class="space-y-2 text-sm text-gray-500 font-medium border-l-2 border-accent pl-4">
-                            <li>Mutual Consent Divorce</li>
-                            <li>Contested Divorce</li>
-                            <li>Domestic Violence Defense</li>
-                        </ul>
-                    </div>
-                    <div class="order-1 md:order-2 overflow-hidden rounded-sm">
-                        <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
-                            class="w-full aspect-[4/3] object-cover grayscale group-hover:grayscale-0 transition duration-700 transform group-hover:scale-105"
-                            alt="Family Law">
-                    </div>
-                </div>
-
-                <!-- Item 2: Civil Litigation -->
-                <div class="group grid md:grid-cols-2 gap-12 py-16 border-b border-gray-200 items-center">
-                    <div class="order-1 md:order-1 overflow-hidden rounded-sm">
-                        <img src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
-                            class="w-full aspect-[4/3] object-cover grayscale group-hover:grayscale-0 transition duration-700 transform group-hover:scale-105"
-                            alt="Civil Litigation">
-                    </div>
-                    <div class="order-2 md:order-2">
-                        <span class="text-accent font-serif text-xl italic block mb-4">02. Civil Litigation</span>
-                        <h3 class="text-3xl font-serif mb-6 text-ink">Property & Contract Disputes</h3>
-                        <p class="text-gray-600 leading-relaxed mb-6">
-                            From real estate title disputes to breach of contract claims, we provide robust
-                            representation in civil courts. We focus on strategic negotiation backed by the readiness to
-                            litigate.
-                        </p>
-                        <ul class="space-y-2 text-sm text-gray-500 font-medium border-l-2 border-accent pl-4">
-                            <li>Property Title Verification</li>
-                            <li>Landlord / Tenant Issues</li>
-                            <li>Contract Enforcement</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <!-- Item 3: Estate Planning -->
-                <div class="group grid md:grid-cols-2 gap-12 py-16 border-b border-gray-200 items-center">
-                    <div class="order-2 md:order-1">
-                        <span class="text-accent font-serif text-xl italic block mb-4">03. Estate Planning</span>
-                        <h3 class="text-3xl font-serif mb-6 text-ink">Wills, Trusts & Succession</h3>
-                        <p class="text-gray-600 leading-relaxed mb-6">
-                            Securing your legacy requires careful planning. We draft clear, legally sound wills and
-                            trusts to ensure your assets are distributed according to your wishes.
-                        </p>
-                        <ul class="space-y-2 text-sm text-gray-500 font-medium border-l-2 border-accent pl-4">
-                            <li>Will Drafting & Registration</li>
-                            <li>Probate Services</li>
-                            <li>Succession Certificates</li>
-                        </ul>
-                    </div>
-                    <div class="order-1 md:order-2 overflow-hidden rounded-sm">
-                        <img src="https://images.unsplash.com/photo-1593115057322-e94b77572f20?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
-                            class="w-full aspect-[4/3] object-cover grayscale group-hover:grayscale-0 transition duration-700 transform group-hover:scale-105"
-                            alt="Estate Planning">
-                    </div>
-                </div>
-            </div>
-
-            <div class="mt-24 text-center">
-                <p class="font-serif text-2xl md:text-3xl mb-10 text-ink">Do you have a matter that requires our
-                    attention?</p>
-                <a href="contact.html"
-                    class="inline-block bg-ink text-white px-10 py-4 font-medium rounded hover:bg-accent transition transform hover:-translate-y-1 shadow-lg hover:shadow-xl">
-                    Book Consultation
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="py-16 border-t border-gray-200 bg-white text-center">
-        <div class="container mx-auto px-6">
-            <span class="text-2xl font-serif font-bold mb-6 block">The Advocate.</span>
-            <div class="flex justify-center space-x-6 mb-8 text-sm font-bold text-ink">
-                <a href="#" class="hover:text-accent transition">LinkedIn</a>
-                <a href="#" class="hover:text-accent transition">Twitter</a>
-                <a href="#" class="hover:text-accent transition">Instagram</a>
-            </div>
-            <p class="text-gray-400 text-xs uppercase tracking-widest">&copy; 2024 Legal Insights. All Rights Reserved.
-            </p>
-        </div>
-    </footer>
-
+<footer class="py-14 border-t border-[#E7E5E4] bg-white text-center"><div class="container mx-auto px-6"><span class="font-serif text-[26px] mb-2 block">The Advocate<span class="text-[#9A3B26]">.</span></span><div class="flex justify-center space-x-7 mb-6 text-[13px] font-medium"><a href="#" class="hover:text-[#9A3B26]">LinkedIn</a><a href="#" class="hover:text-[#9A3B26]">Twitter</a><a href="#" class="hover:text-[#9A3B26]">Instagram</a></div><p class="text-[11px] uppercase tracking-[0.18em] text-[#1A1A1A]/40">&copy; 2024 Legal Insights. All Rights Reserved.</p></div></footer>
 </body>
-
 </html>

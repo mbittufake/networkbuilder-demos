@@ -1,181 +1,202 @@
 <!DOCTYPE html>
-<html lang="en" class="bg-black text-white selection:bg-[#ccff00] selection:text-black">
+<html lang="en" class="bg-[#060606] text-white selection:bg-[#CCFF00] selection:text-black">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>IRON EMPIRE | Elite Training</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Teko:wght@300;400;500;600;700&family=Manrope:wght@400;600;800&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
     <script>
         tailwind.config = {
             theme: {
                 extend: {
-                    fontFamily: {
-                        display: ['Teko', 'sans-serif'],
-                        sans: ['Manrope', 'sans-serif'],
-                    },
-                    colors: {
-                        acid: '#CCFF00', // Neon Green
-                        charcoal: '#111111',
-                        concrete: '#222222'
-                    },
-                    animation: {
-                        'marquee': 'marquee 10s linear infinite',
-                    },
+                    fontFamily: { display: ['Anton','sans-serif'], sans: ['Space Grotesk','sans-serif'] },
+                    colors: { acid: '#CCFF00', void: '#060606', concrete: '#161616', smoke: '#8A8A8A' },
+                    animation: { 'marquee': 'marquee 14s linear infinite', 'flicker': 'flicker 4s linear infinite' },
                     keyframes: {
-                        marquee: {
-                            '0%': { transform: 'translateX(0%)' },
-                            '100%': { transform: 'translateX(-100%)' },
-                        }
+                        marquee: { '0%': { transform: 'translateX(0)' }, '100%': { transform: 'translateX(-50%)' } },
+                        flicker: { '0%,100%':{opacity:1}, '92%':{opacity:1}, '93%':{opacity:.4}, '94%':{opacity:1}, '96%':{opacity:.6}, '97%':{opacity:1} }
                     }
                 }
             }
         }
     </script>
     <style>
-        body { cursor: crosshair; }
-        .text-stroke { -webkit-text-stroke: 1px rgba(255,255,255,0.3); color: transparent; }
-        .clip-slant { clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%); }
-        .btn-hover:hover { box-shadow: 4px 4px 0px #CCFF00; transform: translate(-2px, -2px); }
-        .mobile-menu { transform: translateY(-100%); transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1); }
-        .mobile-menu.open { transform: translateY(0); }
+        body{cursor:crosshair;background:#060606}
+        .outline-txt{-webkit-text-stroke:2px rgba(255,255,255,.85);color:transparent}
+        .outline-acid{-webkit-text-stroke:2px #CCFF00;color:transparent}
+        .outline-faint{-webkit-text-stroke:1px rgba(255,255,255,.28);color:transparent}
+        .skew-btn{transform:skewX(-8deg)}
+        .skew-btn > span{transform:skewX(8deg);display:inline-block}
+        .hard-shadow:hover{box-shadow:6px 6px 0px #CCFF00;transform:translate(-3px,-3px)}
+        .hard-shadow{transition:box-shadow .2s,transform .2s,background .2s,color .2s}
+        .clip-slant{clip-path:polygon(0 0,100% 0,100% calc(100% - 14px),calc(100% - 14px) 100%,0 100%)}
+        .grain::after{content:"";position:fixed;inset:0;z-index:70;pointer-events:none;opacity:.09;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+        .diagonal{background-image:repeating-linear-gradient(-45deg,rgba(204,255,0,.14) 0 2px,transparent 2px 14px)}
+        .mobile-menu{transform:translateY(-100%);transition:transform .45s cubic-bezier(.16,1,.3,1)}
+        .mobile-menu.open{transform:translateY(0)}
+        .tick{font-variant-numeric:tabular-nums}
+        ::-webkit-scrollbar{width:10px}::-webkit-scrollbar-track{background:#060606}::-webkit-scrollbar-thumb{background:#CCFF00;border:2px solid #060606}
     </style>
 </head>
-<body class="overflow-x-hidden font-sans">
+<body class="overflow-x-hidden font-sans grain antialiased">
+
+    <!-- Alert strip -->
+    <div class="bg-acid text-black overflow-hidden whitespace-nowrap border-b-2 border-black relative z-[60]">
+        <div class="inline-flex animate-marquee py-1.5 font-display uppercase text-[13px] tracking-[.2em]">
+            <span class="mx-6">★ First session free</span><span class="mx-6">★ No excuses</span><span class="mx-6">★ 24/7 access</span><span class="mx-6">★ First session free</span><span class="mx-6">★ No excuses</span><span class="mx-6">★ 24/7 access</span>
+            <span class="mx-6">★ First session free</span><span class="mx-6">★ No excuses</span><span class="mx-6">★ 24/7 access</span><span class="mx-6">★ First session free</span><span class="mx-6">★ No excuses</span><span class="mx-6">★ 24/7 access</span>
+        </div>
+    </div>
 
     <!-- Nav -->
-    <nav class="fixed w-full z-50 px-6 py-6 mix-blend-difference flex justify-between items-center border-b border-white/10 bg-black/80 backdrop-blur-md">
-        <a href="index.html" class="text-3xl font-display font-bold tracking-widest uppercase relative z-50">Iron<span class="text-acid">Empire</span></a>
-        
-        <!-- Desktop Links -->
-        <div class="hidden md:flex gap-8 text-sm font-bold uppercase tracking-wider">
-            <a href="programs.html" class="hover:text-acid transition">Programs</a>
-            <a href="trainers.html" class="hover:text-acid transition">Coaches</a>
-            <a href="join.html" class="hover:text-acid transition">Membership</a>
+    <nav class="sticky top-0 z-50 px-4 sm:px-6 py-4 bg-[#060606]/90 backdrop-blur-md border-b border-white/10 flex justify-between items-center">
+        <a href="index.html" class="font-display uppercase leading-none tracking-wide text-2xl sm:text-3xl relative z-50">Iron<span class="text-acid">///</span>Empire</a>
+        <div class="hidden md:flex gap-8 text-[13px] font-bold uppercase tracking-[.18em]">
+            <a href="programs.html" class="hover:text-acid transition"><span class="text-acid/60 mr-1">01</span>Programs</a>
+            <a href="trainers.html" class="hover:text-acid transition"><span class="text-acid/60 mr-1">02</span>Coaches</a>
+            <a href="join.html" class="hover:text-acid transition"><span class="text-acid/60 mr-1">03</span>Membership</a>
         </div>
-
-        <div class="flex items-center gap-4">
-            <a href="join.html" class="hidden md:block bg-white text-black px-6 py-2 font-bold uppercase tracking-widest text-sm hover:bg-acid transition btn-hover">Start Free Trial</a>
-            
-            <!-- Mobile Menu Toggle -->
-            <button onclick="toggleMenu()" class="md:hidden z-50 text-white focus:outline-none">
-                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+        <div class="flex items-center gap-3">
+            <a href="join.html" class="hidden md:inline-block skew-btn bg-acid text-black px-7 py-3 font-display uppercase tracking-wider text-[15px] hard-shadow clip-slant"><span>Start free trial →</span></a>
+            <button onclick="toggleMenu()" class="md:hidden z-50 text-white border border-white/20 px-3 py-2 font-display uppercase tracking-widest text-sm hover:bg-acid hover:text-black hover:border-acid transition" aria-label="Open menu">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
             </button>
         </div>
     </nav>
 
     <!-- Mobile Menu Overlay -->
-    <div id="mobileMenu" class="mobile-menu fixed inset-0 bg-black z-40 flex flex-col justify-center items-center text-center">
-        <a href="index.html" class="text-5xl font-display font-bold uppercase text-white hover:text-acid mb-6">Home</a>
-        <a href="programs.html" class="text-5xl font-display font-bold uppercase text-white hover:text-acid mb-6">Programs</a>
-        <a href="trainers.html" class="text-5xl font-display font-bold uppercase text-white hover:text-acid mb-6">Coaches</a>
-        <a href="join.html" class="text-5xl font-display font-bold uppercase text-acid hover:text-white mb-6">Join Now</a>
-        <button onclick="toggleMenu()" class="absolute top-8 right-6 text-white text-sm uppercase tracking-widest border border-white/20 px-4 py-2 rounded hover:bg-white hover:text-black transition">Close</button>
+    <div id="mobileMenu" class="mobile-menu fixed inset-0 bg-[#060606] z-40 flex flex-col justify-center px-8">
+        <div class="diagonal absolute top-0 left-0 right-0 h-2"></div>
+        <p class="font-display uppercase text-acid tracking-[.3em] text-sm mb-6">// Menu</p>
+        <a href="index.html" class="font-display uppercase text-6xl text-white hover:text-acid mb-4 transition">Home</a>
+        <a href="programs.html" class="font-display uppercase text-6xl text-white hover:text-acid mb-4 transition">Programs</a>
+        <a href="trainers.html" class="font-display uppercase text-6xl text-white hover:text-acid mb-4 transition">Coaches</a>
+        <a href="join.html" class="font-display uppercase text-6xl text-acid mb-8">Join Now →</a>
+        <button onclick="toggleMenu()" class="self-start text-black bg-acid font-display uppercase tracking-widest px-6 py-3 skew-btn"><span>Close ✕</span></button>
     </div>
 
     <!-- Hero -->
-    <header class="min-h-screen flex items-center justify-center relative overflow-hidden pt-20">
-        <!-- Video Background (Simulated with Image) -->
+    <header class="min-h-[92vh] flex flex-col justify-end relative overflow-hidden">
         <div class="absolute inset-0 z-0">
-            <div class="absolute inset-0 bg-black/40 z-10"></div>
-            <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=1600&auto=format&fit=crop" class="w-full h-full object-cover opacity-60" alt="Gym">
+            <div class="absolute inset-0 bg-gradient-to-t from-[#060606] via-[#060606]/55 to-[#060606]/30 z-10"></div>
+            <div class="absolute inset-0 bg-acid/10 mix-blend-overlay z-10"></div>
+            <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=1600&auto=format&fit=crop" class="w-full h-full object-cover" alt="Gym">
         </div>
-
-        <div class="relative z-20 text-center px-4">
-            <h1 class="text-[12vw] leading-[0.8] font-display font-bold uppercase mb-4 mix-blend-overlay">
-                Build Your <br> <span class="text-acid">Legacy</span>
+        <div class="absolute top-24 right-4 sm:right-8 z-10 hidden sm:block text-right">
+            <p class="font-display uppercase text-acid text-sm tracking-[.3em] animate-flicker">● Live: 214 training now</p>
+            <p class="text-white/50 text-xs font-bold tracking-[.2em] uppercase mt-1 tick">EST. 2016 — FORGED, NOT BUILT</p>
+        </div>
+        <div class="relative z-20 px-4 sm:px-8 pb-10 pt-32 max-w-[1600px] mx-auto w-full">
+            <div class="flex items-center gap-3 mb-4">
+                <span class="bg-acid text-black font-display uppercase text-sm px-3 py-1 skew-btn"><span>Raw // Unfiltered</span></span>
+                <span class="border border-white/30 text-white/80 text-[12px] font-bold uppercase tracking-[.2em] px-3 py-1.5">15,000 sq ft of iron</span>
+            </div>
+            <h1 class="font-display uppercase leading-[.85] tracking-tight text-[19vw] sm:text-[13vw] lg:text-[10.5rem] mb-2">
+                <span class="block outline-txt">Build your</span>
+                <span class="block text-white">Legacy<span class="text-acid">.</span></span>
             </h1>
-            <p class="text-xl md:text-2xl font-sans font-light text-gray-300 max-w-xl mx-auto mb-10">
-                No gimmicks. No shortcuts. Just raw iron and results. The most advanced strength facility in the city.
-            </p>
-            <div class="flex flex-col md:flex-row gap-4 justify-center">
-                <a href="join.html" class="bg-acid text-black px-10 py-4 font-bold uppercase tracking-widest text-lg hover:bg-white transition clip-path-slant">Join The Cult</a>
-                <a href="programs.html" class="border border-white text-white px-10 py-4 font-bold uppercase tracking-widest text-lg hover:bg-white hover:text-black transition">View Schedule</a>
+            <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-8">
+                <p class="text-base sm:text-xl text-white/70 max-w-xl font-medium">
+                    No gimmicks. No shortcuts. Just raw iron and results. The most advanced strength facility in the city.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-3">
+                    <a href="join.html" class="skew-btn bg-acid text-black px-10 py-4 font-display uppercase tracking-wider text-xl hard-shadow text-center clip-slant"><span>Join the cult →</span></a>
+                    <a href="programs.html" class="skew-btn border-2 border-white text-white px-10 py-4 font-display uppercase tracking-wider text-xl hover:bg-white hover:text-black transition text-center"><span>View schedule</span></a>
+                </div>
             </div>
         </div>
-
-        <!-- Marquee -->
-        <div class="absolute bottom-0 w-full border-t border-white/20 bg-black py-4 overflow-hidden whitespace-nowrap">
-            <div class="inline-block animate-marquee">
-                <span class="text-4xl font-display font-bold mx-8 text-stroke">STRENGTH</span>
-                <span class="text-4xl font-display font-bold mx-8 text-white">CONDITIONING</span>
-                <span class="text-4xl font-display font-bold mx-8 text-stroke">POWERLIFTING</span>
-                <span class="text-4xl font-display font-bold mx-8 text-white">HIIT</span>
-                <span class="text-4xl font-display font-bold mx-8 text-stroke">BOXING</span>
-                <span class="text-4xl font-display font-bold mx-8 text-white">RECOVERY</span>
-                <span class="text-4xl font-display font-bold mx-8 text-stroke">STRENGTH</span>
-                <span class="text-4xl font-display font-bold mx-8 text-white">CONDITIONING</span>
+        <div class="relative z-20 border-t-2 border-acid bg-[#060606] py-3.5 overflow-hidden whitespace-nowrap">
+            <div class="inline-flex animate-marquee font-display uppercase text-3xl sm:text-4xl">
+                <span class="mx-6 outline-faint">Strength</span><span class="mx-6 text-white">✦ Conditioning</span><span class="mx-6 outline-acid">Powerlifting</span><span class="mx-6 text-white">✦ HIIT</span><span class="mx-6 outline-faint">Boxing</span><span class="mx-6 text-acid">✦ Recovery</span>
+                <span class="mx-6 outline-faint">Strength</span><span class="mx-6 text-white">✦ Conditioning</span><span class="mx-6 outline-acid">Powerlifting</span><span class="mx-6 text-white">✦ HIIT</span><span class="mx-6 outline-faint">Boxing</span><span class="mx-6 text-acid">✦ Recovery</span>
             </div>
         </div>
     </header>
 
     <!-- Stats -->
-    <section class="grid grid-cols-2 md:grid-cols-4 border-b border-white/10">
-        <div class="p-12 border-r border-white/10 text-center hover:bg-concrete transition">
-            <span class="block text-5xl font-display font-bold text-acid mb-2">15k</span>
-            <span class="text-xs uppercase tracking-widest text-gray-500">Sq Ft Facility</span>
+    <section class="grid grid-cols-2 lg:grid-cols-4 border-b border-white/10 bg-[#060606]">
+        <div class="p-8 sm:p-12 border-r border-b lg:border-b-0 border-white/10 text-center hover:bg-concrete transition group relative overflow-hidden">
+            <span class="absolute top-3 left-3 text-[10px] font-bold tracking-[.2em] text-white/30">/01</span>
+            <span class="block font-display text-5xl sm:text-6xl text-acid mb-2 tick group-hover:scale-110 transition">15K</span>
+            <span class="text-[11px] uppercase tracking-[.24em] text-white/50 font-bold">Sq ft facility</span>
         </div>
-        <div class="p-12 border-r border-white/10 text-center hover:bg-concrete transition">
-            <span class="block text-5xl font-display font-bold text-white mb-2">24/7</span>
-            <span class="text-xs uppercase tracking-widest text-gray-500">Access</span>
+        <div class="p-8 sm:p-12 lg:border-r border-b lg:border-b-0 border-white/10 text-center hover:bg-concrete transition group">
+            <span class="absolute top-3 left-3 text-[10px] font-bold tracking-[.2em] text-white/30 hidden">/02</span>
+            <span class="block font-display text-5xl sm:text-6xl text-white mb-2 tick group-hover:text-acid transition">24/7</span>
+            <span class="text-[11px] uppercase tracking-[.24em] text-white/50 font-bold">Access</span>
         </div>
-        <div class="p-12 border-r border-white/10 text-center hover:bg-concrete transition">
-            <span class="block text-5xl font-display font-bold text-acid mb-2">50+</span>
-            <span class="text-xs uppercase tracking-widest text-gray-500">Trainers</span>
+        <div class="p-8 sm:p-12 border-r border-white/10 text-center hover:bg-concrete transition group">
+            <span class="block font-display text-5xl sm:text-6xl text-acid mb-2 tick group-hover:scale-110 transition">50+</span>
+            <span class="text-[11px] uppercase tracking-[.24em] text-white/50 font-bold">Trainers</span>
         </div>
-        <div class="p-12 text-center hover:bg-concrete transition">
-            <span class="block text-5xl font-display font-bold text-white mb-2">0</span>
-            <span class="text-xs uppercase tracking-widest text-gray-500">Excuses</span>
+        <div class="p-8 sm:p-12 text-center hover:bg-acid transition group">
+            <span class="block font-display text-5xl sm:text-6xl text-white group-hover:text-black mb-2 tick">0</span>
+            <span class="text-[11px] uppercase tracking-[.24em] text-white/50 group-hover:text-black/60 font-bold">Excuses</span>
         </div>
     </section>
 
     <!-- Programs Preview -->
-    <section id="classes" class="py-24 px-6 max-w-[1600px] mx-auto">
-        <div class="flex justify-between items-end mb-16">
-            <h2 class="text-6xl font-display font-bold uppercase">Our <span class="text-acid">Arsenal</span></h2>
-            <a href="programs.html" class="hidden md:block border-b border-acid text-acid pb-1 uppercase tracking-widest text-sm hover:text-white transition">View Full Schedule</a>
+    <section id="classes" class="py-20 sm:py-24 px-4 sm:px-8 max-w-[1600px] mx-auto">
+        <div class="flex flex-col md:flex-row justify-between md:items-end gap-4 mb-10">
+            <div>
+                <p class="font-display uppercase text-acid tracking-[.3em] text-sm mb-2">// 01 — Pick your poison</p>
+                <h2 class="font-display uppercase leading-[.9] text-6xl sm:text-7xl lg:text-8xl">Our <span class="text-acid">arsenal</span></h2>
+            </div>
+            <a href="programs.html" class="self-start md:self-auto skew-btn border border-acid text-acid px-6 py-3 font-display uppercase tracking-widest hover:bg-acid hover:text-black transition"><span>View full schedule →</span></a>
         </div>
-
-        <div class="grid md:grid-cols-3 gap-6">
-            <!-- Card 1 -->
-            <a href="programs.html" class="group relative h-[500px] bg-concrete overflow-hidden border border-white/5 block">
-                <img src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?q=80&w=800&auto=format&fit=crop" class="w-full h-full object-cover opacity-60 group-hover:opacity-40 group-hover:scale-110 transition duration-700" alt="Weights">
-                <div class="absolute inset-0 p-8 flex flex-col justify-end">
-                    <h3 class="text-4xl font-display font-bold uppercase mb-2 translate-y-4 group-hover:translate-y-0 transition">Hypertrophy</h3>
-                    <p class="text-gray-400 text-sm opacity-0 group-hover:opacity-100 transition duration-500 translate-y-4 group-hover:translate-y-0">
-                        Scientifically programmed bodybuilding. Build muscle, not ego.
-                    </p>
+        <div class="grid md:grid-cols-3 gap-4 sm:gap-6">
+            <a href="programs.html" class="group relative h-[440px] sm:h-[500px] bg-concrete overflow-hidden border border-white/10 hover:border-acid block">
+                <img src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?q=80&w=800&auto=format&fit=crop" class="w-full h-full object-cover opacity-50 grayscale group-hover:opacity-70 group-hover:grayscale-0 group-hover:scale-105 transition duration-700" alt="Weights">
+                <span class="absolute top-4 left-4 bg-acid text-black font-display uppercase text-sm px-3 py-1">01</span>
+                <span class="absolute top-4 right-4 border border-white/30 text-white/70 text-[11px] font-bold uppercase tracking-[.2em] px-3 py-1.5">4 days / week</span>
+                <div class="absolute inset-x-0 bottom-0 p-7 bg-gradient-to-t from-black via-black/85 to-transparent">
+                    <h3 class="font-display uppercase text-5xl mb-2 group-hover:text-acid transition">Hyper-<br>trophy</h3>
+                    <p class="text-white/60 text-sm max-h-0 opacity-0 group-hover:max-h-24 group-hover:opacity-100 transition-all duration-500 overflow-hidden">Scientifically programmed bodybuilding. Build muscle, not ego.</p>
+                    <p class="mt-3 font-display uppercase text-acid tracking-widest text-sm opacity-0 group-hover:opacity-100 transition">Enter →</p>
                 </div>
             </a>
-
-            <!-- Card 2 -->
-            <a href="programs.html" class="group relative h-[500px] bg-concrete overflow-hidden border border-white/5 block">
-                <img src="https://images.unsplash.com/photo-1599058945522-28d584b6f0ff?q=80&w=800&auto=format&fit=crop" class="w-full h-full object-cover opacity-60 group-hover:opacity-40 group-hover:scale-110 transition duration-700" alt="Cardio">
-                <div class="absolute inset-0 p-8 flex flex-col justify-end">
-                    <h3 class="text-4xl font-display font-bold uppercase mb-2 translate-y-4 group-hover:translate-y-0 transition text-acid">Metcon</h3>
-                    <p class="text-gray-400 text-sm opacity-0 group-hover:opacity-100 transition duration-500 translate-y-4 group-hover:translate-y-0">
-                        Metabolic conditioning. High intensity interval training to shred fat.
-                    </p>
+            <a href="programs.html" class="group relative h-[440px] sm:h-[500px] bg-acid overflow-hidden border-2 border-acid block">
+                <img src="https://images.unsplash.com/photo-1599058945522-28d584b6f0ff?q=80&w=800&auto=format&fit=crop" class="w-full h-full object-cover opacity-70 grayscale group-hover:grayscale-0 group-hover:scale-105 transition duration-700" alt="Cardio">
+                <span class="absolute top-4 left-4 bg-black text-acid font-display uppercase text-sm px-3 py-1">02 ★ Hot</span>
+                <div class="absolute inset-x-0 bottom-0 p-7 bg-gradient-to-t from-black via-black/85 to-transparent">
+                    <h3 class="font-display uppercase text-5xl mb-2 text-acid">Metcon</h3>
+                    <p class="text-white/60 text-sm max-h-0 opacity-0 group-hover:max-h-24 group-hover:opacity-100 transition-all duration-500 overflow-hidden">Metabolic conditioning. HIIT to shred fat and build an engine.</p>
+                    <p class="mt-3 font-display uppercase text-acid tracking-widest text-sm opacity-0 group-hover:opacity-100 transition">Enter →</p>
                 </div>
             </a>
-
-            <!-- Card 3 -->
-            <a href="programs.html" class="group relative h-[500px] bg-concrete overflow-hidden border border-white/5 block">
-                <img src="https://images.unsplash.com/photo-1574680096141-1cddd32e24f7?q=80&w=800&auto=format&fit=crop" class="w-full h-full object-cover opacity-60 group-hover:opacity-40 group-hover:scale-110 transition duration-700" alt="Power">
-                <div class="absolute inset-0 p-8 flex flex-col justify-end">
-                    <h3 class="text-4xl font-display font-bold uppercase mb-2 translate-y-4 group-hover:translate-y-0 transition">Powerlifting</h3>
-                    <p class="text-gray-400 text-sm opacity-0 group-hover:opacity-100 transition duration-500 translate-y-4 group-hover:translate-y-0">
-                        Squat. Bench. Deadlift. The holy trinity of strength.
-                    </p>
+            <a href="programs.html" class="group relative h-[440px] sm:h-[500px] bg-concrete overflow-hidden border border-white/10 hover:border-acid block">
+                <img src="https://images.unsplash.com/photo-1574680096141-1cddd32e24f7?q=80&w=800&auto=format&fit=crop" class="w-full h-full object-cover opacity-50 grayscale group-hover:opacity-70 group-hover:grayscale-0 group-hover:scale-105 transition duration-700" alt="Power">
+                <span class="absolute top-4 left-4 bg-white text-black font-display uppercase text-sm px-3 py-1">03</span>
+                <div class="absolute inset-x-0 bottom-0 p-7 bg-gradient-to-t from-black via-black/85 to-transparent">
+                    <h3 class="font-display uppercase text-5xl mb-2 group-hover:text-acid transition">Power-<br>lifting</h3>
+                    <p class="text-white/60 text-sm max-h-0 opacity-0 group-hover:max-h-24 group-hover:opacity-100 transition-all duration-500 overflow-hidden">Squat. Bench. Deadlift. The holy trinity of strength.</p>
+                    <p class="mt-3 font-display uppercase text-acid tracking-widest text-sm opacity-0 group-hover:opacity-100 transition">Enter →</p>
                 </div>
             </a>
         </div>
     </section>
 
+    <!-- CTA banner -->
+    <section class="border-y-2 border-acid bg-acid text-black px-4 sm:px-8 py-12 relative overflow-hidden">
+        <div class="diagonal absolute inset-0 opacity-60"></div>
+        <div class="max-w-[1600px] mx-auto flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6 relative">
+            <h2 class="font-display uppercase leading-[.9] text-5xl sm:text-7xl">Stop scrolling.<br>Start lifting.</h2>
+            <a href="join.html" class="skew-btn bg-black text-acid px-10 py-5 font-display uppercase text-2xl hard-shadow hover:!shadow-[6px_6px_0px_rgba(0,0,0,.4)] shrink-0"><span>Claim free session →</span></a>
+        </div>
+    </section>
+
     <!-- Footer -->
-    <footer class="bg-concrete py-12 text-center text-gray-600 text-xs uppercase tracking-widest border-t border-white/5">
-        <div class="mb-4 text-white text-lg font-display font-bold">Iron Empire</div>
-        © 2026 Iron Empire. Forged in Iron.
+    <footer class="bg-[#060606] pt-14 pb-8 px-4 sm:px-8 border-t border-white/10">
+        <div class="max-w-[1600px] mx-auto">
+            <p class="font-display uppercase leading-none text-[16vw] lg:text-[9rem] outline-faint hover:text-acid hover:[-webkit-text-stroke:0px] transition-all duration-500 cursor-default select-none text-center">Iron Empire</p>
+            <div class="flex flex-col sm:flex-row items-center justify-between gap-3 mt-8 pt-6 border-t border-white/10 text-[11px] uppercase tracking-[.24em] text-white/40 font-bold">
+                <p>© 2026 Iron Empire. Forged in iron.</p>
+                <p class="flex gap-5"><a href="programs.html" class="hover:text-acid transition">Programs</a><a href="trainers.html" class="hover:text-acid transition">Coaches</a><a href="join.html" class="text-acid">Join</a></p>
+            </div>
+        </div>
     </footer>
 
     <script>

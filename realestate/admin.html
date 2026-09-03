@@ -11,7 +11,7 @@
       theme: {
         extend: {
           fontFamily: { sans:['Inter','sans-serif'], head:['Poppins','sans-serif'] },
-          colors: { accent:'#2563EB', 'accent-light':'#EFF6FF' }
+          colors: { accent:'#2563EB', 'accent-light':'#EFF6FF', ink:'#0A0F1E', gold:'#C9A86A', 'gold-soft':'#F7EDD8' }
         }
       }
     }
@@ -53,12 +53,12 @@
   </header>
 
   <!-- Sidebar -->
-  <aside id="sidebar" class="fixed inset-y-0 left-0 z-50 w-64 bg-white border-r border-gray-200 lg:translate-x-0 -translate-x-full transition-transform duration-300 flex flex-col">
-    <div class="h-16 flex items-center gap-3 px-6 border-b border-gray-100">
-      <div class="w-9 h-9 rounded-xl bg-gradient-to-br from-accent to-indigo-600 flex items-center justify-center text-white text-lg shadow-md shadow-blue-200">🏛️</div>
+  <aside id="sidebar" class="fixed inset-y-0 left-0 z-50 w-64 border-r border-gold/20 lg:translate-x-0 -translate-x-full transition-transform duration-300 flex flex-col text-white" style="background: linear-gradient(180deg, #070B18 0%, #0A0F1E 60%, #131B3A 100%);">
+    <div class="h-16 flex items-center gap-3 px-6 border-b border-white/10">
+      <div class="w-9 h-9 rounded-xl flex items-center justify-center text-ink text-lg font-black" style="background: linear-gradient(135deg,#F3D9A4,#C9A86A); box-shadow: 0 6px 18px rgba(201,168,106,.4);">◆</div>
       <div>
-        <div class="font-black font-head text-gray-900 leading-tight">Estate Admin</div>
-        <div class="text-[11px] text-gray-400">Property Management</div>
+        <div class="font-black font-head text-white leading-tight">Estate Admin</div>
+        <div class="text-[11px] text-gold/80 tracking-widest uppercase">◆ Premium Portal</div>
       </div>
     </div>
     <nav class="flex-1 overflow-y-auto px-3 py-5 space-y-1">

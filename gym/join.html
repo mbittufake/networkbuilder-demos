@@ -1,87 +1,112 @@
 <!DOCTYPE html>
-<html lang="en" class="bg-black text-white selection:bg-[#ccff00] selection:text-black">
+<html lang="en" class="bg-[#060606] text-white selection:bg-[#CCFF00] selection:text-black">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Join Now | IRON EMPIRE</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Teko:wght@300;400;500;600;700&family=Manrope:wght@400;600;800&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
     <script>
         tailwind.config = {
             theme: {
                 extend: {
-                    fontFamily: {
-                        display: ['Teko', 'sans-serif'],
-                        sans: ['Manrope', 'sans-serif'],
-                    },
-                    colors: { acid: '#CCFF00', concrete: '#222222' }
+                    fontFamily: { display: ['Anton','sans-serif'], sans: ['Space Grotesk','sans-serif'] },
+                    colors: { acid: '#CCFF00', void: '#060606', concrete: '#161616' }
                 }
             }
         }
     </script>
     <style>
-        .mobile-menu { transform: translateY(-100%); transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1); }
-        .mobile-menu.open { transform: translateY(0); }
+        body{background:#060606}
+        .skew-btn{transform:skewX(-8deg)}
+        .skew-btn > span{transform:skewX(8deg);display:inline-block}
+        .outline-faint{-webkit-text-stroke:1px rgba(255,255,255,.22);color:transparent}
+        .hard-shadow{transition:box-shadow .2s,transform .2s,background .2s}
+        .hard-shadow:hover{box-shadow:6px 6px 0px #CCFF00;transform:translate(-3px,-3px)}
+        .grain::after{content:"";position:fixed;inset:0;z-index:70;pointer-events:none;opacity:.09;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+        .field{background:#060606;transition:border-color .2s,box-shadow .2s}
+        .field:focus{outline:none;border-color:#CCFF00 !important;box-shadow:4px 4px 0px #CCFF00}
+        .mobile-menu{transform:translateY(-100%);transition:transform .45s cubic-bezier(.16,1,.3,1)}
+        .mobile-menu.open{transform:translateY(0)}
     </style>
 </head>
-<body class="overflow-x-hidden font-sans">
+<body class="overflow-x-hidden font-sans grain antialiased">
 
-    <!-- Nav -->
-    <nav class="fixed w-full z-50 px-6 py-6 mix-blend-difference flex justify-between items-center border-b border-white/10 bg-black/80 backdrop-blur-md">
-        <a href="index.html" class="text-3xl font-display font-bold tracking-widest uppercase relative z-50">Iron<span class="text-acid">Empire</span></a>
-        <div class="hidden md:flex gap-8 text-sm font-bold uppercase tracking-wider">
+    <nav class="sticky top-0 z-50 px-4 sm:px-6 py-4 bg-[#060606]/90 backdrop-blur-md border-b border-white/10 flex justify-between items-center">
+        <a href="index.html" class="font-display uppercase leading-none tracking-wide text-2xl sm:text-3xl relative z-50">Iron<span class="text-acid">///</span>Empire</a>
+        <div class="hidden md:flex gap-8 text-[13px] font-bold uppercase tracking-[.18em]">
             <a href="programs.html" class="hover:text-acid transition">Programs</a>
             <a href="trainers.html" class="hover:text-acid transition">Coaches</a>
-            <a href="join.html" class="text-acid transition">Membership</a>
+            <a href="join.html" class="text-acid">Membership</a>
         </div>
-        <div class="flex items-center gap-4">
-            <a href="index.html" class="text-white font-bold uppercase tracking-widest text-sm hover:text-acid transition">Close X</a>
-        </div>
+        <a href="index.html" class="skew-btn border border-white/25 text-white font-display uppercase tracking-widest text-sm px-5 py-2.5 hover:bg-acid hover:text-black hover:border-acid transition"><span>Close ✕</span></a>
     </nav>
 
-    <!-- Content -->
-    <main class="min-h-screen flex items-center justify-center px-4 pt-32 pb-20 relative">
-        <!-- Background Noise -->
+    <main class="min-h-screen flex items-center justify-center px-4 pt-12 pb-20 relative overflow-hidden">
+        <p class="absolute top-24 left-1/2 -translate-x-1/2 font-display uppercase text-[18vw] outline-faint whitespace-nowrap pointer-events-none select-none leading-none">Join now</p>
         <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-20 pointer-events-none"></div>
+        <div class="absolute -left-24 top-1/3 w-72 h-72 bg-acid/15 blur-[100px] rounded-full pointer-events-none"></div>
 
-        <div class="w-full max-w-2xl bg-concrete border border-white/10 p-8 md:p-16 relative z-10 clip-path-slant">
-            <div class="text-center mb-12">
-                <h1 class="text-6xl font-display font-bold uppercase mb-4">Commit to the <span class="text-acid">Grind</span></h1>
-                <p class="text-gray-400">Fill this out. Show up. We handle the rest.</p>
+        <div class="w-full max-w-3xl relative z-10 grid md:grid-cols-[.85fr_1.15fr] border-2 border-white/15 bg-concrete">
+            <div class="bg-acid text-black p-8 md:p-10 flex flex-col justify-between relative overflow-hidden">
+                <div class="absolute inset-0 opacity-20" style="background-image:repeating-linear-gradient(-45deg,#000 0 2px,transparent 2px 14px)"></div>
+                <div class="relative">
+                    <p class="font-display uppercase tracking-[.25em] text-sm mb-4 border-b-2 border-black/20 pb-4">/// Membership</p>
+                    <p class="font-display uppercase leading-[.9] text-6xl mb-4">No<br>excuses<span class="align-super text-3xl">.</span></p>
+                    <ul class="space-y-2.5 text-[13px] font-bold uppercase tracking-wider">
+                        <li class="flex gap-2 items-center"><span class="w-2 h-2 bg-black"></span> First session free</li>
+                        <li class="flex gap-2 items-center"><span class="w-2 h-2 bg-black"></span> Cancel anytime</li>
+                        <li class="flex gap-2 items-center"><span class="w-2 h-2 bg-black"></span> 24/7 keycard entry</li>
+                    </ul>
+                </div>
+                <div class="relative mt-10 border-t-2 border-black/20 pt-5">
+                    <p class="font-display uppercase text-5xl">₹3,499<span class="text-lg">/mo</span></p>
+                    <p class="text-[12px] font-bold uppercase tracking-[.18em]">Elite · most chosen</p>
+                </div>
             </div>
-
-            <form class="space-y-8">
-                <div class="grid md:grid-cols-2 gap-8">
-                    <div>
-                        <label class="block text-xs font-bold uppercase tracking-widest text-acid mb-2">First Name</label>
-                        <input type="text" class="w-full bg-black border border-white/20 p-4 text-white font-bold focus:border-acid focus:outline-none transition" placeholder="JOHNNY">
+            <div class="p-8 md:p-10">
+                <h1 class="font-display uppercase leading-[.9] text-4xl sm:text-5xl mb-2">Commit to the <span class="text-acid">grind</span></h1>
+                <p class="text-white/50 text-sm mb-8 font-medium">Fill this out. Show up. We handle the rest.</p>
+                <form class="space-y-6">
+                    <div class="grid sm:grid-cols-2 gap-5">
+                        <div>
+                            <label class="block text-[11px] font-bold uppercase tracking-[.22em] text-acid mb-2">First name</label>
+                            <input type="text" class="field w-full border-2 border-white/20 p-3.5 text-white font-bold placeholder:text-white/25 uppercase tracking-wide text-sm" placeholder="Johnny">
+                        </div>
+                        <div>
+                            <label class="block text-[11px] font-bold uppercase tracking-[.22em] text-acid mb-2">Last name</label>
+                            <input type="text" class="field w-full border-2 border-white/20 p-3.5 text-white font-bold placeholder:text-white/25 uppercase tracking-wide text-sm" placeholder="Silverhand">
+                        </div>
                     </div>
                     <div>
-                        <label class="block text-xs font-bold uppercase tracking-widest text-acid mb-2">Last Name</label>
-                        <input type="text" class="w-full bg-black border border-white/20 p-4 text-white font-bold focus:border-acid focus:outline-none transition" placeholder="SILVERHAND">
+                        <label class="block text-[11px] font-bold uppercase tracking-[.22em] text-acid mb-2">Phone</label>
+                        <input type="tel" class="field w-full border-2 border-white/20 p-3.5 text-white font-bold placeholder:text-white/25 tracking-wide text-sm" placeholder="+91 98765 43210">
                     </div>
-                </div>
-
-                <div>
-                    <label class="block text-xs font-bold uppercase tracking-widest text-acid mb-2">Phone</label>
-                    <input type="tel" class="w-full bg-black border border-white/20 p-4 text-white font-bold focus:border-acid focus:outline-none transition" placeholder="+91 98765 43210">
-                </div>
-
-                <div>
-                    <label class="block text-xs font-bold uppercase tracking-widest text-acid mb-2">Membership Tier</label>
-                    <select class="w-full bg-black border border-white/20 p-4 text-white font-bold focus:border-acid focus:outline-none transition">
-                        <option>Standard (Gym Only) - ₹1,999/mo</option>
-                        <option selected>Elite (Unlimited Classes) - ₹3,499/mo</option>
-                        <option>Pro (Includes PT) - ₹5,999/mo</option>
-                    </select>
-                </div>
-
-                <button class="w-full bg-acid text-black font-display font-bold text-3xl uppercase py-4 hover:bg-white transition mt-8">
-                    Confirm Membership
-                </button>
-            </form>
+                    <div>
+                        <label class="block text-[11px] font-bold uppercase tracking-[.22em] text-acid mb-2">Membership tier</label>
+                        <select class="field w-full border-2 border-white/20 p-3.5 text-white font-bold tracking-wide text-sm">
+                            <option>Standard (Gym Only) - ₹1,999/mo</option>
+                            <option selected>Elite (Unlimited Classes) - ₹3,499/mo</option>
+                            <option>Pro (Includes PT) - ₹5,999/mo</option>
+                        </select>
+                    </div>
+                    <div class="grid grid-cols-3 gap-2">
+                        <span class="border border-white/15 text-white/50 text-[11px] font-bold uppercase tracking-widest text-center py-2.5">Standard</span>
+                        <span class="bg-acid text-black text-[11px] font-bold uppercase tracking-widest text-center py-2.5 border border-acid">Elite ★</span>
+                        <span class="border border-white/15 text-white/50 text-[11px] font-bold uppercase tracking-widest text-center py-2.5">Pro</span>
+                    </div>
+                    <button class="skew-btn w-full bg-acid text-black font-display text-2xl uppercase py-4 hard-shadow"><span>Confirm membership →</span></button>
+                    <p class="text-center text-[11px] uppercase tracking-[.2em] text-white/35 font-bold">No card today · Pay at the gate</p>
+                </form>
+            </div>
         </div>
     </main>
+
+    <footer class="border-t border-white/10 py-8 text-center text-[11px] uppercase tracking-[.24em] text-white/35 font-bold px-4">
+        © 2026 Iron Empire. <a href="index.html" class="text-acid">← Back to base</a> · <a href="programs.html" class="hover:text-acid">Programs</a> · <a href="trainers.html" class="hover:text-acid">Coaches</a>
+    </footer>
 
 </body>
 </html>

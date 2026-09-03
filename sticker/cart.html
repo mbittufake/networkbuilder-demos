@@ -4,8 +4,25 @@
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Cart — STICKCRAFT</title>
 <script src="https://cdn.tailwindcss.com"></script>
-<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
-<script>tailwind.config={theme:{extend:{fontFamily:{sans:['Inter','sans-serif'],serif:['Instrument Serif','serif'],display:['Space Grotesk','sans-serif']},colors:{ink:'#0F1A1C',muted:'#6B7280',paper:'#F8F7F5',line:'#E5E7EB',accent:'#0E7490'}}}}</script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<script>tailwind.config={theme:{extend:{fontFamily:{sans:['Inter','sans-serif'],display:['Space Grotesk','sans-serif'],serif:['Space Grotesk','sans-serif']},colors:{ink:'#0F1A1C',muted:'#5B6366',paper:'#FFFBF7',line:'#D9DEDF',accent:'#0E7490',lime:'#A3E635'}}}}</script>
+
+<style>
+  body{ font-family:'Inter',sans-serif; background:#FFFBF7; }
+  .font-display,.font-serif{ font-family:'Space Grotesk',sans-serif !important; }
+  .precision-grid{ background-image: linear-gradient(to right, rgba(15,26,28,.06) 1px, transparent 1px), linear-gradient(to bottom, rgba(15,26,28,.06) 1px, transparent 1px); background-size:28px 28px; }
+  .precision-dots{ background-image: radial-gradient(circle at 1px 1px, rgba(14,116,144,.18) 1px, transparent 0); background-size:18px 18px; }
+  .spec-label{ font-family:'Space Grotesk',sans-serif; font-size:11px; letter-spacing:.14em; text-transform:uppercase; font-weight:700; }
+  .proof-badge{ background:#A3E635; color:#0F1A1C; border:1.5px solid #0F1A1C; box-shadow:2px 2px 0 #0F1A1C; font-weight:700; }
+  .proof-badge-cyan{ background:#0E7490; color:white; border:1.5px solid #0F1A1C; }
+  .sharp{ border-radius:10px !important; }
+  .bulk-table{ border:1.5px solid #0F1A1C; } .bulk-table > div:nth-child(even){ background:#F2F7F8; }
+  .ruler{ height:10px; background:repeating-linear-gradient(90deg, #0F1A1C 0 1px, transparent 1px 8px); opacity:.25; }
+  .shape-ring{ border:2px solid #0F1A1C; box-shadow:0 0 0 4px white, 0 0 0 5.5px #0F1A1C; }
+  .step-num{ width:32px; height:32px; border-radius:9999px; background:#0F1A1C; color:white; display:flex; align-items:center; justify-content:center; font-family:'Space Grotesk'; font-weight:700; font-size:14px; }
+  .step-num-lime{ background:#A3E635; color:#0F1A1C; border:1.5px solid #0F1A1C; }
+  ::selection{ background:#0E7490; color:white; }
+</style>
 </head>
 <body class="overflow-x-hidden bg-paper text-ink antialiased">
 <header class="sticky top-0 z-40 bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/80 border-b border-line">
@@ -96,7 +113,7 @@
       <div class="mt-4 space-y-2 text-sm">
         <div class="flex justify-between"><span class="text-muted">Subtotal</span><span id="subtotalEl" class="font-semibold">₹0</span></div>
         <div class="flex justify-between"><span class="text-muted">GST (18%)</span><span id="gstEl" class="font-semibold">₹0</span></div>
-        <div class="flex justify-between"><span class="text-muted">Shipping</span><span class="font-semibold text-emerald-600">Free over ₹2,000</span></div>
+        <div class="flex justify-between"><span class="text-muted">Shipping</span><span class="font-semibold text-accent">Free over ₹2,000</span></div>
         <div class="flex justify-between text-base font-bold border-t border-line pt-3 mt-3"><span>Total</span><span id="totalEl">₹0</span></div>
       </div>
       <div class="mt-6">
@@ -163,8 +180,8 @@ function updateSummary(sub){
 function applyCoupon(){
   const v=document.getElementById('couponInput').value.trim().toUpperCase();
   const msg=document.getElementById('couponMsg'); msg.classList.remove('hidden');
-  if(v==='WELCOME10'){ discount=0.10; msg.innerHTML='<svg class="align-middle shrink-0 shrink-0" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg> 10% off applied'; msg.className='text-xs mt-2 text-emerald-600'; }
-  else if(v==='BULK15' && cartSubtotal()>5000){ discount=0.15; msg.innerHTML='<svg class="align-middle shrink-0 shrink-0" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg> 15% bulk discount'; msg.className='text-xs mt-2 text-emerald-600'; }
+  if(v==='WELCOME10'){ discount=0.10; msg.innerHTML='<svg class="align-middle shrink-0 shrink-0" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg> 10% off applied'; msg.className='text-xs mt-2 text-accent'; }
+  else if(v==='BULK15' && cartSubtotal()>5000){ discount=0.15; msg.innerHTML='<svg class="align-middle shrink-0 shrink-0" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg> 15% bulk discount'; msg.className='text-xs mt-2 text-accent'; }
   else if(v===''){ discount=0; msg.textContent='Enter WELCOME10 for 10% off'; msg.className='text-xs mt-2 text-muted'; }
   else { discount=0; msg.innerHTML='<svg class="align-middle shrink-0 shrink-0" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg> Invalid code — try WELCOME10'; msg.className='text-xs mt-2 text-red-600'; }
   renderCart();

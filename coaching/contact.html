@@ -7,166 +7,173 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;500;600;700&family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700;12..96,800&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=Caveat:wght@600;700&display=swap" rel="stylesheet">
     <script>
         tailwind.config = {
             theme: {
                 extend: {
-                    fontFamily: { sans: ['DM Sans', 'sans-serif'], serif: ['Playfair Display', 'serif'] },
-                    colors: { brand: { 50: '#fef7ee', 100: '#fdedd6', 500: '#f97316', 600: '#ea580c', 700: '#c2410c' } }
+                    fontFamily: { sans: ['DM Sans', 'sans-serif'], display: ['Bricolage Grotesque', 'sans-serif'], serif: ['Bricolage Grotesque', 'serif'], hand: ['Caveat','cursive'] },
+                    colors: { cream: '#FFFBEB', brand: { 50:'#FFF7ED',100:'#FFEDD5',500:'#F97316',600:'#EA580C',700:'#C2410c' }, cocoa: '#451A03', leaf: '#16A34A' },
+                    boxShadow: { sticker: '3px 4px 0 0 #451A03' }
                 }
             }
         }
     </script>
+    <style>
+      body{font-family:'DM Sans',sans-serif} h1,h2,h3{font-family:'Bricolage Grotesque',sans-serif}
+      .doodle-bg{background-color:#FFFBEB;background-image:radial-gradient(rgba(69,26,3,.09) 1.5px,transparent 1.5px);background-size:22px 22px}
+      .sticker{border:2px solid #451A03;box-shadow:3px 4px 0 0 #451A03}
+      .bubble{position:relative}.bubble::after{content:'';position:absolute;bottom:-10px;left:36px;width:20px;height:20px;background:inherit;border-right:2px solid rgba(69,26,3,.12);border-bottom:2px solid rgba(69,26,3,.12);transform:rotate(45deg);border-bottom-right-radius:6px}
+    </style>
 </head>
-<body class="bg-stone-50 text-stone-800 font-sans antialiased">
+<body class="bg-cream text-cocoa font-sans antialiased">
 
-    <!-- Mobile Menu -->
     <div id="mobile-menu" class="fixed inset-0 z-50 hidden">
-        <div class="absolute inset-0 bg-black/50" onclick="document.getElementById('mobile-menu').classList.add('hidden')"></div>
-        <div class="absolute right-0 top-0 bottom-0 w-72 bg-white shadow-2xl p-6">
+        <div class="absolute inset-0 bg-cocoa/50" onclick="document.getElementById('mobile-menu').classList.add('hidden')"></div>
+        <div class="absolute right-0 top-0 bottom-0 w-72 bg-cream shadow-2xl p-6 border-l-2 border-cocoa">
             <div class="flex justify-end mb-6">
-                <button onclick="document.getElementById('mobile-menu').classList.add('hidden')" class="p-2">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                <button onclick="document.getElementById('mobile-menu').classList.add('hidden')" class="w-10 h-10 rounded-full bg-white border-2 border-cocoa flex items-center justify-center" style="box-shadow:2px 3px 0 0 #451A03">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 18L18 6M6 6l12 12"></path></svg>
                 </button>
             </div>
-            <nav class="flex flex-col gap-4">
-                <a href="index.html" class="text-lg font-medium text-stone-600 hover:text-stone-900">Home</a>
-                <a href="courses.html" class="text-lg font-medium text-stone-600 hover:text-stone-900">Courses</a>
-                <a href="contact.html" class="text-lg font-medium text-stone-900">Contact</a>
-                <hr class="border-stone-200">
-                <a href="admin/dashboard.html" class="text-sm font-medium text-stone-500">Admin Panel</a>
-                <hr class="border-stone-200">
-                <a href="contact.html" class="bg-brand-500 text-white text-center px-4 py-3 rounded-lg font-medium">Enroll Now</a>
+            <nav class="flex flex-col gap-3">
+                <a href="index.html" class="text-lg font-medium text-cocoa/70 bg-white/60 rounded-2xl px-4 py-3">🏠 Home</a>
+                <a href="courses.html" class="text-lg font-medium text-cocoa/70 bg-white/60 rounded-2xl px-4 py-3">📚 Courses</a>
+                <a href="contact.html" class="text-lg font-bold text-cocoa bg-white rounded-2xl px-4 py-3 border-2 border-cocoa" style="box-shadow:3px 4px 0 0 #451A03">💬 Contact</a>
+                <hr class="border-cocoa/15">
+                <a href="admin/dashboard.html" class="text-sm font-medium text-cocoa/50 px-4">🔒 Admin Panel</a>
+                <hr class="border-cocoa/15">
+                <a href="contact.html" class="bg-brand-600 text-cream text-center px-4 py-3 rounded-2xl font-bold border-2 border-cocoa" style="box-shadow:3px 4px 0 0 #451A03">Enroll Now ✨</a>
             </nav>
         </div>
     </div>
 
-    <header class="bg-white border-b border-stone-200 sticky top-0 z-40">
+    <header class="bg-cream/90 backdrop-blur border-b-2 border-cocoa/10 sticky top-0 z-40">
         <div class="max-w-6xl mx-auto px-4 md:px-6">
-            <div class="flex items-center justify-between h-16">
-                <a href="index.html" class="flex items-center gap-2">
-                    <div class="w-8 h-8 bg-brand-500 rounded-lg flex items-center justify-center">
-                        <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
+            <div class="flex items-center justify-between h-[72px]">
+                <a href="index.html" class="flex items-center gap-2.5">
+                    <div class="w-10 h-10 bg-brand-600 rounded-2xl flex items-center justify-center border-2 border-cocoa rotate-[-4deg]" style="box-shadow:2px 3px 0 0 #451A03">
+                        <svg class="w-5 h-5 text-cream" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
                     </div>
-                    <span class="text-lg font-semibold tracking-tight">ClassDesk</span>
+                    <span class="text-xl font-extrabold tracking-tight">ClassDesk</span>
                 </a>
-                <nav class="hidden lg:flex items-center gap-8 text-sm font-medium text-stone-600">
-                    <a href="index.html" class="hover:text-stone-900 transition">Home</a>
-                    <a href="courses.html" class="hover:text-stone-900 transition">Courses</a>
-                    <a href="contact.html" class="text-stone-900">Contact</a>
-                    <a href="admin/dashboard.html" class="text-xs px-3 py-1.5 bg-stone-100 rounded-full hover:bg-stone-200 transition">Admin Panel</a>
+                <nav class="hidden lg:flex items-center gap-2 text-sm font-semibold">
+                    <a href="index.html" class="px-4 py-2 rounded-full hover:bg-white border-2 border-transparent hover:border-cocoa/15 transition">Home</a>
+                    <a href="courses.html" class="px-4 py-2 rounded-full hover:bg-white border-2 border-transparent hover:border-cocoa/15 transition">Courses</a>
+                    <a href="contact.html" class="px-4 py-2 rounded-full bg-cocoa text-cream">Contact</a>
+                    <a href="admin/dashboard.html" class="text-xs px-3 py-1.5 bg-white rounded-full border-2 border-cocoa/15 hover:border-cocoa transition">🔒 Admin</a>
                 </nav>
                 <div class="flex items-center gap-3">
-                    <a href="contact.html" class="hidden lg:block bg-stone-900 text-white px-5 py-2 rounded-lg text-sm font-medium hover:bg-stone-800 transition">Enroll Now</a>
-                    <button onclick="document.getElementById('mobile-menu').classList.remove('hidden')" class="lg:hidden p-2 text-stone-600 hover:text-stone-900">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+                    <a href="contact.html" class="hidden lg:inline-block bg-brand-600 text-cream px-5 py-2.5 rounded-full text-sm font-bold border-2 border-cocoa" style="box-shadow:3px 4px 0 0 #451A03">Enroll Now ✨</a>
+                    <button onclick="document.getElementById('mobile-menu').classList.remove('hidden')" class="lg:hidden w-10 h-10 rounded-full bg-white border-2 border-cocoa flex items-center justify-center" style="box-shadow:2px 3px 0 0 #451A03">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M4 6h16M4 12h16M4 18h16"></path></svg>
                     </button>
                 </div>
             </div>
         </div>
     </header>
 
-    <section class="bg-white py-12">
-        <div class="max-w-6xl mx-auto px-4 md:px-6">
-            <h1 class="text-3xl md:text-4xl font-serif text-stone-900 mb-2">Get in Touch</h1>
-            <p class="text-stone-600">We're here to help you succeed</p>
+    <section class="doodle-bg py-12 relative overflow-hidden">
+        <div class="max-w-6xl mx-auto px-4 md:px-6 relative">
+            <span class="inline-block text-[11px] font-extrabold uppercase tracking-widest bg-leaf text-white px-3 py-1.5 rounded-full border-2 border-cocoa mb-4 rotate-1" style="box-shadow:2px 3px 0 0 #451A03">💬 Replies within 2 hours!</span>
+            <h1 class="text-4xl md:text-5xl font-extrabold tracking-tight mb-2">Get in Touch 🤗</h1>
+            <p class="text-cocoa/60 text-lg">We're here to help you succeed — <span class="font-hand text-2xl text-brand-600">no question is silly!</span></p>
         </div>
     </section>
 
-    <section class="py-12">
+    <section class="py-10">
         <div class="max-w-6xl mx-auto px-4 md:px-6">
-            <div class="grid md:grid-cols-2 gap-8">
+            <div class="grid md:grid-cols-2 gap-6">
                 <div class="space-y-4">
-                    <a href="tel:+919876543210" class="block bg-white rounded-2xl p-6 border border-stone-200 hover:border-stone-300 hover:shadow-lg transition duration-300">
+                    <a href="tel:+919876543210" class="block bg-white rounded-[1.75rem] p-6 border-2 border-cocoa hover:-translate-y-1 transition-transform" style="box-shadow:4px 5px 0 0 #451A03">
                         <div class="flex items-center gap-4">
-                            <div class="w-12 h-12 bg-green-500 rounded-xl flex items-center justify-center">
-                                <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 20 20"><path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.828 1.153a1 1 0 01-.54 1.384l-2.297.918a11.035 11.035 0 00-5.025 5.025l.918-2.297a1 1 0 011.384-.54l1.153.828A1 1 0 019 14.847V17a1 1 0 01-1 1H3a1 1 0 01-1-1V3z"/></svg>
-                            </div>
+                            <div class="w-14 h-14 bg-leaf rounded-2xl flex items-center justify-center text-2xl border-2 border-cocoa">📞</div>
                             <div>
-                                <div class="text-sm text-stone-500">Call us</div>
-                                <div class="font-semibold text-lg">+91 98765 43210</div>
+                                <div class="text-xs font-extrabold uppercase tracking-widest text-cocoa/50">Call us · Mon–Sat</div>
+                                <div class="font-extrabold text-xl">+91 98765 43210</div>
+                                <span class="inline-block text-[11px] font-bold bg-green-100 text-leaf px-2 py-0.5 rounded-full mt-1">✓ Usually picks up!</span>
                             </div>
                         </div>
                     </a>
-                    <a href="https://wa.me/919876543210" target="_blank" class="block bg-white rounded-2xl p-6 border border-stone-200 hover:border-stone-300 hover:shadow-lg transition duration-300">
+                    <a href="https://wa.me/919876543210" target="_blank" class="block bg-cocoa text-cream rounded-[1.75rem] p-6 border-2 border-cocoa hover:-translate-y-1 transition-transform" style="box-shadow:4px 5px 0 0 #EA580C">
                         <div class="flex items-center gap-4">
-                            <div class="w-12 h-12 bg-green-500 rounded-xl flex items-center justify-center">
-                                <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 20 20"><path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.828 1.153a1 1 0 01-.54 1.384l-2.297.918a11.035 11.035 0 00-5.025 5.025l.918-2.297a1 1 0 011.384-.54l1.153.828A1 1 0 019 14.847V17a1 1 0 01-1 1H3a1 1 0 01-1-1V3z"/></svg>
-                            </div>
+                            <div class="w-14 h-14 bg-leaf rounded-2xl flex items-center justify-center text-2xl border-2 border-cream/20">💬</div>
                             <div>
-                                <div class="text-sm text-stone-500">WhatsApp</div>
-                                <div class="font-semibold text-lg">+91 98765 43210</div>
+                                <div class="text-xs font-extrabold uppercase tracking-widest text-cream/50">WhatsApp · fastest!</div>
+                                <div class="font-extrabold text-xl">Chat with us →</div>
+                                <span class="inline-block text-[11px] font-bold bg-leaf text-white px-2 py-0.5 rounded-full mt-1">● online now</span>
                             </div>
                         </div>
                     </a>
-                    <div class="bg-white rounded-2xl p-6 border border-stone-200">
-                        <div class="flex items-center gap-4">
-                            <div class="w-12 h-12 bg-brand-50 rounded-xl flex items-center justify-center">
-                                <svg class="w-6 h-6 text-brand-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
-                            </div>
-                            <div>
-                                <div class="text-sm text-stone-500">Email</div>
-                                <div class="font-semibold text-lg">info@classdesk.in</div>
-                            </div>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="bg-white rounded-[1.75rem] p-5 border-2 border-cocoa rotate-[-1deg]">
+                            <div class="w-11 h-11 bg-brand-100 rounded-xl flex items-center justify-center text-xl border border-cocoa/20 mb-2">✉️</div>
+                            <div class="text-xs font-bold text-cocoa/50 uppercase">Email</div>
+                            <div class="font-bold text-sm">info@classdesk.in</div>
+                        </div>
+                        <div class="bg-white rounded-[1.75rem] p-5 border-2 border-cocoa rotate-[1deg]">
+                            <div class="w-11 h-11 bg-yellow-100 rounded-xl flex items-center justify-center text-xl border border-cocoa/20 mb-2">📍</div>
+                            <div class="text-xs font-bold text-cocoa/50 uppercase">Visit</div>
+                            <div class="font-bold text-sm">Siliguri, WB</div>
                         </div>
                     </div>
-                    <div class="bg-white rounded-2xl p-6 border border-stone-200">
-                        <div class="flex items-center gap-4">
-                            <div class="w-12 h-12 bg-stone-100 rounded-xl flex items-center justify-center">
-                                <svg class="w-6 h-6 text-stone-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
-                            </div>
-                            <div>
-                                <div class="text-sm text-stone-500">Address</div>
-                                <div class="font-semibold">Siliguri, West Bengal</div>
-                            </div>
-                        </div>
+                    <div class="bubble bg-white rounded-[1.75rem] p-5 border-2 border-cocoa">
+                        <p class="font-hand text-2xl leading-tight">"Aap bas padho, planning hum sambhal lenge!"</p>
+                        <p class="text-xs text-cocoa/50 mt-1">— Counselor Didi, probably ☕</p>
                     </div>
                 </div>
 
-                <div class="bg-white rounded-2xl p-6 md:p-8 border border-stone-200">
-                    <h2 class="text-xl font-semibold mb-6">Send us a message</h2>
-                    <form class="space-y-4">
+                <div class="bg-white rounded-[1.75rem] p-6 md:p-8 border-2 border-cocoa" style="box-shadow:5px 6px 0 0 #451A03">
+                    <div class="flex items-center justify-between mb-5">
+                        <h2 class="text-2xl font-extrabold">Send a message 📝</h2>
+                        <span class="text-[11px] font-extrabold bg-brand-100 text-brand-600 px-2.5 py-1 rounded-full rotate-2">FREE counseling!</span>
+                    </div>
+                    <form class="space-y-4" onsubmit="event.preventDefault(); this.querySelector('button[type=submit]').textContent='Sent! We\u2019ll call you soon ✓'; this.querySelector('button[type=submit]').classList.add('bg-leaf');">
                         <div>
-                            <label class="block text-sm font-medium text-stone-700 mb-1">Student Name</label>
-                            <input type="text" class="w-full px-4 py-3 border border-stone-300 rounded-xl focus:ring-2 focus:ring-brand-500 focus:border-brand-500" placeholder="Enter student name">
+                            <label class="block text-sm font-bold mb-1">Student Name *</label>
+                            <input required type="text" class="w-full px-4 py-3 bg-cream border-2 border-cocoa/20 rounded-2xl focus:border-brand-600 focus:ring-2 focus:ring-brand-600/20 outline-none" placeholder="e.g. Aarav Sharma">
                         </div>
                         <div>
-                            <label class="block text-sm font-medium text-stone-700 mb-1">Parent Phone</label>
-                            <input type="tel" class="w-full px-4 py-3 border border-stone-300 rounded-xl focus:ring-2 focus:ring-brand-500 focus:border-brand-500" placeholder="+91 98765 43210">
+                            <label class="block text-sm font-bold mb-1">Parent Phone *</label>
+                            <input required type="tel" class="w-full px-4 py-3 bg-cream border-2 border-cocoa/20 rounded-2xl focus:border-brand-600 focus:ring-2 focus:ring-brand-600/20 outline-none" placeholder="+91 98765 43210">
                         </div>
                         <div>
-                            <label class="block text-sm font-medium text-stone-700 mb-1">Class</label>
-                            <select class="w-full px-4 py-3 border border-stone-300 rounded-xl focus:ring-2 focus:ring-brand-500 focus:border-brand-500">
+                            <label class="block text-sm font-bold mb-1">Class</label>
+                            <select class="w-full px-4 py-3 bg-cream border-2 border-cocoa/20 rounded-2xl focus:border-brand-600 outline-none">
                                 <option>Select class</option>
                                 <option>Class 9</option>
                                 <option>Class 10</option>
                                 <option>Class 11</option>
                                 <option>Class 12</option>
+                                <option>Dropper / Repeater</option>
                             </select>
                         </div>
                         <div>
-                            <label class="block text-sm font-medium text-stone-700 mb-1">Message</label>
-                            <textarea rows="4" class="w-full px-4 py-3 border border-stone-300 rounded-xl focus:ring-2 focus:ring-brand-500 focus:border-brand-500" placeholder="Tell us about your requirements..."></textarea>
+                            <label class="block text-sm font-bold mb-1">Message</label>
+                            <textarea rows="4" class="w-full px-4 py-3 bg-cream border-2 border-cocoa/20 rounded-2xl focus:border-brand-600 outline-none" placeholder="Tell us your goal… JEE? NEET? Boards?"></textarea>
                         </div>
-                        <button type="submit" class="w-full bg-brand-500 text-white py-4 rounded-xl font-medium hover:bg-brand-600 transition">Send Message</button>
+                        <button type="submit" class="w-full bg-brand-600 text-cream py-4 rounded-full font-bold border-2 border-cocoa hover:bg-brand-500 transition" style="box-shadow:3px 4px 0 0 #451A03">Send Message ✨</button>
+                        <p class="text-xs text-cocoa/50 text-center">🔒 We never spam. One friendly call, that's it.</p>
                     </form>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="py-12 bg-white">
+    <section class="py-10 bg-white border-y-2 border-cocoa/10">
         <div class="max-w-6xl mx-auto px-4 md:px-6">
-            <div class="bg-stone-100 rounded-2xl h-64 flex items-center justify-center">
-                <span class="text-stone-500">Google Map will appear here</span>
+            <div class="bg-cream rounded-[1.75rem] p-8 border-2 border-dashed border-cocoa/25 text-center relative overflow-hidden">
+                <div class="text-4xl mb-2">🗺️</div>
+                <p class="font-extrabold text-lg">Find us near Sevoke Road, Siliguri</p>
+                <p class="text-sm text-cocoa/60">2 min from City Centre · Look for the orange board + smiling students 😊</p>
+                <p class="font-hand text-2xl text-brand-600 mt-2">Google Map goes here — but chai is better in person!</p>
             </div>
         </div>
     </section>
 
-    <footer class="bg-stone-950 text-stone-400 py-8">
+    <footer class="bg-[#2A0E02] text-cream/60 py-8 border-t-2 border-cocoa">
         <div class="max-w-6xl mx-auto px-4 md:px-6 text-center text-sm">
-            <p>© 2026 ClassDesk. All rights reserved.</p>
+            <p>© 2026 ClassDesk · Made with 💛 in Siliguri · <a href="index.html" class="hover:text-cream">Home</a> · <a href="courses.html" class="hover:text-cream">Courses</a> · <a href="contact.html" class="hover:text-cream">Contact</a> · <a href="admin/dashboard.html" class="opacity-60">Admin</a></p>
         </div>
     </footer>
 

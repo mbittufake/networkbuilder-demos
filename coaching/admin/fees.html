@@ -6,104 +6,58 @@
     <title>Fee Tracking | ClassDesk Admin</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;500;600;700&display=swap" rel="stylesheet">
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: { sans: ['DM Sans', 'sans-serif'] },
-                    colors: { brand: { 50: '#fef7ee', 100: '#fdedd6', 500: '#f97316', 600: '#ea580c', 700: '#c2410c' } }
-                }
-            }
-        }
-    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+    <script>tailwind.config={theme:{extend:{fontFamily:{sans:['DM Sans','sans-serif'],display:['Bricolage Grotesque','sans-serif']},colors:{cream:'#FFFBEB',brand:{500:'#F97316',600:'#EA580C'},cocoa:'#451A03',leaf:'#16A34A'}}}}</script>
+    <style>body{font-family:'DM Sans',sans-serif}h1{font-family:'Bricolage Grotesque',sans-serif}.doodle{background-color:#FFFBEB;background-image:radial-gradient(rgba(69,26,3,.08) 1.5px,transparent 1.5px);background-size:20px 20px}</style>
 </head>
-<body class="bg-stone-100 text-stone-800 font-sans antialiased">
-
-    <div class="lg:hidden fixed top-0 left-0 right-0 bg-white border-b border-stone-200 z-40 px-4 h-14 flex items-center justify-between">
-        <a href="../index.html" class="flex items-center gap-2">
-            <div class="w-7 h-7 bg-brand-500 rounded-lg flex items-center justify-center">
-                <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
-            </div>
-            <span class="font-semibold text-sm">ClassDesk</span>
-        </a>
-        <button onclick="document.getElementById('sidebar').classList.toggle('-translate-x-full')" class="p-2 text-stone-600">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
-        </button>
+<body class="bg-cream text-cocoa font-sans antialiased">
+    <div class="lg:hidden fixed top-0 left-0 right-0 bg-cream border-b-2 border-cocoa/10 z-40 px-4 h-14 flex items-center justify-between">
+        <a href="../index.html" class="flex items-center gap-2"><div class="w-8 h-8 bg-brand-600 rounded-xl flex items-center justify-center border-2 border-cocoa"><span class="text-cream font-extrabold text-sm">C</span></div><span class="font-extrabold text-sm">ClassDesk 📚</span></a>
+        <button onclick="document.getElementById('sidebar').classList.toggle('-translate-x-full')" class="w-10 h-10 rounded-full bg-white border-2 border-cocoa flex items-center justify-center" style="box-shadow:2px 3px 0 0 #451A03"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M4 6h16M4 12h16M4 18h16"></path></svg></button>
     </div>
-
-    <aside id="sidebar" class="fixed inset-y-0 left-0 w-64 bg-white border-r border-stone-200 z-50 transform -translate-x-full lg:translate-x-0 transition-transform duration-300 top-14 lg:top-0">
-        <div class="p-4 border-b border-stone-200"><p class="text-xs text-stone-500">Admin Panel</p></div>
-        <nav class="p-3 space-y-1">
-            <a href="dashboard.html" class="flex items-center gap-3 px-3 py-2.5 text-stone-600 rounded-lg hover:bg-stone-50 text-sm"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"></path></svg><span class="text-sm font-medium">Dashboard</span></a>
-            <a href="students.html" class="flex items-center gap-3 px-3 py-2.5 text-stone-600 rounded-lg hover:bg-stone-50 text-sm"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"></path></svg><span class="text-sm font-medium">Students</span></a>
-            <a href="add-student.html" class="flex items-center gap-3 px-3 py-2.5 text-stone-600 rounded-lg hover:bg-stone-50 text-sm"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z"></path></svg><span class="text-sm font-medium">Add Student</span></a>
-            <a href="fees.html" class="flex items-center gap-3 px-3 py-2.5 bg-stone-900 text-white rounded-lg text-sm"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z"></path></svg><span class="text-sm font-medium">Fee Tracking</span></a>
-            <a href="reports.html" class="flex items-center gap-3 px-3 py-2.5 text-stone-600 rounded-lg hover:bg-stone-50 text-sm"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg><span class="text-sm font-medium">Reports</span></a>
+    <aside id="sidebar" class="fixed inset-y-0 left-0 w-64 bg-cocoa text-cream z-50 transform -translate-x-full lg:translate-x-0 transition-transform duration-300 top-14 lg:top-0 border-r-2 border-cocoa flex flex-col">
+        <div class="p-5 border-b border-cream/10"><div class="flex items-center gap-2"><div class="w-9 h-9 bg-brand-600 rounded-xl flex items-center justify-center border border-cream/20"><span class="font-extrabold">C</span></div><div><div class="font-extrabold">ClassDesk</div><p class="text-[11px] text-cream/50 uppercase tracking-widest">🏫 Staff room</p></div></div></div>
+        <nav class="p-3 space-y-1.5 flex-1">
+            <a href="dashboard.html" class="flex items-center gap-3 px-4 py-3 text-cream/70 rounded-2xl hover:bg-white/10 text-sm font-semibold">📊 Dashboard</a>
+            <a href="students.html" class="flex items-center gap-3 px-4 py-3 text-cream/70 rounded-2xl hover:bg-white/10 text-sm font-semibold">🎒 Students</a>
+            <a href="add-student.html" class="flex items-center gap-3 px-4 py-3 text-cream/70 rounded-2xl hover:bg-white/10 text-sm font-semibold">➕ Add Student</a>
+            <a href="fees.html" class="flex items-center gap-3 px-4 py-3 bg-brand-600 text-cream rounded-2xl text-sm font-bold border-2 border-cream/20">💰 Fee Tracking</a>
+            <a href="reports.html" class="flex items-center gap-3 px-4 py-3 text-cream/70 rounded-2xl hover:bg-white/10 text-sm font-semibold">📈 Reports</a>
         </nav>
-        <div class="absolute bottom-0 w-full p-3 border-t border-stone-200">
-            <a href="../index.html" class="flex items-center gap-3 px-3 py-2.5 text-stone-600 rounded-lg hover:bg-stone-50 text-sm"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg><span class="text-sm font-medium">Back to Website</span></a>
-        </div>
+        <div class="p-3 border-t border-cream/10"><a href="../index.html" class="flex items-center gap-3 px-4 py-3 text-cream/70 rounded-2xl hover:bg-white/10 text-sm font-semibold">← Back to Website 🏠</a></div>
     </aside>
-
-    <main class="lg:ml-64 pt-14 lg:pt-0 p-4 md:p-6">
+    <main class="lg:ml-64 pt-14 lg:pt-0 p-4 md:p-8 doodle min-h-screen">
         <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-6 gap-4">
-            <div><h1 class="text-xl md:text-2xl font-semibold text-stone-900">Fee Tracking</h1><p class="text-stone-500 text-sm">Manage payments</p></div>
-            <button class="bg-brand-500 text-white px-4 py-2.5 rounded-lg text-sm font-medium hover:bg-brand-600 w-full sm:w-auto">+ Record Payment</button>
+            <div><h1 class="text-3xl font-extrabold tracking-tight">Fee Tracking 💰</h1><p class="text-cocoa/60 text-sm">Friendly reminders, not scary calls 🤗</p></div>
+            <button class="bg-leaf text-white px-5 py-3 rounded-full text-sm font-bold border-2 border-cocoa hover:brightness-110 transition" style="box-shadow:3px 4px 0 0 #451A03">+ Record Payment ✓</button>
         </div>
-
-        <div class="grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-4 mb-6">
-            <div class="bg-white rounded-xl border border-stone-200 p-4 md:p-5">
-                <p class="text-stone-500 text-xs md:text-sm">Total Fee</p>
-                <p class="text-xl md:text-2xl font-semibold text-stone-900">₹45,60,000</p>
-            </div>
-            <div class="bg-white rounded-xl border border-stone-200 p-4 md:p-5">
-                <p class="text-stone-500 text-xs md:text-sm">Collected</p>
-                <p class="text-xl md:text-2xl font-semibold text-green-600">₹41,78,500</p>
-            </div>
-            <div class="bg-white rounded-xl border border-stone-200 p-4 md:p-5">
-                <p class="text-stone-500 text-xs md:text-sm">Pending</p>
-                <p class="text-xl md:text-2xl font-semibold text-yellow-600">₹3,81,500</p>
-            </div>
-            <div class="bg-white rounded-xl border border-stone-200 p-4 md:p-5">
-                <p class="text-stone-500 text-xs md:text-sm">Overdue</p>
-                <p class="text-xl md:text-2xl font-semibold text-red-600">₹86,500</p>
-            </div>
+        <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
+            <div class="bg-white rounded-[1.75rem] border-2 border-cocoa p-5 text-center"><p class="text-cocoa/50 text-xs font-bold uppercase">📚 Total Fee</p><p class="text-2xl font-extrabold">₹45.6L</p></div>
+            <div class="bg-leaf text-white rounded-[1.75rem] border-2 border-cocoa p-5 text-center" style="box-shadow:3px 4px 0 0 #451A03"><p class="text-white/70 text-xs font-bold uppercase">✓ Collected</p><p class="text-2xl font-extrabold">₹41.7L</p></div>
+            <div class="bg-white rounded-[1.75rem] border-2 border-cocoa p-5 text-center"><p class="text-cocoa/50 text-xs font-bold uppercase">⏳ Pending</p><p class="text-2xl font-extrabold text-yellow-600">₹3.8L</p></div>
+            <div class="bg-white rounded-[1.75rem] border-2 border-cocoa p-5 text-center"><p class="text-cocoa/50 text-xs font-bold uppercase">🔔 Overdue</p><p class="text-2xl font-extrabold text-red-600">₹86.5K</p></div>
         </div>
-
-        <div class="bg-white rounded-xl border border-stone-200 p-3 md:p-4 mb-4">
+        <div class="bg-white rounded-[1.75rem] border-2 border-cocoa p-4 mb-4" style="box-shadow:4px 5px 0 0 #451A03">
             <div class="flex flex-col sm:flex-row gap-3">
-                <input type="text" placeholder="Search student..." class="flex-1 px-3 py-2 border border-stone-300 rounded-lg text-sm">
-                <select class="px-3 py-2 border border-stone-300 rounded-lg text-sm"><option>All Courses</option></select>
-                <select class="px-3 py-2 border border-stone-300 rounded-lg text-sm"><option>All Status</option></select>
+                <input type="text" placeholder="Search student… 🔍" class="flex-1 px-4 py-3 bg-cream border-2 border-cocoa/15 rounded-full text-sm outline-none focus:border-brand-600">
+                <select class="px-4 py-3 bg-cream border-2 border-cocoa/15 rounded-full text-sm font-semibold"><option>📚 All Courses</option></select>
+                <select class="px-4 py-3 bg-cream border-2 border-cocoa/15 rounded-full text-sm font-semibold"><option>● All Status</option><option>Paid</option><option>Partial</option><option>Overdue</option></select>
             </div>
         </div>
-
-        <div class="bg-white rounded-xl border border-stone-200 overflow-hidden">
+        <div class="bg-white rounded-[1.75rem] border-2 border-cocoa overflow-hidden" style="box-shadow:4px 5px 0 0 #451A03">
             <div class="overflow-x-auto">
-                <table class="w-full text-xs md:text-sm">
-                    <thead class="bg-stone-50">
-                        <tr>
-                            <th class="text-left py-3 px-3 md:px-5 font-medium text-stone-500">Student</th>
-                            <th class="text-left py-3 px-3 md:px-5 font-medium text-stone-500 hidden sm:table-cell">Course</th>
-                            <th class="text-right py-3 px-3 md:px-5 font-medium text-stone-500">Total</th>
-                            <th class="text-right py-3 px-3 md:px-5 font-medium text-stone-500">Paid</th>
-                            <th class="text-right py-3 px-3 md:px-5 font-medium text-stone-500">Due</th>
-                            <th class="text-left py-3 px-3 md:px-5 font-medium text-stone-500">Status</th>
-                        </tr>
-                    </thead>
-                    <tbody class="divide-y divide-stone-100">
-                        <tr class="hover:bg-stone-50"><td class="py-3 px-3 md:px-5 font-medium">Rahul Sharma</td><td class="py-3 px-3 md:px-5 hidden sm:table-cell">JEE Crash</td><td class="py-3 px-3 md:px-5 text-right">₹25,000</td><td class="py-3 px-3 md:px-5 text-right">₹25,000</td><td class="py-3 px-3 md:px-5 text-right">₹0</td><td class="py-3 px-3 md:px-5"><span class="px-2 py-1 bg-green-100 text-green-700 rounded-full text-xs">Paid</span></td></tr>
-                        <tr class="hover:bg-stone-50"><td class="py-3 px-3 md:px-5 font-medium">Priya Singh</td><td class="py-3 px-3 md:px-5 hidden sm:table-cell">PCB Class 12</td><td class="py-3 px-3 md:px-5 text-right">₹18,000</td><td class="py-3 px-3 md:px-5 text-right">₹18,000</td><td class="py-3 px-3 md:px-5 text-right">₹0</td><td class="py-3 px-3 md:px-5"><span class="px-2 py-1 bg-green-100 text-green-700 rounded-full text-xs">Paid</span></td></tr>
-                        <tr class="hover:bg-stone-50"><td class="py-3 px-3 md:px-5 font-medium">Amit Kumar</td><td class="py-3 px-3 md:px-5 hidden sm:table-cell">PCM Class 11</td><td class="py-3 px-3 md:px-5 text-right">₹18,000</td><td class="py-3 px-3 md:px-5 text-right">₹9,000</td><td class="py-3 px-3 md:px-5 text-right text-yellow-600">₹9,000</td><td class="py-3 px-3 md:px-5"><span class="px-2 py-1 bg-yellow-100 text-yellow-700 rounded-full text-xs">Partial</span></td></tr>
-                        <tr class="hover:bg-stone-50"><td class="py-3 px-3 md:px-5 font-medium">Sneha Roy</td><td class="py-3 px-3 md:px-5 hidden sm:table-cell">Foundation</td><td class="py-3 px-3 md:px-5 text-right">₹12,000</td><td class="py-3 px-3 md:px-5 text-right">₹6,000</td><td class="py-3 px-3 md:px-5 text-right text-yellow-600">₹6,000</td><td class="py-3 px-3 md:px-5"><span class="px-2 py-1 bg-yellow-100 text-yellow-700 rounded-full text-xs">Partial</span></td></tr>
-                        <tr class="hover:bg-stone-50"><td class="py-3 px-3 md:px-5 font-medium">Vikram Singh</td><td class="py-3 px-3 md:px-5 hidden sm:table-cell">NEET Crash</td><td class="py-3 px-3 md:px-5 text-right">₹25,000</td><td class="py-3 px-3 md:px-5 text-right">₹15,000</td><td class="py-3 px-3 md:px-5 text-right text-red-600">₹10,000</td><td class="py-3 px-3 md:px-5"><span class="px-2 py-1 bg-red-100 text-red-700 rounded-full text-xs">Overdue</span></td></tr>
+                <table class="w-full text-sm">
+                    <thead class="bg-cocoa text-cream"><tr><th class="text-left py-3 px-5 text-xs uppercase tracking-widest">Student</th><th class="text-left py-3 px-5 text-xs uppercase tracking-widest hidden sm:table-cell">Course</th><th class="text-right py-3 px-5 text-xs uppercase tracking-widest">Total</th><th class="text-right py-3 px-5 text-xs uppercase tracking-widest">Paid</th><th class="text-right py-3 px-5 text-xs uppercase tracking-widest">Due</th><th class="text-left py-3 px-5 text-xs uppercase tracking-widest">Status</th></tr></thead>
+                    <tbody class="divide-y divide-cocoa/10">
+                        <tr class="hover:bg-cream/60"><td class="py-3 px-5 font-bold">Rahul Sharma</td><td class="py-3 px-5 hidden sm:table-cell text-cocoa/60">JEE Crash</td><td class="py-3 px-5 text-right">₹25,000</td><td class="py-3 px-5 text-right font-bold text-leaf">₹25,000</td><td class="py-3 px-5 text-right font-bold">₹0</td><td class="py-3 px-5"><span class="px-2.5 py-1 bg-green-100 text-leaf rounded-full text-xs font-bold">✓ Paid</span></td></tr>
+                        <tr class="hover:bg-cream/60"><td class="py-3 px-5 font-bold">Priya Singh</td><td class="py-3 px-5 hidden sm:table-cell text-cocoa/60">PCB Class 12</td><td class="py-3 px-5 text-right">₹18,000</td><td class="py-3 px-5 text-right font-bold text-leaf">₹18,000</td><td class="py-3 px-5 text-right font-bold">₹0</td><td class="py-3 px-5"><span class="px-2.5 py-1 bg-green-100 text-leaf rounded-full text-xs font-bold">✓ Paid</span></td></tr>
+                        <tr class="hover:bg-cream/60"><td class="py-3 px-5 font-bold">Amit Kumar</td><td class="py-3 px-5 hidden sm:table-cell text-cocoa/60">PCM Class 11</td><td class="py-3 px-5 text-right">₹18,000</td><td class="py-3 px-5 text-right font-bold">₹9,000</td><td class="py-3 px-5 text-right font-bold text-yellow-600">₹9,000</td><td class="py-3 px-5"><span class="px-2.5 py-1 bg-yellow-100 text-yellow-700 rounded-full text-xs font-bold">◐ Partial</span></td></tr>
+                        <tr class="hover:bg-cream/60"><td class="py-3 px-5 font-bold">Sneha Roy</td><td class="py-3 px-5 hidden sm:table-cell text-cocoa/60">Foundation</td><td class="py-3 px-5 text-right">₹12,000</td><td class="py-3 px-5 text-right font-bold">₹6,000</td><td class="py-3 px-5 text-right font-bold text-yellow-600">₹6,000</td><td class="py-3 px-5"><span class="px-2.5 py-1 bg-yellow-100 text-yellow-700 rounded-full text-xs font-bold">◐ Partial</span></td></tr>
+                        <tr class="hover:bg-cream/60"><td class="py-3 px-5 font-bold">Vikram Singh 👋</td><td class="py-3 px-5 hidden sm:table-cell text-cocoa/60">NEET Crash</td><td class="py-3 px-5 text-right">₹25,000</td><td class="py-3 px-5 text-right font-bold">₹15,000</td><td class="py-3 px-5 text-right font-bold text-red-600">₹10,000</td><td class="py-3 px-5"><span class="px-2.5 py-1 bg-red-100 text-red-600 rounded-full text-xs font-bold">🔔 Overdue</span></td></tr>
                     </tbody>
                 </table>
             </div>
         </div>
     </main>
-
 </body>
 </html>
