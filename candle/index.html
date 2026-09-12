@@ -3,364 +3,295 @@
 <head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>LUME — House of Slow Light · Hand-Poured Soy Candles</title>
-<meta name="description" content="LUME — twelve small-batch soy candles + custom atelier. Poured in Jaipur, cured 72 hours. Light, slow down.">
+<meta name="description" content="Twelve small-batch soy candles + custom atelier. Poured in Jaipur, cured 72 hours. Light the evening, love the room.">
 <script src="https://cdn.tailwindcss.com"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,300;1,9..144,400;1,9..144,500&family=Manrope:wght@400;500;600;700;800&family=Caveat:wght@500;600&display=swap" rel="stylesheet">
-<script>
-tailwind.config={theme:{extend:{fontFamily:{serif:['Fraunces','serif'],sans:['Manrope','sans-serif'],hand:['Caveat','cursive']},colors:{paper:'#FFFBF1',cream:'#FFF1DC',ink:'#1A0E06',coal:'#2A1A10',ember:'#E4572E',emberdark:'#B63A17',gold:'#C99A3F',goldlight:'#F2D48A',moss:'#6B704E',blush:'#F9DCC4',smoke:'#8A7D72',line:'#EDE0CC'}}}}
-</script>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,300;1,9..144,400;1,9..144,500&family=Manrope:wght@400;500;600;700;800&family=Caveat:wght@500;600;700&display=swap" rel="stylesheet">
+<script>tailwind.config={theme:{extend:{fontFamily:{serif:['Fraunces','serif'],sans:['Manrope','sans-serif'],hand:['Caveat','cursive']},colors:{paper:'#FFFBF1',cream:'#FFF1DC',ink:'#1A0E06',ember:'#E4572E',emberdark:'#B63A17',gold:'#C99A3F',goldlight:'#F2D48A',moss:'#6B704E',blush:'#F9DCC4',smoke:'#8A7D72',line:'#EDE0CC'}}}}}</script>
 <style>
-html{-webkit-font-smoothing:antialiased}
-body{background:#FFFBF1;color:#1A0E06;font-family:Manrope,sans-serif;overflow-x:clip}
-::selection{background:#E4572E;color:#FFFBF1}
-.grain:after{content:"";position:fixed;inset:0;z-index:5;pointer-events:none;opacity:.5;mix-blend-mode:multiply;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.06'/%3E%3C/svg%3E")}
-.arch{border-radius:999px 999px 28px 28px}
-.arch-sm{border-radius:120px 120px 20px 20px}
-.rv{opacity:0;transform:translateY(28px);transition:opacity .9s cubic-bezier(.16,1,.3,1),transform .9s cubic-bezier(.16,1,.3,1)}
-.rv.is-in{opacity:1;transform:none}
-@keyframes flick{0%,100%{transform:scale(1) rotate(-2deg);opacity:1}25%{transform:scale(1.06) rotate(2deg);opacity:.92}50%{transform:scale(.95);opacity:.85}75%{transform:scale(1.03);opacity:.95}}
+html{-webkit-font-smoothing:antialiased}body{background:#FFFBF1;color:#1A0E06;font-family:Manrope,sans-serif;overflow-x:clip}
+::selection{background:#E4572E;color:#fff}
+.grain:after{content:"";position:fixed;inset:0;z-index:5;pointer-events:none;opacity:.55;mix-blend-mode:multiply;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.055'/%3E%3C/svg%3E")}
+.arch{border-radius:999px 999px 28px 28px}.arch-sm{border-radius:14px}
+.rv{opacity:0;transform:translateY(28px);transition:opacity .9s cubic-bezier(.16,1,.3,1),transform .9s cubic-bezier(.16,1,.3,1)}.rv.is-in{opacity:1;transform:none}
+@keyframes flick{0%,100%{transform:scale(1) rotate(-2deg)}25%{transform:scale(1.07) rotate(2deg)}50%{transform:scale(.94)}75%{transform:scale(1.04)}}
 .flame{animation:flick 2.2s ease-in-out infinite;transform-origin:50% 90%}
 @keyframes floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
-.floaty{animation:floaty 6s ease-in-out infinite}
-.floaty2{animation:floaty 7.5s ease-in-out infinite reverse}
-@keyframes drift{from{transform:translateX(0)}to{transform:translateX(-50%)}}
-.marquee{animation:drift 26s linear infinite}
+.floaty{animation:floaty 6s ease-in-out infinite}.floaty2{animation:floaty 7.5s ease-in-out infinite reverse}
+@keyframes drift{from{transform:translateX(0)}to{transform:translateX(-50%)}}.marquee{animation:drift 26s linear infinite}
 .no-scrollbar::-webkit-scrollbar{display:none}.no-scrollbar{scrollbar-width:none}
-.card-h{transition:transform .6s cubic-bezier(.16,1,.3,1),box-shadow .6s}
-.card-h:hover{transform:translateY(-8px);box-shadow:0 30px 60px -20px rgba(26,14,6,.25)}
-.card-h:hover .zoom{transform:scale(1.06)}
-.zoom{transition:transform 1.2s cubic-bezier(.16,1,.3,1)}
-.btn-ink{background:#1A0E06;color:#FFFBF1;transition:.3s}
-.btn-ink:hover{background:#E4572E;transform:translateY(-1px)}
-.btn-ember{background:#E4572E;color:#fff;transition:.3s}
-.btn-ember:hover{background:#1A0E06;transform:translateY(-1px)}
+.card-h{transition:transform .55s cubic-bezier(.16,1,.3,1),box-shadow .55s}.card-h:hover{transform:translateY(-8px);box-shadow:0 30px 60px -20px rgba(26,14,6,.28)}
+.zoom{transition:transform 1.2s cubic-bezier(.16,1,.3,1)}.card-h:hover .zoom{transform:scale(1.06)}
+.btn-ink{background:#1A0E06;color:#FFFBF1;transition:.3s}.btn-ink:hover{background:#E4572E;transform:translateY(-1px)}
+.btn-ember{background:#E4572E;color:#fff;transition:.3s}.btn-ember:hover{background:#1A0E06;transform:translateY(-1px)}
 .stamp{display:inline-flex;align-items:center;gap:.5rem;border:1.5px dashed rgba(228,87,46,.6);color:#B63A17;border-radius:9999px;padding:.45rem 1rem;font-size:11px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;transform:rotate(-2deg);background:rgba(228,87,46,.08)}
 .hand{font-family:Caveat,cursive}
-input:focus{outline:none}
-#loader{transition:opacity .7s,visibility .7s}
-#cursorGlow{position:fixed;width:340px;height:340px;border-radius:9999px;pointer-events:none;z-index:1;background:radial-gradient(circle,rgba(228,87,46,.16),rgba(201,154,63,.08),transparent 70%);transform:translate(-50%,-50%);left:-500px;top:-500px}
+#cursorGlow{position:fixed;width:340px;height:340px;border-radius:99px;pointer-events:none;z-index:1;background:radial-gradient(circle,rgba(228,87,46,.15),rgba(201,154,63,.07),transparent 70%);transform:translate(-50%,-50%);left:-500px;top:-500px}
 @media(pointer:coarse){#cursorGlow{display:none}}
-.lume-outline{-webkit-text-stroke:1px rgba(255,251,241,.18);color:transparent}
-.quiz-opt{transition:.25s;cursor:pointer}
-.quiz-opt:hover{border-color:#E4572E!important;background:rgba(228,87,46,.06)}
-.quiz-opt.sel{border-color:#1A0E06!important;background:#1A0E06!important;color:#FFFBF1!important}
+.lume-outline{-webkit-text-stroke:1px rgba(255,251,241,.16);color:transparent}
+.mtab{transition:.25s}.mtab.on{background:#1A0E06!important;color:#FFFBF1!important;border-color:#1A0E06!important}
+.qv-grid{grid-template-columns:1fr 1fr!important}@media(max-width:768px){.qv-grid{grid-template-columns:1fr!important}}
+@keyframes breathe{0%,100%{transform:scale(1);opacity:.85}50%{transform:scale(1.25);opacity:1}}
+.breathing{animation:breathe 4s ease-in-out infinite}
+.faq-a{display:none}.faq.open .faq-a{display:block}.faq.open .faq-x{transform:rotate(45deg)}.faq-x{transition:.3s}
+input:focus{outline:none}
 </style>
 </head>
 <body class="grain">
-
 <div id="cursorGlow"></div>
 
-<!-- loader -->
-<div id="loader" class="fixed inset-0 z-[100] flex flex-col items-center justify-center" style="background:#1A0E06;color:#FFFBF1">
-  <div class="flame text-5xl">✦</div>
-  <div class="font-serif text-3xl mt-4 italic">Lume.</div>
-  <div class="text-[11px] tracking-[0.4em] uppercase opacity-60 mt-2">pouring the light…</div>
-  <div class="w-40 h-[2px] mt-6 rounded-full overflow-hidden bg-white/10"><div id="loadBar" class="h-full w-0 transition-all" style="background:#E4572E"></div></div>
-</div>
+<div class="text-center text-[11px] tracking-[0.22em] uppercase py-2.5 px-4 relative z-40" style="background:#1A0E06;color:#FFFBF1"><span id="announceText" style="transition:opacity .3s">Batch №185 curing now — ships in 2 days · <a href="custom.html" style="text-decoration:underline;text-underline-offset:4px">Design yours →</a></span></div>
 
-<!-- announcement -->
-<div class="bg-[#1A0E06] text-[#FFFBF1] text-center text-[11px] tracking-[0.22em] uppercase py-2.5 px-4 relative z-40">
-  <span id="announceText" class="transition-opacity duration-300">Batch №185 curing now — ships in 2 days · <a href="custom.html" style="text-decoration:underline;text-underline-offset:4px">Design yours →</a></span>
-</div>
-
-<!-- header -->
-<div class="sticky top-3 z-40 px-3 md:px-6">
-  <header class="max-w-6xl mx-auto flex items-center justify-between gap-3 pl-5 pr-2 py-2 rounded-full" style="background:rgba(255,251,241,.9);backdrop-filter:blur(18px);border:1px solid #EDE0CC;box-shadow:0 14px 44px -14px rgba(26,14,6,.22)">
-    <a href="index.html" class="flex items-center gap-2">
-      <span class="w-9 h-9 rounded-full flex items-center justify-center text-lg text-white flame" style="background:radial-gradient(circle at 50% 70%,#F2D48A,#E4572E 65%,#B63A17)">✦</span>
-      <span class="font-serif text-[22px] tracking-tight">Lume<span style="color:#E4572E">.</span></span>
-      <span class="hidden sm:inline text-[10px] font-extrabold tracking-[0.2em] uppercase px-2 py-1 rounded-full" style="background:#FFF1DC;border:1px solid #EDE0CC">Jaipur</span>
-    </a>
-    <nav class="hidden md:flex items-center gap-7 text-[13.5px] font-semibold">
-      <a href="shop.html" class="hover:text-[#E4572E]">Shop</a>
-      <a href="shop.html?col=Woody" class="hover:text-[#E4572E]">Woody</a>
-      <a href="shop.html?col=Floral" class="hover:text-[#E4572E]">Floral</a>
-      <a href="#story" class="hover:text-[#E4572E]">Studio</a>
-      <a href="custom.html" class="px-4 py-2 rounded-full text-white btn-ember">Custom ✦</a>
-    </nav>
-    <div class="flex items-center gap-2">
-      <button onclick="openSearch()" aria-label="Search" class="w-10 h-10 rounded-full flex items-center justify-center hover:border-[#E4572E] transition" style="border:1px solid #EDE0CC">⌕</button>
-      <a href="shop.html?wish=1" aria-label="Wishlist" class="relative w-10 h-10 rounded-full hidden sm:flex items-center justify-center hover:border-[#E4572E] transition" style="border:1px solid #EDE0CC">♡<span id="hdrWish" data-wishlist-count class="hidden absolute -top-1 -right-1 w-5 h-5 rounded-full text-[10px] font-bold text-white flex items-center justify-center" style="background:#E4572E">0</span></a>
-      <button onclick="openCartDrawer()" class="btn-ink rounded-full pl-4 pr-1.5 py-1.5 text-sm font-bold flex items-center gap-2">Cart · <span id="hdrCart">0</span><span class="w-8 h-8 rounded-full flex items-center justify-center text-white" style="background:#E4572E">→</span></button>
-      <span data-cart-count class="hidden">0</span>
-      <button id="mobileMenuBtn" class="md:hidden w-10 h-10 rounded-full" style="border:1px solid #EDE0CC">≡</button>
-    </div>
-  </header>
-  <div id="mobileMenu" class="hidden max-w-6xl mx-auto mt-2 rounded-3xl p-5 grid grid-cols-2 gap-2 text-sm font-semibold" style="background:#1A0E06;color:#FFFBF1;border:1px solid rgba(255,255,255,.1)">
-    <a href="shop.html" class="p-3 rounded-2xl bg-white/5">Shop all</a><a href="shop.html?col=Woody" class="p-3 rounded-2xl bg-white/5">Woody 🪵</a>
-    <a href="shop.html?col=Floral" class="p-3 rounded-2xl bg-white/5">Floral 🌸</a><a href="shop.html?col=Fresh" class="p-3 rounded-2xl bg-white/5">Fresh 🌿</a>
-    <a href="custom.html" class="col-span-2 p-3 rounded-2xl text-center font-bold" style="background:#E4572E">Build a custom ✦</a>
-  </div>
+<div class="sticky top-3 z-40 px-3 md:px-6" style="padding-top:5px">
+<header class="max-w-6xl mx-auto flex items-center justify-between gap-3 pl-5 pr-2 py-2 rounded-full" style="background:rgba(255,251,241,.9);backdrop-filter:blur(18px);border:1px solid #EDE0CC;box-shadow:0 14px 44px -14px rgba(26,14,6,.22)">
+<a href="index.html" class="flex items-center gap-2"><span class="w-9 h-9 rounded-full flex items-center justify-center text-lg text-white flame" style="background:radial-gradient(circle at 50% 70%,#F2D48A,#E4572E 65%,#B63A17)">✦</span><span class="font-serif text-[22px]">Lume<span style="color:#E4572E">.</span></span><span class="hidden sm:inline text-[10px] font-extrabold tracking-[0.2em] uppercase px-2 py-1 rounded-full" style="background:#FFF1DC;border:1px solid #EDE0CC">Jaipur</span></a>
+<nav class="hidden md:flex items-center gap-7 text-[13.5px] font-semibold"><a href="shop.html" class="hover:text-[#E4572E]">Shop</a><a href="shop.html?col=Woody" class="hover:text-[#E4572E]">Woody</a><a href="shop.html?col=Floral" class="hover:text-[#E4572E]">Floral</a><a href="admin/index.html" class="hover:text-[#E4572E]" title="Demo admin panel — open access, no login needed">Admin <span class="text-[9px] font-extrabold px-1.5 py-0.5 rounded-full align-middle" style="background:rgba(228,87,46,.12);color:#E4572E">DEMO</span></a><a href="custom.html" class="px-4 py-2 rounded-full text-white btn-ember magnet">Custom ✦</a></nav>
+<div class="flex items-center gap-2">
+<button onclick="openSearch()" class="w-10 h-10 rounded-full hover:border-[#E4572E]" style="border:1px solid #EDE0CC" aria-label="Search">⌕</button>
+<button onclick="openWishDrawer()" class="relative w-10 h-10 rounded-full hidden sm:flex items-center justify-center" style="border:1px solid #EDE0CC" aria-label="Wishlist">♡<span id="hdrWish" data-wishlist-count class="hidden absolute -top-1 -right-1 w-5 h-5 rounded-full text-[10px] font-bold text-white flex items-center justify-center" style="background:#E4572E">0</span></button>
+<button onclick="openCartDrawer()" class="btn-ink rounded-full pl-4 pr-1.5 py-1.5 text-sm font-bold flex items-center gap-2 magnet">Bag · <span id="hdrCart">0</span><span class="w-8 h-8 rounded-full flex items-center justify-center text-white" style="background:#E4572E">→</span></button>
+<span data-cart-count class="hidden">0</span>
+<button id="mobileMenuBtn" class="md:hidden w-10 h-10 rounded-full" style="border:1px solid #EDE0CC">≡</button>
+</div></header>
+<div id="mobileMenu" class="hidden max-w-6xl mx-auto mt-2 rounded-3xl p-4 grid grid-cols-2 gap-2 text-sm font-semibold text-white" style="background:#1A0E06"><a href="shop.html" class="p-3 rounded-2xl bg-white/5">Shop all</a><a href="shop.html?col=Woody" class="p-3 rounded-2xl bg-white/5">Woody</a><a href="shop.html?col=Floral" class="p-3 rounded-2xl bg-white/5">Floral</a><a href="admin/index.html" class="p-3 rounded-2xl bg-white/5" style="border:1px dashed rgba(228,87,46,.7)">🛠 Admin panel <span class="text-[9px] font-extrabold px-1.5 py-0.5 rounded-full" style="background:#E4572E">DEMO</span></a><a href="custom.html" class="p-3 rounded-2xl text-center col-span-2" style="background:#E4572E">Custom →</a></div>
 </div>
 
 <!-- HERO -->
 <section class="relative max-w-6xl mx-auto px-4 md:px-6 pt-8 md:pt-12">
-  <canvas id="embers" class="absolute inset-0 w-full h-full pointer-events-none" style="opacity:.8"></canvas>
-  <div class="grid lg:grid-cols-12 gap-8 items-center relative">
-    <div class="lg:col-span-7 rv is-in">
-      <div class="flex flex-wrap items-center gap-2">
-        <span class="stamp">✦ Small-batch · 40 jars only</span>
-        <span class="text-[12px] font-bold">★ 4.9 · 1,200+ rooms lit</span>
-      </div>
-      <h1 class="font-serif font-light leading-[0.92] mt-5" style="font-size:clamp(3rem,9vw,6.2rem)">Perfume for<br>your room.<br><em style="color:#E4572E">Poetry</em> for <em>evenings.</em></h1>
-      <p class="mt-5 max-w-md leading-relaxed opacity-70 text-[15px]">Twelve scents. One perfect wax. Zero shortcuts. Hand-poured in Jaipur, cured 72 hours, and built to make ordinary Tuesdays feel like Diwali eve.</p>
-      <div class="flex flex-wrap gap-3 mt-7">
-        <a href="shop.html" class="btn-ink px-8 py-4 rounded-full font-bold">Shop the twelve →</a>
-        <button onclick="openQuiz()" class="px-8 py-4 rounded-full font-bold" style="border:1.5px solid #1A0E06">Find my scent · 20s</button>
-      </div>
-      <div class="flex items-center gap-4 mt-7">
-        <div class="flex -space-x-3">
-          <img src="https://i.pravatar.cc/64?img=47" class="w-10 h-10 rounded-full object-cover" style="border:2px solid #FFFBF1" alt=""><img src="https://i.pravatar.cc/64?img=32" class="w-10 h-10 rounded-full object-cover" style="border:2px solid #FFFBF1" alt=""><img src="https://i.pravatar.cc/64?img=12" class="w-10 h-10 rounded-full object-cover" style="border:2px solid #FFFBF1" alt=""><span class="w-10 h-10 rounded-full flex items-center justify-center text-[11px] font-bold text-white" style="background:#1A0E06;border:2px solid #FFFBF1">1.2k</span>
-        </div>
-        <div class="text-[13px]"><span style="color:#C99A3F">★★★★★</span> <b>“The vessel is now my pen stand.”</b><br><span class="opacity-60">Nisha V. — Fig & Cedar</span></div>
-      </div>
-      <div class="hand text-2xl mt-5 rotate-[-2deg]" style="color:#B63A17">← psst… hover the candle, it glows</div>
-    </div>
-    <div class="lg:col-span-5 relative rv is-in">
-      <div class="absolute -inset-8 rounded-full blur-3xl pointer-events-none" style="background:radial-gradient(circle,rgba(228,87,46,.28),rgba(201,154,63,.12),transparent 70%)"></div>
-      <div id="heroCard" class="relative mx-auto w-[300px] md:w-[340px] card-h" style="perspective:900px">
-        <div id="heroTilt" class="arch overflow-hidden relative" style="border:1px solid #EDE0CC;box-shadow:0 40px 80px -20px rgba(182,58,23,.35);transition:transform .2s">
-          <img src="https://images.unsplash.com/photo-1603006905003-be475563bc59?w=600&h=800&fit=crop&q=80" class="w-full aspect-[3/4] object-cover zoom" alt="Fig and Cedar candle">
-          <div class="absolute top-5 left-1/2 -translate-x-1/2 flame text-3xl" style="filter:drop-shadow(0 0 18px rgba(242,212,138,.9))">🔥</div>
-          <div class="absolute bottom-0 inset-x-0 p-4 pt-12" style="background:linear-gradient(transparent,rgba(26,14,6,.75))">
-            <div class="rounded-2xl p-4 flex items-center justify-between" style="background:rgba(255,251,241,.94);backdrop-filter:blur(8px)">
-              <div><div class="text-[10px] font-extrabold tracking-[0.2em] uppercase" style="color:#E4572E">Bestseller · Woody</div><div class="font-serif text-xl leading-none mt-0.5">Fig & Cedar</div><div class="text-xs opacity-60">★ 4.9 (214) · 45h burn</div></div>
-              <a href="product.html?id=1" class="w-11 h-11 rounded-full flex items-center justify-center text-white font-bold" style="background:#1A0E06">→</a>
-            </div>
-          </div>
-        </div>
-        <div class="floaty absolute -left-10 top-10 rounded-2xl px-4 py-3 text-[12px] font-bold shadow-xl" style="background:#FFFBF1;border:1px solid #EDE0CC">🕯️ 45h slow burn</div>
-        <div class="floaty2 absolute -right-6 bottom-24 rounded-2xl px-4 py-3 text-[12px] font-bold shadow-xl" style="background:#1A0E06;color:#FFFBF1">72h cured ✦</div>
-      </div>
-      <div class="flex justify-center gap-8 mt-8 text-center">
-        <div><div class="font-serif text-3xl">45h</div><div class="text-[10px] uppercase tracking-[0.2em] opacity-60 font-bold">Avg burn</div></div>
-        <div class="w-px" style="background:#EDE0CC"></div>
-        <div><div class="font-serif text-3xl">12</div><div class="text-[10px] uppercase tracking-[0.2em] opacity-60 font-bold">Scents only</div></div>
-        <div class="w-px" style="background:#EDE0CC"></div>
-        <div><div class="font-serif text-3xl">40</div><div class="text-[10px] uppercase tracking-[0.2em] opacity-60 font-bold">Jars / batch</div></div>
-      </div>
-    </div>
-  </div>
+<canvas id="embers" class="absolute inset-0 w-full h-full pointer-events-none"></canvas>
+<div class="grid lg:grid-cols-12 gap-8 items-center relative">
+<div class="lg:col-span-7">
+<div class="flex flex-wrap items-center gap-2"><span class="stamp">✦ Small-batch · 40 jars only</span><span class="text-[12px] font-bold flex items-center gap-1.5"><span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span><span data-burning>21</span> homes burning now</span></div>
+<h1 class="font-serif font-light leading-[0.92] mt-5" style="font-size:clamp(3rem,9vw,6rem)">Light the evening,<br><em style="color:#E4572E">love</em> the room.</h1>
+<p class="mt-5 max-w-md leading-relaxed text-[15px]" style="color:#5A534D">Twelve scents. One perfect wax. Zero shortcuts. Poured in Jaipur, cured 72 hours — made for slow jazz, low light, long talks.</p>
+<div class="flex flex-wrap gap-3 mt-7"><a href="shop.html" class="btn-ink px-8 py-4 rounded-full font-bold magnet">Shop the twelve →</a><button onclick="openQuiz()" class="px-8 py-4 rounded-full font-bold magnet" style="border:1.5px solid #1A0E06">Find my scent · 20s</button></div>
+<div class="flex flex-wrap items-center gap-3 mt-6 text-[12px] font-bold"><span class="px-3 py-1.5 rounded-full" style="background:#FFF1DC;border:1px solid #EDE0CC">⏳ Batch №185 ships in <span data-batch-cd>2d : 11h : 24m</span></span><span class="px-3 py-1.5 rounded-full bg-white" style="border:1px solid #EDE0CC">★ 4.9 · 1,200+ rooms</span></div>
+<div class="flex items-center gap-4 mt-6"><div class="flex -space-x-3"><img src="https://i.pravatar.cc/64?img=47" class="w-10 h-10 rounded-full object-cover" style="border:2px solid #FFFBF1" alt=""><img src="https://i.pravatar.cc/64?img=32" class="w-10 h-10 rounded-full object-cover" style="border:2px solid #FFFBF1" alt=""><img src="https://i.pravatar.cc/64?img=12" class="w-10 h-10 rounded-full object-cover" style="border:2px solid #FFFBF1" alt=""></div><div class="text-[13px]"><span style="color:#C99A3F">★★★★★</span> <b>“The vessel is now my pen stand.”</b><br><span style="color:#8A7D72">Nisha V. — Fig & Cedar</span></div></div>
+<div class="flex gap-6 mt-6 opacity-50 text-[11px] font-bold tracking-[0.2em] uppercase"><span>Vogue</span><span>GQ</span><span>Elle Decor</span><span>AD</span></div>
+</div>
+<div class="lg:col-span-5 relative">
+<div class="absolute -inset-8 rounded-full blur-3xl pointer-events-none" style="background:radial-gradient(circle,rgba(228,87,46,.3),rgba(201,154,63,.12),transparent 70%)"></div>
+<div class="relative flex items-end justify-center gap-3" data-tilt>
+<div data-tilt-inner class="relative flex items-end gap-3" style="transition:transform .2s">
+<img src="https://images.pexels.com/photos/1809347/pexels-photo-1809347.jpeg?auto=compress&cs=tinysrgb&w=400" class="hidden sm:block w-28 aspect-[3/4] object-cover arch-sm floaty" style="border:1px solid #EDE0CC" alt="">
+<div id="heroCard" class="relative w-[270px] md:w-[300px]">
+<div id="heroTilt" class="arch overflow-hidden relative" style="border:1px solid #EDE0CC;box-shadow:0 40px 80px -20px rgba(182,58,23,.4)">
+<img src="https://images.unsplash.com/photo-1603006905003-be475563bc59?w=600&h=800&fit=crop&q=80" class="w-full aspect-[3/4] object-cover" alt="Fig and Cedar">
+<div class="absolute top-5 left-1/2 -translate-x-1/2 flame text-3xl" style="filter:drop-shadow(0 0 18px rgba(242,212,138,.95))">🔥</div>
+<div class="absolute bottom-0 inset-x-0 p-3.5 pt-10" style="background:linear-gradient(transparent,rgba(26,14,6,.78))"><div class="rounded-2xl p-3.5 flex items-center justify-between" style="background:rgba(255,251,241,.95)"><div><div class="text-[10px] font-extrabold tracking-[0.2em] uppercase" style="color:#E4572E">Bestseller · Woody</div><div class="font-serif text-xl">Fig & Cedar</div><div class="text-xs" style="color:#8A7D72">★ 4.9 (214) · 45h</div></div><a href="product.html?id=1" class="w-11 h-11 rounded-full flex items-center justify-center text-white font-bold magnet" style="background:#1A0E06">→</a></div></div>
+</div>
+<div class="floaty absolute -left-12 top-8 rounded-2xl px-4 py-2.5 text-[12px] font-bold shadow-xl bg-white" style="border:1px solid #EDE0CC">🕯️ 45h slow burn</div>
+<div class="floaty2 absolute -right-8 bottom-20 rounded-2xl px-4 py-2.5 text-[12px] font-bold shadow-xl text-white" style="background:#1A0E06">72h cured ✦</div>
+</div>
+<img src="https://images.pexels.com/photos/278823/pexels-photo-278823.jpeg?auto=compress&cs=tinysrgb&w=400" class="hidden sm:block w-28 aspect-[3/4] object-cover arch-sm floaty2" style="border:1px solid #EDE0CC" alt="">
+</div></div>
+<div class="flex justify-center gap-8 mt-8 text-center">
+<div><div class="font-serif text-3xl" data-count="45" data-suffix="h">0</div><div class="text-[10px] uppercase tracking-[0.2em] font-bold" style="color:#8A7D72">Avg burn</div></div><div class="w-px" style="background:#EDE0CC"></div>
+<div><div class="font-serif text-3xl" data-count="12">0</div><div class="text-[10px] uppercase tracking-[0.2em] font-bold" style="color:#8A7D72">Scents only</div></div><div class="w-px" style="background:#EDE0CC"></div>
+<div><div class="font-serif text-3xl" data-count="4.9" data-suffix="★">0</div><div class="text-[10px] uppercase tracking-[0.2em] font-bold" style="color:#8A7D72">1.2k reviews</div></div>
+</div>
+</div>
+</div>
 </section>
 
-<!-- ticker -->
-<div class="mt-12 py-3.5 overflow-hidden whitespace-nowrap text-white rv" style="background:#1A0E06;transform:rotate(-1deg) scale(1.02)">
-  <div class="marquee inline-flex gap-10 text-[12px] tracking-[0.3em] uppercase font-bold opacity-90">
-    <span>Cedar · Oud · Amber · Fig · Lavender · Sakura · Rose · Eucalyptus · Sea Salt · Bergamot · Neroli · Honey ·&nbsp;</span>
-    <span>Cedar · Oud · Amber · Fig · Lavender · Sakura · Rose · Eucalyptus · Sea Salt · Bergamot · Neroli · Honey ·&nbsp;</span>
-  </div>
-</div>
+<div class="mt-12 py-3.5 overflow-hidden whitespace-nowrap text-white rv" style="background:#1A0E06;transform:rotate(-1deg) scale(1.02)"><div class="marquee inline-flex gap-10 text-[12px] tracking-[0.3em] uppercase font-bold opacity-90"><span>Cedar · Oud · Amber · Fig · Lavender · Sakura · Eucalyptus · Sea Salt · Bergamot · Neroli · Honey ·&nbsp;</span><span>Cedar · Oud · Amber · Fig · Lavender · Sakura · Eucalyptus · Sea Salt · Bergamot · Neroli · Honey ·&nbsp;</span></div></div>
+
+<!-- MOMENTS -->
+<section class="max-w-6xl mx-auto px-4 md:px-6 mt-16">
+<div class="text-center rv"><p class="text-[11px] tracking-[0.35em] uppercase font-extrabold" style="color:#E4572E">Shop by moment</p><h2 class="font-serif font-light text-4xl md:text-5xl mt-2">How do you want to <em>feel?</em></h2>
+<div class="flex justify-center gap-2 mt-6 flex-wrap">
+<button data-moment="morning" class="mtab on px-5 py-2.5 rounded-full text-sm font-bold bg-white" style="border:1px solid #EDE0CC">☀️ Morning glow</button>
+<button data-moment="evening" class="mtab px-5 py-2.5 rounded-full text-sm font-bold bg-white" style="border:1px solid #EDE0CC">🌙 Slow evenings</button>
+<button data-moment="party" class="mtab px-5 py-2.5 rounded-full text-sm font-bold bg-white" style="border:1px solid #EDE0CC">🪩 Celebration</button>
+</div></div>
+<div id="momentsGrid" class="grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-4 mt-8"></div>
+</section>
 
 <!-- MOODS -->
 <section class="max-w-6xl mx-auto px-4 md:px-6 mt-16">
-  <div class="text-center rv"><p class="text-[11px] tracking-[0.35em] uppercase font-extrabold" style="color:#E4572E">Choose your mood</p><h2 class="font-serif font-light text-4xl md:text-6xl mt-2">Four families, <em>one obsession.</em></h2></div>
-  <div class="grid md:grid-cols-2 gap-4 mt-10">
-    <a href="shop.html?col=Woody" class="rv card-h group relative rounded-[28px] overflow-hidden min-h-[340px] flex items-end" style="border:1px solid #EDE0CC">
-      <img src="https://images.pexels.com/photos/286145/pexels-photo-286145.jpeg?auto=compress&cs=tinysrgb&w=900" class="absolute inset-0 w-full h-full object-cover zoom" alt="Woody">
-      <div class="absolute inset-0" style="background:linear-gradient(transparent 30%,rgba(26,14,6,.82))"></div>
-      <div class="relative p-7 text-white w-full"><div class="text-[11px] tracking-[0.25em] uppercase font-bold" style="color:#F2D48A">🪵 04 scents — Cedar · Oud · Amber</div><h3 class="font-serif text-4xl mt-1">Woody, for night owls.</h3><p class="text-sm opacity-70 mt-1">Smoke, resin, quiet libraries.</p><span class="inline-flex mt-4 px-5 py-2.5 rounded-full text-sm font-bold" style="background:#FFFBF1;color:#1A0E06">Enter woody →</span></div>
-    </a>
-    <div class="grid gap-4">
-      <a href="shop.html?col=Floral" class="rv card-h group relative rounded-[28px] overflow-hidden min-h-[162px] flex items-end" style="border:1px solid #EDE0CC">
-        <img src="https://images.pexels.com/photos/1809347/pexels-photo-1809347.jpeg?auto=compress&cs=tinysrgb&w=900" class="absolute inset-0 w-full h-full object-cover zoom" alt="Floral">
-        <div class="absolute inset-0" style="background:linear-gradient(90deg,rgba(26,14,6,.78),transparent 70%)"></div>
-        <div class="relative p-6 text-white"><div class="text-[11px] tracking-[0.25em] uppercase font-bold" style="color:#F9DCC4">🌸 Floral — 02</div><div class="font-serif text-3xl">Soft mornings</div></div>
-      </a>
-      <div class="grid grid-cols-2 gap-4">
-        <a href="shop.html?col=Fresh" class="rv card-h rounded-[28px] p-6 min-h-[162px] flex flex-col justify-between" style="background:#6B704E;color:#FFFBF1"><div class="text-xs uppercase tracking-widest opacity-70 font-bold">🌿 Fresh — 02</div><div><div class="font-serif text-2xl">Eucalyptus rain</div><div class="text-sm opacity-70">Cold shower for the room →</div></div></a>
-        <a href="shop.html?col=Citrus" class="rv card-h rounded-[28px] p-6 min-h-[162px] flex flex-col justify-between" style="background:#F2D48A;color:#1A0E06;border:1px solid #EDE0CC"><div class="text-xs uppercase tracking-widest font-bold opacity-60">🍋 Citrus — 02</div><div><div class="font-serif text-2xl">Bergamot sun</div><div class="text-sm opacity-70">Morning kitchens →</div></div></a>
-      </div>
-    </div>
-  </div>
+<div class="grid md:grid-cols-2 gap-4">
+<a href="shop.html?col=Woody" class="rv card-h group relative rounded-[28px] overflow-hidden min-h-[340px] flex items-end" style="border:1px solid #EDE0CC"><img src="https://images.pexels.com/photos/286145/pexels-photo-286145.jpeg?auto=compress&cs=tinysrgb&w=900" class="absolute inset-0 w-full h-full object-cover zoom" alt=""><div class="absolute inset-0" style="background:linear-gradient(transparent 30%,rgba(26,14,6,.85))"></div><div class="relative p-7 text-white w-full"><div class="text-[11px] tracking-[0.25em] uppercase font-bold" style="color:#F2D48A">04 scents — Cedar · Oud · Amber</div><h3 class="font-serif text-4xl mt-1">Woody, for night owls.</h3><span class="inline-flex mt-4 px-5 py-2.5 rounded-full text-sm font-bold" style="background:#FFFBF1;color:#1A0E06">Enter woody →</span></div></a>
+<div class="grid gap-4">
+<a href="shop.html?col=Floral" class="rv card-h relative rounded-[28px] overflow-hidden min-h-[162px] flex items-end" style="border:1px solid #EDE0CC"><img src="https://images.pexels.com/photos/1809347/pexels-photo-1809347.jpeg?auto=compress&cs=tinysrgb&w=900" class="absolute inset-0 w-full h-full object-cover zoom" alt=""><div class="absolute inset-0" style="background:linear-gradient(90deg,rgba(26,14,6,.8),transparent 70%)"></div><div class="relative p-6 text-white"><div class="text-[11px] tracking-[0.25em] uppercase font-bold" style="color:#F9DCC4">Floral — 02</div><div class="font-serif text-3xl">Soft mornings</div></div></a>
+<div class="grid grid-cols-2 gap-4">
+<a href="shop.html?col=Fresh" class="rv card-h rounded-[28px] p-6 min-h-[162px] flex flex-col justify-between text-white" style="background:#6B704E"><div class="text-xs uppercase tracking-widest font-bold opacity-70">Fresh — 02</div><div><div class="font-serif text-2xl">Eucalyptus rain</div><div class="text-sm opacity-70">Reset the room →</div></div></a>
+<a href="shop.html?col=Citrus" class="rv card-h rounded-[28px] p-6 min-h-[162px] flex flex-col justify-between" style="background:#F2D48A;border:1px solid #EDE0CC"><div class="text-xs uppercase font-bold opacity-60">Citrus — 02</div><div><div class="font-serif text-2xl">Bergamot sun</div><div class="text-sm opacity-70">Morning kitchens →</div></div></a>
+</div></div></div>
 </section>
 
 <!-- BESTSELLERS -->
 <section class="mt-20" style="background:linear-gradient(#FFFBF1,#FFF1DC)">
-  <div class="max-w-6xl mx-auto px-4 md:px-6 py-14">
-    <div class="flex items-end justify-between rv"><div><p class="text-[11px] tracking-[0.35em] uppercase font-extrabold" style="color:#E4572E">Most relit 🔥</p><h2 class="font-serif font-light text-4xl md:text-5xl mt-1">Kept burning</h2></div><a href="shop.html" class="text-sm font-bold underline underline-offset-4">All twelve →</a></div>
-    <div id="bestsellers" class="flex gap-4 overflow-x-auto no-scrollbar snap-x mt-8 pb-2"></div>
-    <div class="rv mt-6 rounded-[24px] p-5 flex flex-col md:flex-row items-center justify-between gap-4" style="background:#1A0E06;color:#FFFBF1">
-      <div class="text-sm"><b>Not sure where to start?</b> <span class="opacity-60">Take the 20-second scent quiz — 92% find “the one”.</span></div>
-      <button onclick="openQuiz()" class="px-6 py-3 rounded-full font-bold text-sm shrink-0" style="background:#E4572E">Find my scent ✦</button>
-    </div>
-  </div>
-</section>
+<div class="max-w-6xl mx-auto px-4 md:px-6 py-14">
+<div class="flex items-end justify-between rv"><div><p class="text-[11px] tracking-[0.35em] uppercase font-extrabold" style="color:#E4572E">Most relit</p><h2 class="font-serif font-light text-4xl md:text-5xl mt-1">Kept burning</h2></div><a href="shop.html" class="text-sm font-bold underline underline-offset-4">All twelve →</a></div>
+<div id="bestsellers" class="flex gap-4 overflow-x-auto no-scrollbar snap-x mt-8 pb-2"></div>
+<div class="rv mt-6 rounded-[24px] p-5 flex flex-col md:flex-row items-center justify-between gap-4 text-white" style="background:#1A0E06"><div class="text-sm"><b>Not sure?</b> <span class="opacity-60">20-second quiz — 92% find “the one”.</span></div><button onclick="openQuiz()" class="px-6 py-3 rounded-full font-bold text-sm magnet" style="background:#E4572E">Find my scent ✦</button></div>
+</div></section>
+
+<!-- RITUAL breathing -->
+<section id="ritual" class="py-20 text-white relative overflow-hidden" style="background:#1A0E06">
+<div class="max-w-6xl mx-auto px-4 md:px-6 grid md:grid-cols-2 gap-10 items-center">
+<div class="rv"><p class="text-[11px] tracking-[0.35em] uppercase font-extrabold" style="color:#F2D48A">The 7pm ritual</p><h2 class="font-serif font-light text-4xl md:text-5xl mt-2">Dim. Light.<br><em style="color:#F2D48A">Breathe.</em></h2><p class="text-sm opacity-60 mt-4 max-w-sm leading-relaxed">Our favourite way to burn: lights low, phone away, three slow breaths with the flame. Try it — 30 seconds, guided.</p>
+<div class="grid grid-cols-3 gap-2 mt-6 text-center text-[12px]"><div class="rounded-2xl p-3 bg-white/5"><b>① Dim</b><div class="opacity-50">lamps low</div></div><div class="rounded-2xl p-3 bg-white/5"><b>② Light</b><div class="opacity-50">first burn 2h</div></div><div class="rounded-2xl p-3 bg-white/5"><b>③ Breathe</b><div class="opacity-50">with flame</div></div></div></div>
+<div class="rv text-center"><div id="breathCircle" class="mx-auto flex items-center justify-center font-serif italic text-2xl" style="width:220px;height:220px;border-radius:99px;border:1px solid rgba(242,212,138,.4);background:radial-gradient(circle,rgba(228,87,46,.35),transparent 70%)">ready?</div><div id="breathText" class="mt-4 text-sm opacity-70">Press begin · 4s in · 4s hold · 6s out</div><button id="breathBtn" onclick="toggleBreath()" class="mt-4 px-8 py-3.5 rounded-full font-bold magnet" style="background:#E4572E">Begin 30s ritual →</button></div>
+</div></section>
 
 <!-- STORY -->
 <section id="story" class="max-w-6xl mx-auto px-4 md:px-6 mt-20 grid lg:grid-cols-2 gap-10 items-start">
-  <div class="rv lg:sticky lg:top-28">
-    <p class="text-[11px] tracking-[0.35em] uppercase font-extrabold" style="color:#E4572E">The studio · Jaipur</p>
-    <h3 class="font-serif font-light text-4xl md:text-5xl mt-2 leading-tight">Poured at midnight,<br><em>tested for weeks.</em></h3>
-    <div class="relative mt-7">
-      <img src="https://images.pexels.com/photos/5200254/pexels-photo-5200254.jpeg?auto=compress&cs=tinysrgb&w=900" class="rounded-[28px] aspect-[4/3] object-cover w-full" style="border:1px solid #EDE0CC" alt="Studio pour">
-      <div class="absolute -bottom-5 left-6 right-6 rounded-2xl p-4 flex items-center gap-4 shadow-xl" style="background:#FFFBF1;border:1px solid #EDE0CC">
-        <span class="stamp">Batch №185</span>
-        <div class="text-[13px]"><b>Fig & Cedar · curing now</b><br><span class="opacity-60">Ready to ship in 2 days</span></div>
-        <span class="ml-auto flame text-2xl">✦</span>
-      </div>
-    </div>
-  </div>
-  <div class="space-y-4 mt-8 lg:mt-16">
-    <div class="rv rounded-[24px] p-6 flex gap-4" style="background:#fff;border:1px solid #EDE0CC"><span class="w-10 h-10 rounded-full flex items-center justify-center font-bold text-white shrink-0" style="background:#E4572E">1</span><div><b>2021 — a kitchen table</b><p class="text-sm opacity-60 mt-1 leading-relaxed">Riya melts wax in a steel pot. First 20 jars for friends. They come back for 40 more.</p></div></div>
-    <div class="rv rounded-[24px] p-6 flex gap-4" style="background:#fff;border:1px solid #EDE0CC"><span class="w-10 h-10 rounded-full flex items-center justify-center font-bold shrink-0" style="border:1.5px solid #1A0E06">2</span><div><b>Still 40 jars. On purpose.</b><p class="text-sm opacity-60 mt-1 leading-relaxed">Every scent is tested 3 weeks before release. If it doesn't fill a room in the last hour, it doesn't launch.</p></div></div>
-    <div class="rv rounded-[24px] p-6 flex gap-4" style="background:#fff;border:1px solid #EDE0CC"><span class="w-10 h-10 rounded-full flex items-center justify-center font-bold shrink-0" style="border:1.5px solid #1A0E06">3</span><div><b>72-hour cure · soy + coconut</b><p class="text-sm opacity-60 mt-1 leading-relaxed">No rush-pour. Phthalate-free oils, cotton wicks, reusable vessels. Clean burn, deep throw.</p></div></div>
-    <div class="rv grid grid-cols-3 gap-3 text-center">
-      <div class="rounded-2xl p-4" style="background:#FFF1DC;border:1px solid #EDE0CC"><div class="font-serif text-2xl">100%</div><div class="text-[11px] font-bold uppercase tracking-widest opacity-60">Soy + coconut</div></div>
-      <div class="rounded-2xl p-4" style="background:#FFF1DC;border:1px solid #EDE0CC"><div class="font-serif text-2xl">0</div><div class="text-[11px] font-bold uppercase tracking-widest opacity-60">Parabens</div></div>
-      <div class="rounded-2xl p-4" style="background:#FFF1DC;border:1px solid #EDE0CC"><div class="font-serif text-2xl">♻️</div><div class="text-[11px] font-bold uppercase tracking-widest opacity-60">Reusable jar</div></div>
-    </div>
-    <a href="shop.html" class="rv btn-ink inline-flex px-7 py-3.5 rounded-full font-bold">Meet the candles →</a>
-  </div>
+<div class="rv lg:sticky lg:top-28"><p class="text-[11px] tracking-[0.35em] uppercase font-extrabold" style="color:#E4572E">The studio · Jaipur</p><h3 class="font-serif font-light text-4xl md:text-5xl mt-2">Poured at midnight,<br><em>tested for weeks.</em></h3>
+<div class="relative mt-7"><img src="https://images.pexels.com/photos/5200254/pexels-photo-5200254.jpeg?auto=compress&cs=tinysrgb&w=900" class="rounded-[28px] aspect-[4/3] object-cover w-full" style="border:1px solid #EDE0CC" alt=""><div class="absolute -bottom-5 left-6 right-6 rounded-2xl p-4 flex items-center gap-4 shadow-xl" style="background:#FFFBF1;border:1px solid #EDE0CC"><span class="stamp">Batch №185</span><div class="text-[13px]"><b>Fig & Cedar · curing</b><br><span style="color:#8A7D72">Ships in <span data-batch-cd>2d : 11h : 24m</span></span></div></div></div></div>
+<div class="space-y-4 mt-10 lg:mt-16">
+<div class="rv rounded-[24px] p-6 flex gap-4 bg-white" style="border:1px solid #EDE0CC"><span class="w-10 h-10 rounded-full flex items-center justify-center font-bold text-white shrink-0" style="background:#E4572E">1</span><div><b>2021 — a kitchen table</b><p class="text-sm mt-1" style="color:#6B6560">Riya melts wax in a steel pot. First 20 jars for friends.</p></div></div>
+<div class="rv rounded-[24px] p-6 flex gap-4 bg-white" style="border:1px solid #EDE0CC"><span class="w-10 h-10 rounded-full flex items-center justify-center font-bold shrink-0" style="border:1.5px solid #1A0E06">2</span><div><b>Still 40 jars. On purpose.</b><p class="text-sm mt-1" style="color:#6B6560">Tested 3 weeks. If it fades in the last hour, it never launches.</p></div></div>
+<div class="rv rounded-[24px] p-6 flex gap-4 bg-white" style="border:1px solid #EDE0CC"><span class="w-10 h-10 rounded-full flex items-center justify-center font-bold shrink-0" style="border:1.5px solid #1A0E06">3</span><div><b>72-hour cure · soy + coconut</b><p class="text-sm mt-1" style="color:#6B6560">Phthalate-free, cotton wicks, reusable vessels.</p></div></div>
+<a href="shop.html" class="rv btn-ink inline-flex px-7 py-3.5 rounded-full font-bold magnet">Meet the candles →</a></div>
 </section>
 
 <!-- CUSTOM -->
-<section class="mt-20 relative overflow-hidden">
-  <img src="https://images.pexels.com/photos/278823/pexels-photo-278823.jpeg?auto=compress&cs=tinysrgb&w=1600" class="w-full h-[600px] object-cover" alt="Custom candles">
-  <div class="absolute inset-0" style="background:rgba(26,14,6,.62)"></div>
-  <div class="absolute inset-0 flex items-center justify-center px-4">
-    <div class="rv rounded-[32px] p-8 md:p-10 max-w-lg w-full text-center relative" style="background:#FFFBF1">
-      <span class="stamp">Weddings · Diwali · Brands</span>
-      <h3 class="font-serif text-4xl md:text-5xl mt-3">Your scent,<br><em style="color:#E4572E">your label.</em></h3>
-      <p class="text-sm opacity-60 mt-3">From 6 pieces. Live preview, instant quote, 3-day making. Gold foil, handwritten tags, your story.</p>
-      <div class="grid grid-cols-3 gap-2 mt-5 text-[12px] font-bold">
-        <div class="rounded-2xl p-3" style="background:#FFF1DC">💍<br>40 pcs<br><span class="opacity-60 font-normal">weddings</span></div>
-        <div class="rounded-2xl p-3" style="background:#FFF1DC">🪔<br>12 pcs<br><span class="opacity-60 font-normal">Diwali</span></div>
-        <div class="rounded-2xl p-3" style="background:#FFF1DC">🏢<br>80 pcs<br><span class="opacity-60 font-normal">corporate</span></div>
-      </div>
-      <a href="custom.html" class="btn-ink block mt-6 py-4 rounded-full font-bold">Start building — from ₹1,090 →</a>
-      <p class="hand text-xl mt-3" style="color:#B63A17">takes 2 minutes, promise!</p>
-    </div>
-  </div>
-</section>
+<section class="mt-20 relative overflow-hidden"><img src="https://images.pexels.com/photos/278823/pexels-photo-278823.jpeg?auto=compress&cs=tinysrgb&w=1600" class="w-full h-[600px] object-cover" alt=""><div class="absolute inset-0" style="background:rgba(26,14,6,.62)"></div>
+<div class="absolute inset-0 flex items-center justify-center px-4"><div class="rv rounded-[32px] p-8 md:p-10 max-w-lg w-full text-center" style="background:#FFFBF1"><span class="stamp">Weddings · Diwali · Brands</span><h3 class="font-serif text-4xl md:text-5xl mt-3">Your scent,<br><em style="color:#E4572E">your label.</em></h3><p class="text-sm mt-3" style="color:#6B6560">From 6 pieces. Live preview, instant quote, 3-day making.</p><div class="grid grid-cols-3 gap-2 mt-5 text-[12px] font-bold"><div class="rounded-2xl p-3" style="background:#FFF1DC">40 pcs<br><span class="font-normal" style="color:#8A7D72">weddings</span></div><div class="rounded-2xl p-3" style="background:#FFF1DC">12 pcs<br><span class="font-normal" style="color:#8A7D72">Diwali</span></div><div class="rounded-2xl p-3" style="background:#FFF1DC">80 pcs<br><span class="font-normal" style="color:#8A7D72">corporate</span></div></div><a href="custom.html" class="btn-ink block mt-6 py-4 rounded-full font-bold magnet">Start building — from ₹1,090 →</a><p class="hand text-xl mt-3" style="color:#B63A17">takes 2 minutes, promise!</p></div></div></section>
 
-<!-- REVIEWS -->
+<!-- REVIEWS + UGC -->
 <section class="max-w-6xl mx-auto px-4 md:px-6 mt-20">
-  <h2 class="rv font-serif font-light text-4xl md:text-5xl text-center">Rooms <em style="color:#E4572E">remember.</em></h2>
-  <p class="rv text-center text-sm opacity-60 mt-2">★ 4.9 · 1,200+ verified reviews</p>
-  <div class="grid md:grid-cols-3 gap-4 mt-10">
-    <div class="rv card-h rounded-[24px] p-7 rotate-[-1.5deg]" style="background:#fff;border:1px solid #EDE0CC"><div style="color:#C99A3F">★★★★★</div><p class="font-serif italic text-lg leading-relaxed mt-2">“Fig & Cedar filled the room without shouting. The vessel is now my pen stand.”</p><div class="flex items-center gap-3 mt-5"><img src="https://i.pravatar.cc/64?img=47" class="w-9 h-9 rounded-full object-cover" alt=""><div class="text-xs"><b>Nisha V.</b><br><span class="opacity-60">Fig & Cedar · Verified</span></div></div></div>
-    <div class="rv card-h rounded-[24px] p-7 rotate-[1deg] text-white" style="background:#1A0E06"><div style="color:#F2D48A">★★★★★</div><p class="font-serif italic text-lg leading-relaxed mt-2">“40 wedding favours, gold foil labels. Guests still ask where they're from.”</p><div class="flex items-center gap-3 mt-5"><img src="https://i.pravatar.cc/64?img=32" class="w-9 h-9 rounded-full object-cover" alt=""><div class="text-xs"><b>Ananya R.</b><br><span class="opacity-60">Custom · 40 pcs</span></div></div></div>
-    <div class="rv card-h rounded-[24px] p-7 rotate-[-1deg]" style="background:#F9DCC4;border:1px solid #EDE0CC"><div style="color:#B63A17">★★★★★</div><p class="font-serif italic text-lg leading-relaxed mt-2">“Tobacco & Honey is my permanent night scent. Worth every rupee.”</p><div class="flex items-center gap-3 mt-5"><img src="https://i.pravatar.cc/64?img=12" class="w-9 h-9 rounded-full object-cover" alt=""><div class="text-xs"><b>Kabir S.</b><br><span class="opacity-60">Tobacco & Honey · Verified</span></div></div></div>
-  </div>
-</section>
+<h2 class="rv font-serif font-light text-4xl md:text-5xl text-center">Rooms <em style="color:#E4572E">remember.</em></h2><p class="rv text-center text-sm mt-2" style="color:#8A7D72">★ 4.9 · 1,200+ verified</p>
+<div class="grid md:grid-cols-3 gap-4 mt-10">
+<div class="rv card-h rounded-[24px] p-7 bg-white" style="border:1px solid #EDE0CC"><div style="color:#C99A3F">★★★★★</div><p class="font-serif italic text-lg mt-2">“Fig & Cedar filled the room without shouting. Vessel is now my pen stand.”</p><div class="flex items-center gap-3 mt-5"><img src="https://i.pravatar.cc/64?img=47" class="w-9 h-9 rounded-full object-cover" alt=""><div class="text-xs"><b>Nisha V.</b><br><span style="color:#8A7D72">Verified</span></div></div></div>
+<div class="rv card-h rounded-[24px] p-7 text-white" style="background:#1A0E06"><div style="color:#F2D48A">★★★★★</div><p class="font-serif italic text-lg mt-2">“40 wedding favours, gold foil. Guests still ask where they're from.”</p><div class="flex items-center gap-3 mt-5"><img src="https://i.pravatar.cc/64?img=32" class="w-9 h-9 rounded-full object-cover" alt=""><div class="text-xs"><b>Ananya R.</b><br><span class="opacity-60">Custom · 40 pcs</span></div></div></div>
+<div class="rv card-h rounded-[24px] p-7" style="background:#F9DCC4;border:1px solid #EDE0CC"><div style="color:#B63A17">★★★★★</div><p class="font-serif italic text-lg mt-2">“Tobacco & Honey is my permanent night scent.”</p><div class="flex items-center gap-3 mt-5"><img src="https://i.pravatar.cc/64?img=12" class="w-9 h-9 rounded-full object-cover" alt=""><div class="text-xs"><b>Kabir S.</b><br><span style="color:#8A7D72">Verified</span></div></div></div>
+</div>
+<div class="grid grid-cols-3 md:grid-cols-6 gap-2 mt-4">
+<img src="https://images.pexels.com/photos/5200254/pexels-photo-5200254.jpeg?auto=compress&cs=tinysrgb&w=400" class="rv rounded-2xl aspect-square object-cover" style="border:1px solid #EDE0CC" alt="" loading="lazy">
+<img src="https://images.pexels.com/photos/286145/pexels-photo-286145.jpeg?auto=compress&cs=tinysrgb&w=400" class="rv rounded-2xl aspect-square object-cover" style="border:1px solid #EDE0CC" alt="" loading="lazy">
+<img src="https://images.pexels.com/photos/1809347/pexels-photo-1809347.jpeg?auto=compress&cs=tinysrgb&w=400" class="rv rounded-2xl aspect-square object-cover" style="border:1px solid #EDE0CC" alt="" loading="lazy">
+<img src="https://images.pexels.com/photos/278823/pexels-photo-278823.jpeg?auto=compress&cs=tinysrgb&w=400" class="rv rounded-2xl aspect-square object-cover" style="border:1px solid #EDE0CC" alt="" loading="lazy">
+<img src="https://images.pexels.com/photos/1652109/pexels-photo-1652109.jpeg?auto=compress&cs=tinysrgb&w=400" class="rv rounded-2xl aspect-square object-cover" style="border:1px solid #EDE0CC" alt="" loading="lazy">
+<img src="https://images.pexels.com/photos/225073/pexels-photo-225073.jpeg?auto=compress&cs=tinysrgb&w=400" class="rv rounded-2xl aspect-square object-cover" style="border:1px solid #EDE0CC" alt="" loading="lazy">
+</div></section>
+
+<!-- TRACK + FAQ -->
+<section class="max-w-6xl mx-auto px-4 md:px-6 mt-20 grid md:grid-cols-2 gap-4">
+<div class="rv rounded-[24px] p-7 bg-white" style="border:1px solid #EDE0CC"><h3 class="font-serif text-3xl">Track your glow ✦</h3><p class="text-sm mt-1" style="color:#8A7D72">Order id like #L-1842 or CU-4021 (demo works too).</p><div class="flex gap-2 mt-4"><input id="trackInput" placeholder="#L-1842" class="flex-1 rounded-full px-5 py-3 text-sm" style="border:1px solid #EDE0CC;background:#FFFBF1"><button onclick="doTrack()" class="px-6 rounded-full text-sm font-bold text-white magnet" style="background:#1A0E06">Track</button></div><div id="trackResult" class="mt-4 text-sm"></div></div>
+<div class="rv rounded-[24px] p-7" style="background:#FFF1DC;border:1px solid #EDE0CC"><h3 class="font-serif text-3xl">Good to know</h3><div class="mt-4 space-y-2 text-sm">
+<div class="faq rounded-2xl bg-white" style="border:1px solid #EDE0CC"><button onclick="this.parentElement.classList.toggle('open')" class="w-full text-left px-5 py-3.5 font-bold flex justify-between">How long does one candle burn? <span class="faq-x">+</span></button><div class="faq-a px-5 pb-4" style="color:#6B6560">35–60 hours depending on size. Trim the wick to 5mm and let the first burn pool to the edge.</div></div>
+<div class="faq rounded-2xl bg-white" style="border:1px solid #EDE0CC"><button onclick="this.parentElement.classList.toggle('open')" class="w-full text-left px-5 py-3.5 font-bold flex justify-between">Is shipping free? <span class="faq-x">+</span></button><div class="faq-a px-5 pb-4" style="color:#6B6560">Free over ₹1,999, flat ₹99 below. COD available, ships in 2 days.</div></div>
+<div class="faq rounded-2xl bg-white" style="border:1px solid #EDE0CC"><button onclick="this.parentElement.classList.toggle('open')" class="w-full text-left px-5 py-3.5 font-bold flex justify-between">Can I gift it? <span class="faq-x">+</span></button><div class="faq-a px-5 pb-4" style="color:#6B6560">Yes — free handwritten note, gift wrap +₹80, reusable jar after.</div></div>
+</div></div></section>
 
 <!-- newsletter -->
-<section class="max-w-3xl mx-auto px-4 mt-20 text-center rv">
-  <div class="rounded-[32px] p-8 md:p-12 text-white relative overflow-hidden" style="background:#1A0E06">
-    <div class="absolute -top-20 left-1/2 -translate-x-1/2 w-[400px] h-[200px] rounded-full blur-3xl" style="background:rgba(228,87,46,.4)"></div>
-    <div class="relative"><div class="flame text-3xl">✦</div><h3 class="font-serif font-light text-3xl md:text-4xl mt-2">First burn, <em style="color:#F2D48A">10% off.</em></h3><p class="text-sm opacity-60 mt-2">Join 4,000 slow-living lovers. One letter a month, no spam.</p>
-    <form onsubmit="event.preventDefault(); showToast('Welcome to the ritual','Code WELCOME10'); this.reset();" class="mt-6 flex rounded-full p-1.5 pl-6 gap-2" style="background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15)"><input required type="email" placeholder="your@email.com" class="flex-1 bg-transparent outline-none text-sm placeholder:text-white/40"><button class="px-6 py-3 rounded-full text-sm font-bold shrink-0" style="background:#E4572E">Join →</button></form></div>
-  </div>
-</section>
+<section class="max-w-3xl mx-auto px-4 mt-20 text-center rv"><div class="rounded-[32px] p-8 md:p-12 text-white relative overflow-hidden" style="background:#1A0E06"><div class="absolute -top-20 left-1/2 -translate-x-1/2 w-[400px] h-[200px] rounded-full blur-3xl" style="background:rgba(228,87,46,.4)"></div><div class="relative"><div class="flame text-3xl">✦</div><h3 class="font-serif font-light text-3xl md:text-4xl mt-2">First burn, <em style="color:#F2D48A">10% off.</em></h3><form onsubmit="event.preventDefault();showToast('Welcome to the ritual','Code WELCOME10');this.reset();" class="mt-6 flex rounded-full p-1.5 pl-6 gap-2" style="background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15)"><input required type="email" placeholder="your@email.com" class="flex-1 bg-transparent text-sm placeholder:text-white/40"><button class="px-6 py-3 rounded-full text-sm font-bold" style="background:#E4572E">Join →</button></form></div></div></section>
 
 <footer class="mt-16 text-white" style="background:#1A0E06">
-  <div class="max-w-6xl mx-auto px-4 md:px-6 py-12 grid md:grid-cols-4 gap-8 text-sm">
-    <div><div class="font-serif text-3xl">Lume<span style="color:#E4572E">.</span></div><p class="opacity-50 mt-2 text-[13px]">House of Slow Light.<br>One thing, done beautifully.<br>Johari Bazaar, Jaipur.</p><div class="flex gap-2 mt-4"><span class="w-9 h-9 rounded-full flex items-center justify-center" style="border:1px solid rgba(255,255,255,.15)">◍</span><span class="w-9 h-9 rounded-full flex items-center justify-center" style="border:1px solid rgba(255,255,255,.15)">◎</span><span class="w-9 h-9 rounded-full flex items-center justify-center" style="border:1px solid rgba(255,255,255,.15)">✦</span></div></div>
-    <div class="space-y-2 text-[13px]"><div class="text-[11px] uppercase tracking-[0.2em] opacity-40 font-bold">Shop</div><a href="shop.html" class="block opacity-80">All twelve</a><a href="shop.html?col=Woody" class="block opacity-80">Woody</a><a href="shop.html?col=Floral" class="block opacity-80">Floral</a><a href="custom.html" class="block font-bold" style="color:#F2D48A">Custom atelier →</a></div>
-    <div class="space-y-2 text-[13px]"><div class="text-[11px] uppercase tracking-[0.2em] opacity-40 font-bold">Help</div><a href="cart.html" class="block opacity-80">Cart & checkout</a><a href="#" class="block opacity-80">Candle care</a><a href="#" class="block opacity-80">Shipping</a></div>
-    <div class="space-y-2 text-[13px]"><div class="text-[11px] uppercase tracking-[0.2em] opacity-40 font-bold">Studio</div><a href="admin/index.html" class="block opacity-80">Admin →</a><a href="admin/products.html" class="block opacity-80">Manage candles</a><div class="stamp mt-2" style="border-color:rgba(242,212,138,.4);color:#F2D48A;background:transparent">Batch №185 · curing</div></div>
-  </div>
-  <div class="font-serif font-light leading-[0.78] text-center select-none lume-outline" style="font-size:21vw">LUME</div>
-  <p class="text-center text-xs opacity-40 pb-8">© 2026 Lume · Poured with patience in Jaipur</p>
-</footer>
+<div class="max-w-6xl mx-auto px-4 md:px-6 py-12 grid md:grid-cols-4 gap-8 text-sm">
+<div><div class="font-serif text-3xl">Lume<span style="color:#E4572E">.</span></div><p class="mt-2 text-[13px]" style="color:#8A7D72">House of Slow Light.<br>Johari Bazaar, Jaipur.</p></div>
+<div class="space-y-2 text-[13px]"><div class="text-[11px] uppercase tracking-[0.2em] font-bold" style="color:#8A7D72">Shop</div><a href="shop.html" class="block opacity-80">All twelve</a><a href="custom.html" class="block font-bold" style="color:#F2D48A">Custom atelier →</a></div>
+<div class="space-y-2 text-[13px]"><div class="text-[11px] uppercase tracking-[0.2em] font-bold" style="color:#8A7D72">Help</div><a href="cart.html" class="block opacity-80">Bag & checkout</a><a href="#" class="block opacity-80">Candle care</a></div>
+<div class="space-y-2 text-[13px]"><div class="text-[11px] uppercase tracking-[0.2em] font-bold" style="color:#8A7D72">Studio</div><a href="admin/index.html" class="block opacity-80" title="Demo admin panel — open access, no login needed">Admin panel <span class="text-[9px] font-extrabold px-1.5 py-0.5 rounded-full" style="background:rgba(228,87,46,.2);color:#F2D48A">DEMO</span> →</a><div class="stamp mt-2" style="border-color:rgba(242,212,138,.4);color:#F2D48A;background:transparent">Batch №185 · curing</div></div>
+</div>
+<div class="font-serif font-light leading-[0.78] text-center select-none lume-outline" style="font-size:21vw">LUME</div>
+<p class="text-center text-xs pb-8" style="color:#8A7D72">© 2026 Lume · Poured with patience</p></footer>
 
 <!-- Search -->
-<div id="searchOverlay" class="hidden fixed inset-0 z-[60]" style="background:rgba(255,251,241,.97);backdrop-filter:blur(12px)">
-  <div class="max-w-xl mx-auto px-5 pt-14 pb-10 max-h-screen overflow-auto">
-    <div class="flex justify-between items-center"><span class="text-[11px] tracking-[0.35em] uppercase font-extrabold" style="color:#E4572E">Find your scent</span><button onclick="closeSearch()" class="w-10 h-10 rounded-full font-bold" style="border:1px solid #EDE0CC">×</button></div>
-    <input id="searchInput" oninput="renderSearchResults(this.value)" placeholder="Fig, oud, fresh…" class="w-full mt-5 bg-transparent py-4 font-serif text-3xl md:text-4xl outline-none placeholder:text-black/15" style="border-bottom:2px solid #E4572E">
-    <div class="flex gap-2 mt-4 flex-wrap text-xs font-bold"><button onclick="document.getElementById('searchInput').value='oud';renderSearchResults('oud')" class="px-3 py-1.5 rounded-full" style="border:1px solid #EDE0CC">oud</button><button onclick="document.getElementById('searchInput').value='fig';renderSearchResults('fig')" class="px-3 py-1.5 rounded-full" style="border:1px solid #EDE0CC">fig</button><button onclick="document.getElementById('searchInput').value='fresh';renderSearchResults('fresh')" class="px-3 py-1.5 rounded-full" style="border:1px solid #EDE0CC">fresh</button><button onclick="document.getElementById('searchInput').value='honey';renderSearchResults('honey')" class="px-3 py-1.5 rounded-full" style="border:1px solid #EDE0CC">honey</button></div>
-    <div id="searchLabel" class="text-xs font-bold uppercase tracking-widest opacity-50 mt-6"></div>
-    <div id="searchResults" class="mt-3 space-y-1"></div>
-  </div>
-</div>
+<div id="searchOverlay" class="hidden fixed inset-0 z-[60]" style="background:rgba(255,251,241,.97);backdrop-filter:blur(12px)"><div class="max-w-xl mx-auto px-5 pt-14 pb-10 max-h-screen overflow-auto"><div class="flex justify-between items-center"><span class="text-[11px] tracking-[0.35em] uppercase font-extrabold" style="color:#E4572E">Find your scent</span><button onclick="closeSearch()" class="w-10 h-10 rounded-full font-bold" style="border:1px solid #EDE0CC">×</button></div><input id="searchInput" oninput="renderSearchResults(this.value)" placeholder="Fig, oud, fresh…" class="w-full mt-5 bg-transparent py-4 font-serif text-3xl md:text-4xl placeholder:text-black/15" style="border-bottom:2px solid #E4572E"><div id="searchLabel" class="text-xs font-bold uppercase tracking-widest mt-6" style="color:#8A7D72"></div><div id="searchResults" class="mt-3 space-y-1"></div></div></div>
 
 <!-- Cart -->
-<div id="cartDrawer" class="hidden fixed inset-0 z-[60]">
-  <div class="absolute inset-0" style="background:rgba(26,14,6,.5)" onclick="closeCartDrawer()"></div>
-  <div class="absolute bottom-0 md:right-0 md:top-0 w-full md:max-w-md flex flex-col max-h-[94vh] rounded-t-[28px] md:rounded-none overflow-hidden" style="background:#FFFBF1;border-left:1px solid #EDE0CC">
-    <div class="px-6 py-5 flex justify-between items-center" style="border-bottom:1px solid #EDE0CC"><span class="font-serif text-xl">Your ritual <span id="cartDrawerCountLabel" class="text-sm opacity-50"></span></span><button onclick="closeCartDrawer()" class="w-9 h-9 rounded-full" style="border:1px solid #EDE0CC">×</button></div>
-    <div class="px-6 pt-4"><div class="h-1.5 rounded-full overflow-hidden" style="background:#EDE0CC"><div id="shipBar" class="h-full rounded-full transition-all" style="width:0%;background:linear-gradient(90deg,#C99A3F,#E4572E)"></div></div><div id="shipMsg" class="text-xs mt-2 opacity-70"></div></div>
-    <div id="cartDrawerItems" class="flex-1 overflow-auto px-6"></div>
-    <div id="cartDrawerFooter" class="hidden p-6" style="border-top:1px solid #EDE0CC;background:#fff"><div class="flex justify-between text-sm"><span class="opacity-60">Subtotal</span><span id="cartDrawerSubtotal" class="font-bold" style="color:#E4572E"></span></div><a href="cart.html" class="btn-ink mt-4 block text-center py-4 rounded-full font-bold">Checkout →</a><button onclick="closeCartDrawer()" class="w-full text-center text-sm font-semibold mt-2 underline underline-offset-4">Keep browsing</button></div>
-  </div>
-</div>
+<div id="cartDrawer" class="hidden fixed inset-0 z-[60]"><div class="absolute inset-0" style="background:rgba(26,14,6,.5)" onclick="closeCartDrawer()"></div><div class="absolute bottom-0 md:right-0 md:top-0 w-full md:max-w-md flex flex-col max-h-[94vh] rounded-t-[28px] md:rounded-none overflow-hidden" style="background:#FFFBF1"><div class="px-6 py-5 flex justify-between items-center" style="border-bottom:1px solid #EDE0CC"><span class="font-serif text-xl">Your ritual <span id="cartDrawerCountLabel" class="text-sm" style="color:#8A7D72"></span></span><button onclick="closeCartDrawer()" class="w-9 h-9 rounded-full" style="border:1px solid #EDE0CC">×</button></div><div class="px-6 pt-4"><div class="h-1.5 rounded-full overflow-hidden" style="background:#EDE0CC"><div id="shipBar" class="h-full rounded-full" style="width:0%;background:linear-gradient(90deg,#C99A3F,#E4572E);transition:width .4s"></div></div><div id="shipMsg" class="text-xs mt-2" style="color:#6B6560"></div></div><div id="cartDrawerItems" class="flex-1 overflow-auto px-6"></div><div id="cartDrawerFooter" class="hidden p-6 bg-white" style="border-top:1px solid #EDE0CC"><div class="flex justify-between text-sm"><span style="color:#8A7D72">Subtotal</span><span id="cartDrawerSubtotal" class="font-bold" style="color:#E4572E"></span></div><a href="cart.html" class="btn-ink mt-4 block text-center py-4 rounded-full font-bold magnet">Checkout →</a></div></div></div>
+
+<!-- Wishlist -->
+<div id="wishDrawer" class="hidden fixed inset-0 z-[60]"><div class="absolute inset-0" style="background:rgba(26,14,6,.5)" onclick="closeWishDrawer()"></div><div class="absolute bottom-0 md:right-0 md:top-0 w-full md:max-w-md flex flex-col max-h-[94vh] bg-white"><div class="px-6 py-5 flex justify-between items-center" style="border-bottom:1px solid #EDE0CC"><span class="font-serif text-xl">Wishlist ♡</span><button onclick="closeWishDrawer()" class="w-9 h-9 rounded-full" style="border:1px solid #EDE0CC">×</button></div><div id="wishDrawerItems" class="flex-1 overflow-auto px-6"></div></div></div>
+
+<!-- Compare bar + modal -->
+<div id="compareBar" class="hidden fixed bottom-4 left-1/2 -translate-x-1/2 z-[65] flex items-center gap-3 pl-4 pr-2 py-2 rounded-full shadow-2xl" style="background:#1A0E06;color:#FFFBF1"><div id="compareThumbs" class="flex -space-x-2"></div><span class="text-xs font-bold"><span id="compareCount">0</span>/3 to compare</span><button onclick="openCompare()" class="px-5 py-2.5 rounded-full text-xs font-bold" style="background:#E4572E">Compare →</button></div>
+<div id="compareModal" class="hidden fixed inset-0 z-[70] flex items-center justify-center p-4" style="background:rgba(26,14,6,.6)"><div class="rounded-[24px] max-w-3xl w-full p-6 bg-white" style="max-height:88vh;overflow:auto"><div class="flex justify-between items-center"><h3 class="font-serif text-3xl">Side by side</h3><button onclick="document.getElementById('compareModal').classList.add('hidden')" class="w-9 h-9 rounded-full" style="border:1px solid #EDE0CC">×</button></div><div id="compareGrid" class="grid md:grid-cols-3 gap-3 mt-5"></div></div></div>
 
 <!-- Quiz -->
-<div id="quizModal" class="hidden fixed inset-0 z-[70] flex items-center justify-center p-4" style="background:rgba(26,14,6,.6);backdrop-filter:blur(6px)">
-  <div class="rounded-[28px] max-w-md w-full p-7 md:p-8 relative" style="background:#FFFBF1;max-height:90vh;overflow:auto">
-    <button onclick="closeQuiz()" class="absolute top-4 right-4 w-9 h-9 rounded-full" style="border:1px solid #EDE0CC">×</button>
-    <div class="text-[11px] tracking-[0.3em] uppercase font-extrabold" style="color:#E4572E">Scent finder · <span id="quizStep">1/3</span></div>
-    <h3 id="quizQ" class="font-serif text-3xl mt-2"></h3>
-    <div id="quizOpts" class="grid gap-2 mt-5"></div>
-    <div id="quizResult" class="hidden text-center"></div>
-  </div>
-</div>
+<div id="quizModal" class="hidden fixed inset-0 z-[70] flex items-center justify-center p-4" style="background:rgba(26,14,6,.6);backdrop-filter:blur(6px)"><div class="rounded-[28px] max-w-md w-full p-7 relative" style="background:#FFFBF1;max-height:90vh;overflow:auto"><button onclick="closeQuiz()" class="absolute top-4 right-4 w-9 h-9 rounded-full" style="border:1px solid #EDE0CC">×</button><div class="h-1.5 rounded-full overflow-hidden" style="background:#EDE0CC"><div id="quizBar" class="h-full" style="width:33%;background:#E4572E;transition:width .3s"></div></div><div class="text-[11px] tracking-[0.3em] uppercase font-extrabold mt-3" style="color:#E4572E">Scent finder · <span id="quizStep">1/4</span></div><h3 id="quizQ" class="font-serif text-3xl mt-1"></h3><div id="quizOpts" class="grid gap-2 mt-5"></div><div id="quizResult" class="hidden text-center"></div></div></div>
 
 <script src="app.js"></script>
 <script>
-/* loader */
-let lp=0; const li=setInterval(()=>{lp=Math.min(100,lp+22);document.getElementById('loadBar').style.width=lp+'%';if(lp>=100){clearInterval(li);setTimeout(()=>{const l=document.getElementById('loader');l.style.opacity=0;l.style.visibility='hidden';},350);}},140);
-/* cursor + tilt + embers */
-(function(){
-  const g=document.getElementById('cursorGlow');
-  addEventListener('pointermove',e=>{g.style.left=e.clientX+'px';g.style.top=e.clientY+'px';});
-  const card=document.getElementById('heroCard'), tilt=document.getElementById('heroTilt');
-  if(card&&tilt){card.addEventListener('pointermove',e=>{const r=card.getBoundingClientRect();const x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;tilt.style.transform=`rotateY(${x*10}deg) rotateX(${-y*10}deg)`;});card.addEventListener('pointerleave',()=>tilt.style.transform='');}
-})();
+/* instant load — splash removed */
+(function(){const g=document.getElementById('cursorGlow');addEventListener('pointermove',e=>{g.style.left=e.clientX+'px';g.style.top=e.clientY+'px';});})();
 initEmbers('embers');
 
-/* bestsellers */
-function homeCard(p){
-  const wished=isWishlisted(p.id);
-  const badge=p.badge?`<span class="absolute top-3 left-3 text-[10px] font-extrabold uppercase tracking-widest px-2.5 py-1 rounded-full" style="background:#1A0E06;color:#FFFBF1">${p.badge}</span>`:'';
-  const off=discountPct(p.mrp,p.price);
-  return `<div class="card-h snap-start flex-shrink-0 w-[248px] rounded-[24px] overflow-hidden text-center relative" style="background:#fff;border:1px solid #EDE0CC">
-    <a href="product.html?id=${p.id}" class="block p-3 relative"><img src="${p.image}" onerror="this.src='${FALLBACK_IMG}'" class="arch-sm w-full aspect-[3/4] object-cover zoom" alt="${p.name}" loading="lazy">${badge}${off?`<span class="absolute top-3 right-5 text-[11px] font-extrabold px-2 py-1 rounded-full text-white" style="background:#E4572E">-${off}%</span>`:''}</a>
-    <button data-wish="${p.id}" onclick="const a=toggleWishlist(${p.id});showToast(a?'Saved to wishlist':'Removed from wishlist')" class="absolute bottom-[148px] right-5 w-9 h-9 rounded-full text-sm ${wished?'is-wished':''}" style="background:#FFFBF1;border:1px solid #EDE0CC;${wished?'color:#E4572E;border-color:#E4572E':''}">${wished?'♥':'♡'}</button>
-    <a href="product.html?id=${p.id}" class="block px-4 pb-4"><div class="text-[10px] tracking-[0.25em] uppercase font-extrabold" style="color:${scentColor(p.collection)}">${p.collection} · ${p.burn}</div>
-    <div class="font-serif text-xl mt-0.5">${p.name}</div><div class="text-xs opacity-50 truncate">${p.scent}</div>
-    <div class="mt-1.5 font-extrabold">${formatINR(p.price)} <span class="opacity-40 line-through text-xs font-normal ml-1">${formatINR(p.mrp)}</span></div>
-    <div class="text-xs opacity-60 mt-0.5">★ ${p.rating} (${p.reviews})</div></a>
-    <div class="px-4 pb-4"><button onclick="quickAdd(${p.id})" class="w-full py-2.5 rounded-full text-[13px] font-bold btn-ink">Quick add +</button></div>
+/* cards */
+function richCard(p){
+  const wished=isWishlisted(p.id),off=discountPct(p.mrp,p.price),t=throwLevel(p);
+  return `<div class="card-h snap-start flex-shrink-0 w-[250px] rounded-[24px] overflow-hidden bg-white relative" style="border:1px solid #EDE0CC">
+    <a href="product.html?id=${p.id}" class="block p-3 relative"><img src="${p.image}" onerror="this.src='${FALLBACK_IMG}'" class="arch-sm w-full aspect-[3/4] object-cover zoom" loading="lazy" alt="${p.name}">${p.badge?`<span class="absolute top-5 left-5 text-[10px] font-extrabold uppercase tracking-widest px-2.5 py-1 rounded-full text-white" style="background:#1A0E06">${p.badge}</span>`:''}${off?`<span class="absolute top-5 right-5 text-[11px] font-extrabold px-2 py-1 rounded-full text-white" style="background:#E4572E">-${off}%</span>`:''}
+    <span class="absolute bottom-5 left-1/2 -translate-x-1/2 flex gap-1.5 opacity-0 group-hover:opacity-100" style="transition:.3s"><span onclick="event.preventDefault();openQuickView(${p.id})" class="text-[11px] font-bold px-3 py-1.5 rounded-full bg-white shadow" style="border:1px solid #EDE0CC">Quick view</span></span></a>
+    <button data-wish="${p.id}" onclick="toggleWishlist(${p.id});showToast(isWishlisted(${p.id})?'Saved ♡':'Removed')" class="absolute w-9 h-9 rounded-full text-sm bg-white shadow" style="border:1px solid #EDE0CC;bottom:168px;right:16px;${wished?'color:#E4572E;border-color:#E4572E':''}">${wished?'♥':'♡'}</button>
+    <a href="product.html?id=${p.id}" class="block px-4 pb-2 text-center"><div class="text-[10px] tracking-[0.22em] uppercase font-extrabold" style="color:${scentColor(p.collection)}">${p.collection} · ${p.burn}</div><div class="font-serif text-xl">${p.name}</div><div class="text-xs truncate" style="color:#8A7D72">${p.scent}</div><div class="mt-1 font-extrabold">${formatINR(p.price)} <span class="line-through text-xs font-normal" style="color:#9A9A9A">${formatINR(p.mrp)}</span></div><div class="text-[11px] mt-1" style="color:#8A7D72">${throwDots(t)} ${throwLabel(t)} · ★ ${p.rating}</div></a>
+    <div class="px-4 pb-4 flex gap-1.5"><button onclick="quickAdd(${p.id})" class="flex-1 py-2.5 rounded-full text-[13px] font-bold btn-ink">Add +</button><button onclick="openQuickView(${p.id})" class="w-11 rounded-full text-sm" style="border:1px solid #EDE0CC" title="Quick view">◉</button></div>
   </div>`;
 }
-document.getElementById('bestsellers').innerHTML=getCandles().slice(0,8).map(homeCard).join('');
+function miniCard(p){
+  return `<a href="product.html?id=${p.id}" class="card-h block rounded-[20px] overflow-hidden bg-white text-center group" style="border:1px solid #EDE0CC"><div class="p-2.5 relative overflow-hidden"><img src="${p.image}" onerror="this.src='${FALLBACK_IMG}'" class="arch-sm w-full aspect-[3/4] object-cover zoom" loading="lazy" alt=""></div><div class="px-3 pb-4"><div class="text-[10px] uppercase tracking-widest font-extrabold" style="color:${scentColor(p.collection)}">${p.collection}</div><div class="font-serif text-lg leading-tight">${p.name}</div><div class="font-extrabold text-sm mt-0.5">${formatINR(p.price)}</div></div></a>`;
+}
+const ALL=getCandles();
+document.getElementById('bestsellers').innerHTML=ALL.slice(0,8).map(richCard).join('');
+/* moments */
+const MOMENTS={morning:['Citrus','Fresh','Floral'],evening:['Woody','Warm'],party:['Woody','Citrus']};
+function renderMoments(k){
+  document.querySelectorAll('.mtab').forEach(b=>b.classList.toggle('on',b.dataset.moment===k));
+  document.getElementById('momentsGrid').innerHTML=ALL.filter(p=>MOMENTS[k].includes(p.collection)).slice(0,4).map(miniCard).join('');
+}
+document.querySelectorAll('.mtab').forEach(b=>b.addEventListener('click',()=>renderMoments(b.dataset.moment)));
+renderMoments('morning');
 
-/* quiz */
+/* breathing */
+let breathOn=false,breathT=[];
+function toggleBreath(){
+  const c=document.getElementById('breathCircle'),t=document.getElementById('breathText'),b=document.getElementById('breathBtn');
+  if(breathOn){breathOn=false;breathT.forEach(clearTimeout);breathT=[];c.classList.remove('breathing');c.textContent='ready?';t.textContent='Press begin · 4s in · 4s hold · 6s out';b.textContent='Begin 30s ritual →';return;}
+  breathOn=true;b.textContent='Stop ✕';c.classList.add('breathing');
+  const seq=[['breathe in…',4000],['hold…',4000],['let go…',6000]];
+  let i=0;(function next(){ if(!breathOn)return; const [txt,ms]=seq[i%3]; c.textContent=txt; t.textContent=`${txt} — follow the glow`; i++; breathT.push(setTimeout(next,ms)); })();
+  breathT.push(setTimeout(()=>{if(breathOn)toggleBreath();showToast('Beautifully slow','Now light your candle');},30000));
+}
+
+/* compare */
+function openCompare(){
+  const ids=getCompare(),list=ALL.filter(p=>ids.includes(p.id));
+  document.getElementById('compareGrid').innerHTML=list.length?list.map(p=>{const t=throwLevel(p);return `<div class="rounded-2xl p-4 text-center" style="border:1px solid #EDE0CC;background:#FFFBF1"><img src="${p.image}" class="w-full aspect-[3/4] object-cover arch-sm"><div class="font-serif text-2xl mt-2">${p.name}</div><div class="text-xs" style="color:#8A7D72">${p.scent}</div><div class="font-extrabold mt-1">${formatINR(p.price)}</div><div class="text-xs mt-1">Throw ${throwDots(t)}</div><div class="text-xs" style="color:#8A7D72">${p.burn} · ${p.size} · ★ ${p.rating}</div><button onclick="quickAdd(${p.id})" class="w-full mt-3 py-2.5 rounded-full text-xs font-bold text-white" style="background:#1A0E06">Add +</button></div>`;}).join(''):'<p class="text-sm col-span-3 text-center" style="color:#8A7D72">Tap ⇄ on cards to compare up to 3.</p>';
+  document.getElementById('compareModal').classList.remove('hidden');
+}
+
+/* tracking */
+function doTrack(){
+  const v=document.getElementById('trackInput').value,r=document.getElementById('trackResult'),found=trackOrder(v);
+  if(!found){r.innerHTML=`<div class="rounded-2xl p-4 text-sm" style="background:#FFF1DC">No order <b>${v}</b> found. Try #L-1842 (demo).</div>`;return;}
+  const steps=['Paid','Processing','Shipped','Delivered'],idx=steps.indexOf(found.status);
+  r.innerHTML=`<div class="rounded-2xl p-4" style="background:#FFF1DC"><b>${found.id}</b> · ${found.customer||found.name} · <b>${formatINR(found.total)}</b><div class="flex gap-1 mt-3">${steps.map((s,i)=>`<div style="flex:1;text-align:center"><div style="height:6px;border-radius:99px;background:${i<=idx?'#1A0E06':'#EDE0CC'}"></div><div style="font-size:10px;margin-top:4px;font-weight:${i===idx?'800':'400'}">${s}</div></div>`).join('')}</div><div class="text-xs mt-2" style="color:#8A7D72">Status: <b>${found.status}</b></div></div>`;
+}
+
+/* quiz 4 steps */
 const QUIZ=[
-  {q:'When do you burn?',opts:['Slow mornings ☀️|Citrus,Floral','Rainy evenings 🌧️|Woody,Warm','Party nights 🪩|Woody','Deep sleep 🌙|Floral,Fresh']},
-  {q:'Pick a craving?',opts:['Fresh-cut & green 🌿|Fresh','Warm & cosy 🍯|Warm','Deep & smoky 🪵|Woody','Bright & citrusy 🍋|Citrus,Floral']},
-  {q:'How strong?',opts:['Whisper — just a hint|soft','Hug — fills the room|medium','Statement — guests ask|strong']},
+  {q:'When do you burn?',opts:['Slow mornings ☀️|Citrus,Floral','Rainy evenings 🌧️|Woody,Warm','Celebrations 🪩|Woody,Citrus','Deep sleep 🌙|Floral,Fresh']},
+  {q:'Pick a craving?',opts:['Fresh & green 🌿|Fresh','Warm & cosy 🍯|Warm','Deep & smoky 🪵|Woody','Bright & citrusy 🍋|Citrus,Floral']},
+  {q:'Your room is…?',opts:['Small & cosy|soft','Medium living|medium','Big & airy|strong']},
+  {q:'How strong?',opts:['Whisper|soft','Hug — fills room|medium','Statement|strong']},
 ];
-let qi=0, qfam=[];
+let qi=0,qfam=[];
 function openQuiz(){qi=0;qfam=[];document.getElementById('quizResult').classList.add('hidden');document.getElementById('quizModal').classList.remove('hidden');renderQuiz();}
 function closeQuiz(){document.getElementById('quizModal').classList.add('hidden');}
 function renderQuiz(){
-  document.getElementById('quizStep').textContent=(qi+1)+'/3';
+  document.getElementById('quizBar').style.width=((qi+1)/QUIZ.length*100)+'%';
+  document.getElementById('quizStep').textContent=(qi+1)+'/'+QUIZ.length;
   document.getElementById('quizQ').textContent=QUIZ[qi].q;
-  document.getElementById('quizOpts').innerHTML=QUIZ[qi].opts.map((o,i)=>{
-    const label=o.split('|')[0];
-    return `<button onclick="answerQuiz(${i})" class="quiz-opt text-left px-5 py-3.5 rounded-2xl text-sm font-bold" style="border:1.5px solid #EDE0CC;background:#fff">${label}</button>`;
-  }).join('');
+  document.getElementById('quizOpts').innerHTML=QUIZ[qi].opts.map((o,i)=>`<button onclick="answerQuiz(${i})" class="text-left px-5 py-3.5 rounded-2xl text-sm font-bold bg-white hover:bg-black hover:text-white" style="border:1.5px solid #EDE0CC;transition:.25s">${o.split('|')[0]}</button>`).join('');
 }
 function answerQuiz(i){
-  const parts=QUIZ[qi].opts[i].split('|');
-  if(parts[1]) qfam.push(...parts[1].split(','));
+  qfam.push(...(QUIZ[qi].opts[i].split('|')[1]||'').split(','));
   qi++;
-  if(qi<QUIZ.length) renderQuiz();
+  if(qi<QUIZ.length)renderQuiz();
   else{
-    const counts={};qfam.forEach(f=>counts[f]=(counts[f]||0)+1);
-    const top=Object.entries(counts).sort((a,b)=>b[1]-a[1])[0]?.[0]||'Woody';
-    const picks=getCandles().filter(p=>p.collection===top).slice(0,2);
-    const hero=picks[0]||getCandles()[0];
+    const c={};qfam.forEach(f=>c[f]=(c[f]||0)+1);
+    const top=Object.entries(c).sort((a,b)=>b[1]-a[1])[0]?.[0]||'Woody';
+    const hero=ALL.find(p=>p.collection===top)||ALL[0];
+    const second=ALL.find(p=>p.collection===top&&p.id!==hero.id)||ALL[1];
     document.getElementById('quizOpts').innerHTML='';
     document.getElementById('quizQ').textContent='Your match ✦';
-    document.getElementById('quizStep').textContent='done';
-    const r=document.getElementById('quizResult');
-    r.classList.remove('hidden');
-    r.innerHTML=`<div class="rounded-3xl overflow-hidden" style="border:1px solid #EDE0CC"><img src="${hero.image}" class="w-full h-52 object-cover" alt=""><div class="p-5 bg-white"><div class="text-[11px] font-extrabold tracking-[0.25em] uppercase" style="color:#E4572E">${hero.collection} · ${hero.burn}</div><div class="font-serif text-3xl">${hero.name}</div><div class="text-sm opacity-60">${hero.scent}</div><div class="font-bold mt-1">${formatINR(hero.price)}</div><div class="grid grid-cols-2 gap-2 mt-4"><a href="product.html?id=${hero.id}" class="btn-ink py-3 rounded-full text-sm font-bold">View →</a><button onclick="quickAdd(${hero.id});closeQuiz()" class="py-3 rounded-full text-sm font-bold" style="background:#E4572E;color:#fff">Add +</button></div></div></div><button onclick="openQuiz()" class="text-xs font-bold underline underline-offset-4 mt-3 opacity-60">Retake quiz</button>`;
+    document.getElementById('quizStep').textContent='done';document.getElementById('quizBar').style.width='100%';
+    const r=document.getElementById('quizResult');r.classList.remove('hidden');
+    r.innerHTML=`<div class="rounded-3xl overflow-hidden text-left" style="border:1px solid #EDE0CC"><img src="${hero.image}" class="w-full h-48 object-cover"><div class="p-5 bg-white"><div class="text-[11px] font-extrabold tracking-[0.2em] uppercase" style="color:#E4572E">${hero.collection} · ${hero.burn}</div><div class="font-serif text-3xl">${hero.name}</div><div class="text-sm" style="color:#8A7D72">${hero.scent}</div><div class="font-bold mt-1">${formatINR(hero.price)}</div><div class="grid grid-cols-2 gap-2 mt-3"><a href="product.html?id=${hero.id}" class="btn-ink py-3 rounded-full text-sm font-bold text-center">View →</a><button onclick="quickAdd(${hero.id});closeQuiz()" class="py-3 rounded-full text-sm font-bold text-white" style="background:#E4572E">Add +</button></div><a href="product.html?id=${second.id}" class="block text-xs mt-3 underline underline-offset-4" style="color:#8A7D72">Also lovely: ${second.name} →</a></div></div>`;
   }
 }
 </script>
