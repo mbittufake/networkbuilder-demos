@@ -28,12 +28,12 @@ function getCandles(){
   }catch(e){}
   return CANDLE_PRODUCTS;
 }
-function saveCandles(l){ localStorage.setItem('lume_products',JSON.stringify(l)); }
+function saveCandles(l){ try{localStorage.setItem('lume_products',JSON.stringify(l));}catch(e){} }
 function resetCandles(){ localStorage.removeItem('lume_products'); return CANDLE_PRODUCTS; }
 
 /* cart */
 function getCart(){ try{return JSON.parse(localStorage.getItem('lume_cart')||'[]');}catch(e){return[];} }
-function saveCart(c){ localStorage.setItem('lume_cart',JSON.stringify(c)); updateCartCount(); }
+function saveCart(c){ try{localStorage.setItem('lume_cart',JSON.stringify(c));}catch(e){} updateCartCount(); }
 function addToCart(product,opts={}){
   const qty=opts.qty||1, cart=getCart(), key=opts.key||`${product.id}`;
   const ex=cart.find(i=>i.key===key);
@@ -52,7 +52,7 @@ function discountPct(m,p){ if(!m||m<=p)return 0; return Math.round((1-p/m)*100);
 
 /* wishlist */
 function getWishlist(){ try{return JSON.parse(localStorage.getItem('lume_wishlist')||'[]');}catch(e){return[];} }
-function saveWishlist(w){ localStorage.setItem('lume_wishlist',JSON.stringify(w)); updateWishlistCount(); }
+function saveWishlist(w){ try{localStorage.setItem('lume_wishlist',JSON.stringify(w));}catch(e){} updateWishlistCount(); }
 function toggleWishlist(id){
   id=Number(id); let w=getWishlist();
   if(w.includes(id))w=w.filter(x=>x!==id); else w.push(id);
@@ -167,7 +167,7 @@ function getCustomOrders(){
     { id:'CU-4019', name:'Corporate — Niraya', vessel:'Matte Black', size:'220g', scent:'Tobacco & Honey', qty:80, total:111200, status:'Shipped', date:'2026-05-06', note:'Bulk gifting' },
   ];
 }
-function saveCustomOrders(l){ localStorage.setItem('lume_custom',JSON.stringify(l)); }
+function saveCustomOrders(l){ try{localStorage.setItem('lume_custom',JSON.stringify(l));}catch(e){} }
 function getOrders(){
   try{ const s=localStorage.getItem('lume_orders'); if(s)return JSON.parse(s);}catch(e){}
   return [
@@ -177,7 +177,7 @@ function getOrders(){
     { id:'#L-1839', customer:'Arjun Patel', email:'arjun.p@gmail.com', total:5280, items:4, status:'Delivered', date:'2026-05-08' },
   ];
 }
-function saveOrders(l){ localStorage.setItem('lume_orders',JSON.stringify(l)); }
+function saveOrders(l){ try{localStorage.setItem('lume_orders',JSON.stringify(l));}catch(e){} }
 
 /* search + drawers */
 function openSearch(){ const el=document.getElementById('searchOverlay'); if(!el){location.href='shop.html';return;} el.classList.remove('hidden'); document.body.style.overflow='hidden'; renderSearchResults(''); setTimeout(()=>document.getElementById('searchInput')?.focus(),60); }
