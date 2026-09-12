@@ -3,14 +3,56 @@
 <head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Custom Atelier — LUME · House of Slow Light</title>
-<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="site.css">
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500&family=Manrope:wght@400;500;600;700;800&family=Caveat:wght@500;600&display=swap" rel="stylesheet">
-<script>tailwind.config={theme:{extend:{fontFamily:{serif:['Fraunces','serif'],sans:['Manrope','sans-serif'],hand:['Caveat','cursive']},colors:{paper:'#FFFBF1',cream:'#FFF1DC',ink:'#1A0E06',ember:'#E4572E',gold:'#C99A3F',line:'#EDE0CC'}}}}}</script>
 <style>body{background:#FFFBF1;color:#1A0E06;font-family:Manrope,sans-serif}::selection{background:#E4572E;color:#fff}.btn-ink{background:#1A0E06;color:#FFFBF1;transition:.3s}.btn-ink:hover{background:#E4572E}.opt{transition:.22s;cursor:pointer}.opt:hover{border-color:#E4572E!important}.opt.on{border-color:#1A0E06!important;box-shadow:0 0 0 2px rgba(26,14,6,.12)}.opt.on-amber{border-color:#E4572E!important;box-shadow:0 0 0 2px rgba(228,87,46,.2);background:rgba(228,87,46,.06)!important}@keyframes flick{0%,100%{transform:scale(1) rotate(-2deg)}25%{transform:scale(1.1) rotate(2deg)}50%{transform:scale(.92)}75%{transform:scale(1.05)}}.flame{animation:flick 1.8s ease-in-out infinite;transform-origin:50% 90%}@keyframes glowPulse{0%,100%{opacity:.65}50%{opacity:1}}.candle-glow{animation:glowPulse 2.4s ease-in-out infinite}@keyframes smoke{0%{transform:translateY(0) scaleX(1);opacity:0}20%{opacity:.5}100%{transform:translateY(-70px) scaleX(2);opacity:0}}.smoke{animation:smoke 3.5s ease-out infinite}input[type=range]{accent-color:#E4572E}input:focus,textarea:focus{outline:none}.tier.on{background:#1A0E06!important;color:#FFFBF1!important}</style>
 </head>
 <body>
 <div class="text-center text-[11px] tracking-[0.22em] uppercase py-2.5 px-4" style="background:#1A0E06;color:#FFFBF1"><span id="announceText">Custom atelier · From 6 pcs · 3-day making</span></div>
-<div class="sticky top-3 z-40 px-3 md:px-6" style="padding-top:5px"><header class="max-w-6xl mx-auto flex items-center justify-between gap-3 pl-5 pr-2 py-2 rounded-full" style="background:rgba(255,251,241,.9);backdrop-filter:blur(18px);border:1px solid #EDE0CC"><a href="index.html" class="flex items-center gap-2"><span class="w-9 h-9 rounded-full flex items-center justify-center text-white" style="background:radial-gradient(circle at 50% 70%,#F2D48A,#E4572E 65%,#B63A17)">✦</span><span class="font-serif text-[22px]">Lume<span style="color:#E4572E">.</span></span></a><nav class="hidden md:flex gap-7 text-[13.5px] font-semibold"><a href="shop.html">Shop</a><a href="shop.html?col=Woody" class="hover:text-[#E4572E]">Woody</a><a href="shop.html?col=Floral" class="hover:text-[#E4572E]">Floral</a><a href="admin/index.html" title="Demo admin panel — open access, no login needed">Admin <span class="text-[9px] font-extrabold px-1.5 py-0.5 rounded-full align-middle" style="background:rgba(228,87,46,.12);color:#E4572E">DEMO</span></a><a href="custom.html" class="font-extrabold" style="color:#E4572E">Custom</a></nav><div class="flex gap-2"><button onclick="openSearch()" class="w-10 h-10 rounded-full" style="border:1px solid #EDE0CC">⌕</button><button onclick="openCartDrawer()" class="btn-ink rounded-full pl-4 pr-1.5 py-1.5 text-sm font-bold flex items-center gap-2">Bag · <span id="hdrCart">0</span><span class="w-8 h-8 rounded-full text-white flex items-center justify-center" style="background:#E4572E">→</span></button><span data-cart-count class="hidden">0</span><span data-wishlist-count class="hidden">0</span><button id="mobileMenuBtn" class="md:hidden w-10 h-10 rounded-full" style="border:1px solid #EDE0CC">≡</button></div></header><div id="mobileMenu" class="hidden max-w-6xl mx-auto mt-2 rounded-3xl p-4 text-sm font-semibold text-white" style="background:#1A0E06"><a href="shop.html" class="block p-3">Shop</a><a href="admin/index.html" class="block p-3" style="border:1px dashed rgba(228,87,46,.7);border-radius:16px;margin-top:4px">🛠 Admin panel <span class="text-[9px] font-extrabold px-1.5 py-0.5 rounded-full" style="background:#E4572E">DEMO</span></a></div></div>
+<div class="sticky top-3 z-40 px-3 md:px-6" style="padding-top:5px">
+<header class="max-w-6xl mx-auto flex items-center justify-between gap-3 pl-5 pr-2 py-2 rounded-full" style="background:rgba(255,251,241,.92);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border:1px solid #EDE0CC;box-shadow:0 14px 44px -14px rgba(26,14,6,.22)">
+<a href="index.html" class="flex items-center gap-2"><span class="w-9 h-9 rounded-full flex items-center justify-center text-lg text-white flame" style="background:radial-gradient(circle at 50% 70%,#F2D48A,#E4572E 65%,#B63A17)">✦</span><span class="font-serif text-[22px]">Lume<span style="color:#E4572E">.</span></span><span class="hidden sm:inline text-[10px] font-extrabold tracking-[0.2em] uppercase px-2 py-1 rounded-full" style="background:#FFF1DC;border:1px solid #EDE0CC">Jaipur</span></a>
+<nav class="hidden md:flex items-center gap-7 text-[13.5px] font-semibold"><a href="shop.html" data-nav="shop" class="hover:text-[#E4572E]">Shop</a><a href="shop.html?col=Woody" data-nav="Woody" class="hover:text-[#E4572E]">Woody</a><a href="shop.html?col=Floral" data-nav="Floral" class="hover:text-[#E4572E]">Floral</a><a href="admin/index.html" class="hover:text-[#E4572E]" title="Demo admin panel — open access, no login needed">Admin <span class="text-[9px] font-extrabold px-1.5 py-0.5 rounded-full align-middle" style="background:rgba(228,87,46,.12);color:#E4572E">DEMO</span></a><a href="custom.html" data-nav="custom" class="px-4 py-2 rounded-full text-white btn-ember magnet">Custom ✦</a></nav>
+<div class="flex items-center gap-2">
+<button onclick="openSearch()" class="w-10 h-10 rounded-full hover:border-[#E4572E]" style="border:1px solid #EDE0CC" aria-label="Search">⌕</button>
+<button onclick="openWishDrawer()" class="relative w-10 h-10 rounded-full flex items-center justify-center hover:border-[#E4572E]" style="border:1px solid #EDE0CC" aria-label="Wishlist">♡<span id="hdrWish" data-wishlist-count class="hidden absolute -top-1 -right-1 w-5 h-5 rounded-full text-[10px] font-bold text-white flex items-center justify-center" style="background:#E4572E">0</span></button>
+<button onclick="openCartDrawer()" class="btn-ink rounded-full pl-4 pr-1.5 py-1.5 text-sm font-bold flex items-center gap-2 magnet" aria-label="Cart">Bag · <span id="hdrCart">0</span><span class="w-8 h-8 rounded-full flex items-center justify-center text-white" style="background:#E4572E">→</span></button>
+<span data-cart-count class="hidden">0</span>
+<button id="mobileMenuBtn" class="md:hidden w-10 h-10 rounded-full flex items-center justify-center hover:border-[#E4572E]" style="border:1px solid #EDE0CC" aria-label="Open menu">≡</button>
+</div></header>
+</div>
+
+<!-- Mobile Navigation Drawer -->
+<div id="mobileMenuBackdrop" class="mobile-nav-backdrop"></div>
+<div id="mobileMenuDrawer" class="mobile-nav-drawer p-6 text-sm font-semibold">
+  <div class="flex items-center justify-between pb-5" style="border-bottom:1px solid #EDE0CC">
+    <a href="index.html" class="flex items-center gap-2">
+      <span class="w-8 h-8 rounded-full flex items-center justify-center text-sm text-white" style="background:radial-gradient(circle at 50% 70%,#F2D48A,#E4572E 65%,#B63A17)">✦</span>
+      <span class="font-serif text-xl">Lume<span style="color:#E4572E">.</span></span>
+      <span class="text-[9px] font-extrabold tracking-widest uppercase px-2 py-0.5 rounded-full" style="background:#FFF1DC;border:1px solid #EDE0CC">Jaipur</span>
+    </a>
+    <button id="mobileMenuCloseBtn" class="w-9 h-9 rounded-full flex items-center justify-center text-lg" style="border:1px solid #EDE0CC" aria-label="Close menu">×</button>
+  </div>
+  <div class="py-4 space-y-1">
+    <div class="text-[10px] uppercase font-extrabold tracking-[0.2em] px-3 py-1" style="color:#8A7D72">Discover</div>
+    <a href="index.html" class="block px-3 py-2.5 rounded-xl hover:bg-white font-medium">Home</a>
+    <a href="shop.html" class="block px-3 py-2.5 rounded-xl hover:bg-white font-medium">Shop All Twelve</a>
+    <a href="cart.html" class="block px-3 py-2.5 rounded-xl hover:bg-white font-medium">Your Ritual Bag (<span data-cart-count>0</span>)</a>
+    <a href="custom.html" class="block px-3 py-2.5 rounded-xl text-white font-bold" style="background:#E4572E">Custom Atelier ✦</a>
+  </div>
+  <div class="py-3 space-y-1" style="border-top:1px solid #EDE0CC">
+    <div class="text-[10px] uppercase font-extrabold tracking-[0.2em] px-3 py-1" style="color:#8A7D72">Scent Families</div>
+    <a href="shop.html?col=Woody" class="block px-3 py-2 rounded-xl text-xs hover:bg-white">🪵 Woody (Cedar, Oud, Amber)</a>
+    <a href="shop.html?col=Floral" class="block px-3 py-2 rounded-xl text-xs hover:bg-white">🌸 Floral (Lavender, Sakura)</a>
+    <a href="shop.html?col=Fresh" class="block px-3 py-2 rounded-xl text-xs hover:bg-white">🍃 Fresh (Sea Salt, Jasmine)</a>
+    <a href="shop.html?col=Warm" class="block px-3 py-2 rounded-xl text-xs hover:bg-white">✨ Warm (Vanilla, Cardamom)</a>
+  </div>
+  <div class="pt-4 mt-auto" style="border-top:1px solid #EDE0CC">
+    <a href="admin/index.html" class="block p-3 text-center rounded-2xl font-bold text-xs hover:bg-white" style="border:1.5px dashed rgba(228,87,46,.7);color:#E4572E">
+      🛠 Store Admin Panel <span class="text-[9px] font-extrabold px-1.5 py-0.5 rounded-full ml-1 text-white" style="background:#E4572E">DEMO</span>
+    </a>
+  </div>
+</div>
 
 <div class="max-w-6xl mx-auto px-4 md:px-6 pt-8">
 <div class="text-xs" style="color:#8A7D72"><a href="index.html">Home</a> / <b class="text-black">Custom atelier</b></div>
@@ -39,10 +81,53 @@
 <div class="grid grid-cols-2 gap-2 mt-2"><button onclick="saveQuote()" class="py-3 rounded-full text-sm font-bold bg-white/10" style="border:1px solid rgba(255,255,255,.15)">Copy quote</button><button onclick="shareWA()" class="py-3 rounded-full text-sm font-bold bg-white/10" style="border:1px solid rgba(255,255,255,.15)">WhatsApp →</button></div></div>
 </div></div></div>
 <footer class="mt-16 text-white" style="background:#1A0E06"><div class="max-w-6xl mx-auto px-4 py-8 flex flex-wrap gap-3 items-center justify-center"><a href="admin/index.html" class="text-xs font-bold px-4 py-2 rounded-full" style="border:1px dashed rgba(228,87,46,.7);color:#F2D48A" title="Demo admin panel — open access, no login needed">🛠 Admin panel · Demo →</a></div><p class="text-center text-xs pb-8" style="color:#8A7D72">© 2026 Lume</p></footer>
-<div id="searchOverlay" class="hidden fixed inset-0 z-[60]" style="background:rgba(255,251,241,.97)"><div class="max-w-xl mx-auto px-5 pt-14"><input id="searchInput" oninput="renderSearchResults(this.value)" placeholder="Fig, oud…" class="w-full bg-transparent py-4 font-serif text-3xl" style="border-bottom:2px solid #E4572E"><div id="searchLabel"></div><div id="searchResults" class="max-h-[60vh] overflow-auto"></div></div></div>
-<div id="cartDrawer" class="hidden fixed inset-0 z-[60]"><div class="absolute inset-0" style="background:rgba(26,14,6,.5)" onclick="closeCartDrawer()"></div><div class="absolute bottom-0 md:right-0 md:top-0 w-full md:max-w-md flex flex-col max-h-[94vh]" style="background:#FFFBF1"><div class="px-6 pt-3 text-xs"><div id="shipBar" style="height:6px;background:#EDE0CC;border-radius:99px"></div><div id="shipMsg" style="color:#8A7D72"></div><span id="cartDrawerCountLabel"></span><span id="cartDrawerSubtotal"></span></div><div id="cartDrawerItems" class="flex-1 overflow-auto px-6"></div><div id="cartDrawerFooter" class="hidden p-6 bg-white"><a href="cart.html" class="btn-ink block text-center py-4 rounded-full font-bold">Checkout →</a></div></div></div>
-<div id="wishDrawer" class="hidden fixed inset-0 z-[60]"><div id="wishDrawerItems"></div></div>
-<script src="app.js"></script>
+<div id="searchOverlay" class="hidden fixed inset-0 z-[70]" style="background:rgba(255,251,241,.98);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)">
+  <div class="max-w-xl mx-auto px-5 pt-12">
+    <div class="flex justify-between items-center pb-2" style="border-bottom:1px solid #EDE0CC">
+      <span class="text-xs uppercase tracking-widest font-extrabold" style="color:#8A7D72">Search scents & collections</span>
+      <button onclick="closeSearch()" class="w-9 h-9 rounded-full flex items-center justify-center text-lg hover:border-[#E4572E]" style="border:1px solid #EDE0CC" aria-label="Close search">×</button>
+    </div>
+    <input id="searchInput" oninput="renderSearchResults(this.value)" placeholder="Fig, oud, fresh, warm…" class="w-full bg-transparent py-4 font-serif text-3xl outline-none" style="border-bottom:2px solid #E4572E">
+    <div id="searchLabel" class="text-xs mt-3 uppercase tracking-wider font-extrabold" style="color:#8A7D72"></div>
+    <div id="searchResults" class="max-h-[60vh] overflow-auto mt-2 space-y-1"></div>
+  </div>
+</div>
+
+<div id="cartDrawer" class="hidden fixed inset-0 z-[70]">
+  <div class="absolute inset-0" style="background:rgba(26,14,6,.5)" onclick="closeCartDrawer()"></div>
+  <div class="absolute bottom-0 md:right-0 md:top-0 w-full md:max-w-md flex flex-col max-h-[94vh] rounded-t-[28px] md:rounded-none overflow-hidden bg-white" style="background:#FFFBF1">
+    <div class="px-6 py-5 flex justify-between items-center" style="border-bottom:1px solid #EDE0CC">
+      <span class="font-serif text-xl">Your ritual <span id="cartDrawerCountLabel" class="text-sm font-normal" style="color:#8A7D72"></span></span>
+      <button onclick="closeCartDrawer()" class="w-9 h-9 rounded-full flex items-center justify-center text-lg" style="border:1px solid #EDE0CC" aria-label="Close cart">×</button>
+    </div>
+    <div class="px-6 pt-4">
+      <div class="h-1.5 rounded-full overflow-hidden" style="background:#EDE0CC">
+        <div id="shipBar" class="h-full rounded-full" style="width:0%;background:linear-gradient(90deg,#C99A3F,#E4572E);transition:width .4s"></div>
+      </div>
+      <div id="shipMsg" class="text-xs mt-2" style="color:#6B6560"></div>
+    </div>
+    <div id="cartDrawerItems" class="flex-1 overflow-auto px-6 py-2"></div>
+    <div id="cartDrawerFooter" class="hidden p-6 bg-white" style="border-top:1px solid #EDE0CC">
+      <div class="flex justify-between text-sm">
+        <span style="color:#8A7D72">Subtotal</span>
+        <span id="cartDrawerSubtotal" class="font-extrabold text-lg" style="color:#E4572E"></span>
+      </div>
+      <a href="cart.html" class="btn-ink mt-4 block text-center py-4 rounded-full font-bold magnet">Checkout →</a>
+    </div>
+  </div>
+</div>
+
+<div id="wishDrawer" class="hidden fixed inset-0 z-[70]">
+  <div class="absolute inset-0" style="background:rgba(26,14,6,.5)" onclick="closeWishDrawer()"></div>
+  <div class="absolute bottom-0 md:right-0 md:top-0 w-full md:max-w-md flex flex-col max-h-[94vh] rounded-t-[28px] md:rounded-none overflow-hidden bg-white" style="background:#FFFBF1">
+    <div class="px-6 py-5 flex justify-between items-center" style="border-bottom:1px solid #EDE0CC">
+      <span class="font-serif text-xl">Wishlist ♡</span>
+      <button onclick="closeWishDrawer()" class="w-9 h-9 rounded-full flex items-center justify-center text-lg" style="border:1px solid #EDE0CC" aria-label="Close wishlist">×</button>
+    </div>
+    <div id="wishDrawerItems" class="flex-1 overflow-auto px-6 py-2"></div>
+  </div>
+</div>
+<script src="app.js?v=3"></script>
 <script>
 const vessels=[{id:'cream',name:'Cream Ceramic',price:0,color:'#FFF8EC',rim:'#E7DCC6'},{id:'amber',name:'Amber Glass',price:0,color:'#C86B3C',rim:'#8f3f17'},{id:'black',name:'Matte Black',price:80,color:'#241812',rim:'#000'},{id:'terra',name:'Terracotta',price:100,color:'#B85C38',rim:'#7e3a20'}];
 const sizes=[{id:'120g',name:'120g',burn:'25h',price:990},{id:'180g',name:'180g',burn:'45h',price:1290},{id:'220g',name:'220g',burn:'50h',price:1490},{id:'300g',name:'300g',burn:'60h',price:1690}];

@@ -3,22 +3,37 @@
 <head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Candles — LUME Studio</title>
-<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="../site.css">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet">
-<script>tailwind.config={theme:{extend:{fontFamily:{serif:['Fraunces','serif'],sans:['Manrope','sans-serif']},colors:{paper:'#FFFBF1',cream:'#FFF1DC',ink:'#1A0E06',ember:'#E4572E',gold:'#C99A3F',line:'#EDE0CC'}}}}</script>
 <style>body{background:#FFFBF1;color:#1A0E06;font-family:Manrope,sans-serif}.navA{background:#FFFFFF!important;color:#1A0E06!important;font-weight:800}</style>
 </head>
 <body>
 <div class="flex min-h-screen">
 <aside class="hidden lg:flex w-[260px] flex-col sticky top-0 h-screen text-white" style="background:#1A0E06">
-  <div class="px-6 py-6" style="border-bottom:1px solid rgba(255,255,255,.1)"><a href="../index.html" class="flex items-center gap-2"><span class="w-9 h-9 rounded-full flex items-center justify-center" style="background:radial-gradient(circle at 50% 70%,#F2D48A,#E4572E 65%,#B63A17)">✦</span><span class="font-serif text-xl">Lume.</span><span class="text-[10px] font-extrabold px-2 py-1 rounded-full bg-white/10">STUDIO</span></a><span class="text-[9px] font-extrabold px-2 py-1 rounded-full text-white" style="background:#E4572E">DEMO · NO LOGIN</span></div>
-  <nav class="flex-1 px-3 py-4 space-y-1 text-sm font-semibold"><a href="index.html" class="flex px-4 py-3 rounded-2xl text-white/70 hover:bg-white/10">◍ Dashboard</a><a href="products.html" class="navA flex px-4 py-3 rounded-2xl">🕯️ Candles</a><a href="custom-orders.html" class="flex px-4 py-3 rounded-2xl text-white/70 hover:bg-white/10">✦ Custom</a><a href="orders.html" class="flex px-4 py-3 rounded-2xl text-white/70 hover:bg-white/10">▤ Orders</a><div class="pt-4 mt-4" style="border-top:1px solid rgba(255,255,255,.1)"><a href="../index.html" class="flex px-4 py-2 text-white/60 text-[13px]">← View store</a></div></nav>
+  <div class="px-6 py-6" style="border-bottom:1px solid rgba(255,255,255,.1)"><a href="../index.html" class="flex items-center gap-2"><span class="w-9 h-9 rounded-full flex items-center justify-center text-lg" style="background:radial-gradient(circle at 50% 70%,#F2D48A,#E4572E 65%,#B63A17)">✦</span><span class="font-serif text-xl">Lume.</span><span class="text-[10px] font-extrabold px-2 py-1 rounded-full bg-white/10">STUDIO</span></a><div class="mt-3"><span class="text-[9px] font-extrabold px-2 py-1 rounded-full text-white" style="background:#E4572E">DEMO · NO LOGIN</span></div><div class="text-[11px] opacity-50 mt-1">House of Slow Light · Admin</div></div>
+  <nav class="flex-1 px-3 py-4 space-y-1 text-sm font-semibold">
+    <a href="index.html" class="flex items-center gap-3 px-4 py-3 rounded-2xl text-white/70 hover:bg-white/10">◍ Dashboard</a>
+    <a href="products.html" class="navA flex items-center gap-3 px-4 py-3 rounded-2xl">🕯️ Candles</a>
+    <a href="custom-orders.html" class="flex items-center gap-3 px-4 py-3 rounded-2xl text-white/70 hover:bg-white/10">✦ Custom <span class="ml-auto text-[11px] font-extrabold px-2 py-0.5 rounded-full" style="background:#E4572E" id="navCus"></span></a>
+    <a href="orders.html" class="flex items-center gap-3 px-4 py-3 rounded-2xl text-white/70 hover:bg-white/10">▤ Orders</a>
+    <div class="pt-4 mt-4" style="border-top:1px solid rgba(255,255,255,.1)"><a href="../index.html" class="flex px-4 py-2 text-white/60 text-[13px]">← View store</a><a href="../custom.html" class="flex px-4 py-2 text-[13px] font-bold" style="color:#F2D48A">Custom builder →</a></div>
+  </nav>
+  <div class="p-4" style="border-top:1px solid rgba(255,255,255,.1)"><div class="rounded-2xl p-4 bg-white/5"><div class="text-sm font-bold">Demo data</div><div class="text-xs opacity-50">localStorage · safe to reset</div><button onclick="if(confirm('Reset demo data?')){localStorage.clear();location.reload()}" class="mt-3 w-full py-2 rounded-full text-xs font-extrabold" style="background:#FFFFFF;color:#1A0E06">Reset demo</button></div></div>
 </aside>
 <div class="flex-1 min-w-0">
-<div class="lg:hidden px-4 py-2 text-[12px] font-bold flex items-center gap-2" style="background:#FFF1DC;border-bottom:1px solid #EDE0CC"><span class="px-2 py-0.5 rounded-full text-white text-[10px]" style="background:#E4572E">DEMO</span> Open preview — no login · <a href="../index.html" class="underline underline-offset-2">Store →</a></div>
-<div class="hidden lg:block px-8 py-2 text-[12px] font-semibold" style="background:#FFF1DC;border-bottom:1px solid #EDE0CC;color:#8A7D72">Demo admin — open access, no login needed · <a href="../index.html" class="underline underline-offset-2" style="color:#E4572E">← Back to store</a></div>
-<header class="sticky top-0 z-10 bg-white/90" style="border-bottom:1px solid #EDE0CC;backdrop-filter:blur(10px)"><div class="px-4 lg:px-8 h-[64px] flex items-center justify-between"><h1 class="font-serif text-2xl">Candles <span id="count" class="text-sm opacity-50"></span></h1><div class="flex gap-2"><button onclick="resetCandles();render();showToast('Catalogue reset')" class="hidden sm:inline-flex px-4 py-2 rounded-full text-sm font-bold" style="border:1px solid #EDE0CC">Reset</button><button onclick="openModal()" class="px-5 py-2 rounded-full text-sm font-bold text-white" style="background:#1A0E06">+ Add candle</button></div></div></header>
-<nav class="lg:hidden flex gap-2 px-4 py-3 overflow-auto" style="background:#FFFBF1;border-bottom:1px solid #EDE0CC"><a href="index.html" class="px-4 py-2 rounded-full text-[13px] font-bold whitespace-nowrap" style="background:#fff;border:1px solid #EDE0CC">◍ Dashboard</a><a href="products.html" class="px-4 py-2 rounded-full text-[13px] font-bold whitespace-nowrap" style="background:#1A0E06;color:#FFFBF1">🕯️ Candles</a><a href="custom-orders.html" class="px-4 py-2 rounded-full text-[13px] font-bold whitespace-nowrap" style="background:#fff;border:1px solid #EDE0CC">✦ Custom</a><a href="orders.html" class="px-4 py-2 rounded-full text-[13px] font-bold whitespace-nowrap" style="background:#fff;border:1px solid #EDE0CC">▤ Orders</a><a href="../index.html" class="px-4 py-2 rounded-full text-[13px] font-bold whitespace-nowrap" style="border:1px dashed rgba(228,87,46,.6);color:#E4572E">← Store</a></nav>
+<div class="lg:hidden px-4 py-2 text-[12px] font-bold flex items-center justify-between gap-2" style="background:#FFF1DC;border-bottom:1px solid #EDE0CC">
+  <div class="flex items-center gap-1.5"><span class="px-2 py-0.5 rounded-full text-white text-[10px]" style="background:#E4572E">DEMO</span> Open preview · No login needed</div>
+  <a href="../index.html" class="text-xs font-extrabold underline underline-offset-2" style="color:#E4572E">Store →</a>
+</div>
+<div class="hidden lg:block px-8 py-2 text-[12px] font-semibold" style="background:#FFF1DC;border-bottom:1px solid #EDE0CC;color:#8A7D72">Demo admin — open access, no login needed · <a href="../index.html" class="underline underline-offset-2 font-bold" style="color:#E4572E">← Back to store</a></div>
+<header class="sticky top-0 z-10 bg-white/90" style="border-bottom:1px solid #EDE0CC;backdrop-filter:blur(10px)"><div class="px-4 lg:px-8 h-[64px] flex items-center justify-between"><div class="flex items-center gap-3"><a href="../index.html" class="lg:hidden w-9 h-9 rounded-full flex items-center justify-center font-serif text-sm text-white" style="background:#1A0E06" title="Back to store">✦</a><h1 class="font-serif text-xl sm:text-2xl">Candles <span id="count" class="text-sm opacity-50 font-sans"></span></h1></div><div class="flex gap-2"><button onclick="resetCandles();render();showToast('Catalogue reset')" class="hidden sm:inline-flex px-4 py-2 rounded-full text-sm font-bold" style="border:1px solid #EDE0CC">Reset</button><button onclick="openModal()" class="px-4 sm:px-5 py-2 rounded-full text-xs sm:text-sm font-bold text-white" style="background:#1A0E06">+ Add candle</button></div></div></header>
+<nav class="lg:hidden admin-mobile-tabs no-scrollbar">
+  <a href="index.html" class="admin-tab-link">◍ Dashboard</a>
+  <a href="products.html" class="admin-tab-link active">🕯️ Candles</a>
+  <a href="custom-orders.html" class="admin-tab-link">✦ Custom <span class="ml-1 text-[10px] px-1.5 py-0.5 rounded-full text-white bg-[#E4572E]" id="mobNavCus"></span></a>
+  <a href="orders.html" class="admin-tab-link">▤ Orders</a>
+  <a href="../index.html" class="admin-tab-link" style="border:1px dashed rgba(228,87,46,.6);color:#E4572E">← Store</a>
+</nav>
 <main class="px-4 lg:px-8 py-6 max-w-6xl">
   <div class="rounded-2xl bg-white p-4 flex flex-col lg:flex-row gap-3" style="border:1px solid #EDE0CC">
     <div class="flex-1 flex items-center gap-2 rounded-full px-4 py-2.5" style="border:1px solid #EDE0CC;background:#FFFFFF"><span>⌕</span><input id="search" placeholder="Search scent, collection…" class="flex-1 outline-none text-sm bg-transparent" oninput="render()"></div>
@@ -40,7 +55,7 @@
 <div class="grid grid-cols-2 gap-3"><div><label class="text-[11px] font-extrabold uppercase tracking-widest opacity-50">Badge (optional)</label><input id="fBadge" placeholder="Bestseller / New" class="mt-1 w-full rounded-xl px-3 py-2.5 text-sm" style="border:1px solid #EDE0CC"></div><div><label class="text-[11px] font-extrabold uppercase tracking-widest opacity-50">Size</label><input id="fSize" placeholder="180g" value="180g" class="mt-1 w-full rounded-xl px-3 py-2.5 text-sm" style="border:1px solid #EDE0CC"></div></div>
 <div><label class="text-[11px] font-extrabold uppercase tracking-widest opacity-50">Story</label><textarea id="fDesc" rows="2" class="mt-1 w-full rounded-xl px-3 py-2.5 text-sm" style="border:1px solid #EDE0CC"></textarea></div>
 <button class="w-full py-3 rounded-full font-bold text-white" style="background:#1A0E06">Save candle →</button></form></div></div>
-<script src="../app.js"></script>
+<script src="../app.js?v=3"></script>
 <script>
 function render(){
   let list=[...getCandles()];
@@ -67,6 +82,7 @@ function edit(id){openModal(id);}
 function del(id){if(!confirm('Delete this candle?'))return;saveCandles(getCandles().filter(p=>p.id!==id));render();showToast('Deleted');}
 function save(e){e.preventDefault();const id=document.getElementById('editId').value;const data={name:document.getElementById('fName').value.trim(),collection:document.getElementById('fCol').value,price:Number(document.getElementById('fPrice').value),mrp:Number(document.getElementById('fMrp').value),burn:document.getElementById('fBurn').value||'45h',scent:document.getElementById('fScent').value||'Signature blend',image:document.getElementById('fImg').value.trim()||FALLBACK_IMG,badge:document.getElementById('fBadge').value.trim()||null,size:document.getElementById('fSize').value||'180g',desc:document.getElementById('fDesc').value.trim()||'Hand-poured soy candle.',rating:4.8,reviews:60+Math.floor(Math.random()*120)};let list=getCandles();if(id){list=list.map(p=>p.id===Number(id)?{...p,...data}:p);showToast('Updated ✓');}else{const nid=Math.max(...list.map(p=>p.id))+1;const fresh=CANDLE_PRODUCTS.find(c=>c.id===nid%12+1);list.push({id:nid,...data,notes:fresh?.notes,mood:fresh?.mood});showToast('Added ✓');}saveCandles(list);closeModal();render();}
 render();
+try{const cLen=getCustomOrders().length;if(document.getElementById('navCus'))document.getElementById('navCus').textContent=cLen;if(document.getElementById('mobNavCus'))document.getElementById('mobNavCus').textContent=cLen;}catch(e){}
 </script>
 </body>
 </html>

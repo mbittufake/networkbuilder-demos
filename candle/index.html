@@ -4,16 +4,15 @@
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>LUME — House of Slow Light · Hand-Poured Soy Candles</title>
 <meta name="description" content="Twelve small-batch soy candles + custom atelier. Poured in Jaipur, cured 72 hours. Light the evening, love the room.">
-<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="site.css">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,300;1,9..144,400;1,9..144,500&family=Manrope:wght@400;500;600;700;800&family=Caveat:wght@500;600;700&display=swap" rel="stylesheet">
-<script>tailwind.config={theme:{extend:{fontFamily:{serif:['Fraunces','serif'],sans:['Manrope','sans-serif'],hand:['Caveat','cursive']},colors:{paper:'#FFFBF1',cream:'#FFF1DC',ink:'#1A0E06',ember:'#E4572E',emberdark:'#B63A17',gold:'#C99A3F',goldlight:'#F2D48A',moss:'#6B704E',blush:'#F9DCC4',smoke:'#8A7D72',line:'#EDE0CC'}}}}}</script>
 <style>
 html{-webkit-font-smoothing:antialiased}body{background:#FFFBF1;color:#1A0E06;font-family:Manrope,sans-serif;overflow-x:clip}
 ::selection{background:#E4572E;color:#fff}
 .grain:after{content:"";position:fixed;inset:0;z-index:5;pointer-events:none;opacity:.55;mix-blend-mode:multiply;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.055'/%3E%3C/svg%3E")}
 .arch{border-radius:999px 999px 28px 28px}.arch-sm{border-radius:14px}
-.rv{opacity:0;transform:translateY(28px);transition:opacity .9s cubic-bezier(.16,1,.3,1),transform .9s cubic-bezier(.16,1,.3,1)}.rv.is-in{opacity:1;transform:none}
+html.reveal .rv{opacity:0;transform:translateY(28px);transition:opacity .9s cubic-bezier(.16,1,.3,1),transform .9s cubic-bezier(.16,1,.3,1)}html.reveal .rv.is-in{opacity:1;transform:none}
 @keyframes flick{0%,100%{transform:scale(1) rotate(-2deg)}25%{transform:scale(1.07) rotate(2deg)}50%{transform:scale(.94)}75%{transform:scale(1.04)}}
 .flame{animation:flick 2.2s ease-in-out infinite;transform-origin:50% 90%}
 @keyframes floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
@@ -43,17 +42,52 @@ input:focus{outline:none}
 <div class="text-center text-[11px] tracking-[0.22em] uppercase py-2.5 px-4 relative z-40" style="background:#1A0E06;color:#FFFBF1"><span id="announceText" style="transition:opacity .3s">Batch №185 curing now — ships in 2 days · <a href="custom.html" style="text-decoration:underline;text-underline-offset:4px">Design yours →</a></span></div>
 
 <div class="sticky top-3 z-40 px-3 md:px-6" style="padding-top:5px">
-<header class="max-w-6xl mx-auto flex items-center justify-between gap-3 pl-5 pr-2 py-2 rounded-full" style="background:rgba(255,251,241,.9);backdrop-filter:blur(18px);border:1px solid #EDE0CC;box-shadow:0 14px 44px -14px rgba(26,14,6,.22)">
+<header class="max-w-6xl mx-auto flex items-center justify-between gap-3 pl-5 pr-2 py-2 rounded-full" style="background:rgba(255,251,241,.92);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border:1px solid #EDE0CC;box-shadow:0 14px 44px -14px rgba(26,14,6,.22)">
 <a href="index.html" class="flex items-center gap-2"><span class="w-9 h-9 rounded-full flex items-center justify-center text-lg text-white flame" style="background:radial-gradient(circle at 50% 70%,#F2D48A,#E4572E 65%,#B63A17)">✦</span><span class="font-serif text-[22px]">Lume<span style="color:#E4572E">.</span></span><span class="hidden sm:inline text-[10px] font-extrabold tracking-[0.2em] uppercase px-2 py-1 rounded-full" style="background:#FFF1DC;border:1px solid #EDE0CC">Jaipur</span></a>
-<nav class="hidden md:flex items-center gap-7 text-[13.5px] font-semibold"><a href="shop.html" class="hover:text-[#E4572E]">Shop</a><a href="shop.html?col=Woody" class="hover:text-[#E4572E]">Woody</a><a href="shop.html?col=Floral" class="hover:text-[#E4572E]">Floral</a><a href="admin/index.html" class="hover:text-[#E4572E]" title="Demo admin panel — open access, no login needed">Admin <span class="text-[9px] font-extrabold px-1.5 py-0.5 rounded-full align-middle" style="background:rgba(228,87,46,.12);color:#E4572E">DEMO</span></a><a href="custom.html" class="px-4 py-2 rounded-full text-white btn-ember magnet">Custom ✦</a></nav>
+<nav class="hidden md:flex items-center gap-7 text-[13.5px] font-semibold"><a href="shop.html" data-nav="shop" class="hover:text-[#E4572E]">Shop</a><a href="shop.html?col=Woody" data-nav="Woody" class="hover:text-[#E4572E]">Woody</a><a href="shop.html?col=Floral" data-nav="Floral" class="hover:text-[#E4572E]">Floral</a><a href="admin/index.html" class="hover:text-[#E4572E]" title="Demo admin panel — open access, no login needed">Admin <span class="text-[9px] font-extrabold px-1.5 py-0.5 rounded-full align-middle" style="background:rgba(228,87,46,.12);color:#E4572E">DEMO</span></a><a href="custom.html" data-nav="custom" class="px-4 py-2 rounded-full text-white btn-ember magnet">Custom ✦</a></nav>
 <div class="flex items-center gap-2">
 <button onclick="openSearch()" class="w-10 h-10 rounded-full hover:border-[#E4572E]" style="border:1px solid #EDE0CC" aria-label="Search">⌕</button>
-<button onclick="openWishDrawer()" class="relative w-10 h-10 rounded-full hidden sm:flex items-center justify-center" style="border:1px solid #EDE0CC" aria-label="Wishlist">♡<span id="hdrWish" data-wishlist-count class="hidden absolute -top-1 -right-1 w-5 h-5 rounded-full text-[10px] font-bold text-white flex items-center justify-center" style="background:#E4572E">0</span></button>
-<button onclick="openCartDrawer()" class="btn-ink rounded-full pl-4 pr-1.5 py-1.5 text-sm font-bold flex items-center gap-2 magnet">Bag · <span id="hdrCart">0</span><span class="w-8 h-8 rounded-full flex items-center justify-center text-white" style="background:#E4572E">→</span></button>
+<button onclick="openWishDrawer()" class="relative w-10 h-10 rounded-full flex items-center justify-center hover:border-[#E4572E]" style="border:1px solid #EDE0CC" aria-label="Wishlist">♡<span id="hdrWish" data-wishlist-count class="hidden absolute -top-1 -right-1 w-5 h-5 rounded-full text-[10px] font-bold text-white flex items-center justify-center" style="background:#E4572E">0</span></button>
+<button onclick="openCartDrawer()" class="btn-ink rounded-full pl-4 pr-1.5 py-1.5 text-sm font-bold flex items-center gap-2 magnet" aria-label="Cart">Bag · <span id="hdrCart">0</span><span class="w-8 h-8 rounded-full flex items-center justify-center text-white" style="background:#E4572E">→</span></button>
 <span data-cart-count class="hidden">0</span>
-<button id="mobileMenuBtn" class="md:hidden w-10 h-10 rounded-full" style="border:1px solid #EDE0CC">≡</button>
+<button id="mobileMenuBtn" class="md:hidden w-10 h-10 rounded-full flex items-center justify-center hover:border-[#E4572E]" style="border:1px solid #EDE0CC" aria-label="Open menu">≡</button>
 </div></header>
-<div id="mobileMenu" class="hidden max-w-6xl mx-auto mt-2 rounded-3xl p-4 grid grid-cols-2 gap-2 text-sm font-semibold text-white" style="background:#1A0E06"><a href="shop.html" class="p-3 rounded-2xl bg-white/5">Shop all</a><a href="shop.html?col=Woody" class="p-3 rounded-2xl bg-white/5">Woody</a><a href="shop.html?col=Floral" class="p-3 rounded-2xl bg-white/5">Floral</a><a href="admin/index.html" class="p-3 rounded-2xl bg-white/5" style="border:1px dashed rgba(228,87,46,.7)">🛠 Admin panel <span class="text-[9px] font-extrabold px-1.5 py-0.5 rounded-full" style="background:#E4572E">DEMO</span></a><a href="custom.html" class="p-3 rounded-2xl text-center col-span-2" style="background:#E4572E">Custom →</a></div>
+</div>
+
+<!-- Mobile Navigation Drawer -->
+<div id="mobileMenuBackdrop" class="mobile-nav-backdrop"></div>
+<div id="mobileMenuDrawer" class="mobile-nav-drawer p-6 text-sm font-semibold">
+  <div class="flex items-center justify-between pb-5" style="border-bottom:1px solid #EDE0CC">
+    <a href="index.html" class="flex items-center gap-2">
+      <span class="w-8 h-8 rounded-full flex items-center justify-center text-sm text-white" style="background:radial-gradient(circle at 50% 70%,#F2D48A,#E4572E 65%,#B63A17)">✦</span>
+      <span class="font-serif text-xl">Lume<span style="color:#E4572E">.</span></span>
+      <span class="text-[9px] font-extrabold tracking-widest uppercase px-2 py-0.5 rounded-full" style="background:#FFF1DC;border:1px solid #EDE0CC">Jaipur</span>
+    </a>
+    <button id="mobileMenuCloseBtn" class="w-9 h-9 rounded-full flex items-center justify-center text-lg" style="border:1px solid #EDE0CC" aria-label="Close menu">×</button>
+  </div>
+  <div class="py-4 space-y-1">
+    <div class="text-[10px] uppercase font-extrabold tracking-[0.2em] px-3 py-1" style="color:#8A7D72">Discover</div>
+    <a href="index.html" class="block px-3 py-2.5 rounded-xl hover:bg-white font-bold" style="background:#FFF1DC">Home</a>
+    <a href="shop.html" class="block px-3 py-2.5 rounded-xl hover:bg-white">Shop All Twelve</a>
+    <a href="custom.html" class="block px-3 py-2.5 rounded-xl text-white font-bold" style="background:#E4572E">Custom Atelier ✦</a>
+  </div>
+  <div class="py-3 space-y-1" style="border-top:1px solid #EDE0CC">
+    <div class="text-[10px] uppercase font-extrabold tracking-[0.2em] px-3 py-1" style="color:#8A7D72">Scent Families</div>
+    <a href="shop.html?col=Woody" class="block px-3 py-2 rounded-xl text-xs hover:bg-white">🪵 Woody (Cedar, Oud, Amber)</a>
+    <a href="shop.html?col=Floral" class="block px-3 py-2 rounded-xl text-xs hover:bg-white">🌸 Floral (Lavender, Sakura)</a>
+    <a href="shop.html?col=Fresh" class="block px-3 py-2 rounded-xl text-xs hover:bg-white">🌿 Fresh (Eucalyptus, Sea Salt)</a>
+    <a href="shop.html?col=Warm" class="block px-3 py-2 rounded-xl text-xs hover:bg-white">🍯 Warm (Vanilla, Honey)</a>
+    <a href="shop.html?col=Citrus" class="block px-3 py-2 rounded-xl text-xs hover:bg-white">🍊 Citrus (Neroli, Bergamot)</a>
+  </div>
+  <div class="pt-4 mt-auto space-y-2" style="border-top:1px solid #EDE0CC">
+    <div class="grid grid-cols-2 gap-2">
+      <button onclick="closeMobileMenu();openWishDrawer()" class="py-2.5 px-3 rounded-xl text-xs font-bold text-center bg-white" style="border:1px solid #EDE0CC">Wishlist ♡</button>
+      <button onclick="closeMobileMenu();openCartDrawer()" class="py-2.5 px-3 rounded-xl text-xs font-bold text-center btn-ink">Bag →</button>
+    </div>
+    <a href="admin/index.html" class="block p-3 rounded-2xl text-xs font-bold text-center" style="border:1px dashed rgba(228,87,46,.7);background:#FFF1DC;color:#B63A17">
+      🛠 Open Admin Panel <span class="text-[9px] font-extrabold px-1.5 py-0.5 rounded-full text-white" style="background:#E4572E">DEMO</span>
+    </a>
+  </div>
 </div>
 
 <!-- HERO -->
@@ -80,8 +114,8 @@ input:focus{outline:none}
 <div class="absolute top-5 left-1/2 -translate-x-1/2 flame text-3xl" style="filter:drop-shadow(0 0 18px rgba(242,212,138,.95))">🔥</div>
 <div class="absolute bottom-0 inset-x-0 p-3.5 pt-10" style="background:linear-gradient(transparent,rgba(26,14,6,.78))"><div class="rounded-2xl p-3.5 flex items-center justify-between" style="background:rgba(255,251,241,.95)"><div><div class="text-[10px] font-extrabold tracking-[0.2em] uppercase" style="color:#E4572E">Bestseller · Woody</div><div class="font-serif text-xl">Fig & Cedar</div><div class="text-xs" style="color:#8A7D72">★ 4.9 (214) · 45h</div></div><a href="product.html?id=1" class="w-11 h-11 rounded-full flex items-center justify-center text-white font-bold magnet" style="background:#1A0E06">→</a></div></div>
 </div>
-<div class="floaty absolute -left-12 top-8 rounded-2xl px-4 py-2.5 text-[12px] font-bold shadow-xl bg-white" style="border:1px solid #EDE0CC">🕯️ 45h slow burn</div>
-<div class="floaty2 absolute -right-8 bottom-20 rounded-2xl px-4 py-2.5 text-[12px] font-bold shadow-xl text-white" style="background:#1A0E06">72h cured ✦</div>
+<div class="floaty absolute -left-6 sm:-left-12 top-4 sm:top-8 rounded-2xl px-3 sm:px-4 py-2 sm:py-2.5 text-[11px] sm:text-[12px] font-bold shadow-xl bg-white" style="border:1px solid #EDE0CC">🕯️ 45h slow burn</div>
+<div class="floaty2 absolute -right-4 sm:-right-8 bottom-14 sm:bottom-20 rounded-2xl px-3 sm:px-4 py-2 sm:py-2.5 text-[11px] sm:text-[12px] font-bold shadow-xl text-white" style="background:#1A0E06">72h cured ✦</div>
 </div>
 <img src="https://images.pexels.com/photos/278823/pexels-photo-278823.jpeg?auto=compress&cs=tinysrgb&w=400" class="hidden sm:block w-28 aspect-[3/4] object-cover arch-sm floaty2" style="border:1px solid #EDE0CC" alt="">
 </div></div>
@@ -205,7 +239,7 @@ input:focus{outline:none}
 <!-- Quiz -->
 <div id="quizModal" class="hidden fixed inset-0 z-[70] flex items-center justify-center p-4" style="background:rgba(26,14,6,.6);backdrop-filter:blur(6px)"><div class="rounded-[28px] max-w-md w-full p-7 relative" style="background:#FFFBF1;max-height:90vh;overflow:auto"><button onclick="closeQuiz()" class="absolute top-4 right-4 w-9 h-9 rounded-full" style="border:1px solid #EDE0CC">×</button><div class="h-1.5 rounded-full overflow-hidden" style="background:#EDE0CC"><div id="quizBar" class="h-full" style="width:33%;background:#E4572E;transition:width .3s"></div></div><div class="text-[11px] tracking-[0.3em] uppercase font-extrabold mt-3" style="color:#E4572E">Scent finder · <span id="quizStep">1/4</span></div><h3 id="quizQ" class="font-serif text-3xl mt-1"></h3><div id="quizOpts" class="grid gap-2 mt-5"></div><div id="quizResult" class="hidden text-center"></div></div></div>
 
-<script src="app.js"></script>
+<script src="app.js?v=3"></script>
 <script>
 /* instant load — splash removed */
 (function(){const g=document.getElementById('cursorGlow');addEventListener('pointermove',e=>{g.style.left=e.clientX+'px';g.style.top=e.clientY+'px';});})();
