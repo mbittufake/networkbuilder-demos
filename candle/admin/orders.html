@@ -2,52 +2,38 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Orders — LUME Admin</title>
+<title>Orders — LUME Studio</title>
 <script src="https://cdn.tailwindcss.com"></script>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-<script>tailwind.config={theme:{extend:{fontFamily:{sans:['Inter','sans-serif']},colors:{ink:'#1C1410',muted:'#6B6560',paper:'#FDF6EE',line:'#EDE6DA',amber:'#E8B86D',terracotta:'#C86B3C'}}}}</script>
-<style>
-  /* LUME Glow Craft — candlelit warmth */
-  ::selection{background:#E8B86D;color:#1C1410}
-  .glow-ember{background:radial-gradient(60% 50% at 50% 30%, rgba(232,184,109,.35), transparent 70%), radial-gradient(40% 35% at 80% 80%, rgba(200,107,60,.22), transparent 70%)}
-  .scent-tile{transition:all .4s cubic-bezier(.16,1,.3,1)}
-  .scent-tile:hover{transform:translateY(-4px);box-shadow:0 20px 45px -18px rgba(200,107,60,.5)}
-  .batch-stamp{display:inline-flex;align-items:center;gap:.5rem;border:1.5px dashed rgba(200,107,60,.7);color:#C86B3C;border-radius:9999px;padding:.4rem .9rem;font-size:11px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;transform:rotate(-2deg);background:rgba(232,184,109,.12)}
-  .paper-bg{background-color:#FDF6EE;background-image:radial-gradient(circle at 1px 1px, rgba(28,20,16,0.06) 1px, transparent 0), radial-gradient(50% 35% at 50% 0%, rgba(232,184,109,.18), transparent 70%);background-size:22px 22px, 100% 100%}</style>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500&family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet">
+<script>tailwind.config={theme:{extend:{fontFamily:{serif:['Fraunces','serif'],sans:['Manrope','sans-serif']},colors:{paper:'#FFFBF1',ink:'#1A0E06',ember:'#E4572E',line:'#EDE0CC'}}}}</script>
+<style>body{background:#FFFBF1;color:#1A0E06;font-family:Manrope,sans-serif}.navA{background:#FFFBF1!important;color:#1A0E06!important;font-weight:800}</style>
 </head>
-<body class="bg-paper text-ink antialiased">
+<body>
 <div class="flex min-h-screen">
-  <aside class="hidden lg:flex w-[260px] bg-ink text-white flex-col sticky top-0 h-screen"><div class="px-6 py-6 border-b border-white/10"><a href="../index.html" class="flex items-center gap-2"><div class="w-8 h-8 bg-amber text-ink flex items-center justify-center rounded-full font-serif"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 3a9 9 0 0 1 0 18"/></svg></div><span class="font-serif text-lg">LUME</span><span class="text-xs bg-white/10 px-2 py-1 rounded-full ml-2">ADMIN</span></a></div><nav class="flex-1 px-3 py-4 space-y-1 text-sm"><a href="index.html" class="flex items-center gap-3 text-white/70 px-3 py-2.5 rounded-xl hover:bg-white/10"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg> Dashboard</a><a href="products.html" class="flex items-center gap-3 text-white/70 px-3 py-2.5 rounded-xl hover:bg-white/10"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h12a3 3 0 0 1 3 3v12a3 3 0 0 1-3 3H6a3 3 0 0 1-3-3V6a3 3 0 0 1 3-3z"/><path d="M3 9h18"/><path d="M9 21V9"/></svg> Candles</a><a href="custom-orders.html" class="flex items-center gap-3 text-white/70 px-3 py-2.5 rounded-xl hover:bg-white/10"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2l2.4 7.2H22l-6.2 4.5 2.4 7.3L12 16.5 5.8 21l2.4-7.3L2 9.2h7.6z"/></svg> Custom</a><a href="orders.html" class="flex items-center gap-3 bg-white text-ink px-3 py-2.5 rounded-xl font-semibold"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6h16"/><path d="M4 12h16"/><path d="M4 18h16"/></svg> Orders</a><div class="pt-4 mt-4 border-t border-white/10"><a href="../index.html" class="flex items-center gap-3 text-white/70 px-3 py-2.5">← View Store</a></div></nav></aside>
-  <div class="flex-1 min-w-0">
-    <header class="bg-white border-b border-line sticky top-0 z-10"><div class="px-4 lg:px-8 h-[64px] flex items-center justify-between"><h1 class="font-bold text-lg">Orders <span id="count" class="text-muted font-normal text-sm"></span></h1><div class="flex gap-2"><input id="search" placeholder="Search order/customer" class="border border-line rounded-full px-4 py-2 text-sm w-56" oninput="render()"><select id="status" class="border border-line rounded-full px-4 py-2 text-sm bg-white" onchange="render()"><option value="All">All</option><option>Paid</option><option>Processing</option><option>Shipped</option><option>Delivered</option></select></div></div></header>
-    <main class="px-4 lg:px-8 py-6">
-      <div class="grid grid-cols-3 gap-3 mb-4">
-        <div class="bg-white rounded-2xl border border-line p-4 text-center"><div class="text-xs uppercase tracking-widest text-muted">Total Orders</div><div class="text-xl font-bold" id="kTotal">0</div></div>
-        <div class="bg-white rounded-2xl border border-line p-4 text-center"><div class="text-xs uppercase tracking-widest text-muted">Revenue</div><div class="text-xl font-bold" id="kRev">₹0</div></div>
-        <div class="bg-amber/20 border border-amber/30 rounded-2xl p-4 text-center"><div class="text-xs uppercase tracking-widest text-muted">Pending</div><div class="text-xl font-bold" id="kPending">0</div></div>
-      </div>
-      <div class="bg-white rounded-2xl border border-line overflow-hidden overflow-x-auto"><table class="w-full text-sm min-w-[720px]"><thead class="text-xs uppercase tracking-widest text-muted bg-paper"><tr><th class="text-left px-4 py-3">Order</th><th class="text-left px-4 py-3">Customer</th><th class="text-left px-4 py-3">Date</th><th class="text-left px-4 py-3">Items</th><th class="text-left px-4 py-3">Total</th><th class="text-left px-4 py-3">Status</th><th class="text-right px-4 py-3">Action</th></tr></thead><tbody id="tbody" class="divide-y divide-line"></tbody></table></div>
-    </main>
-  </div>
+<aside class="hidden lg:flex w-[260px] flex-col sticky top-0 h-screen text-white" style="background:#1A0E06"><div class="px-6 py-6" style="border-bottom:1px solid rgba(255,255,255,.1)"><a href="../index.html" class="flex items-center gap-2"><span class="w-9 h-9 rounded-full flex items-center justify-center" style="background:#E4572E">✦</span><span class="font-serif text-xl">Lume.</span><span class="text-[10px] font-extrabold px-2 py-1 rounded-full bg-white/10">STUDIO</span></a></div><nav class="flex-1 px-3 py-4 space-y-1 text-sm font-semibold"><a href="index.html" class="flex px-4 py-3 rounded-2xl text-white/70 hover:bg-white/10">◍ Dashboard</a><a href="products.html" class="flex px-4 py-3 rounded-2xl text-white/70 hover:bg-white/10">🕯️ Candles</a><a href="custom-orders.html" class="flex px-4 py-3 rounded-2xl text-white/70 hover:bg-white/10">✦ Custom</a><a href="orders.html" class="navA flex px-4 py-3 rounded-2xl">▤ Orders</a><div class="pt-4 mt-4" style="border-top:1px solid rgba(255,255,255,.1)"><a href="../index.html" class="flex px-4 py-2 text-white/60 text-[13px]">← View store</a></div></nav></aside>
+<div class="flex-1 min-w-0">
+<header class="sticky top-0 z-10 bg-white/90" style="border-bottom:1px solid #EDE0CC"><div class="px-4 lg:px-8 h-[64px] flex items-center justify-between gap-3"><h1 class="font-serif text-2xl">Orders <span id="count" class="text-sm opacity-50"></span></h1><div class="flex gap-2"><input id="search" placeholder="Search order / customer" class="rounded-full px-4 py-2 text-sm w-44 md:w-56 outline-none" style="border:1px solid #EDE0CC" oninput="render()"><select id="status" class="rounded-full px-4 py-2 text-sm bg-white font-semibold" style="border:1px solid #EDE0CC" onchange="render()"><option value="All">All</option><option>Paid</option><option>Processing</option><option>Shipped</option><option>Delivered</option></select></div></div></header>
+<main class="px-4 lg:px-8 py-6 max-w-6xl">
+<div class="grid grid-cols-3 gap-3 mb-4"><div class="rounded-2xl bg-white p-4 text-center" style="border:1px solid #EDE0CC"><div class="text-[11px] uppercase tracking-widest opacity-50 font-extrabold">Orders</div><div class="text-xl font-extrabold" id="kTotal">0</div></div><div class="rounded-2xl bg-white p-4 text-center" style="border:1px solid #EDE0CC"><div class="text-[11px] uppercase tracking-widest opacity-50 font-extrabold">Revenue</div><div class="text-xl font-extrabold" id="kRev">₹0</div></div><div class="rounded-2xl p-4 text-center text-white" style="background:#1A0E06"><div class="text-[11px] uppercase tracking-widest opacity-50 font-extrabold">To ship</div><div class="text-xl font-extrabold" id="kPending">0</div></div></div>
+<div class="rounded-2xl bg-white overflow-hidden overflow-x-auto" style="border:1px solid #EDE0CC"><table class="w-full text-sm min-w-[760px]"><thead class="text-[11px] uppercase tracking-widest opacity-50" style="background:#FFFBF1"><tr><th class="text-left px-4 py-3">Order</th><th class="text-left px-4 py-3">Customer</th><th class="text-left px-4 py-3">Date</th><th class="text-left px-4 py-3">Items</th><th class="text-left px-4 py-3">Total</th><th class="text-left px-4 py-3">Status</th><th class="text-right px-4 py-3">View</th></tr></thead><tbody id="tbody"></tbody></table></div>
+</main>
+</div>
 </div>
 <script src="../app.js"></script>
 <script>
 function render(){
   const orders=getOrders();
-  const q=document.getElementById('search').value.toLowerCase().trim();
-  const st=document.getElementById('status').value;
+  const q=document.getElementById('search').value.toLowerCase().trim(), st=document.getElementById('status').value;
   let list=[...orders];
-  if(q) list=list.filter(o=> o.id.toLowerCase().includes(q) || o.customer.toLowerCase().includes(q));
-  if(st!=='All') list=list.filter(o=>o.status===st);
+  if(q)list=list.filter(o=>(o.id+' '+o.customer).toLowerCase().includes(q));
+  if(st!=='All')list=list.filter(o=>o.status===st);
   document.getElementById('count').textContent=`(${list.length})`;
   document.getElementById('kTotal').textContent=list.length;
   document.getElementById('kRev').textContent=formatINR(list.reduce((s,o)=>s+o.total,0));
   document.getElementById('kPending').textContent=list.filter(o=>['Paid','Processing'].includes(o.status)).length;
-  document.getElementById('tbody').innerHTML=list.map(o=>`
-    <tr><td class="px-4 py-3 font-medium">${o.id}</td><td class="px-4 py-3"><div class="font-medium">${o.customer}</div><div class="text-xs text-muted">${o.email}</div></td><td class="px-4 py-3 text-muted">${o.date}</td><td class="px-4 py-3">${o.items}</td><td class="px-4 py-3 font-semibold">${formatINR(o.total)}</td><td class="px-4 py-3"><select onchange="updateStatus('${o.id}',this.value)" class="border border-line rounded-full px-2.5 py-1 text-xs bg-white">${['Paid','Processing','Shipped','Delivered'].map(s=>`<option ${s===o.status?'selected':''}>${s}</option>`).join('')}</select></td><td class="px-4 py-3 text-right"><button onclick="alert('${o.id} — ${o.customer} — ${formatINR(o.total)}')" class="text-xs border border-line rounded-full px-3 py-1.5">View</button></td></tr>
-  `).join('');
+  document.getElementById('tbody').innerHTML=list.map(o=>`<tr style="border-top:1px solid #EDE0CC"><td class="px-4 py-3 font-extrabold">${o.id}</td><td class="px-4 py-3"><div class="font-bold">${o.customer}</div><div class="text-xs opacity-50">${o.email||''}${o.pay?` · ${o.pay}`:''}</div>${o.note?`<div class="text-[11px] mt-0.5" style="color:#B63A17">🎁 ${String(o.note).slice(0,60)}</div>`:''}</td><td class="px-4 py-3 opacity-50">${o.date}</td><td class="px-4 py-3">${o.items}</td><td class="px-4 py-3 font-extrabold">${formatINR(o.total)}</td><td class="px-4 py-3"><select onchange="updateStatus('${o.id}',this.value)" class="rounded-full px-2.5 py-1.5 text-xs font-bold bg-white" style="border:1px solid #EDE0CC">${['Paid','Processing','Shipped','Delivered'].map(s=>`<option ${s===o.status?'selected':''}>${s}</option>`).join('')}</select></td><td class="px-4 py-3 text-right"><button onclick="alert('${o.id} — ${o.customer} — ${formatINR(o.total)}${o.note?` — Note: ${String(o.note).slice(0,80)}`:''}')" class="text-xs font-bold px-3 py-1.5 rounded-full" style="border:1px solid #EDE0CC">View</button></td></tr>`).join('')||'<tr><td colspan="7" class="text-center py-10 opacity-50">No orders</td></tr>';
 }
-function updateStatus(id,val){ const list=getOrders(); const it=list.find(o=>o.id===id); if(it){ it.status=val; saveOrders(list); showToast(`${id} → ${val}`); render(); } }
+function updateStatus(id,val){const list=getOrders();const it=list.find(o=>o.id===id);if(it){it.status=val;saveOrders(list);showToast(`${id} → ${val}`);render();}}
 render();
 </script>
 </body>
