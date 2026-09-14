@@ -38,6 +38,7 @@
     @keyframes pop { 0% { transform: scale(.4); opacity:0; } 60% { transform: scale(1.1); opacity:1; } 100% { transform: scale(1); opacity:1; } }
     .anim-pop { animation: pop .6s cubic-bezier(.2,.8,.2,1.4) forwards; }
   </style>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 <body class="bg-parchment text-cocoa antialiased min-h-screen">
 
@@ -101,7 +102,7 @@
           <div id="cartList" class="divide-y divide-cocoa/10"></div>
           <!-- empty state -->
           <div id="emptyCart" class="hidden text-center py-12">
-            <div class="text-6xl mb-3">🥐</div>
+            <div class="w-16 h-16 mx-auto mb-3 rounded-full bg-caramel/20 flex items-center justify-center text-3xl text-caramel"><i class="fa-solid fa-basket-shopping"></i></div>
             <h3 class="font-serif text-2xl font-bold text-cocoa mb-2">Empty basket</h3>
             <p class="text-cocoa/60 mb-5 text-sm">Time to fill it with something warm.</p>
             <a href="menu.html" class="inline-flex items-center gap-2 bg-cocoa text-cream font-semibold px-5 py-2.5 rounded-full hover:bg-brown transition-all">
@@ -117,7 +118,7 @@
             <label class="opt border-2 border-brown/20 rounded-2xl p-4 selected">
               <input type="radio" name="delivery" value="pickup" class="sr-only" checked onchange="recalc()">
               <div class="flex items-start gap-3">
-                <div class="text-2xl">🏬</div>
+                <div class="text-2xl text-caramel"><i class="fa-solid fa-store"></i></div>
                 <div>
                   <div class="font-bold text-cocoa">Pickup</div>
                   <div class="text-xs text-cocoa/60 mt-0.5">Free · from our shop</div>
@@ -128,7 +129,7 @@
             <label class="opt border-2 border-brown/20 rounded-2xl p-4">
               <input type="radio" name="delivery" value="local" class="sr-only" onchange="recalc()">
               <div class="flex items-start gap-3">
-                <div class="text-2xl">🚲</div>
+                <div class="text-2xl text-caramel"><i class="fa-solid fa-bicycle"></i></div>
                 <div>
                   <div class="font-bold text-cocoa">Local delivery</div>
                   <div class="text-xs text-cocoa/60 mt-0.5">₹150 · 1–2 hr within Malda</div>
@@ -139,7 +140,7 @@
             <label class="opt border-2 border-brown/20 rounded-2xl p-4">
               <input type="radio" name="delivery" value="express" class="sr-only" onchange="recalc()">
               <div class="flex items-start gap-3">
-                <div class="text-2xl">⚡</div>
+                <div class="text-2xl text-caramel"><i class="fa-solid fa-bolt"></i></div>
                 <div>
                   <div class="font-bold text-cocoa">Express (90 min)</div>
                   <div class="text-xs text-cocoa/60 mt-0.5">₹250 · door-to-door</div>
@@ -201,7 +202,7 @@
             <label class="opt border-2 border-brown/20 rounded-2xl p-4 selected">
               <input type="radio" name="pay" value="upi" class="sr-only" checked>
               <div class="flex items-start gap-3">
-                <div class="text-2xl">📱</div>
+                <div class="text-2xl text-caramel"><i class="fa-solid fa-mobile-screen"></i></div>
                 <div>
                   <div class="font-bold text-cocoa">UPI</div>
                   <div class="text-xs text-cocoa/60 mt-0.5">GPay · PhonePe · Paytm</div>
@@ -211,7 +212,7 @@
             <label class="opt border-2 border-brown/20 rounded-2xl p-4">
               <input type="radio" name="pay" value="card" class="sr-only">
               <div class="flex items-start gap-3">
-                <div class="text-2xl">💳</div>
+                <div class="text-2xl text-caramel"><i class="fa-solid fa-credit-card"></i></div>
                 <div>
                   <div class="font-bold text-cocoa">Card</div>
                   <div class="text-xs text-cocoa/60 mt-0.5">Debit / Credit</div>
@@ -221,7 +222,7 @@
             <label class="opt border-2 border-brown/20 rounded-2xl p-4">
               <input type="radio" name="pay" value="cod" class="sr-only">
               <div class="flex items-start gap-3">
-                <div class="text-2xl">💵</div>
+                <div class="text-2xl text-caramel"><i class="fa-solid fa-money-bill-wave"></i></div>
                 <div>
                   <div class="font-bold text-cocoa">Cash on Pickup</div>
                   <div class="text-xs text-cocoa/60 mt-0.5">Pay at counter</div>
@@ -255,9 +256,9 @@
           </button>
           <p class="text-[11px] text-cream/50 mt-3 text-center">By placing this order you agree to our terms. Fresh items can't be returned.</p>
           <div class="mt-5 pt-5 border-t border-cream/10 grid grid-cols-3 gap-2 text-[10px] uppercase tracking-wider text-cream/50 font-bold text-center">
-            <div class="flex flex-col items-center gap-1"><span>🔒</span>Secure</div>
-            <div class="flex flex-col items-center gap-1"><span>✓</span>Razorpay</div>
-            <div class="flex flex-col items-center gap-1"><span>🍃</span>FSSAI</div>
+            <div class="flex flex-col items-center gap-1"><i class="fa-solid fa-shield-halved text-caramel text-base"></i>Secure</div>
+            <div class="flex flex-col items-center gap-1"><i class="fa-solid fa-circle-check text-caramel text-base"></i>Razorpay</div>
+            <div class="flex flex-col items-center gap-1"><i class="fa-solid fa-seedling text-caramel text-base"></i>FSSAI</div>
           </div>
         </div>
       </aside>
@@ -270,7 +271,7 @@
     <div class="absolute inset-0 bg-cocoa/70 backdrop-blur-sm" onclick="closeSuccess()"></div>
     <div class="relative h-full flex items-center justify-center p-4">
       <div class="bg-cream rounded-3xl max-w-md w-full p-8 text-center anim-pop shadow-warm">
-        <div class="w-20 h-20 rounded-full bg-caramel text-cocoa flex items-center justify-center mx-auto text-4xl mb-4">✓</div>
+        <div class="w-20 h-20 rounded-full bg-caramel text-cocoa flex items-center justify-center mx-auto text-3xl mb-4"><i class="fa-solid fa-check"></i></div>
         <h2 class="font-serif text-3xl font-bold text-cocoa mb-2">Order placed!</h2>
         <p class="text-cocoa/70 mb-5">We've sent a confirmation to your email. Your bakes are being prepared.</p>
         <div class="bg-white rounded-2xl p-4 text-left text-sm mb-5">
@@ -303,16 +304,16 @@
     const TAX_RATE = 0.05;
 
     function itemEmoji(name) {
-      const n = name.toLowerCase();
-      if (n.includes('croissant')||n.includes('brioche')||n.includes('babka')||n.includes('pain')||n.includes('danish')||n.includes('kouign')) return '🥐';
-      if (n.includes('sourdough')||n.includes('boule')||n.includes('loaf')||n.includes('ciabatta')||n.includes('babka')) return '🍞';
-      if (n.includes('focaccia')) return '🥖';
-      if (n.includes('cake')||n.includes('tiramisu')||n.includes('cheesecake')) return '🎂';
-      if (n.includes('cookie')||n.includes('brownie')||n.includes('biscotti')||n.includes('shortbread')) return '🍪';
-      if (n.includes('quiche')||n.includes('galette')||n.includes('pie')) return '🥧';
-      if (n.includes('roll')) return '🍥';
-      if (n.includes('cupcake')||n.includes('tart')||n.includes('mango')||n.includes('pumpkin')) return '🧁';
-      return '🥐';
+      const n = (name || '').toLowerCase();
+      if (n.includes('croissant') || n.includes('brioche') || n.includes('babka') || n.includes('pain')) return '<i class="fa-solid fa-bowl-food text-caramel"></i>';
+      if (n.includes('sourdough') || n.includes('boule') || n.includes('loaf') || n.includes('ciabatta')) return '<i class="fa-solid fa-bread-slice text-caramel"></i>';
+      if (n.includes('focaccia') || n.includes('pita')) return '<i class="fa-solid fa-bread-slice text-caramel"></i>';
+      if (n.includes('cake') || n.includes('tiramisu') || n.includes('cheesecake')) return '<i class="fa-solid fa-cake-candles text-caramel"></i>';
+      if (n.includes('cookie') || n.includes('brownie') || n.includes('biscotti') || n.includes('shortbread')) return '<i class="fa-solid fa-cookie-bite text-caramel"></i>';
+      if (n.includes('quiche') || n.includes('galette') || n.includes('pie')) return '<i class="fa-solid fa-utensils text-caramel"></i>';
+      if (n.includes('roll')) return '<i class="fa-solid fa-cookie text-caramel"></i>';
+      if (n.includes('cupcake') || n.includes('tart') || n.includes('mango') || n.includes('pumpkin')) return '<i class="fa-solid fa-seedling text-caramel"></i>';
+      return '<i class="fa-solid fa-wheat-awn text-caramel"></i>';
     }
 
     function render() {
@@ -426,6 +427,12 @@
         c: order.customer.name,
         p: order.customer.phone,
         items: cart.slice().map(i => `${i.qty}× ${i.name}`).join(', '),
+        itemsList: cart.slice().map(i => ({
+          name: i.name,
+          qty: i.qty,
+          price: i.price,
+          img: i.img || i.image || 'https://images.unsplash.com/photo-1509440159596-0249088772ff?w=120&h=120&fit=crop&q=80'
+        })),
         total: order.total,
         status: order.status,
         time: 'just now',

@@ -9,16 +9,16 @@
 </head>
 <body>
 <div class="text-center text-[11px] tracking-[0.22em] uppercase py-2.5 px-4" style="background:#1A0E06;color:#FFFBF1"><span id="announceText">Custom atelier · From 6 pcs · 3-day making</span></div>
-<div class="sticky top-3 z-40 px-3 md:px-6" style="padding-top:5px">
-<header class="max-w-6xl mx-auto flex items-center justify-between gap-3 pl-5 pr-2 py-2 rounded-full" style="background:rgba(255,251,241,.92);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border:1px solid #EDE0CC;box-shadow:0 14px 44px -14px rgba(26,14,6,.22)">
+<div class="sticky top-0 sm:top-3 z-50 px-2 sm:px-4 md:px-6 py-1.5 sm:py-2" style="transition:all .2s ease">
+<header class="max-w-6xl mx-auto flex items-center justify-between gap-2 sm:gap-3 pl-3 sm:pl-5 pr-1.5 sm:pr-2 py-1.5 sm:py-2 rounded-full" style="background:rgba(255,251,241,.92);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border:1px solid #EDE0CC;box-shadow:0 14px 44px -14px rgba(26,14,6,.22)">
 <a href="index.html" class="flex items-center gap-2"><span class="w-9 h-9 rounded-full flex items-center justify-center text-lg text-white flame" style="background:radial-gradient(circle at 50% 70%,#F2D48A,#E4572E 65%,#B63A17)">✦</span><span class="font-serif text-[22px]">Lume<span style="color:#E4572E">.</span></span><span class="hidden sm:inline text-[10px] font-extrabold tracking-[0.2em] uppercase px-2 py-1 rounded-full" style="background:#FFF1DC;border:1px solid #EDE0CC">Jaipur</span></a>
 <nav class="hidden md:flex items-center gap-7 text-[13.5px] font-semibold"><a href="shop.html" data-nav="shop" class="hover:text-[#E4572E]">Shop</a><a href="shop.html?col=Woody" data-nav="Woody" class="hover:text-[#E4572E]">Woody</a><a href="shop.html?col=Floral" data-nav="Floral" class="hover:text-[#E4572E]">Floral</a><a href="admin/index.html" class="hover:text-[#E4572E]" title="Demo admin panel — open access, no login needed">Admin <span class="text-[9px] font-extrabold px-1.5 py-0.5 rounded-full align-middle" style="background:rgba(228,87,46,.12);color:#E4572E">DEMO</span></a><a href="custom.html" data-nav="custom" class="px-4 py-2 rounded-full text-white btn-ember magnet">Custom ✦</a></nav>
-<div class="flex items-center gap-2">
-<button onclick="openSearch()" class="w-10 h-10 rounded-full hover:border-[#E4572E]" style="border:1px solid #EDE0CC" aria-label="Search">⌕</button>
-<button onclick="openWishDrawer()" class="relative w-10 h-10 rounded-full flex items-center justify-center hover:border-[#E4572E]" style="border:1px solid #EDE0CC" aria-label="Wishlist">♡<span id="hdrWish" data-wishlist-count class="hidden absolute -top-1 -right-1 w-5 h-5 rounded-full text-[10px] font-bold text-white flex items-center justify-center" style="background:#E4572E">0</span></button>
-<button onclick="openCartDrawer()" class="btn-ink rounded-full pl-4 pr-1.5 py-1.5 text-sm font-bold flex items-center gap-2 magnet" aria-label="Cart">Bag · <span id="hdrCart">0</span><span class="w-8 h-8 rounded-full flex items-center justify-center text-white" style="background:#E4572E">→</span></button>
+<div class="flex items-center gap-1.5 sm:gap-2 shrink-0">
+<button onclick="openSearch()" class="w-8 h-8 sm:w-10 sm:h-10 rounded-full hover:border-[#E4572E] flex items-center justify-center shrink-0" style="border:1px solid #EDE0CC" aria-label="Search">⌕</button>
+<button onclick="openWishDrawer()" class="hidden sm:flex relative w-10 h-10 rounded-full items-center justify-center hover:border-[#E4572E] shrink-0" style="border:1px solid #EDE0CC" aria-label="Wishlist">♡<span id="hdrWish" data-wishlist-count class="hidden absolute -top-1 -right-1 w-5 h-5 rounded-full text-[10px] font-bold text-white flex items-center justify-center" style="background:#E4572E">0</span></button>
+<button onclick="openCartDrawer()" class="btn-ink rounded-full px-2.5 sm:pl-4 sm:pr-1.5 py-1.5 text-xs sm:text-sm font-bold flex items-center gap-1.5 sm:gap-2 shrink-0 magnet" aria-label="Cart"><span>Bag</span> · <span id="hdrCart">0</span><span class="hidden sm:flex w-7 h-7 sm:w-8 sm:h-8 rounded-full items-center justify-center text-white text-xs sm:text-base" style="background:#E4572E">→</span></button>
 <span data-cart-count class="hidden">0</span>
-<button id="mobileMenuBtn" class="md:hidden w-10 h-10 rounded-full flex items-center justify-center hover:border-[#E4572E]" style="border:1px solid #EDE0CC" aria-label="Open menu">≡</button>
+<button id="mobileMenuBtn" class="md:hidden w-8 h-8 sm:w-10 sm:h-10 rounded-full flex items-center justify-center hover:border-[#E4572E] shrink-0" style="border:1px solid #EDE0CC" aria-label="Open menu">≡</button>
 </div></header>
 </div>
 

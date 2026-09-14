@@ -66,16 +66,16 @@
       setTimeout(() => window.location.href = 'cart.html', 220);
     }
     function itemEmoji(name) {
-      const n = name.toLowerCase();
-      if (n.includes('croissant') || n.includes('brioche') || n.includes('babka') || n.includes('pain au chocolat') || n.includes('danish') || n.includes('kouign')) return '🥐';
-      if (n.includes('sourdough') || n.includes('boule') || n.includes('loaf') || n.includes('ciabatta')) return '🍞';
-      if (n.includes('focaccia') || n.includes('pita')) return '🥖';
-      if (n.includes('cake') || n.includes('tiramisu') || n.includes('cheesecake')) return '🎂';
-      if (n.includes('cookie') || n.includes('brownie') || n.includes('biscotti') || n.includes('shortbread') || n.includes('snickerdoodle') || n.includes('raisin')) return '🍪';
-      if (n.includes('quiche') || n.includes('galette') || n.includes('pie')) return '🥧';
-      if (n.includes('roll')) return '🍥';
-      if (n.includes('cupcake') || n.includes('tart') || n.includes('mango') || n.includes('pumpkin')) return '🧁';
-      return '🥐';
+      const n = (name || '').toLowerCase();
+      if (n.includes('croissant') || n.includes('brioche') || n.includes('babka') || n.includes('pain')) return '<i class="fa-solid fa-bowl-food text-caramel"></i>';
+      if (n.includes('sourdough') || n.includes('boule') || n.includes('loaf') || n.includes('ciabatta')) return '<i class="fa-solid fa-bread-slice text-caramel"></i>';
+      if (n.includes('focaccia') || n.includes('pita')) return '<i class="fa-solid fa-bread-slice text-caramel"></i>';
+      if (n.includes('cake') || n.includes('tiramisu') || n.includes('cheesecake')) return '<i class="fa-solid fa-cake-candles text-caramel"></i>';
+      if (n.includes('cookie') || n.includes('brownie') || n.includes('biscotti') || n.includes('shortbread')) return '<i class="fa-solid fa-cookie-bite text-caramel"></i>';
+      if (n.includes('quiche') || n.includes('galette') || n.includes('pie')) return '<i class="fa-solid fa-utensils text-caramel"></i>';
+      if (n.includes('roll')) return '<i class="fa-solid fa-cookie text-caramel"></i>';
+      if (n.includes('cupcake') || n.includes('tart') || n.includes('mango') || n.includes('pumpkin')) return '<i class="fa-solid fa-seedling text-caramel"></i>';
+      return '<i class="fa-solid fa-wheat-awn text-caramel"></i>';
     }
     function renderCart() {
       const wrap = document.getElementById('cartItems');
@@ -88,7 +88,7 @@
       if (!cart.length) {
         wrap.innerHTML = `
           <div class="text-center py-12 flex flex-col items-center justify-center h-full">
-            <div class="text-6xl mb-4">🥐</div>
+            <div class="w-16 h-16 mx-auto mb-4 rounded-full bg-caramel/20 flex items-center justify-center text-3xl text-caramel"><i class="fa-solid fa-basket-shopping"></i></div>
             <h3 class="font-serif text-2xl font-bold text-cocoa mb-2">Your basket is empty</h3>
             <p class="text-cocoa/60 mb-6 text-sm max-w-[260px]">Add some fresh bakes to get started. Everything's baked this morning.</p>
             <a href="menu.html" onclick="closeCart()" class="inline-flex items-center gap-2 bg-cocoa text-cream px-6 py-2.5 rounded-full text-sm font-semibold shadow-warm hover:bg-brown transition-all">
@@ -97,8 +97,8 @@
             </a>
             <div class="mt-8 text-xs text-cocoa/40">Try our bestsellers:</div>
             <div class="flex gap-2 mt-3 text-xs">
-              <button onclick="quickAdd('Sourdough Boule',280,this)" class="bg-cream border border-brown/20 rounded-full px-3 py-1.5 hover:border-brown">🍞 Sourdough ₹280</button>
-              <button onclick="quickAdd('Butter Croissant',120,this)" class="bg-cream border border-brown/20 rounded-full px-3 py-1.5 hover:border-brown">🥐 Croissant ₹120</button>
+              <button onclick="quickAdd('Sourdough Boule',280,this)" class="bg-cream border border-brown/20 rounded-full px-3 py-1.5 hover:border-brown"><i class="fa-solid fa-bread-slice text-caramel mr-1"></i> Sourdough ₹280</button>
+              <button onclick="quickAdd('Butter Croissant',120,this)" class="bg-cream border border-brown/20 rounded-full px-3 py-1.5 hover:border-brown"><i class="fa-solid fa-bowl-food text-caramel mr-1"></i> Croissant ₹120</button>
             </div>
           </div>`;
         footer.classList.add('hidden');
@@ -132,7 +132,7 @@
       const remain = Math.max(0, FREE_SHIP_THRESHOLD - subtotal);
       const note = document.getElementById('freeShipNote');
       if (subtotal >= FREE_SHIP_THRESHOLD) {
-        note.innerHTML = '<span class="text-caramel font-semibold">✓ Free local delivery unlocked!</span>';
+        note.innerHTML = '<span class="text-caramel font-semibold"><i class="fa-solid fa-check text-caramel"></i> Free local delivery unlocked!</span>';
       } else {
         note.innerHTML = `Add <strong class="text-cocoa">₹${remain}</strong> more for free local delivery`;
       }
@@ -206,6 +206,7 @@
     @keyframes cartBadgePop { 0% { transform: scale(1); } 40% { transform: scale(1.35); } 100% { transform: scale(1); } }
     #cartCount.bump { animation: cartBadgePop .35s ease; }
   </style>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 <body class="bg-parchment text-cocoa antialiased">
 
@@ -234,7 +235,6 @@
             Admin
           </a>
           <!-- Cart (button) -->
-          <button id="cartBtn"
           <button id="cartBtn" class="relative w-10 h-10 rounded-full bg-white border border-brown/20 flex items-center justify-center hover:border-brown transition-all">
             <svg class="w-5 h-5 text-cocoa" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2 8h13M9 21a1 1 0 11-2 0 1 1 0 012 0zm9 0a1 1 0 11-2 0 1 1 0 012 0z"/></svg>
             <span id="cartCount" class="absolute -top-1.5 -right-1.5 min-w-[20px] h-5 px-1.5 rounded-full bg-caramel text-cocoa text-[10px] font-bold flex items-center justify-center">0</span>
@@ -290,9 +290,9 @@
             <h3 class="font-serif text-2xl font-bold text-cocoa">Malda · Rash Behari</h3>
             <div class="text-xs text-brown uppercase tracking-widest font-bold mt-1 mb-4">Flagship · Since 2018</div>
             <div class="space-y-3 text-sm text-cocoa/80">
-              <div class="flex gap-3"><span class="text-brown">📍</span>14 Rash Behari Avenue, Malda, West Bengal 732101</div>
-              <div class="flex gap-3"><span class="text-brown">📞</span><a href="tel:+913524112233" class="hover:text-brown">+91 3524 112 233</a></div>
-              <div class="flex gap-3"><span class="text-brown">📧</span><a href="mailto:hello@crumbcraft.in" class="hover:text-brown">hello@crumbcraft.in</a></div>
+              <div class="flex gap-3"><span class="text-brown"><i class="fa-solid fa-location-dot text-caramel"></i></span>14 Rash Behari Avenue, Malda, West Bengal 732101</div>
+              <div class="flex gap-3"><span class="text-brown"><i class="fa-solid fa-phone text-caramel"></i></span><a href="tel:+913524112233" class="hover:text-brown">+91 3524 112 233</a></div>
+              <div class="flex gap-3"><span class="text-brown"><i class="fa-solid fa-envelope-open text-caramel"></i></span><a href="mailto:hello@crumbcraft.in" class="hover:text-brown">hello@crumbcraft.in</a></div>
             </div>
             <div class="mt-5 pt-5 border-t border-cocoa/10 text-sm">
               <div class="flex items-center justify-between">
@@ -320,9 +320,9 @@
             <h3 class="font-serif text-2xl font-bold text-cocoa">English Bazar</h3>
             <div class="text-xs text-brown uppercase tracking-widest font-bold mt-1 mb-4">Café +amp; Storefront</div>
             <div class="space-y-3 text-sm text-cocoa/80">
-              <div class="flex gap-3"><span class="text-brown">📍</span>5B Sadar Road, English Bazar, Malda 732101</div>
-              <div class="flex gap-3"><span class="text-brown">📞</span><a href="tel:+913524114455" class="hover:text-brown">+91 3524 114 455</a></div>
-              <div class="flex gap-3"><span class="text-brown">📧</span><a href="mailto:eb@crumbcraft.in" class="hover:text-brown">eb@crumbcraft.in</a></div>
+              <div class="flex gap-3"><span class="text-brown"><i class="fa-solid fa-location-dot text-caramel"></i></span>5B Sadar Road, English Bazar, Malda 732101</div>
+              <div class="flex gap-3"><span class="text-brown"><i class="fa-solid fa-phone text-caramel"></i></span><a href="tel:+913524114455" class="hover:text-brown">+91 3524 114 455</a></div>
+              <div class="flex gap-3"><span class="text-brown"><i class="fa-solid fa-envelope-open text-caramel"></i></span><a href="mailto:eb@crumbcraft.in" class="hover:text-brown">eb@crumbcraft.in</a></div>
             </div>
             <div class="mt-5 pt-5 border-t border-cocoa/10 text-sm">
               <div class="flex items-center justify-between">
@@ -350,9 +350,9 @@
             <h3 class="font-serif text-2xl font-bold text-cocoa">Salt Lake · Kolkata</h3>
             <div class="text-xs text-brown uppercase tracking-widest font-bold mt-1 mb-4">Takeaway &amp; wholesale</div>
             <div class="space-y-3 text-sm text-cocoa/80">
-              <div class="flex gap-3"><span class="text-brown">📍</span>City Centre 1, Salt Lake Bypass, Kolkata 700064</div>
-              <div class="flex gap-3"><span class="text-brown">📞</span><a href="tel:+913323501122" class="hover:text-brown">+91 33 2350 1122</a></div>
-              <div class="flex gap-3"><span class="text-brown">📧</span><a href="mailto:kol@crumbcraft.in" class="hover:text-brown">kol@crumbcraft.in</a></div>
+              <div class="flex gap-3"><span class="text-brown"><i class="fa-solid fa-location-dot text-caramel"></i></span>City Centre 1, Salt Lake Bypass, Kolkata 700064</div>
+              <div class="flex gap-3"><span class="text-brown"><i class="fa-solid fa-phone text-caramel"></i></span><a href="tel:+913323501122" class="hover:text-brown">+91 33 2350 1122</a></div>
+              <div class="flex gap-3"><span class="text-brown"><i class="fa-solid fa-envelope-open text-caramel"></i></span><a href="mailto:kol@crumbcraft.in" class="hover:text-brown">kol@crumbcraft.in</a></div>
             </div>
             <div class="mt-5 pt-5 border-t border-cocoa/10 text-sm">
               <div class="flex items-center justify-between">
@@ -386,7 +386,7 @@
         <p class="text-cocoa/70 leading-relaxed mb-8">We read every message. Wholesale enquiries usually get a reply within a day, custom cake briefings within four hours, and "hi"s within the week.</p>
         <div class="space-y-4">
           <div class="flex items-start gap-4">
-            <div class="w-12 h-12 rounded-2xl bg-cocoa text-cream flex items-center justify-center text-xl flex-shrink-0">✉️</div>
+            <div class="w-12 h-12 rounded-2xl bg-cocoa text-cream flex items-center justify-center text-xl flex-shrink-0"><i class="fa-solid fa-envelope text-caramel"></i></div>
             <div>
               <div class="font-bold text-sm text-cocoa">Email</div>
               <a href="mailto:hello@crumbcraft.in" class="text-cocoa/70 hover:text-brown">hello@crumbcraft.in</a>
@@ -394,7 +394,7 @@
             </div>
           </div>
           <div class="flex items-start gap-4">
-            <div class="w-12 h-12 rounded-2xl bg-cocoa text-cream flex items-center justify-center text-xl flex-shrink-0">📞</div>
+            <div class="w-12 h-12 rounded-2xl bg-cocoa text-cream flex items-center justify-center text-xl flex-shrink-0"><i class="fa-solid fa-phone text-caramel"></i></div>
             <div>
               <div class="font-bold text-sm text-cocoa">Phone</div>
               <a href="tel:+913524112233" class="text-cocoa/70 hover:text-brown">+91 3524 112 233</a>
@@ -402,7 +402,7 @@
             </div>
           </div>
           <div class="flex items-start gap-4">
-            <div class="w-12 h-12 rounded-2xl bg-cocoa text-cream flex items-center justify-center text-xl flex-shrink-0">💬</div>
+            <div class="w-12 h-12 rounded-2xl bg-cocoa text-cream flex items-center justify-center text-xl flex-shrink-0"><i class="fa-brands fa-whatsapp text-caramel"></i></div>
             <div>
               <div class="font-bold text-sm text-cocoa">WhatsApp</div>
               <a href="https://wa.me/913524112233" class="text-cocoa/70 hover:text-brown">+91 35241 12233</a>
@@ -410,7 +410,7 @@
             </div>
           </div>
           <div class="flex items-start gap-4">
-            <div class="w-12 h-12 rounded-2xl bg-cocoa text-cream flex items-center justify-center text-xl flex-shrink-0">📸</div>
+            <div class="w-12 h-12 rounded-2xl bg-cocoa text-cream flex items-center justify-center text-xl flex-shrink-0"><i class="fa-brands fa-instagram text-caramel"></i></div>
             <div>
               <div class="font-bold text-sm text-cocoa">Instagram</div>
               <a href="#" class="text-cocoa/70 hover:text-brown">@crumb.and.craft</a>
@@ -539,7 +539,7 @@
       const result = document.getElementById('contact-result');
       result.innerHTML = `<div class="text-sm text-cocoa/70 flex items-center gap-2"><span class="w-4 h-4 border-2 border-caramel border-t-transparent rounded-full spinner"></span> Sending…</div>`;
       setTimeout(() => {
-        result.innerHTML = `<div class="bg-caramel/15 border border-caramel rounded-xl p-4 flex items-start gap-3"><div class="w-8 h-8 rounded-full bg-caramel text-cocoa flex items-center justify-center flex-shrink-0">✓</div><div><div class="font-bold text-cocoa text-sm">Thanks — message received!</div><div class="text-xs text-cocoa/60 mt-0.5">We'll get back within 24 hours. Promise.</div></div></div>`;
+        result.innerHTML = `<div class="bg-caramel/15 border border-caramel rounded-xl p-4 flex items-start gap-3"><div class="w-8 h-8 rounded-full bg-caramel text-cocoa flex items-center justify-center flex-shrink-0"><i class="fa-solid fa-check text-caramel"></i></div><div><div class="font-bold text-cocoa text-sm">Thanks — message received!</div><div class="text-xs text-cocoa/60 mt-0.5">We'll get back within 24 hours. Promise.</div></div></div>`;
         const form = document.querySelector('#contact-result').closest('form');
         form.reset();
       }, 900);

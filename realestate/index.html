@@ -283,12 +283,12 @@
         <div class="text-sm text-gray-400">Active Verified Listings</div>
       </div>
       <div class="text-center" data-aos>
-        <div class="text-5xl lg:text-6xl font-black font-head text-white mb-2"><span data-count="12" data-suffix="K">0</span>+</div>
+        <div class="text-5xl lg:text-6xl font-black font-head text-white mb-2"><span data-count="12" data-suffix="K+">0</span></div>
         <div class="text-sm text-gray-400">Happy Families</div>
       </div>
       <div class="text-center" data-aos>
-        <div class="text-5xl lg:text-6xl font-black font-head text-white mb-2">₹<span data-count="500" data-suffix="Cr">0</span></div>
-        <div class="text-sm text-gray-400">Properties Sold</div>
+        <div class="text-5xl lg:text-6xl font-black font-head text-white mb-2">₹<span data-count="500" data-suffix="Cr+">0</span></div>
+        <div class="text-sm text-gray-400">Property Value Sold</div>
       </div>
       <div class="text-center" data-aos>
         <div class="text-5xl lg:text-6xl font-black font-head text-white mb-2"><span data-count="4.9" data-decimals="1">0</span>★</div>
@@ -651,7 +651,7 @@
   // Fav toggle
   document.querySelectorAll('.fav-btn').forEach(btn => btn.addEventListener('click', e => { e.preventDefault(); btn.classList.toggle('active'); }));
   // Animated counters
-  const fmt = (n, o) => o.decimals ? n.toFixed(o.decimals) : (o.format === 'in' ? n.toLocaleString('en-IN') : Math.round(n).toString());
+  const fmt = (n, o) => (o.decimals ? n.toFixed(o.decimals) : (o.format === 'in' ? n.toLocaleString('en-IN') : Math.round(n).toString())) + (o.suffix || '');
   const counterObs = new IntersectionObserver((entries) => {
     entries.forEach(e => {
       if (!e.isIntersecting) return;

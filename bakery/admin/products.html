@@ -38,6 +38,7 @@
     .stock-track { transition: background .15s; }
     .stock-thumb { transition: transform .15s, background .15s; }
   </style>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 <body class="bg-adminBase text-ink min-h-screen">
 
@@ -280,7 +281,7 @@
     }).join('');
   }
   function categoryEmoji(c) {
-    return ({breads:'🍞',pastries:'🥐',cakes:'🎂',cookies:'🍪',savory:'🥧',seasonal:'🧁'})[c] || '🥐';
+    return ({breads:'<i class="fa-solid fa-bread-slice text-caramel"></i>',pastries:'<i class="fa-solid fa-bowl-food text-caramel"></i>',cakes:'<i class="fa-solid fa-cake-candles text-caramel"></i>',cookies:'<i class="fa-solid fa-cookie-bite text-caramel"></i>',savory:'<i class="fa-solid fa-utensils text-caramel"></i>',seasonal:'<i class="fa-solid fa-seedling text-caramel"></i>'})[c] || '<i class="fa-solid fa-bowl-food text-caramel"></i>';
   }
   function toggleStock(i, cb) {
     PRODUCTS[i].stock = cb.checked ? Math.max(1, PRODUCTS[i].stock) : 0;

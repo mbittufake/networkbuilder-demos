@@ -2,13 +2,15 @@
 <html lang="en" class="bg-[#050505] text-[#F5F0E8] antialiased selection:bg-[#C9A96E] selection:text-black">
 <head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Practice Areas | VANTAGE LEGAL</title>
+<title>Practice Areas &amp; Specializations | VANTAGE LEGAL</title>
 <script src="https://cdn.tailwindcss.com"></script>
-<link href="https://fonts.googleapis.com/css2?family=Italiana&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Italiana&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 <script>tailwind.config={theme:{extend:{fontFamily:{serif:['Italiana','serif'],sans:['Inter','sans-serif']},colors:{gold:'#C9A96E',cream:'#F5F0E8',void:'#050505',coal:'#0E0E0E'}}}}</script>
 <style>
 body{font-family:'Inter',sans-serif;background:#050505;}.font-serif{font-family:'Italiana',serif!important;}
 .hairline{border-color:rgba(201,169,110,.18);}
+.gold-rule{height:1px;background:linear-gradient(90deg,#C9A96E,rgba(201,169,110,0));}
 .menu-overlay{clip-path:circle(0% at 100% 0);transition:clip-path .8s cubic-bezier(.77,0,.175,1);}.menu-overlay.open{clip-path:circle(150% at 100% 0);}
 .num{font-family:'Italiana',serif;color:transparent;-webkit-text-stroke:1px rgba(201,169,110,.65);}
 .practice-row{transition:background .5s ease;}.practice-row:hover{background:#0E0E0E;}
@@ -17,60 +19,247 @@ li::marker{color:#C9A96E;}
 </style>
 </head>
 <body class="font-sans">
+<!-- Navigation -->
 <div class="fixed top-0 w-full z-[60] bg-[#050505]/85 backdrop-blur-md border-b hairline">
-  <div class="max-w-7xl mx-auto px-6 h-[68px] flex items-center justify-between">
-    <a href="index.html" class="font-serif text-[24px] tracking-[0.22em]">VANTAGE</a>
-    <button onclick="document.getElementById('menu').classList.toggle('open')" class="flex items-center gap-3 text-[12px] uppercase tracking-[0.25em] hover:text-[#C9A96E] transition">Menu<span class="flex flex-col gap-[5px] w-7"><span class="h-px bg-current w-full"></span><span class="h-px bg-current w-2/3 ml-auto"></span></span></button>
-  </div>
-</div>
-<div id="menu" class="menu-overlay fixed inset-0 bg-[#C9A96E] z-[55] flex items-center justify-center">
-  <div class="flex flex-col space-y-6 text-center">
-    <a href="index.html" class="text-[#050505] text-5xl md:text-6xl font-serif hover:italic transition-all">Index</a>
-    <a href="about.html" class="text-[#050505] text-5xl md:text-6xl font-serif hover:italic transition-all">The Firm</a>
-    <a href="practice.html" class="text-[#050505] text-5xl md:text-6xl font-serif italic transition-all">Expertise</a>
-    <a href="contact.html" class="text-[#050505] text-5xl md:text-6xl font-serif hover:italic transition-all">Contact</a>
+  <div class="max-w-[1600px] mx-auto px-6 md:px-10 h-[68px] flex items-center justify-between">
+    <a href="index.html" class="flex items-baseline gap-3 group">
+      <span class="font-serif text-[24px] tracking-[0.22em]">VANTAGE</span>
+      <span class="hidden sm:inline text-[10px] uppercase tracking-[0.3em] text-[#C9A96E]">Practice Areas — 03</span>
+    </a>
+    <div class="flex items-center gap-8">
+      <span class="hidden lg:block text-[11px] uppercase tracking-[0.25em] text-[#F5F0E8]/40">6 Core Practice Areas &bull; Appellate Mastery</span>
+      <button onclick="document.getElementById('menu').classList.toggle('open')" class="flex items-center gap-3 text-[12px] uppercase tracking-[0.25em] hover:text-[#C9A96E] transition">
+        <span>Menu</span>
+        <span class="flex flex-col gap-[5px] w-7"><span class="h-px bg-current w-full"></span><span class="h-px bg-current w-2/3 ml-auto"></span></span>
+      </button>
+    </div>
   </div>
 </div>
 
-<header class="pt-[150px] pb-14 px-6 max-w-7xl mx-auto text-center">
-  <div class="flex items-center justify-center gap-4 mb-6"><span class="h-px w-14 bg-[#C9A96E]"></span><p class="text-[#C9A96E] uppercase tracking-[0.32em] text-[11px]">03 — Our Focus</p><span class="h-px w-14 bg-[#C9A96E]"></span></div>
-  <h1 class="font-serif leading-[0.9]" style="font-size:clamp(3.5rem,9vw,7.5rem)">AREAS OF <span class="italic text-[#F5F0E8]/30">mastery</span></h1>
-  <p class="mt-6 text-[#F5F0E8]/50 font-light max-w-xl mx-auto">Three disciplines. One standard: absolute dominance. Hover each dossier to enter.</p>
+<!-- Fullscreen Menu -->
+<div id="menu" class="menu-overlay fixed inset-0 bg-[#C9A96E] z-[55] flex flex-col justify-center px-8 md:px-20">
+  <p class="text-[#050505]/60 text-xs uppercase tracking-[0.35em] mb-10">Navigation — Vantage Legal</p>
+  <div class="flex flex-col">
+    <a href="index.html" class="group flex items-baseline gap-6 border-t border-black/15 py-5"><span class="text-sm font-sans text-black/50">01</span><span class="font-serif text-5xl md:text-7xl text-[#050505] group-hover:italic transition-all">Index</span></a>
+    <a href="about.html" class="group flex items-baseline gap-6 border-t border-black/15 py-5"><span class="text-sm font-sans text-black/50">02</span><span class="font-serif text-5xl md:text-7xl text-[#050505] group-hover:italic transition-all">The Firm</span></a>
+    <a href="practice.html" class="group flex items-baseline gap-6 border-t border-black/15 py-5"><span class="text-sm font-sans text-black/50">03</span><span class="font-serif text-5xl md:text-7xl text-[#050505] italic transition-all">Expertise</span></a>
+    <a href="contact.html" class="group flex items-baseline gap-6 border-y border-black/15 py-5"><span class="text-sm font-sans text-black/50">04</span><span class="font-serif text-5xl md:text-7xl text-[#050505] group-hover:italic transition-all">Contact</span></a>
+  </div>
+  <p class="mt-10 text-[#050505]/60 text-xs uppercase tracking-[0.25em]">chambers@vantage.legal — +1 (212) 555-0199 / +91 11 4820 9900</p>
+</div>
+
+<!-- Header -->
+<header class="pt-[160px] pb-16 px-6 md:px-10 max-w-[1600px] mx-auto text-center">
+  <div class="flex items-center justify-center gap-4 mb-6">
+    <span class="h-px w-14 bg-[#C9A96E]"></span>
+    <p class="text-[#C9A96E] uppercase tracking-[0.32em] text-[11px]">03 — Practice Areas &amp; Specializations</p>
+    <span class="h-px w-14 bg-[#C9A96E]"></span>
+  </div>
+  <h1 class="font-serif leading-[0.9] text-[#F5F0E8]" style="font-size:clamp(3.5rem,9vw,7.5rem)">
+    AREAS OF <span class="italic text-[#F5F0E8]/30">mastery</span>
+  </h1>
+  <p class="mt-6 text-[#F5F0E8]/50 font-light max-w-2xl mx-auto text-lg leading-relaxed">
+    Six discrete disciplines. One non-negotiable benchmark: absolute intellectual and courtroom superiority when liberty, reputation, and enterprise value are on the line.
+  </p>
 </header>
 
-<section class="max-w-7xl mx-auto px-6 pb-24">
+<!-- Practice Matrix (6 Deep Areas) -->
+<section class="max-w-[1600px] mx-auto px-6 md:px-10 pb-24">
   <div class="border-b hairline">
-    <div class="practice-row grid md:grid-cols-12 gap-8 border-t hairline py-14 px-2 md:px-8 items-start">
+    
+    <!-- 01: White Collar -->
+    <div class="practice-row grid md:grid-cols-12 gap-8 border-t hairline py-16 px-4 md:px-8 items-start">
       <span class="num text-6xl md:text-7xl md:col-span-2">01</span>
-      <div class="md:col-span-4"><p class="text-[#C9A96E] text-[11px] uppercase tracking-[0.3em] mb-3">White Collar</p><h2 class="text-4xl md:text-5xl font-serif">White Collar Defense</h2><a href="contact.html" class="inline-block mt-6 text-[12px] uppercase tracking-[0.2em] border-b border-[#C9A96E] pb-1 hover:text-[#C9A96E]">Request Counsel →</a></div>
-      <div class="md:col-span-6 space-y-5 text-[#F5F0E8]/60 font-light leading-relaxed">
-        <p>In an era of aggressive enforcement, you need a shield. We represent individuals and corporations in investigations by the Enforcement Directorate (ED), CBI, SFIO, and Income Tax authorities.</p>
-        <ul class="list-disc pl-5 space-y-2 text-[#F5F0E8]/45 text-[15px]"><li>Money Laundering (PMLA) Defense</li><li>Corporate Fraud Investigations</li><li>Anticipatory Bail &amp; Quashing Petitions</li></ul>
+      <div class="md:col-span-4">
+        <p class="text-[#C9A96E] text-[11px] uppercase tracking-[0.3em] mb-3"><i class="fa-solid fa-shield-halved mr-1.5"></i> Special Defense</p>
+        <h2 class="text-3xl md:text-4xl font-serif">White Collar &amp; Regulatory Defense</h2>
+        <div class="mt-4 flex flex-wrap gap-2">
+          <span class="text-[10px] uppercase tracking-wider px-2.5 py-1 bg-white/5 border hairline text-[#C9A96E]">ED / PMLA</span>
+          <span class="text-[10px] uppercase tracking-wider px-2.5 py-1 bg-white/5 border hairline text-[#C9A96E]">CBI / SFIO</span>
+          <span class="text-[10px] uppercase tracking-wider px-2.5 py-1 bg-white/5 border hairline text-[#C9A96E]">SEC / DOJ</span>
+        </div>
+        <a href="contact.html" class="inline-flex items-center gap-2 mt-6 text-[12px] uppercase tracking-[0.2em] border-b border-[#C9A96E] pb-1 hover:text-[#C9A96E] text-[#F5F0E8]">Retain Defense Team →</a>
+      </div>
+      <div class="md:col-span-6 space-y-4 text-[#F5F0E8]/60 font-light leading-relaxed">
+        <p>In an environment of aggressive statutory enforcement, immediate intervention dictates the outcome. We represent founders, managing directors, and Fortune 500 multinationals facing intense multi-agency investigations, provisional attachment orders, and red-corner notices.</p>
+        <div class="grid sm:grid-cols-2 gap-3 pt-2 text-sm text-[#F5F0E8]/70">
+          <div class="flex items-start gap-2"><i class="fa-solid fa-check text-[#C9A96E] mt-1 text-xs"></i><span>Prevention of Money Laundering Act (PMLA) Bail</span></div>
+          <div class="flex items-start gap-2"><i class="fa-solid fa-check text-[#C9A96E] mt-1 text-xs"></i><span>Quashing of FIRs under CrPC 482</span></div>
+          <div class="flex items-start gap-2"><i class="fa-solid fa-check text-[#C9A96E] mt-1 text-xs"></i><span>Cross-Border Extradition &amp; Interpol Notices</span></div>
+          <div class="flex items-start gap-2"><i class="fa-solid fa-check text-[#C9A96E] mt-1 text-xs"></i><span>Forensic Audit Counter-Investigations</span></div>
+        </div>
       </div>
     </div>
-    <div class="practice-row grid md:grid-cols-12 gap-8 border-t hairline py-14 px-2 md:px-8 items-start">
+
+    <!-- 02: Corporate Litigation -->
+    <div class="practice-row grid md:grid-cols-12 gap-8 border-t hairline py-16 px-4 md:px-8 items-start">
       <span class="num text-6xl md:text-7xl md:col-span-2">02</span>
-      <div class="md:col-span-4"><p class="text-[#C9A96E] text-[11px] uppercase tracking-[0.3em] mb-3">Corporate</p><h2 class="text-4xl md:text-5xl font-serif">Corporate Litigation</h2><a href="contact.html" class="inline-block mt-6 text-[12px] uppercase tracking-[0.2em] border-b border-[#C9A96E] pb-1 hover:text-[#C9A96E]">Request Counsel →</a></div>
-      <div class="md:col-span-6 space-y-5 text-[#F5F0E8]/60 font-light leading-relaxed">
-        <p>Business disputes can bleed a company dry. We stop the bleeding. Our team handles complex commercial litigation, shareholder disputes, and insolvency proceedings (IBC) with ruthless efficiency.</p>
-        <ul class="list-disc pl-5 space-y-2 text-[#F5F0E8]/45 text-[15px]"><li>NCLT / NCLAT Representation</li><li>Commercial Arbitration</li><li>Intellectual Property Disputes</li></ul>
+      <div class="md:col-span-4">
+        <p class="text-[#C9A96E] text-[11px] uppercase tracking-[0.3em] mb-3"><i class="fa-solid fa-building-columns mr-1.5"></i> Commercial Tribunals</p>
+        <h2 class="text-3xl md:text-4xl font-serif">Corporate Litigation &amp; Restructuring</h2>
+        <div class="mt-4 flex flex-wrap gap-2">
+          <span class="text-[10px] uppercase tracking-wider px-2.5 py-1 bg-white/5 border hairline text-[#C9A96E]">NCLT / NCLAT</span>
+          <span class="text-[10px] uppercase tracking-wider px-2.5 py-1 bg-white/5 border hairline text-[#C9A96E]">Insolvency IBC</span>
+          <span class="text-[10px] uppercase tracking-wider px-2.5 py-1 bg-white/5 border hairline text-[#C9A96E]">Hostile Takeovers</span>
+        </div>
+        <a href="contact.html" class="inline-flex items-center gap-2 mt-6 text-[12px] uppercase tracking-[0.2em] border-b border-[#C9A96E] pb-1 hover:text-[#C9A96E] text-[#F5F0E8]">Retain Corporate Team →</a>
+      </div>
+      <div class="md:col-span-6 space-y-4 text-[#F5F0E8]/60 font-light leading-relaxed">
+        <p>Commercial warfare requires boardroom mastery combined with courtroom brutality. We defend majority shareholding blocks, thwart hostile acquisition maneuvers, and navigate distressed acquisitions under the Insolvency and Bankruptcy Code (IBC).</p>
+        <div class="grid sm:grid-cols-2 gap-3 pt-2 text-sm text-[#F5F0E8]/70">
+          <div class="flex items-start gap-2"><i class="fa-solid fa-check text-[#C9A96E] mt-1 text-xs"></i><span>Shareholder Oppression &amp; Mismanagement (Sec 241)</span></div>
+          <div class="flex items-start gap-2"><i class="fa-solid fa-check text-[#C9A96E] mt-1 text-xs"></i><span>Corporate Insolvency Resolution Process (CIRP)</span></div>
+          <div class="flex items-start gap-2"><i class="fa-solid fa-check text-[#C9A96E] mt-1 text-xs"></i><span>Urgent Interim Injunctions &amp; Freezing Orders</span></div>
+          <div class="flex items-start gap-2"><i class="fa-solid fa-check text-[#C9A96E] mt-1 text-xs"></i><span>Complex Derivative Actions &amp; Director Liability</span></div>
+        </div>
       </div>
     </div>
-    <div class="practice-row grid md:grid-cols-12 gap-8 border-t hairline py-14 px-2 md:px-8 items-start">
+
+    <!-- 03: International Arbitration -->
+    <div class="practice-row grid md:grid-cols-12 gap-8 border-t hairline py-16 px-4 md:px-8 items-start">
       <span class="num text-6xl md:text-7xl md:col-span-2">03</span>
-      <div class="md:col-span-4"><p class="text-[#C9A96E] text-[11px] uppercase tracking-[0.3em] mb-3">Private</p><h2 class="text-4xl md:text-5xl font-serif">Private Client</h2><a href="contact.html" class="inline-block mt-6 text-[12px] uppercase tracking-[0.2em] border-b border-[#C9A96E] pb-1 hover:text-[#C9A96E]">Request Counsel →</a></div>
-      <div class="md:col-span-6 space-y-5 text-[#F5F0E8]/60 font-light leading-relaxed">
-        <p>For High Net Worth Individuals, privacy is paramount. We handle sensitive family matters, high-stakes divorce, and succession planning discreetly and effectively.</p>
-        <ul class="list-disc pl-5 space-y-2 text-[#F5F0E8]/45 text-[15px]"><li>High-Value Divorce Settlements</li><li>Child Custody Disputes</li><li>Estate &amp; Will Contests</li></ul>
+      <div class="md:col-span-4">
+        <p class="text-[#C9A96E] text-[11px] uppercase tracking-[0.3em] mb-3"><i class="fa-solid fa-scale-balanced mr-1.5"></i> Global Seats</p>
+        <h2 class="text-3xl md:text-4xl font-serif">International Commercial Arbitration</h2>
+        <div class="mt-4 flex flex-wrap gap-2">
+          <span class="text-[10px] uppercase tracking-wider px-2.5 py-1 bg-white/5 border hairline text-[#C9A96E]">SIAC (Singapore)</span>
+          <span class="text-[10px] uppercase tracking-wider px-2.5 py-1 bg-white/5 border hairline text-[#C9A96E]">LCIA (London)</span>
+          <span class="text-[10px] uppercase tracking-wider px-2.5 py-1 bg-white/5 border hairline text-[#C9A96E]">ICC (Paris)</span>
+        </div>
+        <a href="contact.html" class="inline-flex items-center gap-2 mt-6 text-[12px] uppercase tracking-[0.2em] border-b border-[#C9A96E] pb-1 hover:text-[#C9A96E] text-[#F5F0E8]">Retain Arbitrators →</a>
+      </div>
+      <div class="md:col-span-6 space-y-4 text-[#F5F0E8]/60 font-light leading-relaxed">
+        <p>Cross-border agreements demand seasoned advocates comfortable across disparate legal traditions. We represent sovereign entities, infrastructure conglomerates, and private equity sponsors in multi-million dollar institutional and ad-hoc arbitrations.</p>
+        <div class="grid sm:grid-cols-2 gap-3 pt-2 text-sm text-[#F5F0E8]/70">
+          <div class="flex items-start gap-2"><i class="fa-solid fa-check text-[#C9A96E] mt-1 text-xs"></i><span>Cross-Border Award Enforcement (NY Convention)</span></div>
+          <div class="flex items-start gap-2"><i class="fa-solid fa-check text-[#C9A96E] mt-1 text-xs"></i><span>Emergency Arbitrator Relief &amp; Asset Preservation</span></div>
+          <div class="flex items-start gap-2"><i class="fa-solid fa-check text-[#C9A96E] mt-1 text-xs"></i><span>Section 9 &amp; Section 34 Indian Arbitration Challenges</span></div>
+          <div class="flex items-start gap-2"><i class="fa-solid fa-check text-[#C9A96E] mt-1 text-xs"></i><span>Bilateral Investment Treaty (BIT) Claims</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 04: Private Client & Ultra-Wealth -->
+    <div class="practice-row grid md:grid-cols-12 gap-8 border-t hairline py-16 px-4 md:px-8 items-start">
+      <span class="num text-6xl md:text-7xl md:col-span-2">04</span>
+      <div class="md:col-span-4">
+        <p class="text-[#C9A96E] text-[11px] uppercase tracking-[0.3em] mb-3"><i class="fa-solid fa-gem mr-1.5"></i> Absolute Discretion</p>
+        <h2 class="text-3xl md:text-4xl font-serif">Private Client &amp; Family Wealth</h2>
+        <div class="mt-4 flex flex-wrap gap-2">
+          <span class="text-[10px] uppercase tracking-wider px-2.5 py-1 bg-white/5 border hairline text-[#C9A96E]">HNW Matrimonial</span>
+          <span class="text-[10px] uppercase tracking-wider px-2.5 py-1 bg-white/5 border hairline text-[#C9A96E]">Family Trust</span>
+          <span class="text-[10px] uppercase tracking-wider px-2.5 py-1 bg-white/5 border hairline text-[#C9A96E]">Succession</span>
+        </div>
+        <a href="contact.html" class="inline-flex items-center gap-2 mt-6 text-[12px] uppercase tracking-[0.2em] border-b border-[#C9A96E] pb-1 hover:text-[#C9A96E] text-[#F5F0E8]">Private Counsel →</a>
+      </div>
+      <div class="md:col-span-6 space-y-4 text-[#F5F0E8]/60 font-light leading-relaxed">
+        <p>Family disputes for dynastic lineages are existential risks that threaten generational business stability. We engineer ironclad trust structures, negotiate discreet pre-nuptial settlements, and defend against predatory testamentary contests.</p>
+        <div class="grid sm:grid-cols-2 gap-3 pt-2 text-sm text-[#F5F0E8]/70">
+          <div class="flex items-start gap-2"><i class="fa-solid fa-check text-[#C9A96E] mt-1 text-xs"></i><span>Multi-Jurisdictional Asset Partition &amp; Division</span></div>
+          <div class="flex items-start gap-2"><i class="fa-solid fa-check text-[#C9A96E] mt-1 text-xs"></i><span>Offshore Discretionary Trust Governance</span></div>
+          <div class="flex items-start gap-2"><i class="fa-solid fa-check text-[#C9A96E] mt-1 text-xs"></i><span>High-Profile Media Blackouts &amp; Privacy Injunctions</span></div>
+          <div class="flex items-start gap-2"><i class="fa-solid fa-check text-[#C9A96E] mt-1 text-xs"></i><span>Contested Probate &amp; Testamentary Succession</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 05: Constitutional & Appellate -->
+    <div class="practice-row grid md:grid-cols-12 gap-8 border-t hairline py-16 px-4 md:px-8 items-start">
+      <span class="num text-6xl md:text-7xl md:col-span-2">05</span>
+      <div class="md:col-span-4">
+        <p class="text-[#C9A96E] text-[11px] uppercase tracking-[0.3em] mb-3"><i class="fa-solid fa-landmark-dome mr-1.5"></i> Apex Jurisdiction</p>
+        <h2 class="text-3xl md:text-4xl font-serif">Constitutional &amp; Appellate Advocacy</h2>
+        <div class="mt-4 flex flex-wrap gap-2">
+          <span class="text-[10px] uppercase tracking-wider px-2.5 py-1 bg-white/5 border hairline text-[#C9A96E]">Supreme Court SLP</span>
+          <span class="text-[10px] uppercase tracking-wider px-2.5 py-1 bg-white/5 border hairline text-[#C9A96E]">Writ Art 32 / 226</span>
+          <span class="text-[10px] uppercase tracking-wider px-2.5 py-1 bg-white/5 border hairline text-[#C9A96E]">Constitutional Bench</span>
+        </div>
+        <a href="contact.html" class="inline-flex items-center gap-2 mt-6 text-[12px] uppercase tracking-[0.2em] border-b border-[#C9A96E] pb-1 hover:text-[#C9A96E] text-[#F5F0E8]">Apex Court Counsel →</a>
+      </div>
+      <div class="md:col-span-6 space-y-4 text-[#F5F0E8]/60 font-light leading-relaxed">
+        <p>When legal interpretation reaches statutory ambiguity, we appear before High Court Division Benches and the Supreme Court of India. Our appellate briefs are renowned for historical jurisprudence, clarity of precedent, and decisive constitutional arguments.</p>
+        <div class="grid sm:grid-cols-2 gap-3 pt-2 text-sm text-[#F5F0E8]/70">
+          <div class="flex items-start gap-2"><i class="fa-solid fa-check text-[#C9A96E] mt-1 text-xs"></i><span>Special Leave Petitions (SLP) Criminal &amp; Civil</span></div>
+          <div class="flex items-start gap-2"><i class="fa-solid fa-check text-[#C9A96E] mt-1 text-xs"></i><span>Writ Petitions challenging Statutory Ultra Vires</span></div>
+          <div class="flex items-start gap-2"><i class="fa-solid fa-check text-[#C9A96E] mt-1 text-xs"></i><span>Interstate Water, Mineral &amp; Energy Compacts</span></div>
+          <div class="flex items-start gap-2"><i class="fa-solid fa-check text-[#C9A96E] mt-1 text-xs"></i><span>Presidential References &amp; Review Petitions</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 06: Crisis Management & Investigations -->
+    <div class="practice-row grid md:grid-cols-12 gap-8 border-t hairline py-16 px-4 md:px-8 items-start">
+      <span class="num text-6xl md:text-7xl md:col-span-2">06</span>
+      <div class="md:col-span-4">
+        <p class="text-[#C9A96E] text-[11px] uppercase tracking-[0.3em] mb-3"><i class="fa-solid fa-skull-crossbones mr-1.5"></i> Zero-Hour Deployment</p>
+        <h2 class="text-3xl md:text-4xl font-serif">Crisis Response &amp; Special Investigations</h2>
+        <div class="mt-4 flex flex-wrap gap-2">
+          <span class="text-[10px] uppercase tracking-wider px-2.5 py-1 bg-white/5 border hairline text-[#C9A96E]">Dawn Raids</span>
+          <span class="text-[10px] uppercase tracking-wider px-2.5 py-1 bg-white/5 border hairline text-[#C9A96E]">Whistleblower Defense</span>
+          <span class="text-[10px] uppercase tracking-wider px-2.5 py-1 bg-white/5 border hairline text-[#C9A96E]">Hostile Leaks</span>
+        </div>
+        <a href="contact.html" class="inline-flex items-center gap-2 mt-6 text-[12px] uppercase tracking-[0.2em] border-b border-[#C9A96E] pb-1 hover:text-[#C9A96E] text-[#F5F0E8]">24/7 Hotline →</a>
+      </div>
+      <div class="md:col-span-6 space-y-4 text-[#F5F0E8]/60 font-light leading-relaxed">
+        <p>A dawn search warrant by regulatory authorities or an explosive internal whistleblower leak can destroy enterprise valuation within 24 hours. Our emergency response cell embeds on-site immediately to oversee digital extraction and assert legal privilege.</p>
+        <div class="grid sm:grid-cols-2 gap-3 pt-2 text-sm text-[#F5F0E8]/70">
+          <div class="flex items-start gap-2"><i class="fa-solid fa-check text-[#C9A96E] mt-1 text-xs"></i><span>Immediate On-Site Dawn Raid Protocols</span></div>
+          <div class="flex items-start gap-2"><i class="fa-solid fa-check text-[#C9A96E] mt-1 text-xs"></i><span>Assertion &amp; Protection of Attorney-Client Privilege</span></div>
+          <div class="flex items-start gap-2"><i class="fa-solid fa-check text-[#C9A96E] mt-1 text-xs"></i><span>Anti-Bribery (FCPA &amp; UK Bribery Act) Audits</span></div>
+          <div class="flex items-start gap-2"><i class="fa-solid fa-check text-[#C9A96E] mt-1 text-xs"></i><span>Emergency Defamation Injunctions &amp; Media Restraints</span></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Representative Matters Banner -->
+  <div class="mt-20 bg-[#0E0E0E] border hairline p-8 md:p-12">
+    <div class="flex items-center gap-4 mb-4">
+      <span class="h-px w-10 bg-[#C9A96E]"></span>
+      <p class="text-[#C9A96E] uppercase tracking-[0.3em] text-[11px]">Track Record</p>
+    </div>
+    <h3 class="font-serif text-3xl md:text-4xl text-[#F5F0E8] mb-8">Selected Representative Matters</h3>
+    <div class="grid md:grid-cols-3 gap-8 text-sm font-light text-[#F5F0E8]/60 border-t hairline pt-8">
+      <div>
+        <p class="text-[#C9A96E] font-serif text-2xl mb-1">₹1,400 Cr</p>
+        <p class="font-medium text-[#F5F0E8] mb-2">Banking Consortium Quashing</p>
+        <p>Successfully quashed multi-jurisdictional FIRs and secured interim relief for the promoter group against forensic audit allegations.</p>
+      </div>
+      <div>
+        <p class="text-[#C9A96E] font-serif text-2xl mb-1">$340M</p>
+        <p class="font-medium text-[#F5F0E8] mb-2">Singapore International Arbitration</p>
+        <p>Secured unanimous arbitral award in favour of energy conglomerate in joint venture dispute involving offshore pipeline assets.</p>
+      </div>
+      <div>
+        <p class="text-[#C9A96E] font-serif text-2xl mb-1">₹3,200 Cr</p>
+        <p class="font-medium text-[#F5F0E8] mb-2">NCLT Resolution &amp; Restructuring</p>
+        <p>Advised successful resolution applicant in acquiring heavy engineering manufacturer, eliminating operational debt overhang.</p>
       </div>
     </div>
   </div>
+
+  <!-- Emergency CTA -->
   <div class="mt-14 flex flex-col md:flex-row items-center justify-between gap-6 bg-[#0E0E0E] border hairline p-8 md:p-10">
-    <p class="font-serif text-2xl md:text-3xl italic text-[#F5F0E8]/80">Not sure where you stand? We assess in 30 minutes.</p>
-    <a href="contact.html" class="px-10 py-4 bg-[#C9A96E] text-black text-[12px] font-semibold uppercase tracking-[0.2em] hover:bg-[#F5F0E8] transition shrink-0">Secure Counsel</a>
+    <div>
+      <p class="font-serif text-2xl md:text-3xl italic text-[#F5F0E8]/90">Facing active regulatory action or high-stakes notice?</p>
+      <p class="text-sm text-[#F5F0E8]/50 mt-1 font-light">Chambers conducts conflict checks within 120 minutes of formal submission.</p>
+    </div>
+    <a href="contact.html" class="px-10 py-4 bg-[#C9A96E] text-black text-[12px] font-semibold uppercase tracking-[0.2em] hover:bg-[#F5F0E8] transition shrink-0">Secure Counsel Now</a>
   </div>
 </section>
 
-<footer class="bg-black border-t hairline py-12 text-center text-[#F5F0E8]/35 text-[11px] uppercase tracking-[0.2em]"><p>&copy; 2026 Vantage Legal. New Delhi.</p></footer>
+<!-- Footer -->
+<footer class="bg-black border-t hairline py-12 px-6">
+  <div class="max-w-[1600px] mx-auto flex flex-col md:flex-row justify-between gap-6 text-[11px] uppercase tracking-[0.2em] text-[#F5F0E8]/35">
+    <p>&copy; 2026 Vantage Legal. New York &bull; New Delhi. All Rights Reserved.</p>
+    <div class="flex gap-8">
+      <a href="index.html" class="hover:text-[#C9A96E]">Index</a>
+      <a href="about.html" class="hover:text-[#C9A96E]">The Firm</a>
+      <a href="practice.html" class="text-[#C9A96E]">Practice Areas</a>
+      <a href="contact.html" class="hover:text-[#C9A96E]">Contact</a>
+    </div>
+  </div>
+</footer>
 </body>
 </html>

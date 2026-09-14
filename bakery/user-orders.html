@@ -37,6 +37,7 @@
     @keyframes fadeUp { from{opacity:0; transform:translateY(12px);} to{opacity:1; transform:translateY(0);} }
     .fade-up { animation: fadeUp .4s ease forwards; }
   </style>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 <body class="bg-parchment text-cocoa antialiased min-h-screen">
 
@@ -88,7 +89,7 @@
     <div id="ordersTab" class="hidden">
       <div id="ordersContent" class="space-y-4 fade-up"></div>
       <div id="noOrders" class="hidden text-center py-16 bg-white rounded-3xl border border-brown/10">
-        <div class="text-5xl mb-3">📋</div>
+        <div class="w-16 h-16 mx-auto mb-3 rounded-full bg-caramel/20 flex items-center justify-center text-3xl text-caramel"><i class="fa-solid fa-receipt"></i></div>
         <h3 class="font-serif text-2xl font-bold text-cocoa mb-2">No orders yet</h3>
         <p class="text-cocoa/60 mb-5 text-sm">When you place an order, it'll show up here.</p>
         <a href="menu.html" class="inline-flex items-center gap-2 bg-cocoa text-cream font-semibold px-5 py-2.5 rounded-full hover:bg-brown transition-all">Browse menu →</a>
@@ -117,16 +118,16 @@
     const DELIVERY_FEE = { pickup:0, local:150, express:250 };
 
     function itemEmoji(name) {
-      const n = name.toLowerCase();
-      if (n.includes('croissant')||n.includes('brioche')||n.includes('babka')||n.includes('pain')||n.includes('danish')||n.includes('kouign')) return '🥐';
-      if (n.includes('sourdough')||n.includes('boule')||n.includes('loaf')||n.includes('ciabatta')) return '🍞';
-      if (n.includes('focaccia')) return '🥖';
-      if (n.includes('cake')||n.includes('tiramisu')||n.includes('cheesecake')) return '🎂';
-      if (n.includes('cookie')||n.includes('brownie')||n.includes('biscotti')||n.includes('shortbread')) return '🍪';
-      if (n.includes('quiche')||n.includes('galette')||n.includes('pie')) return '🥧';
-      if (n.includes('roll')) return '🍥';
-      if (n.includes('cupcake')||n.includes('tart')||n.includes('mango')||n.includes('pumpkin')) return '🧁';
-      return '🥐';
+      const n = (name || '').toLowerCase();
+      if (n.includes('croissant') || n.includes('brioche') || n.includes('babka') || n.includes('pain')) return '<i class="fa-solid fa-bowl-food text-caramel"></i>';
+      if (n.includes('sourdough') || n.includes('boule') || n.includes('loaf') || n.includes('ciabatta')) return '<i class="fa-solid fa-bread-slice text-caramel"></i>';
+      if (n.includes('focaccia') || n.includes('pita')) return '<i class="fa-solid fa-bread-slice text-caramel"></i>';
+      if (n.includes('cake') || n.includes('tiramisu') || n.includes('cheesecake')) return '<i class="fa-solid fa-cake-candles text-caramel"></i>';
+      if (n.includes('cookie') || n.includes('brownie') || n.includes('biscotti') || n.includes('shortbread')) return '<i class="fa-solid fa-cookie-bite text-caramel"></i>';
+      if (n.includes('quiche') || n.includes('galette') || n.includes('pie')) return '<i class="fa-solid fa-utensils text-caramel"></i>';
+      if (n.includes('roll')) return '<i class="fa-solid fa-cookie text-caramel"></i>';
+      if (n.includes('cupcake') || n.includes('tart') || n.includes('mango') || n.includes('pumpkin')) return '<i class="fa-solid fa-seedling text-caramel"></i>';
+      return '<i class="fa-solid fa-wheat-awn text-caramel"></i>';
     }
 
     /* ===== Tabs ===== */
@@ -143,7 +144,7 @@
       if (!cart.length) {
         wrap.innerHTML = `
           <div class="text-center py-16 bg-white rounded-3xl border border-brown/10">
-            <div class="text-6xl mb-3">🥐</div>
+            <div class="w-16 h-16 mx-auto mb-3 rounded-full bg-caramel/20 flex items-center justify-center text-3xl text-caramel"><i class="fa-solid fa-basket-shopping"></i></div>
             <h3 class="font-serif text-2xl font-bold text-cocoa mb-2">Your cart is empty</h3>
             <p class="text-cocoa/60 mb-5 text-sm">Add some fresh bakes to get started.</p>
             <a href="menu.html" class="inline-flex items-center gap-2 bg-cocoa text-cream font-semibold px-5 py-2.5 rounded-full hover:bg-brown transition-all">Browse menu →</a>

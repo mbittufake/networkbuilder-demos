@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Product Details — Crumb & Craft Artisan Bakery</title>
+  <meta name="description" content="View full artisan product details, ingredients, dietary notes and fresh bake ordering.">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            cream: '#FAF6F0',
+            sand: '#F3ECE2',
+            cocoa: '#3A2312',
+            caramel: '#C99757',
+            brown: '#6B4423',
+            ash: '#8C7262',
+            ink: '#21150C'
+          },
+          fontFamily: {
+            serif: ['Fraunces', 'serif'],
+            sans: ['"Plus Jakarta Sans"', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #FAF6F0; color: #21150C; }
+    .card-hover { transition: transform .3s ease, box-shadow .3s ease; }
+    .card-hover:hover { transform: translateY(-4px); box-shadow: 0 16px 32px -12px rgba(58,35,18,.15); }
+    .toast-active { transform: translateY(0); opacity: 1; }
+  </style>
+</head>
+<body class="bg-cream text-ink antialiased min-h-screen flex flex-col">
+
+  <!-- Top bar -->
+  <div class="bg-cocoa text-cream text-[11px] tracking-[0.2em] uppercase py-2.5 px-4 text-center font-semibold">
+    <span><i class="fa-solid fa-wheat-awn text-caramel mr-1.5"></i> Daily Bakes Out of the Oven at 6:30 AM · Same-Day Delivery in South Mumbai</span>
+  </div>
+
+  <!-- Main Header -->
+  <header class="sticky top-0 z-40 bg-cream/95 backdrop-blur border-b border-brown/10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-20">
+        <!-- Logo -->
+        <a href="index.html" class="flex items-center gap-3">
+          <div class="w-11 h-11 rounded-full bg-cocoa text-cream flex items-center justify-center font-serif text-xl font-bold">C</div>
+          <div>
+            <span class="font-serif text-2xl font-bold tracking-tight text-cocoa block leading-none">Crumb &amp; Craft</span>
+            <span class="text-[10px] tracking-[0.28em] uppercase text-ash font-bold">Artisan Bakery</span>
+          </div>
+        </a>
+
+        <!-- Nav -->
+        <nav class="hidden md:flex items-center gap-8 text-sm font-semibold text-cocoa/80">
+          <a href="index.html" class="hover:text-caramel transition">Home</a>
+          <a href="menu.html" class="text-caramel font-bold flex items-center gap-1.5">Menu <span class="w-1.5 h-1.5 bg-caramel rounded-full"></span></a>
+          <a href="about.html" class="hover:text-caramel transition">Our Story</a>
+          <a href="custom-orders.html" class="hover:text-caramel transition">Custom Cakes</a>
+          <a href="contact.html" class="hover:text-caramel transition">Contact</a>
+        </nav>
+
+        <!-- Actions -->
+        <div class="flex items-center gap-3">
+          <a href="cart.html" class="bg-cocoa hover:bg-brown text-cream px-5 py-2.5 rounded-full text-xs font-bold tracking-wide flex items-center gap-2 shadow-sm transition">
+            <i class="fa-solid fa-bag-shopping text-caramel text-sm"></i>
+            <span>Cart</span>
+            <span id="cartBadge" class="bg-caramel text-cocoa px-2 py-0.5 rounded-full font-black text-[10px]">0</span>
+          </a>
+          <button onclick="document.getElementById('mobileMenu').classList.toggle('hidden')" class="md:hidden w-10 h-10 rounded-full border border-brown/20 flex items-center justify-center text-cocoa">
+            <i class="fa-solid fa-bars"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+    <!-- Mobile dropdown -->
+    <div id="mobileMenu" class="hidden md:hidden border-t border-brown/10 bg-sand px-6 py-5 space-y-3 font-semibold text-sm text-cocoa">
+      <a href="index.html" class="block py-1">Home</a>
+      <a href="menu.html" class="block py-1 text-caramel font-bold">Bakes Menu</a>
+      <a href="about.html" class="block py-1">Our Story</a>
+      <a href="custom-orders.html" class="block py-1">Custom Cakes</a>
+      <a href="contact.html" class="block py-1">Contact</a>
+      <a href="admin/orders.html" class="block py-1 text-xs text-ash border-t border-brown/10 pt-3">Admin Portal →</a>
+    </div>
+  </header>
+
+  <!-- Product Detail Container -->
+  <main class="flex-1 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 lg:py-14 w-full">
+    <!-- Breadcrumbs -->
+    <nav class="flex items-center gap-2 text-xs font-semibold text-ash mb-8">
+      <a href="index.html" class="hover:text-cocoa">Home</a>
+      <span>/</span>
+      <a href="menu.html" class="hover:text-cocoa">Menu</a>
+      <span>/</span>
+      <span id="breadcrumbCat" class="capitalize">Bakes</span>
+      <span>/</span>
+      <span id="breadcrumbTitle" class="text-cocoa">Loading...</span>
+    </nav>
+
+    <!-- Main 2-Column Product Layout -->
+    <div class="grid lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+      <!-- Left: Image Gallery -->
+      <div class="lg:col-span-6 space-y-4">
+        <div class="relative rounded-3xl overflow-hidden bg-sand border border-brown/15 shadow-xl aspect-square">
+          <img id="prodMainImg" src="" alt="" class="w-full h-full object-cover transition-transform duration-700 hover:scale-105">
+          <span id="prodBadge" class="hidden absolute top-4 left-4 bg-caramel text-cocoa font-black text-xs uppercase tracking-wider px-3.5 py-1.5 rounded-full shadow"></span>
+          <div class="absolute bottom-4 left-4 right-4 bg-cream/90 backdrop-blur-md rounded-2xl px-4 py-2.5 border border-brown/10 flex items-center justify-between text-xs font-semibold text-cocoa">
+            <span class="flex items-center gap-2"><i class="fa-solid fa-clock text-caramel"></i> Baked fresh this morning</span>
+            <span class="text-emerald-700 flex items-center gap-1.5"><span class="w-2 h-2 rounded-full bg-emerald-500 animate-ping"></span> In Batch Stock</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: Product Details & Purchase Form -->
+      <div class="lg:col-span-6 space-y-6">
+        <div>
+          <span id="prodCategory" class="text-xs font-bold uppercase tracking-[0.22em] text-caramel block mb-2">Artisan Loaf</span>
+          <h1 id="prodTitle" class="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-cocoa leading-tight mb-3">Loading Product...</h1>
+          <div class="flex items-center gap-3">
+            <div class="flex items-center text-amber-500 text-sm">
+              <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+              <span class="text-cocoa font-bold ml-2">4.9</span>
+            </div>
+            <span class="text-ash text-xs">·</span>
+            <span id="prodReviews" class="text-ash text-xs font-medium">312 verified bakery reviews</span>
+          </div>
+        </div>
+
+        <!-- Price -->
+        <div class="flex items-baseline gap-3 pb-4 border-b border-brown/10">
+          <span id="prodPrice" class="font-serif text-4xl font-bold text-cocoa">₹0</span>
+          <span class="text-xs text-ash font-medium">inclusive of all taxes · freshly packaged</span>
+        </div>
+
+        <!-- Description -->
+        <p id="prodDesc" class="text-cocoa/80 text-base leading-relaxed">
+          Naturally fermented slow-rise artisan bake made with French AOP butter and stone-ground organic heritage grains.
+        </p>
+
+        <!-- Dietary Badges -->
+        <div class="flex flex-wrap gap-2 pt-2">
+          <span class="inline-flex items-center gap-1.5 text-xs font-bold px-3 py-1.5 rounded-full bg-emerald-100 text-emerald-800 border border-emerald-200">
+            <i class="fa-solid fa-leaf"></i> 100% Vegetarian
+          </span>
+          <span class="inline-flex items-center gap-1.5 text-xs font-bold px-3 py-1.5 rounded-full bg-amber-100 text-amber-900 border border-amber-200">
+            <i class="fa-solid fa-bread-slice"></i> 48hr Wild Yeast Ferment
+          </span>
+          <span class="inline-flex items-center gap-1.5 text-xs font-bold px-3 py-1.5 rounded-full bg-sand text-brown border border-brown/15">
+            <i class="fa-solid fa-seedling"></i> Zero Preservatives
+          </span>
+        </div>
+
+        <!-- Order Form Box -->
+        <div class="bg-sand/70 rounded-3xl p-6 border border-brown/15 space-y-5">
+          <div class="flex items-center justify-between">
+            <label class="text-xs font-bold uppercase tracking-wider text-cocoa">Quantity</label>
+            <div class="flex items-center bg-cream border border-brown/20 rounded-full px-2 py-1">
+              <button onclick="updateQty(-1)" class="w-8 h-8 rounded-full flex items-center justify-center text-cocoa hover:bg-sand transition font-bold"><i class="fa-solid fa-minus text-xs"></i></button>
+              <span id="qtyVal" class="w-10 text-center font-bold text-sm text-cocoa">1</span>
+              <button onclick="updateQty(1)" class="w-8 h-8 rounded-full flex items-center justify-center text-cocoa hover:bg-sand transition font-bold"><i class="fa-solid fa-plus text-xs"></i></button>
+            </div>
+          </div>
+
+          <div class="flex flex-col sm:flex-row gap-3">
+            <button onclick="addToBag()" class="flex-1 bg-cocoa hover:bg-brown text-cream py-4 rounded-full font-bold text-sm tracking-wide shadow-lg hover:shadow-xl transition flex items-center justify-center gap-2.5">
+              <i class="fa-solid fa-bag-shopping text-caramel"></i>
+              <span>Add to Bakery Bag</span>
+            </button>
+            <a href="cart.html" class="sm:w-auto bg-caramel hover:bg-amber-600 text-cocoa py-4 px-8 rounded-full font-bold text-sm tracking-wide text-center transition">
+              Checkout →
+            </a>
+          </div>
+        </div>
+
+        <!-- Accordion details: Ingredients & Storage -->
+        <div class="space-y-3 pt-2 text-sm">
+          <div class="border border-brown/15 rounded-2xl p-4 bg-cream">
+            <h4 class="font-bold text-cocoa flex items-center gap-2 mb-2">
+              <i class="fa-solid fa-bowl-food text-caramel"></i> Pure Ingredients
+            </h4>
+            <p id="prodIngredients" class="text-xs text-ash leading-relaxed">
+              Stone-milled organic flour, pure mineral water, French cultured butter, cold-pressed sea salt, house sourdough levain starter.
+            </p>
+          </div>
+          <div class="border border-brown/15 rounded-2xl p-4 bg-cream">
+            <h4 class="font-bold text-cocoa flex items-center gap-2 mb-2">
+              <i class="fa-solid fa-box-open text-caramel"></i> Storage &amp; Freshness
+            </h4>
+            <p class="text-xs text-ash leading-relaxed">
+              Store in a breathable linen bread bag or paper wrapper at room temperature for up to 4 days. Slice and toast to reactivate crisp crust.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Related Pairings Section -->
+    <div class="mt-20 pt-12 border-t border-brown/15">
+      <div class="flex items-end justify-between mb-8">
+        <div>
+          <span class="text-xs font-bold uppercase tracking-[0.2em] text-caramel block mb-1">Chef Pairings</span>
+          <h2 class="font-serif text-2xl sm:text-3xl font-bold text-cocoa">You Might Also Crave</h2>
+        </div>
+        <a href="menu.html" class="text-xs font-bold uppercase tracking-widest text-caramel hover:underline">View All Menu →</a>
+      </div>
+      <div id="relatedGrid" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+    </div>
+  </main>
+
+  <!-- Notification Toast -->
+  <div id="cartToast" class="fixed bottom-6 right-6 z-50 transform translate-y-24 opacity-0 transition-all duration-300 pointer-events-none">
+    <div class="bg-cocoa text-cream border-2 border-caramel px-5 py-4 rounded-2xl shadow-2xl flex items-center gap-4 max-w-sm">
+      <div class="w-10 h-10 rounded-xl bg-caramel text-cocoa flex items-center justify-center shrink-0 font-bold">
+        <i class="fa-solid fa-check"></i>
+      </div>
+      <div>
+        <h4 class="font-bold text-xs tracking-wider text-caramel">ADDED TO BAG</h4>
+        <p id="toastMsg" class="text-xs text-cream/80">Item successfully added to your order.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="bg-cocoa text-cream pt-14 pb-8 mt-16 border-t-4 border-caramel">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid md:grid-cols-4 gap-10 mb-10">
+        <div>
+          <span class="font-serif text-2xl font-bold text-cream">Crumb &amp; Craft</span>
+          <p class="text-cream/60 text-sm mt-3 leading-relaxed">Handmade with wild sourdough starters, organic heritage flours, and pure patience in Mumbai.</p>
+        </div>
+        <div>
+          <h4 class="text-caramel font-bold text-xs uppercase tracking-widest mb-4">Quick Links</h4>
+          <ul class="space-y-2.5 text-sm text-cream/70">
+            <li><a href="index.html" class="hover:text-cream">Home</a></li>
+            <li><a href="menu.html" class="hover:text-cream">Artisan Menu</a></li>
+            <li><a href="custom-orders.html" class="hover:text-cream">Custom Celebration Cakes</a></li>
+            <li><a href="contact.html" class="hover:text-cream">Visit Our Atelier</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="text-caramel font-bold text-xs uppercase tracking-widest mb-4">Atelier Hours</h4>
+          <p class="text-cream/70 text-sm leading-relaxed">
+            Tuesday – Sunday: 7:00 AM – 8:30 PM<br>
+            Monday: Closed for deep oven bake seasoning
+          </p>
+        </div>
+        <div>
+          <h4 class="text-caramel font-bold text-xs uppercase tracking-widest mb-4">Location</h4>
+          <p class="text-cream/70 text-sm leading-relaxed">
+            42, Heritage Mills, Kala Ghoda, Fort, Mumbai 400001<br>
+            +91 98765 43210
+          </p>
+        </div>
+      </div>
+      <div class="border-t border-cream/10 pt-6 text-xs text-cream/50 flex flex-col sm:flex-row justify-between gap-3">
+        <span>© 2026 Crumb &amp; Craft Artisan Bakery. All rights reserved.</span>
+        <span>Made by <a href="https://networkbuilder.in" class="text-caramel hover:underline">Network Builder</a></span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const CATALOG = [
+      { id:1, name:"Country Sourdough Boule", cat:"breads", price:280, badge:"Bestseller", img:"https://images.unsplash.com/photo-1509440159596-0249088772ff?w=700&h=700&fit=crop&q=80", rating:312, desc:"Naturally leavened over 48 hours with our 14-year-old mother sourdough starter. Blistered crackling crust, open custard crumb, and mild gentle lactic tang.", ingredients:"Stone-milled whole wheat, unbleached maida, filtered water, sea salt, active wild levain." },
+      { id:2, name:"Whole Wheat Loaf", cat:"breads", price:220, badge:"Daily", img:"https://images.unsplash.com/photo-1586444248902-2f64eddc13df?w=700&h=700&fit=crop&q=80", rating:198, desc:"100% stone-milled organic khapli emmer wheat, soft pillowy crumb, mild honey brush. Perfect for nourishing morning toast and sandwiches.", ingredients:"Stone-milled Khapli wheat, organic honey, raw cold-pressed olive oil, yeast, pink salt." },
+      { id:3, name:"Olive & Rosemary Focaccia", cat:"breads", price:340, badge:"Just Baked", img:"https://images.unsplash.com/photo-1568471173242-461f0a730452?w=700&h=700&fit=crop&q=80", rating:142, desc:"Crispy olive-oil blistered base, fluffy cloud middle, generous Kalamata olives, confit garlic cloves, and garden-picked organic rosemary sprigs.", ingredients:"Italian 00 flour, extra virgin olive oil, Kalamata olives, fresh rosemary, Maldon flaky salt." },
+      { id:7, name:"Classic Butter Croissant", cat:"pastries", price:120, badge:"Bestseller", img:"https://images.unsplash.com/photo-1555507036-ab1f4038808a?w=700&h=700&fit=crop&q=80", rating:485, desc:"27 laminated layers of golden flakiness handcrafted with 84% fat French Normandy AOP butter. Shatters on first bite into a tender honeycomb interior.", ingredients:"French T55 flour, Normandy AOP butter, whole milk, organic cane sugar, fresh yeast, sea salt." },
+      { id:8, name:"Pain au Chocolat", cat:"pastries", price:140, badge:"", img:"https://images.unsplash.com/photo-1555507036-ab1f4038808a?w=700&h=700&fit=crop&q=80", rating:289, desc:"Two generous batons of single-origin 70% Valrhona dark chocolate rolled into layered pastry, baked to a deep mahogany gloss.", ingredients:"T55 flour, Normandy butter, Valrhona 70% dark chocolate batons, raw sugar, milk wash." },
+      { id:9, name:"Almond Croissant", cat:"pastries", price:180, badge:"Chef's Pick", img:"https://images.unsplash.com/photo-1551024506-0bccd828d307?w=700&h=700&fit=crop&q=80", rating:312, desc:"Twice-baked croissant saturated in Madagascar vanilla sugar syrup, filled with rich frangipane almond cream, and showered with toasted almond flakes.", ingredients:"Croissant dough, California almond flour, vanilla bean syrup, powdered sugar, sliced almonds." },
+      { id:13, name:"Classic Tiramisu", cat:"cakes", price:1450, badge:"Bestseller", img:"https://images.unsplash.com/photo-1571115177098-24ec42ed204d?w=700&h=700&fit=crop&q=80", rating:208, desc:"Traditional Italian recipe with whipped mascarpone zabaione, espresso-soaked house savoiardi ladyfingers, and a heavy mantle of Dutch cocoa dust.", ingredients:"Italian mascarpone, Arabica espresso, ladyfingers, pastured egg yolks, raw cane sugar, dark cocoa." },
+      { id:14, name:"Red Velvet Layer Cake", cat:"cakes", price:1620, badge:"", img:"https://images.unsplash.com/photo-1616541823729-00fe0aacd32c?w=700&h=700&fit=crop&q=80", rating:156, desc:"Three crimson layers of buttermilk cocoa sponge sandwiched with whipped Philadelphia cream cheese frosting and dusted velvet crumb.", ingredients:"Organic flour, dutch cocoa, buttermilk, Philadelphia cream cheese, Madagascar vanilla, butter." },
+      { id:19, name:"Tahini Chocolate Chunk", cat:"cookies", price:240, badge:"Just Baked", img:"https://images.unsplash.com/photo-1499636136210-6f4ee915583e?w=700&h=700&fit=crop&q=80", rating:203, desc:"Stone-ground Lebanese sesame tahini dough loaded with molten chunks of 65% dark chocolate and finished with sea salt crystals.", ingredients:"Tahini paste, 65% dark chocolate chunks, organic brown sugar, butter, flaky Maldon salt." }
+    ];
+
+    let currentProd = CATALOG[0];
+    let qty = 1;
+
+    function init() {
+      const params = new URLSearchParams(location.search);
+      const id = parseInt(params.get('id'), 10);
+      if (id) {
+        const found = CATALOG.find(p => p.id === id);
+        if (found) currentProd = found;
+      }
+
+      document.title = currentProd.name + " — Crumb & Craft";
+      document.getElementById('breadcrumbCat').textContent = currentProd.cat;
+      document.getElementById('breadcrumbTitle').textContent = currentProd.name;
+      document.getElementById('prodCategory').textContent = 'Artisan ' + currentProd.cat.slice(0, -1);
+      document.getElementById('prodTitle').textContent = currentProd.name;
+      document.getElementById('prodPrice').textContent = '₹' + currentProd.price.toLocaleString('en-IN');
+      document.getElementById('prodDesc').textContent = currentProd.desc;
+      document.getElementById('prodMainImg').src = currentProd.img;
+      document.getElementById('prodMainImg').alt = currentProd.name;
+      document.getElementById('prodReviews').textContent = currentProd.rating + ' verified bakery reviews';
+      if (currentProd.ingredients) {
+        document.getElementById('prodIngredients').textContent = currentProd.ingredients;
+      }
+
+      const badge = document.getElementById('prodBadge');
+      if (currentProd.badge) {
+        badge.textContent = currentProd.badge;
+        badge.classList.remove('hidden');
+      } else {
+        badge.classList.add('hidden');
+      }
+
+      updateCartBadge();
+      renderRelated();
+    }
+
+    function updateQty(delta) {
+      qty = Math.max(1, qty + delta);
+      document.getElementById('qtyVal').textContent = qty;
+    }
+
+    function addToBag() {
+      let cart = JSON.parse(localStorage.getItem('crumb_cart') || '[]');
+      const existing = cart.find(item => item.id === currentProd.id || item.name === currentProd.name);
+      if (existing) {
+        existing.qty = (existing.qty || 1) + qty;
+      } else {
+        cart.push({
+          id: currentProd.id,
+          name: currentProd.name,
+          price: currentProd.price,
+          qty: qty,
+          img: currentProd.img,
+          image: currentProd.img
+        });
+      }
+      localStorage.setItem('crumb_cart', JSON.stringify(cart));
+      updateCartBadge();
+
+      // Show toast
+      const toast = document.getElementById('cartToast');
+      const msg = document.getElementById('toastMsg');
+      msg.textContent = qty + '× ' + currentProd.name + ' added to your bag.';
+      toast.classList.add('toast-active');
+      toast.classList.remove('pointer-events-none', 'opacity-0', 'translate-y-24');
+      setTimeout(() => {
+        toast.classList.remove('toast-active');
+        toast.classList.add('pointer-events-none', 'opacity-0', 'translate-y-24');
+      }, 3500);
+    }
+
+    function updateCartBadge() {
+      const cart = JSON.parse(localStorage.getItem('crumb_cart') || '[]');
+      const count = cart.reduce((sum, i) => sum + (i.qty || 1), 0);
+      document.getElementById('cartBadge').textContent = count;
+    }
+
+    function renderRelated() {
+      const grid = document.getElementById('relatedGrid');
+      const related = CATALOG.filter(p => p.id !== currentProd.id).slice(0, 3);
+      grid.innerHTML = related.map(p => `
+        <article class="bg-sand/60 rounded-3xl overflow-hidden card-hover border border-brown/15 p-4 flex flex-col">
+          <a href="product.html?id=${p.id}" class="block aspect-square rounded-2xl overflow-hidden mb-4 bg-cream relative">
+            <img src="${p.img}" alt="${p.name}" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500">
+            ${p.badge ? `<span class="absolute top-3 left-3 bg-caramel text-cocoa font-bold text-[10px] uppercase tracking-wider px-2.5 py-1 rounded-full">${p.badge}</span>` : ''}
+          </a>
+          <div class="flex-1 flex flex-col justify-between">
+            <div>
+              <a href="product.html?id=${p.id}" class="font-serif text-lg font-bold text-cocoa hover:text-caramel transition block mb-1">${p.name}</a>
+              <p class="text-xs text-ash line-clamp-2 mb-3">${p.desc}</p>
+            </div>
+            <div class="flex items-center justify-between pt-3 border-t border-brown/10">
+              <span class="font-serif font-bold text-lg text-cocoa">₹${p.price}</span>
+              <a href="product.html?id=${p.id}" class="text-xs font-bold uppercase tracking-wider text-caramel hover:text-cocoa transition">View Details →</a>
+            </div>
+          </div>
+        </article>
+      `).join('');
+    }
+
+    window.addEventListener('DOMContentLoaded', init);
+  </script>
+</body>
+</html>

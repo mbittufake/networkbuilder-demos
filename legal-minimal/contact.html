@@ -38,18 +38,70 @@
 </div>
 <div class="bg-white p-8 md:p-10 border border-[#E7E5E4] rounded-[4px]">
 <p class="text-[11px] uppercase tracking-[0.2em] text-[#1A1A1A]/50 border-b border-[#E7E5E4] pb-4 mb-8">Form № 01 — Privileged</p>
-<form class="space-y-7" onsubmit="return false;">
-<div class="grid md:grid-cols-2 gap-7"><div><label class="block text-[11px] uppercase tracking-[0.18em] text-[#1A1A1A]/50 font-medium mb-1">Full Name</label><input type="text" class="field" placeholder="e.g. Rajesh Kumar"></div><div><label class="block text-[11px] uppercase tracking-[0.18em] text-[#1A1A1A]/50 font-medium mb-1">Phone</label><input type="tel" class="field" placeholder="+91 ..."></div></div>
-<div><label class="block text-[11px] uppercase tracking-[0.18em] text-[#1A1A1A]/50 font-medium mb-1">Email Address</label><input type="email" class="field" placeholder="name@example.com"></div>
-<div><label class="block text-[11px] uppercase tracking-[0.18em] text-[#1A1A1A]/50 font-medium mb-1">Nature of Inquiry</label><input type="text" class="field" placeholder="e.g. Divorce Proceeding"></div>
-<div><label class="block text-[11px] uppercase tracking-[0.18em] text-[#1A1A1A]/50 font-medium mb-1">Message</label><textarea rows="4" class="field" placeholder="Briefly describe your situation..."></textarea></div>
-<button type="submit" class="w-full bg-[#1A1A1A] text-white text-[13px] font-medium uppercase tracking-[0.18em] py-4 rounded-full hover:bg-[#9A3B26] transition">Submit Inquiry →</button>
-<p class="text-center text-[12px] text-[#1A1A1A]/45 font-serif italic">Sealed &amp; confidential — as all good letters are.</p>
-</form>
+<div id="advocateFormWrapper">
+  <form id="advocateForm" class="space-y-7" onsubmit="handleAdvocateSubmit(event)">
+    <div class="grid md:grid-cols-2 gap-7">
+      <div><label class="block text-[11px] uppercase tracking-[0.18em] text-[#1A1A1A]/50 font-medium mb-1">Full Name</label><input type="text" id="aName" required class="field" placeholder="e.g. Rajesh Kumar"></div>
+      <div><label class="block text-[11px] uppercase tracking-[0.18em] text-[#1A1A1A]/50 font-medium mb-1">Phone</label><input type="tel" id="aPhone" required class="field" placeholder="+91 ..."></div>
+    </div>
+    <div><label class="block text-[11px] uppercase tracking-[0.18em] text-[#1A1A1A]/50 font-medium mb-1">Email Address</label><input type="email" id="aEmail" required class="field" placeholder="name@example.com"></div>
+    <div><label class="block text-[11px] uppercase tracking-[0.18em] text-[#1A1A1A]/50 font-medium mb-1">Nature of Inquiry</label><input type="text" id="aMatter" required class="field" placeholder="e.g. Divorce Proceeding"></div>
+    <div><label class="block text-[11px] uppercase tracking-[0.18em] text-[#1A1A1A]/50 font-medium mb-1">Message</label><textarea rows="4" id="aMsg" required class="field" placeholder="Briefly describe your situation..."></textarea></div>
+    <button type="submit" class="w-full bg-[#1A1A1A] text-white text-[13px] font-medium uppercase tracking-[0.18em] py-4 rounded-full hover:bg-[#9A3B26] transition">Submit Inquiry →</button>
+    <p class="text-center text-[12px] text-[#1A1A1A]/45 font-serif italic">Sealed &amp; confidential — as all good letters are.</p>
+  </form>
+</div>
+
+<div id="advocateSuccessWrapper" class="hidden text-center py-6">
+  <div class="w-12 h-12 rounded-full border border-[#9A3B26] text-[#9A3B26] font-serif italic text-2xl flex items-center justify-center mx-auto mb-4">i.</div>
+  <p class="text-[11px] uppercase tracking-[0.25em] text-[#9A3B26] font-semibold mb-2">Inquiry Received &bull; Privileged</p>
+  <h3 class="font-serif text-3xl text-[#1A1A1A] mb-3">Letter Sealed.</h3>
+  <p class="text-[14px] text-[#1A1A1A]/60 leading-relaxed max-w-md mx-auto mb-6">Thank you, <span id="aClientName" class="font-medium text-[#1A1A1A]"></span>. Your inquiry regarding <span id="aClientMatter" class="font-medium text-[#1A1A1A]"></span> has been received under strict professional privilege. Counsel will contact you within 4 business hours.</p>
+  <div class="border border-[#E7E5E4] p-4 rounded text-xs space-y-2 mb-6 max-w-sm mx-auto text-left">
+    <div class="flex justify-between"><span class="text-[#1A1A1A]/40 uppercase tracking-widest">Reference:</span><span id="aRefCode" class="font-serif font-bold text-[#9A3B26]">#ADV-4910</span></div>
+    <div class="flex justify-between"><span class="text-[#1A1A1A]/40 uppercase tracking-widest">Office:</span><span>Shivajinagar Atelier, Pune</span></div>
+  </div>
+  <div class="flex gap-3 justify-center">
+    <button onclick="resetAdvocateForm()" class="px-6 py-2.5 rounded-full border border-[#1A1A1A]/20 text-[11px] uppercase tracking-wider hover:border-[#9A3B26] hover:text-[#9A3B26] transition">New Inquiry</button>
+    <a href="index.html" class="px-6 py-2.5 rounded-full bg-[#1A1A1A] text-white text-[11px] uppercase tracking-wider hover:bg-[#9A3B26] transition">Back to Overview →</a>
+  </div>
+</div>
 </div>
 </div>
 </section>
 
-<footer class="py-12 border-t border-[#E7E5E4] bg-white text-center"><div class="container mx-auto px-6"><span class="font-serif text-[24px] block mb-4">The Advocate<span class="text-[#9A3B26]">.</span></span><p class="text-[11px] uppercase tracking-[0.18em] text-[#1A1A1A]/40">&copy; 2024 Legal Insights. All Rights Reserved.</p></div></footer>
+<footer class="py-12 border-t border-[#E7E5E4] bg-white text-center"><div class="container mx-auto px-6"><span class="font-serif text-[24px] block mb-4">The Advocate<span class="text-[#9A3B26]">.</span></span><p class="text-[11px] uppercase tracking-[0.18em] text-[#1A1A1A]/40">&copy; 2026 The Advocate. All Rights Reserved.</p></div></footer>
+
+<!-- Toast -->
+<div id="advocateToast" class="fixed bottom-6 right-6 z-50 bg-[#1A1A1A] text-white px-5 py-3 rounded text-xs tracking-wider transform translate-y-16 opacity-0 pointer-events-none transition-all duration-300 flex items-center gap-2">
+  <span class="text-[#9A3B26]">✦</span>
+  <span id="advocateToastMsg">Inquiry Sealed &amp; Transmitted</span>
+</div>
+
+<script>
+function handleAdvocateSubmit(e) {
+  e.preventDefault();
+  const name = document.getElementById('aName').value.trim();
+  const matter = document.getElementById('aMatter').value.trim();
+  const refCode = '#ADV-' + Math.floor(1000 + Math.random() * 9000);
+
+  document.getElementById('aClientName').textContent = name;
+  document.getElementById('aClientMatter').textContent = matter;
+  document.getElementById('aRefCode').textContent = refCode;
+
+  document.getElementById('advocateFormWrapper').classList.add('hidden');
+  document.getElementById('advocateSuccessWrapper').classList.remove('hidden');
+
+  const toast = document.getElementById('advocateToast');
+  toast.classList.remove('translate-y-16', 'opacity-0', 'pointer-events-none');
+  setTimeout(() => toast.classList.add('translate-y-16', 'opacity-0', 'pointer-events-none'), 4000);
+}
+
+function resetAdvocateForm() {
+  document.getElementById('advocateForm').reset();
+  document.getElementById('advocateSuccessWrapper').classList.add('hidden');
+  document.getElementById('advocateFormWrapper').classList.remove('hidden');
+}
+</script>
 </body>
 </html>

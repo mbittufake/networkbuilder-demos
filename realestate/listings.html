@@ -24,8 +24,9 @@
     .nav-scrolled { box-shadow: 0 2px 24px rgba(0,0,0,.07); }
     .card-hover { transition: transform .25s ease, box-shadow .25s ease; }
     .card-hover:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(0,0,0,.1); }
-    .filter-chip { transition: all .2s; }
-    .filter-chip.active { background: #2563EB; color: #fff; border-color: #2563EB; }
+    .filter-chip { transition: all .2s; background: rgba(255,255,255,0.08); color: rgba(255,255,255,0.85); border: 1px solid rgba(255,255,255,0.2); backdrop-filter: blur(8px); }
+    .filter-chip:hover { background: rgba(255,255,255,0.18); color: #F7EDD8; border-color: #C9A86A; }
+    .filter-chip.active { background: #2563EB !important; color: #fff !important; border-color: #2563EB !important; box-shadow: 0 4px 14px rgba(37,99,235,0.45); }
     .fav-btn.active svg { fill: #EF4444; color: #EF4444; }
     .radio-chip:checked + .chip-label { background: #2563EB; color: #fff; border-color: #2563EB; }
     .check-chip:checked + .chip-label { background: #EFF6FF; color: #2563EB; border-color: #2563EB; }
@@ -77,14 +78,14 @@
     <p class="text-white/60 text-base mb-6 max-w-xl">Search, filter and sort 4,200+ verified listings in real time. Every keystroke is powered by HTMX — no page reloads.</p>
     <!-- Quick filter chips (deep-link via URL params) -->
     <div class="flex flex-wrap gap-2">
-      <a data-chip="all" href="listings.html" class="filter-chip active text-xs font-bold px-4 py-2 rounded-full border border-gray-200">All</a>
-      <a data-chip="apartment" href="listings.html?type=apartment" class="filter-chip text-xs font-bold px-4 py-2 rounded-full border border-gray-200 hover:border-accent hover:text-accent">Apartments</a>
-      <a data-chip="villa" href="listings.html?type=villa" class="filter-chip text-xs font-bold px-4 py-2 rounded-full border border-gray-200 hover:border-accent hover:text-accent">Villas</a>
-      <a data-chip="penthouse" href="listings.html?type=penthouse" class="filter-chip text-xs font-bold px-4 py-2 rounded-full border border-gray-200 hover:border-accent hover:text-accent">Penthouses</a>
-      <a data-chip="commercial" href="listings.html?type=commercial" class="filter-chip text-xs font-bold px-4 py-2 rounded-full border border-gray-200 hover:border-accent hover:text-accent">Commercial</a>
-      <a data-chip="plot" href="listings.html?type=plot" class="filter-chip text-xs font-bold px-4 py-2 rounded-full border border-gray-200 hover:border-accent hover:text-accent">Plots</a>
-      <a data-chip="rent" href="listings.html?listing=rent" class="filter-chip text-xs font-bold px-4 py-2 rounded-full border border-gray-200 hover:border-accent hover:text-accent">For Rent</a>
-      <a data-chip="buy" href="listings.html?listing=buy" class="filter-chip text-xs font-bold px-4 py-2 rounded-full border border-gray-200 hover:border-accent hover:text-accent">For Sale</a>
+      <a data-chip="all" href="listings.html" class="filter-chip active text-xs font-bold px-4 py-2 rounded-full">All</a>
+      <a data-chip="apartment" href="listings.html?type=apartment" class="filter-chip text-xs font-bold px-4 py-2 rounded-full">Apartments</a>
+      <a data-chip="villa" href="listings.html?type=villa" class="filter-chip text-xs font-bold px-4 py-2 rounded-full">Villas</a>
+      <a data-chip="penthouse" href="listings.html?type=penthouse" class="filter-chip text-xs font-bold px-4 py-2 rounded-full">Penthouses</a>
+      <a data-chip="commercial" href="listings.html?type=commercial" class="filter-chip text-xs font-bold px-4 py-2 rounded-full">Commercial</a>
+      <a data-chip="plot" href="listings.html?type=plot" class="filter-chip text-xs font-bold px-4 py-2 rounded-full">Plots</a>
+      <a data-chip="rent" href="listings.html?listing=rent" class="filter-chip text-xs font-bold px-4 py-2 rounded-full">For Rent</a>
+      <a data-chip="buy" href="listings.html?listing=buy" class="filter-chip text-xs font-bold px-4 py-2 rounded-full">For Sale</a>
     </div>
   </div>
 </div>

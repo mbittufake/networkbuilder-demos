@@ -147,7 +147,7 @@ function render(){
           <option ${c.status==='In Production'?'selected':''}>In Production</option>
           <option ${c.status==='Delivered'?'selected':''}>Delivered</option>
         </select>
-        <button onclick="sendProof('${c.id}')" class="bg-ink text-white px-4 py-2 rounded-full text-sm font-semibold">Send Proof <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12h14M12 5l7 7-7 7'/%3E%3C/svg%3E" alt="→" class="w-3.5 h-3.5 shrink-0 align-middle inline-block"></button>
+        <button onclick="sendProof('${c.id}')" class="bg-ink text-white px-4 py-2 rounded-full text-sm font-semibold">Send Proof <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 shrink-0 inline-block align-middle" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button>
       </div>
     </div>`;
   }).join('') || `<div class="col-span-2 text-center py-12 text-muted bg-white border border-line rounded-2xl">No quotes match.</div>`;

@@ -32,16 +32,16 @@
       setTimeout(() => window.location.href = 'cart.html', 220);
     }
     function itemEmoji(name) {
-      const n = name.toLowerCase();
-      if (n.includes('croissant') || n.includes('brioche') || n.includes('babka') || n.includes('pain au chocolat') || n.includes('danish') || n.includes('kouign')) return '🥐';
-      if (n.includes('sourdough') || n.includes('boule') || n.includes('loaf') || n.includes('ciabatta')) return '🍞';
-      if (n.includes('focaccia') || n.includes('pita')) return '🥖';
-      if (n.includes('cake') || n.includes('tiramisu') || n.includes('cheesecake')) return '🎂';
-      if (n.includes('cookie') || n.includes('brownie') || n.includes('biscotti') || n.includes('shortbread') || n.includes('snickerdoodle') || n.includes('raisin')) return '🍪';
-      if (n.includes('quiche') || n.includes('galette') || n.includes('pie')) return '🥧';
-      if (n.includes('roll')) return '🍥';
-      if (n.includes('cupcake') || n.includes('tart') || n.includes('mango') || n.includes('pumpkin')) return '🧁';
-      return '🥐';
+      const n = (name || '').toLowerCase();
+      if (n.includes('croissant') || n.includes('brioche') || n.includes('babka') || n.includes('pain au chocolat')) return '<i class="fa-solid fa-bowl-food text-caramel"></i>';
+      if (n.includes('sourdough') || n.includes('boule') || n.includes('loaf') || n.includes('ciabatta')) return '<i class="fa-solid fa-bread-slice text-caramel"></i>';
+      if (n.includes('focaccia') || n.includes('pita')) return '<i class="fa-solid fa-bread-slice text-caramel"></i>';
+      if (n.includes('cake') || n.includes('tiramisu') || n.includes('cheesecake')) return '<i class="fa-solid fa-cake-candles text-caramel"></i>';
+      if (n.includes('cookie') || n.includes('brownie') || n.includes('biscotti') || n.includes('shortbread')) return '<i class="fa-solid fa-cookie-bite text-caramel"></i>';
+      if (n.includes('quiche') || n.includes('galette') || n.includes('pie')) return '<i class="fa-solid fa-utensils text-caramel"></i>';
+      if (n.includes('roll')) return '<i class="fa-solid fa-cookie text-caramel"></i>';
+      if (n.includes('cupcake') || n.includes('tart') || n.includes('mango') || n.includes('pumpkin')) return '<i class="fa-solid fa-seedling text-caramel"></i>';
+      return '<i class="fa-solid fa-wheat-awn text-caramel"></i>';
     }
     function renderCart() {
       const wrap = document.getElementById('cartItems');
@@ -54,7 +54,7 @@
       if (!cart.length) {
         wrap.innerHTML = `
           <div class="text-center py-12 flex flex-col items-center justify-center h-full">
-            <div class="text-6xl mb-4">🥐</div>
+            <div class="w-16 h-16 mx-auto mb-4 rounded-full bg-caramel/20 flex items-center justify-center text-3xl text-caramel"><i class="fa-solid fa-basket-shopping"></i></div>
             <h3 class="font-serif text-2xl font-bold text-cocoa mb-2">Your basket is empty</h3>
             <p class="text-cocoa/60 mb-6 text-sm max-w-[260px]">Add some fresh bakes to get started. Everything's baked this morning.</p>
             <a href="menu.html" onclick="closeCart()" class="inline-flex items-center gap-2 bg-cocoa text-cream px-6 py-2.5 rounded-full text-sm font-semibold shadow-warm hover:bg-brown transition-all">
@@ -63,8 +63,8 @@
             </a>
             <div class="mt-8 text-xs text-cocoa/40">Try our bestsellers:</div>
             <div class="flex gap-2 mt-3 text-xs">
-              <button onclick="quickAdd('Sourdough Boule',280,this)" class="bg-cream border border-brown/20 rounded-full px-3 py-1.5 hover:border-brown">🍞 Sourdough ₹280</button>
-              <button onclick="quickAdd('Butter Croissant',120,this)" class="bg-cream border border-brown/20 rounded-full px-3 py-1.5 hover:border-brown">🥐 Croissant ₹120</button>
+              <button onclick="quickAdd('Sourdough Boule',280,this)" class="bg-cream border border-brown/20 rounded-full px-3 py-1.5 hover:border-brown"><i class="fa-solid fa-bread-slice text-caramel mr-1"></i> Sourdough ₹280</button>
+              <button onclick="quickAdd('Butter Croissant',120,this)" class="bg-cream border border-brown/20 rounded-full px-3 py-1.5 hover:border-brown"><i class="fa-solid fa-bowl-food text-caramel mr-1"></i> Croissant ₹120</button>
             </div>
           </div>`;
         footer.classList.add('hidden');
@@ -98,7 +98,7 @@
       const remain = Math.max(0, FREE_SHIP_THRESHOLD - subtotal);
       const note = document.getElementById('freeShipNote');
       if (subtotal >= FREE_SHIP_THRESHOLD) {
-        note.innerHTML = '<span class="text-caramel font-semibold">✓ Free local delivery unlocked!</span>';
+        note.innerHTML = '<span class="text-caramel font-semibold"><i class="fa-solid fa-circle-check text-caramel mr-1"></i>Free local delivery unlocked!</span>';
       } else {
         note.innerHTML = `Add <strong class="text-cocoa">₹${remain}</strong> more for free local delivery`;
       }
@@ -177,6 +177,7 @@
     @keyframes cartBadgePop { 0% { transform: scale(1); } 40% { transform: scale(1.35); } 100% { transform: scale(1); } }
     #cartCount.bump { animation: cartBadgePop .35s ease; }
   </style>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 <body class="bg-parchment text-cocoa antialiased">
 
@@ -282,37 +283,37 @@
                 hx-get="/api/menu?cat=breads"
                 hx-target="#menu-grid"
                 hx-trigger="click"
-                hx-on::before-request="event.preventDefault(); setCategory('breads', this);">🍞 Breads</button>
+                hx-on::before-request="event.preventDefault(); setCategory('breads', this);"><i class="fa-solid fa-bread-slice mr-2"></i>Breads</button>
         <button class="pill px-5 py-2 rounded-full text-sm font-semibold border border-brown/20 bg-cream hover:border-brown"
                 data-cat="pastries"
                 hx-get="/api/menu?cat=pastries"
                 hx-target="#menu-grid"
                 hx-trigger="click"
-                hx-on::before-request="event.preventDefault(); setCategory('pastries', this);">🥐 Pastries</button>
+                hx-on::before-request="event.preventDefault(); setCategory('pastries', this);"><i class="fa-solid fa-bowl-food mr-2"></i>Pastries</button>
         <button class="pill px-5 py-2 rounded-full text-sm font-semibold border border-brown/20 bg-cream hover:border-brown"
                 data-cat="cakes"
                 hx-get="/api/menu?cat=cakes"
                 hx-target="#menu-grid"
                 hx-trigger="click"
-                hx-on::before-request="event.preventDefault(); setCategory('cakes', this);">🎂 Cakes</button>
+                hx-on::before-request="event.preventDefault(); setCategory('cakes', this);"><i class="fa-solid fa-cake-candles mr-2"></i>Cakes</button>
         <button class="pill px-5 py-2 rounded-full text-sm font-semibold border border-brown/20 bg-cream hover:border-brown"
                 data-cat="cookies"
                 hx-get="/api/menu?cat=cookies"
                 hx-target="#menu-grid"
                 hx-trigger="click"
-                hx-on::before-request="event.preventDefault(); setCategory('cookies', this);">🍪 Cookies</button>
+                hx-on::before-request="event.preventDefault(); setCategory('cookies', this);"><i class="fa-solid fa-cookie-bite mr-2"></i>Cookies</button>
         <button class="pill px-5 py-2 rounded-full text-sm font-semibold border border-brown/20 bg-cream hover:border-brown"
                 data-cat="savory"
                 hx-get="/api/menu?cat=savory"
                 hx-target="#menu-grid"
                 hx-trigger="click"
-                hx-on::before-request="event.preventDefault(); setCategory('savory', this);">🧀 Savory</button>
+                hx-on::before-request="event.preventDefault(); setCategory('savory', this);"><i class="fa-solid fa-utensils mr-2"></i>Savory</button>
         <button class="pill px-5 py-2 rounded-full text-sm font-semibold border border-brown/20 bg-cream hover:border-brown"
                 data-cat="seasonal"
                 hx-get="/api/menu?cat=seasonal"
                 hx-target="#menu-grid"
                 hx-trigger="click"
-                hx-on::before-request="event.preventDefault(); setCategory('seasonal', this);">🍂 Seasonal</button>
+                hx-on::before-request="event.preventDefault(); setCategory('seasonal', this);"><i class="fa-solid fa-leaf mr-2"></i>Seasonal</button>
       </div>
       <input type="hidden" name="category" id="hiddenCat" value="all">
     </div>
@@ -346,7 +347,7 @@
       </div>
 
       <div id="emptyState" class="hidden text-center py-16 bg-cream rounded-3xl border border-brown/10 mt-4">
-        <div class="text-5xl mb-3">🥐</div>
+        <div class="w-16 h-16 mx-auto mb-3 rounded-full bg-caramel/20 flex items-center justify-center text-3xl text-caramel"><i class="fa-solid fa-basket-shopping"></i></div>
         <h3 class="font-serif text-2xl font-bold text-cocoa mb-2">No matches found</h3>
         <p class="text-cocoa/60 mb-5">Try a different search or category.</p>
         <button onclick="resetFilters()" class="bg-cocoa text-cream px-6 py-2.5 rounded-full text-sm font-semibold">Reset filters</button>
@@ -406,7 +407,7 @@
   </div>
 
   <div id="toast" class="fixed bottom-6 right-6 bg-cocoa text-cream rounded-2xl px-5 py-4 shadow-warm flex items-center gap-3 max-w-xs z-50">
-    <div class="w-9 h-9 rounded-full bg-caramel text-cocoa flex items-center justify-center">✓</div>
+    <div class="w-9 h-9 rounded-full bg-caramel text-cocoa flex items-center justify-center"><i class="fa-solid fa-check text-sm"></i></div>
     <div>
       <div class="font-bold text-sm">Added to cart</div>
       <div class="text-xs text-cream/70" id="toast-msg">Item added</div>
@@ -494,15 +495,18 @@
             <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>
           </button>
         </div>
-        <div class="p-5">
-          <div class="flex items-start justify-between gap-2 mb-1">
-            <h3 class="font-serif text-lg font-bold text-cocoa">${p.name}</h3>
-            <span class="hand-price whitespace-nowrap">₹${p.price}</span>
-          </div>
-          <p class="text-sm text-cocoa/60 mb-1 line-clamp-2">${p.desc}</p>
-          <p class="bake-note leading-none mb-2">baked this morning ✦</p>
+          <a href="product.html?id=${p.id}" class="block group/title">
+            <h3 class="font-serif text-lg font-bold text-cocoa group-hover/title:text-caramel transition">${p.name}</h3>
+          </a>
+          <span class="hand-price whitespace-nowrap">₹${p.price}</span>
+        </div>
+        <p class="text-sm text-cocoa/60 mb-2 line-clamp-2">${p.desc}</p>
+        <div class="flex items-center justify-between pt-1">
+          <a href="product.html?id=${p.id}" class="text-[11px] font-bold uppercase tracking-wider text-caramel hover:underline">Full Details →</a>
+        </div>
+          <p class="bake-note leading-none mb-2">baked this morning <i class="fa-solid fa-wheat-awn text-xs text-caramel ml-1"></i></p>
           <div class="flex items-center justify-between">
-            <div class="flex items-center gap-1 text-xs text-gold">★★★★★ <span class="text-cocoa/40 ml-1">(${p.rating})</span></div>
+            <div class="flex items-center gap-1 text-xs text-gold"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i> <span class="text-cocoa/40 ml-1">(${p.rating})</span></div>
             <span class="text-[10px] font-bold uppercase tracking-wider text-cocoa/40">${capitalize(p.cat)}</span>
           </div>
         </div>
@@ -597,7 +601,7 @@
           <div class="p-7">
             ${p.badge ? `<span class="inline-block ${badgeColor(p.badge)} text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full mb-3">${p.badge}</span>` : ''}
             <h2 class="font-serif text-3xl font-bold text-cocoa mb-2">${p.name}</h2>
-            <div class="text-xs text-caramel uppercase tracking-widest font-bold mb-4">${capitalize(p.cat)} · ★ ${p.rating} reviews</div>
+            <div class="text-xs text-caramel uppercase tracking-widest font-bold mb-4">${capitalize(p.cat)} · <i class="fa-solid fa-star text-gold text-xs"></i> ${p.rating} reviews</div>
             <p class="text-cocoa/70 mb-5 leading-relaxed">${p.desc}</p>
             <div class="flex items-center gap-3 mb-6">
               <div class="flex items-center gap-2 bg-cream/60 border border-brown/20 rounded-full">
@@ -610,8 +614,8 @@
             <button onclick="document.querySelector('[data-id=\\'${p.id}\\'] .add-to-cart').click(); closeModal();" class="w-full bg-cocoa text-cream font-bold py-3 rounded-full hover:bg-brown transition-all mb-2">Add to Cart — ₹${p.price}</button>
             <button onclick="closeModal()" class="w-full border-2 border-cocoa/20 text-cocoa font-semibold py-3 rounded-full hover:border-cocoa transition-all">Continue browsing</button>
             <div class="mt-6 pt-6 border-t border-cocoa/10 text-xs text-cocoa/60 leading-relaxed">
-              ✓ Baked this morning &nbsp; · &nbsp; ✓ Free delivery above ₹800<br>
-              ✓ Customizable on request &nbsp; · &nbsp; ✓ FSSAI certified kitchen
+              <i class="fa-solid fa-check text-caramel mr-1"></i>Baked this morning &nbsp; · &nbsp; <i class="fa-solid fa-check text-caramel mr-1"></i>Free delivery above ₹800<br>
+              <i class="fa-solid fa-check text-caramel mr-1"></i>Customizable on request &nbsp; · &nbsp; <i class="fa-solid fa-check text-caramel mr-1"></i>FSSAI certified kitchen
             </div>
           </div>
         </div>

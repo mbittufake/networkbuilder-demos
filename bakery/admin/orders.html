@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Orders — Crumb & Craft Admin</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <script src="https://unpkg.com/htmx.org@2.0.3" defer></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fraunces:wght@600;700&display=swap" rel="stylesheet">
@@ -151,11 +152,51 @@
           <tbody id="ordersTbl"></tbody>
         </table>
         <div id="noOrders" class="hidden text-center py-16 text-ash">
-          <div class="text-5xl mb-2">📭</div>
+          <div class="mb-2"><i class="fa-solid fa-box-open text-4xl text-ash/60"></i></div>
           <p class="text-sm">No orders match your filter.</p>
         </div>
       </div>
 
+    </div>
+
+    <!-- Order Detail Modal -->
+    <div id="orderDetailModal" class="hidden fixed inset-0 z-50 bg-black/60 backdrop-blur-sm flex items-center justify-center p-4">
+      <div class="bg-white rounded-3xl max-w-lg w-full p-6 sm:p-8 shadow-2xl border border-sand space-y-6">
+        <div class="flex items-center justify-between pb-4 border-b border-sand">
+          <div>
+            <span id="modalOrderId" class="font-bold font-serif text-2xl text-cocoa">CC-10041</span>
+            <div id="modalOrderTime" class="text-xs text-ash">8 min ago</div>
+          </div>
+          <button onclick="closeDetailModal()" class="w-9 h-9 rounded-full bg-sand text-cocoa flex items-center justify-center font-bold hover:bg-brown hover:text-cream transition">×</button>
+        </div>
+
+        <div class="space-y-4">
+          <div class="flex justify-between items-center bg-sand/40 p-3.5 rounded-2xl text-xs">
+            <div>
+              <span class="text-ash uppercase font-bold tracking-wider block">Customer</span>
+              <span id="modalCustomer" class="font-bold text-cocoa text-sm">Priya Iyer</span>
+            </div>
+            <div class="text-right">
+              <span class="text-ash uppercase font-bold tracking-wider block">Contact</span>
+              <span id="modalPhone" class="font-semibold text-cocoa">+91 98765 43210</span>
+            </div>
+          </div>
+
+          <div>
+            <h4 class="text-xs uppercase tracking-wider font-bold text-ash mb-3">Order Items</h4>
+            <div id="modalItemsList" class="space-y-2.5 max-h-56 overflow-y-auto pr-1"></div>
+          </div>
+
+          <div class="border-t border-sand pt-4 flex justify-between items-baseline">
+            <span class="font-bold text-cocoa text-sm">Order Total</span>
+            <span id="modalTotal" class="font-serif font-bold text-2xl text-brown">₹680</span>
+          </div>
+        </div>
+
+        <div class="flex justify-end pt-2">
+          <button onclick="closeDetailModal()" class="px-6 py-2.5 bg-cocoa text-cream rounded-full text-xs font-bold hover:bg-brown transition">Close</button>
+        </div>
+      </div>
     </div>
 
     <footer class="px-5 sm:px-8 lg:px-10 py-6 border-t border-sand text-xs text-ash flex flex-col sm:flex-row items-center justify-between gap-2">
@@ -166,16 +207,85 @@
 </div>
 
 <script>
-  /* ===== Seed orders (extends dashboard seed) ===== */
+  const IMG_MAP = {
+    'Sourdough': 'https://images.unsplash.com/photo-1509440159596-0249088772ff?w=120&h=120&fit=crop&q=80',
+    'Croissant': 'https://images.unsplash.com/photo-1555507036-ab1f4038808a?w=120&h=120&fit=crop&q=80',
+    'Tiramisu': 'https://images.unsplash.com/photo-1571115177098-24ec42ed204d?w=120&h=120&fit=crop&q=80',
+    'Cake': 'https://images.unsplash.com/photo-1616541823729-00fe0aacd32c?w=120&h=120&fit=crop&q=80',
+    'Focaccia': 'https://images.unsplash.com/photo-1568471173242-461f0a730452?w=120&h=120&fit=crop&q=80',
+    'Kouign-Amann': 'https://images.unsplash.com/photo-1590080875515-8a3a8dc5735e?w=120&h=120&fit=crop&q=80',
+    'Chocolat': 'https://images.unsplash.com/photo-1555507036-ab1f4038808a?w=120&h=120&fit=crop&q=80'
+  };
+
+  function getFallbackImg(text) {
+    for (const k in IMG_MAP) {
+      if (text.includes(k)) return IMG_MAP[k];
+    }
+    return 'https://images.unsplash.com/photo-1509440159596-0249088772ff?w=120&h=120&fit=crop&q=80';
+  }
+
+  /* ===== Seed orders with image metadata ===== */
   if (!localStorage.getItem('crumb_orders')) {
     localStorage.setItem('crumb_orders', JSON.stringify([
-      { id:'CC-10041', c:'Priya Iyer', p:'+91 98765 43210', items:'2× Country Sourdough Boule, 1× Butter Croissant', total:680, status:'Baking', time:'8 min ago', method:'local' },
-      { id:'CC-10040', c:'Arjun Mehta', p:'+91 99001 22334', items:'1× Classic Tiramisu', total:1450, status:'Out for delivery', time:'14 min ago', method:'express' },
-      { id:'CC-10039', c:'Meera Nair', p:'+91 90876 54321', items:'3× Butter Croissant, 1× Pain au Chocolat', total:560, status:'Delivered', time:'42 min ago', method:'pickup' },
-      { id:'CC-10038', c:'Rohan Banerjee', p:'+91 99887 76655', items:'Custom cake · 3-tier · Wedding', total:8400, status:'Pending', time:'1 hr ago', method:'local' },
-      { id:'CC-10037', c:'Subhojit Das', p:'+91 90909 09090', items:'2× Country Sourdough Boule, 1× Olive & Rosemary Focaccia', total:900, status:'Delivered', time:'2 hr ago', method:'pickup' },
-      { id:'CC-10036', c:'Tanya Roy', p:'+91 98712 34567', items:'1× Red Velvet Layer Cake', total:1620, status:'Baking', time:'3 hr ago', method:'local' },
-      { id:'CC-10035', c:'Karthik Iyer', p:'+91 98123 45678', items:'6× Cinnamon Kouign-Amann', total:960, status:'Cancelled', time:'4 hr ago', method:'pickup' },
+      {
+        id:'CC-10041', c:'Priya Iyer', p:'+91 98765 43210',
+        items:'2× Country Sourdough Boule, 1× Butter Croissant',
+        itemsList:[
+          { name:'Country Sourdough Boule', qty:2, price:280, img:IMG_MAP['Sourdough'] },
+          { name:'Butter Croissant', qty:1, price:120, img:IMG_MAP['Croissant'] }
+        ],
+        total:680, status:'Baking', time:'8 min ago', method:'local'
+      },
+      {
+        id:'CC-10040', c:'Arjun Mehta', p:'+91 99001 22334',
+        items:'1× Classic Tiramisu',
+        itemsList:[
+          { name:'Classic Tiramisu', qty:1, price:1450, img:IMG_MAP['Tiramisu'] }
+        ],
+        total:1450, status:'Out for delivery', time:'14 min ago', method:'express'
+      },
+      {
+        id:'CC-10039', c:'Meera Nair', p:'+91 90876 54321',
+        items:'3× Butter Croissant, 1× Pain au Chocolat',
+        itemsList:[
+          { name:'Butter Croissant', qty:3, price:120, img:IMG_MAP['Croissant'] },
+          { name:'Pain au Chocolat', qty:1, price:140, img:IMG_MAP['Chocolat'] }
+        ],
+        total:560, status:'Delivered', time:'42 min ago', method:'pickup'
+      },
+      {
+        id:'CC-10038', c:'Rohan Banerjee', p:'+91 99887 76655',
+        items:'Custom cake · 3-tier · Wedding',
+        itemsList:[
+          { name:'Custom Celebration Cake · 3-tier', qty:1, price:8400, img:IMG_MAP['Cake'] }
+        ],
+        total:8400, status:'Pending', time:'1 hr ago', method:'local'
+      },
+      {
+        id:'CC-10037', c:'Subhojit Das', p:'+91 90909 09090',
+        items:'2× Country Sourdough Boule, 1× Olive & Rosemary Focaccia',
+        itemsList:[
+          { name:'Country Sourdough Boule', qty:2, price:280, img:IMG_MAP['Sourdough'] },
+          { name:'Olive & Rosemary Focaccia', qty:1, price:340, img:IMG_MAP['Focaccia'] }
+        ],
+        total:900, status:'Delivered', time:'2 hr ago', method:'pickup'
+      },
+      {
+        id:'CC-10036', c:'Tanya Roy', p:'+91 98712 34567',
+        items:'1× Red Velvet Layer Cake',
+        itemsList:[
+          { name:'Red Velvet Layer Cake', qty:1, price:1620, img:IMG_MAP['Cake'] }
+        ],
+        total:1620, status:'Baking', time:'3 hr ago', method:'local'
+      },
+      {
+        id:'CC-10035', c:'Karthik Iyer', p:'+91 98123 45678',
+        items:'6× Cinnamon Kouign-Amann',
+        itemsList:[
+          { name:'Cinnamon Kouign-Amann', qty:6, price:160, img:IMG_MAP['Kouign-Amann'] }
+        ],
+        total:960, status:'Cancelled', time:'4 hr ago', method:'pickup'
+      },
     ]));
   }
   const ALL_ORDERS = JSON.parse(localStorage.getItem('crumb_orders'));
@@ -193,6 +303,18 @@
   const STATUS_CLASS = { Pending:'pill-pending', Baking:'pill-baking', 'Out for delivery':'pill-out', Delivered:'pill-delivered', Cancelled:'pill-cancelled' };
   const STATUS_FLOW = ['Pending','Baking','Out for delivery','Delivered'];
 
+  function getItemThumbs(o) {
+    if (o.itemsList && o.itemsList.length) {
+      return o.itemsList.slice(0, 3).map(i => `
+        <img src="${i.img || i.image || getFallbackImg(i.name)}" alt="" class="w-8 h-8 rounded-lg object-cover border border-sand shrink-0 shadow-xs">
+      `).join('');
+    }
+    const parts = (o.items || '').split(',');
+    return parts.slice(0, 3).map(p => `
+      <img src="${getFallbackImg(p)}" alt="" class="w-8 h-8 rounded-lg object-cover border border-sand shrink-0 shadow-xs">
+    `).join('');
+  }
+
   function render() {
     const q = (document.getElementById('searchInput').value || '').toLowerCase().trim();
     const tbl = document.getElementById('ordersTbl');
@@ -205,7 +327,7 @@
     if (!list.length) { tbl.innerHTML = ''; no.classList.remove('hidden'); return; }
     no.classList.add('hidden');
     tbl.innerHTML = list.map((o,i) => `
-      <tr class="row-expand border-t border-sand/40">
+      <tr class="row-expand border-t border-sand/40 hover:bg-sand/20 transition">
         <td class="py-3 px-4"><input type="checkbox" class="ordSel" data-i="${ALL_ORDERS.indexOf(o)}"></td>
         <td class="py-3 px-3">
           <div class="font-bold text-cocoa">${o.id}</div>
@@ -215,7 +337,14 @@
           <div class="font-semibold">${o.c}</div>
           <div class="text-[10px] text-ash">${o.p||''}</div>
         </td>
-        <td class="py-3 px-3 hidden md:table-cell text-ash text-xs max-w-xs truncate">${o.items}</td>
+        <td class="py-3 px-3 hidden md:table-cell text-xs">
+          <div class="flex items-center gap-2">
+            <div class="flex -space-x-2 shrink-0">
+              ${getItemThumbs(o)}
+            </div>
+            <span class="text-ash truncate max-w-[200px]" title="${o.items}">${o.items}</span>
+          </div>
+        </td>
         <td class="py-3 px-3 hidden lg:table-cell">
           <span class="text-xs font-semibold uppercase tracking-wider text-cocoa">${o.method}</span>
         </td>
@@ -227,11 +356,50 @@
           </select>
         </td>
         <td class="py-3 px-3">
-          <button class="text-ash hover:text-cocoa" title="View details">
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="m9 18 6-6-6-6"/></svg>
+          <button onclick="openDetailModal(${ALL_ORDERS.indexOf(o)})" class="w-8 h-8 rounded-full bg-sand/60 hover:bg-cocoa hover:text-cream flex items-center justify-center text-ash transition" title="View order items with photos">
+            <i class="fa-solid fa-eye text-xs"></i>
           </button>
         </td>
       </tr>`).join('');
+  }
+
+  function openDetailModal(idx) {
+    const o = ALL_ORDERS[idx];
+    if (!o) return;
+    document.getElementById('modalOrderId').textContent = o.id;
+    document.getElementById('modalOrderTime').textContent = o.time + ' · Method: ' + (o.method || 'Delivery');
+    document.getElementById('modalCustomer').textContent = o.c;
+    document.getElementById('modalPhone').textContent = o.p || '—';
+    document.getElementById('modalTotal').textContent = '₹' + o.total.toLocaleString('en-IN');
+
+    const container = document.getElementById('modalItemsList');
+    if (o.itemsList && o.itemsList.length) {
+      container.innerHTML = o.itemsList.map(item => `
+        <div class="flex items-center justify-between gap-3 p-2.5 bg-sand/30 rounded-2xl border border-sand">
+          <div class="flex items-center gap-3">
+            <img src="${item.img || item.image || getFallbackImg(item.name)}" alt="${item.name}" class="w-12 h-12 rounded-xl object-cover border border-sand">
+            <div>
+              <div class="font-bold text-xs text-cocoa">${item.name}</div>
+              <div class="text-[11px] text-ash">Quantity: ${item.qty || 1}</div>
+            </div>
+          </div>
+          <div class="font-bold text-xs text-brown">₹${((item.price || 0) * (item.qty || 1)).toLocaleString('en-IN')}</div>
+        </div>
+      `).join('');
+    } else {
+      const parts = (o.items || '').split(',');
+      container.innerHTML = parts.map(p => `
+        <div class="flex items-center gap-3 p-2.5 bg-sand/30 rounded-2xl border border-sand">
+          <img src="${getFallbackImg(p)}" alt="" class="w-12 h-12 rounded-xl object-cover border border-sand">
+          <span class="font-bold text-xs text-cocoa">${p.trim()}</span>
+        </div>
+      `).join('');
+    }
+    document.getElementById('orderDetailModal').classList.remove('hidden');
+  }
+
+  function closeDetailModal() {
+    document.getElementById('orderDetailModal').classList.add('hidden');
   }
 
   function changeStatus(i, s) {

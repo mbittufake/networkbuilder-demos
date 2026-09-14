@@ -64,7 +64,7 @@
   <!-- Mobile menu panel -->
   <div id="mobileMenu" class="hidden lg:hidden absolute top-full left-0 right-0 bg-white border-t border-line shadow-xl max-h-[calc(100vh-56px)] sm:max-h-[calc(100vh-64px)] overflow-y-auto">
     <div class="px-4 py-4 space-y-1 max-w-[1440px] mx-auto">
-      <a href="index.html" class="flex items-center justify-between py-3 px-3 rounded-xl hover:bg-paper font-medium">Home <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12h14M12 5l7 7-7 7'/%3E%3C/svg%3E" alt="→" class="w-3.5 h-3.5 shrink-0 align-middle inline-block"></a>
+      <a href="index.html" class="flex items-center justify-between py-3 px-3 rounded-xl hover:bg-paper font-medium">Home <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 shrink-0 inline-block align-middle" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
       <a href="shop.html" class="flex items-center justify-between py-3 px-3 rounded-xl hover:bg-paper font-medium bg-paper border border-line">Catalog — All Stickers <span class="text-xs bg-ink text-white px-2 py-1 rounded-full">22</span></a>
       <div class="grid grid-cols-2 gap-2 py-2">
         <a href="shop.html?cat=Business%20Branding" class="py-2.5 px-3 rounded-xl bg-paper border border-line text-sm font-medium text-center">Branding</a>
@@ -72,8 +72,8 @@
         <a href="shop.html?cat=Packaging" class="py-2.5 px-3 rounded-xl bg-paper border border-line text-sm font-medium text-center">Packaging</a>
         <a href="shop.html?cat=Promo%20&%20Safety" class="py-2.5 px-3 rounded-xl bg-paper border border-line text-sm font-medium text-center">Promo</a>
       </div>
-      <a href="custom.html" class="flex items-center justify-between py-3 px-3 rounded-xl bg-ink text-white font-semibold mt-2">Custom Builder — Any Shape <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12h14M12 5l7 7-7 7'/%3E%3C/svg%3E" alt="→" class="w-3.5 h-3.5 shrink-0 align-middle inline-block"></a>
-      <a href="admin/index.html" class="flex items-center justify-between py-3 px-3 rounded-xl hover:bg-paper text-muted border-t border-line mt-3 pt-4">Admin Panel <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12h14M12 5l7 7-7 7'/%3E%3C/svg%3E" alt="→" class="w-3.5 h-3.5 shrink-0 align-middle inline-block"></a>
+      <a href="custom.html" class="flex items-center justify-between py-3 px-3 rounded-xl bg-ink text-white font-semibold mt-2">Custom Builder — Any Shape <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 shrink-0 inline-block align-middle" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+      <a href="admin/index.html" class="flex items-center justify-between py-3 px-3 rounded-xl hover:bg-paper text-muted border-t border-line mt-3 pt-4">Admin Panel <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 shrink-0 inline-block align-middle" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
       <div class="grid grid-cols-2 gap-2 pt-3">
         <a href="tel:+919999999999" class="bg-ink text-white text-center py-3 rounded-full text-sm font-semibold">Call Us</a>
         <a href="custom.html" class="border border-ink text-center py-3 rounded-full text-sm font-semibold">Get Quote</a>
@@ -249,8 +249,8 @@
           <div class="flex justify-between font-bold text-base border-t border-white/10 pt-3"><span>Total</span><span id="sumTotal">₹1,050</span></div>
         </div>
         <div class="mt-4 grid grid-cols-2 gap-2">
-          <button onclick="addCustomToCart()" class="bg-white text-ink py-3 rounded-full font-semibold hover:bg-paper transition inline-flex items-center justify-center gap-2">Add to Cart <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12h14M12 5l7 7-7 7'/%3E%3C/svg%3E" alt="→" class="group-hover:invert group-hover:brightness-0 transition duration-200 w-3.5 h-3.5 shrink-0 align-middle inline-block"></button>
-          <button onclick="submitQuote()" class="bg-accent text-white py-3 rounded-full font-semibold hover:bg-accent2 transition inline-flex items-center justify-center gap-2">Get Proof <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12h14M12 5l7 7-7 7'/%3E%3C/svg%3E" alt="→" class="w-3.5 h-3.5 shrink-0 align-middle inline-block"></button>
+          <button onclick="addCustomToCart()" class="bg-white text-ink py-3 rounded-full font-semibold hover:bg-paper transition inline-flex items-center justify-center gap-2">Add to Cart <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 shrink-0 inline-block align-middle" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button>
+          <button onclick="submitQuote()" class="bg-accent text-white py-3 rounded-full font-semibold hover:bg-accent2 transition inline-flex items-center justify-center gap-2">Get Proof <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 shrink-0 inline-block align-middle" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button>
         </div>
         <div class="mt-3 text-xs text-center text-white/50">Proof in 4 hours (9am–7pm) • You approve before print • No advance for repeat clients</div>
       </div>
@@ -286,7 +286,7 @@
   <div class="absolute right-0 top-0 h-full w-full max-w-md bg-white flex flex-col">
     <div class="px-6 py-5 border-b border-line flex items-center justify-between"><div class="font-semibold">Your Cart <span id="cartDrawerCountLabel" class="text-muted font-normal"></span></div><button onclick="closeCartDrawer()" class="w-9 h-9 rounded-full border flex items-center justify-center"><svg class="align-middle shrink-0 shrink-0" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg></button></div>
     <div id="cartDrawerItems" class="flex-1 overflow-auto px-6"></div>
-    <div id="cartDrawerFooter" class="hidden border-t border-line p-6 bg-paper"><div class="flex justify-between text-sm"><span class="text-muted">Subtotal</span><span id="cartDrawerSubtotal" class="font-semibold"></span></div><a href="cart.html" class="mt-4 block bg-ink text-white text-center py-3.5 rounded-full font-semibold">View Cart & Checkout <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12h14M12 5l7 7-7 7'/%3E%3C/svg%3E" alt="→" class="w-3.5 h-3.5 shrink-0 align-middle inline-block"></a></div>
+    <div id="cartDrawerFooter" class="hidden border-t border-line p-6 bg-paper"><div class="flex justify-between text-sm"><span class="text-muted">Subtotal</span><span id="cartDrawerSubtotal" class="font-semibold"></span></div><a href="cart.html" class="mt-4 block bg-ink text-white text-center py-3.5 rounded-full font-semibold">View Cart & Checkout <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 shrink-0 inline-block align-middle" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a></div>
   </div>
 </div>
 
@@ -431,7 +431,7 @@ function addCustomToCart(){
     id: 900+Math.floor(Math.random()*100),
     name: `Custom ${state.shape} — ${state.material} (${sizeLabel})`,
     category:'Custom Die-Cut',
-    image: state.material==='Holographic' ? 'https://images.unsplash.com/photo-1626785774573-6dd65b279390?w=600&h=700&fit=crop&q=80' : state.material==='Transparent' ? 'https://images.unsplash.com/photo-1603481588273-7f2a095a11ce?w=600&h=700&fit=crop&q=80' : 'https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=600&h=700&fit=crop&q=80',
+    image: state.material==='Holographic' ? 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=600&h=700&fit=crop&q=80' : state.material==='Transparent' ? 'https://images.unsplash.com/photo-1572375992501-4b0892d50c69?w=600&h=700&fit=crop&q=80' : 'https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=600&h=700&fit=crop&q=80',
     price: parseInt(document.getElementById('sumSub').textContent.replace(/[^0-9]/g,''))||890,
   };
   addToCart(customProd, {qty:1, material: state.material, size:sizeLabel, finish: document.getElementById('finishSelect').value+' • '+state.shape});

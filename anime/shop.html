@@ -2,170 +2,339 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Shop — OTAKU</title>
+<title>All Drops &amp; Grails — OTAKU Tokyo Vault</title>
 <script src="https://cdn.tailwindcss.com"></script>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
-<script>tailwind.config={theme:{extend:{fontFamily:{sans:['Space Grotesk','sans-serif'],display:['Bebas Neue','sans-serif']},colors:{ink:'#0A0A0F',muted:'#6B6B76',paper:'#FFF9EC',line:'#0A0A0F',accent:'#FF3B82',violet:'#7C3AED',yellow:'#FACC15',banana:'#FACC15'}}}}</script>
-
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<script>
+tailwind.config={
+  theme:{
+    extend:{
+      fontFamily:{ sans:['Space Grotesk','sans-serif'], display:['Bebas Neue','sans-serif'] },
+      colors:{
+        obsidian:'#0A0A12',
+        cyber:'#12121E',
+        cyberCard:'#161626',
+        neonPink:'#FF2A85',
+        neonCyan:'#00F0FF',
+        neonViolet:'#8B5CF6',
+        neonLime:'#CCFF00',
+        cyberBorder:'rgba(255,255,255,0.08)'
+      }
+    }
+  }
+}
+</script>
 <style>
-  body{ font-family:'Space Grotesk',sans-serif; background:#0A0A0F; }
-  .font-display{ font-family:'Bebas Neue',sans-serif !important; letter-spacing:.01em; }
-  .halftone{ background-image: radial-gradient(circle at 1.5px 1.5px, rgba(255,255,255,.16) 1.4px, transparent 0); background-size:16px 16px; }
-  .halftone-pink{ background-image: radial-gradient(circle at 1.5px 1.5px, rgba(255,59,130,.22) 1.4px, transparent 0); background-size:14px 14px; }
-  .halftone-dark{ background-image: radial-gradient(circle at 1px 1px, rgba(10,10,15,.14) 1.1px, transparent 0); background-size:13px 13px; }
-  .comic-grid{ background-image: radial-gradient(circle at 1px 1px, rgba(255,255,255,0.14) 1.3px, transparent 0); background-size:18px 18px; }
-  .stroke{ -webkit-text-stroke: 1.5px #0A0A0F; paint-order: stroke fill; }
-  .stroke-w{ -webkit-text-stroke: 1.2px rgba(255,255,255,.9); paint-order: stroke fill; }
-  .hard{ box-shadow: 4px 4px 0 #0A0A0F; }
-  .hard-w{ box-shadow: 4px 4px 0 rgba(255,255,255,.9); }
-  .hard-banana{ box-shadow: 5px 5px 0 #FACC15; }
-  .hard-pink{ box-shadow: 5px 5px 0 #FF3B82; }
-  .sticker-badge{ border:2px solid #0A0A0F; box-shadow:2px 2px 0 #0A0A0F; transform:rotate(-3deg); }
-  .tilt-l{ transform:rotate(-1.4deg); } .tilt-r{ transform:rotate(1.3deg); }
-  .tilt-hover{ transition:transform .35s cubic-bezier(.34,1.56,.64,1); } .tilt-hover:hover{ transform:rotate(0deg) translateY(-4px) !important; }
-  .burst{ position:relative; } .burst:before{ content:""; position:absolute; inset:-8px; background:repeating-conic-gradient(#FACC15 0 8deg, transparent 8deg 16deg); opacity:.18; border-radius:24px; z-index:0; }
-  ::selection{ background:#FF3B82; color:white; }
-  .marquee-track{ display:flex; gap:2rem; white-space:nowrap; animation:otakuScroll 22s linear infinite; }
-  @keyframes otakuScroll{ from{transform:translateX(0)} to{transform:translateX(-50%)} }
-  /* light cards on dark */
-  .otaku-card{ background:#fff; border:2px solid #0A0A0F; box-shadow:5px 5px 0 #FF3B82; }
-  .otaku-card:nth-child(even){ box-shadow:5px 5px 0 #7C3AED; transform:rotate(.6deg); }
-  .otaku-card:nth-child(odd){ transform:rotate(-.6deg); }
+body { background:#0A0A12; color:#FFFFFF; }
+::selection { background:#FF2A85; color:#fff; }
+.font-display { font-family:'Bebas Neue',sans-serif !important; letter-spacing:0.04em; }
+.cyber-glass { background:rgba(22,22,38,0.7); backdrop-filter:blur(16px); -webkit-backdrop-filter:blur(16px); border:1px solid rgba(255,255,255,0.1); }
+.cyber-card { background:#131320; border:1px solid rgba(255,255,255,0.08); transition:all .3s cubic-bezier(0.16,1,0.3,1); }
+.cyber-card:hover { transform:translateY(-4px); border-color:#FF2A85; box-shadow:0 12px 32px -8px rgba(255,42,133,0.3); }
+.no-scrollbar::-webkit-scrollbar { display:none; } .no-scrollbar { scrollbar-width:none; }
+.badge-katakana { font-size:10px; letter-spacing:0.18em; font-weight:700; text-transform:uppercase; }
+.cyber-grid { background-image:radial-gradient(circle at 1px 1px, rgba(255,255,255,0.05) 1px, transparent 0); background-size:24px 24px; }
 </style>
 </head>
-<body class="bg-paper text-ink antialiased">
-<div class="bg-ink text-white text-xs flex items-center justify-center gap-2 py-2.5 tracking-widest uppercase halftone border-b-2 border-ink" style="background:linear-gradient(90deg,#FF3B82,#7C3AED);"><span class="hidden sm:inline">Free shipping over ₹1,999 • </span> COD • 7-day returns <a href="shop.html" class="underline ml-2">Shop →</a></div>
-<header class="sticky top-0 z-40 bg-white/95 backdrop-blur border-b-2 border-ink">
-  <div class="max-w-[1280px] mx-auto px-4 lg:px-6">
-    <div class="flex items-center justify-between h-[64px] lg:h-[72px]">
-      <button id="mobileMenuBtn" class="lg:hidden w-10 h-10 flex items-center justify-center border border-line rounded-full"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
-      <a href="index.html" class="flex items-center gap-2"><div class="w-9 h-9 bg-ink text-accent flex items-center justify-center font-display text-xl border-2 border-ink">オ</div><span class="font-display text-2xl tracking-tight">OTAKU</span><span class="hidden lg:inline text-[10px] tracking-[0.22em] text-white bg-ink px-2 py-1 rounded-full font-bold">ANIME STORE</span></a>
-      <nav class="hidden lg:flex items-center gap-6 text-sm font-semibold">
-        <a href="shop.html" class="font-black border-b-2 border-ink">Shop All</a>
-        <a href="shop.html?cat=Figures" class="hover:text-accent">Figures</a>
-        <a href="shop.html?cat=Keychains" class="hover:text-accent">Keychains</a>
-        <a href="shop.html?cat=Plush" class="hover:text-accent">Plush</a>
-        <a href="shop.html?cat=Manga" class="hover:text-accent">Manga</a>
+<body class="bg-obsidian text-white antialiased overflow-x-hidden cyber-grid">
+
+<!-- Top Cyber Ticker -->
+<div class="bg-cyber border-b border-cyberBorder text-[11px] font-bold tracking-[0.25em] uppercase overflow-hidden whitespace-nowrap py-2 text-white/70">
+  <div class="flex items-center justify-center gap-6 px-4">
+    <span class="text-neonPink flex items-center gap-1.5"><i class="fa-solid fa-bolt"></i> AKIHABARA DIRECT IMPORT</span>
+    <span class="text-white/40">&bull;</span>
+    <span class="text-neonCyan">FREE DISPATCH OVER ₹1,999</span>
+    <span class="text-white/40">&bull;</span>
+    <span>AUTHENTIC LICENSED</span>
+  </div>
+</div>
+
+<!-- Header -->
+<header class="sticky top-0 z-50 bg-[#0A0A12]/90 backdrop-blur-md border-b border-cyberBorder">
+  <div class="max-w-[1360px] mx-auto px-4 sm:px-6">
+    <div class="flex items-center justify-between h-[72px] gap-4">
+      <a href="index.html" class="flex items-center gap-3 group">
+        <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-neonPink to-neonViolet flex items-center justify-center font-display text-2xl text-white shadow-lg shadow-neonPink/30 group-hover:scale-105 transition">オ</div>
+        <div class="leading-none">
+          <div class="font-display text-3xl tracking-wide flex items-center gap-1.5">
+            OTAKU<span class="text-neonPink">.</span>
+            <span class="text-[9px] font-sans font-extrabold tracking-widest text-neonCyan bg-neonCyan/10 border border-neonCyan/30 px-1.5 py-0.5 rounded ml-1">TOKYO</span>
+          </div>
+          <span class="text-[9px] tracking-[0.25em] text-white/40 uppercase font-semibold">Vault · Est. 2026</span>
+        </div>
+      </a>
+
+      <nav class="hidden lg:flex items-center gap-1 bg-cyber/80 border border-cyberBorder rounded-full p-1 text-xs font-bold tracking-wider uppercase">
+        <a href="shop.html" class="px-4 py-2 rounded-full bg-neonPink text-white">Shop All</a>
+        <a href="shop.html?cat=Figures" class="px-4 py-2 rounded-full text-white/70 hover:text-white hover:bg-white/5 transition flex items-center gap-1.5"><i class="fa-solid fa-cube text-neonPink text-[10px]"></i> Figures</a>
+        <a href="shop.html?cat=Keychains" class="px-4 py-2 rounded-full text-white/70 hover:text-white hover:bg-white/5 transition flex items-center gap-1.5"><i class="fa-solid fa-key text-neonCyan text-[10px]"></i> Keychains</a>
+        <a href="shop.html?cat=Plush" class="px-4 py-2 rounded-full text-white/70 hover:text-white hover:bg-white/5 transition flex items-center gap-1.5"><i class="fa-solid fa-heart text-neonViolet text-[10px]"></i> Plush</a>
+        <a href="shop.html?cat=Manga" class="px-4 py-2 rounded-full text-white/70 hover:text-white hover:bg-white/5 transition flex items-center gap-1.5"><i class="fa-solid fa-book-open text-neonLime text-[10px]"></i> Manga</a>
       </nav>
-      <div class="flex items-center gap-2">
-        <button onclick="openSearch()" class="w-10 h-10 rounded-full border border-line hover:border-ink flex items-center justify-center"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M20 20L16 16"/></svg></button>
-        <a href="wishlist.html" class="relative hidden sm:flex w-10 h-10 rounded-full border border-line hover:border-ink items-center justify-center"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-6-4.5-8.5-8.2A5 5 0 0 1 12 5a5 5 0 0 1 8.5 7.8C18 16.5 12 21 12 21z"/></svg><span data-wish-count class="hidden absolute -top-1 -right-1 bg-accent text-white text-[10px] min-w-[18px] h-[18px] px-1 rounded-full flex items-center justify-center font-bold">0</span></a>
-        <button onclick="openCartDrawer()" class="relative w-10 h-10 rounded-full bg-ink text-white flex items-center justify-center"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6h15l-1.5 9H7z"/><path d="M6 6L5 2H2"/><circle cx="9" cy="20" r="1.5"/><circle cx="18" cy="20" r="1.5"/></svg><span data-cart-count class="hidden absolute -top-1 -right-1 bg-yellow text-ink text-[10px] min-w-[18px] h-[18px] px-1 rounded-full flex items-center justify-center font-black">0</span></button>
-        <a href="admin/index.html" class="hidden lg:inline-flex text-xs font-black uppercase tracking-widest border-2 border-ink px-3 py-2 rounded-full hover:bg-ink hover:text-white transition">Admin</a>
+
+      <div class="flex items-center gap-2 sm:gap-3">
+        <button onclick="openSearch()" class="w-10 h-10 rounded-xl bg-cyber border border-cyberBorder hover:border-neonCyan flex items-center justify-center text-white/80 hover:text-white transition" aria-label="Search">
+          <i class="fa-solid fa-magnifying-glass text-xs"></i>
+        </button>
+        <a href="wishlist.html" class="relative hidden sm:flex w-10 h-10 rounded-xl bg-cyber border border-cyberBorder hover:border-neonPink items-center justify-center text-white/80 hover:text-white transition" aria-label="Wishlist">
+          <i class="fa-regular fa-heart text-xs"></i>
+          <span data-wish-count class="hidden absolute -top-1.5 -right-1.5 bg-neonPink text-white text-[10px] w-5 h-5 rounded-full flex items-center justify-center font-bold">0</span>
+        </a>
+        <button onclick="openCartDrawer()" class="h-10 px-4 rounded-xl bg-gradient-to-r from-neonPink to-neonViolet text-white font-bold text-xs flex items-center gap-2 shadow-md shadow-neonPink/25 hover:brightness-110 transition" aria-label="Cart">
+          <i class="fa-solid fa-bag-shopping text-xs"></i>
+          <span>BAG [<span data-cart-count>0</span>]</span>
+        </button>
+        <a href="admin/index.html" class="hidden sm:inline-flex text-[10px] font-extrabold uppercase tracking-widest px-3 py-2 rounded-xl bg-white/5 border border-white/10 hover:border-neonLime text-white/70 hover:text-white transition">Admin</a>
+        <button id="mobileMenuBtn" class="lg:hidden w-10 h-10 rounded-xl bg-cyber border border-cyberBorder flex items-center justify-center text-white font-bold">
+          <i class="fa-solid fa-bars"></i>
+        </button>
       </div>
     </div>
   </div>
-  <div id="mobileMenu" class="hidden lg:hidden border-t border-line bg-white px-4 py-4 space-y-3">
-    <a href="shop.html" class="block py-2 font-bold">Shop All</a><a href="shop.html?cat=Figures" class="block py-2">Figures</a><a href="shop.html?cat=Keychains" class="block py-2">Keychains</a><a href="shop.html?cat=Plush" class="block py-2">Plush</a><a href="shop.html?cat=Manga" class="block py-2">Manga</a>
+
+  <div id="mobileMenu" class="hidden lg:hidden border-t border-cyberBorder px-4 py-4 bg-cyber/95 backdrop-blur-lg space-y-2 text-sm font-bold">
+    <a href="shop.html" class="block p-3 rounded-xl bg-neonPink text-white">Shop All Drops</a>
+    <a href="shop.html?cat=Figures" class="block p-3 rounded-xl bg-obsidian border border-cyberBorder text-white/80"><i class="fa-solid fa-cube text-neonPink mr-2"></i> Figures</a>
+    <a href="shop.html?cat=Keychains" class="block p-3 rounded-xl bg-obsidian border border-cyberBorder text-white/80"><i class="fa-solid fa-key text-neonCyan mr-2"></i> Keychains</a>
+    <a href="shop.html?cat=Plush" class="block p-3 rounded-xl bg-obsidian border border-cyberBorder text-white/80"><i class="fa-solid fa-heart text-neonViolet mr-2"></i> Plush</a>
+    <a href="shop.html?cat=Manga" class="block p-3 rounded-xl bg-obsidian border border-cyberBorder text-white/80"><i class="fa-solid fa-book-open text-neonLime mr-2"></i> Manga</a>
   </div>
 </header>
 
-<div class="max-w-[1280px] mx-auto px-4 lg:px-6 pt-6">
-  <div class="text-xs text-muted"><a href="index.html" class="hover:text-ink">Home</a> <span class="mx-2">/</span> <span class="text-ink font-black">Shop</span></div>
-  <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-4 mt-3">
-    <h1 class="font-display text-4xl lg:text-5xl tracking-tight">SHOP ALL <span id="catLabel" class="text-accent"></span></h1>
+<!-- Breadcrumb & Header -->
+<div class="max-w-[1360px] mx-auto px-4 sm:px-6 pt-8">
+  <div class="text-xs text-white/40 flex items-center gap-2">
+    <a href="index.html" class="hover:text-neonCyan">Home</a>
+    <span>/</span>
+    <span class="text-white font-bold">Shop</span>
+  </div>
+
+  <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mt-3">
+    <div>
+      <span class="badge-katakana text-neonCyan"><i class="fa-solid fa-vault mr-1"></i> THE VAULT COLLECTION</span>
+      <h1 class="font-display text-4xl sm:text-6xl tracking-wide mt-1">ALL <span class="bg-gradient-to-r from-neonPink to-neonCyan bg-clip-text text-transparent">GRAILS</span> <span id="catLabel" class="text-neonPink"></span></h1>
+    </div>
     <div class="flex items-center gap-3">
-      <span id="count" class="text-sm font-bold"></span>
-      <select id="sort" class="border-2 border-ink rounded-full px-4 py-2 text-sm font-bold bg-white"><option value="featured">Featured</option><option value="price-asc">Price Low</option><option value="price-desc">High</option><option value="rating">Top Rated</option></select>
+      <span id="count" class="text-xs font-bold text-white/50"></span>
+      <select id="sort" class="bg-cyber border border-cyberBorder rounded-xl px-4 py-2.5 text-xs font-bold text-white outline-none focus:border-neonCyan">
+        <option value="featured">Featured Drops</option>
+        <option value="price-asc">Price: Low → High</option>
+        <option value="price-desc">Price: High → Low</option>
+        <option value="rating">Top Rated</option>
+      </select>
     </div>
   </div>
-  <div class="flex gap-2 mt-6 overflow-auto pb-2">
-    <button data-cat="All" class="catBtn bg-ink text-white px-5 py-2 rounded-full text-sm font-black whitespace-nowrap border-2 border-ink">ALL</button>
-    <button data-cat="Figures" class="catBtn border-2 border-ink px-5 py-2 rounded-full text-sm font-black whitespace-nowrap hover:bg-ink hover:text-white">FIGURES</button>
-    <button data-cat="Keychains" class="catBtn border-2 border-ink px-5 py-2 rounded-full text-sm font-black whitespace-nowrap hover:bg-ink hover:text-white">KEYCHAINS</button>
-    <button data-cat="Plush" class="catBtn border-2 border-ink px-5 py-2 rounded-full text-sm font-black whitespace-nowrap hover:bg-ink hover:text-white">PLUSH</button>
-    <button data-cat="Manga" class="catBtn border-2 border-ink px-5 py-2 rounded-full text-sm font-black whitespace-nowrap hover:bg-ink hover:text-white">MANGA</button>
-    <button data-cat="Posters" class="catBtn border-2 border-ink px-5 py-2 rounded-full text-sm font-black whitespace-nowrap hover:bg-ink hover:text-white">POSTERS</button>
-    <button data-cat="Apparel" class="catBtn border-2 border-ink px-5 py-2 rounded-full text-sm font-black whitespace-nowrap hover:bg-ink hover:text-white">APPAREL</button>
+
+  <!-- Category Pills -->
+  <div class="flex gap-2.5 mt-8 overflow-x-auto no-scrollbar pb-2">
+    <button data-cat="All" class="catBtn px-5 py-2.5 rounded-xl text-xs font-bold whitespace-nowrap bg-neonPink text-white transition">All Items</button>
+    <button data-cat="Figures" class="catBtn px-5 py-2.5 rounded-xl text-xs font-bold whitespace-nowrap bg-cyber border border-cyberBorder text-white/70 hover:text-white hover:border-neonPink transition">Figures</button>
+    <button data-cat="Keychains" class="catBtn px-5 py-2.5 rounded-xl text-xs font-bold whitespace-nowrap bg-cyber border border-cyberBorder text-white/70 hover:text-white hover:border-neonCyan transition">Keychains</button>
+    <button data-cat="Plush" class="catBtn px-5 py-2.5 rounded-xl text-xs font-bold whitespace-nowrap bg-cyber border border-cyberBorder text-white/70 hover:text-white hover:border-neonViolet transition">Plush</button>
+    <button data-cat="Manga" class="catBtn px-5 py-2.5 rounded-xl text-xs font-bold whitespace-nowrap bg-cyber border border-cyberBorder text-white/70 hover:text-white hover:border-neonLime transition">Manga</button>
+    <button data-cat="Posters" class="catBtn px-5 py-2.5 rounded-xl text-xs font-bold whitespace-nowrap bg-cyber border border-cyberBorder text-white/70 hover:text-white hover:border-white transition">Posters</button>
+    <button data-cat="Apparel" class="catBtn px-5 py-2.5 rounded-xl text-xs font-bold whitespace-nowrap bg-cyber border border-cyberBorder text-white/70 hover:text-white hover:border-neonPink transition">Apparel</button>
   </div>
 </div>
 
-<div class="max-w-[1280px] mx-auto px-4 lg:px-6 mt-6 grid lg:grid-cols-12 gap-6">
+<!-- Main Layout -->
+<div class="max-w-[1360px] mx-auto px-4 sm:px-6 mt-6 pb-24 grid lg:grid-cols-12 gap-8 items-start">
+  
+  <!-- Filters Sidebar -->
   <aside class="hidden lg:block lg:col-span-3">
-    <div class="sticky top-[88px] space-y-4 bg-paper border-2 border-ink rounded-[24px] p-5">
+    <div class="sticky top-28 space-y-6 cyber-card rounded-2xl p-6 bg-cyber/90">
       <div>
-        <div class="text-xs font-black uppercase tracking-widest">Search</div>
-        <div class="mt-2 flex items-center gap-2 bg-white border-2 border-ink rounded-full px-4 py-2.5"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M20 20L16 16"/></svg><input id="q" type="text" placeholder="Naruto, Luffy..." class="flex-1 outline-none text-sm font-medium bg-transparent"></div>
-      </div>
-      <div>
-        <div class="text-xs font-black uppercase tracking-widest">Price</div>
-        <div class="mt-3 space-y-2 text-sm font-medium">
-          <label class="flex items-center gap-2"><input type="radio" name="price" value="all" checked> All</label>
-          <label class="flex items-center gap-2"><input type="radio" name="price" value="0-700"> Under ₹700</label>
-          <label class="flex items-center gap-2"><input type="radio" name="price" value="700-1500"> ₹700 – ₹1,500</label>
-          <label class="flex items-center gap-2"><input type="radio" name="price" value="1500-9999"> Above ₹1,500</label>
+        <label class="text-[11px] font-bold uppercase tracking-wider text-white/50 block mb-2">Search Items</label>
+        <div class="flex items-center gap-2 bg-obsidian border border-cyberBorder focus-within:border-neonCyan rounded-xl px-3.5 py-2.5">
+          <i class="fa-solid fa-magnifying-glass text-xs text-white/40"></i>
+          <input id="q" type="text" placeholder="Naruto, Luffy, Gojo…" class="flex-1 bg-transparent text-xs text-white outline-none">
         </div>
       </div>
-      <div class="flex items-center gap-2 text-sm font-bold"><input type="checkbox" id="rating"> <label for="rating">4.8<svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg> & up</label></div>
-      <button onclick="clearFilters()" class="w-full bg-white border-2 border-ink rounded-full py-2.5 text-sm font-black">CLEAR</button>
+
+      <div class="border-t border-cyberBorder pt-4">
+        <label class="text-[11px] font-bold uppercase tracking-wider text-white/50 block mb-3">Price Range</label>
+        <div class="space-y-2 text-xs font-medium text-white/70">
+          <label class="flex items-center gap-2 cursor-pointer hover:text-white"><input type="radio" name="price" value="all" checked class="accent-neonPink"> All Prices</label>
+          <label class="flex items-center gap-2 cursor-pointer hover:text-white"><input type="radio" name="price" value="0-700" class="accent-neonPink"> Under ₹700</label>
+          <label class="flex items-center gap-2 cursor-pointer hover:text-white"><input type="radio" name="price" value="700-1500" class="accent-neonPink"> ₹700 – ₹1,500</label>
+          <label class="flex items-center gap-2 cursor-pointer hover:text-white"><input type="radio" name="price" value="1500-9999" class="accent-neonPink"> Premium ₹1,500+</label>
+        </div>
+      </div>
+
+      <div class="border-t border-cyberBorder pt-4">
+        <label class="flex items-center gap-2 text-xs font-bold text-white/80 cursor-pointer hover:text-white">
+          <input type="checkbox" id="rating" class="accent-neonPink">
+          <span class="flex items-center gap-1"><i class="fa-solid fa-star text-neonLime text-[10px]"></i> 4.8 &amp; above only</span>
+        </label>
+      </div>
+
+      <button onclick="clearFilters()" class="w-full py-2.5 rounded-xl bg-white/5 border border-white/10 hover:border-neonPink text-xs font-bold transition">
+        Reset Filters
+      </button>
     </div>
   </aside>
+
+  <!-- Products Grid -->
   <div class="lg:col-span-9">
-    <div id="grid" class="grid grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-6"></div>
-    <div id="empty" class="hidden text-center py-20">
-      <div class="w-16 h-16 rounded-full bg-paper border-2 border-ink flex items-center justify-center mx-auto font-black">?</div>
-      <div class="font-display text-2xl mt-3">NO GRAILS FOUND</div>
-      <button onclick="clearFilters()" class="mt-3 border-2 border-ink px-6 py-2 rounded-full font-black">CLEAR</button>
+    <div id="grid" class="grid grid-cols-2 md:grid-cols-3 gap-5"></div>
+    <div id="empty" class="hidden text-center py-20 cyber-card rounded-2xl">
+      <div class="w-14 h-14 rounded-full bg-white/5 border border-white/10 flex items-center justify-center mx-auto text-xl text-neonPink">?</div>
+      <div class="font-display text-3xl mt-4">NO GRAILS MATCHED</div>
+      <p class="text-xs text-white/50 mt-1">Try relaxing your search terms or filters.</p>
+      <button onclick="clearFilters()" class="mt-4 px-6 py-2.5 rounded-full bg-neonPink text-white text-xs font-bold">Reset Filters</button>
     </div>
+  </div>
+
+</div>
+
+<!-- Search Modal -->
+<div id="searchOverlay" class="hidden fixed inset-0 z-[70] bg-obsidian/95 backdrop-blur-xl">
+  <div class="max-w-2xl mx-auto px-5 pt-16">
+    <div class="flex justify-between items-center pb-4 border-b border-cyberBorder">
+      <span class="text-neonCyan font-bold tracking-[0.25em] text-xs uppercase"><i class="fa-solid fa-magnifying-glass mr-2"></i> Search The Vault</span>
+      <button onclick="closeSearch()" class="w-9 h-9 rounded-full bg-white/10 hover:bg-neonPink flex items-center justify-center text-sm transition">✕</button>
+    </div>
+    <input id="searchInput" oninput="renderSearchResults(this.value)" placeholder="Search Naruto, Luffy, Gojo, keychains…" class="w-full mt-6 bg-cyber border border-cyberBorder focus:border-neonCyan rounded-2xl px-6 py-4 text-white text-base outline-none">
+    <div id="searchResults" class="mt-6 bg-cyber/90 rounded-2xl border border-cyberBorder overflow-hidden max-h-[50vh] overflow-auto"></div>
   </div>
 </div>
 
-<footer class="max-w-[1280px] mx-auto px-4 lg:px-6 mt-10 border-t-2 border-ink pt-8 pb-8">
-  <div class="grid lg:grid-cols-5 gap-8">
-    <div class="lg:col-span-2"><div class="flex items-center gap-2"><div class="w-8 h-8 bg-ink text-accent flex items-center justify-center font-display border-2 border-ink">オ</div><span class="font-display text-xl">OTAKU</span></div><p class="text-sm text-muted mt-3 max-w-sm">Anime figures, keychains, plush & manga. Demo store.</p></div>
-    <div><div class="text-xs font-black uppercase tracking-widest">Shop</div><ul class="mt-3 space-y-2 text-sm text-muted"><li><a href="shop.html?cat=Figures" class="hover:text-ink">Figures</a></li><li><a href="shop.html?cat=Keychains" class="hover:text-ink">Keychains</a></li><li><a href="shop.html?cat=Manga" class="hover:text-ink">Manga</a></li></ul></div>
-    <div><div class="text-xs font-black uppercase tracking-widest">Help</div><ul class="mt-3 space-y-2 text-sm text-muted"><li><a href="cart.html" class="hover:text-ink">Cart</a></li><li><a href="wishlist.html" class="hover:text-ink">Wishlist</a></li></ul></div>
-    <div><div class="text-xs font-black uppercase tracking-widest">Admin</div><ul class="mt-3 space-y-2 text-sm text-muted"><li><a href="admin/index.html" class="hover:text-ink font-black">Dashboard →</a></li><li><a href="admin/products.html" class="hover:text-ink">Products</a></li></ul></div>
+<!-- Cart Drawer -->
+<div id="cartDrawer" class="hidden fixed inset-0 z-[70]">
+  <div class="absolute inset-0 bg-black/70 backdrop-blur-sm" onclick="closeCartDrawer()"></div>
+  <div class="absolute right-0 top-0 h-full w-full max-w-md bg-obsidian border-l border-cyberBorder flex flex-col">
+    <div class="px-6 py-5 bg-cyber border-b border-cyberBorder flex justify-between items-center">
+      <span class="font-display text-2xl tracking-wide flex items-center gap-2"><i class="fa-solid fa-box text-neonPink text-lg"></i> LOOT VAULT <span id="cartDrawerCountLabel" class="text-xs font-sans text-white/50 font-normal"></span></span>
+      <button onclick="closeCartDrawer()" class="w-8 h-8 rounded-full bg-white/10 hover:bg-neonPink flex items-center justify-center text-xs transition">✕</button>
+    </div>
+    <div id="cartDrawerItems" class="flex-1 overflow-auto px-6 py-4 divide-y divide-cyberBorder"></div>
+    <div id="cartDrawerFooter" class="hidden border-t border-cyberBorder p-6 bg-cyber">
+      <div class="flex justify-between font-bold text-sm">
+        <span class="text-white/60">SUBTOTAL</span>
+        <span id="cartDrawerSubtotal" class="text-neonCyan text-base font-extrabold"></span>
+      </div>
+      <a href="cart.html" class="mt-4 block bg-gradient-to-r from-neonPink to-neonViolet text-white text-center py-4 rounded-full font-bold text-xs uppercase tracking-widest shadow-lg shadow-neonPink/30 hover:brightness-110 transition">
+        PROCEED TO CHECKOUT →
+      </a>
+    </div>
   </div>
-  <div class="text-xs text-muted border-t-2 border-ink mt-8 pt-6 text-center">© 2026 OTAKU • Demo by Network Builder</div>
-</footer>
-
-<div id="searchOverlay" class="hidden fixed inset-0 z-[60] bg-white/95 backdrop-blur"><div class="max-w-2xl mx-auto px-4 pt-8"><div class="flex items-center gap-3"><div class="flex-1 flex items-center gap-3 border-2 border-ink rounded-full px-5 py-3 bg-white"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M20 20L16 16"/></svg><input id="searchInput" type="text" placeholder="Search Naruto, Luffy..." class="flex-1 outline-none text-sm font-medium" oninput="renderSearchResults(this.value)"></div><button onclick="closeSearch()" class="w-11 h-11 rounded-full bg-ink text-white flex items-center justify-center"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6L6 18M6 6l12 12"/></svg></button></div><div id="searchResults" class="mt-6 max-h-[60vh] overflow-auto divide-y divide-zinc-100 border-2 border-ink rounded-2xl bg-white"></div></div></div>
-<div id="cartDrawer" class="hidden fixed inset-0 z-[60]"><div class="absolute inset-0 bg-black/50" onclick="closeCartDrawer()"></div><div class="absolute right-0 top-0 h-full w-full max-w-md bg-white flex flex-col border-l-2 border-ink"><div class="px-6 py-5 border-b-2 border-ink flex items-center justify-between bg-yellow"><div class="font-black tracking-widest">YOUR CART <span id="cartDrawerCountLabel" class="font-normal normal-case text-sm"></span></div><button onclick="closeCartDrawer()" class="w-9 h-9 rounded-full bg-ink text-white flex items-center justify-center"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6L6 18M6 6l12 12"/></svg></button></div><div id="cartDrawerItems" class="flex-1 overflow-auto px-6"></div><div id="cartDrawerFooter" class="hidden border-t-2 border-ink p-6 bg-paper"><div class="flex justify-between text-sm"><span class="text-muted">Subtotal</span><span id="cartDrawerSubtotal" class="font-black"></span></div><a href="cart.html" class="mt-4 block bg-ink text-white text-center py-3.5 rounded-full font-black tracking-widest">CHECKOUT →</a></div></div></div>
+</div>
 
 <script src="app.js"></script>
 <script>
-const params=new URLSearchParams(location.search);
-let activeCat=params.get('cat')||'All';
+const params = new URLSearchParams(location.search);
+let activeCat = params.get('cat') || 'All';
+
 function syncPills(){
-  document.querySelectorAll('.catBtn').forEach(b=>{ b.className = b.dataset.cat===activeCat ? 'catBtn bg-ink text-white px-5 py-2 rounded-full text-sm font-black whitespace-nowrap border-2 border-ink' : 'catBtn border-2 border-ink px-5 py-2 rounded-full text-sm font-black whitespace-nowrap hover:bg-ink hover:text-white bg-white'; });
-  document.getElementById('catLabel').textContent= activeCat!=='All' ? `— ${activeCat}` : '';
+  document.querySelectorAll('.catBtn').forEach(b=>{
+    if(b.dataset.cat === activeCat){
+      b.className = 'catBtn px-5 py-2.5 rounded-xl text-xs font-bold whitespace-nowrap bg-neonPink text-white shadow-md shadow-neonPink/25 transition';
+    } else {
+      b.className = 'catBtn px-5 py-2.5 rounded-xl text-xs font-bold whitespace-nowrap bg-cyber border border-cyberBorder text-white/70 hover:text-white hover:border-neonPink transition';
+    }
+  });
+  document.getElementById('catLabel').textContent = activeCat !== 'All' ? `— ${activeCat.toUpperCase()}` : '';
 }
 syncPills();
-document.querySelectorAll('.catBtn').forEach(b=> b.addEventListener('click', ()=>{ activeCat=b.dataset.cat; syncPills(); render(); history.replaceState(null,'', activeCat==='All'?'shop.html':`shop.html?cat=${activeCat}`); }));
+
+document.querySelectorAll('.catBtn').forEach(b => {
+  b.addEventListener('click', ()=>{
+    activeCat = b.dataset.cat;
+    syncPills();
+    render();
+    history.replaceState(null, '', activeCat === 'All' ? 'shop.html' : `shop.html?cat=${activeCat}`);
+  });
+});
+
 function getFiltered(){
-  let list=[...getProducts()];
-  const q=document.getElementById('q').value.toLowerCase().trim();
-  if(activeCat!=='All') list=list.filter(p=>p.category===activeCat);
-  if(q) list=list.filter(p=> p.name.toLowerCase().includes(q) || p.category.toLowerCase().includes(q));
-  const price=document.querySelector('input[name="price"]:checked').value;
-  if(price!=='all'){ const [min,max]=price.split('-').map(Number); list=list.filter(p=>p.price>=min && p.price<=max); }
-  if(document.getElementById('rating').checked) list=list.filter(p=>p.rating>=4.8);
-  const sort=document.getElementById('sort').value;
-  if(sort==='price-asc') list.sort((a,b)=>a.price-b.price);
-  if(sort==='price-desc') list.sort((a,b)=>b.price-a.price);
-  if(sort==='rating') list.sort((a,b)=>b.rating-a.rating);
+  let list = [...getProducts()];
+  const q = document.getElementById('q').value.toLowerCase().trim();
+  if(activeCat !== 'All') list = list.filter(p => p.category === activeCat);
+  if(q) list = list.filter(p => p.name.toLowerCase().includes(q) || p.category.toLowerCase().includes(q));
+  const price = document.querySelector('input[name="price"]:checked')?.value || 'all';
+  if(price !== 'all'){
+    const [min, max] = price.split('-').map(Number);
+    list = list.filter(p => p.price >= min && p.price <= max);
+  }
+  if(document.getElementById('rating')?.checked) list = list.filter(p => p.rating >= 4.8);
+  const sort = document.getElementById('sort')?.value || 'featured';
+  if(sort === 'price-asc') list.sort((a,b) => a.price - b.price);
+  if(sort === 'price-desc') list.sort((a,b) => b.price - a.price);
+  if(sort === 'rating') list.sort((a,b) => b.rating - a.rating);
   return list;
 }
+
 function card(p){
-  const disc=p.mrp>p.price?`-${discountPct(p.mrp,p.price)}%`:'';
-  const badge=p.badge?`<span class="absolute top-2 left-2 bg-banana border-2 border-ink text-ink text-[10px] font-black px-2 py-1 rounded-full sticker-badge">${p.badge}</span>`:'';
-  return `<a href="product.html?id=${p.id}" class="group block tilt-hover"><div class="relative aspect-[4/5] rounded-[18px] overflow-hidden bg-white border-2 border-ink hard"><img src="${p.image}" class="w-full h-full object-cover group-hover:scale-105 transition duration-700" alt="${p.name}">${badge}${disc?`<span class="absolute top-2 right-2 bg-ink text-white text-xs font-black px-2 py-1 rounded-full">${disc}</span>`:''}<button onclick="event.preventDefault(); toggleWishlist(${p.id}); showToast(isWishlisted(${p.id})?'Wishlist <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>':'Removed'); render()" class="absolute bottom-2 right-2 w-8 h-8 rounded-full bg-white border-2 border-ink flex items-center justify-center text-sm font-black">${isWishlisted(p.id)?'<svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-6-4.5-8.5-8.2A5 5 0 0 1 12 5a5 5 0 0 1 8.5 7.8C18 16.5 12 21 12 21z"/></svg>':'<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-6-4.5-8.5-8.2A5 5 0 0 1 12 5a5 5 0 0 1 8.5 7.8C18 16.5 12 21 12 21z"/></svg>'}</button></div><div class="pt-3"><div class="text-[10px] font-black uppercase tracking-widest text-violet">${p.category}</div><div class="font-bold leading-tight text-sm">${p.name}</div><div class="flex items-center gap-2 mt-1"><span class="font-black">${formatINR(p.price)}</span><span class="text-xs line-through text-muted">${formatINR(p.mrp)}</span></div><div class="text-xs font-bold text-muted"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg> ${p.rating} (${p.reviews})</div></div></a>`;
+  const disc = p.mrp > p.price ? `-${discountPct(p.mrp, p.price)}%` : '';
+  const badge = p.badge ? `<span class="absolute top-2.5 left-2.5 bg-neonPink text-white text-[9px] font-extrabold px-2 py-0.5 rounded uppercase tracking-wider">${p.badge}</span>` : '';
+  return `
+    <div class="cyber-card rounded-2xl p-4 flex flex-col justify-between group">
+      <div class="relative rounded-xl overflow-hidden aspect-square bg-cyber">
+        <a href="product.html?id=${p.id}" class="block w-full h-full">
+          <img src="${p.image}" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" alt="${p.name}">
+        </a>
+        ${badge}
+        ${disc ? `<span class="absolute top-2.5 right-2.5 bg-black/80 backdrop-blur text-neonCyan text-[10px] font-bold px-2 py-0.5 rounded border border-neonCyan/30">${disc}</span>` : ''}
+        <button onclick="event.preventDefault(); toggleWishlist(${p.id}); showToast(isWishlisted(${p.id})?'Saved to Wishlist ♡':'Removed from Wishlist'); render()" class="absolute bottom-2.5 right-2.5 w-8 h-8 rounded-lg bg-black/80 backdrop-blur border border-white/20 flex items-center justify-center text-xs text-white hover:text-neonPink transition">
+          <i class="${isWishlisted(p.id) ? 'fa-solid fa-heart text-neonPink' : 'fa-regular fa-heart'}"></i>
+        </button>
+      </div>
+      <div class="mt-4 flex-1 flex flex-col justify-between">
+        <div>
+          <span class="text-[10px] text-neonCyan font-bold tracking-wider uppercase block">${p.category}</span>
+          <a href="product.html?id=${p.id}" class="block font-bold leading-snug text-sm text-white/90 hover:text-white truncate mt-0.5">${p.name}</a>
+          <div class="text-[11px] text-neonLime flex items-center gap-1 mt-1">
+            <i class="fa-solid fa-star text-[9px]"></i> ${p.rating} <span class="text-white/40">(${p.reviews})</span>
+          </div>
+        </div>
+        <div class="flex items-center justify-between mt-3 pt-3 border-t border-cyberBorder">
+          <div>
+            <span class="font-extrabold text-sm text-white">${formatINR(p.price)}</span>
+            <span class="text-xs line-through text-white/40 ml-1">${formatINR(p.mrp)}</span>
+          </div>
+          <button onclick="addToCart(ANIME_PRODUCTS.find(x=>x.id===${p.id}));showToast('Added ${p.name.replace(/'/g, "\\'")} to Bag!')" class="px-3 py-1.5 rounded-lg bg-neonPink hover:brightness-110 text-white text-xs font-bold transition flex items-center gap-1">
+            <i class="fa-solid fa-plus text-[10px]"></i> Add
+          </button>
+        </div>
+      </div>
+    </div>
+  `;
 }
+
 function render(){
-  const list=getFiltered();
-  document.getElementById('count').textContent=`${list.length} items`;
-  const grid=document.getElementById('grid');
-  const empty=document.getElementById('empty');
-  if(!list.length){ grid.innerHTML=''; empty.classList.remove('hidden'); return; }
-  empty.classList.add('hidden');
-  grid.innerHTML=list.map(card).join('');
+  const list = getFiltered();
+  const countEl = document.getElementById('count');
+  const gridEl = document.getElementById('grid');
+  const emptyEl = document.getElementById('empty');
+  if(countEl) countEl.textContent = `${list.length} Items Found`;
+  if(!list.length){
+    if(gridEl) gridEl.innerHTML = '';
+    if(emptyEl) emptyEl.classList.remove('hidden');
+    return;
+  }
+  if(emptyEl) emptyEl.classList.add('hidden');
+  if(gridEl) gridEl.innerHTML = list.map(card).join('');
 }
-document.getElementById('q').addEventListener('input', render);
-document.querySelectorAll('input[name="price"]').forEach(e=>e.addEventListener('change', render));
-document.getElementById('rating').addEventListener('change', render);
-document.getElementById('sort').addEventListener('change', render);
-function clearFilters(){ activeCat='All'; syncPills(); document.getElementById('q').value=''; document.querySelector('input[name="price"][value="all"]').checked=true; document.getElementById('rating').checked=false; history.replaceState(null,'','shop.html'); render(); }
+
+document.getElementById('q')?.addEventListener('input', render);
+document.querySelectorAll('input[name="price"]').forEach(e => e.addEventListener('change', render));
+document.getElementById('rating')?.addEventListener('change', render);
+document.getElementById('sort')?.addEventListener('change', render);
+
+function clearFilters(){
+  activeCat = 'All';
+  syncPills();
+  const qEl = document.getElementById('q');
+  if(qEl) qEl.value = '';
+  const priceEl = document.querySelector('input[name="price"][value="all"]');
+  if(priceEl) priceEl.checked = true;
+  const ratingEl = document.getElementById('rating');
+  if(ratingEl) ratingEl.checked = false;
+  history.replaceState(null, '', 'shop.html');
+  render();
+}
+
 render();
 </script>
 </body>

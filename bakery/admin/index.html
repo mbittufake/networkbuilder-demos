@@ -47,6 +47,7 @@
     .pill-delivered { background:#D1FAE5; color:#065F46; }
     .pill-cancelled { background:#FEE2E2; color:#991B1B; }
   </style>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 <body class="bg-adminBase text-ink antialiased min-h-screen">
 
@@ -162,7 +163,7 @@
           <div class="kpi-card bg-adminCard rounded-2xl p-5 shadow-editor border border-sand">
             <div class="flex items-center justify-between mb-2">
               <span class="text-xs uppercase tracking-wider text-ash font-bold">Low stock alerts</span>
-              <span class="text-rose-500">⚠</span>
+              <span class="text-rose-500"><i class="fa-solid fa-triangle-exclamation text-amber-500"></i></span>
             </div>
             <div class="font-serif text-3xl font-bold text-ink">3</div>
             <div class="flex items-center gap-1 mt-2 text-xs"><span class="text-rose-600 font-bold">Action needed</span></div>
@@ -258,7 +259,7 @@
             </div>
           </div>
           <div class="kpi-card bg-adMinCard bg-adminCard rounded-2xl p-5 sm:p-6 shadow-editor border border-sand">
-            <h3 class="font-serif text-xl font-bold mb-1">⚠ Low stock</h3>
+            <h3 class="font-serif text-xl font-bold mb-1"><i class="fa-solid fa-triangle-exclamation text-amber-500"></i> Low stock</h3>
             <p class="text-xs text-ash mb-4">Items needing restock this week</p>
             <ul class="space-y-3">
               <li class="flex items-center justify-between gap-3 text-sm">
@@ -300,7 +301,7 @@
           </div>
           <div class="kpi-card bg-adminCard rounded-2xl p-5 shadow-editor border border-sand">
             <div class="text-xs uppercase tracking-wider text-ash font-bold mb-1">Avg. customer rating</div>
-            <div class="font-serif text-2xl font-bold">4.9 ★</div>
+            <div class="font-serif text-2xl font-bold">4.9 <i class="fa-solid fa-star text-gold"></i></div>
             <div class="text-xs text-caramel mt-1 font-semibold">+0.1 vs last month</div>
           </div>
         </div>
@@ -372,7 +373,7 @@
       { name:'Mango & Coconut Tart', cat:'seasonal', price:480, stock:11 },
       { name:'Hot Cocoa Cupcake (6 pc)', cat:'seasonal', price:540, stock:6 },
     ];
-    const CAT_EMOJI = { breads:'🍞', pastries:'🥐', cakes:'🎂', cookies:'🍪', savory:'🥧', seasonal:'🧁' };
+    const CAT_EMOJI = { breads:'<i class="fa-solid fa-bread-slice text-caramel"></i>', pastries:'<i class="fa-solid fa-bowl-food text-caramel"></i>', cakes:'<i class="fa-solid fa-cake-candles text-caramel"></i>', cookies:'<i class="fa-solid fa-cookie-bite text-caramel"></i>', savory:'<i class="fa-solid fa-utensils text-caramel"></i>', seasonal:'<i class="fa-solid fa-seedling text-caramel"></i>' };
 
     function filterItems() {
       const cat = document.getElementById('catFilter').value;

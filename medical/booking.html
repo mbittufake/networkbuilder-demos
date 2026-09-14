@@ -46,7 +46,18 @@
                 <a href="services.html" class="hover:text-teal transition">Services</a>
                 <a href="index.html#contact" class="hover:text-teal transition">Location</a>
             </div>
-            <a href="booking.html" class="bg-deep text-white text-sm font-bold px-5 sm:px-6 py-3 rounded-full hover:bg-teal transition-all shadow-card">Book Appointment</a>
+            <div class="flex items-center gap-3">
+                <a href="booking.html" class="bg-deep text-white text-sm font-bold px-4 sm:px-6 py-2.5 sm:py-3 rounded-full hover:bg-teal transition-all shadow-card">Book Appointment</a>
+                <button id="medMenuBtn" class="md:hidden w-10 h-10 rounded-full border border-border flex items-center justify-center text-deep hover:border-teal hover:text-teal transition" aria-label="Toggle navigation">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+                </button>
+            </div>
+        </div>
+        <div id="medMobileMenu" class="hidden md:hidden bg-white/95 backdrop-blur-xl border-t border-border/70 px-6 py-4 text-sm font-semibold text-deep space-y-3 shadow-lg">
+            <a href="doctors.html" class="block py-2 hover:text-teal transition">Doctors</a>
+            <a href="services.html" class="block py-2 hover:text-teal transition">Services</a>
+            <a href="index.html#contact" class="block py-2 hover:text-teal transition">Location &amp; Hours</a>
+            <a href="booking.html" class="block py-2.5 px-4 rounded-xl bg-teal text-white text-center font-bold">Book Appointment →</a>
         </div>
     </nav>
 
@@ -71,61 +82,98 @@
                     <p class="text-white font-bold text-[15px] flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-lime animate-pulse"></span> 6 slots left today</p>
                     <a href="tel:03324567890" class="text-lime text-sm font-bold hover:text-white transition">Need help? Call →</a>
                 </div>
-                <form class="p-7 md:p-10 space-y-6">
-                    <div>
-                        <label class="block text-sm font-extrabold text-deep mb-2">Select Service</label>
-                        <select class="field w-full px-4 py-3.5 rounded-2xl border border-border bg-mist/60 font-semibold text-deep">
-                            <option>General Consultation</option>
-                            <option>Pediatrics</option>
-                            <option>Cardiology</option>
-                            <option>Orthopedics</option>
-                            <option>Dermatology</option>
-                            <option>Diagnostics / Lab Test</option>
-                        </select>
-                    </div>
-                    <div>
-                        <label class="block text-sm font-extrabold text-deep mb-2">Select Doctor <span class="font-semibold text-muted">(Optional)</span></label>
-                        <select class="field w-full px-4 py-3.5 rounded-2xl border border-border bg-mist/60 font-semibold text-deep">
-                            <option>Any Available Doctor</option>
-                            <option>Dr. Anjali Sharma (Cardiology)</option>
-                            <option>Dr. Rajesh Roy (General)</option>
-                            <option>Dr. Sneha Das (Pediatrics)</option>
-                            <option>Dr. Amir Khan (Neurology)</option>
-                        </select>
-                    </div>
-                    <div class="grid sm:grid-cols-2 gap-5">
+                <div id="bookingFormWrapper">
+                    <form id="medBookingForm" class="p-7 md:p-10 space-y-6" onsubmit="handleMedBooking(event)">
                         <div>
-                            <label class="block text-sm font-extrabold text-deep mb-2">Preferred Date</label>
-                            <input type="date" class="field w-full px-4 py-3.5 rounded-2xl border border-border bg-mist/60 font-semibold text-deep">
-                        </div>
-                        <div>
-                            <label class="block text-sm font-extrabold text-deep mb-2">Preferred Time</label>
-                            <select class="field w-full px-4 py-3.5 rounded-2xl border border-border bg-mist/60 font-semibold text-deep">
-                                <option>Morning (9 AM - 12 PM)</option>
-                                <option>Afternoon (12 PM - 4 PM)</option>
-                                <option>Evening (4 PM - 8 PM)</option>
+                            <label class="block text-sm font-extrabold text-deep mb-2">Select Service</label>
+                            <select id="bService" class="field w-full px-4 py-3.5 rounded-2xl border border-border bg-mist/60 font-semibold text-deep">
+                                <option>General Consultation</option>
+                                <option>Pediatrics</option>
+                                <option>Cardiology</option>
+                                <option>Orthopedics</option>
+                                <option>Dermatology</option>
+                                <option>Diagnostics / Lab Test</option>
                             </select>
                         </div>
+                        <div>
+                            <label class="block text-sm font-extrabold text-deep mb-2">Select Doctor <span class="font-semibold text-muted">(Optional)</span></label>
+                            <select id="bDoctor" class="field w-full px-4 py-3.5 rounded-2xl border border-border bg-mist/60 font-semibold text-deep">
+                                <option>Any Available Doctor</option>
+                                <option>Dr. Anjali Sharma (Cardiology)</option>
+                                <option>Dr. Rajesh Roy (General)</option>
+                                <option>Dr. Sneha Das (Pediatrics)</option>
+                                <option>Dr. Amir Khan (Neurology)</option>
+                            </select>
+                        </div>
+                        <div class="grid sm:grid-cols-2 gap-5">
+                            <div>
+                                <label class="block text-sm font-extrabold text-deep mb-2">Preferred Date</label>
+                                <input type="date" id="bDate" class="field w-full px-4 py-3.5 rounded-2xl border border-border bg-mist/60 font-semibold text-deep">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-extrabold text-deep mb-2">Preferred Time</label>
+                                <select id="bTime" class="field w-full px-4 py-3.5 rounded-2xl border border-border bg-mist/60 font-semibold text-deep">
+                                    <option>Morning (9 AM - 12 PM)</option>
+                                    <option>Afternoon (12 PM - 4 PM)</option>
+                                    <option>Evening (4 PM - 8 PM)</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="flex gap-2.5 flex-wrap">
+                            <span class="text-[12px] font-bold bg-lime text-deep px-3.5 py-1.5 rounded-full border border-teal/20">Today 4:30 PM ✓</span>
+                            <span class="text-[12px] font-bold bg-white text-muted px-3.5 py-1.5 rounded-full border border-border">Tomorrow 10 AM</span>
+                            <span class="text-[12px] font-bold bg-white text-muted px-3.5 py-1.5 rounded-full border border-border">Tomorrow 6 PM</span>
+                        </div>
+                        <div class="border-t border-dashed border-border"></div>
+                        <div>
+                            <label class="block text-sm font-extrabold text-deep mb-2">Full Name</label>
+                            <input type="text" id="bName" required placeholder="e.g. Rahul Sen" class="field w-full px-4 py-3.5 rounded-2xl border border-border bg-mist/60 placeholder:text-muted/60 font-medium">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-extrabold text-deep mb-2">Phone Number</label>
+                            <input type="tel" id="bPhone" required placeholder="e.g. 98765 43210" class="field w-full px-4 py-3.5 rounded-2xl border border-border bg-mist/60 placeholder:text-muted/60 font-medium">
+                        </div>
+                        <button type="submit" class="w-full bg-teal text-white font-extrabold text-[16px] py-4 rounded-full hover:bg-deep transition-all shadow-float hover:-translate-y-0.5">
+                            Confirm Appointment →
+                        </button>
+                        <p class="text-center text-xs text-muted leading-relaxed">By booking, you agree to our privacy policy.<br>Payment is collected at the clinic. Free cancellation up to 2 hrs before.</p>
+                    </form>
+                </div>
+
+                <div id="bookingSuccessWrapper" class="hidden p-8 md:p-12 text-center">
+                    <div class="w-16 h-16 rounded-full bg-teal text-white flex items-center justify-center mx-auto text-2xl mb-4 shadow-card">✓</div>
+                    <span class="inline-block bg-lime text-deep text-xs font-extrabold uppercase tracking-wide px-3 py-1 rounded-full mb-3">Appointment Confirmed</span>
+                    <h2 class="font-serif text-3xl md:text-4xl text-deep mb-2">You're All Set</h2>
+                    <p class="text-muted text-sm max-w-md mx-auto mb-6">We have reserved your slot at City Care Clinic. A confirmation SMS with directions has been sent to your phone.</p>
+                    
+                    <div class="bg-mist/80 border border-border rounded-2xl p-5 mb-8 text-left space-y-3 text-sm">
+                        <div class="flex justify-between items-center">
+                            <span class="text-muted font-bold text-xs uppercase tracking-wider">Booking ID</span>
+                            <span id="medConfirmedRef" class="font-mono font-extrabold text-teal">#CC-84920</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-muted font-bold text-xs uppercase tracking-wider">Patient</span>
+                            <span id="medConfirmedName" class="font-extrabold text-deep">Rahul Sen</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-muted font-bold text-xs uppercase tracking-wider">Service &amp; Doctor</span>
+                            <span id="medConfirmedDoc" class="font-bold text-deep">Cardiology</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-muted font-bold text-xs uppercase tracking-wider">Time Slot</span>
+                            <span id="medConfirmedTime" class="font-bold text-deep">Tomorrow (10 AM - 12 PM)</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-muted font-bold text-xs uppercase tracking-wider">Location</span>
+                            <span class="font-bold text-deep">12 Civil Lines, Malda</span>
+                        </div>
                     </div>
-                    <div class="flex gap-2.5 flex-wrap">
-                        <span class="text-[12px] font-bold bg-lime text-deep px-3.5 py-1.5 rounded-full border border-teal/20">Today 4:30 PM ✓</span>
-                        <span class="text-[12px] font-bold bg-white text-muted px-3.5 py-1.5 rounded-full border border-border">Tomorrow 10 AM</span>
-                        <span class="text-[12px] font-bold bg-white text-muted px-3.5 py-1.5 rounded-full border border-border">Tomorrow 6 PM</span>
+
+                    <div class="flex flex-col sm:flex-row gap-3 justify-center">
+                        <button onclick="resetMedForm()" class="px-6 py-3 rounded-full border border-border bg-white text-deep text-sm font-bold hover:bg-mist transition">Book Another Appointment</button>
+                        <a href="index.html" class="px-7 py-3 rounded-full bg-deep text-white text-sm font-bold hover:bg-teal transition">Return to Home →</a>
                     </div>
-                    <div class="border-t border-dashed border-border"></div>
-                    <div>
-                        <label class="block text-sm font-extrabold text-deep mb-2">Full Name</label>
-                        <input type="text" placeholder="e.g. Rahul Sen" class="field w-full px-4 py-3.5 rounded-2xl border border-border bg-mist/60 placeholder:text-muted/60 font-medium">
-                    </div>
-                    <div>
-                        <label class="block text-sm font-extrabold text-deep mb-2">Phone Number</label>
-                        <input type="tel" placeholder="e.g. 98765 43210" class="field w-full px-4 py-3.5 rounded-2xl border border-border bg-mist/60 placeholder:text-muted/60 font-medium">
-                    </div>
-                    <button type="button" class="w-full bg-teal text-white font-extrabold text-[16px] py-4 rounded-full hover:bg-deep transition-all shadow-float hover:-translate-y-0.5">
-                        Confirm Appointment →
-                    </button>
-                    <p class="text-center text-xs text-muted leading-relaxed">By booking, you agree to our privacy policy.<br>Payment is collected at the clinic. Free cancellation up to 2 hrs before.</p>
-                </form>
+                </div>
             </div>
 
             <div class="grid sm:grid-cols-2 gap-4 mt-6">
@@ -151,5 +199,52 @@
         </div>
     </footer>
 
+    <!-- Toast -->
+    <div id="medToast" class="fixed bottom-6 right-6 z-50 bg-deep text-white px-5 py-3.5 rounded-2xl shadow-float border border-teal/40 text-xs font-bold tracking-wide transform translate-y-16 opacity-0 pointer-events-none transition-all duration-300 flex items-center gap-3">
+        <span class="w-2 h-2 rounded-full bg-lime animate-pulse"></span>
+        <span id="medToastMsg">Appointment Confirmed</span>
+    </div>
+
+    <script>
+        document.getElementById('medMenuBtn')?.addEventListener('click', function() {
+            document.getElementById('medMobileMenu')?.classList.toggle('hidden');
+        });
+
+        function handleMedBooking(e) {
+            e.preventDefault();
+            const name = document.getElementById('bName').value.trim();
+            const phone = document.getElementById('bPhone').value.trim();
+            const service = document.getElementById('bService').value;
+            const doctor = document.getElementById('bDoctor').value;
+            const time = document.getElementById('bTime').value;
+            const date = document.getElementById('bDate').value || 'Upcoming slot';
+            const refCode = '#CC-' + Math.floor(10000 + Math.random() * 90000);
+
+            document.getElementById('medConfirmedRef').textContent = refCode;
+            document.getElementById('medConfirmedName').textContent = name;
+            document.getElementById('medConfirmedDoc').textContent = service + (doctor !== 'Any Available Doctor' ? ' (' + doctor + ')' : '');
+            document.getElementById('medConfirmedTime').textContent = date + ' · ' + time;
+
+            document.getElementById('bookingFormWrapper').classList.add('hidden');
+            document.getElementById('bookingSuccessWrapper').classList.remove('hidden');
+
+            showMedToast('Appointment confirmed for ' + name);
+        }
+
+        function resetMedForm() {
+            document.getElementById('medBookingForm').reset();
+            document.getElementById('bookingSuccessWrapper').classList.add('hidden');
+            document.getElementById('bookingFormWrapper').classList.remove('hidden');
+        }
+
+        function showMedToast(msg) {
+            const toast = document.getElementById('medToast');
+            document.getElementById('medToastMsg').textContent = msg;
+            toast.classList.remove('translate-y-16', 'opacity-0', 'pointer-events-none');
+            setTimeout(() => {
+                toast.classList.add('translate-y-16', 'opacity-0', 'pointer-events-none');
+            }, 4000);
+        }
+    </script>
 </body>
 </html>

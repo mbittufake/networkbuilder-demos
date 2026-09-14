@@ -42,7 +42,18 @@
                 <a href="services.html" class="hover:text-teal transition">Services</a>
                 <a href="index.html#contact" class="hover:text-teal transition">Location</a>
             </div>
-            <a href="booking.html" class="bg-deep text-white text-sm font-bold px-5 sm:px-6 py-3 rounded-full hover:bg-teal transition-all shadow-card">Book Appointment</a>
+            <div class="flex items-center gap-3">
+                <a href="booking.html" class="bg-deep text-white text-sm font-bold px-4 sm:px-6 py-2.5 sm:py-3 rounded-full hover:bg-teal transition-all shadow-card">Book Appointment</a>
+                <button id="medMenuBtn" class="md:hidden w-10 h-10 rounded-full border border-border flex items-center justify-center text-deep hover:border-teal hover:text-teal transition" aria-label="Toggle navigation">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+                </button>
+            </div>
+        </div>
+        <div id="medMobileMenu" class="hidden md:hidden bg-white/95 backdrop-blur-xl border-t border-border/70 px-6 py-4 text-sm font-semibold text-deep space-y-3 shadow-lg">
+            <a href="doctors.html" class="block py-2 text-teal font-bold transition">Doctors</a>
+            <a href="services.html" class="block py-2 hover:text-teal transition">Services</a>
+            <a href="index.html#contact" class="block py-2 hover:text-teal transition">Location &amp; Hours</a>
+            <a href="booking.html" class="block py-2.5 px-4 rounded-xl bg-teal text-white text-center font-bold">Book Appointment →</a>
         </div>
     </nav>
 
@@ -123,5 +134,10 @@
         </div>
     </footer>
 
+    <script>
+        document.getElementById('medMenuBtn')?.addEventListener('click', function() {
+            document.getElementById('medMobileMenu')?.classList.toggle('hidden');
+        });
+    </script>
 </body>
 </html>

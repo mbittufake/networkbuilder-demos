@@ -6,6 +6,7 @@
   <title>Crumb & Craft — Artisanal Bakery in Malda</title>
   <meta name="description" content="Hand-crafted breads, pastries & custom cakes baked fresh every morning in Malda, West Bengal. Family-run since 2014.">
   <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <script src="https://unpkg.com/htmx.org@2.0.3" defer></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;0,9..144,900;1,9..144,500;1,9..144,700&family=Caveat:wght@600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -45,16 +46,16 @@
       setTimeout(() => window.location.href = 'cart.html', 220);
     }
     function itemEmoji(name) {
-      const n = name.toLowerCase();
-      if (n.includes('croissant') || n.includes('brioche') || n.includes('babka') || n.includes('pain au chocolat') || n.includes('danish') || n.includes('kouign')) return '🥐';
-      if (n.includes('sourdough') || n.includes('boule') || n.includes('loaf') || n.includes('ciabatta')) return '🍞';
-      if (n.includes('focaccia') || n.includes('pita')) return '🥖';
-      if (n.includes('cake') || n.includes('tiramisu') || n.includes('cheesecake')) return '🎂';
-      if (n.includes('cookie') || n.includes('brownie') || n.includes('biscotti') || n.includes('shortbread') || n.includes('snickerdoodle') || n.includes('raisin')) return '🍪';
-      if (n.includes('quiche') || n.includes('galette') || n.includes('pie')) return '🥧';
-      if (n.includes('roll')) return '🍥';
-      if (n.includes('cupcake') || n.includes('tart') || n.includes('mango') || n.includes('pumpkin')) return '🧁';
-      return '🥐';
+      const n = (name || '').toLowerCase();
+      if (n.includes('croissant') || n.includes('brioche') || n.includes('babka') || n.includes('pain au chocolat')) return '<i class="fa-solid fa-bowl-food text-caramel"></i>';
+      if (n.includes('sourdough') || n.includes('boule') || n.includes('loaf') || n.includes('ciabatta')) return '<i class="fa-solid fa-bread-slice text-caramel"></i>';
+      if (n.includes('focaccia') || n.includes('pita')) return '<i class="fa-solid fa-bread-slice text-caramel"></i>';
+      if (n.includes('cake') || n.includes('tiramisu') || n.includes('cheesecake')) return '<i class="fa-solid fa-cake-candles text-caramel"></i>';
+      if (n.includes('cookie') || n.includes('brownie') || n.includes('biscotti') || n.includes('shortbread')) return '<i class="fa-solid fa-cookie-bite text-caramel"></i>';
+      if (n.includes('quiche') || n.includes('galette') || n.includes('pie')) return '<i class="fa-solid fa-utensils text-caramel"></i>';
+      if (n.includes('roll')) return '<i class="fa-solid fa-cookie text-caramel"></i>';
+      if (n.includes('cupcake') || n.includes('tart') || n.includes('mango') || n.includes('pumpkin')) return '<i class="fa-solid fa-seedling text-caramel"></i>';
+      return '<i class="fa-solid fa-wheat-awn text-caramel"></i>';
     }
     function renderCart() {
       const wrap = document.getElementById('cartItems');
@@ -67,7 +68,7 @@
       if (!cart.length) {
         wrap.innerHTML = `
           <div class="text-center py-12 flex flex-col items-center justify-center h-full">
-            <div class="text-6xl mb-4">🥐</div>
+            <div class="w-16 h-16 mx-auto mb-4 rounded-full bg-caramel/20 flex items-center justify-center text-3xl text-caramel"><i class="fa-solid fa-basket-shopping"></i></div>
             <h3 class="font-serif text-2xl font-bold text-cocoa mb-2">Your basket is empty</h3>
             <p class="text-cocoa/60 mb-6 text-sm max-w-[260px]">Add some fresh bakes to get started. Everything's baked this morning.</p>
             <a href="menu.html" onclick="closeCart()" class="inline-flex items-center gap-2 bg-cocoa text-cream px-6 py-2.5 rounded-full text-sm font-semibold shadow-warm hover:bg-brown transition-all">
@@ -76,8 +77,8 @@
             </a>
             <div class="mt-8 text-xs text-cocoa/40">Try our bestsellers:</div>
             <div class="flex gap-2 mt-3 text-xs">
-              <button onclick="quickAdd('Sourdough Boule',280,this)" class="bg-cream border border-brown/20 rounded-full px-3 py-1.5 hover:border-brown">🍞 Sourdough ₹280</button>
-              <button onclick="quickAdd('Butter Croissant',120,this)" class="bg-cream border border-brown/20 rounded-full px-3 py-1.5 hover:border-brown">🥐 Croissant ₹120</button>
+              <button onclick="quickAdd('Sourdough Boule',280,this)" class="bg-cream border border-brown/20 rounded-full px-3 py-1.5 hover:border-brown"><i class="fa-solid fa-bread-slice text-caramel mr-1"></i> Sourdough ₹280</button>
+              <button onclick="quickAdd('Butter Croissant',120,this)" class="bg-cream border border-brown/20 rounded-full px-3 py-1.5 hover:border-brown"><i class="fa-solid fa-bowl-food text-caramel mr-1"></i> Croissant ₹120</button>
             </div>
           </div>`;
         footer.classList.add('hidden');
@@ -111,7 +112,7 @@
       const remain = Math.max(0, FREE_SHIP_THRESHOLD - subtotal);
       const note = document.getElementById('freeShipNote');
       if (subtotal >= FREE_SHIP_THRESHOLD) {
-        note.innerHTML = '<span class="text-caramel font-semibold">✓ Free local delivery unlocked!</span>';
+        note.innerHTML = '<span class="text-caramel font-semibold"><i class="fa-solid fa-circle-check text-caramel mr-1"></i>Free local delivery unlocked!</span>';
       } else {
         note.innerHTML = `Add <strong class="text-cocoa">₹${remain}</strong> more for free local delivery`;
       }
@@ -278,7 +279,7 @@
             <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=64&h=64&fit=crop&q=80" class="w-10 h-10 rounded-full border-2 border-cream object-cover" alt="">
           </div>
           <div>
-            <div class="flex gap-0.5 text-gold text-sm">★★★★★</div>
+            <div class="flex gap-0.5 text-gold text-sm"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
             <p class="text-xs text-cocoa/70 mt-0.5"><span class="font-bold text-cocoa">2,400+</span> happy bellies · 4.9 / 5</p>
           </div>
         </div>
@@ -315,7 +316,7 @@
           </div>
           <!-- floating card 3: timer -->
           <div class="absolute right-2 -bottom-4 bg-white border border-cocoa/10 rounded-2xl p-3 shadow-warm flex items-center gap-2 text-xs">
-            <div class="w-8 h-8 rounded-full bg-caramel/20 flex items-center justify-center">🕐</div>
+            <div class="w-8 h-8 rounded-full bg-caramel/20 flex items-center justify-center"><i class="fa-regular fa-clock text-caramel text-sm"></i></div>
             <div>
               <div class="font-bold text-cocoa">Opens 7:00 AM</div>
               <div class="text-cocoa/50">Closed on Mondays</div>
@@ -331,10 +332,10 @@
     <div class="absolute top-0 left-0 right-0"><svg class="wavy-divider text-parchment" viewBox="0 0 1440 26" preserveAspectRatio="none" fill="currentColor"><path d="M0,0 C240,26 480,0 720,13 C960,26 1200,0 1440,13 L1440,0 L0,0 Z" opacity=".9"/></svg></div>
     <div class="flex items-center gap-10 whitespace-nowrap" style="animation: scroll 28s linear infinite;">
       <span class="font-serif text-2xl flex items-center gap-10">
-        ✦ Sourdough Boule &nbsp;•&nbsp; Butter Croissants &nbsp;•&nbsp; Tiramisu Cake &nbsp;•&nbsp; Focaccia &nbsp;•&nbsp; Pain au Chocolat &nbsp;•&nbsp; Walnut Brownies &nbsp;•&nbsp; Cinnamon Rolls &nbsp;•&nbsp; Red Velvet &nbsp;•&nbsp; Pita Pockets &nbsp;•&nbsp; <span class="font-hand text-3xl text-caramel">fresh at 7am!</span> &nbsp;•&nbsp;
+        <i class="fa-solid fa-wheat-awn text-caramel text-xs mr-1"></i> Sourdough Boule &nbsp;•&nbsp; Butter Croissants &nbsp;•&nbsp; Tiramisu Cake &nbsp;•&nbsp; Focaccia &nbsp;•&nbsp; Pain au Chocolat &nbsp;•&nbsp; Walnut Brownies &nbsp;•&nbsp; Cinnamon Rolls &nbsp;•&nbsp; Red Velvet &nbsp;•&nbsp; Pita Pockets &nbsp;•&nbsp; <span class="font-hand text-3xl text-caramel">fresh at 7am!</span> &nbsp;•&nbsp;
       </span>
       <span class="font-serif text-2xl flex items-center gap-10" aria-hidden="true">
-        ✦ Sourdough Boule &nbsp;•&nbsp; Butter Croissants &nbsp;•&nbsp; Tiramisu Cake &nbsp;•&nbsp; Focaccia &nbsp;•&nbsp; Pain au Chocolat &nbsp;•&nbsp; Walnut Brownies &nbsp;•&nbsp; Cinnamon Rolls &nbsp;•&nbsp; Red Velvet &nbsp;•&nbsp; Pita Pockets &nbsp;•&nbsp; <span class="font-hand text-3xl text-caramel">fresh at 7am!</span> &nbsp;•&nbsp;
+        <i class="fa-solid fa-wheat-awn text-caramel text-xs mr-1"></i> Sourdough Boule &nbsp;•&nbsp; Butter Croissants &nbsp;•&nbsp; Tiramisu Cake &nbsp;•&nbsp; Focaccia &nbsp;•&nbsp; Pain au Chocolat &nbsp;•&nbsp; Walnut Brownies &nbsp;•&nbsp; Cinnamon Rolls &nbsp;•&nbsp; Red Velvet &nbsp;•&nbsp; Pita Pockets &nbsp;•&nbsp; <span class="font-hand text-3xl text-caramel">fresh at 7am!</span> &nbsp;•&nbsp;
       </span>
     </div>
     <div class="absolute bottom-0 left-0 right-0 rotate-180"><svg class="wavy-divider text-parchment" viewBox="0 0 1440 26" preserveAspectRatio="none" fill="currentColor"><path d="M0,0 C240,26 480,0 720,13 C960,26 1200,0 1440,13 L1440,0 L0,0 Z" opacity=".9"/></svg></div>
@@ -359,7 +360,7 @@
         <!-- Product 1 -->
         <article class="bg-cream rounded-3xl overflow-hidden card-hover border border-brown/10 group" data-aos>
           <div class="relative aspect-square overflow-hidden">
-            <img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?w=500&h=500&fit=crop&q=80" alt="Sourdough Boule" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+            <a href="product.html?id=1"><img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?w=500&h=500&fit=crop&q=80" alt="Sourdough Boule" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"></a>
             <span class="absolute top-3 left-3 bg-cocoa text-cream text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full">Bestseller</span>
             <button class="add-to-cart absolute top-3 right-3 w-9 h-9 bg-cream rounded-full flex items-center justify-center text-cocoa hover:bg-caramel transition-all shadow" data-name="Sourdough Boule" data-price="280">
               <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>
@@ -367,18 +368,21 @@
           </div>
           <div class="p-5">
             <div class="flex items-start justify-between gap-2 mb-1">
-              <h3 class="font-serif text-lg font-bold text-cocoa">Sourdough Boule</h3>
+              <a href="product.html?id=1" class="hover:text-caramel transition"><h3 class="font-serif text-lg font-bold text-cocoa">Sourdough Boule</h3></a>
               <span class="hand-price whitespace-nowrap">₹280</span>
             </div>
             <p class="text-sm text-cocoa/60 mb-1">48-hour fermented · naturally leavened</p>
             <p class="font-hand text-lg text-brown/70 leading-none mb-2">crackly crust, open crumb!</p>
-            <div class="flex items-center gap-1 text-xs text-gold">★★★★★ <span class="text-cocoa/40 ml-1">(312)</span></div>
+            <div class="flex items-center justify-between">
+              <div class="flex items-center gap-1 text-xs text-gold"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i> <span class="text-cocoa/40 ml-1">(312)</span></div>
+              <a href="product.html?id=1" class="text-[11px] font-bold text-caramel hover:underline">Details →</a>
+            </div>
           </div>
         </article>
         <!-- Product 2 -->
         <article class="bg-cream rounded-3xl overflow-hidden card-hover border border-brown/10 group" data-aos>
           <div class="relative aspect-square overflow-hidden">
-            <img src="https://images.unsplash.com/photo-1555507036-ab1f4038808a?w=500&h=500&fit=crop&q=80&sat=-100" alt="Butter Croissant" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+            <a href="product.html?id=7"><img src="https://images.unsplash.com/photo-1555507036-ab1f4038808a?w=500&h=500&fit=crop&q=80" alt="Butter Croissant" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"></a>
             <span class="absolute top-3 left-3 bg-caramel text-cocoa text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full">Just Baked</span>
             <button class="add-to-cart absolute top-3 right-3 w-9 h-9 bg-cream rounded-full flex items-center justify-center text-cocoa hover:bg-caramel transition-all shadow" data-name="Butter Croissant" data-price="120">
               <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>
@@ -386,18 +390,21 @@
           </div>
           <div class="p-5">
             <div class="flex items-start justify-between gap-2 mb-1">
-              <h3 class="font-serif text-lg font-bold text-cocoa">Butter Croissant</h3>
+              <a href="product.html?id=7" class="hover:text-caramel transition"><h3 class="font-serif text-lg font-bold text-cocoa">Butter Croissant</h3></a>
               <span class="hand-price whitespace-nowrap">₹120</span>
             </div>
             <p class="text-sm text-cocoa/60 mb-1">27 flaky layers · French AOP butter</p>
             <p class="font-hand text-lg text-brown/70 leading-none mb-2">shatters when you bite!</p>
-            <div class="flex items-center gap-1 text-xs text-gold">★★★★★ <span class="text-cocoa/40 ml-1">(485)</span></div>
+            <div class="flex items-center justify-between">
+              <div class="flex items-center gap-1 text-xs text-gold"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i> <span class="text-cocoa/40 ml-1">(485)</span></div>
+              <a href="product.html?id=7" class="text-[11px] font-bold text-caramel hover:underline">Details →</a>
+            </div>
           </div>
         </article>
         <!-- Product 3 -->
         <article class="bg-cream rounded-3xl overflow-hidden card-hover border border-brown/10 group" data-aos>
           <div class="relative aspect-square overflow-hidden">
-            <img src="https://images.unsplash.com/photo-1571115177098-24ec42ed204d?w=500&h=500&fit=crop&q=80" alt="Tiramisu Cake" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+            <a href="product.html?id=13"><img src="https://images.unsplash.com/photo-1571115177098-24ec42ed204d?w=500&h=500&fit=crop&q=80" alt="Tiramisu Cake" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"></a>
             <span class="absolute top-3 left-3 bg-gold text-cocoa text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full">Chefs Pick</span>
             <button class="add-to-cart absolute top-3 right-3 w-9 h-9 bg-cream rounded-full flex items-center justify-center text-cocoa hover:bg-caramel transition-all shadow" data-name="Tiramisu Cake" data-price="1450">
               <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>
@@ -405,18 +412,21 @@
           </div>
           <div class="p-5">
             <div class="flex items-start justify-between gap-2 mb-1">
-              <h3 class="font-serif text-lg font-bold text-cocoa">Classic Tiramisu</h3>
+              <a href="product.html?id=13" class="hover:text-caramel transition"><h3 class="font-serif text-lg font-bold text-cocoa">Classic Tiramisu</h3></a>
               <span class="hand-price whitespace-nowrap">₹1,450</span>
             </div>
             <p class="text-sm text-cocoa/60 mb-1">Mascarpone · espresso-soaked savoiardi</p>
             <p class="font-hand text-lg text-brown/70 leading-none mb-2">nonna would approve!</p>
-            <div class="flex items-center gap-1 text-xs text-gold">★★★★★ <span class="text-cocoa/40 ml-1">(208)</span></div>
+            <div class="flex items-center justify-between">
+              <div class="flex items-center gap-1 text-xs text-gold"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i> <span class="text-cocoa/40 ml-1">(208)</span></div>
+              <a href="product.html?id=13" class="text-[11px] font-bold text-caramel hover:underline">Details →</a>
+            </div>
           </div>
         </article>
         <!-- Product 4 -->
         <article class="bg-cream rounded-3xl overflow-hidden card-hover border border-brown/10 group" data-aos>
           <div class="relative aspect-square overflow-hidden">
-            <img src="https://images.unsplash.com/photo-1607478900766-efe13248b125?w=500&h=500&fit=crop&q=80" alt="Cinnamon Rolls" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+            <a href="product.html?id=10"><img src="https://images.unsplash.com/photo-1607478900766-efe13248b125?w=500&h=500&fit=crop&q=80" alt="Cinnamon Rolls" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"></a>
             <span class="absolute top-3 left-3 bg-rose-400 text-cream text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full">Weekend Only</span>
             <button class="add-to-cart absolute top-3 right-3 w-9 h-9 bg-cream rounded-full flex items-center justify-center text-cocoa hover:bg-caramel transition-all shadow" data-name="Cinnamon Rolls (4 pc)" data-price="380">
               <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>
@@ -424,12 +434,15 @@
           </div>
           <div class="p-5">
             <div class="flex items-start justify-between gap-2 mb-1">
-              <h3 class="font-serif text-lg font-bold text-cocoa">Cinnamon Rolls (4)</h3>
+              <a href="product.html?id=10" class="hover:text-caramel transition"><h3 class="font-serif text-lg font-bold text-cocoa">Cinnamon Rolls (4)</h3></a>
               <span class="hand-price whitespace-nowrap">₹380</span>
             </div>
             <p class="text-sm text-cocoa/60 mb-1">Brown butter glaze · gooey centre</p>
-            <p class="font-hand text-lg text-brown/70 leading-none mb-2">weekend hug in a pan!</p>
-            <div class="flex items-center gap-1 text-xs text-gold">★★★★☆ <span class="text-cocoa/40 ml-1">(176)</span></div>
+            <p class="font-hand text-lg text-brown/70 leading-none mb-2">served warm on weekends</p>
+            <div class="flex items-center justify-between">
+              <div class="flex items-center gap-1 text-xs text-gold"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i> <span class="text-cocoa/40 ml-1">(174)</span></div>
+              <a href="product.html?id=10" class="text-[11px] font-bold text-caramel hover:underline">Details →</a>
+            </div>
           </div>
         </article>
       </div>
@@ -551,7 +564,7 @@
         <div class="text-sm text-cocoa/60 mt-1">Weddings & events</div>
       </div>
       <div class="text-center" data-aos>
-        <div class="font-serif text-4xl lg:text-5xl font-bold text-brown">4.9★</div>
+        <div class="font-serif text-4xl lg:text-5xl font-bold text-brown">4.9 <i class="fa-solid fa-star text-gold text-2xl"></i></div>
         <div class="text-sm text-cocoa/60 mt-1">Google rating</div>
       </div>
     </div>
@@ -570,7 +583,7 @@
       </div>
       <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
         <article class="bg-white rounded-3xl p-7 border border-brown/10 card-hover" data-aos>
-          <div class="flex text-gold text-sm mb-3">★★★★★</div>
+          <div class="flex text-gold text-sm mb-3"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
           <p class="text-cocoa leading-relaxed mb-5">"The cinnamon rolls are out of this world — soft, gooey, with that perfect crackle on top. My Sunday mornings are ruined for me anywhere else."</p>
           <div class="flex items-center gap-3 pt-4 border-t border-cocoa/10">
             <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=80&h=80&fit=crop&q=80" class="w-11 h-11 rounded-full object-cover" alt="">
@@ -578,7 +591,7 @@
           </div>
         </article>
         <article class="bg-white rounded-3xl p-7 border border-brown/10 card-hover" data-aos>
-          <div class="flex text-gold text-sm mb-3">★★★★★</div>
+          <div class="flex text-gold text-sm mb-3"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
           <p class="text-cocoa leading-relaxed mb-5">"They made our wedding cake — three tiers, vegan, AND it tasted incredible. Half our guests asked for the baker's number. Worth every rupee."</p>
           <div class="flex items-center gap-3 pt-4 border-t border-cocoa/10">
             <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=80&h=80&fit=crop&q=80" class="w-11 h-11 rounded-full object-cover" alt="">
@@ -586,7 +599,7 @@
           </div>
         </article>
         <article class="bg-white rounded-3xl p-7 border border-brown/10 card-hover" data-aos>
-          <div class="flex text-gold text-sm mb-3">★★★★★</div>
+          <div class="flex text-gold text-sm mb-3"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
           <p class="text-cocoa leading-relaxed mb-5">"Best sourdough in Kolkata, hands down. The crust shatters, the crumb is open and tangy. I drive 40 minutes every Saturday just for this loaf."</p>
           <div class="flex items-center gap-3 pt-4 border-t border-cocoa/10">
             <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=80&h=80&fit=crop&q=80" class="w-11 h-11 rounded-full object-cover" alt="">
@@ -600,7 +613,7 @@
   <!-- ============ NEWSLETTER (HTMX) ============ -->
   <section class="py-20 lg:py-24 bg-gradient-to-br from-brown via-cocoa to-cocoa text-cream">
     <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center" data-aos>
-      <div class="font-serif text-5xl text-caramel">✦</div>
+      <div class="font-serif text-5xl text-caramel"><i class="fa-solid fa-wheat-awn text-3xl"></i></div>
       <h2 class="font-serif text-4xl lg:text-5xl font-bold mt-3 mb-4">Letters from the kitchen.</h2>
       <p class="text-cream/70 mb-8">Saturday morning recipes, weekend specials, and the occasional bake-along. No spam — just warm crumbs.</p>
 
@@ -613,7 +626,7 @@
       >
         <input name="email" type="email" required placeholder="your@email.com" class="flex-1 bg-transparent text-cream placeholder:text-cream/50 px-5 py-3 outline-none">
         <button type="submit" class="newsletter bg-caramel text-cocoa font-bold px-6 py-3 rounded-full hover:bg-gold transition-all whitespace-nowrap">
-          Subscribe ✨
+          Subscribe <i class="fa-solid fa-paper-plane ml-1"></i>
         </button>
       </form>
       <div id="newsletter-result" class="mt-5 text-sm"></div>
@@ -719,7 +732,7 @@
   </div>
 
   <div id="toast" class="fixed bottom-6 right-6 bg-cocoa text-cream rounded-2xl px-5 py-4 shadow-warm flex items-center gap-3 max-w-xs z-50">
-    <div class="w-9 h-9 rounded-full bg-caramel text-cocoa flex items-center justify-center">✓</div>
+    <div class="w-9 h-9 rounded-full bg-caramel text-cocoa flex items-center justify-center"><i class="fa-solid fa-check text-sm"></i></div>
     <div>
       <div class="font-bold text-sm">Added to cart</div>
       <div class="text-xs text-cream/70" id="toast-msg">Item added</div>
@@ -773,7 +786,7 @@
       target.innerHTML = '<span class="text-cream/50">Sending...</span>';
       setTimeout(() => {
         form.classList.remove('htmx-disabled');
-        target.innerHTML = `<div class="inline-flex items-center gap-2 bg-caramel/15 border border-caramel/40 text-caramel px-4 py-2 rounded-full"><span>✓</span> Welcome aboard, <strong>${email.split('@')[0]}</strong>! Check your inbox.</div>`;
+        target.innerHTML = `<div class="inline-flex items-center gap-2 bg-caramel/15 border border-caramel/40 text-caramel px-4 py-2 rounded-full"><i class="fa-solid fa-circle-check text-caramel"></i> Welcome aboard, <strong>${email.split('@')[0]}</strong>! Check your inbox.</div>`;
         form.reset();
       }, 700);
     }

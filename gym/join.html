@@ -67,39 +67,88 @@
                 </div>
             </div>
             <div class="p-8 md:p-10">
-                <h1 class="font-display uppercase leading-[.9] text-4xl sm:text-5xl mb-2">Commit to the <span class="text-acid">grind</span></h1>
-                <p class="text-white/50 text-sm mb-8 font-medium">Fill this out. Show up. We handle the rest.</p>
-                <form class="space-y-6">
-                    <div class="grid sm:grid-cols-2 gap-5">
-                        <div>
-                            <label class="block text-[11px] font-bold uppercase tracking-[.22em] text-acid mb-2">First name</label>
-                            <input type="text" class="field w-full border-2 border-white/20 p-3.5 text-white font-bold placeholder:text-white/25 uppercase tracking-wide text-sm" placeholder="Johnny">
+            <div class="p-8 md:p-10" id="joinPanel">
+                <div id="joinFormWrapper">
+                    <h1 class="font-display uppercase leading-[.9] text-4xl sm:text-5xl mb-2">Commit to the <span class="text-acid">grind</span></h1>
+                    <p class="text-white/50 text-sm mb-8 font-medium">Fill this out. Show up. We handle the rest.</p>
+                    <form id="gymJoinForm" class="space-y-6" onsubmit="handleGymJoin(event)">
+                        <div class="grid sm:grid-cols-2 gap-5">
+                            <div>
+                                <label class="block text-[11px] font-bold uppercase tracking-[.22em] text-acid mb-2">First name</label>
+                                <input type="text" id="jFirst" required class="field w-full border-2 border-white/20 p-3.5 text-white font-bold placeholder:text-white/25 uppercase tracking-wide text-sm" placeholder="Johnny">
+                            </div>
+                            <div>
+                                <label class="block text-[11px] font-bold uppercase tracking-[.22em] text-acid mb-2">Last name</label>
+                                <input type="text" id="jLast" required class="field w-full border-2 border-white/20 p-3.5 text-white font-bold placeholder:text-white/25 uppercase tracking-wide text-sm" placeholder="Silverhand">
+                            </div>
                         </div>
                         <div>
-                            <label class="block text-[11px] font-bold uppercase tracking-[.22em] text-acid mb-2">Last name</label>
-                            <input type="text" class="field w-full border-2 border-white/20 p-3.5 text-white font-bold placeholder:text-white/25 uppercase tracking-wide text-sm" placeholder="Silverhand">
+                            <label class="block text-[11px] font-bold uppercase tracking-[.22em] text-acid mb-2">Phone</label>
+                            <input type="tel" id="jPhone" required class="field w-full border-2 border-white/20 p-3.5 text-white font-bold placeholder:text-white/25 tracking-wide text-sm" placeholder="+91 98765 43210">
+                        </div>
+                        <div>
+                            <label class="block text-[11px] font-bold uppercase tracking-[.22em] text-acid mb-2">Membership tier</label>
+                            <select id="jTier" class="field w-full border-2 border-white/20 p-3.5 text-white font-bold tracking-wide text-sm">
+                                <option value="Standard (Gym Only) · ₹1,999/mo">Standard (Gym Only) - ₹1,999/mo</option>
+                                <option value="Elite (Unlimited Classes) · ₹3,499/mo" selected>Elite (Unlimited Classes) - ₹3,499/mo</option>
+                                <option value="Pro (Includes PT) · ₹5,999/mo">Pro (Includes PT) - ₹5,999/mo</option>
+                            </select>
+                        </div>
+                        <div class="grid grid-cols-3 gap-2">
+                            <span class="border border-white/15 text-white/50 text-[11px] font-bold uppercase tracking-widest text-center py-2.5">Standard</span>
+                            <span class="bg-acid text-black text-[11px] font-bold uppercase tracking-widest text-center py-2.5 border border-acid">Elite ★</span>
+                            <span class="border border-white/15 text-white/50 text-[11px] font-bold uppercase tracking-widest text-center py-2.5">Pro</span>
+                        </div>
+                        <button type="submit" class="skew-btn w-full bg-acid text-black font-display text-2xl uppercase py-4 hard-shadow"><span>Confirm membership →</span></button>
+                        <p class="text-center text-[11px] uppercase tracking-[.2em] text-white/35 font-bold">No card today · Pay at the gate</p>
+                    </form>
+                </div>
+
+                <div id="joinPassWrapper" class="hidden py-4 text-center">
+                    <div class="inline-flex items-center gap-2 border border-acid/50 bg-acid/10 px-4 py-1.5 text-acid font-display uppercase tracking-widest text-xs mb-4">
+                        <span>●</span> Access Token Generated
+                    </div>
+                    <h2 class="font-display uppercase leading-tight text-4xl mb-2 text-white">Welcome to the <span class="text-acid">Empire</span></h2>
+                    <p class="text-white/50 text-xs uppercase tracking-wider mb-6 font-bold">Show this digital pass at the front gate for entry.</p>
+
+                    <div class="border-2 border-acid bg-black p-6 text-left relative overflow-hidden mb-6 hard-shadow">
+                        <div class="flex justify-between items-start border-b border-white/15 pb-4 mb-4">
+                            <div>
+                                <p class="text-[10px] uppercase font-bold tracking-[.25em] text-acid">Digital Member Pass</p>
+                                <h3 id="passName" class="font-display uppercase text-2xl text-white mt-1">JOHNNY SILVERHAND</h3>
+                            </div>
+                            <span id="passId" class="font-mono text-acid text-xs font-bold bg-white/10 px-2.5 py-1">#IE-9482</span>
+                        </div>
+
+                        <div class="space-y-2 text-xs font-bold uppercase tracking-wider mb-6">
+                            <div class="flex justify-between">
+                                <span class="text-white/40">Tier:</span>
+                                <span id="passTier" class="text-white">Elite (Unlimited Classes)</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-white/40">Status:</span>
+                                <span class="text-acid">Active · Day 1 Trial</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-white/40">Gate Access:</span>
+                                <span class="text-white">24/7 Keycard Entry</span>
+                            </div>
+                        </div>
+
+                        <!-- Barcode simulation -->
+                        <div class="border-t border-dashed border-white/20 pt-4">
+                            <div class="h-8 flex justify-between items-end gap-1 opacity-80" aria-hidden="true">
+                                <span class="w-1 h-full bg-white"></span><span class="w-2 h-full bg-white"></span><span class="w-0.5 h-full bg-white"></span><span class="w-3 h-full bg-white"></span><span class="w-1 h-full bg-white"></span><span class="w-0.5 h-full bg-white"></span><span class="w-2 h-full bg-white"></span><span class="w-1 h-full bg-white"></span><span class="w-3 h-full bg-white"></span><span class="w-1.5 h-full bg-white"></span><span class="w-0.5 h-full bg-white"></span><span class="w-2 h-full bg-white"></span><span class="w-1 h-full bg-white"></span><span class="w-2.5 h-full bg-white"></span>
+                            </div>
+                            <p class="text-[9px] font-mono text-center tracking-[.3em] text-white/40 mt-1.5 uppercase">SCAN AT ENTRANCE TURNSTILE</p>
                         </div>
                     </div>
-                    <div>
-                        <label class="block text-[11px] font-bold uppercase tracking-[.22em] text-acid mb-2">Phone</label>
-                        <input type="tel" class="field w-full border-2 border-white/20 p-3.5 text-white font-bold placeholder:text-white/25 tracking-wide text-sm" placeholder="+91 98765 43210">
+
+                    <div class="flex flex-col sm:flex-row gap-3 justify-center">
+                        <button onclick="resetGymForm()" class="skew-btn border border-white/25 text-white font-display uppercase tracking-widest text-xs px-6 py-3 hover:bg-white hover:text-black transition"><span>New Pass</span></button>
+                        <a href="index.html" class="skew-btn bg-acid text-black font-display uppercase tracking-widest text-xs px-6 py-3 hover:bg-white transition"><span>Return to Base →</span></a>
                     </div>
-                    <div>
-                        <label class="block text-[11px] font-bold uppercase tracking-[.22em] text-acid mb-2">Membership tier</label>
-                        <select class="field w-full border-2 border-white/20 p-3.5 text-white font-bold tracking-wide text-sm">
-                            <option>Standard (Gym Only) - ₹1,999/mo</option>
-                            <option selected>Elite (Unlimited Classes) - ₹3,499/mo</option>
-                            <option>Pro (Includes PT) - ₹5,999/mo</option>
-                        </select>
-                    </div>
-                    <div class="grid grid-cols-3 gap-2">
-                        <span class="border border-white/15 text-white/50 text-[11px] font-bold uppercase tracking-widest text-center py-2.5">Standard</span>
-                        <span class="bg-acid text-black text-[11px] font-bold uppercase tracking-widest text-center py-2.5 border border-acid">Elite ★</span>
-                        <span class="border border-white/15 text-white/50 text-[11px] font-bold uppercase tracking-widest text-center py-2.5">Pro</span>
-                    </div>
-                    <button class="skew-btn w-full bg-acid text-black font-display text-2xl uppercase py-4 hard-shadow"><span>Confirm membership →</span></button>
-                    <p class="text-center text-[11px] uppercase tracking-[.2em] text-white/35 font-bold">No card today · Pay at the gate</p>
-                </form>
+                </div>
             </div>
         </div>
     </main>
@@ -108,5 +157,44 @@
         © 2026 Iron Empire. <a href="index.html" class="text-acid">← Back to base</a> · <a href="programs.html" class="hover:text-acid">Programs</a> · <a href="trainers.html" class="hover:text-acid">Coaches</a>
     </footer>
 
+    <!-- Toast -->
+    <div id="gymToast" class="fixed bottom-6 right-6 z-50 bg-black text-acid px-5 py-3 border-2 border-acid text-xs font-display uppercase tracking-widest transform translate-y-16 opacity-0 pointer-events-none transition-all duration-300 flex items-center gap-3">
+        <span class="w-2 h-2 bg-acid"></span>
+        <span id="gymToastMsg">Pass Generated</span>
+    </div>
+
+    <script>
+        function handleGymJoin(e) {
+            e.preventDefault();
+            const first = document.getElementById('jFirst').value.trim();
+            const last = document.getElementById('jLast').value.trim();
+            const tier = document.getElementById('jTier').value;
+            const passCode = '#IE-' + Math.floor(1000 + Math.random() * 9000);
+
+            document.getElementById('passName').textContent = (first + ' ' + last).toUpperCase();
+            document.getElementById('passTier').textContent = tier;
+            document.getElementById('passId').textContent = passCode;
+
+            document.getElementById('joinFormWrapper').classList.add('hidden');
+            document.getElementById('joinPassWrapper').classList.remove('hidden');
+
+            showGymToast('Pass ' + passCode + ' Activated');
+        }
+
+        function resetGymForm() {
+            document.getElementById('gymJoinForm').reset();
+            document.getElementById('joinPassWrapper').classList.add('hidden');
+            document.getElementById('joinFormWrapper').classList.remove('hidden');
+        }
+
+        function showGymToast(msg) {
+            const toast = document.getElementById('gymToast');
+            document.getElementById('gymToastMsg').textContent = msg;
+            toast.classList.remove('translate-y-16', 'opacity-0', 'pointer-events-none');
+            setTimeout(() => {
+                toast.classList.add('translate-y-16', 'opacity-0', 'pointer-events-none');
+            }, 4000);
+        }
+    </script>
 </body>
 </html>

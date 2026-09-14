@@ -45,7 +45,18 @@
                 <a href="technology.html" class="text-teal-deep">Technology</a>
                 <a href="smile-gallery.html" class="hover:text-teal-deep transition">Smile Gallery</a>
             </div>
-            <a href="visit.html" class="bg-ink text-ivory px-7 py-3 rounded-full text-[13px] font-semibold tracking-[.1em] uppercase hover:bg-teal-deep transition-all shadow-card">Book Visit</a>
+            <div class="flex items-center gap-3">
+                <a href="visit.html" class="bg-ink text-ivory px-5 sm:px-7 py-2.5 sm:py-3 rounded-full text-[12px] sm:text-[13px] font-semibold tracking-[.1em] uppercase hover:bg-teal-deep transition-all shadow-card">Book Visit</a>
+                <button id="dentalMenuBtn" class="md:hidden w-10 h-10 rounded-full border border-gold/40 flex items-center justify-center text-ink hover:border-gold hover:text-gold transition" aria-label="Toggle navigation">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+                </button>
+            </div>
+        </div>
+        <div id="dentalMobileMenu" class="hidden md:hidden glass border-t border-[#E8DDC9] px-6 py-5 text-xs font-semibold tracking-[.16em] uppercase text-ink/80 space-y-3">
+            <a href="services.html" class="block py-2 hover:text-teal transition">Treatments</a>
+            <a href="technology.html" class="block py-2 text-teal-deep font-bold transition">Technology</a>
+            <a href="smile-gallery.html" class="block py-2 hover:text-teal transition">Smile Gallery</a>
+            <a href="visit.html" class="block py-2 text-teal-deep font-bold transition">Book Visit →</a>
         </div>
     </nav>
 
@@ -59,7 +70,7 @@
     <main class="max-w-6xl mx-auto px-6 pb-24 grid sm:grid-cols-2 gap-6">
         <div class="bg-white/70 border border-[#E8DDC9] p-7 rounded-[1.8rem] shadow-card lift hover:shadow-soft hover:border-gold/60 group">
             <div class="relative h-60 rounded-[1.3rem] overflow-hidden mb-7">
-                <img src="https://images.unsplash.com/photo-1516549655169-df83a0929519?q=80&w=800&auto=format&fit=crop" class="w-full h-full object-cover group-hover:scale-105 transition duration-700" alt="Scanner">
+                <img src="https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?q=80&w=800&auto=format&fit=crop" class="w-full h-full object-cover group-hover:scale-105 transition duration-700" alt="Scanner">
                 <span class="absolute top-3 left-3 glass px-3.5 py-1.5 rounded-full text-[11px] font-semibold tracking-[.16em] uppercase border border-white/60">01 · Scan</span>
             </div>
             <p class="font-serif italic text-gold text-lg">Sixty seconds, zero goo</p>
@@ -116,5 +127,10 @@
         © 2026 Lumina Dental · <a href="index.html" class="text-gold-light hover:underline">Back to atelier</a>
     </footer>
 
+    <script>
+        document.getElementById('dentalMenuBtn')?.addEventListener('click', function() {
+            document.getElementById('dentalMobileMenu')?.classList.toggle('hidden');
+        });
+    </script>
 </body>
 </html>

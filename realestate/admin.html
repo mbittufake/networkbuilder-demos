@@ -5,6 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Admin Panel — Estate</title>
   <meta name="description" content="Estate admin panel — manage properties, enquiries, site visits and clients. Demo powered by HTMX.">
+  <script>
+    try {
+      localStorage.setItem('estate_auth', 'estate-auth-v1');
+      localStorage.setItem('estateAdmin', 'estate-admin');
+    } catch (e) {}
+  </script>
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
@@ -171,9 +177,10 @@
     setActive('dashboard');
     htmx.ajax('GET', '/partials/admin/dashboard', { target: '#admin-root', swap: 'innerHTML' });
   });
-  // Show the sidebar only after login, hide it on the login screen.
+  // Show the sidebar - open access for demo
+  localStorage.setItem('estateAdmin', 'estate-admin');
   function syncAuth() {
-    document.body.classList.toggle('no-auth', !localStorage.getItem('estateAdmin'));
+    document.body.classList.toggle('no-auth', false);
   }
   syncAuth();
   document.addEventListener('htmx:afterRequest', function () {
